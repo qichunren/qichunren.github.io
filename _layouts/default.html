@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" dir="ltr">
+    <head>
+        <link href="/stylesheets/style.css" media="screen" rel="stylesheet" type="text/css" />
+        <link href="/stylesheets/syntax.css" media="screen" rel="stylesheet" type="text/css" />                
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <meta name="author" content="qichunren" />
+        <title>{{ page.title }} - 蕲春人的博客</title>
+        <link rel="alternate" type="application/atom+xml" href="/atom.xml" />
+        {% include google_analytics %}
+    </head>
+    <body>
+        <div id="header">
+            <div id="logo">
+                <h1 id="blogname"><a href="/">蕲春人的博客</a></h1>
+                <div class="description">追求简单，拒绝复杂，减少重复，少即是多</div>
+            </div>
+            <div>
+                <ul class="navigation">
+                    <li class=""><a title="Blog" href="/posts.html"><span>Blog</span></a></li>
+                    <li class="page_item"><a title="About" href="/aboutme.html"><span>About</span></a></li>
+                    <li class="page_item current_page_item">
+                        <a title="Contact" href="/contact.html"><span>Contact</span></a></li>
+                </ul>
+                <div id="toolbar"><a href="/atom.xml"><img src="/images/rss.png" alt="RSS" /></a></div>
+            </div>
+        </div>
+        <div class="clear"></div>
+
+        <div id="wrap">
+            <div id="content">
+                {{ content }}
+            </div>
+
+            <div id="sidebar">
+                
+                {% include about_me.html %}
+                {% include links.html %}
+
+            </div>
+        </div>
+
+        <div class="clear"></div>
+        <div id="footer">
+            &copy; {{ site.time | date: "%Y" }} &mdash; qichunren build with <a href="http://github.com/mojombo/jekyll" title="jekyll project">jekyll</a>
+        </div>
+
+        <div id="forkme"><a href="http://github.com/qichunren"><img src="/images/forkme_right_red.png" alt="Fork me" /></a></div>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js"></script>
+        <script src="http://drnicjavascript.rubyforge.org/github_badge/dist/github-badge-launcher.js" type="text/javascript"></script>
+
+
+    </body>
+
+</html>
+
+<!-- This page has been last updated on {{ site.time | date: "%m/%d/%Y" }} -->

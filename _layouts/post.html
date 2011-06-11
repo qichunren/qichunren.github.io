@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" dir="ltr">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />                                                                 
+  <title>{{ page.title}}</title>     
+  <meta name="keywords" content="{{ page.meta-keywords }}" />
+  <meta name="description" content="{{ page.meta-description }}" />
+  <link href="/stylesheets/style.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/syntax.css" media="screen" rel="stylesheet" type="text/css" />  
+  <style type="text/css">
+    .inner {padding:15px;}
+  </style>    
+  {% include google_analytics %}
+</head>
+<body>
+  
+  <div id="header">
+      <div id="logo">
+          <h1 id="blogname"><a href="/">蕲春人的博客</a></h1>
+          <div class="description">追求简单，拒绝复杂，减少重复，少即是多</div>
+      </div>
+      <div>
+          <ul class="navigation">
+              <li class=""><a title="Blog" href="/posts.html"><span>Blog</span></a></li>
+              <li class="page_item"><a title="About" href="/aboutme.html"><span>About</span></a></li>
+              <li class="page_item current_page_item">
+                  <a title="Contact" href="/contact.html"><span>Contact</span></a></li>
+          </ul>
+          <div id="toolbar"><a href="/atom.xml"><img src="/images/rss.png" alt="RSS" /></a></div>
+      </div>
+  </div><!-- end:#header -->
+  <div class="clear"></div>
+  
+
+<div id="wrap" style=""> 
+  <div class="inner"> 
+        <h3 class="entrytitle"><a rel="bookmark" href="#">{{ page.title}}</a></h3>
+        <div class="entrymeta">发表于 {{ page.date | date: "%Y年%m月%d日"}}. 分类:{{ page.category }}. {% if page.tags != empty %}Tag: 
+		- {% for t in page.tags %} <a rel="tag" href="/tags/#{{ t | cgi_escape }}">{{ t }}</a>{% endfor %}
+		{% endif %} </div>
+          <div class="entry_content">
+          {{ content }}
+          </div> 
+
+
+<div id="pagination" style="margin-top:15px;height:30px;padding:8px;border-top:1px solid #BDBDBD">
+          <div style="float:left;">
+          {% if page.previous %}
+          <a class="prev" href="{{ page.previous.url }}">&laquo; {{ page.previous.title | truncatewords:5 }}</a>
+          {% endif %}  
+          </div> 
+
+        <div style="float:right">
+        {% if page.next %}
+        <a class="next" href="{{ page.next.url }}">{{ page.next.title | truncatewords:5 }} &raquo;</a>
+        {% endif %}
+        </div> 
+</div><!-- #end:pagination -->  
+
+
+
+{% include disqus %}
+
+ 
+</div><!-- end.inner -->
+</div><!-- #: end:wrap -->   
+</body>
+</html>
