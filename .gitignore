@@ -1,0 +1,5 @@
+*~
+*.bak
+*.swap
+/nbproject
+/_site/**
