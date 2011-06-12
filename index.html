@@ -1,0 +1,31 @@
+---
+layout: default
+title:  蕲春人
+---
+
+<iframe width="500" height="400" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?width=500&height=450&fansRow=2&ptype=1&speed=0&skin=1&isTitle=0&noborder=0&isWeibo=1&isFans=0&uid=1663658751&verifier=75d27faf"></iframe>
+
+
+<div class="box">
+    <div class="boxtitlebg">
+        <h3 id="post-2"><a rel="bookmark" href="/posts.html">最近的文章</a></h3>
+    </div>
+    <div class="boxbody">
+        <ul>
+            {% for post in site.posts limit:5 %}
+            <li><a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+
+<div class="clear"></div>
+
+<div class="box">
+    <div class="boxtitlebg"><h3><a href="http://book.douban.com/people/qichunren/" title="我的读书主页">我的阅读</a></h3></div>
+    <div class="boxbody" style="overflow:hidden">
+        <script type="text/javascript" src="http://www.douban.com/service/badge/qichunren/?show=collection&amp;select=random&amp;n=7&amp;columns=7&amp;hidelogo=yes&amp;hideself=yes&amp;cat=book" ></script>
+    </div>
+</div>
+

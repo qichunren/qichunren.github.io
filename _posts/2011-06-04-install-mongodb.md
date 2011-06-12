@@ -1,3 +1,12 @@
+---
+layout: post
+title: Install mongo on mac
+tags:
+- nosql
+- mongo 
+---
+
+<pre>
 caojinhuamatoMacBook-Pro:code caojinhua$ brew install mongodb
 ==> Downloading http://fastdl.mongodb.org/osx/mongodb-osx-x86_64-1.8.1.tgz
 ######################################################################## 100.0%
@@ -18,3 +27,4 @@ MongoDB 1.8+ includes a feature for Write Ahead Logging (Journaling), which has 
 This is not the default in production (Journaling is disabled); to disable journaling, use --nojournal.
 ==> Summary
 /usr/local/Cellar/mongodb/1.8.1-x86_64: 16 files, 93M, built in 2 seconds
+</pre>

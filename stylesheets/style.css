@@ -1,0 +1,325 @@
+/* http://meyerweb.com/eric/tools/css/reset/ */
+/* v1.0 | 20080212 */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+
+/* remember to define focus styles! */
+:focus {
+    outline: 0;
+}
+
+/* remember to highlight inserts somehow! */
+ins {
+    text-decoration: none;
+}
+del {
+    text-decoration: line-through;
+}
+
+/* tables still need 'cellspacing="0"' in the markup */
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+
+body{
+  background-color: #E5E5E5;
+  background-image: url(../images/wrap.gif);
+  background-position: center center;
+  background-repeat: repeat-y;
+  color: #697C83;
+  font-family: 'Trebuchet MS','Lucida Grande',Arial,sans-serif;
+  font-size: small;
+}
+a, a:visited, a:hover {
+    color:#697C83;
+    text-decoration:none;
+}
+
+#container{padding:5px;width:700px;margin:0 auto;}
+.clear{clear:both;}
+#header{background-image:url(../images/top.gif);
+        background-position:center top;
+        background-repeat:repeat-x;
+        height:130px;}
+#logo{height:100px;
+      margin:0 auto;
+      width:770px;}
+#forkme{position:absolute;right:0;top:0;}
+#toolbar{position:absolute;right:570px;top:65px;z-index:10;}
+#blogname {
+    height:30px;
+    padding-left:22px;
+    padding-top:28px;
+    text-align:left;
+}
+h1#blogname a {
+    color:#FFFFFF;
+    font-size:36px;
+    font-weight:400;
+}
+.description {
+    color:#CAE972;
+    font-size:1em;
+    font-style:italic;
+    font-weight:400;
+    height:24px;
+    padding-right:20px;
+    text-align:right;
+}
+
+
+
+#footer {
+background-image:url(../images/top.gif);
+background-position:center bottom;
+background-repeat:repeat-x;
+clear:both;
+font-size:11px;
+height:60px;
+margin:0 auto;
+padding-bottom:10px;
+padding-top:20px;
+text-align:center;
+}
+
+.navigation {
+    clear:both;
+    height:24px;
+    margin:0 auto;
+    width:729px;
+}
+.navigation li {
+    float:left;
+    line-height:23px;
+    list-style-image:none;
+    list-style-position:outside;
+    list-style-type:none;
+    margin:0;padding:0;
+}
+.navigation a:link, .navigation a:link span, .navigation a:visited, .navigation a:visited span {
+    cursor:pointer;
+    display:block;
+    float:left;
+}
+
+.navigation a:link, .navigation a:visited {
+    -moz-background-clip:border;
+    -moz-background-inline-policy:continuous;
+    -moz-background-origin:padding;
+    background:#FFFFFF url(../images/active1.gif) no-repeat scroll left bottom;
+    color:#888888;
+    height:24px;
+    margin-right:2px;
+    padding-left:12px;
+    text-decoration:none;
+}
+.navigation a:link span, .navigation a:visited span, .navigation a:hover span {
+-moz-background-clip:border;
+-moz-background-inline-policy:continuous;
+-moz-background-origin:padding;
+background:transparent url(../images/active2.gif) no-repeat scroll right bottom;
+height:24px;
+padding-right:12px;
+}
+
+.navigation a:link, .navigation a:link span, .navigation a:visited, .navigation a:visited span {
+cursor:pointer;
+display:block;
+float:left;
+}
+#wrap{margin:0 auto;
+overflow:hidden;
+padding-left:10px;
+padding-right:10px;
+position:relative;
+width:770px;}   
+
+#content{-moz-background-clip:border;
+-moz-background-inline-policy:continuous;
+-moz-background-origin:padding;
+background:#FFFFFF none repeat scroll 0 0;
+color:#656565;
+display:inline;
+float:left;
+font-size:100%;
+line-height:1.6em;
+margin:15px 0 0 20px;
+padding:0 0 40px;
+text-align:left;
+width:500px;}
+
+#sidebar {
+-moz-background-clip:border;
+-moz-background-inline-policy:continuous;
+-moz-background-origin:padding;
+background:#FFFFFF none repeat scroll 0 0;
+display:inline;
+float:right;
+line-height:1.5em;
+margin:5px 20px 20px 0;
+padding-top:5px;
+width:205px;
+}
+#sidebar h2.title {
+  border-bottom: 1px dotted #DDDDDD;
+  color: #1E1E26;
+  font-size: 20px;
+  font-weight:400;
+  letter-spacing:0;
+  line-height: 12px;
+  margin: 5px 0;
+  padding: 10px 0;
+  text-transform:capitalize;  
+}
+#sidebar ul {
+list-style-image:none;
+list-style-position:outside;
+list-style-type:none;
+margin-bottom:15px;
+}
+#sidebar ul li a {
+color:#999999;
+margin:0;
+text-decoration:none !important;
+}    
+
+.tag {
+   text-decoration: underline;
+}                             
+
+.tag1 {
+  font-size:11px;
+} 
+.tag2 {
+  font-size:12px;
+} 
+
+.tag3 {
+  font-size:13px;
+}
+.tag4 {
+  font-size:14px;
+} 
+.tag5 {
+  font-size:15px;
+} 
+
+.tag6 {
+  font-size:16px;
+} 
+
+.tag7 {
+  font-size:17px;
+} 
+
+.tag8 {
+  font-size:18px;
+}
+
+.entry {
+-moz-background-clip:border;
+-moz-background-inline-policy:continuous;
+-moz-background-origin:padding;
+background:transparent url(../images/entrybottombg.jpg) no-repeat scroll left bottom;
+margin-bottom:25px;
+margin-top:0;
+padding-bottom:20px;
+}
+
+.entrytitlebg {
+-moz-background-clip:border;
+-moz-background-inline-policy:continuous;
+-moz-background-origin:padding;
+background:transparent url(../images/entrytitlebg.jpg) no-repeat scroll left top;
+padding:20px 0 5px 20px;
+}
+.entrybody {
+background-image:url(../images/postbg.jpg);
+background-position:left top;
+background-repeat:repeat-y;
+margin:0;
+padding:0 5px 0 20px;
+overflow:auto;
+}
+
+.entrymeta {
+border-bottom:1px solid #FFFFFF;
+color:#656565;
+font-size:11px;
+font-weight:400;
+margin-bottom:7px;
+margin-top:3px;
+padding-bottom:7px;
+}        
+
+.entry_content {
+  padding: 10px;font-size:16px;line-height:28px;
+} 
+
+.entry_content a {
+   color: #FF9900;
+}
+
+.entry_content p {
+   margin-bottom:10px;
+} 
+
+.entry_content h3 {  
+   font-size: 18px;
+   font-weight: bold;
+}
+
+.entry_content pre{
+   font-size: 12px;
+   background: #000;
+   color: green;
+}
+
+.entry_content li {
+   list-style-type: square;
+   list-style-position: inside;
+}
+
+h3.entrytitle a, h3.entrytitle a:visited {
+color:#5CA605; 
+font-size:20px;
+font-weight:400;
+text-decoration:none;
+text-transform:capitalize;
+}
+#my_avatar{float:left;padding:0 8px 8px 0;}  
+
+.box {margin-bottom: 10px;}
+.boxtitlebg { padding: 10px; font-weight: bold;  font-size:17px; color: #000; }
+.boxbody li {margin-bottom:3px; padding: 8px; border-bottom: 1px dashed #BDBDBD;}
