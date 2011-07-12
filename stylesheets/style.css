@@ -85,7 +85,7 @@ a, a:visited, a:hover {
 }
 h1#blogname a {
     color:#FFFFFF;
-    font-size:36px;
+    font-size:40px;
     font-weight:400;
 }
 .description {
@@ -131,24 +131,20 @@ text-align:center;
     cursor:pointer;
     display:block;
     float:left;
+		text-decoration: underline;
+		padding: 5px;
 }
 
 .navigation a:link, .navigation a:visited {
-    -moz-background-clip:border;
-    -moz-background-inline-policy:continuous;
-    -moz-background-origin:padding;
-    background:#FFFFFF url(../images/active1.gif) no-repeat scroll left bottom;
     color:#888888;
     height:24px;
+		font-size:24px;
+		padding: 10px;
     margin-right:2px;
     padding-left:12px;
     text-decoration:none;
 }
 .navigation a:link span, .navigation a:visited span, .navigation a:hover span {
--moz-background-clip:border;
--moz-background-inline-policy:continuous;
--moz-background-origin:padding;
-background:transparent url(../images/active2.gif) no-repeat scroll right bottom;
 height:24px;
 padding-right:12px;
 }
@@ -248,29 +244,19 @@ text-decoration:none !important;
 }
 
 .entry {
--moz-background-clip:border;
--moz-background-inline-policy:continuous;
--moz-background-origin:padding;
-background:transparent url(../images/entrybottombg.jpg) no-repeat scroll left bottom;
-margin-bottom:25px;
-margin-top:0;
-padding-bottom:20px;
+	margin-bottom:25px;
+	margin-top:0;
+	padding-bottom:20px;
 }
 
 .entrytitlebg {
--moz-background-clip:border;
--moz-background-inline-policy:continuous;
--moz-background-origin:padding;
-background:transparent url(../images/entrytitlebg.jpg) no-repeat scroll left top;
-padding:20px 0 5px 20px;
+	padding:20px 0 5px 20px;
 }
 .entrybody {
-background-image:url(../images/postbg.jpg);
-background-position:left top;
-background-repeat:repeat-y;
-margin:0;
-padding:0 5px 0 20px;
-overflow:auto;
+	margin:0;
+	padding:0 5px 0 20px;
+	font-size: 20px;
+	line-height: 30px;
 }
 
 .entrymeta {
@@ -284,7 +270,7 @@ padding-bottom:7px;
 }        
 
 .entry_content {
-  padding: 10px;font-size:16px;line-height:28px;
+  padding: 10px;font-size:18px;line-height:28px;
 } 
 
 .entry_content a {
@@ -298,6 +284,7 @@ padding-bottom:7px;
 .entry_content h3 {  
    font-size: 18px;
    font-weight: bold;
+	 border-bottom: 2px solid #BDBDBD;
 }
 
 .entry_content pre{
@@ -312,11 +299,11 @@ padding-bottom:7px;
 }
 
 h3.entrytitle a, h3.entrytitle a:visited {
-color:#5CA605; 
-font-size:20px;
-font-weight:400;
-text-decoration:none;
-text-transform:capitalize;
+	color:#5CA605; 
+	font-size: 30px;
+	font-weight:400;
+	text-decoration:none;
+	text-transform:capitalize;
 }
 #my_avatar{float:left;padding:0 8px 8px 0;}  
 

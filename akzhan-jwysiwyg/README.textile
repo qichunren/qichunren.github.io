@@ -1,0 +1,24 @@
+h1. jWYSIWYG
+
+Copyright (c) 2009-2010 Juan M Martínez
+Dual licensed under the "MIT":http://github.com/akzhan/jwysiwyg/raw/master/MIT-LICENSE.txt and "GPL2":http://github.com/akzhan/jwysiwyg/raw/master/GPL-LICENSE.txt licenses.
+
+h2. Requires
+
+"jQuery":http://jquery.com 1.3.2 or higher.
+
+h2. Supports
+
+"jQuery UI Dialog":http://jqueryui.com/demos/dialog/ and "SimpleModal":http://www.ericmmartin.com/projects/simplemodal/ for insertTable and insertImage buttons.
+
+"jQuery UI Resizable":http://jqueryui.com/demos/resizable/ for resize of editor.
+
+h2. Tested with
+
+Tested in Safari 4, Firefox 3.5, Chrome 4.0, Internet Explorer 8.
+
+Some minor bugs still exist while 1.0 not reached.
+
+h2. Web site
+
+"jWYSIWYG on GitHub":http://github.com/akzhan/jwysiwyg
