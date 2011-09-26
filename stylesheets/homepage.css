@@ -1,0 +1,200 @@
+html,body,h1,h2,h3,h4,h5,h6,p{margin:0;padding:0}
+body {margin-bottom:40px;background-color: #fff;color: #333;background:#E7F1FD url(../images/header-bg.png) repeat-x; }
+body, p, ol, ul, td {
+    font-family: verdana, arial, helvetica, sans-serif;
+    font-size:13px;line-height:18px;
+}
+ul{list-style-type:none;}
+a{color:#000;}
+a:visited {color:#666;}
+a:hover{color:#BDBDBD;}
+.wrap{text-align:center;margin:0 auto;}
+hr.clear{display:block;clear:both;height:0;visibility:hidden;}
+#header{color:#F7F7F7;height:60px;
+        margin:0 auto;padding-bottom:0;
+        padding-top:1px;position:relative;
+        width:1054px;
+}
+#header h1{float:left;display:block;line-height:60px;}
+.nav ul {
+    -moz-border-radius-bottomleft:5px;
+    -moz-border-radius-bottomright:5px;
+    -moz-border-radius-topleft:5px;
+    -moz-border-radius-topright:5px;
+    background-color:#FFFFFF;float:right;line-height:2.4em;margin:14px 8px;padding:0 12px 0 0;
+}
+.nav li {float:left;margin:0;padding:0 0 0 12px;}
+.nav a{font-weight:bold;color:#0350A6;text-decoration:none;}
+.nav a:hover{color:#0350A6;text-decoration:underline;}
+.nav a:visited{color:#0350A6;}
+#splash{background: url(../images/public-splash.png) repeat-x;height:453px;}
+#splash .wrap{    
+    padding-bottom:0;
+    padding-top:1px;
+    position:relative;
+    width:1054px;
+    text-align:center;
+}
+#signup-bar{background:url(../images/public-background-sign-up-bar.png) repeat-x;border-bottom:1px solid #7197C2;color:#003269;}
+#signup-bar .wrap{
+    padding-bottom:10px;
+    padding-top:10px;
+    width:785px;
+    text-align:center;
+    font-weight:bold;
+}
+#signup-bar p{font-size:15px;padding:10px;}
+#intro{background:url(/images/public-background-video-bar.png) repeat-x;text-align:center;}
+#intro .wrap{padding:30px;height:200px;}
+#main{background:url(/images/public-background-main-content.png) repeat-x;}
+#main .wrap{width:960px;padding:20px;}
+#about{width:45%;float:left;}
+#about h3{color:#0350A6;padding:12px 0;}
+#whatisrails{float:right;margin-left:10px;padding:10px;width:50%;text-align:left;background:#FFF;}
+#whatisrails h3{color:#0350A6;padding:12px 0;}
+#whatisrails img{float:left;padding:0 10px 10px 0;}
+#footer{}
+#footer .wrap{width:960px;height:51px;
+              background:transparent url(../images/background-footer-bar.png) no-repeat scroll left top;
+              margin:20px auto 0;padding:17px;text-align:left;color:#0350A6;
+}
+#home_slogan{margin-top:110px;text-align:center;height:190px;}
+.slogan1{background:url(../images/slogan1.jpg) no-repeat 90px 0px;}
+.slogan2{background:url(../images/slogan1-m.jpg) no-repeat 91px 0px;}
+#contact{margin-top:20px;}
+#contact h3{padding:10px;border-bottom:3px solid #3774DF; }
+#contact .wrap{width:785px;background:#C3D2DF;border:1px solid #00467F;-moz-background-clip:border;
+               -moz-background-inline-policy:continuous;
+               -moz-background-origin:padding;
+               -moz-border-radius-bottomleft:16px;
+               -moz-border-radius-bottomright:16px;
+               -moz-border-radius-topleft:16px;
+               -moz-border-radius-topright:16px;text-align:left;}
+#contact .form_div{padding:10px;}
+#guestbook_form{padding:10px;}
+#guestbook_form p{margin:10px 0;}
+#flash_notice{width:350px;margin: 5px auto;padding:5px;border:1px solid #FF9900;background:#FFF;}
+#flash_error, #flash_warn{width:350px;margin: 5px auto;padding:5px;border:1px solid #FF3300;color:#FF3300;background:#FFF;}
+div.pagination{padding: 3px;margin: 3px;text-align:right;}
+div.pagination a{color: #003399;padding: 2px 5px 2px 5px;margin: 2px;border: 1px solid #006ACD;text-decoration: none;}
+div.pagination a:hover, div.pagination a:active{border: 1px solid #006ACD;background:#DDFFDD;color: green;}
+div.pagination span.current{padding: 2px 5px 2px 5px;margin: 2px;border: 1px solid #006ACD;font-weight: bold;background-color: #DDFFDD;color: green;}
+div.pagination span.disabled{padding: 2px 5px 2px 5px;margin: 2px;border: 1px solid #006ACD;color: #678ACF;}
+
+div.error{background:#FFBCAF;}
+label.error{color:#FF3300;padding:5px;padding-left:18px;display:block;margin-left:1em;background:url(/images/icons/unchecked.gif) no-repeat 0 7px;}
+
+
+
+/*
+    awesome buttons are based on a blog post by ZERB
+    Read there blog post for more information:
+    "Super awesome Buttons with CSS3 and RGBA":http://www.zurb.com/article/266/super-awesome-buttons-with-css3-and-rgba
+
+    this buttons are even more awesome, as the need only one color for all three states,
+    and have an super awesome onclick state
+*/
+
+/* set an awesome color for the buttons, feel free to add new colors like an .awesome.green or .awesome.secondary */
+.awesome {
+    background-color: #111 !important;
+    color: #fff !important;
+}
+
+/* the awesome size gets set here. Feel Free to add new sizes, like .awesome.small or .small.large   */
+.awesome        { padding: 5px 10px 6px !important; font-size: 13px !important; }
+.awesome:active	{ padding: 6px 10px 5px !important; }
+
+/* Touch the rest at your onw risk. */
+.awesome {
+    border: 0 !important;
+    cursor: pointer !important;
+    font-style: normal !important;
+    font-weight: bold !important;
+    font: inherit !important;
+    line-height: 1 !important;
+    position: relative !important;
+    text-align: cente !important;
+    text-decoration: none !important;
+
+    /* vertical margin is the oposite of button's awesomeness */
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+
+    /* not all browser support these, but who cares? */
+    text-shadow: 0 -1px 1px rgba(0,0,0,0.25), -2px 0 1px rgba(0,0,0,0.25) !important;
+
+    border-radius: 5px !important;
+    -moz-border-radius: 5px !important;
+    -webkit-border-radius: 5px !important;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.5) !important;
+    -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.5) !important;
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.5) !important;
+
+    /* who needs images these days? */
+    background-image: -moz-linear-gradient(top, rgba(255,255,255,.2), rgba(150,150,150,.2), rgba(0,0,0,.0)) !important;
+    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(255,255,255,.2)), color-stop(0.5, rgba(150,150,150,.2)), to(rgba(0,0,0,.0))) !important;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#30ffffff,endColorstr=#10000000) progid:DXImageTransform.Microsoft.Shadow(color=#000000,direction=135,strength=2);
+
+    /* cross browser inline block hack
+       see http://blog.mozilla.com/webdev/2009/02/20/cross-browser-inline-block/ */
+    display: -moz-inline-stack;
+    display: inline-block;
+    vertical-align: middle !important;
+    *display: inline !important;
+    position: relative;
+
+    /* IE luv */
+    zoom: 1;
+
+    /*disable text selection (Firefox only)*/
+    -moz-user-select: none;
+}
+
+/* OPERA only
+   if there is no border set, Opera shows a transparent background-color if border-radius is set. */
+@media all and (-webkit-min-device-pixel-ratio:10000),not all and (-webkit-min-device-pixel-ratio:0) {
+    input.awesome {
+        border: 1px solid RGBa(0,0,0,0) !important;
+    }
+}
+
+/* hide selection background color */
+.awesome::selection {
+    background: transparent;
+}
+
+.awesome {
+    outline: 0; /*remove dotted line, works for links only*/
+}
+.awesome::-moz-focus-inner {
+    border: none; /* remove dotted lines for buttons */
+}
+.awesome:focus,
+.awesome:hover {
+    background-image: -moz-linear-gradient(top, rgba(255,255,255,.4), rgba(150,150,150,.3), rgba(0,0,0,.0)) !important;
+    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(255,255,255,.4)), color-stop(0.5, rgba(150,150,150,.3)), to(rgba(0,0,0,.0))) !important;
+    #filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#50ffffff,endColorstr=#20000000) progid:DXImageTransform.Microsoft.Shadow(color=#000000,direction=135,strength=2);
+}
+.awesome:active	{
+    background-image: -moz-linear-gradient(top, rgba(0,0,0,.2), rgba(150,150,150,.2), rgba(255,255,255,.2)) !important;
+    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(0,0,0,.2)), color-stop(0.5, rgba(150,150,150,.2)), to(rgba(255,255,255,.2))) !important;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#20000000,endColorstr=#50ffffff) progid:DXImageTransform.Microsoft.Shadow(color=#000000,direction=315,strength=1);
+
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.7) !important;
+    -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.7) !important;
+    -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.7) !important;
+}
+
+/* Safari doesn't support inset box shadow, so we better remove it */
+@media screen and (-webkit-min-device-pixel-ratio:0){
+    .awesome:active	{
+        -webkit-box-shadow: none;
+    }
+}
+
+/* awesome buttons extensions */
+.awesome.blue {
+    background-color: #0A50FF !important;
+}
+
