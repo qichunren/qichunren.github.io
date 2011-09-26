@@ -1,28 +1,88 @@
----
-layout: default
-title:  蕲春人
----
-
-<div class="box">
-    <div class="boxtitlebg">
-        <h3 id="post-2"><a rel="bookmark" href="/posts.html">最近的文章</a></h3>
-    </div>
-    <div class="boxbody">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" dir="ltr">
+  <head>
+    <meta name="google-site-verification" content="jinSDyVVBA7mGl7Ku1zP1gS7pNwDvH3c38prD24-328" />
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <title>重庆Ruby On Rails开发</title>
+    <meta name="description" content="重庆Ruby On Rails开发关注WEB的敏捷开发形式，关注WEB的健康发展" />
+    <meta name="keywords" content="重庆Ruby On Rails开发 cqror web开发 SEO 开发标准 蕲春人 qichunren" />
+    <link href="stylesheets/homepage.css" rel="stylesheet">
+  </head>
+  <body>
+    <div id="header"><h1>重庆ROR开发</h1>
+      <div class="nav">
         <ul>
-            {% for post in site.posts limit:5 %}
-            <li><a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></li>
-            {% endfor %}
+          <li><a href="/">首页</a></li>
+          <li><a href="/contact-us">联系我</a></li>
         </ul>
+      </div>
     </div>
-</div>
 
-
-<div class="clear"></div>
-
-<div class="box">
-    <div class="boxtitlebg"><h3><a href="http://book.douban.com/people/qichunren/" title="我的读书主页">我的阅读</a></h3></div>
-    <div class="boxbody" style="overflow:hidden">
-        <script type="text/javascript" src="http://www.douban.com/service/badge/qichunren/?show=collection&amp;select=random&amp;n=7&amp;columns=7&amp;hidelogo=yes&amp;hideself=yes&amp;cat=book" ></script>
+    <div id="splash">
+      <div class="wrap">
+        <div id="home_slogan" class="slogan1"></div>
+        <p style="margin-top:30px;font-size:16px;color:#FFF;">我们专心，客户放心</p>
+      </div>
     </div>
-</div>
 
+    <div id="signup-bar">
+      <div class="wrap">
+        <p>优秀的团队 提供先进的技术和服务理念</p>
+        <p>丰富的经验 打造最经济实用的软件项目</p>
+        <p>良好的信誉 我们把客户的需求置于最高</p>
+        <p>贴心的售后 您的满意是我们不懈的追求</p>
+      </div>
+    </div>
+
+    <div id="intro">
+      <div class="wrap">
+        <a href="http://www.haofeicui.com" title="visit it"><img src="images/haofeicui-work-small.jpg" style="padding:10px;border:none;"></a>
+        <p>我们的最新作品</p>
+      </div>
+    </div>
+
+    <div id="main">
+      <div class="wrap">
+        <div id="about" style="text-align:left;">
+          <h3>关于我们</h3>
+          <p>
+            我们是一群充满活力的年轻人，我们热衷于前沿的开发技术，我们崇尚简单高效地开发方式。<br/><br/>
+            团队中的每一个成员都很特别，成员的思想体现在软件产品的各个方面。<br/><br/>
+            经过长期的开发成果积累，我们侧向于软件系统的前端设计与实现，包括UI设计，HTML标准化分析以及实现，客户端界面设计等。同时公司还提供企业应用服务（如套装解决方案服务；应用开发、管理和维护；质量保证服务等）和产品工程服务（包括产品开发；产品测试、全球化和本地化；嵌入式系统以及各种技术服务）。<br/>
+          </p>
+        </div>
+
+        <div id="whatisrails">
+          <h3>什么是Ruby On Rails?</h3>
+          <p><img src="/images/rails.png" alt="rails"/>
+             <a href="http://www.rubyonrails.org" title="visit ruby on rails offical site">Ruby on Rails</a>，也简称 RoR 或 Rails，是一个使用Ruby语言写的开源网络应用 框架，它是严格按照MVC结构开发的。它努力使自身保持简单，来使实际的应用开发时的代码更少，使用最少的配置。<br/>
+            <br/>
+            Rails的设计原则包括“不要重复自己”（Don't Repeat Yourself）和“约定胜于配置”（Convention Over Configuration）
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <hr class="clear"></hr>
+
+    <div id="footer">
+      <div class="wrap">
+        <div style="float:left;">重庆Ruby On Rails开发<br/>Chongqing Ruby On Rails Development 2009 - 2010</div>
+        <div style="float:right;padding-right:100px;;line-height:40px;">联系我:<span style="font-size:200%;color:#FF9900;margin-right:30px"><em style="font-size:90%;"></em>whyruby@gmail.com</span><a href="http://qichunren.github.com" title="我的博客">我的博客</a></div>
+      </div>
+    </div>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $("#home_slogan").hover(
+        function () {
+          $(this).attr("class", "slogan2");
+        },
+        function () {
+          $(this).attr("class", "slogan1");
+        }
+      );
+      });
+    </script>
+  </body>
+</html>
