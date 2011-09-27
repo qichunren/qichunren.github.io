@@ -3,3 +3,4 @@
 *.swap
 /nbproject
 /_site/**
+.DS_Store
