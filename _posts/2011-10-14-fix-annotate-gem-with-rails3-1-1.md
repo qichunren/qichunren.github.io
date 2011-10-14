@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Fix problem: annotate is broken with rails 3.1.1
+title: Fix problem annotate is broken with rails 3.1.1
 tags:
 - note
 ---
