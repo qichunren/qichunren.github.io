@@ -6,7 +6,7 @@ tags:
 ---
 
 今天在做一个小工具，使用最新的Rails版本3.1.1, 在使用annotate(2.4.0)这个gem的时候出错了：
-<pre>
+{% highlight sh %}
          caojinhua:tts_cacher caojinhua$ annotate
          /Users/caojinhua/.rvm/gems/ruby-1.9.2-p180/gems/activerecord-3.1.1/lib/active_record/railties/databases.rake:3:in `<top (required)>': undefined method `namespace' for main:Object (NoMethodError)
          	from /Users/caojinhua/.rvm/gems/ruby-1.9.2-p180/gems/activerecord-3.1.1/lib/active_record/railtie.rb:26:in `load'
@@ -27,7 +27,7 @@ tags:
          	from /Users/caojinhua/.rvm/gems/ruby-1.9.2-p180/gems/annotate-2.4.0/bin/annotate:66:in `<top (required)>'
          	from /Users/caojinhua/.rvm/gems/ruby-1.9.2-p180/bin/annotate:19:in `load'
          	from /Users/caojinhua/.rvm/gems/ruby-1.9.2-p180/bin/annotate:19:in `<main>'
-</pre>
+{% endhighlight %}
 
 
 然后在stackoverflow上找到了解决方法，就是使用最新的annotate.
