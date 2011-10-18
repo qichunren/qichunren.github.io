@@ -9,13 +9,17 @@ a{color:#000;}
 a:visited {color:#666;}
 a:hover{color:#BDBDBD;}
 .wrap{text-align:center;margin:0 auto;}
-hr.clear{display:block;clear:both;height:0;visibility:hidden;}
+.clear{display:block;clear:both;height:0px;visibility:hidden;}
 #header{color:#F7F7F7;height:60px;
         margin:0 auto;padding-bottom:0;
         padding-top:1px;position:relative;
         width:1054px;
 }
 #header h1{float:left;display:block;line-height:60px;}
+#header h1 a {
+  color: #FFF;
+  text-decoration: none;
+}
 .nav ul {
     -moz-border-radius-bottomleft:5px;
     -moz-border-radius-bottomright:5px;
@@ -27,10 +31,22 @@ hr.clear{display:block;clear:both;height:0;visibility:hidden;}
 .nav a{font-weight:bold;color:#0350A6;text-decoration:none;}
 .nav a:hover{color:#0350A6;text-decoration:underline;}
 .nav a:visited{color:#0350A6;}
-#splash{background: url(../images/public-splash.png) repeat-x;height:453px;}
-#splash .wrap{    
-    padding-bottom:0;
-    padding-top:1px;
+.banner {
+  background: url(../images/grid-18px.png) repeat #049CD9;
+  clear: both;
+  overflow: hidden;
+}
+
+.banner .wrap {
+  padding-top:110px;text-align:center;
+  line-height: 70px;
+}
+#splash{height:353px;}
+#banner { height: 250px;}
+#home_slogan { font-size: 60px; color: #FFF; font-weight: bold; }
+.banner .wrap{
+    padding: 20px;
+    padding-top: 90px;
     position:relative;
     width:1054px;
     text-align:center;
@@ -53,12 +69,11 @@ hr.clear{display:block;clear:both;height:0;visibility:hidden;}
 #whatisrails{float:right;margin-left:10px;padding:10px;width:50%;text-align:left;background:#FFF;}
 #whatisrails h3{color:#0350A6;padding:12px 0;}
 #whatisrails img{float:left;padding:0 10px 10px 0;}
-#footer{}
+#footer{ border-top: 1px solid #BDBDBD;}
 #footer .wrap{width:960px;height:51px;
               background:transparent url(../images/background-footer-bar.png) no-repeat scroll left top;
               margin:20px auto 0;padding:17px;text-align:left;color:#0350A6;
 }
-#home_slogan{margin-top:110px;text-align:center;height:190px;}
 .slogan1{background:url(../images/slogan1.jpg) no-repeat 90px 0px;}
 .slogan2{background:url(../images/slogan1-m.jpg) no-repeat 91px 0px;}
 #contact{margin-top:20px;}
@@ -103,7 +118,7 @@ label.error{color:#FF3300;padding:5px;padding-left:18px;display:block;margin-lef
 
 /* the awesome size gets set here. Feel Free to add new sizes, like .awesome.small or .small.large   */
 .awesome        { padding: 5px 10px 6px !important; font-size: 13px !important; }
-.awesome:active	{ padding: 6px 10px 5px !important; }
+.awesome:active { padding: 6px 10px 5px !important; }
 
 /* Touch the rest at your onw risk. */
 .awesome {
@@ -176,7 +191,7 @@ label.error{color:#FF3300;padding:5px;padding-left:18px;display:block;margin-lef
     background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(255,255,255,.4)), color-stop(0.5, rgba(150,150,150,.3)), to(rgba(0,0,0,.0))) !important;
     #filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#50ffffff,endColorstr=#20000000) progid:DXImageTransform.Microsoft.Shadow(color=#000000,direction=135,strength=2);
 }
-.awesome:active	{
+.awesome:active {
     background-image: -moz-linear-gradient(top, rgba(0,0,0,.2), rgba(150,150,150,.2), rgba(255,255,255,.2)) !important;
     background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(0,0,0,.2)), color-stop(0.5, rgba(150,150,150,.2)), to(rgba(255,255,255,.2))) !important;
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#20000000,endColorstr=#50ffffff) progid:DXImageTransform.Microsoft.Shadow(color=#000000,direction=315,strength=1);
@@ -188,7 +203,7 @@ label.error{color:#FF3300;padding:5px;padding-left:18px;display:block;margin-lef
 
 /* Safari doesn't support inset box shadow, so we better remove it */
 @media screen and (-webkit-min-device-pixel-ratio:0){
-    .awesome:active	{
+    .awesome:active {
         -webkit-box-shadow: none;
     }
 }

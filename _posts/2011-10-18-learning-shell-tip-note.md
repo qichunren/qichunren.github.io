@@ -53,6 +53,13 @@ elif [ ! xxx ]; then
 
 fi
 
+#### 时间格式化
+
+date  +%Y%m%d
+
+a=`date +%Y%m%d`
+echo $a
+
 
 #### 参考资料
 [Shell脚本语法](http://learn.akae.cn/media/ch31s05.html)
