@@ -3,11 +3,11 @@
 # ----------------------- #
 
 url: http://qichunren.github.com
-title: My Octopress Blog
-subtitle: A blogging framework for hackers.
-author: Your Name
+title: 蕲春人 - 软件开发
+subtitle: 简单就是美.
+author: qichunren
 simple_search: http://google.com/search
-description:
+description: "qichunren,软件开发人员,湖北蕲春人,混在互联网,对各种新鲜好奇"
 
 # Default date format is "ordinal" (resulting in "July 22nd 2007")
 # You can customize the format as defined in
@@ -58,8 +58,8 @@ default_asides: [asides/recent_posts.html, asides/github.html, asides/twitter.ht
 # ----------------------- #
 
 # Github repositories
-github_user:
-github_repo_count: 0
+github_user: qichunren
+github_repo_count: 3
 github_show_profile_link: true
 github_skip_forks: true
 
@@ -89,11 +89,11 @@ delicious_user:
 delicious_count: 3
 
 # Disqus Comments
-disqus_short_name:
+disqus_short_name: qichunrensblog
 disqus_show_comment_count: false
 
 # Google Analytics
-google_analytics_tracking_id:
+google_analytics_tracking_id: UA-6344646-4
 
 # Facebook Like
 facebook_like: false
