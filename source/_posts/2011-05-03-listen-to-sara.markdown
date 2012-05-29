@@ -1,6 +1,6 @@
 ---
 layout: post  
-category: life
+category: Life
 title: 听《Sara》
 ---
 

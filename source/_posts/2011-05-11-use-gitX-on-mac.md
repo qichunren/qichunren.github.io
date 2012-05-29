@@ -2,6 +2,7 @@
 layout: post
 title: 在Mac上使用gitX
 tags: git
+categories: [Mac, Tool]
 ---      
 
 [gitX](https://github.com/pieter/gitx)是mac上一个git的可视化工具，可以与gravatar\gist集成在一起。我比较喜欢它的界面形式，感觉很舒服。

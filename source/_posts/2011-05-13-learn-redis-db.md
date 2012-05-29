@@ -1,7 +1,8 @@
 ---
 layout: post
 title: 学习和了解Redis
-tags: redis
+tags: [redis, nosql]
+category: database
 ---        
 
 [Redis](http://redis.io/)

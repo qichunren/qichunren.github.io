@@ -1,6 +1,7 @@
 ---
 layout: post
 title: 最近实践中学到的Rails测试技巧
+category: Rails
 tags:
 - Test
 - 总结
