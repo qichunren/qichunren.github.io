@@ -1,10 +1,9 @@
 ---
 layout: post
 title: 使用Jruby来部署Rails应用
-tags:
-- jruby
-- deploy
-- rails
+date: 2011-08-26 22:36:22
+categories: [ruby, jruby, rails, deploy]
+comments: true
 ---
 
 为了保护最近做的产品的源代码，需要将项目中的源代码进行保护起来。我目前了解到的方案有以下两种：

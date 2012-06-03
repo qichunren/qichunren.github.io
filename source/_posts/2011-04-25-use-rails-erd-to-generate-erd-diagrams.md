@@ -9,12 +9,14 @@ categories: [rails, tool]
 [Rails ERD](http://rails-erd.rubyforge.org/) 可以生成数据库关系实体图，非常方便。
 
 安装很方便，Rails ERD依赖Graphviz，所以首先需要安装Graphviz，在Mac下，直接
+
 ```
 brew update
 brew install cairo pango graphviz
 ``` 
 
 然后在项目中的Gemfile中声明
+
 {% codeblock lang:ruby %}
 group :development do
   gem "rails-erd"

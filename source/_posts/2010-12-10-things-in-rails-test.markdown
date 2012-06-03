@@ -1,10 +1,9 @@
 ---
 layout: post
 title: Rails中的测试那些事  
-tags:
-- Test 
-- Rails
-- 总结
+date: 2010-12-10 23:23:33
+categories: [ruby, rails, test]
+comments: true
 ---                        
 
 这个本早该记一下的。

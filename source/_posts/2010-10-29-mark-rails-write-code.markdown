@@ -1,8 +1,9 @@
 ---
 layout: post
 title: 写Rails程序容易出现的几个不好的地方
-tags:
-- Rails
+date: 2010-10-29 21:20:33
+categories: [ruby, rails]
+comments: true
 ---                        
 
 这几个地方不知道大家有注意到没有，我今天发现的一个地方就是
