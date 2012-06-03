@@ -1,8 +1,9 @@
 ---
 layout: post
 title: Fix problem annotate is broken with rails 3.1.1
-tags:
-- note
+date: 2012-06-03 22:01
+comments: true
+categories: rails
 ---
 
 今天在做一个小工具，使用最新的Rails版本3.1.1, 在使用annotate(2.4.0)这个gem的时候出错了：

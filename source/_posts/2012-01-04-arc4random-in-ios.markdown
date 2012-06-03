@@ -3,7 +3,7 @@ layout: post
 title: "iOS中的arc4random方法"
 date: 2012-01-04 22:49
 comments: true
-categories: iOS
+categories: ios
 ---
 
 通过arc4random() 获取0到x-1之间的整数的代码如下:

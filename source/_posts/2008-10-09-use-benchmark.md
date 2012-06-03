@@ -1,7 +1,9 @@
 ---
 layout: post
 title: Benchmark用法
-tags: Test
+date: 2008-10-09 12:01
+comments: true
+categories: [ruby, test]
 ---               
 
 [Benchmark](http://rubybenchmark.com/)可以用来测试某个函数或者任何代码的执行时间。

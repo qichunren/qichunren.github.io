@@ -1,8 +1,9 @@
 ---
 layout: post
 title: 当心ActiveRecord::RecordNotSaved异常
-tags:
-- ActiveRecord
+date: 2011-02-27 22:01
+comments: true
+categories: [rails]
 ---
              
 昨天晚上遇到记录不能保存成功，一直遭遇ActiveRecord::RecordNotSaved异常，弄了半小时，找到了原因。

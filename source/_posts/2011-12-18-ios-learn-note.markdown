@@ -3,7 +3,7 @@ layout: post
 title: "近期iOS学习点"
 date: 2011-12-18 20:44
 comments: true
-categories: iOS
+categories: ios
 ---
 
 虽然我业余在学iOS，但是感觉进步缓慢。为了使我的iOS开发的学习效率高一点，我决定先列一个简要的提纲，明确当前一个阶段的学习计划。

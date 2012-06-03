@@ -1,9 +1,9 @@
 ---
 layout: post
 title: Install mongo on mac
-tags:
-- nosql
-- mongo 
+date: 2011-06-04 22:01
+comments: true
+categories: [nosql, mongodb]
 ---
 
 ```

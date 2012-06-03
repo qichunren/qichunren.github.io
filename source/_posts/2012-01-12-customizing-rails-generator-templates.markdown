@@ -3,7 +3,7 @@ layout: post
 title: "Customizing rails generator templates"
 date: 2012-01-12 13:49
 comments: true
-categories: Ruby
+categories: ruby
 ---
 
 Rails framework and twitter bootstrap are good for your startup project, build-in generators generate source code by its way. It is  a good starting point. 

@@ -3,7 +3,7 @@ layout: post
 title: "Use Smarty template in CodeIgniter"
 date: 2012-02-11 16:57
 comments: true
-categories: PHP
+categories: php
 ---
 
 [CodeIgniter](http://codeigniter.com/)是一个不错的PHP开发框架，很合我的口味，我做的一些PHP项目就是用的它。

@@ -3,7 +3,7 @@ layout: post
 title: "在Rails3中使用ajax"
 date: 2011-12-22 16:36
 comments: true
-categories: Rails
+categories: rails
 ---
 
 今天写代码的时候突然发现 我之前在Rails3中使用ajax的方式是不太正确的，我走了弯路。

@@ -1,9 +1,9 @@
 ---
 layout: post
 title: Rails中连接Oracle数据库
-tags: 
- - Rails
- - Oracle
+date: 2009-05-07 12:01
+comments: true
+categories: [ruby, rails, database, oracle]
 ---
 
 ### 步骤 

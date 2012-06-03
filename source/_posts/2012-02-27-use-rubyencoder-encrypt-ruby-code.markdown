@@ -3,7 +3,7 @@ layout: post
 title: "Use Rubyencoder encrypt ruby code"
 date: 2012-02-27 13:10
 comments: true
-categories: Ruby
+categories: ruby
 ---
 
 前些时候研究了一下ruby encoder的加密技术应用，在这里记录一下它的使用过程。

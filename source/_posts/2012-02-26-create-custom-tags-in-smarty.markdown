@@ -3,7 +3,7 @@ layout: post
 title: "Create custom tags in Smarty 3"
 date: 2012-02-26 14:21
 comments: true
-categories: PHP
+categories: php
 ---
 
 接着上一篇，还是来说说PHP模板引擎Smarty。PHP的众多CMS框架，如DEDE CMS，对于前端展示都是有一套自己开发的标签，用于显示管理后台维护的数据。在DEDECMS中，如下的代码

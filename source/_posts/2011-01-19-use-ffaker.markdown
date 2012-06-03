@@ -1,9 +1,9 @@
 ---
 layout: post
 title: 使用ffaker来产生随机数据 
-tags:
-- ffaker
-- Test
+date: 2012-01-19 22:01
+comments: true
+categories: [ruby, test]
 ---                        
 
 [ffaker](https://github.com/EmmanuelOga/ffaker)是一个用来产生随机name\email之类的工具，可以用在开发时先产生一些有意义的随机数据，将数据写在db/seeds.rb中，这样你就不用每次急燥地添加一些asasddfdsf这样的数据。一个好的工作开发环境，可以让心情舒畅，效率加倍。

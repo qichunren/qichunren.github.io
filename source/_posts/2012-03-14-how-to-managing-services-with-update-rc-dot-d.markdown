@@ -3,7 +3,7 @@ layout: post
 title: "通过update-rc.d来管理Ubuntu系统的自动启动程序"
 date: 2012-03-14 11:30
 comments: true
-categories: Linux
+categories: linux
 ---
 转载, 并记下我的使用心得。
 
