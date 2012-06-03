@@ -2,11 +2,16 @@
 layout: default
 ---
 
+<div class="posts_list">
+    <ul>
 {% assign index = true %}
 {% for post in paginator.posts %}
 {% assign content = post.content %}
-    <article class="post">{% include article.html %}</article>
+    <li>
+        <div class="date">{% include post/date.html %}{{ time }}</div>
+        <a href="{{ root_url }}{{ post.url }}">{% if site.titlecase %}{{ post.title | titlecase }}{% else %}{{ post.title }}{% endif %}</a></li>
 {% endfor %}
+</ul>
 <nav id="pagenavi">
     {% if paginator.previous_page %}
         <a href="{{paginator.previous_page}}" class="prev">Prev</a>
@@ -16,3 +21,13 @@ layout: default
     {% endif %}
     <a href="{{ root_url }}/blog/archives" class="center">Blog Archives</a>
 </nav>
+</div>
+
+<ul id="categories">
+    <li><a href="/blog/categories/ruby/">Ruby</a></li>
+    <li><a href="/blog/categories/php/">PHP</a></li>
+    <li><a href="/blog/categories/test/">Test</a></li>
+    <li><a href="/blog/categories/ios/">iOS</a></li>
+    <li><a href="/blog/categories/tool/">Tool</a></li>
+    <li><a href="/blog/categories/life/">Life</a></li>
+</ul>
