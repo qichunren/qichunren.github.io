@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "Fixed a problem with creating texture background"
+title: "Fixed a problem with creating texture background in cocos2d"
 date: 2012-06-03 22:01
 comments: true
-categories: [ios, cocos2d]
+categories: [ios, cocos2d, game-dev]
 ---
 
 我尝试在cocos2d游戏中使用小图片重复平铺的方式来创建游戏背景时, 总是遇到这个问题，报错如下: 
