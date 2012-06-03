@@ -1,9 +1,9 @@
 ---
 layout: post
 title: 使用feedzirra分析提取Feed
-tags:
-- feedzirra
-- Feed
+date: 2011-05-04 19:12:12
+comments: true
+categories: [ruby, tool]
 ---        
 
 [feedzirra](https://github.com/pauldix/feedzirra) 是一个很好用的提取和分析feed的工具。用法如下：

@@ -1,9 +1,9 @@
 ---
 layout: post
 title: Create a blog at github using jekyll
-tags:
-- Jekyll                                   
-- Github
+date: 2010-08-06 12:24:22
+categories: [tool]
+comments: true
 ---
 
 First thing you should have to do is:

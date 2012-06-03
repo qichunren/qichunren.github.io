@@ -1,7 +1,9 @@
 ---
 layout: post
 title: 使用Juggernaut
-tags: realtime
+date: 2011-05-12 09:12:12
+comments: true
+categories: [rails, web]
 ---           
 
 [Juggernaut](https://github.com/maccman/juggernaut)是基于[Node.js](http://nodejs.org/)的一个实时(Realtime)Web的解决方案。使用起来很方便。

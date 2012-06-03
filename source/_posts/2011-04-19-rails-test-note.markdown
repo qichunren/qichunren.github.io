@@ -1,10 +1,9 @@
 ---
 layout: post
 title: 最近实践中学到的Rails测试技巧
-category: Rails
-tags:
-- Test
-- 总结
+date: 2011-04-19 23:12:12
+categories: [rails, test]
+comments: true
 ---                     
 
 最近花时间又将项目中的测试再次仔细地过了一遍。通过挖掘发现了几个提高测试效率的技巧，记一下。 _不学习就要落后啊，Ruby的世界进化得太快了，测试技术也是如此。_   

@@ -1,8 +1,9 @@
 ---
 layout: post
 title: 使用Rails ERD生成数据库实体关系图
-tags:
-- Tool
+date: 2011-04-25 21:12:12
+comments: true
+categories: [rails, tool]
 --- 
 
 [Rails ERD](http://rails-erd.rubyforge.org/) 可以生成数据库关系实体图，非常方便。

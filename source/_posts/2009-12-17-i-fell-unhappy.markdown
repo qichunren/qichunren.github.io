@@ -3,7 +3,7 @@ layout: post
 title: "最近有些郁闷"
 date: 2009-12-17 16:30
 comments: true
-categories: Life 
+categories: life 
 ---
 
 最近工作得很郁闷，很是不爽。 

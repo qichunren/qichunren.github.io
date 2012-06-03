@@ -1,7 +1,9 @@
 ---
-layout: post  
-category: Life
+layout: post
 title: 听《Sara》
+date: 2011-05-03 09:10:12
+comments: true
+categories: [life, music]
 ---
 
 Sara这首歌太好听了，虽然没有清楚具体是唱什么，但我感觉是讲一个故事，很好奇，我找到了歌词。

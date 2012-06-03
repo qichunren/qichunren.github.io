@@ -1,7 +1,9 @@
 ---
 layout: post
 title: 使用Unicorn
-tags: Deploy
+date: 2011-05-12 23:12:12
+comments: true
+categories: [rails, deploy]
 ---         
 ### Install
 ```

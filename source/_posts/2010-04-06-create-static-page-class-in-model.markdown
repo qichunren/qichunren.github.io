@@ -1,8 +1,9 @@
 ---
 layout: post
 title: Static site using rails    
-tags:
-- Rails
+date: 2010-04-06 09:12:12
+comments: true
+categories: [rails]
 ---
 
 

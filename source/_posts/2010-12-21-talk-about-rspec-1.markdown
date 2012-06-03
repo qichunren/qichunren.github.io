@@ -1,9 +1,9 @@
 ---
 layout: post
 title: 说说rspec的测试(1)      
-tags:
-- Test  
-- Rspec
+date: 2010-12-21 09:12:12
+comments: true
+categories: [rails, test]
 ---                        
 
 虽然之前就用过rspec来测试系统的各种业务流程和业务逻辑，最近又在开始一个新的系统的测试，写起来又感觉很开心，很安心。所以就想说说用rspec来写rails项目测试的总结和体会。

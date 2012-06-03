@@ -1,10 +1,9 @@
 ---
 layout: post
 title: 在Rails项目中使用compass来管理css 
-tags:
-- css
-- compass
-- scss
+date: 2010-12-23 23:12:12
+comments: true
+categories: [rails, css]
 ---                            
 
 对如今的web项目开发（个人开发），用Rails来快速实现，但是前端这一块会花掉比较多的时间，其中CSS的管理维护是一个越来越麻烦的事情，由于它只是一门单纯的静态标记的语法（说法不准确），我的意思是，比如我设计一个三栏的网页，页面宽度是960px，那么每栏应该是960px的三分之一宽度320px，在css文件中，需要“硬编码”写入单栏的宽度： .box{width:320px;} 

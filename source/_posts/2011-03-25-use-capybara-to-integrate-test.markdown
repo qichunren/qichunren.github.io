@@ -1,9 +1,9 @@
 ---
 layout: post
 title: 使用capybara来自动化测试业务流程
-tags:
-- Test    
-- Capybara
+date: 2011-03-25 21:12:12
+comments: true
+categories: [rails, test]
 ---                        
 
 [capybara](https://github.com/jnicklas/capybara) 是一个基于 [webrat](https://github.com/brynary/webrat)

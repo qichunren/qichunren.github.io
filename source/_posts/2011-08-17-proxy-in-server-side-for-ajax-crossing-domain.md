@@ -1,8 +1,9 @@
 ---
 layout: post
 title: Set proxy in server side to get crossing domain ajax request
-tags:
-- ajax
+date: 2011-08-17 23:12:12
+categories: [rails]
+comments: true
 ---
 
 {% codeblock proxy_controller.rb lang:ruby %}

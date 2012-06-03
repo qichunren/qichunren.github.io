@@ -1,8 +1,9 @@
 ---
 layout: post
 title: 学习和了解Redis
-tags: [redis, nosql]
-category: database
+date: 2011-05-13 23:12:12
+comments: true
+categories: [database, nosql, redis]
 ---        
 
 [Redis](http://redis.io/)

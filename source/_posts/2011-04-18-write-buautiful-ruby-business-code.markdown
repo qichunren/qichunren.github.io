@@ -1,8 +1,9 @@
 ---
 layout: post
 title: 怎么样写好的ruby业务代码
-tags:
-- 总结
+date: 2011-04-18 21:12:12
+comments: true
+categories: [ruby, test]
 ---
                     
 _标题很强，心中却很烦乱，写下这个解解闷，吐吐苦水。_

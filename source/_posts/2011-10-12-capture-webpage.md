@@ -1,8 +1,9 @@
 ---
 layout: post
 title: 网页截屏的方法
-tags:
-- tool
+date: 2011-10-12 22:09:09
+comments: true
+categories: [tool]
 ---
 
 曾经很想有这样一个app, 它可以将微博上用户的微博用图片的形式自动保存起来，留此存照。前几个月的那段时间，微博上很
