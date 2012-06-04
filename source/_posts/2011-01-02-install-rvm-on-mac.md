@@ -1,7 +1,9 @@
 ---
 layout: post
 title: 在Mac上安装RVM
-tags: RVM
+date: 2011-01-02 09:09:09
+comments: true
+categories: [ruby, tool]
 ---
 
 [安装方法](http://beginrescueend.com/rvm/install/)

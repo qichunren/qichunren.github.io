@@ -1,8 +1,11 @@
 ---
 layout: post
 title: 分析rubygems.org上受欢迎的gem包
-tags: rubygems
+date: 2011-01-09 12:12:12
+comments: true
+categories: [ruby, tool]
 ---  
+
 用下载量来作为一个gem包的爱欢迎度的标准。
 
 {% codeblock lang:ruby %}

@@ -3,7 +3,7 @@ layout: post
 title: "买票记"
 date: 2010-02-01 11:54
 comments: true
-categories: Life
+categories: life
 ---
 
 昨天是周日，下午三点起开售2月10号的票。 

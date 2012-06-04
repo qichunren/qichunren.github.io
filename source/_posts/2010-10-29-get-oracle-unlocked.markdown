@@ -1,8 +1,9 @@
 ---
 layout: post
 title: Oracle解锁 
-tags:
-- Oracle
+date: 2010-10-29 12:12:12
+comments: true
+categories: [datebase, oracle]
 ---
 
 今天在Plsql中，给Oracle数据库中一个表添加字段的时候，出错了错误，提示：

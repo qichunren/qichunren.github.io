@@ -1,7 +1,9 @@
 ---
 layout: post
 title: 在Mac上安装homebrew
-tags: homebrew
+date: 2011-01-03 12:12:12
+comments: true
+categories: [mac, tool]
 ---
 
 [homebrew](https://github.com/mxcl/homebrew)是为mac打造的一个软件包管理工具
