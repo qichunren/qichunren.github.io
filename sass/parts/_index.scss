@@ -4,9 +4,11 @@
             margin: 20px 0;
             list-style-position: inside;
             a {
-                font-size: 110%;
-                padding: 4px;
-                font-weight: bold;
+                padding: 4px 8px;
+            }
+            a:hover {
+                background: #258FB8;
+                color: #DDD;
             }
         }
     }
@@ -19,7 +21,8 @@
                 padding: 3px;
             }
             a:hover {
-                background: #BDBDBD;
+                background: #258FB8;
+                color: #DDD;
             }
             .date{
                 float: right;
