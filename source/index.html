@@ -2,7 +2,7 @@
 layout: default
 ---
 
-<div class="posts_list">
+<div class="main posts_list right">
     <ul>
 {% assign index = true %}
 {% for post in paginator.posts %}
@@ -23,7 +23,7 @@ layout: default
 </nav>
 </div>
 
-<ul id="categories">
+<ul id="categories" class="side left">
     <li><a href="/blog/categories/ruby/">Ruby</a></li>
     <li><a href="/blog/categories/php/">PHP</a></li>
     <li><a href="/blog/categories/test/">Test</a></li>
