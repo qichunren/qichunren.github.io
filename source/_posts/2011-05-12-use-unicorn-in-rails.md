@@ -6,9 +6,11 @@ comments: true
 categories: [rails, deploy]
 ---         
 ### Install
+
 ```
 gem install unicorn
 ```
+
 Then add gem 'unicorn' to Gemfile.
 bundle exec unicorn_rails to start rails app at 8080 port.
 
@@ -39,6 +41,7 @@ Common options:
 ```
 
 This is a smaple unicorn config file:
+
 {% codeblock config/unicorn.conf.rb lang:ruby %}
 worker_processes 2
 working_directory "/www/temp/ntmenu2/current"

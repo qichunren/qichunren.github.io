@@ -14,6 +14,7 @@ categories: [rails, web]
 2. 安装[Redis](http://code.google.com/p/redis): brew install redis
 3. 安装[NPM](http://npmjs.org/): curl http://npmjs.org/install.sh | sh
 4. 安装Juggernaut: 这个会把Juggernaut安装到当前目录，所以我应该先进行项目的/vendor/third目录，然后执行 npm install juggernaut 
+
 ```
     usermatoMacBook-Pro:third qichunren$ npm install juggernaut
     redis@0.5.11 ./node_modules/juggernaut/node_modules/redis
@@ -23,7 +24,8 @@ categories: [rails, web]
     usermatoMacBook-Pro:third qichunren$  
 ```
 
-5. 安装Juggernaut gem: 
+5. 安装Juggernaut gem:
+ 
 ```
 gem install juggernaut
 ```
@@ -31,7 +33,8 @@ gem install juggernaut
 ### 使用方法                              
 
 我们在自己的项目中只需要引入http://localhost:8080/application.js 这个js文件即可。
-然后在页面中可以这样接收服务器端的消息：   
+然后在页面中可以这样接收服务器端的消息： 
+  
 {% codeblock lang:html %}
 <script type="text/javascript" charset="utf-8">
   var jug = new Juggernaut;
@@ -42,6 +45,7 @@ gem install juggernaut
 {% endcodeblock %}
 
 服务器端直接发消息：  
+
 {% codeblock lang:ruby %}
 require "juggernaut"
 Juggernaut.publish("channel1", "Some data")  
