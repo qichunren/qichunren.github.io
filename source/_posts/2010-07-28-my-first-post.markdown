@@ -1,6 +1,8 @@
 ---
 layout: post
 title: My first post here
+date: 2010-07-28 18:09
+categories: [life]
 ---
 
 Lol..
