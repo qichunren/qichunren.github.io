@@ -6,4 +6,8 @@ comments: true
 footer: false
 ---
 
-我是[蕲春](http://baike.baidu.com/view/48914.htm)人，id是qichunren，从事软件开发工作。
+I am Qichunren, my english name is David. 
+
+I am a programing developor,  focused on web devlopment and mobile app design. I am familiar with Ruby, PHP, Objective-C, mysql, redis, mongodb. 
+
+I am loving linux, mac, opensource. My github profile is [https://github.com/qichunren](https://github.com/qichunren)
