@@ -18,3 +18,14 @@ footer: true
 [Landing Page](https://kippt.com/ederdesign/landing-page)
 
 [Oscar Del Ben](https://github.com/oscardelben) has many useful open source project, such as [rawler](https://github.com/oscardelben/rawler) , [DateCalculations](https://github.com/oscardelben/DateCalculations) , [Color-Picker-Pro](https://github.com/oscardelben/Color-Picker-Pro) [iPhoneCalculator](https://github.com/oscardelben/iPhoneCalculator) , [GithubBrowser](https://github.com/oscardelben/GithubBrowser)
+
+
+
+
+---------
+2012-11-17
+
+[How to make Git ignore files that already exist in your project](http://justaddwater.dk/2009/12/07/how-to-make-git-ignore-files-that-already-exist-in-your-project/)
+```
+git update-index --assume-unchanged config/database.yml
+```
