@@ -29,3 +29,10 @@ footer: true
 ```
 git update-index --assume-unchanged config/database.yml
 ```
+
+----------
+2012-11-18
+[Using the Singleton Pattern in Objective-C](http://www.duckrowing.com/2010/05/21/using-the-singleton-pattern-in-objective-c/)
+[A Single Class Logger in Objective C](http://objectuser.wordpress.com/2010/03/06/a-single-class-logger-in-objective-c/)
+
+[Git Submodule](http://josephjiang.com/entry.php?id=342)
