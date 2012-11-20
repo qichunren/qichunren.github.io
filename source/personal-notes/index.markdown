@@ -52,3 +52,9 @@ Modernizr.addTest('flash', function(){
 ```
 
 [复制工具](https://github.com/jonrohan/ZeroClipboard)
+
+[github/linguist](https://github.com/github/linguist) 是一个程序语言检测工具, github本身就是使用它的。
+
+[emoji表情](http://www.emoji-cheat-sheet.com/)
+
+[http://patterntap.com/](http://patterntap.com/) 有很多UI设计的case，可以找到灵感
