@@ -36,3 +36,19 @@ git update-index --assume-unchanged config/database.yml
 [A Single Class Logger in Objective C](http://objectuser.wordpress.com/2010/03/06/a-single-class-logger-in-objective-c/)
 
 [Git Submodule](http://josephjiang.com/entry.php?id=342)
+
+----------
+2012-11-20
+[Modernizr](http://modernizr.com/docs/) is a JavaScript library that detects HTML5 and CSS3 features in the user’s browser.
+
+```
+Modernizr.addTest('flash', function(){
+  var hasFlash = (
+        (typeof navigator.plugins != "undefined" && typeof navigator.plugins["Shockwave Flash"] == "object") ||
+        (window.ActiveXObject && (new ActiveXObject("ShockwaveFlash.ShockwaveFlash")) != false)
+      );
+  return (hasFlash === false || hasFlash === undefined) ? false : true;
+});
+```
+
+[复制工具](https://github.com/jonrohan/ZeroClipboard)
