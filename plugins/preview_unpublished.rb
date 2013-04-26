@@ -1,3 +1,4 @@
+# encoding: utf-8
 # Monkeypatch for Jekyll
 # Introduce distinction between preview/productive site generation
 # so posts with YAML attribute `published: false` can be previewed

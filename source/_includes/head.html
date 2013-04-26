@@ -13,7 +13,52 @@
     <link href="{{ site.subscribe_rss }}" rel="alternate" title="{{site.title}}" type="application/atom+xml">
     <link rel="canonical" href="{{ canonical }}">
     <link href="{{ root_url }}/favicon.png" rel="shortcut icon">
-    <link href="{{ root_url }}/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+    <link href="http://twitter.github.io/bootstrap/assets/css/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css">
+     <link href="http://twitter.github.io/bootstrap/assets/css/bootstrap-responsive.css" media="screen, projection" rel="stylesheet" type="text/css">
+
+        <style type="text/css">
+        body {
+          padding-top: 60px;
+          padding-bottom: 60px;
+          background-color: #E0E0E0;
+        }
+        /* Custom container */
+              .container-narrow {
+                margin: 0 auto;
+                max-width: 700px;
+              }
+              .container-narrow > hr {
+                margin: 30px 0;
+              }
+        .box {
+          background: white;
+          border-radius: 3px;
+          box-shadow: 0px 1px 5px rgba(0,0,0,0.15);
+          border-bottom: 1px solid #e2e2e9;
+          margin-bottom: 20px;
+        }
+        .box .cell {
+          padding: 10px;
+          border-bottom: 1px solid #f0f0f0;
+        }
+        .box .cell:hover{
+          margin-left:1px;
+        }
+        .post_title {
+          color: #778087;
+          text-decoration: none;
+          font-size: 16px;
+          line-height: 150%;
+          font-weight: normal;
+        }
+        .post_meta {
+          font-size: 11px;
+          margin-top: 15px;
+          margin-right: 15px;
+          color: #999999;
+          float: right;
+        }
+        </style>
     <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     {% include custom/head.html %}

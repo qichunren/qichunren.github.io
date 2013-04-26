@@ -1,28 +1,28 @@
 ---
 layout: default
 ---
-
-<div class="main posts_list right">
-    <ul>
+<div class="cell">文章列表</div>
 {% assign index = true %}
 {% for post in paginator.posts %}
 {% assign content = post.content %}
-    <li>
-        <div class="date">{% include post/date.html %}{{ time }}</div>
-        <a href="{{ root_url }}{{ post.url }}">{% if site.titlecase %}{{ post.title | titlecase }}{% else %}{{ post.title }}{% endif %}</a></li>
+<div class="cell">
+  <div class="post_meta">
+  {% include post/date.html %}{{ time }}
+  </div>
+  <h2 class="post_title"><a href="{{ root_url }}{{ post.url }}">{% if site.titlecase %}{{ post.title | titlecase }}{% else %}{{ post.title }}{% endif %}</a></h2>
+</div>
 {% endfor %}
-</ul>
-<nav id="pagenavi">
+
+<ul id="pagenavi" class="cell pager">
     {% if paginator.previous_page %}
-        <a href="{{paginator.previous_page}}" class="prev">Prev</a>
+    <li class="previous"><a href="{{paginator.previous_page}}">Prev</a></li>
     {% endif %}
     {% if paginator.next_page %}
-        <a href="{{paginator.next_page}}" class="next">Next</a>
+    <li class="next"><a href="{{paginator.next_page}}" >Next</a></li>
     {% endif %}
-</nav>
-</div>
+</ul>
 
-<ul id="categories" class="side left">
+<ul id="categories" class="cell">
     <li><a href="/blog/categories/ruby/">Ruby</a></li>
     <li><a href="/blog/categories/php/">PHP</a></li>
     <li><a href="/blog/categories/test/">Test</a></li>

@@ -1,12 +1,13 @@
 ---
 layout: post
-title: "Use postgresql"
+title: "Use postgres database on Mac Lion"
 date: 2012-11-27 10:52
 comments: true
 categories: database
 ---
 
-```
+### brew info postgresql
+<pre>
 qichunrens-MacBook-Pro:luna-client1 qichunren$ brew info postgresql
 postgresql: stable 9.2.1
 http://www.postgresql.org/
@@ -90,9 +91,13 @@ To install postgresql (and ossp-uuid) in 32-bit mode:
 If you want to install the postgres gem, including ARCHFLAGS is recommended:
     env ARCHFLAGS="-arch x86_64" gem install pg
 
-```
+</pre>
 
 
+
+### brew install postgresql
+
+<pre>
 qichunrens-MacBook-Pro:luna-client1 qichunren$ brew install postgresql
 ==> Installing postgresql dependency: readline
 ==> Downloading http://ftpmirror.gnu.org/readline/readline-6.2.tar.gz
@@ -152,10 +157,12 @@ patching file contrib/uuid-ossp/uuid-ossp.c
 ==> Caveats
 # Build Notes
 
+</pre>
 
 
+### initdb /usr/local/var/postgres -E utf8
 
-
+<pre>
 qichunrens-MacBook-Pro:luna-client1 qichunren$ initdb /usr/local/var/postgres -E utf8
 The files belonging to this database system will be owned by user "qichunren".
 This user must also own the server process.
@@ -194,12 +201,13 @@ or
     pg_ctl -D /usr/local/var/postgres -l logfile start
 
 
+</pre>
 
 
+### 相关的常用命令
 
-
-
------------------
+#### createuser
+<pre>
 qichunrens-MacBook-Pro:luna-server qichunren$ createuser --help
 createuser creates a new PostgreSQL role.
 
@@ -238,9 +246,12 @@ Connection options:
   -W, --password            force password prompt
 
 Report bugs to <pgsql-bugs@postgresql.org>.
+</pre>
 
 
--------------------
+#### createdb
+
+<pre>
 qichunrens-MacBook-Pro:luna-server qichunren$ createdb --help
 createdb creates a PostgreSQL database.
 
@@ -279,3 +290,4 @@ createdb -O luna -E utf8 luna_production
 psql -U luna luna_production
 luna_production=> select * from users;
 luna_production=> ALTER USER luna WITH PASSWORD ‘whateverpasswordyouwant’;
+</pre>

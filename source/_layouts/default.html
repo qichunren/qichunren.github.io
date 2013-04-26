@@ -2,10 +2,21 @@
 {% include head.html %}
 
 <body>
-	<header class="inner">{% include header.html %}</header>
+	<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">{% include header.html %}</div>
+    </div>
+  </div>
 	{% include banner.html %}
-	<div id="content" class="inner">{{ content | expand_urls: root_url }}</div>
-	<footer class="inner">{% include footer.html %}</footer>
-	{% include after_footer.html %}
+	<div class="container-narrow">
+    <div class="row-fluid">
+      <div class="span12">
+        <div class="box">{{ content | expand_urls: root_url }}</div>
+      </div>
+    </div>
+
+    	<footer>{% include footer.html %}</footer>
+      	{% include after_footer.html %}
+  </div>
 </body>
 </html>

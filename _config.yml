@@ -1,9 +1,10 @@
+# encoding: utf-8
 # ----------------------- #
 #      Main Configs       #
 # ----------------------- #
 
 url: http://cqror.com
-title: 蕲春人的博客
+title: "sdd"
 subtitle: 简单就是美.
 author: qichunren
 simple_search: http://google.com/search
