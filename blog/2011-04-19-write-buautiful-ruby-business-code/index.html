@@ -1,0 +1,224 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>怎么样写好的ruby业务代码 - sdd</title>
+    <meta name="author" content="qichunren">
+
+    
+    <meta name="description" content="怎么样写好的ruby业务代码 标题很强，心中却很烦乱，写下这个解解闷，吐吐苦水。 最近与一个小Ruby程序员共事，交流起来还没有什么问题，可是看他写的代码，虽然坏不到哪里去，但我还是心里一阵阵反感，这和我平时阅读从github 上拉下的代码的感觉是完成不一样的。 给我不爽的地方有： &hellip;">
+    
+    <meta name="viewport" content="width=device-width; initial-scale=1; maximum-scale=1">
+
+    <link href="/atom.xml" rel="alternate" title="sdd" type="application/atom+xml">
+    <link rel="canonical" href="">
+    <link href="/favicon.png" rel="shortcut icon">
+    <link href="http://twitter.github.io/bootstrap/assets/css/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css">
+     <link href="http://twitter.github.io/bootstrap/assets/css/bootstrap-responsive.css" media="screen, projection" rel="stylesheet" type="text/css">
+
+        <style type="text/css">
+        body {
+          padding-top: 60px;
+          padding-bottom: 60px;
+          background-color: #E0E0E0;
+        }
+        /* Custom container */
+              .container-narrow {
+                margin: 0 auto;
+                max-width: 700px;
+              }
+              .container-narrow > hr {
+                margin: 30px 0;
+              }
+        .box {
+          background: white;
+          border-radius: 3px;
+          box-shadow: 0px 1px 5px rgba(0,0,0,0.15);
+          border-bottom: 1px solid #e2e2e9;
+          margin-bottom: 20px;
+        }
+        .box .cell {
+          padding: 10px;
+          border-bottom: 1px solid #f0f0f0;
+        }
+        .box .cell:hover{
+          margin-left:1px;
+        }
+        .post_title {
+          color: #778087;
+          text-decoration: none;
+          font-size: 16px;
+          line-height: 150%;
+          font-weight: normal;
+        }
+        .post_meta {
+          font-size: 11px;
+          margin-top: 15px;
+          margin-right: 15px;
+          color: #999999;
+          float: right;
+        }
+        </style>
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    
+    
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-6344646-4']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body>
+	<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container"><a class="brand" href="/">sdd</a>
+<div class="nav-collapse collapse">
+<ul class="nav">
+    <li><a href="/">Blog</a></li>
+    <li><a href="/about/">About</a></li>
+		
+		
+		
+		<li><a class="twitter" href="http://twitter.com/qichunren" title="Twitter">Twitter</a></li>
+		
+		
+		<li><a class="github" href="https://github.com/qichunren" title="GitHub">GitHub</a></li>
+		
+		
+		
+    <li><a class="rss" href="/atom.xml" title="RSS">RSS</a></li>
+		
+</ul>
+
+<form class="navbar-form pull-right" action="http://google.com/search" method="get">
+	<input class="left" type="text" name="q" results="0">
+	<input type="hidden" name="q" value="site:cqror.com">
+</form></div>
+</div>
+    </div>
+  </div>
+	
+	<div class="container-narrow">
+    <div class="row-fluid">
+      <div class="span12">
+        <div class="box"><div class="cell">
+<article class="post">
+    <h1 class="title">怎么样写好的ruby业务代码</h1>
+    <div class="entry"><p><em>标题很强，心中却很烦乱，写下这个解解闷，吐吐苦水。</em></p>
+
+<p>最近与一个小Ruby程序员共事，交流起来还没有什么问题，可是看他写的代码，虽然坏不到哪里去，但我还是心里一阵阵反感，这和我平时阅读从github 上拉下的代码的感觉是完成不一样的。</p>
+
+<p>给我不爽的地方有：首先他在用程序员的思维写业务代码。这一点虽然对程序的最终运行结果没有什么影响，但我是非常反感这一点。我一直对自己说，我要写可读的英语的，并且本身能说明它是要做什么事情的代码，尤其我是当在做电子商务方面的业务系统。</p>
+
+<p>我们应该站在设计人员的角度来写代码。我们是整个系统的设计师，控制人员，管理人员，我们可以通过代码的方式为系统来设计各种业务规则。而不仅仅是为了用程序代码来码完业务操作。这种特点的典型特征就是在程序中（特别是在model 中）有很多这样的方法命名，如update_xxx, delete_xxx, set_x_to_y,这种类似的命名，它就是纯粹的数据操作，而不是用代码来表达业务!</p>
+
+<p>都说程序要写耦合内聚什么的，模块化啦，抽取啦，减少重复，但是在这之间把握一个平衡还是要有很多磨练的。我之前一些时候在写Rails代码时就时常被这个问题折磨过，心里总是努力想把代码写得好一点，可最终完成业务目标时，看着自己的代码总是感觉不对劲.</p>
+
+<p>不劲的地方有：</p>
+
+<p>总是在考虑“我这段代码到底是单独抽出来呢，还是就这样放在其中呢”，“我感觉这个命名怎么那么别扭啊，哪里不对了？”等等之内的问题，然后花时间在这些代码段之间穿梭。其实我现在想明白了。要想让自己写的代码（我这里尤其是处理业务逻辑的代码）看得明白，读得顺畅，要把握好几点。</p>
+
+<p>第一，要记得上面第一条中说到的。</p>
+
+<p>第二，英语表达要不能太糟糕。 他英语不太过关，写的一些代码都是去google翻译查的，这我还是不说什么，可以有的翻译真的好离谱啊，再加上他自己的一些润色，完全可以我把搞迷糊。</p>
+
+<p>第三点，要清楚业务需要的实质，明白什么是将来可能变化的，什么是肯定不变化的。明白了这一点，就知道一个业务操作中，到底是应该把方法怎么折分。不变的代码，就都写在一个方法中也是没有问题的，即实代码长一点，那样整个操作是一个整体，到时时候维护起来会很明了。</p>
+
+<p>第四点，对于业务操作的方法，一般写得内聚紧凑一点很是没有什么问题的。不要惦记什么一个方法不能超过多少行代码的信条。</p>
+
+<p>第五点就是测试了，这个一定得搞。</p>
+</div>
+    <div class="meta">
+        <div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-19T05:12:12+08:00" pubdate data-updated="true">Apr 19<span>th</span>, 2011</time></div>
+        <div class="tags">
+
+<div class="cat">
+  
+    <a class='category' href='/blog/categories/ruby/'>ruby</a>, <a class='category' href='/blog/categories/test/'>test</a>
+  
+</div>
+
+</div>
+        
+    </div>
+</article>
+</div>
+<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+
+<div class="cell">
+<section id="comment">
+    <h3 class="title">Comments</h3>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
+</div>
+
+</div>
+      </div>
+    </div>
+
+    	<footer>Copyright &copy; 2013
+
+    qichunren
+
+</footer>
+      	<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script src="/javascripts/slash.js"></script>
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'qichunrensblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://cqror.com/blog/2011-04-19-write-buautiful-ruby-business-code/';
+        var disqus_url = 'http://cqror.com/blog/2011-04-19-write-buautiful-ruby-business-code/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+  </div>
+</body>
+</html>

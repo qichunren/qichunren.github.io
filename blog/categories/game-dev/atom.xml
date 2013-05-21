@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: game-dev | sdd]]></title>
+  <link href="http://cqror.com/blog/categories/game-dev/atom.xml" rel="self"/>
+  <link href="http://cqror.com/"/>
+  <updated>2013-05-21T13:33:10+08:00</updated>
+  <id>http://cqror.com/</id>
+  <author>
+    <name><![CDATA[qichunren]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Fixed a problem with creating texture background in cocos2d]]></title>
+    <link href="http://cqror.com/blog/2012-06-03-fixed-a-problem-with-creating-texture-background-in-cocos2d/"/>
+    <updated>2012-06-03T22:01:00+08:00</updated>
+    <id>http://cqror.com/blog/fixed-a-problem-with-creating-texture-background-in-cocos2d</id>
+    <content type="html"><![CDATA[<p>我尝试在cocos2d游戏中使用小图片重复平铺的方式来创建游戏背景时, 总是遇到这个问题，报错如下:</p>
+
+<p><code>
+Terminating app due to uncaught exception 'NSInternalInconsistencyException', reason: 'GL_CLAMP_TO_EDGE should be used in NPOT dimensions'
+</code></p>
+
+<p>我的代码是这样的:</p>
+
+<p><code>
+CCSprite *wall = [CCSprite spriteWithFile:@"pattern1.png" rect:CGRectMake(0, 0, 320, 480)];
+wall.anchorPoint = ccp(0,0);
+[self addChild:wall z:-1 tag:111];
+ccTexParams params = {GL_LINEAR, GL_LINEAR, GL_REPEAT, GL_REPEAT};
+//ccTexParams params = {GL_LINEAR,GL_LINEAR,GL_CLAMP_TO_EDGE, GL_CLAMP_TO_EDGE};
+[wall.texture setTexParameters:&amp;params];
+</code></p>
+
+<p>我运行cocos2d项目的测试例子, 却发现它的例子是工作正常的, 百思不得其解啊. 然后我看到它代码的注释中写着:</p>
+
+<p><code>
+// The .png image MUST be power of 2 in order to create a continue effect.
+// eg: 32x64, 512x128, 256x1024, 64x64, etc..
+</code></p>
+
+<p>我想可能是我的图片尺寸不符合规格，检查了一下，果然发现纹理图片的不是2的次方的正方形。</p>
+
+<p><em>总结，使用小图片重复平铺来创建背景纹理图片的小图片尺寸必须设置成2的n次方的正方形大小。</em></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Ruby游戏开发利器Gosu]]></title>
+    <link href="http://cqror.com/blog/2009-05-16-use-ruby-gosu-gem-to-build-game/"/>
+    <updated>2009-05-16T17:45:00+08:00</updated>
+    <id>http://cqror.com/blog/use-ruby-gosu-gem-to-build-game</id>
+    <content type="html"><![CDATA[<p>在2009年的Railsconf大会上，Hongli Lai和Ninh Bui of Phusion（开发Passenger的家伙）为了展示Ruby语言的强大，能运行3D游戏，他们构建了一个Wolfenstein游戏的山寨版，用的是<a href="http://www.libgosu.org/">Gosu</a> 游戏开发库。</p>
+
+<p><img src="http://www.libgosu.org/website_header.png" alt="Gosu Logo" /></p>
+
+<p>Zed Shaw 在游戏中扮演BOSS</p>
+
+<p>体验方法：
+项目地址：<a href="http://github.com/FooBarWidget/rubystein/tree/master">http://github.com/FooBarWidget/rubystein/tree/master</a>
+Git拖下来：</p>
+
+<p><code>
+git clone git://github.com/FooBarWidget/rubystein.git （没有Git也可以直接在项目主页中下载）
+</code></p>
+
+<p>在运行游戏之前在安装gosu gem</p>
+
+<p><code>
+gem install gosu
+</code></p>
+
+<p>我是在ubuntu下测试的，为了安装gosu,还要先安装依赖的库：</p>
+
+<p><code>
+sudo apt-get install g++ libgl1-mesa-dev libpango1.0-dev libboost-dev libsdl-mixer1.2-dev
+</code></p>
+
+<p>在安装好了gosu gem后，直接运行游戏目录中的wolf3d.rb文件：</p>
+
+<p><code>
+ruby wolf3d.rb
+</code></p>
+
+<p>如图：
+<img src="http://qichunren.iteye.com/upload/picture/pic/36923/13a5698c-ac4e-3ab5-910a-db865d5648fb.jpg" alt="game preview" /></p>
+
+<p>空格键开枪</p>
+
+<p>很强大吧。</p>
+
+<p>游戏程序代码的大体结构如下，很简单，很明了：</p>
+
+<p>```
+require 'rubygems'<br/>
+require 'gosu'</p>
+
+<p>class GameWindow &lt; Gosu::Window<br/>
+  def initialize</p>
+
+<pre><code>super(640, 480, false)  
+self.caption = "Gosu Tutorial Game"  
+</code></pre>
+
+<p>  end</p>
+
+<p>  def update<br/>
+   # 更新游戏画面的方法<br/>
+  end</p>
+
+<p>  def draw</p>
+
+<pre><code># 游戏画面的绘画方法  
+</code></pre>
+
+<p>  end<br/>
+end</p>
+
+<p>window = GameWindow.new<br/>
+window.show<br/>
+```</p>
+
+<p>我在gosu的网站又找到了几个case,都很不错，用gosu开发游戏很不错，代码结构很清析和容易理解。</p>
+
+<p>1.Space Jumper(和雷电类似的游戏) ：
+<a href="http://andre.semler-service.de/games/SpaceJumper.zip">下载地址</a></p>
+
+<p><img src="http://andre.semler-service.de/SJ.png" alt="Space Jumper preview" /></p>
+
+<p>2.Space shooter ，这个游戏和上面也差不多
+<a href="http://github.com/belen-albeza/space-shooter">项目地址</a></p>
+
+<p><img src="http://farm4.static.flickr.com/3658/3503765473_95c1b36ea4_m.jpg" alt="Space shooter preview" /></p>
+
+<p>强烈推荐想要用Ruby玩玩游戏开发的同学们用这个<a href="https://github.com/jlnr/gosu">gosu</a>库。另外好像有一个叫rubygame的开发库，不知道怎么样，有时间也研究一下。</p>
+
+<p><em><a href="http://www.iteye.com/topic/389181">我在javaeye上的原文链接</a></em></p>
+]]></content>
+  </entry>
+  
+</feed>

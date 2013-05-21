@@ -1,0 +1,287 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Build Linphone - sdd</title>
+    <meta name="author" content="qichunren">
+
+    
+    <meta name="description" content="Build Linphone qichunrens-MacBook-Pro:linphone-iphone qichunren$ brew install coreutils
+==> Installing coreutils dependency: xz
+==> Downloading http &hellip;">
+    
+    <meta name="viewport" content="width=device-width; initial-scale=1; maximum-scale=1">
+
+    <link href="/atom.xml" rel="alternate" title="sdd" type="application/atom+xml">
+    <link rel="canonical" href="">
+    <link href="/favicon.png" rel="shortcut icon">
+    <link href="http://twitter.github.io/bootstrap/assets/css/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css">
+     <link href="http://twitter.github.io/bootstrap/assets/css/bootstrap-responsive.css" media="screen, projection" rel="stylesheet" type="text/css">
+
+        <style type="text/css">
+        body {
+          padding-top: 60px;
+          padding-bottom: 60px;
+          background-color: #E0E0E0;
+        }
+        /* Custom container */
+              .container-narrow {
+                margin: 0 auto;
+                max-width: 700px;
+              }
+              .container-narrow > hr {
+                margin: 30px 0;
+              }
+        .box {
+          background: white;
+          border-radius: 3px;
+          box-shadow: 0px 1px 5px rgba(0,0,0,0.15);
+          border-bottom: 1px solid #e2e2e9;
+          margin-bottom: 20px;
+        }
+        .box .cell {
+          padding: 10px;
+          border-bottom: 1px solid #f0f0f0;
+        }
+        .box .cell:hover{
+          margin-left:1px;
+        }
+        .post_title {
+          color: #778087;
+          text-decoration: none;
+          font-size: 16px;
+          line-height: 150%;
+          font-weight: normal;
+        }
+        .post_meta {
+          font-size: 11px;
+          margin-top: 15px;
+          margin-right: 15px;
+          color: #999999;
+          float: right;
+        }
+        </style>
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    
+    
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-6344646-4']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body>
+	<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container"><a class="brand" href="/">sdd</a>
+<div class="nav-collapse collapse">
+<ul class="nav">
+    <li><a href="/">Blog</a></li>
+    <li><a href="/about/">About</a></li>
+		
+		
+		
+		<li><a class="twitter" href="http://twitter.com/qichunren" title="Twitter">Twitter</a></li>
+		
+		
+		<li><a class="github" href="https://github.com/qichunren" title="GitHub">GitHub</a></li>
+		
+		
+		
+    <li><a class="rss" href="/atom.xml" title="RSS">RSS</a></li>
+		
+</ul>
+
+<form class="navbar-form pull-right" action="http://google.com/search" method="get">
+	<input class="left" type="text" name="q" results="0">
+	<input type="hidden" name="q" value="site:cqror.com">
+</form></div>
+</div>
+    </div>
+  </div>
+	
+	<div class="container-narrow">
+    <div class="row-fluid">
+      <div class="span12">
+        <div class="box"><div class="cell">
+    
+    <h1 class="title">Build Linphone</h1>
+    
+    <div class="entry"><p>qichunrens-MacBook-Pro:linphone-iphone qichunren$ brew install coreutils
+==> Installing coreutils dependency: xz
+==> Downloading http://tukaani.org/xz/xz-5.0.4.tar.bz2</p>
+
+<h6>################################################################## 100.0%</h6>
+
+<p>==> ./configure &#8211;prefix=/usr/local/Cellar/xz/5.0.4
+==> make install
+/usr/local/Cellar/xz/5.0.4: 58 files, 1.5M, built in 22 seconds
+==> Installing coreutils
+==> Downloading http://ftpmirror.gnu.org/coreutils/coreutils-8.20.tar.xz</p>
+
+<h6>################################################################## 100.0%</h6>
+
+<p>==> Patching
+patching file Makefile.in
+==> ./configure &#8211;prefix=/usr/local/Cellar/coreutils/8.20 &#8211;program-prefix=g
+==> make install
+==> Caveats
+All commands have been installed with the prefix &#8216;g&#8217;.</p>
+
+<p>If you really need to use these commands with their normal names, you
+can add a &#8220;gnubin&#8221; directory to your PATH from your bashrc like:</p>
+
+<pre><code>PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+</code></pre>
+
+<p>Additionally, you can access their man pages with normal names if you add
+the &#8220;gnuman&#8221; directory to your MANPATH from your bashrc as well:</p>
+
+<pre><code>MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+</code></pre>
+
+<p>==> Summary
+/usr/local/Cellar/coreutils/8.20: 208 files, 9.4M, built in 2.3 minutes</p>
+
+<p>brew install libtool</p>
+
+<p>==> ./configure -
+==> make install
+==> Caveats
+In order to prevent conflicts with Apple&#8217;s own libtool we have prepended a &#8220;g&#8221;
+so, you have instead: glibtool and glibtoolize.</p>
+
+<p>qichunrens-MacBook-Pro:linphone-iphone qichunren$ brew info intltool
+intltool: stable 0.50.2
+http://www.freedesktop.org/wiki/Software/intltool
+Not installed
+https://github.com/mxcl/homebrew/commits/master/Library/Formula/intltool.rb
+qichunrens-MacBook-Pro:linphone-iphone qichunren$ brew install intltool
+==> Downloading http://launchpad.net/intltool/trunk/0.50.2/+download/intltool-0.50.2.tar.gz</p>
+
+<h6>################################################################## 100.0%</h6>
+
+<p>==> ./configure &#8211;prefix=/usr/local/Cellar/intltool/0.50.2
+==> make install
+/usr/local/Cellar/intltool/0.50.2: 19 files, 388K, built in 18 seconds</p>
+
+<p>qichunrens-MacBook-Pro:linphone-iphone qichunren$ brew install yasm
+==> Downloading http://tortall.net/projects/yasm/releases/yasm-1.2.0.tar.gz</p>
+
+<h6>################################################################## 100.0%</h6>
+
+<p>==> ./configure &#8211;prefix=/usr/local/Cellar/yasm/1.2.0
+==> make install
+/usr/local/Cellar/yasm/1.2.0: 44 files, 3.4M, built in 25 seconds</p>
+
+<p>qichunrens-MacBook-Pro:linphone-iphone qichunren$ brew install  make
+==> Downloading http://ftpmirror.gnu.org/make/make-3.82.tar.gz</p>
+
+<h6>################################################################## 100.0%</h6>
+
+<p>==> ./configure &#8211;prefix=/usr/local/Cellar/make/3.82
+==> make install
+==> Caveats
+This formula is keg-only: so it was not symlinked into /usr/local.</p>
+
+<p>Mac OS X already provides this software and installing another version in
+parallel can cause all kinds of trouble.
+==> Summary
+/usr/local/Cellar/make/3.82: 8 files, 448K, built in 15 seconds</p>
+
+<p>qichunrens-MacBook-Pro:build qichunren$ brew install openssl
+==> Downloading http://openssl.org/source/openssl-1.0.1c.tar.gz</p>
+
+<h6>################################################################## 100.0%</h6>
+
+<p>==> perl ./Configure &#8211;prefix=/usr/local/Cellar/openssl/1.0.1c &#8211;openssldir=/usr/local/etc/openssl zlib-dynamic shared darwin64-x86_64-cc
+==> make
+==> make test
+==> make install MANDIR=/usr/local/Cellar/openssl/1.0.1c/share/man MANSUFFIX=ssl
+==> Caveats
+This formula is keg-only: so it was not symlinked into /usr/local.</p>
+
+<p>Mac OS X already provides this software and installing another version in
+parallel can cause all kinds of trouble.</p>
+
+<p>The OpenSSL provided by OS X is too old for some software.</p>
+
+<p>Generally there are no consequences of this for you. If you build your
+own software and it requires this formula, you&#8217;ll need to add to your
+build variables:</p>
+
+<pre><code>LDFLAGS:  -L/usr/local/opt/openssl/lib
+CPPFLAGS: -I/usr/local/opt/openssl/include
+</code></pre>
+
+<p>==> Summary
+/usr/local/Cellar/openssl/1.0.1c: 429 files, 15M, built in 3.0 minutes</p>
+</div>
+</div>
+
+    <div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+
+<div class="cell">
+<section id="comment">
+    <h3 class="title">Comments</h3>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
+</div>
+</div>
+      </div>
+    </div>
+
+    	<footer>Copyright &copy; 2013
+
+    qichunren
+
+</footer>
+      	<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script src="/javascripts/slash.js"></script>
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'qichunrensblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://cqror.com/personal-notes/build-linphone.html';
+        var disqus_url = 'http://cqror.com/personal-notes/build-linphone.html';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+  </div>
+</body>
+</html>

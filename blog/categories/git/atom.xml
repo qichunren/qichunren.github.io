@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: git | sdd]]></title>
+  <link href="http://cqror.com/blog/categories/git/atom.xml" rel="self"/>
+  <link href="http://cqror.com/"/>
+  <updated>2013-05-21T13:33:10+08:00</updated>
+  <id>http://cqror.com/</id>
+  <author>
+    <name><![CDATA[qichunren]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[怎么样从git提交历史里永久删除一个文件?]]></title>
+    <link href="http://cqror.com/blog/2012-05-17-how-to-remove-a-file-from-git-history-forever/"/>
+    <updated>2012-05-17T15:04:00+08:00</updated>
+    <id>http://cqror.com/blog/how-to-remove-a-file-from-git-history-forever</id>
+    <content type="html"><![CDATA[<p>需要整理</p>
+
+<h2>参考资料</h2>
+
+<ul>
+<li><a href="http://help.github.com/remove-sensitive-data/">Remove sensitive data</a></li>
+<li><a href="http://stackoverflow.com/questions/872565/how-do-i-remove-sensitive-files-from-gits-history">How do I remove sensitive files from git's history</a></li>
+<li><a href="http://dound.com/2009/04/git-forever-remove-files-or-folders-from-history/">git: forever remove files or folders from history</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[How to update a forked repository from original repository at github?]]></title>
+    <link href="http://cqror.com/blog/2012-01-09-update-forked-repository-from-original-repository-at-github/"/>
+    <updated>2012-01-09T12:39:00+08:00</updated>
+    <id>http://cqror.com/blog/update-forked-repository-from-original-repository-at-github</id>
+    <content type="html"><![CDATA[<p>If you use github, you can follow this.</p>
+
+<p>I use <a href="https://github.com/huacnlee/ruby-china">huachlee/ruby-china</a> repository for example.</p>
+
+<p>At huacnlee/ruby-china repository homepage, clicked "Fork" button, then after serval minutes, you will have you own forked repository copy.Then you clone to local.</p>
+
+<p><code>
+git clone git@github.com:qichunren/ruby-china.git
+</code></p>
+
+<p>Then you commit your changes, and push to it.When you found the original repository has some updated feature,you can do as follow:</p>
+
+<p><code>
+cd ruby-china
+git remote add upstream git://github.com/huacnlee/ruby-china.git
+caojinhua:ruby-china caojinhua$ git fetch upstream
+remote: Counting objects: 345, done.
+remote: Compressing objects: 100% (164/164), done.
+remote: Total 266 (delta 196), reused 156 (delta 98)
+Receiving objects: 100% (266/266), 31.92 KiB | 25 KiB/s, done.
+Resolving deltas: 100% (196/196), completed with 67 local objects.
+From git://github.com/huacnlee/ruby-china
+ * [new branch]      github_autocomplete -&gt; upstream/github_autocomplete
+ * [new branch]      markdown   -&gt; upstream/markdown
+ * [new branch]      master     -&gt; upstream/master
+ * [new branch]      post       -&gt; upstream/post
+caojinhua:ruby-china caojinhua$ git merge upstream/master
+</code></p>
+
+<p>That is it.</p>
+
+<h2>Resources:</h2>
+
+<ul>
+<li><a href="http://help.github.com/fork-a-repo/">Fork A Repo</a></li>
+<li><a href="http://bradlyfeeley.com/2008/09/03/update-a-github-fork-from-the-original-repo/">Update a Github Fork from the Original Repo</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[重命名远程仓库中的分支]]></title>
+    <link href="http://cqror.com/blog/2008-10-13-rename-git-remote-branch/"/>
+    <updated>2008-10-13T14:22:00+08:00</updated>
+    <id>http://cqror.com/blog/rename-git-remote-branch</id>
+    <content type="html"><![CDATA[<p>在某些情况，有可能要修改远程仓库中的分支名称。对于这个需要怎么操作呢？我查了相关资料，没有直接的git命令可以直接实现。</p>
+
+<p>要修改远程仓库的分支名称，只能是基于现在的分支，向远程仓库中推送一个新分支，然后将原来的分支从远程仓库中删除掉。</p>
+
+<p>比如我向远程仓库中推送了一个名为feature的分支，现在要改名为preview。</p>
+
+<p><code>
+git checkout feature
+git checkout -b preview
+git push origin preview
+git push origin :feature
+git branch -d feature
+</code></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[在本地签出远程仓库上的分支]]></title>
+    <link href="http://cqror.com/blog/2008-10-12-checkout-git-remote-branches-to-local/"/>
+    <updated>2008-10-12T14:27:00+08:00</updated>
+    <id>http://cqror.com/blog/checkout-git-remote-branches-to-local</id>
+    <content type="html"><![CDATA[<p>从远程仓库克隆下来一个项目后，默认是在master分支。</p>
+
+<p><code>
+caojinhua:git_test caojinhua$ git branch
+*  master
+</code></p>
+
+<p>查看仓库中的所有分支，使用git branch -a命令：</p>
+
+<p><code>
+caojinhua:git_test caojinhua$ git branch -a
+*  master
+  remotes/origin/HEAD -&gt; origin/master
+  remotes/origin/master
+  remotes/origin/remotebranch
+</code></p>
+
+<p>可以看到远程仓库中有master和remotebranch两个分支。现在在本地项目中怎么样切换到remotebranch分支呢？很简单，使用git check命令，具体如下：</p>
+
+<p><code>
+git checkout --track -b &lt;local branch&gt; &lt;remote&gt;/&lt;tracked branch&gt;
+</code></p>
+
+<p>在我这里就是</p>
+
+<p><code>
+git checkout --track -b remotebranch origin/remotebranch
+</code></p>
+
+<p>对于这个命令，有一个简化的选项：</p>
+
+<p><code>
+git checkout -t origin/remotebranch
+</code></p>
+
+<h3>参考资料</h3>
+
+<p><a href="http://gitready.com/intermediate/2009/01/09/checkout-remote-tracked-branch.html">checkout tracked remote branch</a></p>
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: php | sdd]]></title>
+  <link href="http://cqror.com/blog/categories/php/atom.xml" rel="self"/>
+  <link href="http://cqror.com/"/>
+  <updated>2013-05-21T13:33:10+08:00</updated>
+  <id>http://cqror.com/</id>
+  <author>
+    <name><![CDATA[qichunren]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Create custom tags in Smarty 3]]></title>
+    <link href="http://cqror.com/blog/2012-02-26-create-custom-tags-in-smarty/"/>
+    <updated>2012-02-26T14:21:00+08:00</updated>
+    <id>http://cqror.com/blog/create-custom-tags-in-smarty</id>
+    <content type="html"><![CDATA[<p>接着上一篇，还是来说说PHP模板引擎Smarty。PHP的众多CMS框架，如DEDE CMS，对于前端展示都是有一套自己开发的标签，用于显示管理后台维护的数据。在DEDECMS中，如下的代码</p>
+
+<p>```</p>
+
+<h2>最近新闻</h2>
+
+
+<ul>
+    {dede:arclist typeid='1' row='10'}
+    <li>[field:textlink/]</li>
+    {/dede:arclist}
+</ul>
+
+
+<p>```</p>
+
+<p>就可以显示最近type id为1的10条新闻。在Smarty中创建属于自己的标签是很容易的，我之前在网络上搜索的关于创建smarty标签的内容大多数都是基于Smarty2的，我基于Smarty3中的plugins目录的代码了解到在Smarty3中创建自定义标签更为简单直观。</p>
+
+<p>在smarty程序包的plugins目录中，可以看到有block \ function \ modifier 等几种前缀的php文件。像block前缀的php文件可以创建闭合的标签，就如上文提到的那个dede cms新闻标签的例子。现在我正是要创建这样类型的标签。</p>
+
+<p>我结合CodeIgniter来说明，我现在创建一个用户列表的标签，可以显示最近注册的用户。
+在smarty的plugins目录中创建的文件会自动被smarty加载而识别的，文件名和其中的function 名称需要特定的约定好的格式。
+我现在想创建一个users标签,还有一个limit参数，用来显示取多少条数据</p>
+
+<p>```
+用户列表：</p>
+
+<ul>
+    <{users limit='3'}>
+        <li><{$user->login}></li>
+    <{/users}>
+</ul>
+
+
+<p>```</p>
+
+<p>那么文件名就应该指定为block.users.php，然后function应该命名为smarty_block_users：</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">&amp;lt;?php</span>
+</span><span class='line'><span class="x">function smarty_block_users($params, $content, $smarty, &amp;amp;$repeat){&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">&lt;pre&gt;&lt;code&gt;if (empty($content)){</span>
+</span><span class='line'><span class="x">    if (empty($params[&#39;limit&#39;])) {</span>
+</span><span class='line'><span class="x">        $limit = 10;</span>
+</span><span class='line'><span class="x">    } else {</span>
+</span><span class='line'><span class="x">        $limit = $params[&#39;limit&#39;];</span>
+</span><span class='line'><span class="x">    }</span>
+</span><span class='line'><span class="x">    $CI =&amp;amp; get_instance();</span>
+</span><span class='line'><span class="x">    $GLOBALS[&#39;users&#39;] = $CI-&amp;gt;db-&amp;gt;query(&quot;select * from users order by created_at desc limit $limit&quot;)-&amp;gt;result();</span>
+</span><span class='line'><span class="x">}</span>
+</span><span class='line'><span class="x">if(isset($GLOBALS[&#39;users&#39;]) != NULL &amp;amp;&amp;amp; count($GLOBALS[&#39;users&#39;])&amp;gt;0){</span>
+</span><span class='line'><span class="x">    $user = array_shift($GLOBALS[&#39;users&#39;]);</span>
+</span><span class='line'><span class="x">    $smarty-&amp;gt;assign(&#39;user&#39;, $user);</span>
+</span><span class='line'><span class="x">    if (count($GLOBALS[&#39;users&#39;]) == 0){</span>
+</span><span class='line'><span class="x">        unset($GLOBALS[&#39;users&#39;]);</span>
+</span><span class='line'><span class="x">        $repeat = false;</span>
+</span><span class='line'><span class="x">    }</span>
+</span><span class='line'><span class="x">    $repeat = true;</span>
+</span><span class='line'><span class="x">}else {</span>
+</span><span class='line'><span class="x">    $repeat = false;</span>
+</span><span class='line'><span class="x">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">return $content;</span>
+</span><span class='line'><span class="x">&lt;/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">&lt;p&gt;}</span>
+</span><span class='line'><span class="x">?&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>这个function中有四个参数，$params参数存储的是标签中的属性信息，如上面的limit。$content是标签中间的内容，$smarty是smarty的实例对象，$repeat用于指定block是否重复执行。
+解释完了function的参数，我想其中的执行原理应该很容易看明白了吧。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Use Smarty template in CodeIgniter]]></title>
+    <link href="http://cqror.com/blog/2012-02-11-use-smarty-template-in-codeigniter/"/>
+    <updated>2012-02-11T16:57:00+08:00</updated>
+    <id>http://cqror.com/blog/use-smarty-template-in-codeigniter</id>
+    <content type="html"><![CDATA[<p><a href="http://codeigniter.com/">CodeIgniter</a>是一个不错的PHP开发框架，很合我的口味，我做的一些PHP项目就是用的它。</p>
+
+<p><a href="http://www.smarty.net/">Smarty</a>是目前业界最著名的PHP模板引擎之一。它分离了逻辑代码和外在的内容，提供了一种易于管理和使用的方法，用来将原本与HTML代码混杂在一起的PHP代码逻辑分离。</p>
+
+<p>一般来说使用原生PHP作为视图会比使用模板引擎高效，一些简单的项目或者个人开发者可以直接使用PHP，如果是大一点的项目，再加上要和美工配合，使用模板引擎会是分工明确，合作高效一些。</p>
+
+<p>在CodeIgniter使用Smarty模板引擎一点也不复杂，这是因为CodeIgniter提供了<a href="http://codeigniter.org.cn/user_guide/general/creating_libraries.html">创建类库</a>的方便方法。</p>
+
+<p>我这里使用的CodeIgniter和Smarty都是最新版本,2.1.0和3.1.7</p>
+
+<p>1: 将Smarty包下载后，解压后，放入CodeIgniter项目中的application/libraries目录.
+<code>
+caojinhua:company caojinhua$ ls application/libraries/
+Smarty.php  index.html  smarty/
+caojinhua:company caojinhua$ ls application/libraries/smarty/
+Smarty.class.php    SmartyBC.class.php  debug.tpl       plugins/        sysplugins/
+</code></p>
+
+<p>2: 在application/libraries目录中创建Smarty.php文件。
+Liquid error: invalid byte sequence in US-ASCII
+根据代码中的smarty目录配置，需要在application/views中建立templates_c\templates\cache三个目录.
+这就算创建好了。</p>
+
+<p>3: 使用方法。
+控制器中的代码:
+Liquid error: invalid byte sequence in US-ASCII</p>
+
+<p>模板代码:
+Liquid error: invalid byte sequence in US-ASCII</p>
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: mongodb | sdd]]></title>
+  <link href="http://cqror.com/blog/categories/mongodb/atom.xml" rel="self"/>
+  <link href="http://cqror.com/"/>
+  <updated>2013-05-21T13:33:10+08:00</updated>
+  <id>http://cqror.com/</id>
+  <author>
+    <name><![CDATA[qichunren]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[mongodb的可视化客户端工具:MongoHub]]></title>
+    <link href="http://cqror.com/blog/2011-12-20-mongodb-ui-client-mongohub/"/>
+    <updated>2011-12-20T17:31:00+08:00</updated>
+    <id>http://cqror.com/blog/mongodb-ui-client-mongohub</id>
+    <content type="html"><![CDATA[<p>最近在使用mongodb,经常要调试，然后找到了MongoHub这款工具，感觉很好。</p>
+
+<p><a href="http://mongohub.todayclose.com/">MongoHub网站</a></p>
+
+<p><img src="http://mongohub.todayclose.com/media/img/icon.png" alt="MongoHub" /></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Install mongo on mac]]></title>
+    <link href="http://cqror.com/blog/2011-06-04-install-mongodb/"/>
+    <updated>2011-06-04T22:01:00+08:00</updated>
+    <id>http://cqror.com/blog/install-mongodb</id>
+    <content type="html"><![CDATA[<p>```
+caojinhuamatoMacBook-Pro:code caojinhua$ brew install mongodb
+==> Downloading http://fastdl.mongodb.org/osx/mongodb-osx-x86_64-1.8.1.tgz</p>
+
+<h6>################################################################## 100.0%</h6>
+
+<p>==> Caveats
+If this is your first install, automatically load on login with:</p>
+
+<pre><code>mkdir -p ~/Library/LaunchAgents
+cp /usr/local/Cellar/mongodb/1.8.1-x86_64/org.mongodb.mongod.plist ~/Library/LaunchAgents/
+launchctl load -w ~/Library/LaunchAgents/org.mongodb.mongod.plist
+</code></pre>
+
+<p>If this is an upgrade and you already have the org.mongodb.mongod.plist loaded:</p>
+
+<pre><code>launchctl unload -w ~/Library/LaunchAgents/org.mongodb.mongod.plist
+cp /usr/local/Cellar/mongodb/1.8.1-x86_64/org.mongodb.mongod.plist ~/Library/LaunchAgents/
+launchctl load -w ~/Library/LaunchAgents/org.mongodb.mongod.plist
+</code></pre>
+
+<p>Or start it manually:</p>
+
+<pre><code>mongod run --config /usr/local/Cellar/mongodb/1.8.1-x86_64/mongod.conf
+</code></pre>
+
+<p>MongoDB 1.8+ includes a feature for Write Ahead Logging (Journaling), which has been enabled by default.
+This is not the default in production (Journaling is disabled); to disable journaling, use --nojournal.
+==> Summary
+/usr/local/Cellar/mongodb/1.8.1-x86_64: 16 files, 93M, built in 2 seconds
+```</p>
+]]></content>
+  </entry>
+  
+</feed>

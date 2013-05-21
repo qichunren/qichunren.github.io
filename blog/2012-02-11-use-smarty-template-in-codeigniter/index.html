@@ -1,0 +1,234 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Use Smarty template in CodeIgniter - sdd</title>
+    <meta name="author" content="qichunren">
+
+    
+    <meta name="description" content="Use Smarty Template in CodeIgniter CodeIgniter是一个不错的PHP开发框架，很合我的口味，我做的一些PHP项目就是用的它。 Smarty是目前业界最著名的PHP模板引擎之一。它分离了逻辑代码和外在的内容，提供了一种易于管理和使用的方法， &hellip;">
+    
+    <meta name="viewport" content="width=device-width; initial-scale=1; maximum-scale=1">
+
+    <link href="/atom.xml" rel="alternate" title="sdd" type="application/atom+xml">
+    <link rel="canonical" href="">
+    <link href="/favicon.png" rel="shortcut icon">
+    <link href="http://twitter.github.io/bootstrap/assets/css/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css">
+     <link href="http://twitter.github.io/bootstrap/assets/css/bootstrap-responsive.css" media="screen, projection" rel="stylesheet" type="text/css">
+
+        <style type="text/css">
+        body {
+          padding-top: 60px;
+          padding-bottom: 60px;
+          background-color: #E0E0E0;
+        }
+        /* Custom container */
+              .container-narrow {
+                margin: 0 auto;
+                max-width: 700px;
+              }
+              .container-narrow > hr {
+                margin: 30px 0;
+              }
+        .box {
+          background: white;
+          border-radius: 3px;
+          box-shadow: 0px 1px 5px rgba(0,0,0,0.15);
+          border-bottom: 1px solid #e2e2e9;
+          margin-bottom: 20px;
+        }
+        .box .cell {
+          padding: 10px;
+          border-bottom: 1px solid #f0f0f0;
+        }
+        .box .cell:hover{
+          margin-left:1px;
+        }
+        .post_title {
+          color: #778087;
+          text-decoration: none;
+          font-size: 16px;
+          line-height: 150%;
+          font-weight: normal;
+        }
+        .post_meta {
+          font-size: 11px;
+          margin-top: 15px;
+          margin-right: 15px;
+          color: #999999;
+          float: right;
+        }
+        </style>
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    
+    
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-6344646-4']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body>
+	<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container"><a class="brand" href="/">sdd</a>
+<div class="nav-collapse collapse">
+<ul class="nav">
+    <li><a href="/">Blog</a></li>
+    <li><a href="/about/">About</a></li>
+		
+		
+		
+		<li><a class="twitter" href="http://twitter.com/qichunren" title="Twitter">Twitter</a></li>
+		
+		
+		<li><a class="github" href="https://github.com/qichunren" title="GitHub">GitHub</a></li>
+		
+		
+		
+    <li><a class="rss" href="/atom.xml" title="RSS">RSS</a></li>
+		
+</ul>
+
+<form class="navbar-form pull-right" action="http://google.com/search" method="get">
+	<input class="left" type="text" name="q" results="0">
+	<input type="hidden" name="q" value="site:cqror.com">
+</form></div>
+</div>
+    </div>
+  </div>
+	
+	<div class="container-narrow">
+    <div class="row-fluid">
+      <div class="span12">
+        <div class="box"><div class="cell">
+<article class="post">
+    <h1 class="title">Use Smarty Template in CodeIgniter</h1>
+    <div class="entry"><p><a href="http://codeigniter.com/">CodeIgniter</a>是一个不错的PHP开发框架，很合我的口味，我做的一些PHP项目就是用的它。</p>
+
+<p><a href="http://www.smarty.net/">Smarty</a>是目前业界最著名的PHP模板引擎之一。它分离了逻辑代码和外在的内容，提供了一种易于管理和使用的方法，用来将原本与HTML代码混杂在一起的PHP代码逻辑分离。</p>
+
+<p>一般来说使用原生PHP作为视图会比使用模板引擎高效，一些简单的项目或者个人开发者可以直接使用PHP，如果是大一点的项目，再加上要和美工配合，使用模板引擎会是分工明确，合作高效一些。</p>
+
+<p>在CodeIgniter使用Smarty模板引擎一点也不复杂，这是因为CodeIgniter提供了<a href="http://codeigniter.org.cn/user_guide/general/creating_libraries.html">创建类库</a>的方便方法。</p>
+
+<p>我这里使用的CodeIgniter和Smarty都是最新版本,2.1.0和3.1.7</p>
+
+<p>1: 将Smarty包下载后，解压后，放入CodeIgniter项目中的application/libraries目录.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>caojinhua:company caojinhua$ ls application/libraries/
+</span><span class='line'>Smarty.php    index.html  smarty/
+</span><span class='line'>caojinhua:company caojinhua$ ls application/libraries/smarty/
+</span><span class='line'>Smarty.class.php  SmartyBC.class.php  debug.tpl       plugins/        sysplugins/</span></code></pre></td></tr></table></div></figure>
+
+
+<p>2: 在application/libraries目录中创建Smarty.php文件。
+Liquid error: invalid byte sequence in US-ASCII
+根据代码中的smarty目录配置，需要在application/views中建立templates_c\templates\cache三个目录.
+这就算创建好了。</p>
+
+<p>3: 使用方法。
+控制器中的代码:
+Liquid error: invalid byte sequence in US-ASCII</p>
+
+<p>模板代码:
+Liquid error: invalid byte sequence in US-ASCII</p>
+</div>
+    <div class="meta">
+        <div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-02-11T16:57:00+08:00" pubdate data-updated="true">Feb 11<span>th</span>, 2012</time></div>
+        <div class="tags">
+
+<div class="cat">
+  
+    <a class='category' href='/blog/categories/php/'>php</a>
+  
+</div>
+
+</div>
+        
+    </div>
+</article>
+</div>
+<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+
+<div class="cell">
+<section id="comment">
+    <h3 class="title">Comments</h3>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
+</div>
+
+</div>
+      </div>
+    </div>
+
+    	<footer>Copyright &copy; 2013
+
+    qichunren
+
+</footer>
+      	<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script src="/javascripts/slash.js"></script>
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'qichunrensblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://cqror.com/blog/2012-02-11-use-smarty-template-in-codeigniter/';
+        var disqus_url = 'http://cqror.com/blog/2012-02-11-use-smarty-template-in-codeigniter/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+  </div>
+</body>
+</html>

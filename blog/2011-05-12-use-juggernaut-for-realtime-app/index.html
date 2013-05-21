@@ -1,0 +1,268 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>使用Juggernaut - sdd</title>
+    <meta name="author" content="qichunren">
+
+    
+    <meta name="description" content="使用Juggernaut Juggernaut是基于Node.js的一个实时(Realtime)Web的解决方案。使用起来很方便。 安装方法 安装Node.js: brew install node
+安装Redis: brew install redis
+安装NPM: curl http:// &hellip;">
+    
+    <meta name="viewport" content="width=device-width; initial-scale=1; maximum-scale=1">
+
+    <link href="/atom.xml" rel="alternate" title="sdd" type="application/atom+xml">
+    <link rel="canonical" href="">
+    <link href="/favicon.png" rel="shortcut icon">
+    <link href="http://twitter.github.io/bootstrap/assets/css/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css">
+     <link href="http://twitter.github.io/bootstrap/assets/css/bootstrap-responsive.css" media="screen, projection" rel="stylesheet" type="text/css">
+
+        <style type="text/css">
+        body {
+          padding-top: 60px;
+          padding-bottom: 60px;
+          background-color: #E0E0E0;
+        }
+        /* Custom container */
+              .container-narrow {
+                margin: 0 auto;
+                max-width: 700px;
+              }
+              .container-narrow > hr {
+                margin: 30px 0;
+              }
+        .box {
+          background: white;
+          border-radius: 3px;
+          box-shadow: 0px 1px 5px rgba(0,0,0,0.15);
+          border-bottom: 1px solid #e2e2e9;
+          margin-bottom: 20px;
+        }
+        .box .cell {
+          padding: 10px;
+          border-bottom: 1px solid #f0f0f0;
+        }
+        .box .cell:hover{
+          margin-left:1px;
+        }
+        .post_title {
+          color: #778087;
+          text-decoration: none;
+          font-size: 16px;
+          line-height: 150%;
+          font-weight: normal;
+        }
+        .post_meta {
+          font-size: 11px;
+          margin-top: 15px;
+          margin-right: 15px;
+          color: #999999;
+          float: right;
+        }
+        </style>
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    
+    
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-6344646-4']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body>
+	<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container"><a class="brand" href="/">sdd</a>
+<div class="nav-collapse collapse">
+<ul class="nav">
+    <li><a href="/">Blog</a></li>
+    <li><a href="/about/">About</a></li>
+		
+		
+		
+		<li><a class="twitter" href="http://twitter.com/qichunren" title="Twitter">Twitter</a></li>
+		
+		
+		<li><a class="github" href="https://github.com/qichunren" title="GitHub">GitHub</a></li>
+		
+		
+		
+    <li><a class="rss" href="/atom.xml" title="RSS">RSS</a></li>
+		
+</ul>
+
+<form class="navbar-form pull-right" action="http://google.com/search" method="get">
+	<input class="left" type="text" name="q" results="0">
+	<input type="hidden" name="q" value="site:cqror.com">
+</form></div>
+</div>
+    </div>
+  </div>
+	
+	<div class="container-narrow">
+    <div class="row-fluid">
+      <div class="span12">
+        <div class="box"><div class="cell">
+<article class="post">
+    <h1 class="title">使用Juggernaut</h1>
+    <div class="entry"><p><a href="https://github.com/maccman/juggernaut">Juggernaut</a>是基于<a href="http://nodejs.org/">Node.js</a>的一个实时(Realtime)Web的解决方案。使用起来很方便。</p>
+
+<h3>安装方法</h3>
+
+<ol>
+<li>安装Node.js: brew install node</li>
+<li>安装<a href="http://code.google.com/p/redis">Redis</a>: brew install redis</li>
+<li>安装<a href="http://npmjs.org/">NPM</a>: curl http://npmjs.org/install.sh | sh</li>
+<li>安装Juggernaut: 这个会把Juggernaut安装到当前目录，所以我应该先进行项目的/vendor/third目录，然后执行 npm install juggernaut</li>
+</ol>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>usermatoMacBook-Pro:third qichunren$ npm install juggernaut
+</span><span class='line'>redis@0.5.11 ./node_modules/juggernaut/node_modules/redis
+</span><span class='line'>node-static-maccman@0.5.3 ./node_modules/juggernaut/node_modules/node-static-maccman
+</span><span class='line'>socket.io@0.6.17 ./node_modules/juggernaut/node_modules/socket.io
+</span><span class='line'>juggernaut@2.0.4 ./node_modules/juggernaut
+</span><span class='line'>usermatoMacBook-Pro:third qichunren$  </span></code></pre></td></tr></table></div></figure>
+
+
+<ol>
+<li>安装Juggernaut gem:</li>
+</ol>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>gem install juggernaut</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>使用方法</h3>
+
+<p>我们在自己的项目中只需要引入http://localhost:8080/application.js 这个js文件即可。
+然后在页面中可以这样接收服务器端的消息：</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">charset=</span><span class="s">&quot;utf-8&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">jug</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Juggernaut</span><span class="p">;</span>
+</span><span class='line'>  <span class="nx">jug</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s2">&quot;channel1&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">){</span>
+</span><span class='line'>    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Got data: &quot;</span> <span class="o">+</span> <span class="nx">data</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">});</span>
+</span><span class='line'><span class="nt">&lt;/script&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>服务器端直接发消息：</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s2">&quot;juggernaut&quot;</span>
+</span><span class='line'><span class="no">Juggernaut</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="s2">&quot;channel1&quot;</span><span class="p">,</span> <span class="s2">&quot;Some data&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>另外在启动了Juggernaut后，它默认在8080端口上有一个Helloword的应用，可以了解一下。</p>
+</div>
+    <div class="meta">
+        <div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-05-12T17:12:12+08:00" pubdate data-updated="true">May 12<span>th</span>, 2011</time></div>
+        <div class="tags">
+
+<div class="cat">
+  
+    <a class='category' href='/blog/categories/rails/'>rails</a>, <a class='category' href='/blog/categories/web/'>web</a>
+  
+</div>
+
+</div>
+        
+    </div>
+</article>
+</div>
+<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+
+<div class="cell">
+<section id="comment">
+    <h3 class="title">Comments</h3>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
+</div>
+
+</div>
+      </div>
+    </div>
+
+    	<footer>Copyright &copy; 2013
+
+    qichunren
+
+</footer>
+      	<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script src="/javascripts/slash.js"></script>
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'qichunrensblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://cqror.com/blog/2011-05-12-use-juggernaut-for-realtime-app/';
+        var disqus_url = 'http://cqror.com/blog/2011-05-12-use-juggernaut-for-realtime-app/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+  </div>
+</body>
+</html>

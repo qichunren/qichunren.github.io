@@ -1,0 +1,309 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>网页截屏的方法 - sdd</title>
+    <meta name="author" content="qichunren">
+
+    
+    <meta name="description" content="网页截屏的方法 曾经很想有这样一个app, 它可以将微博上用户的微博用图片的形式自动保存起来，留此存照。前几个月的那段时间，微博上很
+网页截屏的基本原理就是通过取得webkit渲染（render）的数据来生成图片的，我经过一段时间研究，找到了两个方法来解决这个问题。 一个工具叫phantomjs &hellip;">
+    
+    <meta name="viewport" content="width=device-width; initial-scale=1; maximum-scale=1">
+
+    <link href="/atom.xml" rel="alternate" title="sdd" type="application/atom+xml">
+    <link rel="canonical" href="">
+    <link href="/favicon.png" rel="shortcut icon">
+    <link href="http://twitter.github.io/bootstrap/assets/css/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css">
+     <link href="http://twitter.github.io/bootstrap/assets/css/bootstrap-responsive.css" media="screen, projection" rel="stylesheet" type="text/css">
+
+        <style type="text/css">
+        body {
+          padding-top: 60px;
+          padding-bottom: 60px;
+          background-color: #E0E0E0;
+        }
+        /* Custom container */
+              .container-narrow {
+                margin: 0 auto;
+                max-width: 700px;
+              }
+              .container-narrow > hr {
+                margin: 30px 0;
+              }
+        .box {
+          background: white;
+          border-radius: 3px;
+          box-shadow: 0px 1px 5px rgba(0,0,0,0.15);
+          border-bottom: 1px solid #e2e2e9;
+          margin-bottom: 20px;
+        }
+        .box .cell {
+          padding: 10px;
+          border-bottom: 1px solid #f0f0f0;
+        }
+        .box .cell:hover{
+          margin-left:1px;
+        }
+        .post_title {
+          color: #778087;
+          text-decoration: none;
+          font-size: 16px;
+          line-height: 150%;
+          font-weight: normal;
+        }
+        .post_meta {
+          font-size: 11px;
+          margin-top: 15px;
+          margin-right: 15px;
+          color: #999999;
+          float: right;
+        }
+        </style>
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    
+    
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-6344646-4']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body>
+	<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container"><a class="brand" href="/">sdd</a>
+<div class="nav-collapse collapse">
+<ul class="nav">
+    <li><a href="/">Blog</a></li>
+    <li><a href="/about/">About</a></li>
+		
+		
+		
+		<li><a class="twitter" href="http://twitter.com/qichunren" title="Twitter">Twitter</a></li>
+		
+		
+		<li><a class="github" href="https://github.com/qichunren" title="GitHub">GitHub</a></li>
+		
+		
+		
+    <li><a class="rss" href="/atom.xml" title="RSS">RSS</a></li>
+		
+</ul>
+
+<form class="navbar-form pull-right" action="http://google.com/search" method="get">
+	<input class="left" type="text" name="q" results="0">
+	<input type="hidden" name="q" value="site:cqror.com">
+</form></div>
+</div>
+    </div>
+  </div>
+	
+	<div class="container-narrow">
+    <div class="row-fluid">
+      <div class="span12">
+        <div class="box"><div class="cell">
+<article class="post">
+    <h1 class="title">网页截屏的方法</h1>
+    <div class="entry"><p>曾经很想有这样一个app, 它可以将微博上用户的微博用图片的形式自动保存起来，留此存照。前几个月的那段时间，微博上很
+网页截屏的基本原理就是通过取得webkit渲染（render）的数据来生成图片的，我经过一段时间研究，找到了两个方法来解决这个问题。</p>
+
+<p>一个工具叫<a href="http://www.phantomjs.org/">phantomjs</a>，另一个工具叫<a href="http://cutycapt.sourceforge.net/">cutycapt</a></p>
+
+<p>两个工具都不错，个人比较喜欢使用cutycapt这个工具，它是直接提供一个命令行来生成网页截图的，而前者是通过javascript来调用底层webkit接品(page.render方法)来实现的，两者的侧重点不一样。
+并且cutycapt是将整个网截下来，phantomjs是将浏览器当前视区的一屏截下来。</p>
+
+<p>Cutycapt的用法如下</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>qichunren@qichunren-desktop:~/github/cutycapt/CutyCapt$ ./CutyCapt 
+</span><span class='line'> -----------------------------------------------------------------------------
+</span><span class='line'> Usage: CutyCapt --url=http://www.example.org/ --out=localfile.png            
+</span><span class='line'> -----------------------------------------------------------------------------
+</span><span class='line'>  --help                         Print this help page and exit                
+</span><span class='line'>  --url=&lt;url&gt;                    The URL to capture (http:...|file:...|...)   
+</span><span class='line'>  --out=&lt;path&gt;                   The target file (.png|pdf|ps|svg|jpeg|...)   
+</span><span class='line'>  --out-format=&lt;f&gt;               Like extension in --out, overrides heuristic 
+</span><span class='line'>  --min-width=&lt;int&gt;              Minimal width for the image (default: 800)   
+</span><span class='line'>  --min-height=&lt;int&gt;             Minimal height for the image (default: 600)  
+</span><span class='line'>  --max-wait=&lt;ms&gt;                Don't wait more than (default: 90000, inf: 0)
+</span><span class='line'>  --delay=&lt;ms&gt;                   After successful load, wait (default: 0)     
+</span><span class='line'>  --user-style-path=&lt;path&gt;       Location of user style sheet file, if any    
+</span><span class='line'>  --user-style-string=&lt;css&gt;      User style rules specified as text           
+</span><span class='line'>  --header=&lt;name&gt;:&lt;value&gt;        request header; repeatable; some can't be set
+</span><span class='line'>  --method=&lt;get|post|put&gt;        Specifies the request method (default: get)  
+</span><span class='line'>  --body-string=&lt;string&gt;         Unencoded request body (default: none)       
+</span><span class='line'>  --body-base64=&lt;base64&gt;         Base64-encoded request body (default: none)  
+</span><span class='line'>  --app-name=&lt;name&gt;              appName used in User-Agent; default is none  
+</span><span class='line'>  --app-version=&lt;version&gt;        appVers used in User-Agent; default is none  
+</span><span class='line'>  --user-agent=&lt;string&gt;          Override the User-Agent header Qt would set  
+</span><span class='line'>  --javascript=&lt;on|off&gt;          JavaScript execution (default: on)           
+</span><span class='line'>  --java=&lt;on|off&gt;                Java execution (default: unknown)            
+</span><span class='line'>  --plugins=&lt;on|off&gt;             Plugin execution (default: unknown)          
+</span><span class='line'>  --private-browsing=&lt;on|off&gt;    Private browsing (default: unknown)          
+</span><span class='line'>  --auto-load-images=&lt;on|off&gt;    Automatic image loading (default: on)        
+</span><span class='line'>  --js-can-open-windows=&lt;on|off&gt; Script can open windows? (default: unknown)  
+</span><span class='line'>  --js-can-access-clipboard=&lt;on|off&gt; Script clipboard privs (default: unknown)
+</span><span class='line'>  --print-backgrounds=&lt;on|off&gt;   Backgrounds in PDF/PS output (default: off)  
+</span><span class='line'>  --zoom-factor=&lt;float&gt;          Page zoom factor (default: no zooming)       
+</span><span class='line'>  --zoom-text-only=&lt;on|off&gt;      Whether to zoom only the text (default: off) 
+</span><span class='line'>  --http-proxy=&lt;url&gt;             Address for HTTP proxy server (default: none)
+</span><span class='line'> -----------------------------------------------------------------------------
+</span><span class='line'>  &lt;f&gt; is svg,ps,pdf,itext,html,rtree,png,jpeg,mng,tiff,gif,bmp,ppm,xbm,xpm    
+</span><span class='line'> -----------------------------------------------------------------------------
+</span><span class='line'> http://cutycapt.sf.net - (c) 2003-2010 Bjoern Hoehrmann - bjoern@hoehrmann.de
+</span><span class='line'>qichunren@qichunren-desktop:~/github/cutycapt/CutyCapt$</span></code></pre></td></tr></table></div></figure>
+
+
+<p>phantomjs截屏的用法如下：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>qichunren@qichunren-desktop:~/github$ cd phantomjs/
+</span><span class='line'>qichunren@qichunren-desktop:~/github/phantomjs$ ls
+</span><span class='line'>bin         ChangeLog  ff.png     iteye.png    Makefile       python     src
+</span><span class='line'>capture.js  examples   hello.png  LICENSE.BSD  phantomjs.pro  README.md           
+</span><span class='line'>qichunren@qichunren-desktop:~/github/phantomjs$ ./bin/phantomjs examples/rasterize.js 
+</span><span class='line'>Usage: rasterize.js URL filename [paperwidth*paperheight|paperformat]
+</span><span class='line'>  paper (pdf output) examples: "5in*7.5in", "10cm*20cm", "A4", "Letter"
+</span><span class='line'>qichunren@qichunren-desktop:~/github/phantomjs$ ./bin/phantomjs examples/rasterize.js http://www.iteye.com iteye.png
+</span><span class='line'>qichunren@qichunren-desktop:~/github/phantomjs$</span></code></pre></td></tr></table></div></figure>
+
+</div>
+    <div class="meta">
+        <div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-10-13T06:09:09+08:00" pubdate data-updated="true">Oct 13<span>th</span>, 2011</time></div>
+        <div class="tags">
+
+<div class="cat">
+  
+    <a class='category' href='/blog/categories/tool/'>tool</a>
+  
+</div>
+
+</div>
+        
+    </div>
+</article>
+</div>
+<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+
+<div class="cell">
+<section id="comment">
+    <h3 class="title">Comments</h3>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
+</div>
+
+</div>
+      </div>
+    </div>
+
+    	<footer>Copyright &copy; 2013
+
+    qichunren
+
+</footer>
+      	<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script src="/javascripts/slash.js"></script>
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'qichunrensblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://cqror.com/blog/2011-10-13-capture-webpage/';
+        var disqus_url = 'http://cqror.com/blog/2011-10-13-capture-webpage/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+  </div>
+</body>
+</html>

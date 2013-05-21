@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: web | sdd]]></title>
+  <link href="http://cqror.com/blog/categories/web/atom.xml" rel="self"/>
+  <link href="http://cqror.com/"/>
+  <updated>2013-05-21T13:33:10+08:00</updated>
+  <id>http://cqror.com/</id>
+  <author>
+    <name><![CDATA[qichunren]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Ruby China Chrome浏览器插件]]></title>
+    <link href="http://cqror.com/blog/2012-06-18-i-build-ruby-china-chrome-extension/"/>
+    <updated>2012-06-18T14:56:00+08:00</updated>
+    <id>http://cqror.com/blog/i-build-ruby-china-chrome-extension</id>
+    <content type="html"><![CDATA[<p>前几天，我花了几天业余时间制作了Ruby China社区网站的Chrome浏览器插件，通过这个插件可以：</p>
+
+<ul>
+<li>不用前往Ruby China网站去浏览主题帖子，直接点击插件图标查看主题。</li>
+<li>显示个人未读消息提醒</li>
+</ul>
+
+
+<p>另外，我发现Chrome浏览器的插件开发非常简单，自由度很大，根据它的开发规范，可以非常容易实现扩展开发。在我了解了这一点之后，我更加喜欢Chrome浏览器了。</p>
+
+<p>这个Chrome浏览器插件项目是开源的，代码在<a href="https://github.com/qichunren/ruby-china-chrome">https://github.com/qichunren/ruby-china-chrome</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[使用Juggernaut]]></title>
+    <link href="http://cqror.com/blog/2011-05-12-use-juggernaut-for-realtime-app/"/>
+    <updated>2011-05-12T17:12:12+08:00</updated>
+    <id>http://cqror.com/blog/use-juggernaut-for-realtime-app</id>
+    <content type="html"><![CDATA[<p><a href="https://github.com/maccman/juggernaut">Juggernaut</a>是基于<a href="http://nodejs.org/">Node.js</a>的一个实时(Realtime)Web的解决方案。使用起来很方便。</p>
+
+<h3>安装方法</h3>
+
+<ol>
+<li>安装Node.js: brew install node</li>
+<li>安装<a href="http://code.google.com/p/redis">Redis</a>: brew install redis</li>
+<li>安装<a href="http://npmjs.org/">NPM</a>: curl http://npmjs.org/install.sh | sh</li>
+<li>安装Juggernaut: 这个会把Juggernaut安装到当前目录，所以我应该先进行项目的/vendor/third目录，然后执行 npm install juggernaut</li>
+</ol>
+
+
+<p>```</p>
+
+<pre><code>usermatoMacBook-Pro:third qichunren$ npm install juggernaut
+redis@0.5.11 ./node_modules/juggernaut/node_modules/redis
+node-static-maccman@0.5.3 ./node_modules/juggernaut/node_modules/node-static-maccman
+socket.io@0.6.17 ./node_modules/juggernaut/node_modules/socket.io
+juggernaut@2.0.4 ./node_modules/juggernaut
+usermatoMacBook-Pro:third qichunren$  
+</code></pre>
+
+<p>```</p>
+
+<ol>
+<li>安装Juggernaut gem:</li>
+</ol>
+
+
+<p><code>
+gem install juggernaut
+</code></p>
+
+<h3>使用方法</h3>
+
+<p>我们在自己的项目中只需要引入http://localhost:8080/application.js 这个js文件即可。
+然后在页面中可以这样接收服务器端的消息：</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">charset=</span><span class="s">&quot;utf-8&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">jug</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Juggernaut</span><span class="p">;</span>
+</span><span class='line'>  <span class="nx">jug</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s2">&quot;channel1&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">){</span>
+</span><span class='line'>    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Got data: &quot;</span> <span class="o">+</span> <span class="nx">data</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">});</span>
+</span><span class='line'><span class="nt">&lt;/script&gt;</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;p&gt;</span>       <span class="nt">&lt;br/&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>服务器端直接发消息：</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s2">&quot;juggernaut&quot;</span>
+</span><span class='line'><span class="no">Juggernaut</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="s2">&quot;channel1&quot;</span><span class="p">,</span> <span class="s2">&quot;Some data&quot;</span><span class="p">)</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>另外在启动了Juggernaut后，它默认在8080端口上有一个Helloword的应用，可以了解一下。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[学习HTML5杂记]]></title>
+    <link href="http://cqror.com/blog/2011-05-09-learn-html5/"/>
+    <updated>2011-05-09T11:30:00+08:00</updated>
+    <id>http://cqror.com/blog/learn-html5</id>
+    <content type="html"><![CDATA[<h3>什么是 HTML5？</h3>
+
+<p>HTML5 将成为 HTML、XHTML 以及 HTML DOM 的新标准。
+HTML 的上一个版本诞生于 1999 年。自从那以后，Web 世界已经经历了巨变。
+HTML5 仍处于完善之中。然而，大部分现代浏览器已经具备了某些 HTML5 支持。</p>
+
+<h3>新特性</h3>
+
+<p>HTML5 中的一些有趣的新特性：
++ 用于绘画的 canvas 元素
++ 用于媒介回放的 video 和 audio 元素
++ 对本地离线存储的更好的支持
++ 新的特殊内容元素，比如 article、footer、header、nav、section
++ 新的表单控件，比如 calendar、date、time、email、url、search</p>
+
+<h4>Video标签</h4>
+
+<p><a href="http://www.w3school.com.cn/html5/html_5_video.asp">参考资料</a>
+<div>
+  <pre>
+    <code class='html'>&amp;lt;!DOCTYPE HTML&gt;
+&lt;html&gt;
+&lt;body&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;video width=&quot;320&quot; height=&quot;240&quot; controls=&quot;controls&quot;&gt;
+  &lt;source src=&quot;movie.ogg&quot; type=&quot;video/ogg&quot;&gt;
+  &lt;source src=&quot;movie.mp4&quot; type=&quot;video/mp4&quot;&gt;
+Your browser does not support the video tag.
+&lt;/video&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/body&gt;
+&lt;/html&gt;</code>
+  </pre>
+</div>
+</p>
+
+<h4>Audio标签</h4>
+
+<p><a href="http://www.w3school.com.cn/html5/html_5_audio.asp">参考资料</a>
+<div>
+  <pre>
+    <code class='html'>&amp;lt;!DOCTYPE HTML&gt;
+&lt;html&gt;
+&lt;body&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;audio controls=&quot;controls&quot;&gt;
+  &lt;source src=&quot;song.ogg&quot; type=&quot;audio/ogg&quot;&gt;
+  &lt;source src=&quot;song.mp3&quot; type=&quot;audio/mpeg&quot;&gt;
+Your browser does not support the audio tag.
+&lt;/audio&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/body&gt;
+&lt;/html&gt;</code>
+  </pre>
+</div>
+</p>
+
+<h4>Canvas元素</h4>
+
+<p><a href="http://www.w3school.com.cn/html5/html_5_canvas.asp">参考资料</a></p>
+
+<h4>HTML5 Web存储</h4>
+
+<p><a href="http://www.w3school.com.cn/html5/html_5_webstorage.asp">参考资料</a></p>
+
+<h4>标签</h4>
+
+<h4>属性</h4>
+
+<h4>事件</h4>
+
+<h3>Resources</h3>
+]]></content>
+  </entry>
+  
+</feed>

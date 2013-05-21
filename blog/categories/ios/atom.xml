@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: ios | sdd]]></title>
+  <link href="http://cqror.com/blog/categories/ios/atom.xml" rel="self"/>
+  <link href="http://cqror.com/"/>
+  <updated>2013-05-21T13:33:10+08:00</updated>
+  <id>http://cqror.com/</id>
+  <author>
+    <name><![CDATA[qichunren]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Fixed a problem with creating texture background in cocos2d]]></title>
+    <link href="http://cqror.com/blog/2012-06-03-fixed-a-problem-with-creating-texture-background-in-cocos2d/"/>
+    <updated>2012-06-03T22:01:00+08:00</updated>
+    <id>http://cqror.com/blog/fixed-a-problem-with-creating-texture-background-in-cocos2d</id>
+    <content type="html"><![CDATA[<p>我尝试在cocos2d游戏中使用小图片重复平铺的方式来创建游戏背景时, 总是遇到这个问题，报错如下:</p>
+
+<p><code>
+Terminating app due to uncaught exception 'NSInternalInconsistencyException', reason: 'GL_CLAMP_TO_EDGE should be used in NPOT dimensions'
+</code></p>
+
+<p>我的代码是这样的:</p>
+
+<p><code>
+CCSprite *wall = [CCSprite spriteWithFile:@"pattern1.png" rect:CGRectMake(0, 0, 320, 480)];
+wall.anchorPoint = ccp(0,0);
+[self addChild:wall z:-1 tag:111];
+ccTexParams params = {GL_LINEAR, GL_LINEAR, GL_REPEAT, GL_REPEAT};
+//ccTexParams params = {GL_LINEAR,GL_LINEAR,GL_CLAMP_TO_EDGE, GL_CLAMP_TO_EDGE};
+[wall.texture setTexParameters:&amp;params];
+</code></p>
+
+<p>我运行cocos2d项目的测试例子, 却发现它的例子是工作正常的, 百思不得其解啊. 然后我看到它代码的注释中写着:</p>
+
+<p><code>
+// The .png image MUST be power of 2 in order to create a continue effect.
+// eg: 32x64, 512x128, 256x1024, 64x64, etc..
+</code></p>
+
+<p>我想可能是我的图片尺寸不符合规格，检查了一下，果然发现纹理图片的不是2的次方的正方形。</p>
+
+<p><em>总结，使用小图片重复平铺来创建背景纹理图片的小图片尺寸必须设置成2的n次方的正方形大小。</em></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[iOS中的arc4random方法]]></title>
+    <link href="http://cqror.com/blog/2012-01-04-arc4random-in-ios/"/>
+    <updated>2012-01-04T22:49:00+08:00</updated>
+    <id>http://cqror.com/blog/arc4random-in-ios</id>
+    <content type="html"><![CDATA[<p>通过arc4random() 获取0到x-1之间的整数的代码如下:
+<code>
+int value = arc4random() % x;
+</code></p>
+
+<p>获取1到x之间的整数的代码如下:
+<code>
+int value = (arc4random() % x) + 1;
+</code></p>
+
+<p>最后如果想生成一个浮点数，可以在项目中定义如下宏：
+```</p>
+
+<h1>define ARC4RANDOM_MAX      0x100000000</h1>
+
+<p>```</p>
+
+<p>然后就可以使用arc4random() 来获取0到100之间浮点数了（精度是rand（）的两倍），代码如下：
+<code>
+double val = floorf(((double)arc4random() / ARC4RANDOM_MAX) * 100.0f);
+</code></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[近期iOS学习点]]></title>
+    <link href="http://cqror.com/blog/2011-12-18-ios-learn-note/"/>
+    <updated>2011-12-18T20:44:00+08:00</updated>
+    <id>http://cqror.com/blog/ios-learn-note</id>
+    <content type="html"><![CDATA[<p>虽然我业余在学iOS，但是感觉进步缓慢。为了使我的iOS开发的学习效率高一点，我决定先列一个简要的提纲，明确当前一个阶段的学习计划。</p>
+
+<ol>
+<li><p>iOS体系，了解清楚UI组件的体系</p></li>
+<li><p>Objective-C中的基本数据结构使用</p></li>
+<li><p>iOS中的基本的网络编程，主要是iOS客户端方的,如json,http交互等。</p></li>
+</ol>
+
+
+<p>先就这么多，每天要进步一点.</p>
+]]></content>
+  </entry>
+  
+</feed>
