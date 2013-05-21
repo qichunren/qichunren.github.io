@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: cocos2d | sdd]]></title>
-  <link href="http://cqror.com/blog/categories/cocos2d/atom.xml" rel="self"/>
-  <link href="http://cqror.com/"/>
-  <updated>2013-05-21T13:33:10+08:00</updated>
-  <id>http://cqror.com/</id>
+  <title><![CDATA[Category: cocos2d | 蕲春人的博客]]></title>
+  <link href="http://qichunren.github.io/blog/categories/cocos2d/atom.xml" rel="self"/>
+  <link href="http://qichunren.github.io/"/>
+  <updated>2013-05-21T13:42:14+08:00</updated>
+  <id>http://qichunren.github.io/</id>
   <author>
     <name><![CDATA[qichunren]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Fixed a problem with creating texture background in cocos2d]]></title>
-    <link href="http://cqror.com/blog/2012-06-03-fixed-a-problem-with-creating-texture-background-in-cocos2d/"/>
+    <link href="http://qichunren.github.io/blog/2012-06-03-fixed-a-problem-with-creating-texture-background-in-cocos2d/"/>
     <updated>2012-06-03T22:01:00+08:00</updated>
-    <id>http://cqror.com/blog/fixed-a-problem-with-creating-texture-background-in-cocos2d</id>
+    <id>http://qichunren.github.io/blog/fixed-a-problem-with-creating-texture-background-in-cocos2d</id>
     <content type="html"><![CDATA[<p>我尝试在cocos2d游戏中使用小图片重复平铺的方式来创建游戏背景时, 总是遇到这个问题，报错如下:</p>
 
 <p><code>

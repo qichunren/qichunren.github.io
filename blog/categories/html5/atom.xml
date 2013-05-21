@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: html5 | sdd]]></title>
-  <link href="http://cqror.com/blog/categories/html5/atom.xml" rel="self"/>
-  <link href="http://cqror.com/"/>
-  <updated>2013-05-21T13:33:10+08:00</updated>
-  <id>http://cqror.com/</id>
+  <title><![CDATA[Category: html5 | 蕲春人的博客]]></title>
+  <link href="http://qichunren.github.io/blog/categories/html5/atom.xml" rel="self"/>
+  <link href="http://qichunren.github.io/"/>
+  <updated>2013-05-21T13:42:14+08:00</updated>
+  <id>http://qichunren.github.io/</id>
   <author>
     <name><![CDATA[qichunren]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[学习HTML5杂记]]></title>
-    <link href="http://cqror.com/blog/2011-05-09-learn-html5/"/>
+    <link href="http://qichunren.github.io/blog/2011-05-09-learn-html5/"/>
     <updated>2011-05-09T11:30:00+08:00</updated>
-    <id>http://cqror.com/blog/learn-html5</id>
+    <id>http://qichunren.github.io/blog/learn-html5</id>
     <content type="html"><![CDATA[<h3>什么是 HTML5？</h3>
 
 <p>HTML5 将成为 HTML、XHTML 以及 HTML DOM 的新标准。

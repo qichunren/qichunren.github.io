@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: github | sdd]]></title>
-  <link href="http://cqror.com/blog/categories/github/atom.xml" rel="self"/>
-  <link href="http://cqror.com/"/>
-  <updated>2013-05-21T13:33:10+08:00</updated>
-  <id>http://cqror.com/</id>
+  <title><![CDATA[Category: github | 蕲春人的博客]]></title>
+  <link href="http://qichunren.github.io/blog/categories/github/atom.xml" rel="self"/>
+  <link href="http://qichunren.github.io/"/>
+  <updated>2013-05-21T13:42:14+08:00</updated>
+  <id>http://qichunren.github.io/</id>
   <author>
     <name><![CDATA[qichunren]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Create a blog at github]]></title>
-    <link href="http://cqror.com/blog/2010-05-05-create-a-blog-at-github/"/>
+    <link href="http://qichunren.github.io/blog/2010-05-05-create-a-blog-at-github/"/>
     <updated>2010-05-05T17:09:09+08:00</updated>
-    <id>http://cqror.com/blog/create-a-blog-at-github</id>
+    <id>http://qichunren.github.io/blog/create-a-blog-at-github</id>
     <content type="html"><![CDATA[<p>First ,of course you must have an account at github.
  assume your loign id at github is "xiaofeiren",
 Then create a new repost at github called "xiaofeiren.github.com"</p>

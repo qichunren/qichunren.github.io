@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[sdd]]></title>
-  <link href="http://cqror.com/atom.xml" rel="self"/>
-  <link href="http://cqror.com/"/>
-  <updated>2013-05-21T13:33:10+08:00</updated>
-  <id>http://cqror.com/</id>
+  <title><![CDATA[蕲春人的博客]]></title>
+  <link href="http://qichunren.github.io/atom.xml" rel="self"/>
+  <link href="http://qichunren.github.io/"/>
+  <updated>2013-05-21T13:42:14+08:00</updated>
+  <id>http://qichunren.github.io/</id>
   <author>
     <name><![CDATA[qichunren]]></name>
     
@@ -14,21 +14,10 @@
 
   
   <entry>
-    <title type="html"><![CDATA[我遇到的程序员(1)]]></title>
-    <link href="http://cqror.com/blog/2013-04-27-programers-i-meet/"/>
-    <updated>2013-04-27T12:10:00+08:00</updated>
-    <id>http://cqror.com/blog/programers-i-meet</id>
-    <content type="html"><![CDATA[<p>写这个是想把我见过的有特点的程序员列出来，作一个记录。</p>
-
-<p>我遇到的这个程序员有一个很</p>
-]]></content>
-  </entry>
-  
-  <entry>
     <title type="html"><![CDATA[Use postgres database on Mac Lion]]></title>
-    <link href="http://cqror.com/blog/2012-11-27-start-use-postgresql/"/>
+    <link href="http://qichunren.github.io/blog/2012-11-27-start-use-postgresql/"/>
     <updated>2012-11-27T10:52:00+08:00</updated>
-    <id>http://cqror.com/blog/start-use-postgresql</id>
+    <id>http://qichunren.github.io/blog/start-use-postgresql</id>
     <content type="html"><![CDATA[<h3>brew info postgresql</h3>
 
 <pre>
@@ -321,9 +310,9 @@ luna_production=> ALTER USER luna WITH PASSWORD ‘whateverpasswordyouwant’;
   
   <entry>
     <title type="html"><![CDATA[Ruby China Chrome浏览器插件]]></title>
-    <link href="http://cqror.com/blog/2012-06-18-i-build-ruby-china-chrome-extension/"/>
+    <link href="http://qichunren.github.io/blog/2012-06-18-i-build-ruby-china-chrome-extension/"/>
     <updated>2012-06-18T14:56:00+08:00</updated>
-    <id>http://cqror.com/blog/i-build-ruby-china-chrome-extension</id>
+    <id>http://qichunren.github.io/blog/i-build-ruby-china-chrome-extension</id>
     <content type="html"><![CDATA[<p>前几天，我花了几天业余时间制作了Ruby China社区网站的Chrome浏览器插件，通过这个插件可以：</p>
 
 <ul>
@@ -340,9 +329,9 @@ luna_production=> ALTER USER luna WITH PASSWORD ‘whateverpasswordyouwant’;
   
   <entry>
     <title type="html"><![CDATA[使用SSH代理来访访问远程mysql机器]]></title>
-    <link href="http://cqror.com/blog/2012-06-04-use-ssh-proxy-port-trick/"/>
+    <link href="http://qichunren.github.io/blog/2012-06-04-use-ssh-proxy-port-trick/"/>
     <updated>2012-06-04T17:31:00+08:00</updated>
-    <id>http://cqror.com/blog/use-ssh-proxy-port-trick</id>
+    <id>http://qichunren.github.io/blog/use-ssh-proxy-port-trick</id>
     <content type="html"><![CDATA[<p>默认安装的mysql的Linux机器基于安全的原因，一般不支持mysql的远程连接访问。有几种方法可以修改配置来让mysql服务器支持远程连接。但是通过ssh的代理功能，可以不用修改服务器配置，来支持从远程连接mysql服务器。</p>
 
 <p>在本地通过ssh连接远程的mysql所在的服务器</p>
@@ -357,9 +346,9 @@ luna_production=> ALTER USER luna WITH PASSWORD ‘whateverpasswordyouwant’;
   
   <entry>
     <title type="html"><![CDATA[Fixed a problem with creating texture background in cocos2d]]></title>
-    <link href="http://cqror.com/blog/2012-06-03-fixed-a-problem-with-creating-texture-background-in-cocos2d/"/>
+    <link href="http://qichunren.github.io/blog/2012-06-03-fixed-a-problem-with-creating-texture-background-in-cocos2d/"/>
     <updated>2012-06-03T22:01:00+08:00</updated>
-    <id>http://cqror.com/blog/fixed-a-problem-with-creating-texture-background-in-cocos2d</id>
+    <id>http://qichunren.github.io/blog/fixed-a-problem-with-creating-texture-background-in-cocos2d</id>
     <content type="html"><![CDATA[<p>我尝试在cocos2d游戏中使用小图片重复平铺的方式来创建游戏背景时, 总是遇到这个问题，报错如下:</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -398,9 +387,9 @@ luna_production=> ALTER USER luna WITH PASSWORD ‘whateverpasswordyouwant’;
   
   <entry>
     <title type="html"><![CDATA[怎么样从git提交历史里永久删除一个文件?]]></title>
-    <link href="http://cqror.com/blog/2012-05-17-how-to-remove-a-file-from-git-history-forever/"/>
+    <link href="http://qichunren.github.io/blog/2012-05-17-how-to-remove-a-file-from-git-history-forever/"/>
     <updated>2012-05-17T15:04:00+08:00</updated>
-    <id>http://cqror.com/blog/how-to-remove-a-file-from-git-history-forever</id>
+    <id>http://qichunren.github.io/blog/how-to-remove-a-file-from-git-history-forever</id>
     <content type="html"><![CDATA[<p>需要整理</p>
 
 <h2>参考资料</h2>
@@ -416,9 +405,9 @@ luna_production=> ALTER USER luna WITH PASSWORD ‘whateverpasswordyouwant’;
   
   <entry>
     <title type="html"><![CDATA[通过update-rc.d来管理Ubuntu系统的自动启动程序]]></title>
-    <link href="http://cqror.com/blog/2012-03-14-how-to-managing-services-with-update-rc-dot-d/"/>
+    <link href="http://qichunren.github.io/blog/2012-03-14-how-to-managing-services-with-update-rc-dot-d/"/>
     <updated>2012-03-14T11:30:00+08:00</updated>
-    <id>http://cqror.com/blog/how-to-managing-services-with-update-rc-dot-d</id>
+    <id>http://qichunren.github.io/blog/how-to-managing-services-with-update-rc-dot-d</id>
     <content type="html"><![CDATA[<p>转载, 并记下我的使用心得。</p>
 
 <p>Linux services can be started, stopped and reloaded with the use of scripts stocked in /etc/init.d/.
@@ -762,9 +751,9 @@ To force apache2 to be started with priorities 91 for both Start and Kill, we ne
   
   <entry>
     <title type="html"><![CDATA[Use Rubyencoder encrypt ruby code]]></title>
-    <link href="http://cqror.com/blog/2012-02-27-use-rubyencoder-encrypt-ruby-code/"/>
+    <link href="http://qichunren.github.io/blog/2012-02-27-use-rubyencoder-encrypt-ruby-code/"/>
     <updated>2012-02-27T13:10:00+08:00</updated>
-    <id>http://cqror.com/blog/use-rubyencoder-encrypt-ruby-code</id>
+    <id>http://qichunren.github.io/blog/use-rubyencoder-encrypt-ruby-code</id>
     <content type="html"><![CDATA[<p>前些时候研究了一下ruby encoder的加密技术应用，在这里记录一下它的使用过程。</p>
 
 <p><a href="http://rubyencoder.com/">Ruby Encoder</a>将ruby代码加密成不易阅读的格式，然后通过它提供的加载类型来载入ruby代码，从而达到加密的目的。它是一个付费软件，一个许可证要159美金，提供试用版，可以试用一个星期，支持Linux \ FreeBSD \ Mac OS X \ Windows系统。</p>
@@ -949,9 +938,9 @@ To force apache2 to be started with priorities 91 for both Start and Kill, we ne
   
   <entry>
     <title type="html"><![CDATA[Create custom tags in Smarty 3]]></title>
-    <link href="http://cqror.com/blog/2012-02-26-create-custom-tags-in-smarty/"/>
+    <link href="http://qichunren.github.io/blog/2012-02-26-create-custom-tags-in-smarty/"/>
     <updated>2012-02-26T14:21:00+08:00</updated>
-    <id>http://cqror.com/blog/create-custom-tags-in-smarty</id>
+    <id>http://qichunren.github.io/blog/create-custom-tags-in-smarty</id>
     <content type="html"><![CDATA[<p>接着上一篇，还是来说说PHP模板引擎Smarty。PHP的众多CMS框架，如DEDE CMS，对于前端展示都是有一套自己开发的标签，用于显示管理后台维护的数据。在DEDECMS中，如下的代码</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -1054,9 +1043,9 @@ To force apache2 to be started with priorities 91 for both Start and Kill, we ne
   
   <entry>
     <title type="html"><![CDATA[Use Smarty template in CodeIgniter]]></title>
-    <link href="http://cqror.com/blog/2012-02-11-use-smarty-template-in-codeigniter/"/>
+    <link href="http://qichunren.github.io/blog/2012-02-11-use-smarty-template-in-codeigniter/"/>
     <updated>2012-02-11T16:57:00+08:00</updated>
-    <id>http://cqror.com/blog/use-smarty-template-in-codeigniter</id>
+    <id>http://qichunren.github.io/blog/use-smarty-template-in-codeigniter</id>
     <content type="html"><![CDATA[<p><a href="http://codeigniter.com/">CodeIgniter</a>是一个不错的PHP开发框架，很合我的口味，我做的一些PHP项目就是用的它。</p>
 
 <p><a href="http://www.smarty.net/">Smarty</a>是目前业界最著名的PHP模板引擎之一。它分离了逻辑代码和外在的内容，提供了一种易于管理和使用的方法，用来将原本与HTML代码混杂在一起的PHP代码逻辑分离。</p>
@@ -1079,25 +1068,151 @@ To force apache2 to be started with priorities 91 for both Start and Kill, we ne
 </span><span class='line'>Smarty.class.php  SmartyBC.class.php  debug.tpl       plugins/        sysplugins/</span></code></pre></td></tr></table></div></figure>
 
 
-<p>2: 在application/libraries目录中创建Smarty.php文件。
-Liquid error: invalid byte sequence in US-ASCII
-根据代码中的smarty目录配置，需要在application/views中建立templates_c\templates\cache三个目录.
+<p>2: 在application/libraries目录中创建Smarty.php文件。</p>
+
+<figure class='code'><figcaption><span>application/libraries/Smarty.php  </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span> <span class="k">if</span> <span class="p">(</span> <span class="o">!</span> <span class="nb">defined</span><span class="p">(</span><span class="s1">&#39;BASEPATH&#39;</span><span class="p">))</span> <span class="k">exit</span><span class="p">(</span><span class="s1">&#39;No direct script access allowed&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">require_once</span><span class="p">(</span><span class="s1">&#39;smarty/Smarty.class.php&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">CI_Smarty</span> <span class="k">extends</span> <span class="nx">Smarty</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">function</span> <span class="nf">__construct</span><span class="p">(){</span>
+</span><span class='line'>          <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">();</span>
+</span><span class='line'>                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">compile_dir</span> <span class="o">=</span> <span class="nx">FCPATH</span> <span class="o">.</span> <span class="s2">&quot;application/views/templates_c&quot;</span><span class="p">;</span>
+</span><span class='line'>                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">template_dir</span> <span class="o">=</span> <span class="nx">FCPATH</span> <span class="o">.</span> <span class="s2">&quot;application/views/templates&quot;</span><span class="p">;</span>
+</span><span class='line'>                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">cache_dir</span> <span class="o">=</span> <span class="nx">FCPATH</span> <span class="o">.</span> <span class="s2">&quot;application/views/cache&quot;</span><span class="p">;</span><span class="c1">//缓存目录</span>
+</span><span class='line'>                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">caching</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</span><span class='line'>                <span class="c1">//$this-&gt;cache_lifetime = 120; //缓存更新时间</span>
+</span><span class='line'>                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">debugging</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+</span><span class='line'>                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">compile_check</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span> <span class="c1">// 检查当前的模板是否自上次编译后被更改；如果被更改了，它将重新编译该模板。</span>
+</span><span class='line'>                <span class="c1">//$this-&gt;force_compile = true; // 强制重新编译模板</span>
+</span><span class='line'>                <span class="c1">//$this-&gt;allow_php_templates= true; // 开启PHP模板</span>
+</span><span class='line'>                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">left_delimiter</span> <span class="o">=</span> <span class="s2">&quot;{&quot;</span><span class="p">;</span> <span class="c1">//左定界符</span>
+</span><span class='line'>                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">right_delimiter</span> <span class="o">=</span> <span class="s2">&quot;}&quot;</span><span class="p">;</span> <span class="c1">//右定界符</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="cp">?&gt;</span><span class="x"></span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>根据代码中的smarty目录配置，需要在application/views中建立templates_c\templates\cache三个目录.
 这就算创建好了。</p>
 
 <p>3: 使用方法。
-控制器中的代码:
-Liquid error: invalid byte sequence in US-ASCII</p>
+控制器中的代码:</p>
 
-<p>模板代码:
-Liquid error: invalid byte sequence in US-ASCII</p>
+<figure class='code'><figcaption><span>application/controllers/debug.php  </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span> <span class="k">if</span> <span class="p">(</span> <span class="o">!</span> <span class="nb">defined</span><span class="p">(</span><span class="s1">&#39;BASEPATH&#39;</span><span class="p">))</span> <span class="k">exit</span><span class="p">(</span><span class="s1">&#39;No direct script access allowed&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">Debug</span> <span class="k">extends</span> <span class="nx">MY_Controller</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">function</span> <span class="nf">__construct</span><span class="p">()</span>
+</span><span class='line'>  <span class="p">{</span>
+</span><span class='line'>    <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">();</span>
+</span><span class='line'>    <span class="c1">// Write your own initialize code</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">function</span> <span class="nf">index</span><span class="p">(){</span>
+</span><span class='line'>      <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">load</span><span class="o">-&gt;</span><span class="na">library</span><span class="p">(</span><span class="s1">&#39;smarty&#39;</span><span class="p">);</span>
+</span><span class='line'>      <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">smarty</span><span class="o">-&gt;</span><span class="na">assign</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">,</span><span class="s2">&quot;smarty template&quot;</span><span class="p">);</span>
+</span><span class='line'>      <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">smarty</span><span class="o">-&gt;</span><span class="na">assign</span><span class="p">(</span><span class="s2">&quot;body&quot;</span><span class="p">,</span><span class="s2">&quot;欢迎使用smarty模板引擎&quot;</span><span class="p">);</span>
+</span><span class='line'>      <span class="nv">$arr</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="mi">1</span> <span class="o">=&gt;</span> <span class="s1">&#39;number 1&#39;</span><span class="p">,</span> <span class="mi">2</span> <span class="o">=&gt;</span> <span class="s1">&#39;number 2&#39;</span><span class="p">,</span> <span class="mi">3</span> <span class="o">=&gt;</span> <span class="s1">&#39;number 3&#39;</span><span class="p">);</span>
+</span><span class='line'>      <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">smarty</span><span class="o">-&gt;</span><span class="na">assign</span><span class="p">(</span><span class="s2">&quot;myarray&quot;</span><span class="p">,</span> <span class="nv">$arr</span><span class="p">);</span>
+</span><span class='line'>      <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">smarty</span><span class="o">-&gt;</span><span class="na">display</span><span class="p">(</span><span class="s1">&#39;index.html&#39;</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>模板代码:</p>
+
+<figure class='code'><figcaption><span>application/views/templates/index.html  </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="cp">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;</span>
+</span><span class='line'><span class="nt">&lt;html</span> <span class="na">xmlns=</span><span class="s">&quot;http://www.w3.org/1999/xhtml&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'><span class="nt">&lt;head&gt;</span>
+</span><span class='line'><span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">&quot;Content-Type&quot;</span> <span class="na">content=</span><span class="s">&quot;text/html; charset=utf-8&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;title&gt;</span>smarty模板使用示例<span class="nt">&lt;/title&gt;</span>
+</span><span class='line'><span class="nt">&lt;/head&gt;</span>
+</span><span class='line'><span class="nt">&lt;body&gt;</span>
+</span><span class='line'><span class="nt">&lt;h1&gt;</span>{$title}<span class="nt">&lt;/h1&gt;</span>
+</span><span class='line'><span class="nt">&lt;p&gt;</span>{$body}<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'><span class="nt">&lt;ul&gt;</span>
+</span><span class='line'>        {foreach from=$myarray item=v}
+</span><span class='line'>        <span class="nt">&lt;li&gt;</span>{$v}<span class="nt">&lt;/li&gt;</span>
+</span><span class='line'>       {/foreach}
+</span><span class='line'><span class="nt">&lt;/ul&gt;</span>
+</span><span class='line'><span class="nt">&lt;/body&gt;</span>
+</span><span class='line'><span class="nt">&lt;/html&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[使用ffaker来产生随机数据]]></title>
-    <link href="http://cqror.com/blog/2012-01-19-use-ffaker/"/>
+    <link href="http://qichunren.github.io/blog/2012-01-19-use-ffaker/"/>
     <updated>2012-01-19T22:01:00+08:00</updated>
-    <id>http://cqror.com/blog/use-ffaker</id>
+    <id>http://qichunren.github.io/blog/use-ffaker</id>
     <content type="html"><![CDATA[<p><a href="https://github.com/EmmanuelOga/ffaker">ffaker</a>是一个用来产生随机name\email之类的工具，可以用在开发时先产生一些有意义的随机数据，将数据写在db/seeds.rb中，这样你就不用每次急燥地添加一些asasddfdsf这样的数据。一个好的工作开发环境，可以让心情舒畅，效率加倍。</p>
 
 <p>在db/seeds.rb中，如果要产生100个用户名，直接这样做：</p>
@@ -1121,8 +1236,20 @@ Liquid error: invalid byte sequence in US-ASCII</p>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>我前一段时间，提交了<a href="https://github.com/EmmanuelOga/ffaker/pull/9">一点代码</a> ，可以产生天朝的姓名：
-Liquid error: invalid byte sequence in US-ASCII</p>
+<p>我前一段时间，提交了<a href="https://github.com/EmmanuelOga/ffaker/pull/9">一点代码</a> ，可以产生天朝的姓名：</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s1">&#39;ffaker&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="no">Faker</span><span class="o">::</span><span class="no">NameCN</span><span class="o">.</span><span class="n">first_name</span> <span class="c1"># =&gt; 鑫洋</span>
+</span><span class='line'><span class="no">Faker</span><span class="o">::</span><span class="no">NameCN</span><span class="o">.</span><span class="n">last_name</span> <span class="c1"># =&gt; 禹</span>
+</span><span class='line'><span class="no">Faker</span><span class="o">::</span><span class="no">NameCN</span><span class="o">.</span><span class="n">name</span> <span class="c1"># =&gt; 俊伶漫</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>ffaker目前最新的版本是1.2，可以产生中文的姓名。</p>
 ]]></content>
@@ -1130,9 +1257,9 @@ Liquid error: invalid byte sequence in US-ASCII</p>
   
   <entry>
     <title type="html"><![CDATA[Customizing rails generator templates]]></title>
-    <link href="http://cqror.com/blog/2012-01-12-customizing-rails-generator-templates/"/>
+    <link href="http://qichunren.github.io/blog/2012-01-12-customizing-rails-generator-templates/"/>
     <updated>2012-01-12T13:49:00+08:00</updated>
-    <id>http://cqror.com/blog/customizing-rails-generator-templates</id>
+    <id>http://qichunren.github.io/blog/customizing-rails-generator-templates</id>
     <content type="html"><![CDATA[<p>Rails framework and twitter bootstrap are good for your startup project, build-in generators generate source code by its way. It is  a good starting point.</p>
 
 <p>But I often have to change default generted source code:</p>
@@ -1152,9 +1279,9 @@ Liquid error: invalid byte sequence in US-ASCII</p>
   
   <entry>
     <title type="html"><![CDATA[How to update a forked repository from original repository at github?]]></title>
-    <link href="http://cqror.com/blog/2012-01-09-update-forked-repository-from-original-repository-at-github/"/>
+    <link href="http://qichunren.github.io/blog/2012-01-09-update-forked-repository-from-original-repository-at-github/"/>
     <updated>2012-01-09T12:39:00+08:00</updated>
-    <id>http://cqror.com/blog/update-forked-repository-from-original-repository-at-github</id>
+    <id>http://qichunren.github.io/blog/update-forked-repository-from-original-repository-at-github</id>
     <content type="html"><![CDATA[<p>If you use github, you can follow this.</p>
 
 <p>I use <a href="https://github.com/huacnlee/ruby-china">huachlee/ruby-china</a> repository for example.</p>
@@ -1211,9 +1338,9 @@ Liquid error: invalid byte sequence in US-ASCII</p>
   
   <entry>
     <title type="html"><![CDATA[iOS中的arc4random方法]]></title>
-    <link href="http://cqror.com/blog/2012-01-04-arc4random-in-ios/"/>
+    <link href="http://qichunren.github.io/blog/2012-01-04-arc4random-in-ios/"/>
     <updated>2012-01-04T22:49:00+08:00</updated>
-    <id>http://cqror.com/blog/arc4random-in-ios</id>
+    <id>http://qichunren.github.io/blog/arc4random-in-ios</id>
     <content type="html"><![CDATA[<p>通过arc4random() 获取0到x-1之间的整数的代码如下:</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -1242,9 +1369,9 @@ Liquid error: invalid byte sequence in US-ASCII</p>
   
   <entry>
     <title type="html"><![CDATA[在Rails3中使用ajax]]></title>
-    <link href="http://cqror.com/blog/2011-12-22-use-ajax-in-rails3-note/"/>
+    <link href="http://qichunren.github.io/blog/2011-12-22-use-ajax-in-rails3-note/"/>
     <updated>2011-12-22T16:36:00+08:00</updated>
-    <id>http://cqror.com/blog/use-ajax-in-rails3-note</id>
+    <id>http://qichunren.github.io/blog/use-ajax-in-rails3-note</id>
     <content type="html"><![CDATA[<p>今天写代码的时候突然发现 我之前在Rails3中使用ajax的方式是不太正确的，我走了弯路。</p>
 
 <p>我之前在Rails3项目中使用ajax是这样的：</p>
@@ -1296,9 +1423,9 @@ Liquid error: invalid byte sequence in US-ASCII</p>
   
   <entry>
     <title type="html"><![CDATA[mongodb的可视化客户端工具:MongoHub]]></title>
-    <link href="http://cqror.com/blog/2011-12-20-mongodb-ui-client-mongohub/"/>
+    <link href="http://qichunren.github.io/blog/2011-12-20-mongodb-ui-client-mongohub/"/>
     <updated>2011-12-20T17:31:00+08:00</updated>
-    <id>http://cqror.com/blog/mongodb-ui-client-mongohub</id>
+    <id>http://qichunren.github.io/blog/mongodb-ui-client-mongohub</id>
     <content type="html"><![CDATA[<p>最近在使用mongodb,经常要调试，然后找到了MongoHub这款工具，感觉很好。</p>
 
 <p><a href="http://mongohub.todayclose.com/">MongoHub网站</a></p>
@@ -1309,9 +1436,9 @@ Liquid error: invalid byte sequence in US-ASCII</p>
   
   <entry>
     <title type="html"><![CDATA[近期iOS学习点]]></title>
-    <link href="http://cqror.com/blog/2011-12-18-ios-learn-note/"/>
+    <link href="http://qichunren.github.io/blog/2011-12-18-ios-learn-note/"/>
     <updated>2011-12-18T20:44:00+08:00</updated>
-    <id>http://cqror.com/blog/ios-learn-note</id>
+    <id>http://qichunren.github.io/blog/ios-learn-note</id>
     <content type="html"><![CDATA[<p>虽然我业余在学iOS，但是感觉进步缓慢。为了使我的iOS开发的学习效率高一点，我决定先列一个简要的提纲，明确当前一个阶段的学习计划。</p>
 
 <ol>
@@ -1327,9 +1454,9 @@ Liquid error: invalid byte sequence in US-ASCII</p>
   
   <entry>
     <title type="html"><![CDATA[Shell学习小记录]]></title>
-    <link href="http://cqror.com/blog/2011-10-18-learning-shell-tip-note/"/>
+    <link href="http://qichunren.github.io/blog/2011-10-18-learning-shell-tip-note/"/>
     <updated>2011-10-18T20:44:00+08:00</updated>
-    <id>http://cqror.com/blog/learning-shell-tip-note</id>
+    <id>http://qichunren.github.io/blog/learning-shell-tip-note</id>
     <content type="html"><![CDATA[<p>最近为了一些自动化的任务，要写一些脚本。可以使用Ruby脚本、Ruby的rake\thor等等，我为了简洁和性能，我了解了一下Shell，发现用Shell来做这个事情更合适。性能，命令行，管道，丰富的现有工具，基于Linux本身，Shell真是一个好东西。以前认为用Ruby来做这个事情是一个不错的选择，现在知道了，那是因为相比起Shell来，更熟悉Ruby，程序员总是喜欢自己熟悉的领域，而排斥自己不熟悉的领域。其实多了解一下其它方面的，更利用自己工作的开展，提高工作效率。</p>
 
 <p>我随便总结一下几个知识点</p>
@@ -1438,9 +1565,9 @@ Liquid error: invalid byte sequence in US-ASCII</p>
   
   <entry>
     <title type="html"><![CDATA[网页截屏的方法]]></title>
-    <link href="http://cqror.com/blog/2011-10-13-capture-webpage/"/>
+    <link href="http://qichunren.github.io/blog/2011-10-13-capture-webpage/"/>
     <updated>2011-10-13T06:09:09+08:00</updated>
-    <id>http://cqror.com/blog/capture-webpage</id>
+    <id>http://qichunren.github.io/blog/capture-webpage</id>
     <content type="html"><![CDATA[<p>曾经很想有这样一个app, 它可以将微博上用户的微博用图片的形式自动保存起来，留此存照。前几个月的那段时间，微博上很
 网页截屏的基本原理就是通过取得webkit渲染（render）的数据来生成图片的，我经过一段时间研究，找到了两个方法来解决这个问题。</p>
 
@@ -1553,9 +1680,9 @@ Liquid error: invalid byte sequence in US-ASCII</p>
   
   <entry>
     <title type="html"><![CDATA[使用Jruby来部署Rails应用]]></title>
-    <link href="http://cqror.com/blog/2011-08-27-deploy-rails-project-with-jruby/"/>
+    <link href="http://qichunren.github.io/blog/2011-08-27-deploy-rails-project-with-jruby/"/>
     <updated>2011-08-27T06:36:22+08:00</updated>
-    <id>http://cqror.com/blog/deploy-rails-project-with-jruby</id>
+    <id>http://qichunren.github.io/blog/deploy-rails-project-with-jruby</id>
     <content type="html"><![CDATA[<p>为了保护最近做的产品的源代码，需要将项目中的源代码进行保护起来。我目前了解到的方案有以下两种：</p>
 
 <ol>
@@ -1893,6 +2020,57 @@ Liquid error: invalid byte sequence in US-ASCII</p>
 
 
 <p>需要注意的是config.features = %w(executable compiled)配置中，其中的compiled就是可以将ruby代码编译成class代码的。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Set proxy in server side to get crossing domain ajax request]]></title>
+    <link href="http://qichunren.github.io/blog/2011-08-18-proxy-in-server-side-for-ajax-crossing-domain/"/>
+    <updated>2011-08-18T07:12:12+08:00</updated>
+    <id>http://qichunren.github.io/blog/proxy-in-server-side-for-ajax-crossing-domain</id>
+    <content type="html"><![CDATA[
+
+<figure class='code'><figcaption><span>proxy_controller.rb  </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">ProxyController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1"># GET /proxy/:url</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">get_handle</span>
+</span><span class='line'>    <span class="nb">require</span> <span class="s1">&#39;open-uri&#39;</span>
+</span><span class='line'>    <span class="n">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:url</span><span class="o">]</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">contents</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">read</span>
+</span><span class='line'>    <span class="n">render</span> <span class="ss">:text</span> <span class="o">=&gt;</span> <span class="n">contents</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span>in config/routes.rb  </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">get</span> <span class="s2">&quot;/proxy&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;proxy#get_handle&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span>javascript useage  </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">$</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;/proxy?url=&quot;</span> <span class="o">+</span> <span class="nx">remote_url</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">){</span>
+</span></code></pre></td></tr></table></div></figure>
+
 ]]></content>
   </entry>
   

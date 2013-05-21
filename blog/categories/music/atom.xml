@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: music | sdd]]></title>
-  <link href="http://cqror.com/blog/categories/music/atom.xml" rel="self"/>
-  <link href="http://cqror.com/"/>
-  <updated>2013-05-21T13:33:10+08:00</updated>
-  <id>http://cqror.com/</id>
+  <title><![CDATA[Category: music | 蕲春人的博客]]></title>
+  <link href="http://qichunren.github.io/blog/categories/music/atom.xml" rel="self"/>
+  <link href="http://qichunren.github.io/"/>
+  <updated>2013-05-21T13:42:14+08:00</updated>
+  <id>http://qichunren.github.io/</id>
   <author>
     <name><![CDATA[qichunren]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[听《Sara》]]></title>
-    <link href="http://cqror.com/blog/2011-05-03-listen-to-sara/"/>
+    <link href="http://qichunren.github.io/blog/2011-05-03-listen-to-sara/"/>
     <updated>2011-05-03T17:10:12+08:00</updated>
-    <id>http://cqror.com/blog/listen-to-sara</id>
+    <id>http://qichunren.github.io/blog/listen-to-sara</id>
     <content type="html"><![CDATA[<p>Sara这首歌太好听了，虽然没有清楚具体是唱什么，但我感觉是讲一个故事，很好奇，我找到了歌词。</p>
 
 <p>Sara

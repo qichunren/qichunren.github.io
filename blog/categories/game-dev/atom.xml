@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: game-dev | sdd]]></title>
-  <link href="http://cqror.com/blog/categories/game-dev/atom.xml" rel="self"/>
-  <link href="http://cqror.com/"/>
-  <updated>2013-05-21T13:33:10+08:00</updated>
-  <id>http://cqror.com/</id>
+  <title><![CDATA[Category: game-dev | 蕲春人的博客]]></title>
+  <link href="http://qichunren.github.io/blog/categories/game-dev/atom.xml" rel="self"/>
+  <link href="http://qichunren.github.io/"/>
+  <updated>2013-05-21T13:42:14+08:00</updated>
+  <id>http://qichunren.github.io/</id>
   <author>
     <name><![CDATA[qichunren]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Fixed a problem with creating texture background in cocos2d]]></title>
-    <link href="http://cqror.com/blog/2012-06-03-fixed-a-problem-with-creating-texture-background-in-cocos2d/"/>
+    <link href="http://qichunren.github.io/blog/2012-06-03-fixed-a-problem-with-creating-texture-background-in-cocos2d/"/>
     <updated>2012-06-03T22:01:00+08:00</updated>
-    <id>http://cqror.com/blog/fixed-a-problem-with-creating-texture-background-in-cocos2d</id>
+    <id>http://qichunren.github.io/blog/fixed-a-problem-with-creating-texture-background-in-cocos2d</id>
     <content type="html"><![CDATA[<p>我尝试在cocos2d游戏中使用小图片重复平铺的方式来创建游戏背景时, 总是遇到这个问题，报错如下:</p>
 
 <p><code>
@@ -50,9 +50,9 @@ ccTexParams params = {GL_LINEAR, GL_LINEAR, GL_REPEAT, GL_REPEAT};
   
   <entry>
     <title type="html"><![CDATA[Ruby游戏开发利器Gosu]]></title>
-    <link href="http://cqror.com/blog/2009-05-16-use-ruby-gosu-gem-to-build-game/"/>
+    <link href="http://qichunren.github.io/blog/2009-05-16-use-ruby-gosu-gem-to-build-game/"/>
     <updated>2009-05-16T17:45:00+08:00</updated>
-    <id>http://cqror.com/blog/use-ruby-gosu-gem-to-build-game</id>
+    <id>http://qichunren.github.io/blog/use-ruby-gosu-gem-to-build-game</id>
     <content type="html"><![CDATA[<p>在2009年的Railsconf大会上，Hongli Lai和Ninh Bui of Phusion（开发Passenger的家伙）为了展示Ruby语言的强大，能运行3D游戏，他们构建了一个Wolfenstein游戏的山寨版，用的是<a href="http://www.libgosu.org/">Gosu</a> 游戏开发库。</p>
 
 <p><img src="http://www.libgosu.org/website_header.png" alt="Gosu Logo" /></p>

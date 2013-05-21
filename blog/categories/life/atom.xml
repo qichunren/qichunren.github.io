@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: life | sdd]]></title>
-  <link href="http://cqror.com/blog/categories/life/atom.xml" rel="self"/>
-  <link href="http://cqror.com/"/>
-  <updated>2013-05-21T13:33:10+08:00</updated>
-  <id>http://cqror.com/</id>
+  <title><![CDATA[Category: life | 蕲春人的博客]]></title>
+  <link href="http://qichunren.github.io/blog/categories/life/atom.xml" rel="self"/>
+  <link href="http://qichunren.github.io/"/>
+  <updated>2013-05-21T13:42:14+08:00</updated>
+  <id>http://qichunren.github.io/</id>
   <author>
     <name><![CDATA[qichunren]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[听《Sara》]]></title>
-    <link href="http://cqror.com/blog/2011-05-03-listen-to-sara/"/>
+    <link href="http://qichunren.github.io/blog/2011-05-03-listen-to-sara/"/>
     <updated>2011-05-03T17:10:12+08:00</updated>
-    <id>http://cqror.com/blog/listen-to-sara</id>
+    <id>http://qichunren.github.io/blog/listen-to-sara</id>
     <content type="html"><![CDATA[<p>Sara这首歌太好听了，虽然没有清楚具体是唱什么，但我感觉是讲一个故事，很好奇，我找到了歌词。</p>
 
 <p>Sara
@@ -148,9 +148,9 @@ Don't ever leave me, don't ever go.</p>
   
   <entry>
     <title type="html"><![CDATA[My first post here]]></title>
-    <link href="http://cqror.com/blog/2010-07-28-my-first-post/"/>
+    <link href="http://qichunren.github.io/blog/2010-07-28-my-first-post/"/>
     <updated>2010-07-28T18:09:00+08:00</updated>
-    <id>http://cqror.com/blog/my-first-post</id>
+    <id>http://qichunren.github.io/blog/my-first-post</id>
     <content type="html"><![CDATA[<p>Lol..
 This is my first post,using markdon.
 When I first meet jeklyy, I fall in love with it.</p>
@@ -167,9 +167,9 @@ When I first meet jeklyy, I fall in love with it.</p>
   
   <entry>
     <title type="html"><![CDATA[买票记]]></title>
-    <link href="http://cqror.com/blog/2010-02-01-buy-tickets/"/>
+    <link href="http://qichunren.github.io/blog/2010-02-01-buy-tickets/"/>
     <updated>2010-02-01T11:54:00+08:00</updated>
-    <id>http://cqror.com/blog/buy-tickets</id>
+    <id>http://qichunren.github.io/blog/buy-tickets</id>
     <content type="html"><![CDATA[<p>昨天是周日，下午三点起开售2月10号的票。</p>
 
 <p>早上就搬一个小板凳去排队。</p>
@@ -192,9 +192,9 @@ When I first meet jeklyy, I fall in love with it.</p>
   
   <entry>
     <title type="html"><![CDATA[最近有些郁闷]]></title>
-    <link href="http://cqror.com/blog/2009-12-17-i-fell-unhappy/"/>
+    <link href="http://qichunren.github.io/blog/2009-12-17-i-fell-unhappy/"/>
     <updated>2009-12-17T16:30:00+08:00</updated>
-    <id>http://cqror.com/blog/i-fell-unhappy</id>
+    <id>http://qichunren.github.io/blog/i-fell-unhappy</id>
     <content type="html"><![CDATA[<p>最近工作得很郁闷，很是不爽。</p>
 
 <p>每天的事情说多也不是太多，主要是我担负着业务数据维护和系统开发两个方面的角色，我感觉很是难处理和协调事情，弄得工作效率十分低下。</p>

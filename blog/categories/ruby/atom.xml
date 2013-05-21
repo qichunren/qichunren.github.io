@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: ruby | sdd]]></title>
-  <link href="http://cqror.com/blog/categories/ruby/atom.xml" rel="self"/>
-  <link href="http://cqror.com/"/>
-  <updated>2013-05-21T13:33:10+08:00</updated>
-  <id>http://cqror.com/</id>
+  <title><![CDATA[Category: ruby | 蕲春人的博客]]></title>
+  <link href="http://qichunren.github.io/blog/categories/ruby/atom.xml" rel="self"/>
+  <link href="http://qichunren.github.io/"/>
+  <updated>2013-05-21T13:42:14+08:00</updated>
+  <id>http://qichunren.github.io/</id>
   <author>
     <name><![CDATA[qichunren]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Use Rubyencoder encrypt ruby code]]></title>
-    <link href="http://cqror.com/blog/2012-02-27-use-rubyencoder-encrypt-ruby-code/"/>
+    <link href="http://qichunren.github.io/blog/2012-02-27-use-rubyencoder-encrypt-ruby-code/"/>
     <updated>2012-02-27T13:10:00+08:00</updated>
-    <id>http://cqror.com/blog/use-rubyencoder-encrypt-ruby-code</id>
+    <id>http://qichunren.github.io/blog/use-rubyencoder-encrypt-ruby-code</id>
     <content type="html"><![CDATA[<p>前些时候研究了一下ruby encoder的加密技术应用，在这里记录一下它的使用过程。</p>
 
 <p><a href="http://rubyencoder.com/">Ruby Encoder</a>将ruby代码加密成不易阅读的格式，然后通过它提供的加载类型来载入ruby代码，从而达到加密的目的。它是一个付费软件，一个许可证要159美金，提供试用版，可以试用一个星期，支持Linux \ FreeBSD \ Mac OS X \ Windows系统。</p>
@@ -124,9 +124,9 @@ date of purchase. We do email support.</p></blockquote>
   
   <entry>
     <title type="html"><![CDATA[使用ffaker来产生随机数据]]></title>
-    <link href="http://cqror.com/blog/2012-01-19-use-ffaker/"/>
+    <link href="http://qichunren.github.io/blog/2012-01-19-use-ffaker/"/>
     <updated>2012-01-19T22:01:00+08:00</updated>
-    <id>http://cqror.com/blog/use-ffaker</id>
+    <id>http://qichunren.github.io/blog/use-ffaker</id>
     <content type="html"><![CDATA[<p><a href="https://github.com/EmmanuelOga/ffaker">ffaker</a>是一个用来产生随机name\email之类的工具，可以用在开发时先产生一些有意义的随机数据，将数据写在db/seeds.rb中，这样你就不用每次急燥地添加一些asasddfdsf这样的数据。一个好的工作开发环境，可以让心情舒畅，效率加倍。</p>
 
 <p>在db/seeds.rb中，如果要产生100个用户名，直接这样做：</p>
@@ -154,7 +154,17 @@ date of purchase. We do email support.</p></blockquote>
 </span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <p>我前一段时间，提交了<a href="https://github.com/EmmanuelOga/ffaker/pull/9">一点代码</a> ，可以产生天朝的姓名：
-Liquid error: invalid byte sequence in US-ASCII</p>
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s1">&#39;ffaker&#39;</span><span class="o">&lt;</span><span class="sr">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="sr">&lt;p&gt;Faker::NameCN.first_name # =&gt; 鑫洋</span>
+</span><span class='line'><span class="sr">Faker::NameCN.last_name # =&gt; 禹</span>
+</span><span class='line'><span class="sr">Faker::NameCN.name # =&gt; 俊伶漫</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <p>ffaker目前最新的版本是1.2，可以产生中文的姓名。</p>
 ]]></content>
@@ -162,9 +172,9 @@ Liquid error: invalid byte sequence in US-ASCII</p>
   
   <entry>
     <title type="html"><![CDATA[Customizing rails generator templates]]></title>
-    <link href="http://cqror.com/blog/2012-01-12-customizing-rails-generator-templates/"/>
+    <link href="http://qichunren.github.io/blog/2012-01-12-customizing-rails-generator-templates/"/>
     <updated>2012-01-12T13:49:00+08:00</updated>
-    <id>http://cqror.com/blog/customizing-rails-generator-templates</id>
+    <id>http://qichunren.github.io/blog/customizing-rails-generator-templates</id>
     <content type="html"><![CDATA[<p>Rails framework and twitter bootstrap are good for your startup project, build-in generators generate source code by its way. It is  a good starting point.</p>
 
 <p>But I often have to change default generted source code:</p>
@@ -184,9 +194,9 @@ Liquid error: invalid byte sequence in US-ASCII</p>
   
   <entry>
     <title type="html"><![CDATA[使用Jruby来部署Rails应用]]></title>
-    <link href="http://cqror.com/blog/2011-08-27-deploy-rails-project-with-jruby/"/>
+    <link href="http://qichunren.github.io/blog/2011-08-27-deploy-rails-project-with-jruby/"/>
     <updated>2011-08-27T06:36:22+08:00</updated>
-    <id>http://cqror.com/blog/deploy-rails-project-with-jruby</id>
+    <id>http://qichunren.github.io/blog/deploy-rails-project-with-jruby</id>
     <content type="html"><![CDATA[<p>为了保护最近做的产品的源代码，需要将项目中的源代码进行保护起来。我目前了解到的方案有以下两种：</p>
 
 <ol>
@@ -529,9 +539,9 @@ warble war:debug   # Dump diagnostic information
   
   <entry>
     <title type="html"><![CDATA[使用feedzirra分析提取Feed]]></title>
-    <link href="http://cqror.com/blog/2011-05-05-use_feedzirra_to_fetch_feed/"/>
+    <link href="http://qichunren.github.io/blog/2011-05-05-use_feedzirra_to_fetch_feed/"/>
     <updated>2011-05-05T03:12:12+08:00</updated>
-    <id>http://cqror.com/blog/use_feedzirra_to_fetch_feed</id>
+    <id>http://qichunren.github.io/blog/use_feedzirra_to_fetch_feed</id>
     <content type="html"><![CDATA[<p><a href="https://github.com/pauldix/feedzirra">feedzirra</a> 是一个很好用的提取和分析feed的工具。用法如下：</p>
 
 <p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>

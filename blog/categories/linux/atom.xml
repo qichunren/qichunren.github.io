@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: linux | sdd]]></title>
-  <link href="http://cqror.com/blog/categories/linux/atom.xml" rel="self"/>
-  <link href="http://cqror.com/"/>
-  <updated>2013-05-21T13:33:10+08:00</updated>
-  <id>http://cqror.com/</id>
+  <title><![CDATA[Category: linux | 蕲春人的博客]]></title>
+  <link href="http://qichunren.github.io/blog/categories/linux/atom.xml" rel="self"/>
+  <link href="http://qichunren.github.io/"/>
+  <updated>2013-05-21T13:42:14+08:00</updated>
+  <id>http://qichunren.github.io/</id>
   <author>
     <name><![CDATA[qichunren]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[使用SSH代理来访访问远程mysql机器]]></title>
-    <link href="http://cqror.com/blog/2012-06-04-use-ssh-proxy-port-trick/"/>
+    <link href="http://qichunren.github.io/blog/2012-06-04-use-ssh-proxy-port-trick/"/>
     <updated>2012-06-04T17:31:00+08:00</updated>
-    <id>http://cqror.com/blog/use-ssh-proxy-port-trick</id>
+    <id>http://qichunren.github.io/blog/use-ssh-proxy-port-trick</id>
     <content type="html"><![CDATA[<p>默认安装的mysql的Linux机器基于安全的原因，一般不支持mysql的远程连接访问。有几种方法可以修改配置来让mysql服务器支持远程连接。但是通过ssh的代理功能，可以不用修改服务器配置，来支持从远程连接mysql服务器。</p>
 
 <p>在本地通过ssh连接远程的mysql所在的服务器</p>
@@ -32,9 +32,9 @@ ssh -L 1036:localhost:3306 root@xxx.xx.xx.xxx
   
   <entry>
     <title type="html"><![CDATA[通过update-rc.d来管理Ubuntu系统的自动启动程序]]></title>
-    <link href="http://cqror.com/blog/2012-03-14-how-to-managing-services-with-update-rc-dot-d/"/>
+    <link href="http://qichunren.github.io/blog/2012-03-14-how-to-managing-services-with-update-rc-dot-d/"/>
     <updated>2012-03-14T11:30:00+08:00</updated>
-    <id>http://cqror.com/blog/how-to-managing-services-with-update-rc-dot-d</id>
+    <id>http://qichunren.github.io/blog/how-to-managing-services-with-update-rc-dot-d</id>
     <content type="html"><![CDATA[<p>转载, 并记下我的使用心得。</p>
 
 <p>Linux services can be started, stopped and reloaded with the use of scripts stocked in /etc/init.d/.
@@ -360,9 +360,9 @@ export LANG='en_US.UTF-8'
   
   <entry>
     <title type="html"><![CDATA[Shell学习小记录]]></title>
-    <link href="http://cqror.com/blog/2011-10-18-learning-shell-tip-note/"/>
+    <link href="http://qichunren.github.io/blog/2011-10-18-learning-shell-tip-note/"/>
     <updated>2011-10-18T20:44:00+08:00</updated>
-    <id>http://cqror.com/blog/learning-shell-tip-note</id>
+    <id>http://qichunren.github.io/blog/learning-shell-tip-note</id>
     <content type="html"><![CDATA[<p>最近为了一些自动化的任务，要写一些脚本。可以使用Ruby脚本、Ruby的rake\thor等等，我为了简洁和性能，我了解了一下Shell，发现用Shell来做这个事情更合适。性能，命令行，管道，丰富的现有工具，基于Linux本身，Shell真是一个好东西。以前认为用Ruby来做这个事情是一个不错的选择，现在知道了，那是因为相比起Shell来，更熟悉Ruby，程序员总是喜欢自己熟悉的领域，而排斥自己不熟悉的领域。其实多了解一下其它方面的，更利用自己工作的开展，提高工作效率。</p>
 
 <p>我随便总结一下几个知识点</p>

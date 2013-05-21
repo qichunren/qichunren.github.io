@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: rails | sdd]]></title>
-  <link href="http://cqror.com/blog/categories/rails/atom.xml" rel="self"/>
-  <link href="http://cqror.com/"/>
-  <updated>2013-05-21T13:33:10+08:00</updated>
-  <id>http://cqror.com/</id>
+  <title><![CDATA[Category: rails | 蕲春人的博客]]></title>
+  <link href="http://qichunren.github.io/blog/categories/rails/atom.xml" rel="self"/>
+  <link href="http://qichunren.github.io/"/>
+  <updated>2013-05-21T13:42:14+08:00</updated>
+  <id>http://qichunren.github.io/</id>
   <author>
     <name><![CDATA[qichunren]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[在Rails3中使用ajax]]></title>
-    <link href="http://cqror.com/blog/2011-12-22-use-ajax-in-rails3-note/"/>
+    <link href="http://qichunren.github.io/blog/2011-12-22-use-ajax-in-rails3-note/"/>
     <updated>2011-12-22T16:36:00+08:00</updated>
-    <id>http://cqror.com/blog/use-ajax-in-rails3-note</id>
+    <id>http://qichunren.github.io/blog/use-ajax-in-rails3-note</id>
     <content type="html"><![CDATA[<p>今天写代码的时候突然发现 我之前在Rails3中使用ajax的方式是不太正确的，我走了弯路。</p>
 
 <p>我之前在Rails3项目中使用ajax是这样的：</p>
@@ -69,9 +69,9 @@ ajax:after – after ajax call is sent (note: not after it returns)
   
   <entry>
     <title type="html"><![CDATA[使用Jruby来部署Rails应用]]></title>
-    <link href="http://cqror.com/blog/2011-08-27-deploy-rails-project-with-jruby/"/>
+    <link href="http://qichunren.github.io/blog/2011-08-27-deploy-rails-project-with-jruby/"/>
     <updated>2011-08-27T06:36:22+08:00</updated>
-    <id>http://cqror.com/blog/deploy-rails-project-with-jruby</id>
+    <id>http://qichunren.github.io/blog/deploy-rails-project-with-jruby</id>
     <content type="html"><![CDATA[<p>为了保护最近做的产品的源代码，需要将项目中的源代码进行保护起来。我目前了解到的方案有以下两种：</p>
 
 <ol>
@@ -414,9 +414,9 @@ warble war:debug   # Dump diagnostic information
   
   <entry>
     <title type="html"><![CDATA[Set proxy in server side to get crossing domain ajax request]]></title>
-    <link href="http://cqror.com/blog/2011-08-18-proxy-in-server-side-for-ajax-crossing-domain/"/>
+    <link href="http://qichunren.github.io/blog/2011-08-18-proxy-in-server-side-for-ajax-crossing-domain/"/>
     <updated>2011-08-18T07:12:12+08:00</updated>
-    <id>http://cqror.com/blog/proxy-in-server-side-for-ajax-crossing-domain</id>
+    <id>http://qichunren.github.io/blog/proxy-in-server-side-for-ajax-crossing-domain</id>
     <content type="html"><![CDATA[<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>proxy_controller.rb  </span></figcaption>
  <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -462,9 +462,9 @@ warble war:debug   # Dump diagnostic information
   
   <entry>
     <title type="html"><![CDATA[Fix problem annotate is broken with rails 3.1.1]]></title>
-    <link href="http://cqror.com/blog/2011-06-03-fix-annotate-gem-with-rails3-1-1/"/>
+    <link href="http://qichunren.github.io/blog/2011-06-03-fix-annotate-gem-with-rails3-1-1/"/>
     <updated>2011-06-03T22:01:00+08:00</updated>
-    <id>http://cqror.com/blog/fix-annotate-gem-with-rails3-1-1</id>
+    <id>http://qichunren.github.io/blog/fix-annotate-gem-with-rails3-1-1</id>
     <content type="html"><![CDATA[<p>今天在做一个小工具，使用最新的Rails版本3.1.1, 在使用annotate(2.4.0)这个gem的时候出错了：
 <code>``
 caojinhua:tts_cacher caojinhua$ annotate
@@ -506,9 +506,9 @@ gem 'annotate', :git =&gt; 'git://github.com/ctran/annotate_models.git'
   
   <entry>
     <title type="html"><![CDATA[使用Unicorn]]></title>
-    <link href="http://cqror.com/blog/2011-05-13-use-unicorn-in-rails/"/>
+    <link href="http://qichunren.github.io/blog/2011-05-13-use-unicorn-in-rails/"/>
     <updated>2011-05-13T07:12:12+08:00</updated>
-    <id>http://cqror.com/blog/use-unicorn-in-rails</id>
+    <id>http://qichunren.github.io/blog/use-unicorn-in-rails</id>
     <content type="html"><![CDATA[<h3>Install</h3>
 
 <p><code>

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: tool | sdd]]></title>
-  <link href="http://cqror.com/blog/categories/tool/atom.xml" rel="self"/>
-  <link href="http://cqror.com/"/>
-  <updated>2013-05-21T13:33:10+08:00</updated>
-  <id>http://cqror.com/</id>
+  <title><![CDATA[Category: tool | 蕲春人的博客]]></title>
+  <link href="http://qichunren.github.io/blog/categories/tool/atom.xml" rel="self"/>
+  <link href="http://qichunren.github.io/"/>
+  <updated>2013-05-21T13:42:14+08:00</updated>
+  <id>http://qichunren.github.io/</id>
   <author>
     <name><![CDATA[qichunren]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[mongodb的可视化客户端工具:MongoHub]]></title>
-    <link href="http://cqror.com/blog/2011-12-20-mongodb-ui-client-mongohub/"/>
+    <link href="http://qichunren.github.io/blog/2011-12-20-mongodb-ui-client-mongohub/"/>
     <updated>2011-12-20T17:31:00+08:00</updated>
-    <id>http://cqror.com/blog/mongodb-ui-client-mongohub</id>
+    <id>http://qichunren.github.io/blog/mongodb-ui-client-mongohub</id>
     <content type="html"><![CDATA[<p>最近在使用mongodb,经常要调试，然后找到了MongoHub这款工具，感觉很好。</p>
 
 <p><a href="http://mongohub.todayclose.com/">MongoHub网站</a></p>
@@ -28,9 +28,9 @@
   
   <entry>
     <title type="html"><![CDATA[网页截屏的方法]]></title>
-    <link href="http://cqror.com/blog/2011-10-13-capture-webpage/"/>
+    <link href="http://qichunren.github.io/blog/2011-10-13-capture-webpage/"/>
     <updated>2011-10-13T06:09:09+08:00</updated>
-    <id>http://cqror.com/blog/capture-webpage</id>
+    <id>http://qichunren.github.io/blog/capture-webpage</id>
     <content type="html"><![CDATA[<p>曾经很想有这样一个app, 它可以将微博上用户的微博用图片的形式自动保存起来，留此存照。前几个月的那段时间，微博上很
 网页截屏的基本原理就是通过取得webkit渲染（render）的数据来生成图片的，我经过一段时间研究，找到了两个方法来解决这个问题。</p>
 
@@ -105,9 +105,9 @@ qichunren@qichunren-desktop:~/github/phantomjs$
   
   <entry>
     <title type="html"><![CDATA[去掉textmate源代码中的隐形空格]]></title>
-    <link href="http://cqror.com/blog/2011-05-17-remove-hidden-space-soure-code/"/>
+    <link href="http://qichunren.github.io/blog/2011-05-17-remove-hidden-space-soure-code/"/>
     <updated>2011-05-17T01:20:33+08:00</updated>
-    <id>http://cqror.com/blog/remove-hidden-space-soure-code</id>
+    <id>http://qichunren.github.io/blog/remove-hidden-space-soure-code</id>
     <content type="html"><![CDATA[<p>有这个需要，主要是因为不想在git提交后的diff中无看到不有意思的diff显示。使用textmate的同学可以用<a href="https://github.com/glennr/uber-glory-tmbundle">这个工具</a>来解决这个小问题。</p>
 
 <h3>安装方法</h3>
@@ -133,9 +133,9 @@ qichunren@qichunren-desktop:~/github/phantomjs$
   
   <entry>
     <title type="html"><![CDATA[在Mac上使用gitX]]></title>
-    <link href="http://cqror.com/blog/2011-05-12-use-gitX-on-mac/"/>
+    <link href="http://qichunren.github.io/blog/2011-05-12-use-gitX-on-mac/"/>
     <updated>2011-05-12T03:19:19+08:00</updated>
-    <id>http://cqror.com/blog/use-gitX-on-mac</id>
+    <id>http://qichunren.github.io/blog/use-gitX-on-mac</id>
     <content type="html"><![CDATA[<p><a href="https://github.com/pieter/gitx">gitX</a> 是mac上一个git的可视化工具，可以与gravatar 、gist集成在一起。我比较喜欢它的界面形式，感觉很舒服。</p>
 
 <p>安装方法：</p>
@@ -157,9 +157,9 @@ qichunren@qichunren-desktop:~/github/phantomjs$
   
   <entry>
     <title type="html"><![CDATA[使用feedzirra分析提取Feed]]></title>
-    <link href="http://cqror.com/blog/2011-05-05-use_feedzirra_to_fetch_feed/"/>
+    <link href="http://qichunren.github.io/blog/2011-05-05-use_feedzirra_to_fetch_feed/"/>
     <updated>2011-05-05T03:12:12+08:00</updated>
-    <id>http://cqror.com/blog/use_feedzirra_to_fetch_feed</id>
+    <id>http://qichunren.github.io/blog/use_feedzirra_to_fetch_feed</id>
     <content type="html"><![CDATA[<p><a href="https://github.com/pauldix/feedzirra">feedzirra</a> 是一个很好用的提取和分析feed的工具。用法如下：</p>
 
 <p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>

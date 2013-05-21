@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: datebase | sdd]]></title>
-  <link href="http://cqror.com/blog/categories/datebase/atom.xml" rel="self"/>
-  <link href="http://cqror.com/"/>
-  <updated>2013-05-21T13:33:10+08:00</updated>
-  <id>http://cqror.com/</id>
+  <title><![CDATA[Category: datebase | 蕲春人的博客]]></title>
+  <link href="http://qichunren.github.io/blog/categories/datebase/atom.xml" rel="self"/>
+  <link href="http://qichunren.github.io/"/>
+  <updated>2013-05-21T13:42:14+08:00</updated>
+  <id>http://qichunren.github.io/</id>
   <author>
     <name><![CDATA[qichunren]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Oracle解锁]]></title>
-    <link href="http://cqror.com/blog/2010-10-29-get-oracle-unlocked/"/>
+    <link href="http://qichunren.github.io/blog/2010-10-29-get-oracle-unlocked/"/>
     <updated>2010-10-29T20:12:12+08:00</updated>
-    <id>http://cqror.com/blog/get-oracle-unlocked</id>
+    <id>http://qichunren.github.io/blog/get-oracle-unlocked</id>
     <content type="html"><![CDATA[<p>今天在Plsql中，给Oracle数据库中一个表添加字段的时候，出错了错误，提示：</p>
 
 <p>Oracle资源正忙,要求指定NOWAIT</p>

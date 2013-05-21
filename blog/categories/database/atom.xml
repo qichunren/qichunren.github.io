@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: database | sdd]]></title>
-  <link href="http://cqror.com/blog/categories/database/atom.xml" rel="self"/>
-  <link href="http://cqror.com/"/>
-  <updated>2013-05-21T13:33:10+08:00</updated>
-  <id>http://cqror.com/</id>
+  <title><![CDATA[Category: database | 蕲春人的博客]]></title>
+  <link href="http://qichunren.github.io/blog/categories/database/atom.xml" rel="self"/>
+  <link href="http://qichunren.github.io/"/>
+  <updated>2013-05-21T13:42:14+08:00</updated>
+  <id>http://qichunren.github.io/</id>
   <author>
     <name><![CDATA[qichunren]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Use postgres database on Mac Lion]]></title>
-    <link href="http://cqror.com/blog/2012-11-27-start-use-postgresql/"/>
+    <link href="http://qichunren.github.io/blog/2012-11-27-start-use-postgresql/"/>
     <updated>2012-11-27T10:52:00+08:00</updated>
-    <id>http://cqror.com/blog/start-use-postgresql</id>
+    <id>http://qichunren.github.io/blog/start-use-postgresql</id>
     <content type="html"><![CDATA[<h3>brew info postgresql</h3>
 
 <pre>
@@ -310,9 +310,9 @@ luna_production=> ALTER USER luna WITH PASSWORD ‘whateverpasswordyouwant’;
   
   <entry>
     <title type="html"><![CDATA[mongodb的可视化客户端工具:MongoHub]]></title>
-    <link href="http://cqror.com/blog/2011-12-20-mongodb-ui-client-mongohub/"/>
+    <link href="http://qichunren.github.io/blog/2011-12-20-mongodb-ui-client-mongohub/"/>
     <updated>2011-12-20T17:31:00+08:00</updated>
-    <id>http://cqror.com/blog/mongodb-ui-client-mongohub</id>
+    <id>http://qichunren.github.io/blog/mongodb-ui-client-mongohub</id>
     <content type="html"><![CDATA[<p>最近在使用mongodb,经常要调试，然后找到了MongoHub这款工具，感觉很好。</p>
 
 <p><a href="http://mongohub.todayclose.com/">MongoHub网站</a></p>
@@ -323,9 +323,9 @@ luna_production=> ALTER USER luna WITH PASSWORD ‘whateverpasswordyouwant’;
   
   <entry>
     <title type="html"><![CDATA[学习和了解Redis]]></title>
-    <link href="http://cqror.com/blog/2011-05-14-learn-redis-db/"/>
+    <link href="http://qichunren.github.io/blog/2011-05-14-learn-redis-db/"/>
     <updated>2011-05-14T07:12:12+08:00</updated>
-    <id>http://cqror.com/blog/learn-redis-db</id>
+    <id>http://qichunren.github.io/blog/learn-redis-db</id>
     <content type="html"><![CDATA[<p><a href="http://redis.io/">Redis</a>
 <a href="https://github.com/ezmobius/redis-rb">redis-rb</a> gem install redis <br/>
 <a href="https://github.com/nateware/redis-objects">redis-objects</a>是基于redis-rb的一个ruby对象与redis对象映射的gem</p>
@@ -334,9 +334,9 @@ luna_production=> ALTER USER luna WITH PASSWORD ‘whateverpasswordyouwant’;
   
   <entry>
     <title type="html"><![CDATA[Rails中连接Oracle数据库]]></title>
-    <link href="http://cqror.com/blog/2009-05-07-connect-to-oracle-in-rails/"/>
+    <link href="http://qichunren.github.io/blog/2009-05-07-connect-to-oracle-in-rails/"/>
     <updated>2009-05-07T12:01:00+08:00</updated>
-    <id>http://cqror.com/blog/connect-to-oracle-in-rails</id>
+    <id>http://qichunren.github.io/blog/connect-to-oracle-in-rails</id>
     <content type="html"><![CDATA[<h3>步骤</h3>
 
 <ul>

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: ios | sdd]]></title>
-  <link href="http://cqror.com/blog/categories/ios/atom.xml" rel="self"/>
-  <link href="http://cqror.com/"/>
-  <updated>2013-05-21T13:33:10+08:00</updated>
-  <id>http://cqror.com/</id>
+  <title><![CDATA[Category: ios | 蕲春人的博客]]></title>
+  <link href="http://qichunren.github.io/blog/categories/ios/atom.xml" rel="self"/>
+  <link href="http://qichunren.github.io/"/>
+  <updated>2013-05-21T13:42:14+08:00</updated>
+  <id>http://qichunren.github.io/</id>
   <author>
     <name><![CDATA[qichunren]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Fixed a problem with creating texture background in cocos2d]]></title>
-    <link href="http://cqror.com/blog/2012-06-03-fixed-a-problem-with-creating-texture-background-in-cocos2d/"/>
+    <link href="http://qichunren.github.io/blog/2012-06-03-fixed-a-problem-with-creating-texture-background-in-cocos2d/"/>
     <updated>2012-06-03T22:01:00+08:00</updated>
-    <id>http://cqror.com/blog/fixed-a-problem-with-creating-texture-background-in-cocos2d</id>
+    <id>http://qichunren.github.io/blog/fixed-a-problem-with-creating-texture-background-in-cocos2d</id>
     <content type="html"><![CDATA[<p>我尝试在cocos2d游戏中使用小图片重复平铺的方式来创建游戏背景时, 总是遇到这个问题，报错如下:</p>
 
 <p><code>
@@ -50,9 +50,9 @@ ccTexParams params = {GL_LINEAR, GL_LINEAR, GL_REPEAT, GL_REPEAT};
   
   <entry>
     <title type="html"><![CDATA[iOS中的arc4random方法]]></title>
-    <link href="http://cqror.com/blog/2012-01-04-arc4random-in-ios/"/>
+    <link href="http://qichunren.github.io/blog/2012-01-04-arc4random-in-ios/"/>
     <updated>2012-01-04T22:49:00+08:00</updated>
-    <id>http://cqror.com/blog/arc4random-in-ios</id>
+    <id>http://qichunren.github.io/blog/arc4random-in-ios</id>
     <content type="html"><![CDATA[<p>通过arc4random() 获取0到x-1之间的整数的代码如下:
 <code>
 int value = arc4random() % x;
@@ -79,9 +79,9 @@ double val = floorf(((double)arc4random() / ARC4RANDOM_MAX) * 100.0f);
   
   <entry>
     <title type="html"><![CDATA[近期iOS学习点]]></title>
-    <link href="http://cqror.com/blog/2011-12-18-ios-learn-note/"/>
+    <link href="http://qichunren.github.io/blog/2011-12-18-ios-learn-note/"/>
     <updated>2011-12-18T20:44:00+08:00</updated>
-    <id>http://cqror.com/blog/ios-learn-note</id>
+    <id>http://qichunren.github.io/blog/ios-learn-note</id>
     <content type="html"><![CDATA[<p>虽然我业余在学iOS，但是感觉进步缓慢。为了使我的iOS开发的学习效率高一点，我决定先列一个简要的提纲，明确当前一个阶段的学习计划。</p>
 
 <ol>

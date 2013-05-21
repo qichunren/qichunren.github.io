@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: mac | sdd]]></title>
-  <link href="http://cqror.com/blog/categories/mac/atom.xml" rel="self"/>
-  <link href="http://cqror.com/"/>
-  <updated>2013-05-21T13:33:10+08:00</updated>
-  <id>http://cqror.com/</id>
+  <title><![CDATA[Category: mac | 蕲春人的博客]]></title>
+  <link href="http://qichunren.github.io/blog/categories/mac/atom.xml" rel="self"/>
+  <link href="http://qichunren.github.io/"/>
+  <updated>2013-05-21T13:42:14+08:00</updated>
+  <id>http://qichunren.github.io/</id>
   <author>
     <name><![CDATA[qichunren]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[在Mac上使用gitX]]></title>
-    <link href="http://cqror.com/blog/2011-05-12-use-gitX-on-mac/"/>
+    <link href="http://qichunren.github.io/blog/2011-05-12-use-gitX-on-mac/"/>
     <updated>2011-05-12T03:19:19+08:00</updated>
-    <id>http://cqror.com/blog/use-gitX-on-mac</id>
+    <id>http://qichunren.github.io/blog/use-gitX-on-mac</id>
     <content type="html"><![CDATA[<p><a href="https://github.com/pieter/gitx">gitX</a> 是mac上一个git的可视化工具，可以与gravatar 、gist集成在一起。我比较喜欢它的界面形式，感觉很舒服。</p>
 
 <p>安装方法：</p>
@@ -39,9 +39,9 @@
   
   <entry>
     <title type="html"><![CDATA[在Mac上安装homebrew]]></title>
-    <link href="http://cqror.com/blog/2011-01-03-install-homebrew-on-mac/"/>
+    <link href="http://qichunren.github.io/blog/2011-01-03-install-homebrew-on-mac/"/>
     <updated>2011-01-03T20:12:12+08:00</updated>
-    <id>http://cqror.com/blog/install-homebrew-on-mac</id>
+    <id>http://qichunren.github.io/blog/install-homebrew-on-mac</id>
     <content type="html"><![CDATA[<p><a href="https://github.com/mxcl/homebrew">homebrew</a>是为mac打造的一个软件包管理工具</p>
 
 <p>首先需要安装好Xcode,其它是需要它其中的gcc等编译器。</p>

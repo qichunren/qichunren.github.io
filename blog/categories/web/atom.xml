@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: web | sdd]]></title>
-  <link href="http://cqror.com/blog/categories/web/atom.xml" rel="self"/>
-  <link href="http://cqror.com/"/>
-  <updated>2013-05-21T13:33:10+08:00</updated>
-  <id>http://cqror.com/</id>
+  <title><![CDATA[Category: web | 蕲春人的博客]]></title>
+  <link href="http://qichunren.github.io/blog/categories/web/atom.xml" rel="self"/>
+  <link href="http://qichunren.github.io/"/>
+  <updated>2013-05-21T13:42:14+08:00</updated>
+  <id>http://qichunren.github.io/</id>
   <author>
     <name><![CDATA[qichunren]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Ruby China Chrome浏览器插件]]></title>
-    <link href="http://cqror.com/blog/2012-06-18-i-build-ruby-china-chrome-extension/"/>
+    <link href="http://qichunren.github.io/blog/2012-06-18-i-build-ruby-china-chrome-extension/"/>
     <updated>2012-06-18T14:56:00+08:00</updated>
-    <id>http://cqror.com/blog/i-build-ruby-china-chrome-extension</id>
+    <id>http://qichunren.github.io/blog/i-build-ruby-china-chrome-extension</id>
     <content type="html"><![CDATA[<p>前几天，我花了几天业余时间制作了Ruby China社区网站的Chrome浏览器插件，通过这个插件可以：</p>
 
 <ul>
@@ -34,9 +34,9 @@
   
   <entry>
     <title type="html"><![CDATA[使用Juggernaut]]></title>
-    <link href="http://cqror.com/blog/2011-05-12-use-juggernaut-for-realtime-app/"/>
+    <link href="http://qichunren.github.io/blog/2011-05-12-use-juggernaut-for-realtime-app/"/>
     <updated>2011-05-12T17:12:12+08:00</updated>
-    <id>http://cqror.com/blog/use-juggernaut-for-realtime-app</id>
+    <id>http://qichunren.github.io/blog/use-juggernaut-for-realtime-app</id>
     <content type="html"><![CDATA[<p><a href="https://github.com/maccman/juggernaut">Juggernaut</a>是基于<a href="http://nodejs.org/">Node.js</a>的一个实时(Realtime)Web的解决方案。使用起来很方便。</p>
 
 <h3>安装方法</h3>
@@ -113,9 +113,9 @@ gem install juggernaut
   
   <entry>
     <title type="html"><![CDATA[学习HTML5杂记]]></title>
-    <link href="http://cqror.com/blog/2011-05-09-learn-html5/"/>
+    <link href="http://qichunren.github.io/blog/2011-05-09-learn-html5/"/>
     <updated>2011-05-09T11:30:00+08:00</updated>
-    <id>http://cqror.com/blog/learn-html5</id>
+    <id>http://qichunren.github.io/blog/learn-html5</id>
     <content type="html"><![CDATA[<h3>什么是 HTML5？</h3>
 
 <p>HTML5 将成为 HTML、XHTML 以及 HTML DOM 的新标准。

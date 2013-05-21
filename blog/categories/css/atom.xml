@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: css | sdd]]></title>
-  <link href="http://cqror.com/blog/categories/css/atom.xml" rel="self"/>
-  <link href="http://cqror.com/"/>
-  <updated>2013-05-21T13:33:10+08:00</updated>
-  <id>http://cqror.com/</id>
+  <title><![CDATA[Category: css | 蕲春人的博客]]></title>
+  <link href="http://qichunren.github.io/blog/categories/css/atom.xml" rel="self"/>
+  <link href="http://qichunren.github.io/"/>
+  <updated>2013-05-21T13:42:14+08:00</updated>
+  <id>http://qichunren.github.io/</id>
   <author>
     <name><![CDATA[qichunren]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[在Rails项目中使用compass来管理css]]></title>
-    <link href="http://cqror.com/blog/2010-12-24-use-compass-in-rails/"/>
+    <link href="http://qichunren.github.io/blog/2010-12-24-use-compass-in-rails/"/>
     <updated>2010-12-24T07:12:12+08:00</updated>
-    <id>http://cqror.com/blog/use-compass-in-rails</id>
+    <id>http://qichunren.github.io/blog/use-compass-in-rails</id>
     <content type="html"><![CDATA[<p>对如今的web项目开发（个人开发），用Rails来快速实现，但是前端这一块会花掉比较多的时间，其中CSS的管理维护是一个越来越麻烦的事情，由于它只是一门单纯的静态标记的语法（说法不准确），我的意思是，比如我设计一个三栏的网页，页面宽度是960px，那么每栏应该是960px的三分之一宽度320px，在css文件中，需要“硬编码”写入单栏的宽度： .box{width:320px;}
    然后有一天，某某人说要改网站页面宽度，要调成1200px，这样需要找出css文件中相关的地方都要改成新的400px的宽度。对我来说，做这种事情一点也不爽。如果能自动计算出每栏是网页宽度的三分之一那多好。 <a href="http://sass-lang.com/">Sass</a> 就是做这事情的，而 <a href="https://github.com/chriseppstein/compass">Compass</a> 是基于Sass之上的一个集成，它让我们在Rails项目中可以更为容易地使用sass，它集成了如 <a href="http://www.blueprintcss.org/">blueprint</a> 这样的css框架。
    以上都是废话，哈哈，看看在项目中如何使用起compass，通过它来高级地管理项目的css。

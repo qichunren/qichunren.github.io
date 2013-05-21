@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: php | sdd]]></title>
-  <link href="http://cqror.com/blog/categories/php/atom.xml" rel="self"/>
-  <link href="http://cqror.com/"/>
-  <updated>2013-05-21T13:33:10+08:00</updated>
-  <id>http://cqror.com/</id>
+  <title><![CDATA[Category: php | 蕲春人的博客]]></title>
+  <link href="http://qichunren.github.io/blog/categories/php/atom.xml" rel="self"/>
+  <link href="http://qichunren.github.io/"/>
+  <updated>2013-05-21T13:42:14+08:00</updated>
+  <id>http://qichunren.github.io/</id>
   <author>
     <name><![CDATA[qichunren]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Create custom tags in Smarty 3]]></title>
-    <link href="http://cqror.com/blog/2012-02-26-create-custom-tags-in-smarty/"/>
+    <link href="http://qichunren.github.io/blog/2012-02-26-create-custom-tags-in-smarty/"/>
     <updated>2012-02-26T14:21:00+08:00</updated>
-    <id>http://cqror.com/blog/create-custom-tags-in-smarty</id>
+    <id>http://qichunren.github.io/blog/create-custom-tags-in-smarty</id>
     <content type="html"><![CDATA[<p>接着上一篇，还是来说说PHP模板引擎Smarty。PHP的众多CMS框架，如DEDE CMS，对于前端展示都是有一套自己开发的标签，用于显示管理后台维护的数据。在DEDECMS中，如下的代码</p>
 
 <p>```</p>
@@ -123,9 +123,9 @@
   
   <entry>
     <title type="html"><![CDATA[Use Smarty template in CodeIgniter]]></title>
-    <link href="http://cqror.com/blog/2012-02-11-use-smarty-template-in-codeigniter/"/>
+    <link href="http://qichunren.github.io/blog/2012-02-11-use-smarty-template-in-codeigniter/"/>
     <updated>2012-02-11T16:57:00+08:00</updated>
-    <id>http://cqror.com/blog/use-smarty-template-in-codeigniter</id>
+    <id>http://qichunren.github.io/blog/use-smarty-template-in-codeigniter</id>
     <content type="html"><![CDATA[<p><a href="http://codeigniter.com/">CodeIgniter</a>是一个不错的PHP开发框架，很合我的口味，我做的一些PHP项目就是用的它。</p>
 
 <p><a href="http://www.smarty.net/">Smarty</a>是目前业界最著名的PHP模板引擎之一。它分离了逻辑代码和外在的内容，提供了一种易于管理和使用的方法，用来将原本与HTML代码混杂在一起的PHP代码逻辑分离。</p>
@@ -145,16 +145,161 @@ Smarty.class.php    SmartyBC.class.php  debug.tpl       plugins/        sysplugi
 </code></p>
 
 <p>2: 在application/libraries目录中创建Smarty.php文件。
-Liquid error: invalid byte sequence in US-ASCII
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>application/libraries/Smarty.php  </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">&amp;lt;?php if ( ! defined(&#39;BASEPATH&#39;)) exit(&#39;No direct script access allowed&#39;);&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">&lt;p&gt;require_once(&#39;smarty/Smarty.class.php&#39;);&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">&lt;p&gt;class CI_Smarty extends Smarty {&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">&lt;pre&gt;&lt;code&gt;    function __construct(){</span>
+</span><span class='line'><span class="x">      parent::__construct();</span>
+</span><span class='line'><span class="x">            $this-&amp;gt;compile_dir = FCPATH . &quot;application/views/templates_c&quot;;</span>
+</span><span class='line'><span class="x">            $this-&amp;gt;template_dir = FCPATH . &quot;application/views/templates&quot;;</span>
+</span><span class='line'><span class="x">            $this-&amp;gt;cache_dir = FCPATH . &quot;application/views/cache&quot;;//缓存目录</span>
+</span><span class='line'><span class="x">            $this-&amp;gt;caching = 1;</span>
+</span><span class='line'><span class="x">            //$this-&amp;gt;cache_lifetime = 120; //缓存更新时间</span>
+</span><span class='line'><span class="x">            $this-&amp;gt;debugging = false;</span>
+</span><span class='line'><span class="x">            $this-&amp;gt;compile_check = true; // 检查当前的模板是否自上次编译后被更改；如果被更改了，它将重新编译该模板。</span>
+</span><span class='line'><span class="x">            //$this-&amp;gt;force_compile = true; // 强制重新编译模板</span>
+</span><span class='line'><span class="x">            //$this-&amp;gt;allow_php_templates= true; // 开启PHP模板</span>
+</span><span class='line'><span class="x">            $this-&amp;gt;left_delimiter = &quot;{&quot;; //左定界符</span>
+</span><span class='line'><span class="x">            $this-&amp;gt;right_delimiter = &quot;}&quot;; //右定界符</span>
+</span><span class='line'><span class="x">    }</span>
+</span><span class='line'><span class="x">&lt;/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">&lt;p&gt;}</span>
+</span><span class='line'><span class="x">?&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 根据代码中的smarty目录配置，需要在application/views中建立templates_c\templates\cache三个目录.
 这就算创建好了。</p>
 
 <p>3: 使用方法。
 控制器中的代码:
-Liquid error: invalid byte sequence in US-ASCII</p>
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>application/controllers/debug.php  </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">&amp;lt;?php if ( ! defined(&#39;BASEPATH&#39;)) exit(&#39;No direct script access allowed&#39;);&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">&lt;p&gt;class Debug extends MY_Controller {&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">&lt;p&gt;  function __construct()</span>
+</span><span class='line'><span class="x">  {&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">&lt;pre&gt;&lt;code&gt;parent::__construct();</span>
+</span><span class='line'><span class="x">// Write your own initialize code</span>
+</span><span class='line'><span class="x">&lt;/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">&lt;p&gt;  }&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">&lt;pre&gt;&lt;code&gt;function index(){</span>
+</span><span class='line'><span class="x">  $this-&amp;gt;load-&amp;gt;library(&#39;smarty&#39;);</span>
+</span><span class='line'><span class="x">  $this-&amp;gt;smarty-&amp;gt;assign(&quot;title&quot;,&quot;smarty template&quot;);</span>
+</span><span class='line'><span class="x">  $this-&amp;gt;smarty-&amp;gt;assign(&quot;body&quot;,&quot;欢迎使用smarty模板引擎&quot;);</span>
+</span><span class='line'><span class="x">  $arr = array(1 =&amp;gt; &#39;number 1&#39;, 2 =&amp;gt; &#39;number 2&#39;, 3 =&amp;gt; &#39;number 3&#39;);</span>
+</span><span class='line'><span class="x">  $this-&amp;gt;smarty-&amp;gt;assign(&quot;myarray&quot;, $arr);</span>
+</span><span class='line'><span class="x">  $this-&amp;gt;smarty-&amp;gt;display(&#39;index.html&#39;);</span>
+</span><span class='line'><span class="x">}</span>
+</span><span class='line'><span class="x">&lt;/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">&lt;p&gt;}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <p>模板代码:
-Liquid error: invalid byte sequence in US-ASCII</p>
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>application/views/templates/index.html  </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="ni">&amp;lt;</span>!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+</span><span class='line'><span class="nt">&lt;html</span> <span class="na">xmlns=</span><span class="s">&quot;http://www.w3.org/1999/xhtml&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'><span class="nt">&lt;head&gt;</span>
+</span><span class='line'><span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">&quot;Content-Type&quot;</span> <span class="na">content=</span><span class="s">&quot;text/html; charset=utf-8&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;title&gt;</span>smarty模板使用示例<span class="nt">&lt;/title&gt;</span>
+</span><span class='line'><span class="nt">&lt;/head&gt;</span>
+</span><span class='line'><span class="nt">&lt;body&gt;&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;h1&gt;</span>{$title}<span class="nt">&lt;/h1&gt;</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;p&gt;</span>{$body}<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;ul&gt;</span>
+</span><span class='line'>        {foreach from=$myarray item=v}
+</span><span class='line'>        <span class="nt">&lt;li&gt;</span>{$v}<span class="nt">&lt;/li&gt;</span>
+</span><span class='line'>       {/foreach}
+</span><span class='line'><span class="nt">&lt;/ul&gt;</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;p&gt;&lt;/body&gt;</span>
+</span><span class='line'><span class="nt">&lt;/html&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 ]]></content>
   </entry>
   
