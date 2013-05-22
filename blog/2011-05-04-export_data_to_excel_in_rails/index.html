@@ -185,81 +185,8 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>在视图中</p>
-
-<figure class='code'><figcaption><span>index.xls.rxls  </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'>
-</span><span class='line'># encoding: utf-8
-</span><span class='line'>excel_document(:filename =&gt; &quot;all_lines.xls&quot;) do |workbook|
-</span><span class='line'>  sheet = workbook.create_worksheet
-</span><span class='line'>  sheet.name = &quot;What&#39;s in a name&quot;
-</span><span class='line'>
-</span><span class='line'>  sheet.row(0).concat %w{汇款告知}
-</span><span class='line'>
-</span><span class='line'>  # sheet[1,0] = &#39;Japan&#39;
-</span><span class='line'>  # row = sheet.row(1)
-</span><span class='line'>  # row.push &#39;Creator of Ruby&#39;
-</span><span class='line'>  # row.push &#39;Creator of rails&#39;
-</span><span class='line'>  # row.unshift &#39;Yukihiro Matsumoto&#39;
-</span><span class='line'>  # sheet.row(5).unshift &#39;HaHa&#39;
-</span><span class='line'>  # sheet.row(3).push &#39;Charles Lowe&#39;, &#39;Author of the ruby-ole Library&#39;
-</span><span class='line'>  # sheet.row(3).insert 1, &#39;Unknown&#39;
-</span><span class='line'>  # sheet.update_row 4, &#39;Hannes Wyss&#39;, &#39;Switzerland&#39;, &#39;Author&#39;
-</span><span class='line'>
-</span><span class='line'>  sheet.row(1).replace [ &#39;流水号&#39;, &#39;客户名称&#39;,&#39;客户号&#39;,&#39;金额&#39;,&#39;通过认证时间&#39;,&#39;不通过时间&#39;,&#39;创建时间&#39; ]
-</span><span class='line'>
-</span><span class='line'>  sheet.row(0).height = 18
-</span><span class='line'>  sheet.row(0).height = 18
-</span><span class='line'>
-</span><span class='line'>  format = Spreadsheet::Format.new :color =&gt; :blue,:weight =&gt; :bold,:size =&gt; 18
-</span><span class='line'>
-</span><span class='line'>  sheet.row(0).default_format = format
-</span><span class='line'>
-</span><span class='line'>  # 设置表格的标题栏为粗体
-</span><span class='line'>  bold = Spreadsheet::Format.new :weight =&gt; :bold,:horizontal_align =&gt; :center
-</span><span class='line'>  7.times do |x| sheet.row(1).set_format(x, bold) end
-</span><span class='line'>
-</span><span class='line'>  @remit_notifications.each_with_index do |remite,index|
-</span><span class='line'>    sheet.row(index + 2).push remite.id,remite.user_name,remite.user_id,remite.money,date_format(remite.verified_at),date_format(remite.refused_at),date_format(remite.created_at)
-</span><span class='line'>  end
-</span><span class='line'>end
-</span></code></pre></td></tr></table></div></figure>
-
+<p>在视图中
+Liquid error: invalid byte sequence in US-ASCII</p>
 
 <h3>相关资源</h3>
 

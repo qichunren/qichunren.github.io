@@ -4,7 +4,7 @@
   <title><![CDATA[Category: test | 蕲春人的博客]]></title>
   <link href="http://qichunren.github.io/blog/categories/test/atom.xml" rel="self"/>
   <link href="http://qichunren.github.io/"/>
-  <updated>2013-05-21T13:42:14+08:00</updated>
+  <updated>2013-05-22T00:32:13+08:00</updated>
   <id>http://qichunren.github.io/</id>
   <author>
     <name><![CDATA[qichunren]]></name>
@@ -22,40 +22,26 @@
 
 <p>在db/seeds.rb中，如果要产生100个用户名，直接这样做：</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s1">&#39;ffaker&#39;</span><span class="o">&lt;</span><span class="sr">/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="sr">&lt;p&gt; 100.times do</span>
-</span><span class='line'><span class="sr">   user = User.new</span>
-</span><span class='line'><span class="sr">   user.name = Faker::Name.name =&gt; &quot;David Cao&quot;</span>
-</span><span class='line'><span class="sr">   user.email = Faker::Internet.email =&gt; &quot;qichunren@cqror.com&quot;</span>
-</span><span class='line'><span class="sr">   user.save</span>
-</span><span class='line'><span class="sr"> end&lt;/</span><span class="nb">p</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+<p>{% codeblock lang:ruby %}
+require 'ffaker'</p>
+
+<p> 100.times do
+   user = User.new
+   user.name = Faker::Name.name => "David Cao"
+   user.email = Faker::Internet.email => "qichunren@cqror.com"
+   user.save
+ end</p>
+
+<p>{% endcodeblock %}</p>
 
 <p>我前一段时间，提交了<a href="https://github.com/EmmanuelOga/ffaker/pull/9">一点代码</a> ，可以产生天朝的姓名：
-<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s1">&#39;ffaker&#39;</span><span class="o">&lt;</span><span class="sr">/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="sr">&lt;p&gt;Faker::NameCN.first_name # =&gt; 鑫洋</span>
-</span><span class='line'><span class="sr">Faker::NameCN.last_name # =&gt; 禹</span>
-</span><span class='line'><span class="sr">Faker::NameCN.name # =&gt; 俊伶漫</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+{% codeblock lang:ruby %}
+require 'ffaker'</p>
+
+<p>Faker::NameCN.first_name # => 鑫洋
+Faker::NameCN.last_name # => 禹
+Faker::NameCN.name # => 俊伶漫
+{% endcodeblock %}</p>
 
 <p>ffaker目前最新的版本是1.2，可以产生中文的姓名。</p>
 ]]></content>
@@ -118,9 +104,9 @@
 
 <p>修改的浏览器测试工具，我最近使用它来为我做的后台系统自动化一些工作，而不用我每次重复了无意义的步骤。<br/>
   使用capybara可以良好地访问有javascript脚本的页面，但是有一个问题就是如果你页面中有confirm这个的等待用户点击“确定”的对话框时capybaray就无能为力了，我在stackoverfollow上找到了解决办法，就是直接让confirm方法返回true:
-<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'>   <span class="nx">page</span><span class="p">.</span><span class="nx">evaluate_script</span><span class="p">(</span><span class="s1">&#39;window.confirm = function() { return true; }&#39;</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+{% codeblock lang:js %}
+   page.evaluate_script('window.confirm = function() { return true; }')
+{% endcodeblock %}</p>
 
 <p>   下面这个例子来自我项目中 <a href="https://gist.github.com/884682">真实的代码</a> 可以测试一个用户的认证操作，以test开头的方法都会执行。</p>
 ]]></content>
@@ -137,9 +123,9 @@
 
 <p>在Rails 3项目中，只需要在指定rspec-rails这个gem即可，它会自动依赖rspec2。</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">gem</span> <span class="s2">&quot;rspec-rails&quot;</span><span class="p">,</span> <span class="s2">&quot;2.3.1&quot;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+<p>{% codeblock lang:ruby %}
+gem "rspec-rails", "2.3.1"
+{% endcodeblock %}</p>
 
 <p>在rspec2中，Rails3项的测试被分成控制器（controller）、模型（model）、请求（request）、路由（routing）、助手（helper）、视图（view）六大块的测试。从中可以看出rspec2力图让你的测试变得更为职责清楚和模块化，减少各种类型测试的影响，让测试变得更有效率和保证。我个人最喜欢的是模型（model）和请求的测试（request），这两个测试写得最为直接和有效，其它类型的测试如controller测试在复杂一点的业务中需要mock、stub等等，会将代码弄得有些复杂，当然这其中也有我对mock和stub没有用得理解的原因，不过我感觉测试controller还不如直接测试request来得直接。另外在factory-girl的帮助下能很快地写出有保证的测试。</p>
 
@@ -149,150 +135,80 @@
 
 <p>这个是factory-girl的数据文件：</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">&lt;</span><span class="sr">/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="sr">&lt;h1&gt;spec/</span><span class="n">factories</span><span class="o">/</span><span class="n">admins</span><span class="o">.</span><span class="n">rb</span><span class="o">&lt;</span><span class="sr">/h1&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="sr">&lt;h1&gt;encoding: utf-8&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span><span class="no">Factory</span><span class="o">.</span><span class="n">define</span> <span class="ss">:admin</span> <span class="k">do</span> <span class="o">|</span><span class="n">a</span><span class="o">|</span>
-</span><span class='line'>  <span class="n">a</span><span class="o">.</span><span class="n">sequence</span><span class="p">(</span><span class="ss">:login</span><span class="p">)</span> <span class="p">{</span><span class="o">|</span><span class="n">i</span><span class="o">|</span> <span class="s2">&quot;worker</span><span class="si">#{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span> <span class="p">}</span>
-</span><span class='line'>  <span class="n">a</span><span class="o">.</span><span class="n">name</span>             <span class="p">{</span><span class="o">|</span><span class="n">a</span><span class="o">|</span> <span class="n">a</span><span class="o">.</span><span class="n">login</span>      <span class="p">}</span>
-</span><span class='line'>  <span class="n">a</span><span class="o">.</span><span class="n">email</span>            <span class="p">{</span><span class="o">|</span><span class="n">a</span><span class="o">|</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">a</span><span class="o">.</span><span class="n">login</span><span class="si">}</span><span class="s2">@gmail.com&quot;</span> <span class="p">}</span>
-</span><span class='line'>  <span class="n">a</span><span class="o">.</span><span class="n">password</span>         <span class="p">{</span><span class="o">|</span><span class="n">a</span><span class="o">|</span> <span class="n">a</span><span class="o">.</span><span class="n">login</span> <span class="p">}</span>
-</span><span class='line'>  <span class="n">a</span><span class="o">.</span><span class="n">password_confirmation</span> <span class="p">{</span><span class="o">|</span><span class="n">a</span><span class="o">|</span> <span class="n">a</span><span class="o">.</span><span class="n">login</span> <span class="p">}</span><span class="o">&lt;</span><span class="sr">/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="sr">&lt;p&gt;  a.active           false</span>
-</span><span class='line'><span class="sr">  a.dept             0</span>
-</span><span class='line'><span class="sr">end&lt;/</span><span class="nb">p</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span><span class="no">Factory</span><span class="o">.</span><span class="n">define</span> <span class="ss">:actived_admin</span><span class="p">,</span> <span class="ss">:parent</span> <span class="o">=&gt;</span> <span class="ss">:admin</span> <span class="k">do</span> <span class="o">|</span><span class="n">a</span><span class="o">|</span>
-</span><span class='line'>  <span class="n">a</span><span class="o">.</span><span class="n">login</span> <span class="s2">&quot;actived_admin&quot;</span>
-</span><span class='line'>  <span class="n">a</span><span class="o">.</span><span class="n">active</span>  <span class="kp">true</span>
-</span><span class='line'><span class="k">end</span><span class="o">&lt;</span><span class="sr">/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="sr">&lt;p&gt;Factory.define :unactived_admin, :class =&gt; Admin do |a|</span>
-</span><span class='line'><span class="sr">end</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+<p>{% codeblock lang:ruby %}</p>
+
+<h1>spec/factories/admins.rb</h1>
+
+<h1>encoding: utf-8</h1>
+
+<p>Factory.define :admin do |a|
+  a.sequence(:login) {|i| "worker#{i}" }
+  a.name             {|a| a.login      }
+  a.email            {|a| "#{a.login}@gmail.com" }
+  a.password         {|a| a.login }
+  a.password_confirmation {|a| a.login }</p>
+
+<p>  a.active           false
+  a.dept             0
+end</p>
+
+<p>Factory.define :actived_admin, :parent => :admin do |a|
+  a.login "actived_admin"
+  a.active  true
+end</p>
+
+<p>Factory.define :unactived_admin, :class => Admin do |a|
+end
+{% endcodeblock %}</p>
 
 <p>这里测试管理员登录系统的逻辑：
-<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-<span class='line-number'>40</span>
-<span class='line-number'>41</span>
-<span class='line-number'>42</span>
-<span class='line-number'>43</span>
-<span class='line-number'>44</span>
-<span class='line-number'>45</span>
-<span class='line-number'>46</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">&lt;</span><span class="sr">/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="sr">&lt;h1&gt;spec/</span><span class="n">requests</span><span class="o">/</span><span class="n">root_request_spec</span><span class="o">.</span><span class="n">rb</span><span class="o">&lt;</span><span class="sr">/h1&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="sr">&lt;h1&gt;encoding: utf-8&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span><span class="nb">require</span> <span class="s1">&#39;spec_helper&#39;</span><span class="o">&lt;</span><span class="sr">/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="sr">&lt;p&gt;describe &quot;AdminSessions&quot; do&lt;/</span><span class="nb">p</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span>  <span class="k">def</span> <span class="nf">login_with</span><span class="p">(</span><span class="n">admin_login</span><span class="p">,</span> <span class="n">admin_password</span><span class="p">)</span><span class="o">&lt;</span><span class="sr">/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="sr">&lt;pre&gt;&lt;code&gt;post &quot;/</span><span class="n">admin_session</span><span class="s2">&quot;, :admin_session =&amp;gt; { :login =&amp;gt; admin_login, </span>
-</span><span class='line'><span class="s2">                                           :password =&amp;gt; admin_password }</span>
-</span><span class='line'><span class="s2">&lt;/code&gt;&lt;/pre&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="s2">&lt;p&gt;  end&lt;/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="s2">&lt;p&gt;  describe &quot;</span><span class="no">GET</span><span class="sr"> /&quot; do&lt;/</span><span class="nb">p</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="n">it</span> <span class="s2">&quot;should redirect to login page&quot;</span> <span class="k">do</span>
-</span><span class='line'>  <span class="n">get</span> <span class="s2">&quot;/&quot;</span>
-</span><span class='line'>  <span class="n">response</span><span class="o">.</span><span class="n">should</span> <span class="n">redirect_to</span><span class="p">(</span><span class="n">new_admin_session_path</span><span class="p">)</span>
-</span><span class='line'>  <span class="n">get</span> <span class="n">new_admin_session_path</span>
-</span><span class='line'>  <span class="n">response</span><span class="o">.</span><span class="n">should</span> <span class="n">contain</span><span class="p">(</span><span class="s2">&quot;你还没有登录，请先登录&quot;</span><span class="p">)</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">it</span> <span class="s2">&quot;should not redirect to loign page if logged&quot;</span> <span class="k">do</span>
-</span><span class='line'>  <span class="n">current_admin</span> <span class="o">=</span> <span class="no">Factory</span><span class="p">(</span><span class="s2">&quot;actived_admin&quot;</span><span class="p">)</span>
-</span><span class='line'>  <span class="n">login_with</span><span class="p">(</span><span class="s2">&quot;actived_admin&quot;</span><span class="p">,</span> <span class="s2">&quot;actived_admin&quot;</span><span class="p">)</span>
-</span><span class='line'>  <span class="n">response</span><span class="o">.</span><span class="n">should</span> <span class="n">redirect_to</span><span class="p">(</span><span class="n">root_path</span><span class="p">)</span>
-</span><span class='line'>  <span class="n">get</span> <span class="s2">&quot;/&quot;</span>
-</span><span class='line'>  <span class="n">response</span><span class="o">.</span><span class="n">should</span> <span class="n">be_success</span>
-</span><span class='line'>  <span class="n">response</span><span class="o">.</span><span class="n">should</span> <span class="n">contain</span><span class="p">(</span><span class="s2">&quot;登录成功!&quot;</span><span class="p">)</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">it</span> <span class="s2">&quot;should show error info with wrong loign id&quot;</span> <span class="k">do</span>
-</span><span class='line'>  <span class="n">current_admin</span> <span class="o">=</span> <span class="no">Factory</span><span class="p">(</span><span class="s2">&quot;actived_admin&quot;</span><span class="p">)</span>
-</span><span class='line'>  <span class="n">login_with</span><span class="p">(</span><span class="s2">&quot;actived_admin&quot;</span><span class="p">,</span> <span class="s2">&quot;adminpassword_error&quot;</span><span class="p">)</span>
-</span><span class='line'>  <span class="n">response</span><span class="o">.</span><span class="n">should</span> <span class="n">contain</span><span class="p">(</span><span class="s2">&quot;你输入的帐号或密码不正确!&quot;</span><span class="p">)</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'><span class="o">&lt;</span><span class="sr">/code&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span>  <span class="k">end</span><span class="o">&lt;</span><span class="sr">/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="sr">&lt;p&gt;end</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+{% codeblock lang:ruby %}</p>
+
+<h1>spec/requests/root_request_spec.rb</h1>
+
+<h1>encoding: utf-8</h1>
+
+<p>require 'spec_helper'</p>
+
+<p>describe "AdminSessions" do</p>
+
+<p>  def login_with(admin_login, admin_password)</p>
+
+<pre><code>post "/admin_session", :admin_session =&gt; { :login =&gt; admin_login, 
+                                           :password =&gt; admin_password }
+</code></pre>
+
+<p>  end</p>
+
+<p>  describe "GET /" do</p>
+
+<pre><code>it "should redirect to login page" do
+  get "/"
+  response.should redirect_to(new_admin_session_path)
+  get new_admin_session_path 
+  response.should contain("你还没有登录，请先登录")
+end
+
+it "should not redirect to loign page if logged" do
+  current_admin = Factory("actived_admin") 
+  login_with("actived_admin", "actived_admin")
+  response.should redirect_to(root_path)
+  get "/"                    
+  response.should be_success
+  response.should contain("登录成功!")
+end
+
+it "should show error info with wrong loign id" do
+  current_admin = Factory("actived_admin") 
+  login_with("actived_admin", "adminpassword_error")
+  response.should contain("你输入的帐号或密码不正确!")
+end
+</code></pre>
+
+<p>  end</p>
+
+<p>end
+{% endcodeblock %}</p>
 ]]></content>
   </entry>
   

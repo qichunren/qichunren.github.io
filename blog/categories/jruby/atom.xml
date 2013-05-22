@@ -4,7 +4,7 @@
   <title><![CDATA[Category: jruby | 蕲春人的博客]]></title>
   <link href="http://qichunren.github.io/blog/categories/jruby/atom.xml" rel="self"/>
   <link href="http://qichunren.github.io/"/>
-  <updated>2013-05-21T13:42:14+08:00</updated>
+  <updated>2013-05-22T00:32:13+08:00</updated>
   <id>http://qichunren.github.io/</id>
   <author>
     <name><![CDATA[qichunren]]></name>
@@ -51,308 +51,156 @@ warble war:debug   # Dump diagnostic information
 </code></p>
 
 <p>平时最常用的就是warble war命令了，需要关注的是warble的配置文件，它的配置文件是通过warble config来生成的，在这个文件中有一系列的配置项可以设置，以下是我的配置文件：
-<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>config/warble.rb  </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-<span class='line-number'>40</span>
-<span class='line-number'>41</span>
-<span class='line-number'>42</span>
-<span class='line-number'>43</span>
-<span class='line-number'>44</span>
-<span class='line-number'>45</span>
-<span class='line-number'>46</span>
-<span class='line-number'>47</span>
-<span class='line-number'>48</span>
-<span class='line-number'>49</span>
-<span class='line-number'>50</span>
-<span class='line-number'>51</span>
-<span class='line-number'>52</span>
-<span class='line-number'>53</span>
-<span class='line-number'>54</span>
-<span class='line-number'>55</span>
-<span class='line-number'>56</span>
-<span class='line-number'>57</span>
-<span class='line-number'>58</span>
-<span class='line-number'>59</span>
-<span class='line-number'>60</span>
-<span class='line-number'>61</span>
-<span class='line-number'>62</span>
-<span class='line-number'>63</span>
-<span class='line-number'>64</span>
-<span class='line-number'>65</span>
-<span class='line-number'>66</span>
-<span class='line-number'>67</span>
-<span class='line-number'>68</span>
-<span class='line-number'>69</span>
-<span class='line-number'>70</span>
-<span class='line-number'>71</span>
-<span class='line-number'>72</span>
-<span class='line-number'>73</span>
-<span class='line-number'>74</span>
-<span class='line-number'>75</span>
-<span class='line-number'>76</span>
-<span class='line-number'>77</span>
-<span class='line-number'>78</span>
-<span class='line-number'>79</span>
-<span class='line-number'>80</span>
-<span class='line-number'>81</span>
-<span class='line-number'>82</span>
-<span class='line-number'>83</span>
-<span class='line-number'>84</span>
-<span class='line-number'>85</span>
-<span class='line-number'>86</span>
-<span class='line-number'>87</span>
-<span class='line-number'>88</span>
-<span class='line-number'>89</span>
-<span class='line-number'>90</span>
-<span class='line-number'>91</span>
-<span class='line-number'>92</span>
-<span class='line-number'>93</span>
-<span class='line-number'>94</span>
-<span class='line-number'>95</span>
-<span class='line-number'>96</span>
-<span class='line-number'>97</span>
-<span class='line-number'>98</span>
-<span class='line-number'>99</span>
-<span class='line-number'>100</span>
-<span class='line-number'>101</span>
-<span class='line-number'>102</span>
-<span class='line-number'>103</span>
-<span class='line-number'>104</span>
-<span class='line-number'>105</span>
-<span class='line-number'>106</span>
-<span class='line-number'>107</span>
-<span class='line-number'>108</span>
-<span class='line-number'>109</span>
-<span class='line-number'>110</span>
-<span class='line-number'>111</span>
-<span class='line-number'>112</span>
-<span class='line-number'>113</span>
-<span class='line-number'>114</span>
-<span class='line-number'>115</span>
-<span class='line-number'>116</span>
-<span class='line-number'>117</span>
-<span class='line-number'>118</span>
-<span class='line-number'>119</span>
-<span class='line-number'>120</span>
-<span class='line-number'>121</span>
-<span class='line-number'>122</span>
-<span class='line-number'>123</span>
-<span class='line-number'>124</span>
-<span class='line-number'>125</span>
-<span class='line-number'>126</span>
-<span class='line-number'>127</span>
-<span class='line-number'>128</span>
-<span class='line-number'>129</span>
-<span class='line-number'>130</span>
-<span class='line-number'>131</span>
-<span class='line-number'>132</span>
-<span class='line-number'>133</span>
-<span class='line-number'>134</span>
-<span class='line-number'>135</span>
-<span class='line-number'>136</span>
-<span class='line-number'>137</span>
-<span class='line-number'>138</span>
-<span class='line-number'>139</span>
-<span class='line-number'>140</span>
-<span class='line-number'>141</span>
-<span class='line-number'>142</span>
-<span class='line-number'>143</span>
-<span class='line-number'>144</span>
-<span class='line-number'>145</span>
-<span class='line-number'>146</span>
-<span class='line-number'>147</span>
-<span class='line-number'>148</span>
-<span class='line-number'>149</span>
-<span class='line-number'>150</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">&lt;</span><span class="sr">/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="sr">&lt;h1&gt;Disable Rake-environment-task framework detection by uncommenting/se</span><span class="n">tting</span> <span class="n">to</span> <span class="kp">false</span><span class="o">&lt;</span><span class="sr">/h1&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="sr">&lt;h1&gt;Warbler.framework_detection = false&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="no">Warbler</span> <span class="n">web</span> <span class="n">application</span> <span class="n">assembly</span> <span class="n">configuration</span> <span class="n">file</span><span class="o">&lt;</span><span class="sr">/h1&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="sr">&lt;p&gt;Warbler::Config.new do |config|</span>
-</span><span class='line'><span class="sr">  # Features: additional options controlling how the jar is built.</span>
-</span><span class='line'><span class="sr">  # Currently the following features are supported:</span>
-</span><span class='line'><span class="sr">  # - gemjar: package the gem repository in a jar file in WEB-INF/</span><span class="n">lib</span>
-</span><span class='line'>  <span class="c1"># - executable: embed a web server and make the war executable</span>
-</span><span class='line'>  <span class="c1"># - compiled: compile .rb files to .class files</span>
-</span><span class='line'>  <span class="n">config</span><span class="o">.</span><span class="n">features</span> <span class="o">=</span> <span class="sx">%w(executable compiled)</span><span class="o">&lt;</span><span class="sr">/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="sr">&lt;p&gt;  # Application directories to be included in the webapp.</span>
-</span><span class='line'><span class="sr">  config.dirs = %w(app config db lib log vendor tmp)&lt;/</span><span class="nb">p</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span>  <span class="c1"># Additional files/directories to include, above those in config.dirs</span>
-</span><span class='line'>  <span class="c1"># config.includes = FileList[&quot;db&quot;]&lt;/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span>  <span class="c1"># Additional files/directories to exclude</span>
-</span><span class='line'>  <span class="c1"># config.excludes = FileList[&quot;lib/tasks/*&quot;]&lt;/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span>  <span class="c1"># Additional Java .jar files to include.  Note that if .jar files are placed</span>
-</span><span class='line'>  <span class="c1"># in lib (and not otherwise excluded) then they need not be mentioned here.</span>
-</span><span class='line'>  <span class="c1"># JRuby and JRuby-Rack are pre-loaded in this list.  Be sure to include your</span>
-</span><span class='line'>  <span class="c1"># own versions if you directly set the value</span>
-</span><span class='line'>  <span class="c1"># config.java_libs += FileList[&quot;lib/java/*.jar&quot;]&lt;/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span>  <span class="c1"># Loose Java classes and miscellaneous files to be included.</span>
-</span><span class='line'>  <span class="c1"># config.java_classes = FileList[&quot;target/classes/&lt;em&gt;*.&lt;/em&gt;&quot;]&lt;/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span>  <span class="c1"># One or more pathmaps defining how the java classes should be copied into</span>
-</span><span class='line'>  <span class="c1"># the archive. The example pathmap below accompanies the java_classes</span>
-</span><span class='line'>  <span class="c1"># configuration above. See http://rake.rubyforge.org/classes/String.html#M000017</span>
-</span><span class='line'>  <span class="c1"># for details of how to specify a pathmap.</span>
-</span><span class='line'>  <span class="c1"># config.pathmaps.java_classes &amp;lt;&amp;lt; &quot;%{target/classes/,}p&quot;&lt;/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span>  <span class="c1"># Bundler support is built-in. If Warbler finds a Gemfile in the</span>
-</span><span class='line'>  <span class="c1"># project directory, it will be used to collect the gems to bundle</span>
-</span><span class='line'>  <span class="c1"># in your application. If you wish to explicitly disable this</span>
-</span><span class='line'>  <span class="c1"># functionality, uncomment here.</span>
-</span><span class='line'>  <span class="c1"># config.bundler = false&lt;/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span>  <span class="c1"># An array of Bundler groups to avoid including in the war file.</span>
-</span><span class='line'>  <span class="c1"># Defaults to [&quot;development&quot;, &quot;test&quot;].</span>
-</span><span class='line'>  <span class="c1"># config.bundle_without = []&lt;/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span>  <span class="c1"># Other gems to be included. If you don&#39;t use Bundler or a gemspec</span>
-</span><span class='line'>  <span class="c1"># file, you need to tell Warbler which gems your application needs</span>
-</span><span class='line'>  <span class="c1"># so that they can be packaged in the archive.</span>
-</span><span class='line'>  <span class="c1"># For Rails applications, the Rails gems are included by default</span>
-</span><span class='line'>  <span class="c1"># unless the vendor/rails directory is present.</span>
-</span><span class='line'>  <span class="c1"># config.gems += [&quot;activerecord-jdbcmysql-adapter&quot;, &quot;jruby-openssl&quot;]</span>
-</span><span class='line'>  <span class="c1"># config.gems &amp;lt;&amp;lt; &quot;tzinfo&quot;&lt;/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span>  <span class="c1"># Uncomment this if you don&#39;t want to package rails gem.</span>
-</span><span class='line'>  <span class="c1"># config.gems -= [&quot;rails&quot;]&lt;/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span>  <span class="c1"># The most recent versions of gems are used.</span>
-</span><span class='line'>  <span class="c1"># You can specify versions of gems by using a hash assignment:</span>
-</span><span class='line'>  <span class="c1"># config.gems[&quot;rails&quot;] = &quot;2.3.10&quot;&lt;/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span>  <span class="c1"># You can also use regexps or Gem::Dependency objects for flexibility or</span>
-</span><span class='line'>  <span class="c1"># finer-grained control.</span>
-</span><span class='line'>  <span class="c1"># config.gems &amp;lt;&amp;lt; /&lt;sup&gt;merb-/&lt;/sup&gt;</span>
-</span><span class='line'>  <span class="c1"># config.gems &amp;lt;&amp;lt; Gem::Dependency.new(&quot;merb-core&quot;, &quot;= 0.9.3&quot;)&lt;/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span>  <span class="c1"># Include gem dependencies not mentioned specifically. Default is</span>
-</span><span class='line'>  <span class="c1"># true, uncomment to turn off.</span>
-</span><span class='line'>  <span class="c1"># config.gem_dependencies = false&lt;/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span>  <span class="c1"># Array of regular expressions matching relative paths in gems to be</span>
-</span><span class='line'>  <span class="c1"># excluded from the war. Defaults to empty, but you can set it like</span>
-</span><span class='line'>  <span class="c1"># below, which excludes test files.</span>
-</span><span class='line'>  <span class="c1"># config.gem_excludes = [/&lt;sup&gt;(test|spec)\//]&lt;/sup&gt;&lt;/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span>  <span class="c1"># Pathmaps for controlling how application files are copied into the archive</span>
-</span><span class='line'>  <span class="c1"># config.pathmaps.application = [&quot;WEB-INF/%p&quot;]&lt;/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span>  <span class="c1"># Name of the archive (without the extension). Defaults to the basename</span>
-</span><span class='line'>  <span class="c1"># of the project directory.</span>
-</span><span class='line'>  <span class="n">config</span><span class="o">.</span><span class="n">jar_name</span> <span class="o">=</span> <span class="s2">&quot;ntdeck&quot;</span><span class="o">&lt;</span><span class="sr">/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="sr">&lt;p&gt;  # Name of the MANIFEST.MF template for the war file. Defaults to a simple</span>
-</span><span class='line'><span class="sr">  # MANIFEST.MF that contains the version of Warbler used to create the war file.</span>
-</span><span class='line'><span class="sr">  # config.manifest_file = &quot;config/</span><span class="no">MANIFEST</span><span class="o">.</span><span class="n">MF</span><span class="s2">&quot;&lt;/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="s2">&lt;p&gt;  # When using the &#39;compiled&#39; feature and specified, only these Ruby</span>
-</span><span class='line'><span class="s2">  # files will be compiled. Default is to compile all .rb files in</span>
-</span><span class='line'><span class="s2">  # the application.</span>
-</span><span class='line'><span class="s2">  # config.compiled_ruby_files = FileList[&#39;app/&lt;strong&gt;/&lt;em&gt;.rb&#39;]</span>
-</span><span class='line'><span class="s2">  compile_me = FileList[&lt;/em&gt;config.dirs.map {|x| &quot;</span><span class="c1">#{x}/&lt;/strong&gt;/&lt;em&gt;.rb&quot;}].exclude(&quot;config/compass.rb&quot;).exclude(&quot;lib/printer/&lt;/em&gt;&quot;)</span>
-</span><span class='line'>  <span class="n">config</span><span class="o">.</span><span class="n">compiled_ruby_files</span> <span class="o">=</span> <span class="n">compile_me</span><span class="o">&lt;</span><span class="sr">/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="sr">&lt;p&gt;  # === War files only below here ===&lt;/</span><span class="nb">p</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span>  <span class="c1"># Path to the pre-bundled gem directory inside the war file. Default</span>
-</span><span class='line'>  <span class="c1"># is &#39;WEB-INF/gems&#39;. Specify path if gems are already bundled</span>
-</span><span class='line'>  <span class="c1"># before running Warbler. This also sets &#39;gem.path&#39; inside web.xml.</span>
-</span><span class='line'>  <span class="c1"># config.gem_path = &quot;WEB-INF/vendor/bundler_gems&quot;&lt;/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span>  <span class="c1"># Files for WEB-INF directory (next to web.xml). This contains</span>
-</span><span class='line'>  <span class="c1"># web.xml by default. If there is an .erb-File it will be processed</span>
-</span><span class='line'>  <span class="c1"># with webxml-config. You may want to exclude this file via</span>
-</span><span class='line'>  <span class="c1"># config.excludes.</span>
-</span><span class='line'>  <span class="c1"># config.webinf_files += FileList[&quot;jboss-web.xml&quot;]&lt;/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span>  <span class="c1"># Files to be included in the root of the webapp.  Note that files in public</span>
-</span><span class='line'>  <span class="c1"># will have the leading &#39;public/&#39; part of the path stripped during staging.</span>
-</span><span class='line'>  <span class="c1"># config.public_html = FileList[&quot;public/&lt;strong&gt;/*&quot;, &quot;doc/&lt;/strong&gt;/*&quot;]&lt;/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span>  <span class="c1"># Pathmaps for controlling how public HTML files are copied into the .war</span>
-</span><span class='line'>  <span class="c1"># config.pathmaps.public_html = [&quot;%{public/,}p&quot;]&lt;/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span>  <span class="c1"># Value of RAILS_ENV for the webapp -- default as shown below</span>
-</span><span class='line'>  <span class="c1"># config.webxml.rails.env = ENV[&#39;RAILS_ENV&#39;] || &#39;production&#39;&lt;/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span>  <span class="c1"># Application booter to use, one of :rack, :rails, or :merb (autodetected by default)</span>
-</span><span class='line'>  <span class="c1"># config.webxml.booter = :rails&lt;/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span>  <span class="c1"># Set JRuby to run in 1.9 mode.</span>
-</span><span class='line'>  <span class="c1"># config.webxml.jruby.compat.version = &quot;1.9&quot;&lt;/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span>  <span class="c1"># When using the :rack booter, &quot;Rackup&quot; script to use.</span>
-</span><span class='line'>  <span class="c1"># - For &#39;rackup.path&#39;, the value points to the location of the rackup</span>
-</span><span class='line'>  <span class="c1"># script in the web archive file. You need to make sure this file</span>
-</span><span class='line'>  <span class="c1"># gets included in the war, possibly by adding it to config.includes</span>
-</span><span class='line'>  <span class="c1"># or config.webinf_files above.</span>
-</span><span class='line'>  <span class="c1"># - For &#39;rackup&#39;, the rackup script you provide as an inline string</span>
-</span><span class='line'>  <span class="c1">#   is simply embedded in web.xml.</span>
-</span><span class='line'>  <span class="c1"># The script is evaluated in a Rack::Builder to load the application.</span>
-</span><span class='line'>  <span class="c1"># Examples:</span>
-</span><span class='line'>  <span class="c1"># config.webxml.rackup.path = &#39;WEB-INF/hello.ru&#39;</span>
-</span><span class='line'>  <span class="c1"># config.webxml.rackup = %{require &#39;./lib/demo&#39;; run Rack::Adapter::Camping.new(Demo)}</span>
-</span><span class='line'>  <span class="c1"># config.webxml.rackup = require &#39;cgi&#39; &amp;amp;&amp;amp; CGI::escapeHTML(File.read(&quot;config.ru&quot;))&lt;/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span>  <span class="c1"># Control the pool of Rails runtimes. Leaving unspecified means</span>
-</span><span class='line'>  <span class="c1"># the pool will grow as needed to service requests. It is recommended</span>
-</span><span class='line'>  <span class="c1"># that you fix these values when running a production server!</span>
-</span><span class='line'>  <span class="n">config</span><span class="o">.</span><span class="n">webxml</span><span class="o">.</span><span class="n">jruby</span><span class="o">.</span><span class="n">min</span><span class="o">.</span><span class="n">runtimes</span> <span class="o">=</span> <span class="mi">1</span>
-</span><span class='line'>  <span class="n">config</span><span class="o">.</span><span class="n">webxml</span><span class="o">.</span><span class="n">jruby</span><span class="o">.</span><span class="n">max</span><span class="o">.</span><span class="n">runtimes</span> <span class="o">=</span> <span class="mi">1</span><span class="o">&lt;</span><span class="sr">/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="sr">&lt;p&gt;  # JNDI data source name</span>
-</span><span class='line'><span class="sr">  # config.webxml.jndi = &#39;jdbc/</span><span class="n">rails</span><span class="err">&#39;</span>
-</span><span class='line'><span class="k">end</span><span class="o">&lt;</span><span class="sr">/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="sr">&lt;p&gt;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+{% codeblock config/warble.rb lang:ruby %}</p>
+
+<h1>Disable Rake-environment-task framework detection by uncommenting/setting to false</h1>
+
+<h1>Warbler.framework_detection = false</h1>
+
+<h1>Warbler web application assembly configuration file</h1>
+
+<p>Warbler::Config.new do |config|
+  # Features: additional options controlling how the jar is built.
+  # Currently the following features are supported:
+  # - gemjar: package the gem repository in a jar file in WEB-INF/lib
+  # - executable: embed a web server and make the war executable
+  # - compiled: compile .rb files to .class files
+  config.features = %w(executable compiled)</p>
+
+<p>  # Application directories to be included in the webapp.
+  config.dirs = %w(app config db lib log vendor tmp)</p>
+
+<p>  # Additional files/directories to include, above those in config.dirs
+  # config.includes = FileList["db"]</p>
+
+<p>  # Additional files/directories to exclude
+  # config.excludes = FileList["lib/tasks/*"]</p>
+
+<p>  # Additional Java .jar files to include.  Note that if .jar files are placed
+  # in lib (and not otherwise excluded) then they need not be mentioned here.
+  # JRuby and JRuby-Rack are pre-loaded in this list.  Be sure to include your
+  # own versions if you directly set the value
+  # config.java_libs += FileList["lib/java/*.jar"]</p>
+
+<p>  # Loose Java classes and miscellaneous files to be included.
+  # config.java_classes = FileList["target/classes/<em>*.</em>"]</p>
+
+<p>  # One or more pathmaps defining how the java classes should be copied into
+  # the archive. The example pathmap below accompanies the java_classes
+  # configuration above. See http://rake.rubyforge.org/classes/String.html#M000017
+  # for details of how to specify a pathmap.
+  # config.pathmaps.java_classes &lt;&lt; "%{target/classes/,}p"</p>
+
+<p>  # Bundler support is built-in. If Warbler finds a Gemfile in the
+  # project directory, it will be used to collect the gems to bundle
+  # in your application. If you wish to explicitly disable this
+  # functionality, uncomment here.
+  # config.bundler = false</p>
+
+<p>  # An array of Bundler groups to avoid including in the war file.
+  # Defaults to ["development", "test"].
+  # config.bundle_without = []</p>
+
+<p>  # Other gems to be included. If you don't use Bundler or a gemspec
+  # file, you need to tell Warbler which gems your application needs
+  # so that they can be packaged in the archive.
+  # For Rails applications, the Rails gems are included by default
+  # unless the vendor/rails directory is present.
+  # config.gems += ["activerecord-jdbcmysql-adapter", "jruby-openssl"]
+  # config.gems &lt;&lt; "tzinfo"</p>
+
+<p>  # Uncomment this if you don't want to package rails gem.
+  # config.gems -= ["rails"]</p>
+
+<p>  # The most recent versions of gems are used.
+  # You can specify versions of gems by using a hash assignment:
+  # config.gems["rails"] = "2.3.10"</p>
+
+<p>  # You can also use regexps or Gem::Dependency objects for flexibility or
+  # finer-grained control.
+  # config.gems &lt;&lt; /<sup>merb-/</sup>
+  # config.gems &lt;&lt; Gem::Dependency.new("merb-core", "= 0.9.3")</p>
+
+<p>  # Include gem dependencies not mentioned specifically. Default is
+  # true, uncomment to turn off.
+  # config.gem_dependencies = false</p>
+
+<p>  # Array of regular expressions matching relative paths in gems to be
+  # excluded from the war. Defaults to empty, but you can set it like
+  # below, which excludes test files.
+  # config.gem_excludes = [/<sup>(test|spec)\//]</sup></p>
+
+<p>  # Pathmaps for controlling how application files are copied into the archive
+  # config.pathmaps.application = ["WEB-INF/%p"]</p>
+
+<p>  # Name of the archive (without the extension). Defaults to the basename
+  # of the project directory.
+  config.jar_name = "ntdeck"</p>
+
+<p>  # Name of the MANIFEST.MF template for the war file. Defaults to a simple
+  # MANIFEST.MF that contains the version of Warbler used to create the war file.
+  # config.manifest_file = "config/MANIFEST.MF"</p>
+
+<p>  # When using the 'compiled' feature and specified, only these Ruby
+  # files will be compiled. Default is to compile all .rb files in
+  # the application.
+  # config.compiled_ruby_files = FileList['app/<strong>/<em>.rb']
+  compile_me = FileList[</em>config.dirs.map {|x| "#{x}/</strong>/<em>.rb"}].exclude("config/compass.rb").exclude("lib/printer/</em>")
+  config.compiled_ruby_files = compile_me</p>
+
+<p>  # === War files only below here ===</p>
+
+<p>  # Path to the pre-bundled gem directory inside the war file. Default
+  # is 'WEB-INF/gems'. Specify path if gems are already bundled
+  # before running Warbler. This also sets 'gem.path' inside web.xml.
+  # config.gem_path = "WEB-INF/vendor/bundler_gems"</p>
+
+<p>  # Files for WEB-INF directory (next to web.xml). This contains
+  # web.xml by default. If there is an .erb-File it will be processed
+  # with webxml-config. You may want to exclude this file via
+  # config.excludes.
+  # config.webinf_files += FileList["jboss-web.xml"]</p>
+
+<p>  # Files to be included in the root of the webapp.  Note that files in public
+  # will have the leading 'public/' part of the path stripped during staging.
+  # config.public_html = FileList["public/<strong>/*", "doc/</strong>/*"]</p>
+
+<p>  # Pathmaps for controlling how public HTML files are copied into the .war
+  # config.pathmaps.public_html = ["%{public/,}p"]</p>
+
+<p>  # Value of RAILS_ENV for the webapp -- default as shown below
+  # config.webxml.rails.env = ENV['RAILS_ENV'] || 'production'</p>
+
+<p>  # Application booter to use, one of :rack, :rails, or :merb (autodetected by default)
+  # config.webxml.booter = :rails</p>
+
+<p>  # Set JRuby to run in 1.9 mode.
+  # config.webxml.jruby.compat.version = "1.9"</p>
+
+<p>  # When using the :rack booter, "Rackup" script to use.
+  # - For 'rackup.path', the value points to the location of the rackup
+  # script in the web archive file. You need to make sure this file
+  # gets included in the war, possibly by adding it to config.includes
+  # or config.webinf_files above.
+  # - For 'rackup', the rackup script you provide as an inline string
+  #   is simply embedded in web.xml.
+  # The script is evaluated in a Rack::Builder to load the application.
+  # Examples:
+  # config.webxml.rackup.path = 'WEB-INF/hello.ru'
+  # config.webxml.rackup = %{require './lib/demo'; run Rack::Adapter::Camping.new(Demo)}
+  # config.webxml.rackup = require 'cgi' &amp;&amp; CGI::escapeHTML(File.read("config.ru"))</p>
+
+<p>  # Control the pool of Rails runtimes. Leaving unspecified means
+  # the pool will grow as needed to service requests. It is recommended
+  # that you fix these values when running a production server!
+  config.webxml.jruby.min.runtimes = 1
+  config.webxml.jruby.max.runtimes = 1</p>
+
+<p>  # JNDI data source name
+  # config.webxml.jndi = 'jdbc/rails'
+end</p>
+
+<p>{% endcodeblock %}</p>
 
 <p>需要注意的是config.features = %w(executable compiled)配置中，其中的compiled就是可以将ruby代码编译成class代码的。</p>
 ]]></content>

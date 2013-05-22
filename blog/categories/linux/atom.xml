@@ -4,7 +4,7 @@
   <title><![CDATA[Category: linux | 蕲春人的博客]]></title>
   <link href="http://qichunren.github.io/blog/categories/linux/atom.xml" rel="self"/>
   <link href="http://qichunren.github.io/"/>
-  <updated>2013-05-21T13:42:14+08:00</updated>
+  <updated>2013-05-22T00:32:13+08:00</updated>
   <id>http://qichunren.github.io/</id>
   <author>
     <name><![CDATA[qichunren]]></name>
@@ -191,166 +191,85 @@ export LANG='en_US.UTF-8'
 </code></p>
 
 <p>最后附上一个常用的init.d启动脚本的样本：
-<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>/etc/init.d/ntgps  </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-<span class='line-number'>40</span>
-<span class='line-number'>41</span>
-<span class='line-number'>42</span>
-<span class='line-number'>43</span>
-<span class='line-number'>44</span>
-<span class='line-number'>45</span>
-<span class='line-number'>46</span>
-<span class='line-number'>47</span>
-<span class='line-number'>48</span>
-<span class='line-number'>49</span>
-<span class='line-number'>50</span>
-<span class='line-number'>51</span>
-<span class='line-number'>52</span>
-<span class='line-number'>53</span>
-<span class='line-number'>54</span>
-<span class='line-number'>55</span>
-<span class='line-number'>56</span>
-<span class='line-number'>57</span>
-<span class='line-number'>58</span>
-<span class='line-number'>59</span>
-<span class='line-number'>60</span>
-<span class='line-number'>61</span>
-<span class='line-number'>62</span>
-<span class='line-number'>63</span>
-<span class='line-number'>64</span>
-<span class='line-number'>65</span>
-<span class='line-number'>66</span>
-<span class='line-number'>67</span>
-<span class='line-number'>68</span>
-<span class='line-number'>69</span>
-<span class='line-number'>70</span>
-<span class='line-number'>71</span>
-<span class='line-number'>72</span>
-<span class='line-number'>73</span>
-<span class='line-number'>74</span>
-<span class='line-number'>75</span>
-<span class='line-number'>76</span>
-<span class='line-number'>77</span>
-<span class='line-number'>78</span>
-<span class='line-number'>79</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>&lt;/p&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;h1&gt;!/bin/sh&lt;/h1&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;h3&gt;BEGIN INIT INFO&lt;/h3&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;h1&gt;Provides:          gps&lt;/h1&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;h1&gt;Required-Start:    <span class="nv">$syslog</span> <span class="nv">$remote_fs</span> <span class="nv">$network</span>&lt;/h1&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;h1&gt;Required-Stop:     <span class="nv">$syslog</span> <span class="nv">$remote_fs</span> <span class="nv">$network</span>&lt;/h1&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;h1&gt;Should-Start:      fam&lt;/h1&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;h1&gt;Should-Stop:       fam&lt;/h1&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;h1&gt;Default-Start:     2 3 4 5&lt;/h1&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;h1&gt;Default-Stop:      0 1 6&lt;/h1&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;h1&gt;Short-Description: Start the gps.&lt;/h1&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;h3&gt;END INIT INFO&lt;/h3&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;p&gt;PATH<span class="o">=</span>/usr/local/rvm/gems/ruby-1.9.2-p290/bin:/usr/local/rvm/gems/ruby-1.9.2-p290@global/bin:/usr/local/rvm/rubies/ruby-1.9.2-p290/bin:/usr/local/rvm/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
-</span><span class='line'><span class="nv">DAEMON</span><span class="o">=</span>/www/georgia/current/lib/gps/gps.rb
-</span><span class='line'><span class="nv">NAME</span><span class="o">=</span>ntgps
-</span><span class='line'><span class="nv">DESC</span><span class="o">=</span><span class="s2">&quot;ntgps daemon&quot;</span>
-</span><span class='line'><span class="nv">PIDFILE</span><span class="o">=</span>/var/run/<span class="nv">$NAME</span>.pid
-</span><span class='line'><span class="nv">SCRIPTNAME</span><span class="o">=</span>/etc/init.d/<span class="nv">$NAME</span>&lt;/p&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;p&gt;DAEMON_OPTS<span class="o">=</span><span class="s2">&quot;&quot;</span>&lt;/p&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;p&gt;set -e
-</span><span class='line'>. /lib/lsb/init-functions
-</span><span class='line'><span class="nb">export </span><span class="nv">LANG</span><span class="o">=</span><span class="s1">&#39;en_US.UTF-8&#39;</span>
-</span><span class='line'><span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>
-</span><span class='line'><span class="nb">export </span><span class="nv">GEM_HOME</span><span class="o">=</span>/usr/local/rvm/gems/ruby-1.9.2-p290
-</span><span class='line'><span class="nb">export </span><span class="nv">GEM_PATH</span><span class="o">=</span>/usr/local/rvm/gems/ruby-1.9.2-p290:/usr/local/rvm/gems/ruby-1.9.2-p290@global&lt;/p&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;p&gt;case <span class="s2">&quot;$1&quot;</span> in&lt;/p&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;pre&gt;&lt;code&gt;start<span class="o">)</span>
-</span><span class='line'>    log_daemon_msg <span class="s2">&quot;Starting $DESC&quot;</span> <span class="nv">$NAME</span>
-</span><span class='line'>    <span class="k">if</span> ! start-stop-daemon --start -m --background --oknodo --quiet --pidfile <span class="nv">$PIDFILE</span> --exec /usr/local/rvm/rubies/ruby-1.9.2-p290/bin/ruby <span class="nv">$DAEMON</span> -- <span class="nv">$DAEMON_OPTS</span>
-</span><span class='line'>    <span class="k">then</span>
-</span><span class='line'><span class="k">        </span>log_end_msg 1
-</span><span class='line'>    <span class="k">else</span>
-</span><span class='line'><span class="k">        </span>log_end_msg 0
-</span><span class='line'>    <span class="k">fi</span>
-</span><span class='line'>    ;;
-</span><span class='line'>stop<span class="o">)</span>
-</span><span class='line'>    log_daemon_msg <span class="s2">&quot;Stopping $DESC&quot;</span> <span class="nv">$NAME</span>
-</span><span class='line'>    <span class="k">if </span><span class="nb">kill</span>  -9 <span class="sb">`</span>cat <span class="nv">$PIDFILE</span><span class="sb">`</span>
-</span><span class='line'>    <span class="k">then</span>
-</span><span class='line'><span class="k">        </span>rm -f <span class="nv">$PIDFILE</span>
-</span><span class='line'>        log_end_msg 0
-</span><span class='line'>    <span class="k">else</span>
-</span><span class='line'><span class="k">        </span>log_end_msg 1
-</span><span class='line'>    <span class="k">fi</span>
-</span><span class='line'>    ;;
-</span><span class='line'>restart<span class="o">)</span>
-</span><span class='line'>    <span class="nv">$0</span> stop
-</span><span class='line'>    <span class="nv">$0</span> start
-</span><span class='line'>    ;;
-</span><span class='line'>status<span class="o">)</span>
-</span><span class='line'>    status_of_proc -p <span class="s2">&quot;$PIDFILE&quot;</span> <span class="s2">&quot;$DAEMON&quot;</span> <span class="nv">$NAME</span> &amp;amp;&amp;amp; <span class="nb">exit </span>0 <span class="o">||</span> <span class="nb">exit</span> <span class="nv">$?</span>
-</span><span class='line'>    ;;
-</span><span class='line'>*<span class="o">)</span>
-</span><span class='line'>    <span class="nb">echo</span> <span class="s2">&quot;Usage: $SCRIPTNAME {start|stop|restart|status}&quot;</span> &amp;gt;&amp;amp;2
-</span><span class='line'>    <span class="nb">exit </span>1
-</span><span class='line'>    ;;
-</span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;p&gt;esac&lt;/p&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;p&gt;exit 0&lt;/p&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;p&gt;
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+{% codeblock /etc/init.d/ntgps lang:bash %}</p>
+
+<h1>!/bin/sh</h1>
+
+<h3>BEGIN INIT INFO</h3>
+
+<h1>Provides:          gps</h1>
+
+<h1>Required-Start:    $syslog $remote_fs $network</h1>
+
+<h1>Required-Stop:     $syslog $remote_fs $network</h1>
+
+<h1>Should-Start:      fam</h1>
+
+<h1>Should-Stop:       fam</h1>
+
+<h1>Default-Start:     2 3 4 5</h1>
+
+<h1>Default-Stop:      0 1 6</h1>
+
+<h1>Short-Description: Start the gps.</h1>
+
+<h3>END INIT INFO</h3>
+
+<p>PATH=/usr/local/rvm/gems/ruby-1.9.2-p290/bin:/usr/local/rvm/gems/ruby-1.9.2-p290@global/bin:/usr/local/rvm/rubies/ruby-1.9.2-p290/bin:/usr/local/rvm/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
+DAEMON=/www/georgia/current/lib/gps/gps.rb
+NAME=ntgps
+DESC="ntgps daemon"
+PIDFILE=/var/run/$NAME.pid
+SCRIPTNAME=/etc/init.d/$NAME</p>
+
+<p>DAEMON_OPTS=""</p>
+
+<p>set -e
+. /lib/lsb/init-functions
+export LANG='en_US.UTF-8'
+export PATH=$PATH
+export GEM_HOME=/usr/local/rvm/gems/ruby-1.9.2-p290
+export GEM_PATH=/usr/local/rvm/gems/ruby-1.9.2-p290:/usr/local/rvm/gems/ruby-1.9.2-p290@global</p>
+
+<p>case "$1" in</p>
+
+<pre><code>start)
+    log_daemon_msg "Starting $DESC" $NAME
+    if ! start-stop-daemon --start -m --background --oknodo --quiet --pidfile $PIDFILE --exec /usr/local/rvm/rubies/ruby-1.9.2-p290/bin/ruby $DAEMON -- $DAEMON_OPTS
+    then
+        log_end_msg 1
+    else
+        log_end_msg 0
+    fi
+    ;;
+stop)
+    log_daemon_msg "Stopping $DESC" $NAME
+    if kill  -9 `cat $PIDFILE`
+    then
+        rm -f $PIDFILE
+        log_end_msg 0
+    else
+        log_end_msg 1
+    fi
+    ;;
+restart)
+    $0 stop
+    $0 start
+    ;;
+status)
+    status_of_proc -p "$PIDFILE" "$DAEMON" $NAME &amp;&amp; exit 0 || exit $?
+    ;;
+*)
+    echo "Usage: $SCRIPTNAME {start|stop|restart|status}" &gt;&amp;2
+    exit 1
+    ;;
+</code></pre>
+
+<p>esac</p>
+
+<p>exit 0</p>
+
+<p>{% endcodeblock %}</p>
 
 <h2>Resources:</h2>
 

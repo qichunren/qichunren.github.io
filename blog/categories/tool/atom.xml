@@ -4,7 +4,7 @@
   <title><![CDATA[Category: tool | 蕲春人的博客]]></title>
   <link href="http://qichunren.github.io/blog/categories/tool/atom.xml" rel="self"/>
   <link href="http://qichunren.github.io/"/>
-  <updated>2013-05-21T13:42:14+08:00</updated>
+  <updated>2013-05-22T00:32:13+08:00</updated>
   <id>http://qichunren.github.io/</id>
   <author>
     <name><![CDATA[qichunren]]></name>
@@ -112,22 +112,14 @@ qichunren@qichunren-desktop:~/github/phantomjs$
 
 <h3>安装方法</h3>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>install step  </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">cd</span> ~/Library/Application<span class="se">\ </span>Support/TextMate/Bundles/
-</span><span class='line'>git clone git://github.com/glennr/uber-glory-tmbundle.git Uber<span class="se">\ </span>Glory.tmbundle
-</span><span class='line'><span class="nb">cd </span>Uber<span class="se">\ </span>Glory.tmbundle
-</span><span class='line'>git submodule update --init
-</span><span class='line'>osascript -e <span class="s1">&#39;tell app &quot;TextMate&quot; to reload bundles&#39;</span>&lt;/p&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;p&gt;
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+<p>{% codeblock install step lang:bash %}
+cd ~/Library/Application\ Support/TextMate/Bundles/
+git clone git://github.com/glennr/uber-glory-tmbundle.git Uber\ Glory.tmbundle
+cd Uber\ Glory.tmbundle
+git submodule update --init
+osascript -e 'tell app "TextMate" to reload bundles'</p>
+
+<p>{% endcodeblock %}</p>
 ]]></content>
   </entry>
   
@@ -162,45 +154,26 @@ qichunren@qichunren-desktop:~/github/phantomjs$
     <id>http://qichunren.github.io/blog/use_feedzirra_to_fetch_feed</id>
     <content type="html"><![CDATA[<p><a href="https://github.com/pauldix/feedzirra">feedzirra</a> 是一个很好用的提取和分析feed的工具。用法如下：</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">&lt;</span><span class="sr">/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="sr">&lt;h1&gt;encoding: utf-8&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span><span class="nb">require</span> <span class="s2">&quot;feedzirra&quot;</span><span class="o">&lt;</span><span class="sr">/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="sr">&lt;p&gt;def fetch_feed(feed_url)</span>
-</span><span class='line'><span class="sr">  feed = Feedzirra::Feed.fetch_and_parse(feed_url)&lt;/</span><span class="nb">p</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span>  <span class="n">feed_entries</span> <span class="o">=</span> <span class="n">feed</span><span class="o">.</span><span class="n">entries</span>
-</span><span class='line'>  <span class="n">feed_entries</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">entry</span><span class="o">|&lt;</span><span class="sr">/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="sr">&lt;pre&gt;&lt;code&gt;puts entry.inspect  </span>
-</span><span class='line'><span class="sr">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;</span><span class="sr">/pre&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="sr">&lt;p&gt;  end # end each</span>
-</span><span class='line'><span class="sr">end&lt;/</span><span class="nb">p</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span><span class="n">fetch_feed</span> <span class="s2">&quot;http://tech.163.com/special/000944OI/kejitongxin.xml&quot;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+<p>{% codeblock lang:ruby %}</p>
+
+<h1>encoding: utf-8</h1>
+
+<p>require "feedzirra"</p>
+
+<p>def fetch_feed(feed_url)
+  feed = Feedzirra::Feed.fetch_and_parse(feed_url)</p>
+
+<p>  feed_entries = feed.entries
+  feed_entries.each do |entry|</p>
+
+<pre><code>puts entry.inspect  
+</code></pre>
+
+<p>  end # end each
+end</p>
+
+<p>fetch_feed "http://tech.163.com/special/000944OI/kejitongxin.xml"
+{% endcodeblock %}</p>
 
 <p>结果：</p>
 
