@@ -6,6 +6,8 @@ comments: true
 categories: database
 ---
 
+## Mac平台
+
 ### brew info postgresql
 <pre>
 qichunrens-MacBook-Pro:luna-client1 qichunren$ brew info postgresql
@@ -291,3 +293,47 @@ psql -U luna luna_production
 luna_production=> select * from users;
 luna_production=> ALTER USER luna WITH PASSWORD ‘whateverpasswordyouwant’;
 </pre>
+
+## Ubuntu平台
+
+`sudo apt-get -y install  postgresql libpq-dev` 安装完成以后，我们需要更改postgres用户的密码，否则我们就没法使用这个数据库服务器。以postgres这个系统用户的身份运行psql命令，在终端中输入如下:
+
+```
+sudo su postgres -c psql template1
+```
+这时候会出现新的提示符，输入下面两个命令，用新密码替换 <***password***>：
+
+```
+ALTER USER postgres WITH PASSWORD '<***password***>';
+```
+
+<pre>
+
+sudo -u postgres psql -c "create user qichunren with password 'qichunren';"
+sudo -u postgres psql -c "CREATE DATABASE qichunren_production WITH OWNER qichunren ENCODING 'UTF8';"
+# sudo -u postgres psql -c "DROP DATABASE qichunren_production;"
+</pre>
+
+### 设置数据库编码
+
+```
+psql (9.0.3)
+Type "help" for help.
+ 
+postgres=# update pg_database set datallowconn = TRUE where datname = 'template0';
+UPDATE 1
+postgres=# \c template0
+You are now connected to database "template0".
+template0=# update pg_database set datistemplate = FALSE where datname = 'template1';
+UPDATE 1
+template0=# drop database template1;
+DROP DATABASE
+template0=# create database template1 with template = template0 encoding = 'UTF8' LC_CTYPE = 'en_US.utf8' LC_COLLATE = 'en_US.utf8';
+CREATE DATABASE
+template0=# update pg_database set datistemplate = TRUE where datname = 'template1';
+UPDATE 1
+template0=# \c template1
+You are now connected to database "template1".
+template1=# update pg_database set datallowconn = FALSE where datname = 'template0';
+UPDATE 1
+```
