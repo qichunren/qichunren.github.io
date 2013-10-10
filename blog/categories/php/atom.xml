@@ -4,7 +4,7 @@
   <title><![CDATA[Category: php | 蕲春人的博客]]></title>
   <link href="http://qichunren.github.io/blog/categories/php/atom.xml" rel="self"/>
   <link href="http://qichunren.github.io/"/>
-  <updated>2013-05-22T00:32:13+08:00</updated>
+  <updated>2013-10-10T13:02:23+08:00</updated>
   <id>http://qichunren.github.io/</id>
   <author>
     <name><![CDATA[qichunren]]></name>
@@ -56,37 +56,65 @@
 
 <p>那么文件名就应该指定为block.users.php，然后function应该命名为smarty_block_users：</p>
 
-<p>{% codeblock lang:php %}
-&lt;?php
-function smarty_block_users($params, $content, $smarty, &amp;$repeat){</p>
-
-<pre><code>if (empty($content)){
-    if (empty($params['limit'])) {
-        $limit = 10;
-    } else {
-        $limit = $params['limit'];
-    }
-    $CI =&amp; get_instance();
-    $GLOBALS['users'] = $CI-&gt;db-&gt;query("select * from users order by created_at desc limit $limit")-&gt;result();
-}
-if(isset($GLOBALS['users']) != NULL &amp;&amp; count($GLOBALS['users'])&gt;0){
-    $user = array_shift($GLOBALS['users']);
-    $smarty-&gt;assign('user', $user);
-    if (count($GLOBALS['users']) == 0){
-        unset($GLOBALS['users']);
-        $repeat = false;
-    }
-    $repeat = true;
-}else {
-    $repeat = false;
-}
-
-return $content;
-</code></pre>
-
-<p>}
-?>
-{% endcodeblock %}</p>
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">&amp;lt;?php</span>
+</span><span class='line'><span class="x">function smarty_block_users($params, $content, $smarty, &amp;amp;$repeat){&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">&lt;pre&gt;&lt;code&gt;if (empty($content)){</span>
+</span><span class='line'><span class="x">    if (empty($params[&#39;limit&#39;])) {</span>
+</span><span class='line'><span class="x">        $limit = 10;</span>
+</span><span class='line'><span class="x">    } else {</span>
+</span><span class='line'><span class="x">        $limit = $params[&#39;limit&#39;];</span>
+</span><span class='line'><span class="x">    }</span>
+</span><span class='line'><span class="x">    $CI =&amp;amp; get_instance();</span>
+</span><span class='line'><span class="x">    $GLOBALS[&#39;users&#39;] = $CI-&amp;gt;db-&amp;gt;query(&quot;select * from users order by created_at desc limit $limit&quot;)-&amp;gt;result();</span>
+</span><span class='line'><span class="x">}</span>
+</span><span class='line'><span class="x">if(isset($GLOBALS[&#39;users&#39;]) != NULL &amp;amp;&amp;amp; count($GLOBALS[&#39;users&#39;])&amp;gt;0){</span>
+</span><span class='line'><span class="x">    $user = array_shift($GLOBALS[&#39;users&#39;]);</span>
+</span><span class='line'><span class="x">    $smarty-&amp;gt;assign(&#39;user&#39;, $user);</span>
+</span><span class='line'><span class="x">    if (count($GLOBALS[&#39;users&#39;]) == 0){</span>
+</span><span class='line'><span class="x">        unset($GLOBALS[&#39;users&#39;]);</span>
+</span><span class='line'><span class="x">        $repeat = false;</span>
+</span><span class='line'><span class="x">    }</span>
+</span><span class='line'><span class="x">    $repeat = true;</span>
+</span><span class='line'><span class="x">}else {</span>
+</span><span class='line'><span class="x">    $repeat = false;</span>
+</span><span class='line'><span class="x">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">return $content;</span>
+</span><span class='line'><span class="x">&lt;/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">&lt;p&gt;}</span>
+</span><span class='line'><span class="x">?&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <p>这个function中有四个参数，$params参数存储的是标签中的属性信息，如上面的limit。$content是标签中间的内容，$smarty是smarty的实例对象，$repeat用于指定block是否重复执行。
 解释完了function的参数，我想其中的执行原理应该很容易看明白了吧。</p>
@@ -117,90 +145,161 @@ Smarty.class.php    SmartyBC.class.php  debug.tpl       plugins/        sysplugi
 </code></p>
 
 <p>2: 在application/libraries目录中创建Smarty.php文件。
-{% codeblock application/libraries/Smarty.php lang:php %}
-&lt;?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');</p>
-
-<p>require_once('smarty/Smarty.class.php');</p>
-
-<p>class CI_Smarty extends Smarty {</p>
-
-<pre><code>    function __construct(){
-      parent::__construct();
-            $this-&gt;compile_dir = FCPATH . "application/views/templates_c";
-            $this-&gt;template_dir = FCPATH . "application/views/templates";
-            $this-&gt;cache_dir = FCPATH . "application/views/cache";//缓存目录
-            $this-&gt;caching = 1;
-            //$this-&gt;cache_lifetime = 120; //缓存更新时间
-            $this-&gt;debugging = false;
-            $this-&gt;compile_check = true; // 检查当前的模板是否自上次编译后被更改；如果被更改了，它将重新编译该模板。
-            //$this-&gt;force_compile = true; // 强制重新编译模板
-            //$this-&gt;allow_php_templates= true; // 开启PHP模板
-            $this-&gt;left_delimiter = "{"; //左定界符
-            $this-&gt;right_delimiter = "}"; //右定界符
-    }
-</code></pre>
-
-<p>}
-?>
-{% endcodeblock %}
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>application/libraries/Smarty.php  </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">&amp;lt;?php if ( ! defined(&#39;BASEPATH&#39;)) exit(&#39;No direct script access allowed&#39;);&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">&lt;p&gt;require_once(&#39;smarty/Smarty.class.php&#39;);&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">&lt;p&gt;class CI_Smarty extends Smarty {&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">&lt;pre&gt;&lt;code&gt;    function __construct(){</span>
+</span><span class='line'><span class="x">      parent::__construct();</span>
+</span><span class='line'><span class="x">            $this-&amp;gt;compile_dir = FCPATH . &quot;application/views/templates_c&quot;;</span>
+</span><span class='line'><span class="x">            $this-&amp;gt;template_dir = FCPATH . &quot;application/views/templates&quot;;</span>
+</span><span class='line'><span class="x">            $this-&amp;gt;cache_dir = FCPATH . &quot;application/views/cache&quot;;//缓存目录</span>
+</span><span class='line'><span class="x">            $this-&amp;gt;caching = 1;</span>
+</span><span class='line'><span class="x">            //$this-&amp;gt;cache_lifetime = 120; //缓存更新时间</span>
+</span><span class='line'><span class="x">            $this-&amp;gt;debugging = false;</span>
+</span><span class='line'><span class="x">            $this-&amp;gt;compile_check = true; // 检查当前的模板是否自上次编译后被更改；如果被更改了，它将重新编译该模板。</span>
+</span><span class='line'><span class="x">            //$this-&amp;gt;force_compile = true; // 强制重新编译模板</span>
+</span><span class='line'><span class="x">            //$this-&amp;gt;allow_php_templates= true; // 开启PHP模板</span>
+</span><span class='line'><span class="x">            $this-&amp;gt;left_delimiter = &quot;{&quot;; //左定界符</span>
+</span><span class='line'><span class="x">            $this-&amp;gt;right_delimiter = &quot;}&quot;; //右定界符</span>
+</span><span class='line'><span class="x">    }</span>
+</span><span class='line'><span class="x">&lt;/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">&lt;p&gt;}</span>
+</span><span class='line'><span class="x">?&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 根据代码中的smarty目录配置，需要在application/views中建立templates_c\templates\cache三个目录.
 这就算创建好了。</p>
 
 <p>3: 使用方法。
 控制器中的代码:
-{% codeblock application/controllers/debug.php lang:php %}
-&lt;?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');</p>
-
-<p>class Debug extends MY_Controller {</p>
-
-<p>  function __construct()
-  {</p>
-
-<pre><code>parent::__construct();
-// Write your own initialize code
-</code></pre>
-
-<p>  }</p>
-
-<pre><code>function index(){
-  $this-&gt;load-&gt;library('smarty');
-  $this-&gt;smarty-&gt;assign("title","smarty template");
-  $this-&gt;smarty-&gt;assign("body","欢迎使用smarty模板引擎");
-  $arr = array(1 =&gt; 'number 1', 2 =&gt; 'number 2', 3 =&gt; 'number 3');
-  $this-&gt;smarty-&gt;assign("myarray", $arr);
-  $this-&gt;smarty-&gt;display('index.html');
-}
-</code></pre>
-
-<p>}
-{% endcodeblock %}</p>
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>application/controllers/debug.php  </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">&amp;lt;?php if ( ! defined(&#39;BASEPATH&#39;)) exit(&#39;No direct script access allowed&#39;);&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">&lt;p&gt;class Debug extends MY_Controller {&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">&lt;p&gt;  function __construct()</span>
+</span><span class='line'><span class="x">  {&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">&lt;pre&gt;&lt;code&gt;parent::__construct();</span>
+</span><span class='line'><span class="x">// Write your own initialize code</span>
+</span><span class='line'><span class="x">&lt;/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">&lt;p&gt;  }&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">&lt;pre&gt;&lt;code&gt;function index(){</span>
+</span><span class='line'><span class="x">  $this-&amp;gt;load-&amp;gt;library(&#39;smarty&#39;);</span>
+</span><span class='line'><span class="x">  $this-&amp;gt;smarty-&amp;gt;assign(&quot;title&quot;,&quot;smarty template&quot;);</span>
+</span><span class='line'><span class="x">  $this-&amp;gt;smarty-&amp;gt;assign(&quot;body&quot;,&quot;欢迎使用smarty模板引擎&quot;);</span>
+</span><span class='line'><span class="x">  $arr = array(1 =&amp;gt; &#39;number 1&#39;, 2 =&amp;gt; &#39;number 2&#39;, 3 =&amp;gt; &#39;number 3&#39;);</span>
+</span><span class='line'><span class="x">  $this-&amp;gt;smarty-&amp;gt;assign(&quot;myarray&quot;, $arr);</span>
+</span><span class='line'><span class="x">  $this-&amp;gt;smarty-&amp;gt;display(&#39;index.html&#39;);</span>
+</span><span class='line'><span class="x">}</span>
+</span><span class='line'><span class="x">&lt;/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">&lt;p&gt;}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <p>模板代码:
-{% codeblock application/views/templates/index.html lang:html %}
-&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>smarty模板使用示例</title>
-</head>
-<body></p>
-
-<h1>{$title}</h1>
-
-
-<p>{$body}</p>
-
-
-<ul>
-        {foreach from=$myarray item=v}
-        <li>{$v}</li>
-       {/foreach}
-</ul>
-
-
-<p></body>
-</html>
-{% endcodeblock %}</p>
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>application/views/templates/index.html  </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="ni">&amp;lt;</span>!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+</span><span class='line'><span class="nt">&lt;html</span> <span class="na">xmlns=</span><span class="s">&quot;http://www.w3.org/1999/xhtml&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'><span class="nt">&lt;head&gt;</span>
+</span><span class='line'><span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">&quot;Content-Type&quot;</span> <span class="na">content=</span><span class="s">&quot;text/html; charset=utf-8&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;title&gt;</span>smarty模板使用示例<span class="nt">&lt;/title&gt;</span>
+</span><span class='line'><span class="nt">&lt;/head&gt;</span>
+</span><span class='line'><span class="nt">&lt;body&gt;&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;h1&gt;</span>{$title}<span class="nt">&lt;/h1&gt;</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;p&gt;</span>{$body}<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;ul&gt;</span>
+</span><span class='line'>        {foreach from=$myarray item=v}
+</span><span class='line'>        <span class="nt">&lt;li&gt;</span>{$v}<span class="nt">&lt;/li&gt;</span>
+</span><span class='line'>       {/foreach}
+</span><span class='line'><span class="nt">&lt;/ul&gt;</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;p&gt;&lt;/body&gt;</span>
+</span><span class='line'><span class="nt">&lt;/html&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 ]]></content>
   </entry>
   

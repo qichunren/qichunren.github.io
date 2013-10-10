@@ -9,13 +9,12 @@
     
     <meta name="description" content="使用ffaker来产生随机数据 ffaker是一个用来产生随机name\email之类的工具，可以用在开发时先产生一些有意义的随机数据，将数据写在db/seeds.rb中，这样你就不用每次急燥地添加一些asasddfdsf这样的数据。一个好的工作开发环境，可以让心情舒畅，效率加倍。 在db/ &hellip;">
     
-    <meta name="viewport" content="width=device-width; initial-scale=1; maximum-scale=1">
 
     <link href="/atom.xml" rel="alternate" title="蕲春人的博客" type="application/atom+xml">
     <link rel="canonical" href="">
     <link href="/favicon.png" rel="shortcut icon">
-    <link href="http://twitter.github.io/bootstrap/assets/css/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css">
-     <link href="http://twitter.github.io/bootstrap/assets/css/bootstrap-responsive.css" media="screen, projection" rel="stylesheet" type="text/css">
+    <link href="http://getbootstrap.com/2.3.2/assets/css/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css">
+     <link href="http://getbootstrap.com/2.3.2/assets/css/bootstrap-responsive.css" media="screen, projection" rel="stylesheet" type="text/css">
 
         <style type="text/css">
         body {
@@ -138,8 +137,20 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>我前一段时间，提交了<a href="https://github.com/EmmanuelOga/ffaker/pull/9">一点代码</a> ，可以产生天朝的姓名：
-Liquid error: invalid byte sequence in US-ASCII</p>
+<p>我前一段时间，提交了<a href="https://github.com/EmmanuelOga/ffaker/pull/9">一点代码</a> ，可以产生天朝的姓名：</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s1">&#39;ffaker&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="no">Faker</span><span class="o">::</span><span class="no">NameCN</span><span class="o">.</span><span class="n">first_name</span> <span class="c1"># =&gt; 鑫洋</span>
+</span><span class='line'><span class="no">Faker</span><span class="o">::</span><span class="no">NameCN</span><span class="o">.</span><span class="n">last_name</span> <span class="c1"># =&gt; 禹</span>
+</span><span class='line'><span class="no">Faker</span><span class="o">::</span><span class="no">NameCN</span><span class="o">.</span><span class="n">name</span> <span class="c1"># =&gt; 俊伶漫</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>ffaker目前最新的版本是1.2，可以产生中文的姓名。</p>
 </div>

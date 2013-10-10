@@ -4,7 +4,7 @@
   <title><![CDATA[Category: web | 蕲春人的博客]]></title>
   <link href="http://qichunren.github.io/blog/categories/web/atom.xml" rel="self"/>
   <link href="http://qichunren.github.io/"/>
-  <updated>2013-05-22T00:32:13+08:00</updated>
+  <updated>2013-10-10T13:02:23+08:00</updated>
   <id>http://qichunren.github.io/</id>
   <author>
     <name><![CDATA[qichunren]]></name>
@@ -75,25 +75,37 @@ gem install juggernaut
 <p>我们在自己的项目中只需要引入http://localhost:8080/application.js 这个js文件即可。
 然后在页面中可以这样接收服务器端的消息：</p>
 
-<p>{% codeblock lang:html %}</p>
-
-<script type="text/javascript" charset="utf-8">
-  var jug = new Juggernaut;
-  jug.subscribe("channel1", function(data){
-    console.log("Got data: " + data);
-  });
-</script>
-
-
-<p>       <br/>
-{% endcodeblock %}</p>
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">charset=</span><span class="s">&quot;utf-8&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">jug</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Juggernaut</span><span class="p">;</span>
+</span><span class='line'>  <span class="nx">jug</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s2">&quot;channel1&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">){</span>
+</span><span class='line'>    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Got data: &quot;</span> <span class="o">+</span> <span class="nx">data</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">});</span>
+</span><span class='line'><span class="nt">&lt;/script&gt;</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;p&gt;</span>       <span class="nt">&lt;br/&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <p>服务器端直接发消息：</p>
 
-<p>{% codeblock lang:ruby %}
-require "juggernaut"
-Juggernaut.publish("channel1", "Some data")<br/>
-{% endcodeblock %}</p>
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s2">&quot;juggernaut&quot;</span>
+</span><span class='line'><span class="no">Juggernaut</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="s2">&quot;channel1&quot;</span><span class="p">,</span> <span class="s2">&quot;Some data&quot;</span><span class="p">)</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <p>另外在启动了Juggernaut后，它默认在8080端口上有一个Helloword的应用，可以了解一下。</p>
 ]]></content>
@@ -122,38 +134,44 @@ HTML5 仍处于完善之中。然而，大部分现代浏览器已经具备了�
 <h4>Video标签</h4>
 
 <p><a href="http://www.w3school.com.cn/html5/html_5_video.asp">参考资料</a>
-{% highlight html %}
-&lt;!DOCTYPE HTML>
-<html>
-<body></p>
+<div>
+  <pre>
+    <code class='html'>&amp;lt;!DOCTYPE HTML&gt;
+&lt;html&gt;
+&lt;body&gt;&lt;/p&gt;
 
-<p><video width="320" height="240" controls="controls">
-  <source src="movie.ogg" type="video/ogg">
-  <source src="movie.mp4" type="video/mp4">
+&lt;p&gt;&lt;video width=&quot;320&quot; height=&quot;240&quot; controls=&quot;controls&quot;&gt;
+  &lt;source src=&quot;movie.ogg&quot; type=&quot;video/ogg&quot;&gt;
+  &lt;source src=&quot;movie.mp4&quot; type=&quot;video/mp4&quot;&gt;
 Your browser does not support the video tag.
-</video></p>
+&lt;/video&gt;&lt;/p&gt;
 
-<p></body>
-</html>
-{% endhighlight %}</p>
+&lt;p&gt;&lt;/body&gt;
+&lt;/html&gt;</code>
+  </pre>
+</div>
+</p>
 
 <h4>Audio标签</h4>
 
 <p><a href="http://www.w3school.com.cn/html5/html_5_audio.asp">参考资料</a>
-{% highlight html %}
-&lt;!DOCTYPE HTML>
-<html>
-<body></p>
+<div>
+  <pre>
+    <code class='html'>&amp;lt;!DOCTYPE HTML&gt;
+&lt;html&gt;
+&lt;body&gt;&lt;/p&gt;
 
-<p><audio controls="controls">
-  <source src="song.ogg" type="audio/ogg">
-  <source src="song.mp3" type="audio/mpeg">
+&lt;p&gt;&lt;audio controls=&quot;controls&quot;&gt;
+  &lt;source src=&quot;song.ogg&quot; type=&quot;audio/ogg&quot;&gt;
+  &lt;source src=&quot;song.mp3&quot; type=&quot;audio/mpeg&quot;&gt;
 Your browser does not support the audio tag.
-</audio></p>
+&lt;/audio&gt;&lt;/p&gt;
 
-<p></body>
-</html>
-{% endhighlight %}</p>
+&lt;p&gt;&lt;/body&gt;
+&lt;/html&gt;</code>
+  </pre>
+</div>
+</p>
 
 <h4>Canvas元素</h4>
 

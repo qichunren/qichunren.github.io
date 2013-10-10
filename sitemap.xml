@@ -258,11 +258,19 @@
     </url>
     <url>
         <loc>http://qichunren.github.io/blog/2012-11-27-start-use-postgresql/</loc>
-        <lastmod>2013-05-21T13:32:50+08:00</lastmod>
+        <lastmod>2013-09-22T20:36:37+08:00</lastmod>
     </url>
     <url>
         <loc>http://qichunren.github.io/blog/2013-05-22-recently-my-thought/</loc>
         <lastmod>2013-05-22T00:31:05+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://qichunren.github.io/blog/2013-08-02-recently-at-guangzhou/</loc>
+        <lastmod>2013-08-02T12:18:48+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://qichunren.github.io/blog/2013-09-22-start-use-vagrant/</loc>
+        <lastmod>2013-09-22T20:54:10+08:00</lastmod>
     </url>
     <url>
         <loc>http://qichunren.github.io/about/</loc>
@@ -270,11 +278,11 @@
     </url>
     <url>
         <loc>http://qichunren.github.io/blog/archives/</loc>
-        <lastmod>2013-05-22T00:31:05+08:00</lastmod>
+        <lastmod>2013-09-22T20:54:10+08:00</lastmod>
     </url>
     <url>
         <loc>http://qichunren.github.io/</loc>
-        <lastmod>2013-05-22T00:31:05+08:00</lastmod>
+        <lastmod>2013-09-22T20:54:10+08:00</lastmod>
     </url>
     <url>
         <loc>http://qichunren.github.io/personal-notes/build-linphone.html</loc>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: html5 | 蕲春人的博客]]></title>
   <link href="http://qichunren.github.io/blog/categories/html5/atom.xml" rel="self"/>
   <link href="http://qichunren.github.io/"/>
-  <updated>2013-05-22T00:32:13+08:00</updated>
+  <updated>2013-10-10T13:02:23+08:00</updated>
   <id>http://qichunren.github.io/</id>
   <author>
     <name><![CDATA[qichunren]]></name>
@@ -36,38 +36,44 @@ HTML5 仍处于完善之中。然而，大部分现代浏览器已经具备了�
 <h4>Video标签</h4>
 
 <p><a href="http://www.w3school.com.cn/html5/html_5_video.asp">参考资料</a>
-{% highlight html %}
-&lt;!DOCTYPE HTML>
-<html>
-<body></p>
+<div>
+  <pre>
+    <code class='html'>&amp;lt;!DOCTYPE HTML&gt;
+&lt;html&gt;
+&lt;body&gt;&lt;/p&gt;
 
-<p><video width="320" height="240" controls="controls">
-  <source src="movie.ogg" type="video/ogg">
-  <source src="movie.mp4" type="video/mp4">
+&lt;p&gt;&lt;video width=&quot;320&quot; height=&quot;240&quot; controls=&quot;controls&quot;&gt;
+  &lt;source src=&quot;movie.ogg&quot; type=&quot;video/ogg&quot;&gt;
+  &lt;source src=&quot;movie.mp4&quot; type=&quot;video/mp4&quot;&gt;
 Your browser does not support the video tag.
-</video></p>
+&lt;/video&gt;&lt;/p&gt;
 
-<p></body>
-</html>
-{% endhighlight %}</p>
+&lt;p&gt;&lt;/body&gt;
+&lt;/html&gt;</code>
+  </pre>
+</div>
+</p>
 
 <h4>Audio标签</h4>
 
 <p><a href="http://www.w3school.com.cn/html5/html_5_audio.asp">参考资料</a>
-{% highlight html %}
-&lt;!DOCTYPE HTML>
-<html>
-<body></p>
+<div>
+  <pre>
+    <code class='html'>&amp;lt;!DOCTYPE HTML&gt;
+&lt;html&gt;
+&lt;body&gt;&lt;/p&gt;
 
-<p><audio controls="controls">
-  <source src="song.ogg" type="audio/ogg">
-  <source src="song.mp3" type="audio/mpeg">
+&lt;p&gt;&lt;audio controls=&quot;controls&quot;&gt;
+  &lt;source src=&quot;song.ogg&quot; type=&quot;audio/ogg&quot;&gt;
+  &lt;source src=&quot;song.mp3&quot; type=&quot;audio/mpeg&quot;&gt;
 Your browser does not support the audio tag.
-</audio></p>
+&lt;/audio&gt;&lt;/p&gt;
 
-<p></body>
-</html>
-{% endhighlight %}</p>
+&lt;p&gt;&lt;/body&gt;
+&lt;/html&gt;</code>
+  </pre>
+</div>
+</p>
 
 <h4>Canvas元素</h4>
 

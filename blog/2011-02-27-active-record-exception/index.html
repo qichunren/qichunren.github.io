@@ -7,15 +7,18 @@
     <meta name="author" content="qichunren">
 
     
-    <meta name="description" content="当心ActiveRecord::RecordNotSaved异常 昨天晚上遇到记录不能保存成功，一直遭遇ActiveRecord::RecordNotSaved异常，弄了半小时，找到了原因。 我发现了我在model中的before_create中是这样写的 Liquid error: &hellip;">
+    <meta name="description" content="当心ActiveRecord::RecordNotSaved异常 昨天晚上遇到记录不能保存成功，一直遭遇ActiveRecord::RecordNotSaved异常，弄了半小时，找到了原因。 我发现了我在model中的before_create中是这样写的 1
+2
+3
+4
+5 &hellip;">
     
-    <meta name="viewport" content="width=device-width; initial-scale=1; maximum-scale=1">
 
     <link href="/atom.xml" rel="alternate" title="蕲春人的博客" type="application/atom+xml">
     <link rel="canonical" href="">
     <link href="/favicon.png" rel="shortcut icon">
-    <link href="http://twitter.github.io/bootstrap/assets/css/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css">
-     <link href="http://twitter.github.io/bootstrap/assets/css/bootstrap-responsive.css" media="screen, projection" rel="stylesheet" type="text/css">
+    <link href="http://getbootstrap.com/2.3.2/assets/css/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css">
+     <link href="http://getbootstrap.com/2.3.2/assets/css/bootstrap-responsive.css" media="screen, projection" rel="stylesheet" type="text/css">
 
         <style type="text/css">
         body {
@@ -117,13 +120,39 @@
     <h1 class="title">当心ActiveRecord::RecordNotSaved异常</h1>
     <div class="entry"><p>昨天晚上遇到记录不能保存成功，一直遭遇ActiveRecord::RecordNotSaved异常，弄了半小时，找到了原因。</p>
 
-<p> 我发现了我在model中的before_create中是这样写的     <br/>
-Liquid error: invalid byte sequence in US-ASCII</p>
+<p> 我发现了我在model中的before_create中是这样写的</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">before_create</span> <span class="ss">:set_default_value</span> <span class="c1"># 创建站内信时，设置记录的默认值 </span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">set_default_value</span>
+</span><span class='line'>  <span class="nb">self</span><span class="o">.</span><span class="n">is_trash</span> <span class="o">=</span> <span class="kp">false</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p> 这个callback方法是返回false，导致记录不能保存成功，抛出ActiveRecord::RecordNotSaved异常。</p>
 
-<p> 我之前以为出现 ActiveRecord::RecordNotSaved异常，是由于model的验证不通过导致的。我把model中的验证全都去掉了，还是不成功。 解决方法是让这个方法返回true
-Liquid error: invalid byte sequence in US-ASCII</p>
+<p> 我之前以为出现 ActiveRecord::RecordNotSaved异常，是由于model的验证不通过导致的。我把model中的验证全都去掉了，还是不成功。 解决方法是让这个方法返回true</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">before_create</span> <span class="ss">:set_default_value</span> <span class="c1"># 创建站内信时，设置记录的默认值 </span>
+</span><span class='line'><span class="k">def</span> <span class="nf">set_default_value</span>
+</span><span class='line'>  <span class="nb">self</span><span class="o">.</span><span class="n">is_trash</span> <span class="o">=</span> <span class="kp">false</span>
+</span><span class='line'>  <span class="kp">true</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
 </div>
     <div class="meta">
         <div class="date">

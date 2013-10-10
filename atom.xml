@@ -4,7 +4,7 @@
   <title><![CDATA[蕲春人的博客]]></title>
   <link href="http://qichunren.github.io/atom.xml" rel="self"/>
   <link href="http://qichunren.github.io/"/>
-  <updated>2013-05-22T00:32:07+08:00</updated>
+  <updated>2013-10-10T13:02:23+08:00</updated>
   <id>http://qichunren.github.io/</id>
   <author>
     <name><![CDATA[qichunren]]></name>
@@ -12,6 +12,72 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[开始使用vagrant]]></title>
+    <link href="http://qichunren.github.io/blog/2013-09-22-start-use-vagrant/"/>
+    <updated>2013-09-22T20:43:00+08:00</updated>
+    <id>http://qichunren.github.io/blog/start-use-vagrant</id>
+    <content type="html"><![CDATA[<h1>Vagrant</h1>
+
+<p><a href="http://www.vagrantup.com/">Vagrant</a> 是一个虚拟机配置管理工具。</p>
+
+<p>简单来说，Vagrant 可以让你用一个文本文件 Vagrantfile 描述一个虚拟机环境，然后根据你的描述启动这样的一台虚拟机，同时将 Vagrantfile 所在的目录的所有内容，和虚拟机中的 /vagrant 这个目录自动实时同步。入门文档在<a href="http://docs.vagrantup.com/v2/getting-started/index.html">这里</a>。</p>
+
+<h2>Get started</h2>
+
+<ol>
+<li>下载vagrant, 从<a href="http://downloads.vagrantup.com/">http://downloads.vagrantup.com/</a>页面中，根据自己的操作系统平台选择相应的版本下载，我在写这个文档的时候它的最新版本是<em>v1.3.1</em></li>
+<li>安装完成后，在命令行终端中会有一个vagrant命令。</li>
+<li>进行自己平时的工作目录，执行</li>
+</ol>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git clone git@github.com:qichunren/luna-vagrant.git
+</span><span class='line'>cd luna-vagrant
+</span><span class='line'>vagrant box add precise64 http://files.vagrantup.com/precise64.box # 下载box，它是一个VirtualBox虚拟机导出的文件，版本是Ubuntu 12.04 LTS 64位
+</span><span class='line'>vagrant up # 就启动了作为开发的VirtualBox虚拟机了</span></code></pre></td></tr></table></div></figure>
+
+
+<p>自己的工作目录（就是luna-vagrant项目的上一层项目）是实时与虚拟机中的/code目录保持同步。
+luna-vagrant目录是实时与虚拟机中的/vagrant目录保持同步。</p>
+
+<h2>常用命令</h2>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>vagrant up  # 启动虚拟机
+</span><span class='line'>vagrant ssh # ssh登录机器
+</span><span class='line'>vagrant halt # 关闭虚拟机
+</span><span class='line'>vagrant destory # 删除虚拟机
+</span><span class='line'>vagrant status # 显示虚拟机状态</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>FAQ</h2>
+
+<ol>
+<li>怎么样添加box?
+vagrant box add precise64 http://files.vagrantup.com/precise64.box</li>
+</ol>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[最近的境况]]></title>
+    <link href="http://qichunren.github.io/blog/2013-08-02-recently-at-guangzhou/"/>
+    <updated>2013-08-02T12:03:00+08:00</updated>
+    <id>http://qichunren.github.io/blog/recently-at-guangzhou</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[最近的境况]]></title>
@@ -33,7 +99,9 @@
     <link href="http://qichunren.github.io/blog/2012-11-27-start-use-postgresql/"/>
     <updated>2012-11-27T10:52:00+08:00</updated>
     <id>http://qichunren.github.io/blog/start-use-postgresql</id>
-    <content type="html"><![CDATA[<h3>brew info postgresql</h3>
+    <content type="html"><![CDATA[<h2>Mac平台</h2>
+
+<h3>brew info postgresql</h3>
 
 <pre>
 qichunrens-MacBook-Pro:luna-client1 qichunren$ brew info postgresql
@@ -319,6 +387,72 @@ psql -U luna luna_production
 luna_production=> select * from users;
 luna_production=> ALTER USER luna WITH PASSWORD ‘whateverpasswordyouwant’;
 </pre>
+
+
+<h2>Ubuntu平台</h2>
+
+<p><code>sudo apt-get -y install  postgresql libpq-dev</code> 安装完成以后，我们需要更改postgres用户的密码，否则我们就没法使用这个数据库服务器。以postgres这个系统用户的身份运行psql命令，在终端中输入如下:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo su postgres -c psql template1</span></code></pre></td></tr></table></div></figure>
+
+
+<p>这时候会出现新的提示符，输入下面两个命令，用新密码替换 &lt;<strong><em>password</em></strong>>：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>ALTER USER postgres WITH PASSWORD '&lt;***password***&gt;';</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<pre>
+
+sudo -u postgres psql -c "create user qichunren with password 'qichunren';"
+sudo -u postgres psql -c "CREATE DATABASE qichunren_production WITH OWNER qichunren ENCODING 'UTF8';"
+# sudo -u postgres psql -c "DROP DATABASE qichunren_production;"
+</pre>
+
+
+<h3>设置数据库编码</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>psql (9.0.3)
+</span><span class='line'>Type "help" for help.
+</span><span class='line'> 
+</span><span class='line'>postgres=# update pg_database set datallowconn = TRUE where datname = 'template0';
+</span><span class='line'>UPDATE 1
+</span><span class='line'>postgres=# \c template0
+</span><span class='line'>You are now connected to database "template0".
+</span><span class='line'>template0=# update pg_database set datistemplate = FALSE where datname = 'template1';
+</span><span class='line'>UPDATE 1
+</span><span class='line'>template0=# drop database template1;
+</span><span class='line'>DROP DATABASE
+</span><span class='line'>template0=# create database template1 with template = template0 encoding = 'UTF8' LC_CTYPE = 'en_US.utf8' LC_COLLATE = 'en_US.utf8';
+</span><span class='line'>CREATE DATABASE
+</span><span class='line'>template0=# update pg_database set datistemplate = TRUE where datname = 'template1';
+</span><span class='line'>UPDATE 1
+</span><span class='line'>template0=# \c template1
+</span><span class='line'>You are now connected to database "template1".
+</span><span class='line'>template1=# update pg_database set datallowconn = FALSE where datname = 'template0';
+</span><span class='line'>UPDATE 1</span></code></pre></td></tr></table></div></figure>
 
 ]]></content>
   </entry>
@@ -1083,17 +1217,143 @@ To force apache2 to be started with priorities 91 for both Start and Kill, we ne
 </span><span class='line'>Smarty.class.php  SmartyBC.class.php  debug.tpl       plugins/        sysplugins/</span></code></pre></td></tr></table></div></figure>
 
 
-<p>2: 在application/libraries目录中创建Smarty.php文件。
-Liquid error: invalid byte sequence in US-ASCII
-根据代码中的smarty目录配置，需要在application/views中建立templates_c\templates\cache三个目录.
+<p>2: 在application/libraries目录中创建Smarty.php文件。</p>
+
+<figure class='code'><figcaption><span>application/libraries/Smarty.php  </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span> <span class="k">if</span> <span class="p">(</span> <span class="o">!</span> <span class="nb">defined</span><span class="p">(</span><span class="s1">&#39;BASEPATH&#39;</span><span class="p">))</span> <span class="k">exit</span><span class="p">(</span><span class="s1">&#39;No direct script access allowed&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">require_once</span><span class="p">(</span><span class="s1">&#39;smarty/Smarty.class.php&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">CI_Smarty</span> <span class="k">extends</span> <span class="nx">Smarty</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">function</span> <span class="nf">__construct</span><span class="p">(){</span>
+</span><span class='line'>          <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">();</span>
+</span><span class='line'>                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">compile_dir</span> <span class="o">=</span> <span class="nx">FCPATH</span> <span class="o">.</span> <span class="s2">&quot;application/views/templates_c&quot;</span><span class="p">;</span>
+</span><span class='line'>                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">template_dir</span> <span class="o">=</span> <span class="nx">FCPATH</span> <span class="o">.</span> <span class="s2">&quot;application/views/templates&quot;</span><span class="p">;</span>
+</span><span class='line'>                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">cache_dir</span> <span class="o">=</span> <span class="nx">FCPATH</span> <span class="o">.</span> <span class="s2">&quot;application/views/cache&quot;</span><span class="p">;</span><span class="c1">//缓存目录</span>
+</span><span class='line'>                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">caching</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</span><span class='line'>                <span class="c1">//$this-&gt;cache_lifetime = 120; //缓存更新时间</span>
+</span><span class='line'>                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">debugging</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+</span><span class='line'>                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">compile_check</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span> <span class="c1">// 检查当前的模板是否自上次编译后被更改；如果被更改了，它将重新编译该模板。</span>
+</span><span class='line'>                <span class="c1">//$this-&gt;force_compile = true; // 强制重新编译模板</span>
+</span><span class='line'>                <span class="c1">//$this-&gt;allow_php_templates= true; // 开启PHP模板</span>
+</span><span class='line'>                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">left_delimiter</span> <span class="o">=</span> <span class="s2">&quot;{&quot;</span><span class="p">;</span> <span class="c1">//左定界符</span>
+</span><span class='line'>                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">right_delimiter</span> <span class="o">=</span> <span class="s2">&quot;}&quot;</span><span class="p">;</span> <span class="c1">//右定界符</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="cp">?&gt;</span><span class="x"></span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>根据代码中的smarty目录配置，需要在application/views中建立templates_c\templates\cache三个目录.
 这就算创建好了。</p>
 
 <p>3: 使用方法。
-控制器中的代码:
-Liquid error: invalid byte sequence in US-ASCII</p>
+控制器中的代码:</p>
 
-<p>模板代码:
-Liquid error: invalid byte sequence in US-ASCII</p>
+<figure class='code'><figcaption><span>application/controllers/debug.php  </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span> <span class="k">if</span> <span class="p">(</span> <span class="o">!</span> <span class="nb">defined</span><span class="p">(</span><span class="s1">&#39;BASEPATH&#39;</span><span class="p">))</span> <span class="k">exit</span><span class="p">(</span><span class="s1">&#39;No direct script access allowed&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">Debug</span> <span class="k">extends</span> <span class="nx">MY_Controller</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">function</span> <span class="nf">__construct</span><span class="p">()</span>
+</span><span class='line'>  <span class="p">{</span>
+</span><span class='line'>    <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">();</span>
+</span><span class='line'>    <span class="c1">// Write your own initialize code</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">function</span> <span class="nf">index</span><span class="p">(){</span>
+</span><span class='line'>      <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">load</span><span class="o">-&gt;</span><span class="na">library</span><span class="p">(</span><span class="s1">&#39;smarty&#39;</span><span class="p">);</span>
+</span><span class='line'>      <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">smarty</span><span class="o">-&gt;</span><span class="na">assign</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">,</span><span class="s2">&quot;smarty template&quot;</span><span class="p">);</span>
+</span><span class='line'>      <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">smarty</span><span class="o">-&gt;</span><span class="na">assign</span><span class="p">(</span><span class="s2">&quot;body&quot;</span><span class="p">,</span><span class="s2">&quot;欢迎使用smarty模板引擎&quot;</span><span class="p">);</span>
+</span><span class='line'>      <span class="nv">$arr</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="mi">1</span> <span class="o">=&gt;</span> <span class="s1">&#39;number 1&#39;</span><span class="p">,</span> <span class="mi">2</span> <span class="o">=&gt;</span> <span class="s1">&#39;number 2&#39;</span><span class="p">,</span> <span class="mi">3</span> <span class="o">=&gt;</span> <span class="s1">&#39;number 3&#39;</span><span class="p">);</span>
+</span><span class='line'>      <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">smarty</span><span class="o">-&gt;</span><span class="na">assign</span><span class="p">(</span><span class="s2">&quot;myarray&quot;</span><span class="p">,</span> <span class="nv">$arr</span><span class="p">);</span>
+</span><span class='line'>      <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">smarty</span><span class="o">-&gt;</span><span class="na">display</span><span class="p">(</span><span class="s1">&#39;index.html&#39;</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>模板代码:</p>
+
+<figure class='code'><figcaption><span>application/views/templates/index.html  </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="cp">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;</span>
+</span><span class='line'><span class="nt">&lt;html</span> <span class="na">xmlns=</span><span class="s">&quot;http://www.w3.org/1999/xhtml&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'><span class="nt">&lt;head&gt;</span>
+</span><span class='line'><span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">&quot;Content-Type&quot;</span> <span class="na">content=</span><span class="s">&quot;text/html; charset=utf-8&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;title&gt;</span>smarty模板使用示例<span class="nt">&lt;/title&gt;</span>
+</span><span class='line'><span class="nt">&lt;/head&gt;</span>
+</span><span class='line'><span class="nt">&lt;body&gt;</span>
+</span><span class='line'><span class="nt">&lt;h1&gt;</span>{$title}<span class="nt">&lt;/h1&gt;</span>
+</span><span class='line'><span class="nt">&lt;p&gt;</span>{$body}<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'><span class="nt">&lt;ul&gt;</span>
+</span><span class='line'>        {foreach from=$myarray item=v}
+</span><span class='line'>        <span class="nt">&lt;li&gt;</span>{$v}<span class="nt">&lt;/li&gt;</span>
+</span><span class='line'>       {/foreach}
+</span><span class='line'><span class="nt">&lt;/ul&gt;</span>
+</span><span class='line'><span class="nt">&lt;/body&gt;</span>
+</span><span class='line'><span class="nt">&lt;/html&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
 ]]></content>
   </entry>
   
@@ -1125,8 +1385,20 @@ Liquid error: invalid byte sequence in US-ASCII</p>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>我前一段时间，提交了<a href="https://github.com/EmmanuelOga/ffaker/pull/9">一点代码</a> ，可以产生天朝的姓名：
-Liquid error: invalid byte sequence in US-ASCII</p>
+<p>我前一段时间，提交了<a href="https://github.com/EmmanuelOga/ffaker/pull/9">一点代码</a> ，可以产生天朝的姓名：</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s1">&#39;ffaker&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="no">Faker</span><span class="o">::</span><span class="no">NameCN</span><span class="o">.</span><span class="n">first_name</span> <span class="c1"># =&gt; 鑫洋</span>
+</span><span class='line'><span class="no">Faker</span><span class="o">::</span><span class="no">NameCN</span><span class="o">.</span><span class="n">last_name</span> <span class="c1"># =&gt; 禹</span>
+</span><span class='line'><span class="no">Faker</span><span class="o">::</span><span class="no">NameCN</span><span class="o">.</span><span class="n">name</span> <span class="c1"># =&gt; 俊伶漫</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>ffaker目前最新的版本是1.2，可以产生中文的姓名。</p>
 ]]></content>
@@ -1437,466 +1709,6 @@ Liquid error: invalid byte sequence in US-ASCII</p>
 <h4>参考资料</h4>
 
 <p><a href="http://learn.akae.cn/media/ch31s05.html">Shell脚本语法</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[网页截屏的方法]]></title>
-    <link href="http://qichunren.github.io/blog/2011-10-13-capture-webpage/"/>
-    <updated>2011-10-13T06:09:09+08:00</updated>
-    <id>http://qichunren.github.io/blog/capture-webpage</id>
-    <content type="html"><![CDATA[<p>曾经很想有这样一个app, 它可以将微博上用户的微博用图片的形式自动保存起来，留此存照。前几个月的那段时间，微博上很
-网页截屏的基本原理就是通过取得webkit渲染（render）的数据来生成图片的，我经过一段时间研究，找到了两个方法来解决这个问题。</p>
-
-<p>一个工具叫<a href="http://www.phantomjs.org/">phantomjs</a>，另一个工具叫<a href="http://cutycapt.sourceforge.net/">cutycapt</a></p>
-
-<p>两个工具都不错，个人比较喜欢使用cutycapt这个工具，它是直接提供一个命令行来生成网页截图的，而前者是通过javascript来调用底层webkit接品(page.render方法)来实现的，两者的侧重点不一样。
-并且cutycapt是将整个网截下来，phantomjs是将浏览器当前视区的一屏截下来。</p>
-
-<p>Cutycapt的用法如下</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>qichunren@qichunren-desktop:~/github/cutycapt/CutyCapt$ ./CutyCapt 
-</span><span class='line'> -----------------------------------------------------------------------------
-</span><span class='line'> Usage: CutyCapt --url=http://www.example.org/ --out=localfile.png            
-</span><span class='line'> -----------------------------------------------------------------------------
-</span><span class='line'>  --help                         Print this help page and exit                
-</span><span class='line'>  --url=&lt;url&gt;                    The URL to capture (http:...|file:...|...)   
-</span><span class='line'>  --out=&lt;path&gt;                   The target file (.png|pdf|ps|svg|jpeg|...)   
-</span><span class='line'>  --out-format=&lt;f&gt;               Like extension in --out, overrides heuristic 
-</span><span class='line'>  --min-width=&lt;int&gt;              Minimal width for the image (default: 800)   
-</span><span class='line'>  --min-height=&lt;int&gt;             Minimal height for the image (default: 600)  
-</span><span class='line'>  --max-wait=&lt;ms&gt;                Don't wait more than (default: 90000, inf: 0)
-</span><span class='line'>  --delay=&lt;ms&gt;                   After successful load, wait (default: 0)     
-</span><span class='line'>  --user-style-path=&lt;path&gt;       Location of user style sheet file, if any    
-</span><span class='line'>  --user-style-string=&lt;css&gt;      User style rules specified as text           
-</span><span class='line'>  --header=&lt;name&gt;:&lt;value&gt;        request header; repeatable; some can't be set
-</span><span class='line'>  --method=&lt;get|post|put&gt;        Specifies the request method (default: get)  
-</span><span class='line'>  --body-string=&lt;string&gt;         Unencoded request body (default: none)       
-</span><span class='line'>  --body-base64=&lt;base64&gt;         Base64-encoded request body (default: none)  
-</span><span class='line'>  --app-name=&lt;name&gt;              appName used in User-Agent; default is none  
-</span><span class='line'>  --app-version=&lt;version&gt;        appVers used in User-Agent; default is none  
-</span><span class='line'>  --user-agent=&lt;string&gt;          Override the User-Agent header Qt would set  
-</span><span class='line'>  --javascript=&lt;on|off&gt;          JavaScript execution (default: on)           
-</span><span class='line'>  --java=&lt;on|off&gt;                Java execution (default: unknown)            
-</span><span class='line'>  --plugins=&lt;on|off&gt;             Plugin execution (default: unknown)          
-</span><span class='line'>  --private-browsing=&lt;on|off&gt;    Private browsing (default: unknown)          
-</span><span class='line'>  --auto-load-images=&lt;on|off&gt;    Automatic image loading (default: on)        
-</span><span class='line'>  --js-can-open-windows=&lt;on|off&gt; Script can open windows? (default: unknown)  
-</span><span class='line'>  --js-can-access-clipboard=&lt;on|off&gt; Script clipboard privs (default: unknown)
-</span><span class='line'>  --print-backgrounds=&lt;on|off&gt;   Backgrounds in PDF/PS output (default: off)  
-</span><span class='line'>  --zoom-factor=&lt;float&gt;          Page zoom factor (default: no zooming)       
-</span><span class='line'>  --zoom-text-only=&lt;on|off&gt;      Whether to zoom only the text (default: off) 
-</span><span class='line'>  --http-proxy=&lt;url&gt;             Address for HTTP proxy server (default: none)
-</span><span class='line'> -----------------------------------------------------------------------------
-</span><span class='line'>  &lt;f&gt; is svg,ps,pdf,itext,html,rtree,png,jpeg,mng,tiff,gif,bmp,ppm,xbm,xpm    
-</span><span class='line'> -----------------------------------------------------------------------------
-</span><span class='line'> http://cutycapt.sf.net - (c) 2003-2010 Bjoern Hoehrmann - bjoern@hoehrmann.de
-</span><span class='line'>qichunren@qichunren-desktop:~/github/cutycapt/CutyCapt$</span></code></pre></td></tr></table></div></figure>
-
-
-<p>phantomjs截屏的用法如下：</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>qichunren@qichunren-desktop:~/github$ cd phantomjs/
-</span><span class='line'>qichunren@qichunren-desktop:~/github/phantomjs$ ls
-</span><span class='line'>bin         ChangeLog  ff.png     iteye.png    Makefile       python     src
-</span><span class='line'>capture.js  examples   hello.png  LICENSE.BSD  phantomjs.pro  README.md           
-</span><span class='line'>qichunren@qichunren-desktop:~/github/phantomjs$ ./bin/phantomjs examples/rasterize.js 
-</span><span class='line'>Usage: rasterize.js URL filename [paperwidth*paperheight|paperformat]
-</span><span class='line'>  paper (pdf output) examples: "5in*7.5in", "10cm*20cm", "A4", "Letter"
-</span><span class='line'>qichunren@qichunren-desktop:~/github/phantomjs$ ./bin/phantomjs examples/rasterize.js http://www.iteye.com iteye.png
-</span><span class='line'>qichunren@qichunren-desktop:~/github/phantomjs$</span></code></pre></td></tr></table></div></figure>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[使用Jruby来部署Rails应用]]></title>
-    <link href="http://qichunren.github.io/blog/2011-08-27-deploy-rails-project-with-jruby/"/>
-    <updated>2011-08-27T06:36:22+08:00</updated>
-    <id>http://qichunren.github.io/blog/deploy-rails-project-with-jruby</id>
-    <content type="html"><![CDATA[<p>为了保护最近做的产品的源代码，需要将项目中的源代码进行保护起来。我目前了解到的方案有以下两种：</p>
-
-<ol>
-<li><p>使用代码混淆工具</p></li>
-<li><p>使用JRuby将Ruby代码编译成java字节码文件（.class）</p></li>
-</ol>
-
-
-<hr />
-
-<p>第一种方案，有一个名为<a href="http://rubyencoder.com">ruby encoder</a>的产品，我试用了一下，发现太重量级了，我个人只是一个可以将代码混淆一下的小工具而已，而ruby encoder有自己的运行加载机制，源代码二次编码，基于域名可以设置产品过期失效时间等等一系列功能，我不需要这些功能，另外它不是免费的，所以我没有采用这个方案。</p>
-
-<p>第二种方安装就是使用JRuby。整体思路就是将Ruby项目的代码编译成java字节码文件，然后运行于Java环境中。</p>
-
-<hr />
-
-<p>将项目中的ruby文件编译成java的class文件不是一件容易的事情，所幸有一个名为warbler的gem可以帮助我们搞定这一切，它可以将项目打包(.war)，同时可以将ruby代码编译成class文件。然后你将生成好的.war文件放进JAVA应用服务器的应用目录中，如Tomcat的webapps中就可以了。</p>
-
-<p>warbler提供若干个任务可供使用：</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>qichunren@qichunren-desktop:~/code/ntdeck$ warble -T
-</span><span class='line'>warble compiled    # Feature: precompile all Ruby files
-</span><span class='line'>warble config      # Generate a configuration file to customize your archive
-</span><span class='line'>warble executable  # Feature: make an executable archive
-</span><span class='line'>warble gemjar      # Feature: package gem repository inside a jar
-</span><span class='line'>warble pluginize   # Install Warbler tasks in your Rails application
-</span><span class='line'>warble version     # Display version of Warbler
-</span><span class='line'>warble war         # Create the project war file
-</span><span class='line'>warble war:clean   # Remove the project war file
-</span><span class='line'>warble war:debug   # Dump diagnostic information</span></code></pre></td></tr></table></div></figure>
-
-
-<p>平时最常用的就是warble war命令了，需要关注的是warble的配置文件，它的配置文件是通过warble config来生成的，在这个文件中有一系列的配置项可以设置，以下是我的配置文件：</p>
-
-<figure class='code'><figcaption><span>config/warble.rb  </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-<span class='line-number'>40</span>
-<span class='line-number'>41</span>
-<span class='line-number'>42</span>
-<span class='line-number'>43</span>
-<span class='line-number'>44</span>
-<span class='line-number'>45</span>
-<span class='line-number'>46</span>
-<span class='line-number'>47</span>
-<span class='line-number'>48</span>
-<span class='line-number'>49</span>
-<span class='line-number'>50</span>
-<span class='line-number'>51</span>
-<span class='line-number'>52</span>
-<span class='line-number'>53</span>
-<span class='line-number'>54</span>
-<span class='line-number'>55</span>
-<span class='line-number'>56</span>
-<span class='line-number'>57</span>
-<span class='line-number'>58</span>
-<span class='line-number'>59</span>
-<span class='line-number'>60</span>
-<span class='line-number'>61</span>
-<span class='line-number'>62</span>
-<span class='line-number'>63</span>
-<span class='line-number'>64</span>
-<span class='line-number'>65</span>
-<span class='line-number'>66</span>
-<span class='line-number'>67</span>
-<span class='line-number'>68</span>
-<span class='line-number'>69</span>
-<span class='line-number'>70</span>
-<span class='line-number'>71</span>
-<span class='line-number'>72</span>
-<span class='line-number'>73</span>
-<span class='line-number'>74</span>
-<span class='line-number'>75</span>
-<span class='line-number'>76</span>
-<span class='line-number'>77</span>
-<span class='line-number'>78</span>
-<span class='line-number'>79</span>
-<span class='line-number'>80</span>
-<span class='line-number'>81</span>
-<span class='line-number'>82</span>
-<span class='line-number'>83</span>
-<span class='line-number'>84</span>
-<span class='line-number'>85</span>
-<span class='line-number'>86</span>
-<span class='line-number'>87</span>
-<span class='line-number'>88</span>
-<span class='line-number'>89</span>
-<span class='line-number'>90</span>
-<span class='line-number'>91</span>
-<span class='line-number'>92</span>
-<span class='line-number'>93</span>
-<span class='line-number'>94</span>
-<span class='line-number'>95</span>
-<span class='line-number'>96</span>
-<span class='line-number'>97</span>
-<span class='line-number'>98</span>
-<span class='line-number'>99</span>
-<span class='line-number'>100</span>
-<span class='line-number'>101</span>
-<span class='line-number'>102</span>
-<span class='line-number'>103</span>
-<span class='line-number'>104</span>
-<span class='line-number'>105</span>
-<span class='line-number'>106</span>
-<span class='line-number'>107</span>
-<span class='line-number'>108</span>
-<span class='line-number'>109</span>
-<span class='line-number'>110</span>
-<span class='line-number'>111</span>
-<span class='line-number'>112</span>
-<span class='line-number'>113</span>
-<span class='line-number'>114</span>
-<span class='line-number'>115</span>
-<span class='line-number'>116</span>
-<span class='line-number'>117</span>
-<span class='line-number'>118</span>
-<span class='line-number'>119</span>
-<span class='line-number'>120</span>
-<span class='line-number'>121</span>
-<span class='line-number'>122</span>
-<span class='line-number'>123</span>
-<span class='line-number'>124</span>
-<span class='line-number'>125</span>
-<span class='line-number'>126</span>
-<span class='line-number'>127</span>
-<span class='line-number'>128</span>
-<span class='line-number'>129</span>
-<span class='line-number'>130</span>
-<span class='line-number'>131</span>
-<span class='line-number'>132</span>
-<span class='line-number'>133</span>
-<span class='line-number'>134</span>
-<span class='line-number'>135</span>
-<span class='line-number'>136</span>
-<span class='line-number'>137</span>
-<span class='line-number'>138</span>
-<span class='line-number'>139</span>
-<span class='line-number'>140</span>
-<span class='line-number'>141</span>
-<span class='line-number'>142</span>
-<span class='line-number'>143</span>
-<span class='line-number'>144</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># Disable Rake-environment-task framework detection by uncommenting/setting to false</span>
-</span><span class='line'><span class="c1"># Warbler.framework_detection = false</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1"># Warbler web application assembly configuration file</span>
-</span><span class='line'><span class="no">Warbler</span><span class="o">::</span><span class="no">Config</span><span class="o">.</span><span class="n">new</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
-</span><span class='line'>  <span class="c1"># Features: additional options controlling how the jar is built.</span>
-</span><span class='line'>  <span class="c1"># Currently the following features are supported:</span>
-</span><span class='line'>  <span class="c1"># - gemjar: package the gem repository in a jar file in WEB-INF/lib</span>
-</span><span class='line'>  <span class="c1"># - executable: embed a web server and make the war executable</span>
-</span><span class='line'>  <span class="c1"># - compiled: compile .rb files to .class files</span>
-</span><span class='line'>  <span class="n">config</span><span class="o">.</span><span class="n">features</span> <span class="o">=</span> <span class="sx">%w(executable compiled)</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="c1"># Application directories to be included in the webapp.</span>
-</span><span class='line'>  <span class="n">config</span><span class="o">.</span><span class="n">dirs</span> <span class="o">=</span> <span class="sx">%w(app config db lib log vendor tmp)</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="c1"># Additional files/directories to include, above those in config.dirs</span>
-</span><span class='line'>  <span class="c1"># config.includes = FileList[&quot;db&quot;]</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="c1"># Additional files/directories to exclude</span>
-</span><span class='line'>  <span class="c1"># config.excludes = FileList[&quot;lib/tasks/*&quot;]</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="c1"># Additional Java .jar files to include.  Note that if .jar files are placed</span>
-</span><span class='line'>  <span class="c1"># in lib (and not otherwise excluded) then they need not be mentioned here.</span>
-</span><span class='line'>  <span class="c1"># JRuby and JRuby-Rack are pre-loaded in this list.  Be sure to include your</span>
-</span><span class='line'>  <span class="c1"># own versions if you directly set the value</span>
-</span><span class='line'>  <span class="c1"># config.java_libs += FileList[&quot;lib/java/*.jar&quot;]</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="c1"># Loose Java classes and miscellaneous files to be included.</span>
-</span><span class='line'>  <span class="c1"># config.java_classes = FileList[&quot;target/classes/**.*&quot;]</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="c1"># One or more pathmaps defining how the java classes should be copied into</span>
-</span><span class='line'>  <span class="c1"># the archive. The example pathmap below accompanies the java_classes</span>
-</span><span class='line'>  <span class="c1"># configuration above. See http://rake.rubyforge.org/classes/String.html#M000017</span>
-</span><span class='line'>  <span class="c1"># for details of how to specify a pathmap.</span>
-</span><span class='line'>  <span class="c1"># config.pathmaps.java_classes &lt;&lt; &quot;%{target/classes/,}p&quot;</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="c1"># Bundler support is built-in. If Warbler finds a Gemfile in the</span>
-</span><span class='line'>  <span class="c1"># project directory, it will be used to collect the gems to bundle</span>
-</span><span class='line'>  <span class="c1"># in your application. If you wish to explicitly disable this</span>
-</span><span class='line'>  <span class="c1"># functionality, uncomment here.</span>
-</span><span class='line'>  <span class="c1"># config.bundler = false</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="c1"># An array of Bundler groups to avoid including in the war file.</span>
-</span><span class='line'>  <span class="c1"># Defaults to [&quot;development&quot;, &quot;test&quot;].</span>
-</span><span class='line'>  <span class="c1"># config.bundle_without = []</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="c1"># Other gems to be included. If you don&#39;t use Bundler or a gemspec</span>
-</span><span class='line'>  <span class="c1"># file, you need to tell Warbler which gems your application needs</span>
-</span><span class='line'>  <span class="c1"># so that they can be packaged in the archive.</span>
-</span><span class='line'>  <span class="c1"># For Rails applications, the Rails gems are included by default</span>
-</span><span class='line'>  <span class="c1"># unless the vendor/rails directory is present.</span>
-</span><span class='line'>  <span class="c1"># config.gems += [&quot;activerecord-jdbcmysql-adapter&quot;, &quot;jruby-openssl&quot;]</span>
-</span><span class='line'>  <span class="c1"># config.gems &lt;&lt; &quot;tzinfo&quot;</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="c1"># Uncomment this if you don&#39;t want to package rails gem.</span>
-</span><span class='line'>  <span class="c1"># config.gems -= [&quot;rails&quot;]</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="c1"># The most recent versions of gems are used.</span>
-</span><span class='line'>  <span class="c1"># You can specify versions of gems by using a hash assignment:</span>
-</span><span class='line'>  <span class="c1"># config.gems[&quot;rails&quot;] = &quot;2.3.10&quot;</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="c1"># You can also use regexps or Gem::Dependency objects for flexibility or</span>
-</span><span class='line'>  <span class="c1"># finer-grained control.</span>
-</span><span class='line'>  <span class="c1"># config.gems &lt;&lt; /^merb-/</span>
-</span><span class='line'>  <span class="c1"># config.gems &lt;&lt; Gem::Dependency.new(&quot;merb-core&quot;, &quot;= 0.9.3&quot;)</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="c1"># Include gem dependencies not mentioned specifically. Default is</span>
-</span><span class='line'>  <span class="c1"># true, uncomment to turn off.</span>
-</span><span class='line'>  <span class="c1"># config.gem_dependencies = false</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="c1"># Array of regular expressions matching relative paths in gems to be</span>
-</span><span class='line'>  <span class="c1"># excluded from the war. Defaults to empty, but you can set it like</span>
-</span><span class='line'>  <span class="c1"># below, which excludes test files.</span>
-</span><span class='line'>  <span class="c1"># config.gem_excludes = [/^(test|spec)\//]</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="c1"># Pathmaps for controlling how application files are copied into the archive</span>
-</span><span class='line'>  <span class="c1"># config.pathmaps.application = [&quot;WEB-INF/%p&quot;]</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="c1"># Name of the archive (without the extension). Defaults to the basename</span>
-</span><span class='line'>  <span class="c1"># of the project directory.</span>
-</span><span class='line'>  <span class="n">config</span><span class="o">.</span><span class="n">jar_name</span> <span class="o">=</span> <span class="s2">&quot;ntdeck&quot;</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="c1"># Name of the MANIFEST.MF template for the war file. Defaults to a simple</span>
-</span><span class='line'>  <span class="c1"># MANIFEST.MF that contains the version of Warbler used to create the war file.</span>
-</span><span class='line'>  <span class="c1"># config.manifest_file = &quot;config/MANIFEST.MF&quot;</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="c1"># When using the &#39;compiled&#39; feature and specified, only these Ruby</span>
-</span><span class='line'>  <span class="c1"># files will be compiled. Default is to compile all \.rb files in</span>
-</span><span class='line'>  <span class="c1"># the application.</span>
-</span><span class='line'>  <span class="c1"># config.compiled_ruby_files = FileList[&#39;app/**/*.rb&#39;]</span>
-</span><span class='line'>  <span class="n">compile_me</span> <span class="o">=</span> <span class="no">FileList</span><span class="o">[*</span><span class="n">config</span><span class="o">.</span><span class="n">dirs</span><span class="o">.</span><span class="n">map</span> <span class="p">{</span><span class="o">|</span><span class="n">x</span><span class="o">|</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">x</span><span class="si">}</span><span class="s2">/**/*.rb&quot;</span><span class="p">}</span><span class="o">].</span><span class="n">exclude</span><span class="p">(</span><span class="s2">&quot;config/compass.rb&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">exclude</span><span class="p">(</span><span class="s2">&quot;lib/printer/*&quot;</span><span class="p">)</span>
-</span><span class='line'>  <span class="n">config</span><span class="o">.</span><span class="n">compiled_ruby_files</span> <span class="o">=</span> <span class="n">compile_me</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="c1"># === War files only below here ===</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="c1"># Path to the pre-bundled gem directory inside the war file. Default</span>
-</span><span class='line'>  <span class="c1"># is &#39;WEB-INF/gems&#39;. Specify path if gems are already bundled</span>
-</span><span class='line'>  <span class="c1"># before running Warbler. This also sets &#39;gem.path&#39; inside web.xml.</span>
-</span><span class='line'>  <span class="c1"># config.gem_path = &quot;WEB-INF/vendor/bundler_gems&quot;</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="c1"># Files for WEB-INF directory (next to web.xml). This contains</span>
-</span><span class='line'>  <span class="c1"># web.xml by default. If there is an .erb-File it will be processed</span>
-</span><span class='line'>  <span class="c1"># with webxml-config. You may want to exclude this file via</span>
-</span><span class='line'>  <span class="c1"># config.excludes.</span>
-</span><span class='line'>  <span class="c1"># config.webinf_files += FileList[&quot;jboss-web.xml&quot;]</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="c1"># Files to be included in the root of the webapp.  Note that files in public</span>
-</span><span class='line'>  <span class="c1"># will have the leading &#39;public/&#39; part of the path stripped during staging.</span>
-</span><span class='line'>  <span class="c1"># config.public_html = FileList[&quot;public/**/*&quot;, &quot;doc/**/*&quot;]</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="c1"># Pathmaps for controlling how public HTML files are copied into the .war</span>
-</span><span class='line'>  <span class="c1"># config.pathmaps.public_html = [&quot;%{public/,}p&quot;]</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="c1"># Value of RAILS_ENV for the webapp -- default as shown below</span>
-</span><span class='line'>  <span class="c1"># config.webxml.rails.env = ENV[&#39;RAILS_ENV&#39;] || &#39;production&#39;</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="c1"># Application booter to use, one of :rack, :rails, or :merb (autodetected by default)</span>
-</span><span class='line'>  <span class="c1"># config.webxml.booter = :rails</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="c1"># Set JRuby to run in 1.9 mode.</span>
-</span><span class='line'>  <span class="c1"># config.webxml.jruby.compat.version = &quot;1.9&quot;</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="c1"># When using the :rack booter, &quot;Rackup&quot; script to use.</span>
-</span><span class='line'>  <span class="c1"># - For &#39;rackup.path&#39;, the value points to the location of the rackup</span>
-</span><span class='line'>  <span class="c1"># script in the web archive file. You need to make sure this file</span>
-</span><span class='line'>  <span class="c1"># gets included in the war, possibly by adding it to config.includes</span>
-</span><span class='line'>  <span class="c1"># or config.webinf_files above.</span>
-</span><span class='line'>  <span class="c1"># - For &#39;rackup&#39;, the rackup script you provide as an inline string</span>
-</span><span class='line'>  <span class="c1">#   is simply embedded in web.xml.</span>
-</span><span class='line'>  <span class="c1"># The script is evaluated in a Rack::Builder to load the application.</span>
-</span><span class='line'>  <span class="c1"># Examples:</span>
-</span><span class='line'>  <span class="c1"># config.webxml.rackup.path = &#39;WEB-INF/hello.ru&#39;</span>
-</span><span class='line'>  <span class="c1"># config.webxml.rackup = %{require &#39;./lib/demo&#39;; run Rack::Adapter::Camping.new(Demo)}</span>
-</span><span class='line'>  <span class="c1"># config.webxml.rackup = require &#39;cgi&#39; &amp;&amp; CGI::escapeHTML(File.read(&quot;config.ru&quot;))</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="c1"># Control the pool of Rails runtimes. Leaving unspecified means</span>
-</span><span class='line'>  <span class="c1"># the pool will grow as needed to service requests. It is recommended</span>
-</span><span class='line'>  <span class="c1"># that you fix these values when running a production server!</span>
-</span><span class='line'>  <span class="n">config</span><span class="o">.</span><span class="n">webxml</span><span class="o">.</span><span class="n">jruby</span><span class="o">.</span><span class="n">min</span><span class="o">.</span><span class="n">runtimes</span> <span class="o">=</span> <span class="mi">1</span>
-</span><span class='line'>  <span class="n">config</span><span class="o">.</span><span class="n">webxml</span><span class="o">.</span><span class="n">jruby</span><span class="o">.</span><span class="n">max</span><span class="o">.</span><span class="n">runtimes</span> <span class="o">=</span> <span class="mi">1</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="c1"># JNDI data source name</span>
-</span><span class='line'>  <span class="c1"># config.webxml.jndi = &#39;jdbc/rails&#39;</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>需要注意的是config.features = %w(executable compiled)配置中，其中的compiled就是可以将ruby代码编译成class代码的。</p>
 ]]></content>
   </entry>
   

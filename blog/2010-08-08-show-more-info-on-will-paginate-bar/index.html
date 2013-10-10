@@ -7,16 +7,28 @@
     <meta name="author" content="qichunren">
 
     
-    <meta name="description" content="Show More Detail Info on Will_paginate Bar Just create an extension in lib directory:
-Liquid error: invalid byte sequence in US-ASCII And the result &hellip;">
+    <meta name="description" content="Show More Detail Info on Will_paginate Bar Just create an extension in lib directory: in Rails.root/lib 1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+class &hellip;">
     
-    <meta name="viewport" content="width=device-width; initial-scale=1; maximum-scale=1">
 
     <link href="/atom.xml" rel="alternate" title="蕲春人的博客" type="application/atom+xml">
     <link rel="canonical" href="">
     <link href="/favicon.png" rel="shortcut icon">
-    <link href="http://twitter.github.io/bootstrap/assets/css/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css">
-     <link href="http://twitter.github.io/bootstrap/assets/css/bootstrap-responsive.css" media="screen, projection" rel="stylesheet" type="text/css">
+    <link href="http://getbootstrap.com/2.3.2/assets/css/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css">
+     <link href="http://getbootstrap.com/2.3.2/assets/css/bootstrap-responsive.css" media="screen, projection" rel="stylesheet" type="text/css">
 
         <style type="text/css">
         body {
@@ -116,8 +128,39 @@ Liquid error: invalid byte sequence in US-ASCII And the result &hellip;">
         <div class="box"><div class="cell">
 <article class="post">
     <h1 class="title">Show More Detail Info on Will_paginate Bar</h1>
-    <div class="entry"><p>Just create an extension in lib directory:
-Liquid error: invalid byte sequence in US-ASCII</p>
+    <div class="entry"><p>Just create an extension in lib directory:</p>
+
+<figure class='code'><figcaption><span>in Rails.root/lib  </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">PaginationDetailLinkRenderer</span> <span class="o">&lt;</span> <span class="no">WillPaginate</span><span class="o">::</span><span class="no">LinkRenderer</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1"># useage: &lt;%=will_paginate @auctions, :renderer =&gt; PaginationDetailLinkRenderer %&gt;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">to_html</span>
+</span><span class='line'>    <span class="n">links</span> <span class="o">=</span> <span class="vi">@options</span><span class="o">[</span><span class="ss">:page_links</span><span class="o">]</span> <span class="p">?</span> <span class="n">windowed_links</span> <span class="p">:</span> <span class="o">[]</span>
+</span><span class='line'>    <span class="n">links</span><span class="o">.</span><span class="n">unshift</span> <span class="n">page_link_or_span</span><span class="p">(</span><span class="vi">@collection</span><span class="o">.</span><span class="n">previous_page</span><span class="p">,</span> <span class="s1">&#39;disabled prev_page&#39;</span><span class="p">,</span> <span class="vi">@options</span><span class="o">[</span><span class="ss">:previous_label</span><span class="o">]</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">links</span><span class="o">.</span><span class="n">push</span>    <span class="n">page_link_or_span</span><span class="p">(</span><span class="vi">@collection</span><span class="o">.</span><span class="n">next_page</span><span class="p">,</span>     <span class="s1">&#39;disabled next_page&#39;</span><span class="p">,</span> <span class="vi">@options</span><span class="o">[</span><span class="ss">:next_label</span><span class="o">]</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">html</span> <span class="o">=</span> <span class="n">links</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="vi">@options</span><span class="o">[</span><span class="ss">:separator</span><span class="o">]</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">html</span> <span class="o">=</span> <span class="s2">&quot;每页显示&lt;b&gt;</span><span class="si">#{</span><span class="vi">@collection</span><span class="o">.</span><span class="n">per_page</span><span class="si">}</span><span class="s2">&lt;/b&gt;条数据,共有&lt;b&gt;</span><span class="si">#{</span><span class="n">total_pages</span><span class="si">}</span><span class="s2">&lt;/b&gt;页,  共有&lt;b&gt;</span><span class="si">#{</span><span class="vi">@collection</span><span class="o">.</span><span class="n">total_entries</span><span class="si">}</span><span class="s2">&lt;/b&gt;条数据&quot;</span> <span class="o">+</span> <span class="n">html</span>
+</span><span class='line'>    <span class="vi">@options</span><span class="o">[</span><span class="ss">:container</span><span class="o">]</span> <span class="p">?</span> <span class="vi">@template</span><span class="o">.</span><span class="n">content_tag</span><span class="p">(</span><span class="ss">:div</span><span class="p">,</span> <span class="n">html</span><span class="p">,</span> <span class="n">html_attributes</span><span class="p">)</span> <span class="p">:</span> <span class="n">html</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>And the result is like this:
 <img src="/images/posts/2010-08-08-paginate-bar.jpg" title="will_paginate bar" alt="will_paginate bar" /></p>

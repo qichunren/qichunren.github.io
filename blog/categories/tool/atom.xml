@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: tool | 蕲春人的博客]]></title>
+  <title><![CDATA[Category: Tool | 蕲春人的博客]]></title>
   <link href="http://qichunren.github.io/blog/categories/tool/atom.xml" rel="self"/>
   <link href="http://qichunren.github.io/"/>
-  <updated>2013-05-22T00:32:13+08:00</updated>
+  <updated>2013-10-10T13:02:23+08:00</updated>
   <id>http://qichunren.github.io/</id>
   <author>
     <name><![CDATA[qichunren]]></name>
@@ -14,177 +14,52 @@
 
   
   <entry>
-    <title type="html"><![CDATA[mongodb的可视化客户端工具:MongoHub]]></title>
-    <link href="http://qichunren.github.io/blog/2011-12-20-mongodb-ui-client-mongohub/"/>
-    <updated>2011-12-20T17:31:00+08:00</updated>
-    <id>http://qichunren.github.io/blog/mongodb-ui-client-mongohub</id>
-    <content type="html"><![CDATA[<p>最近在使用mongodb,经常要调试，然后找到了MongoHub这款工具，感觉很好。</p>
+    <title type="html"><![CDATA[开始使用vagrant]]></title>
+    <link href="http://qichunren.github.io/blog/2013-09-22-start-use-vagrant/"/>
+    <updated>2013-09-22T20:43:00+08:00</updated>
+    <id>http://qichunren.github.io/blog/start-use-vagrant</id>
+    <content type="html"><![CDATA[<h1>Vagrant</h1>
 
-<p><a href="http://mongohub.todayclose.com/">MongoHub网站</a></p>
+<p><a href="http://www.vagrantup.com/">Vagrant</a> 是一个虚拟机配置管理工具。</p>
 
-<p><img src="http://mongohub.todayclose.com/media/img/icon.png" alt="MongoHub" /></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[网页截屏的方法]]></title>
-    <link href="http://qichunren.github.io/blog/2011-10-13-capture-webpage/"/>
-    <updated>2011-10-13T06:09:09+08:00</updated>
-    <id>http://qichunren.github.io/blog/capture-webpage</id>
-    <content type="html"><![CDATA[<p>曾经很想有这样一个app, 它可以将微博上用户的微博用图片的形式自动保存起来，留此存照。前几个月的那段时间，微博上很
-网页截屏的基本原理就是通过取得webkit渲染（render）的数据来生成图片的，我经过一段时间研究，找到了两个方法来解决这个问题。</p>
+<p>简单来说，Vagrant 可以让你用一个文本文件 Vagrantfile 描述一个虚拟机环境，然后根据你的描述启动这样的一台虚拟机，同时将 Vagrantfile 所在的目录的所有内容，和虚拟机中的 /vagrant 这个目录自动实时同步。入门文档在<a href="http://docs.vagrantup.com/v2/getting-started/index.html">这里</a>。</p>
 
-<p>一个工具叫<a href="http://www.phantomjs.org/">phantomjs</a>，另一个工具叫<a href="http://cutycapt.sourceforge.net/">cutycapt</a></p>
+<h2>Get started</h2>
 
-<p>两个工具都不错，个人比较喜欢使用cutycapt这个工具，它是直接提供一个命令行来生成网页截图的，而前者是通过javascript来调用底层webkit接品(page.render方法)来实现的，两者的侧重点不一样。
-并且cutycapt是将整个网截下来，phantomjs是将浏览器当前视区的一屏截下来。</p>
+<ol>
+<li>下载vagrant, 从<a href="http://downloads.vagrantup.com/">http://downloads.vagrantup.com/</a>页面中，根据自己的操作系统平台选择相应的版本下载，我在写这个文档的时候它的最新版本是<em>v1.3.1</em></li>
+<li>安装完成后，在命令行终端中会有一个vagrant命令。</li>
+<li>进行自己平时的工作目录，执行</li>
+</ol>
 
-<p>Cutycapt的用法如下
-```
-qichunren@qichunren-desktop:~/github/cutycapt/CutyCapt$ ./CutyCapt</p>
 
-<hr />
-
-<p> Usage: CutyCapt --url=http://www.example.org/ --out=localfile.png</p>
-
-<hr />
-
-<p>  --help                         Print this help page and exit              <br/>
-  --url=<url>                    The URL to capture (http:...|file:...|...) <br/>
-  --out=<path>                   The target file (.png|pdf|ps|svg|jpeg|...) <br/>
-  --out-format=<f>               Like extension in --out, overrides heuristic
-  --min-width=<int>              Minimal width for the image (default: 800) <br/>
-  --min-height=<int>             Minimal height for the image (default: 600)<br/>
-  --max-wait=<ms>                Don't wait more than (default: 90000, inf: 0)
-  --delay=<ms>                   After successful load, wait (default: 0)   <br/>
-  --user-style-path=<path>       Location of user style sheet file, if any  <br/>
-  --user-style-string=<css>      User style rules specified as text         <br/>
-  --header=<name>:<value>        request header; repeatable; some can't be set
-  --method=&lt;get|post|put>        Specifies the request method (default: get)<br/>
-  --body-string=<string>         Unencoded request body (default: none)     <br/>
-  --body-base64=<base64>         Base64-encoded request body (default: none)<br/>
-  --app-name=<name>              appName used in User-Agent; default is none<br/>
-  --app-version=<version>        appVers used in User-Agent; default is none<br/>
-  --user-agent=<string>          Override the User-Agent header Qt would set<br/>
-  --javascript=&lt;on|off>          JavaScript execution (default: on)         <br/>
-  --java=&lt;on|off>                Java execution (default: unknown)          <br/>
-  --plugins=&lt;on|off>             Plugin execution (default: unknown)        <br/>
-  --private-browsing=&lt;on|off>    Private browsing (default: unknown)        <br/>
-  --auto-load-images=&lt;on|off>    Automatic image loading (default: on)      <br/>
-  --js-can-open-windows=&lt;on|off> Script can open windows? (default: unknown)<br/>
-  --js-can-access-clipboard=&lt;on|off> Script clipboard privs (default: unknown)
-  --print-backgrounds=&lt;on|off>   Backgrounds in PDF/PS output (default: off)<br/>
-  --zoom-factor=<float>          Page zoom factor (default: no zooming)     <br/>
-  --zoom-text-only=&lt;on|off>      Whether to zoom only the text (default: off)
-  --http-proxy=<url>             Address for HTTP proxy server (default: none)</p>
-
-<hr />
-
-<p>  <f> is svg,ps,pdf,itext,html,rtree,png,jpeg,mng,tiff,gif,bmp,ppm,xbm,xpm</p>
-
-<hr />
-
-<p> http://cutycapt.sf.net - (c) 2003-2010 Bjoern Hoehrmann - bjoern@hoehrmann.de
-qichunren@qichunren-desktop:~/github/cutycapt/CutyCapt$
-```</p>
-
-<p>phantomjs截屏的用法如下：
-<code>
-qichunren@qichunren-desktop:~/github$ cd phantomjs/
-qichunren@qichunren-desktop:~/github/phantomjs$ ls
-bin         ChangeLog  ff.png     iteye.png    Makefile       python     src
-capture.js  examples   hello.png  LICENSE.BSD  phantomjs.pro  README.md           
-qichunren@qichunren-desktop:~/github/phantomjs$ ./bin/phantomjs examples/rasterize.js
-Usage: rasterize.js URL filename [paperwidth*paperheight|paperformat]
-  paper (pdf output) examples: "5in*7.5in", "10cm*20cm", "A4", "Letter"
-qichunren@qichunren-desktop:~/github/phantomjs$ ./bin/phantomjs examples/rasterize.js http://www.iteye.com iteye.png
-qichunren@qichunren-desktop:~/github/phantomjs$
+<p><code>
+git clone git@github.com:qichunren/luna-vagrant.git
+cd luna-vagrant
+vagrant box add precise64 http://files.vagrantup.com/precise64.box # 下载box，它是一个VirtualBox虚拟机导出的文件，版本是Ubuntu 12.04 LTS 64位
+vagrant up # 就启动了作为开发的VirtualBox虚拟机了
 </code></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[去掉textmate源代码中的隐形空格]]></title>
-    <link href="http://qichunren.github.io/blog/2011-05-17-remove-hidden-space-soure-code/"/>
-    <updated>2011-05-17T01:20:33+08:00</updated>
-    <id>http://qichunren.github.io/blog/remove-hidden-space-soure-code</id>
-    <content type="html"><![CDATA[<p>有这个需要，主要是因为不想在git提交后的diff中无看到不有意思的diff显示。使用textmate的同学可以用<a href="https://github.com/glennr/uber-glory-tmbundle">这个工具</a>来解决这个小问题。</p>
 
-<h3>安装方法</h3>
+<p>自己的工作目录（就是luna-vagrant项目的上一层项目）是实时与虚拟机中的/code目录保持同步。
+luna-vagrant目录是实时与虚拟机中的/vagrant目录保持同步。</p>
 
-<p>{% codeblock install step lang:bash %}
-cd ~/Library/Application\ Support/TextMate/Bundles/
-git clone git://github.com/glennr/uber-glory-tmbundle.git Uber\ Glory.tmbundle
-cd Uber\ Glory.tmbundle
-git submodule update --init
-osascript -e 'tell app "TextMate" to reload bundles'</p>
+<h2>常用命令</h2>
 
-<p>{% endcodeblock %}</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[在Mac上使用gitX]]></title>
-    <link href="http://qichunren.github.io/blog/2011-05-12-use-gitX-on-mac/"/>
-    <updated>2011-05-12T03:19:19+08:00</updated>
-    <id>http://qichunren.github.io/blog/use-gitX-on-mac</id>
-    <content type="html"><![CDATA[<p><a href="https://github.com/pieter/gitx">gitX</a> 是mac上一个git的可视化工具，可以与gravatar 、gist集成在一起。我比较喜欢它的界面形式，感觉很舒服。</p>
+<p><code>
+vagrant up  # 启动虚拟机
+vagrant ssh # ssh登录机器
+vagrant halt # 关闭虚拟机
+vagrant destory # 删除虚拟机
+vagrant status # 显示虚拟机状态
+</code></p>
 
-<p>安装方法：</p>
+<h2>FAQ</h2>
 
-<p>最简单的安装方法就是下载它的二进制包，直接运行。
-在它的wiki页面找到二进制包的 <a href="http://gitx.frim.nl/Downloads/GitXStable.app.zip">下载地址</a> , 下载后，解压，直接运行，程序界面就出来了。</p>
+<ol>
+<li>怎么样添加box?
+vagrant box add precise64 http://files.vagrantup.com/precise64.box</li>
+</ol>
 
-<p>然后点菜单“GitX”中的'Enable Terminal Usage ...', 这样可以直接在命令行窗口中，在项目的根目录中直接运行gitx来启动gitX了。</p>
-
-<p><img src="http://gitx.frim.nl/images/GitX-Commit.png" title="GitX on Mac" alt="My current project" /></p>
-
-<p>另外有人在Linux系统上也开发了一个类似的git可视化工具，叫<a href="https://github.com/pieter/gitx">gitg</a>, 在Ubuntu下可以直接使用 <strong> sudo apt-get install gitg </strong> 来安装.</p>
-
-<p><em>更新</em></p>
-
-<p><a href="https://github.com/pieter/gitx">gitX官方的这个版</a> 本已经好久没有更新了，另外它也有一些缺点，如不能方便从文件中复制代码（很难选中代码的），我找到这个<a href="https://github.com/laullon/gitx/tree/">版本</a>, 它从原官方的版本更流行。另外它真的很好用，比官方的版本提高了很多功能点。你自己慢慢体会吧。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[使用feedzirra分析提取Feed]]></title>
-    <link href="http://qichunren.github.io/blog/2011-05-05-use_feedzirra_to_fetch_feed/"/>
-    <updated>2011-05-05T03:12:12+08:00</updated>
-    <id>http://qichunren.github.io/blog/use_feedzirra_to_fetch_feed</id>
-    <content type="html"><![CDATA[<p><a href="https://github.com/pauldix/feedzirra">feedzirra</a> 是一个很好用的提取和分析feed的工具。用法如下：</p>
-
-<p>{% codeblock lang:ruby %}</p>
-
-<h1>encoding: utf-8</h1>
-
-<p>require "feedzirra"</p>
-
-<p>def fetch_feed(feed_url)
-  feed = Feedzirra::Feed.fetch_and_parse(feed_url)</p>
-
-<p>  feed_entries = feed.entries
-  feed_entries.each do |entry|</p>
-
-<pre><code>puts entry.inspect  
-</code></pre>
-
-<p>  end # end each
-end</p>
-
-<p>fetch_feed "http://tech.163.com/special/000944OI/kejitongxin.xml"
-{% endcodeblock %}</p>
-
-<p>结果：</p>
-
-<p>```
-usermatoMacBook-Pro:gitcard qichunren$ ruby lib/blog_fetcher.rb</p>
-
-<h1>&lt;Feedzirra::Parser::RSSEntry:0x00000102137858 @title="外媒分析称微软是黑莓和必应合作最大赢家", @url="http://tech.163.com/11/0504/16/737NSCOS000915BE.html", @summary="【赛迪网讯】5月4日消息，据国外媒体报道，在BlackBerry World上RIM请到一位令人意外的客座讲师——微软CEO史蒂夫-鲍尔默（Steve Ballmer）。鲍尔默在会上公开了与RIM的合作关系，称日后微软的Bing将代替谷歌成为黑莓移动设备上的默认搜索引擎。微软明显将从合作关系中获利，但RIM能够得到什么利益？鲍尔默表示，微软将对黑 ......", @published="2011-05-04 16:55:22"></h1>
-
-<h1>&lt;Feedzirra::Parser::RSSEntry:0x0000010212e140 @title="工信部4月上半月发放241款电信设备进网许可证", @url="http://tech.163.com/11/0504/09/736SR7MQ000915BE.html", @summary="飞象网讯（崔玉贤/文）飞象网得知工信部4月份上半月发放了241款电信设备进网许可证，其中包含10款进网试用批文。 据悉，4月份上半月工信部共发放了TD终端22款，TD-SCDMA/GSM双模数字移动电话机15款，TD-SCDMA/GSM双模无线数据终端2款，TD-SCDMA固定无线终端5款。其中，TD-SCDMA/GSM双模数字移动电话机有5款进网试用批文，夏 ......", @published="2011-05-04 09:02:53"></h1>
-
-<p>```</p>
 ]]></content>
   </entry>
   

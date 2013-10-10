@@ -4,7 +4,7 @@
   <title><![CDATA[Category: datebase | 蕲春人的博客]]></title>
   <link href="http://qichunren.github.io/blog/categories/datebase/atom.xml" rel="self"/>
   <link href="http://qichunren.github.io/"/>
-  <updated>2013-05-22T00:32:13+08:00</updated>
+  <updated>2013-10-10T13:02:23+08:00</updated>
   <id>http://qichunren.github.io/</id>
   <author>
     <name><![CDATA[qichunren]]></name>
@@ -24,26 +24,35 @@
 
 <p>在网上一查，是表给锁住了，用如下的方法来解决。</p>
 
-<p>{% codeblock lang:sql %}
-select t2.username,t2.sid,t2.serial#,t2.logon_time
-from v$locked_object t1,v$session t2
-where t1.session_id=t2.sid order by t2.logon_time;</p>
-
-<p>{% endcodeblock %}</p>
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">select</span> <span class="n">t2</span><span class="p">.</span><span class="n">username</span><span class="p">,</span><span class="n">t2</span><span class="p">.</span><span class="n">sid</span><span class="p">,</span><span class="n">t2</span><span class="p">.</span><span class="nb">serial</span><span class="o">#</span><span class="p">,</span><span class="n">t2</span><span class="p">.</span><span class="n">logon_time</span>
+</span><span class='line'><span class="k">from</span> <span class="n">v</span><span class="err">$</span><span class="n">locked_object</span> <span class="n">t1</span><span class="p">,</span><span class="n">v</span><span class="err">$</span><span class="k">session</span> <span class="n">t2</span>
+</span><span class='line'><span class="k">where</span> <span class="n">t1</span><span class="p">.</span><span class="n">session_id</span><span class="o">=</span><span class="n">t2</span><span class="p">.</span><span class="n">sid</span> <span class="k">order</span> <span class="k">by</span> <span class="n">t2</span><span class="p">.</span><span class="n">logon_time</span><span class="p">;</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <pre><code>  USERNAME                              SID    SERIAL# LOGON_TIME
   ——————————————— -———- -———- -————
   QICHUNREN                                   37       9731 2010-4-10 1  
 </code></pre>
 
-<p>{% codeblock lang:sql %}  <br/>
-   alter system kill session '37,9731';
-{% endcodeblock %}<br/>
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'>  <span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span>
+</span><span class='line'>   <span class="k">alter</span> <span class="k">system</span> <span class="n">kill</span> <span class="k">session</span> <span class="s1">&#39;37,9731&#39;</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div><br/>
 System altered</p>
 
-<p>{% codeblock lang:sql %}   <br/>
-   select * from v$session where sid=?;
-{% endcodeblock %}</p>
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'>   <span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span>
+</span><span class='line'>   <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">v</span><span class="err">$</span><span class="k">session</span> <span class="k">where</span> <span class="n">sid</span><span class="o">=?</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <h3>相关的博客：</h3>
 

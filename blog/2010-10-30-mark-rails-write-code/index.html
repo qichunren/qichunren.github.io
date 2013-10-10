@@ -7,15 +7,20 @@
     <meta name="author" content="qichunren">
 
     
-    <meta name="description" content="写Rails程序容易出现的几个不好的地方 这几个地方不知道大家有注意到没有，我今天发现的一个地方就是 Liquid error: invalid byte sequence in US-ASCII 在ActiveRecord中有这样的代码，实在不应该啊。 初次一看没有什么问题， &hellip;">
+    <meta name="description" content="写Rails程序容易出现的几个不好的地方 这几个地方不知道大家有注意到没有，我今天发现的一个地方就是 1
+2
+3
+4
+5
+6
+class EcGood &lt; ActiveRecord::Bas #商品分类 GoodCategory = Category.find(:all).map{| &hellip;">
     
-    <meta name="viewport" content="width=device-width; initial-scale=1; maximum-scale=1">
 
     <link href="/atom.xml" rel="alternate" title="蕲春人的博客" type="application/atom+xml">
     <link rel="canonical" href="">
     <link href="/favicon.png" rel="shortcut icon">
-    <link href="http://twitter.github.io/bootstrap/assets/css/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css">
-     <link href="http://twitter.github.io/bootstrap/assets/css/bootstrap-responsive.css" media="screen, projection" rel="stylesheet" type="text/css">
+    <link href="http://getbootstrap.com/2.3.2/assets/css/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css">
+     <link href="http://getbootstrap.com/2.3.2/assets/css/bootstrap-responsive.css" media="screen, projection" rel="stylesheet" type="text/css">
 
         <style type="text/css">
         body {
@@ -117,7 +122,20 @@
     <h1 class="title">写Rails程序容易出现的几个不好的地方</h1>
     <div class="entry"><p>这几个地方不知道大家有注意到没有，我今天发现的一个地方就是</p>
 
-<p>Liquid error: invalid byte sequence in US-ASCII</p>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">EcGood</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Bas</span>
+</span><span class='line'>  <span class="c1">#商品分类</span>
+</span><span class='line'>  <span class="no">GoodCategory</span> <span class="o">=</span> <span class="no">Category</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="ss">:all</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">{</span><span class="o">|</span><span class="n">category</span><span class="o">|[</span><span class="n">category</span><span class="o">.</span><span class="n">cn_n</span><span class="p">,</span> <span class="n">category</span><span class="o">.</span><span class="n">id</span><span class="o">]</span> <span class="p">}</span>
+</span><span class='line'>  <span class="c1">#商品品牌</span>
+</span><span class='line'>  <span class="no">GoodBrand</span> <span class="o">=</span> <span class="no">EcBrand</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="ss">:all</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">{</span><span class="o">|</span><span class="n">brand</span><span class="o">|[</span><span class="n">brand</span><span class="o">.</span><span class="n">brand_name</span><span class="p">,</span> <span class="n">brand</span><span class="o">.</span><span class="n">id</span><span class="o">]</span> <span class="p">}</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>在ActiveRecord中有这样的代码，实在不应该啊。</p>
 
