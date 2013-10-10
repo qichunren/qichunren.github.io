@@ -2,21 +2,20 @@
 layout: default
 ---
 
-<div class="main posts_list right">
-    <ul>
 {% for post in site.categories[page.category] %}
-<li>
-    <div class="date">{% include post/date.html %}{{ time }}</div>
-    <a href="{{ root_url }}{{ post.url }}">{% if site.titlecase %}{{ post.title | titlecase }}{% else %}{{ post.title }}{% endif %}</a></li>
-{% endfor %}
-</ul>
+<div class='cell'>
+    <div class="post_meta">
+        {% include post/date.html %}{{ time }}
+    </div>
+    <h2 class="post_title"><a href="{{ root_url }}{{ post.url }}">{% if site.titlecase %}{{ post.title | titlecase }}{% else %}{{ post.title }}{% endif %}</a></h2>
 </div>
+{% endfor %}
 
-<ul id="categories" class="side left">
-    <li><a href="/blog/categories/ruby/">Ruby</a></li>
-    <li><a href="/blog/categories/php/">PHP</a></li>
-    <li><a href="/blog/categories/test/">Test</a></li>
-    <li><a href="/blog/categories/ios/">iOS</a></li>
-    <li><a href="/blog/categories/tool/">Tool</a></li>
-    <li><a href="/blog/categories/life/">Life</a></li>
-</ul>
+<div id="categories" class="cell">
+    <span class="label"><a href="/blog/categories/ruby/">Ruby</a></span>
+    <span class="label"><a href="/blog/categories/php/">PHP</a></span>
+    <span class="label"><a href="/blog/categories/test/">Test</a></span>
+    <span class="label"><a href="/blog/categories/ios/">iOS</a></span>
+    <span class="label"><a href="/blog/categories/tool/">Tool</a></span>
+    <span class="label"><a href="/blog/categories/life/">Life</a></span>
+</div>
