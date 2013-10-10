@@ -4,7 +4,7 @@
   <title><![CDATA[蕲春人的博客]]></title>
   <link href="http://qichunren.github.io/atom.xml" rel="self"/>
   <link href="http://qichunren.github.io/"/>
-  <updated>2013-10-10T13:11:18+08:00</updated>
+  <updated>2013-10-10T13:24:48+08:00</updated>
   <id>http://qichunren.github.io/</id>
   <author>
     <name><![CDATA[qichunren]]></name>
@@ -67,15 +67,6 @@ luna-vagrant目录是实时与虚拟机中的/vagrant目录保持同步。</p>
 vagrant box add precise64 http://files.vagrantup.com/precise64.box</li>
 </ol>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[最近的境况]]></title>
-    <link href="http://qichunren.github.io/blog/2013-08-02-recently-at-guangzhou/"/>
-    <updated>2013-08-02T12:03:00+08:00</updated>
-    <id>http://qichunren.github.io/blog/recently-at-guangzhou</id>
-    <content type="html"><![CDATA[
 ]]></content>
   </entry>
   
@@ -1709,6 +1700,121 @@ To force apache2 to be started with priorities 91 for both Start and Kill, we ne
 <h4>参考资料</h4>
 
 <p><a href="http://learn.akae.cn/media/ch31s05.html">Shell脚本语法</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[网页截屏的方法]]></title>
+    <link href="http://qichunren.github.io/blog/2011-10-13-capture-webpage/"/>
+    <updated>2011-10-13T06:09:09+08:00</updated>
+    <id>http://qichunren.github.io/blog/capture-webpage</id>
+    <content type="html"><![CDATA[<p>曾经很想有这样一个app, 它可以将微博上用户的微博用图片的形式自动保存起来，留此存照。前几个月的那段时间，微博上很
+网页截屏的基本原理就是通过取得webkit渲染（render）的数据来生成图片的，我经过一段时间研究，找到了两个方法来解决这个问题。</p>
+
+<p>一个工具叫<a href="http://www.phantomjs.org/">phantomjs</a>，另一个工具叫<a href="http://cutycapt.sourceforge.net/">cutycapt</a></p>
+
+<p>两个工具都不错，个人比较喜欢使用cutycapt这个工具，它是直接提供一个命令行来生成网页截图的，而前者是通过javascript来调用底层webkit接品(page.render方法)来实现的，两者的侧重点不一样。
+并且cutycapt是将整个网截下来，phantomjs是将浏览器当前视区的一屏截下来。</p>
+
+<p>Cutycapt的用法如下</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>qichunren@qichunren-desktop:~/github/cutycapt/CutyCapt$ ./CutyCapt 
+</span><span class='line'> -----------------------------------------------------------------------------
+</span><span class='line'> Usage: CutyCapt --url=http://www.example.org/ --out=localfile.png            
+</span><span class='line'> -----------------------------------------------------------------------------
+</span><span class='line'>  --help                         Print this help page and exit                
+</span><span class='line'>  --url=&lt;url&gt;                    The URL to capture (http:...|file:...|...)   
+</span><span class='line'>  --out=&lt;path&gt;                   The target file (.png|pdf|ps|svg|jpeg|...)   
+</span><span class='line'>  --out-format=&lt;f&gt;               Like extension in --out, overrides heuristic 
+</span><span class='line'>  --min-width=&lt;int&gt;              Minimal width for the image (default: 800)   
+</span><span class='line'>  --min-height=&lt;int&gt;             Minimal height for the image (default: 600)  
+</span><span class='line'>  --max-wait=&lt;ms&gt;                Don't wait more than (default: 90000, inf: 0)
+</span><span class='line'>  --delay=&lt;ms&gt;                   After successful load, wait (default: 0)     
+</span><span class='line'>  --user-style-path=&lt;path&gt;       Location of user style sheet file, if any    
+</span><span class='line'>  --user-style-string=&lt;css&gt;      User style rules specified as text           
+</span><span class='line'>  --header=&lt;name&gt;:&lt;value&gt;        request header; repeatable; some can't be set
+</span><span class='line'>  --method=&lt;get|post|put&gt;        Specifies the request method (default: get)  
+</span><span class='line'>  --body-string=&lt;string&gt;         Unencoded request body (default: none)       
+</span><span class='line'>  --body-base64=&lt;base64&gt;         Base64-encoded request body (default: none)  
+</span><span class='line'>  --app-name=&lt;name&gt;              appName used in User-Agent; default is none  
+</span><span class='line'>  --app-version=&lt;version&gt;        appVers used in User-Agent; default is none  
+</span><span class='line'>  --user-agent=&lt;string&gt;          Override the User-Agent header Qt would set  
+</span><span class='line'>  --javascript=&lt;on|off&gt;          JavaScript execution (default: on)           
+</span><span class='line'>  --java=&lt;on|off&gt;                Java execution (default: unknown)            
+</span><span class='line'>  --plugins=&lt;on|off&gt;             Plugin execution (default: unknown)          
+</span><span class='line'>  --private-browsing=&lt;on|off&gt;    Private browsing (default: unknown)          
+</span><span class='line'>  --auto-load-images=&lt;on|off&gt;    Automatic image loading (default: on)        
+</span><span class='line'>  --js-can-open-windows=&lt;on|off&gt; Script can open windows? (default: unknown)  
+</span><span class='line'>  --js-can-access-clipboard=&lt;on|off&gt; Script clipboard privs (default: unknown)
+</span><span class='line'>  --print-backgrounds=&lt;on|off&gt;   Backgrounds in PDF/PS output (default: off)  
+</span><span class='line'>  --zoom-factor=&lt;float&gt;          Page zoom factor (default: no zooming)       
+</span><span class='line'>  --zoom-text-only=&lt;on|off&gt;      Whether to zoom only the text (default: off) 
+</span><span class='line'>  --http-proxy=&lt;url&gt;             Address for HTTP proxy server (default: none)
+</span><span class='line'> -----------------------------------------------------------------------------
+</span><span class='line'>  &lt;f&gt; is svg,ps,pdf,itext,html,rtree,png,jpeg,mng,tiff,gif,bmp,ppm,xbm,xpm    
+</span><span class='line'> -----------------------------------------------------------------------------
+</span><span class='line'> http://cutycapt.sf.net - (c) 2003-2010 Bjoern Hoehrmann - bjoern@hoehrmann.de
+</span><span class='line'>qichunren@qichunren-desktop:~/github/cutycapt/CutyCapt$</span></code></pre></td></tr></table></div></figure>
+
+
+<p>phantomjs截屏的用法如下：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>qichunren@qichunren-desktop:~/github$ cd phantomjs/
+</span><span class='line'>qichunren@qichunren-desktop:~/github/phantomjs$ ls
+</span><span class='line'>bin         ChangeLog  ff.png     iteye.png    Makefile       python     src
+</span><span class='line'>capture.js  examples   hello.png  LICENSE.BSD  phantomjs.pro  README.md           
+</span><span class='line'>qichunren@qichunren-desktop:~/github/phantomjs$ ./bin/phantomjs examples/rasterize.js 
+</span><span class='line'>Usage: rasterize.js URL filename [paperwidth*paperheight|paperformat]
+</span><span class='line'>  paper (pdf output) examples: "5in*7.5in", "10cm*20cm", "A4", "Letter"
+</span><span class='line'>qichunren@qichunren-desktop:~/github/phantomjs$ ./bin/phantomjs examples/rasterize.js http://www.iteye.com iteye.png
+</span><span class='line'>qichunren@qichunren-desktop:~/github/phantomjs$</span></code></pre></td></tr></table></div></figure>
+
 ]]></content>
   </entry>
   
