@@ -1,0 +1,146 @@
+<html>
+  <head>
+    <meta content='怎么样写好的ruby业务代码 - 蕲春人的博客' property='og:title' />
+    <title>怎么样写好的ruby业务代码 - 蕲春人的博客</title>
+    <link href='/images/fav.png' rel='shortcut icon'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css' />
+<link href='/stylesheets/style.css' rel='stylesheet' type='text/css' />
+<link href='/stylesheets/syntax.css' rel='stylesheet' type='text/css' />
+<link href='/stylesheets/responsive.css' rel='stylesheet' type='text/css' />
+<!-- - -->
+<script src='/javascripts/jquery.js' type='text/javascript'></script>
+<script src='/javascripts/pd.js' type='text/javascript'></script>
+<script src='/javascripts/basics.js' type='text/javascript'></script>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<!-- - -->
+<meta content='width=device-width, initial-scale=1.0, user-scalable=no' name='viewport'>
+<meta content='text/html; charset=utf-8' http-equiv='content-type' />
+<meta content="http://muan.co/images/og.png" property="og:image" />
+<meta content="" property="fb:app_id" />
+
+  <meta content='/ruby/test/2011/04/18/write-buautiful-ruby-business-code/' property='og:url' />
+  <meta content="_标题很强，心中却很烦乱，写下这个解解闷，吐吐苦水。_最近与一个小Ruby程序员共事，交流起来还没有什么问题，可是看他写的代码，虽然坏不到哪里去，但我还是心里一阵阵反感，这和我平时阅读从github 上拉下的代码的感觉是完成不一样的。..." property='og:description' />
+  <meta content="article" property="og:type" />
+
+<!-- - -->
+<script type='text/javascript'>
+  //<![CDATA[
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-6344646-4']);
+    _gaq.push(['_trackPageview']);
+    
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  //]]>
+</script>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=604714799556697";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+  </head>
+  <body>
+    <header>
+<a id="go-back-home" href="/"><img src="/images/scribble.png" alt="scribble" width="53" height="59"></a>
+<p>蕲春人的博客</p>
+</header>
+    <div id='container'>
+      <div class="block">
+  
+    <a target="_top" class="main" href="/about">About</a>
+  
+    <a target="_blank" class="main" href="http://qichunren.github.io">Blog</a>
+  
+    <a target="_blank" class="main" href="mailto:whyruby@gmail.com">Email</a>
+  
+    <a target="_blank" class="main" href="http://github.com/qichunren">GitHub</a>
+  
+</div>
+      <section class="paging">
+  
+    <div class="left">
+      <a href="/rails/test/2011/03/25/use-capybara-to-integrate-test/">
+        ‹
+      </a>
+    </div>
+  
+  
+    <div class="right">
+      <a href="/rails/test/2011/04/19/rails-test-note/">
+        ›
+      </a>
+    </div>
+  
+</section>
+      <div class="content">
+        <section class='post'>
+          <h1 class="upcase">
+            <div class='date'>18 Apr 2011</div>
+            怎么样写好的ruby业务代码
+          </h1>
+          <p><em>标题很强，心中却很烦乱，写下这个解解闷，吐吐苦水。</em></p>
+
+<p>最近与一个小Ruby程序员共事，交流起来还没有什么问题，可是看他写的代码，虽然坏不到哪里去，但我还是心里一阵阵反感，这和我平时阅读从github 上拉下的代码的感觉是完成不一样的。 </p>
+
+<p>给我不爽的地方有：首先他在用程序员的思维写业务代码。这一点虽然对程序的最终运行结果没有什么影响，但我是非常反感这一点。我一直对自己说，我要写可读的英语的，并且本身能说明它是要做什么事情的代码，尤其我是当在做电子商务方面的业务系统。</p>
+
+<p>我们应该站在设计人员的角度来写代码。我们是整个系统的设计师，控制人员，管理人员，我们可以通过代码的方式为系统来设计各种业务规则。而不仅仅是为了用程序代码来码完业务操作。这种特点的典型特征就是在程序中（特别是在model 中）有很多这样的方法命名，如update<em>xxx, delete</em>xxx, set<em>x</em>to_y,这种类似的命名，它就是纯粹的数据操作，而不是用代码来表达业务!</p>
+
+<p>都说程序要写耦合内聚什么的，模块化啦，抽取啦，减少重复，但是在这之间把握一个平衡还是要有很多磨练的。我之前一些时候在写Rails代码时就时常被这个问题折磨过，心里总是努力想把代码写得好一点，可最终完成业务目标时，看着自己的代码总是感觉不对劲.</p>
+
+<p>不劲的地方有：</p>
+
+<p>总是在考虑“我这段代码到底是单独抽出来呢，还是就这样放在其中呢”，“我感觉这个命名怎么那么别扭啊，哪里不对了？”等等之内的问题，然后花时间在这些代码段之间穿梭。其实我现在想明白了。要想让自己写的代码（我这里尤其是处理业务逻辑的代码）看得明白，读得顺畅，要把握好几点。 </p>
+
+<p>第一，要记得上面第一条中说到的。 </p>
+
+<p>第二，英语表达要不能太糟糕。 他英语不太过关，写的一些代码都是去google翻译查的，这我还是不说什么，可以有的翻译真的好离谱啊，再加上他自己的一些润色，完全可以我把搞迷糊。 </p>
+
+<p>第三点，要清楚业务需要的实质，明白什么是将来可能变化的，什么是肯定不变化的。明白了这一点，就知道一个业务操作中，到底是应该把方法怎么折分。不变的代码，就都写在一个方法中也是没有问题的，即实代码长一点，那样整个操作是一个整体，到时时候维护起来会很明了。   </p>
+
+<p>第四点，对于业务操作的方法，一般写得内聚紧凑一点很是没有什么问题的。不要惦记什么一个方法不能超过多少行代码的信条。 </p>
+
+<p>第五点就是测试了，这个一定得搞。</p>
+
+          <br />
+<p>
+  Til next time,<br/>
+  蕲春人
+  <span class="muted">at 21:12</span>
+</p>
+<p>
+  <img src="/images/scribble3.png" alt="scribble" /> 
+</p>
+
+
+        </section>
+      </div>
+      
+
+      
+      <div class="block">
+  
+    <a target="_top" class="main" href="/about">About</a>
+  
+    <a target="_blank" class="main" href="http://qichunren.github.io">Blog</a>
+  
+    <a target="_blank" class="main" href="mailto:whyruby@gmail.com">Email</a>
+  
+    <a target="_blank" class="main" href="http://github.com/qichunren">GitHub</a>
+  
+</div>
+    </div>
+    <footer>
+  <a href="http://github.com/muan/scribble" class="muted">built with Jekyll using Scribble theme</a>
+  <br />
+  <br />
+  <img src="/images/scribble2.png" alt="scribble" /> 
+</footer>
+  </body>
+</html>

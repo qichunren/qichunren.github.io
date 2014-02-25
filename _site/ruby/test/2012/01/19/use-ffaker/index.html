@@ -1,0 +1,147 @@
+<html>
+  <head>
+    <meta content='使用ffaker来产生随机数据 - 蕲春人的博客' property='og:title' />
+    <title>使用ffaker来产生随机数据 - 蕲春人的博客</title>
+    <link href='/images/fav.png' rel='shortcut icon'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css' />
+<link href='/stylesheets/style.css' rel='stylesheet' type='text/css' />
+<link href='/stylesheets/syntax.css' rel='stylesheet' type='text/css' />
+<link href='/stylesheets/responsive.css' rel='stylesheet' type='text/css' />
+<!-- - -->
+<script src='/javascripts/jquery.js' type='text/javascript'></script>
+<script src='/javascripts/pd.js' type='text/javascript'></script>
+<script src='/javascripts/basics.js' type='text/javascript'></script>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<!-- - -->
+<meta content='width=device-width, initial-scale=1.0, user-scalable=no' name='viewport'>
+<meta content='text/html; charset=utf-8' http-equiv='content-type' />
+<meta content="http://muan.co/images/og.png" property="og:image" />
+<meta content="" property="fb:app_id" />
+
+  <meta content='/ruby/test/2012/01/19/use-ffaker/' property='og:url' />
+  <meta content="[ffaker](https://github.com/EmmanuelOga/ffaker)是一个用来产生随机name\email之类的工具，可以用在开发时先产生一些有意义的随机数据，将数据写在db/seeds.rb中，这样你就不用..." property='og:description' />
+  <meta content="article" property="og:type" />
+
+<!-- - -->
+<script type='text/javascript'>
+  //<![CDATA[
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-6344646-4']);
+    _gaq.push(['_trackPageview']);
+    
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  //]]>
+</script>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=604714799556697";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+  </head>
+  <body>
+    <header>
+<a id="go-back-home" href="/"><img src="/images/scribble.png" alt="scribble" width="53" height="59"></a>
+<p>蕲春人的博客</p>
+</header>
+    <div id='container'>
+      <div class="block">
+  
+    <a target="_top" class="main" href="/about">About</a>
+  
+    <a target="_blank" class="main" href="http://qichunren.github.io">Blog</a>
+  
+    <a target="_blank" class="main" href="mailto:whyruby@gmail.com">Email</a>
+  
+    <a target="_blank" class="main" href="http://github.com/qichunren">GitHub</a>
+  
+</div>
+      <section class="paging">
+  
+    <div class="left">
+      <a href="/ruby/2012/01/12/customizing-rails-generator-templates/">
+        ‹
+      </a>
+    </div>
+  
+  
+    <div class="right">
+      <a href="/php/2012/02/11/use-smarty-template-in-codeigniter/">
+        ›
+      </a>
+    </div>
+  
+</section>
+      <div class="content">
+        <section class='post'>
+          <h1 class="upcase">
+            <div class='date'>19 Jan 2012</div>
+            使用ffaker来产生随机数据
+          </h1>
+          <p><a href="https://github.com/EmmanuelOga/ffaker">ffaker</a>是一个用来产生随机name\email之类的工具，可以用在开发时先产生一些有意义的随机数据，将数据写在db/seeds.rb中，这样你就不用每次急燥地添加一些asasddfdsf这样的数据。一个好的工作开发环境，可以让心情舒畅，效率加倍。</p>
+
+<p>在db/seeds.rb中，如果要产生100个用户名，直接这样做：</p>
+
+<div class="highlight"><pre><code class="ruby"><span class="nb">require</span> <span class="s1">&#39;ffaker&#39;</span>
+
+ <span class="mi">100</span><span class="o">.</span><span class="n">times</span> <span class="k">do</span>
+   <span class="n">user</span> <span class="o">=</span> <span class="no">User</span><span class="o">.</span><span class="n">new</span>
+   <span class="n">user</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="no">Faker</span><span class="o">::</span><span class="no">Name</span><span class="o">.</span><span class="n">name</span> <span class="o">=&gt;</span> <span class="s2">&quot;David Cao&quot;</span>
+   <span class="n">user</span><span class="o">.</span><span class="n">email</span> <span class="o">=</span> <span class="no">Faker</span><span class="o">::</span><span class="no">Internet</span><span class="o">.</span><span class="n">email</span> <span class="o">=&gt;</span> <span class="s2">&quot;qichunren@cqror.com&quot;</span>
+   <span class="n">user</span><span class="o">.</span><span class="n">save</span>
+ <span class="k">end</span>
+</code></pre></div>
+
+<p>我前一段时间，提交了<a href="https://github.com/EmmanuelOga/ffaker/pull/9">一点代码</a> ，可以产生天朝的姓名：</p>
+
+<div class="highlight"><pre><code class="ruby"><span class="nb">require</span> <span class="s1">&#39;ffaker&#39;</span>
+
+<span class="no">Faker</span><span class="o">::</span><span class="no">NameCN</span><span class="o">.</span><span class="n">first_name</span> <span class="c1"># =&gt; 鑫洋</span>
+<span class="no">Faker</span><span class="o">::</span><span class="no">NameCN</span><span class="o">.</span><span class="n">last_name</span> <span class="c1"># =&gt; 禹</span>
+<span class="no">Faker</span><span class="o">::</span><span class="no">NameCN</span><span class="o">.</span><span class="n">name</span> <span class="c1"># =&gt; 俊伶漫</span>
+</code></pre></div>
+
+<p>ffaker目前最新的版本是1.2，可以产生中文的姓名。</p>
+
+          <br />
+<p>
+  Til next time,<br/>
+  蕲春人
+  <span class="muted">at 22:01</span>
+</p>
+<p>
+  <img src="/images/scribble3.png" alt="scribble" /> 
+</p>
+
+
+        </section>
+      </div>
+      
+
+      
+      <div class="block">
+  
+    <a target="_top" class="main" href="/about">About</a>
+  
+    <a target="_blank" class="main" href="http://qichunren.github.io">Blog</a>
+  
+    <a target="_blank" class="main" href="mailto:whyruby@gmail.com">Email</a>
+  
+    <a target="_blank" class="main" href="http://github.com/qichunren">GitHub</a>
+  
+</div>
+    </div>
+    <footer>
+  <a href="http://github.com/muan/scribble" class="muted">built with Jekyll using Scribble theme</a>
+  <br />
+  <br />
+  <img src="/images/scribble2.png" alt="scribble" /> 
+</footer>
+  </body>
+</html>

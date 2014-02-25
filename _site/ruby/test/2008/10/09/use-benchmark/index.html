@@ -1,0 +1,145 @@
+<html>
+  <head>
+    <meta content='Benchmark用法 - 蕲春人的博客' property='og:title' />
+    <title>Benchmark用法 - 蕲春人的博客</title>
+    <link href='/images/fav.png' rel='shortcut icon'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css' />
+<link href='/stylesheets/style.css' rel='stylesheet' type='text/css' />
+<link href='/stylesheets/syntax.css' rel='stylesheet' type='text/css' />
+<link href='/stylesheets/responsive.css' rel='stylesheet' type='text/css' />
+<!-- - -->
+<script src='/javascripts/jquery.js' type='text/javascript'></script>
+<script src='/javascripts/pd.js' type='text/javascript'></script>
+<script src='/javascripts/basics.js' type='text/javascript'></script>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<!-- - -->
+<meta content='width=device-width, initial-scale=1.0, user-scalable=no' name='viewport'>
+<meta content='text/html; charset=utf-8' http-equiv='content-type' />
+<meta content="http://muan.co/images/og.png" property="og:image" />
+<meta content="" property="fb:app_id" />
+
+  <meta content='/ruby/test/2008/10/09/use-benchmark/' property='og:url' />
+  <meta content="[Benchmark](http://rubybenchmark.com/) 可以用来测试某个函数或者任何代码的执行时间。用法很简单:```require 'benchmark'n = 1500Benchmark.bmbm do |x..." property='og:description' />
+  <meta content="article" property="og:type" />
+
+<!-- - -->
+<script type='text/javascript'>
+  //<![CDATA[
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-6344646-4']);
+    _gaq.push(['_trackPageview']);
+    
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  //]]>
+</script>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=604714799556697";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+  </head>
+  <body>
+    <header>
+<a id="go-back-home" href="/"><img src="/images/scribble.png" alt="scribble" width="53" height="59"></a>
+<p>蕲春人的博客</p>
+</header>
+    <div id='container'>
+      <div class="block">
+  
+    <a target="_top" class="main" href="/about">About</a>
+  
+    <a target="_blank" class="main" href="http://qichunren.github.io">Blog</a>
+  
+    <a target="_blank" class="main" href="mailto:whyruby@gmail.com">Email</a>
+  
+    <a target="_blank" class="main" href="http://github.com/qichunren">GitHub</a>
+  
+</div>
+      <section class="paging">
+  
+  
+    <div class="right">
+      <a href="/git/2008/10/12/checkout-git-remote-branches-to-local/">
+        ›
+      </a>
+    </div>
+  
+</section>
+      <div class="content">
+        <section class='post'>
+          <h1 class="upcase">
+            <div class='date'>09 Oct 2008</div>
+            Benchmark用法
+          </h1>
+          <p><a href="http://rubybenchmark.com/">Benchmark</a> 可以用来测试某个函数或者任何代码的执行时间。</p>
+
+<p>用法很简单:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">require &#39;benchmark&#39;
+n = 1500
+Benchmark.bmbm do |x|
+  x.report(&quot;+ method&quot;) { n.times {string1 = &quot;ddd&quot; + &quot;11111&quot; + &quot;Helodd&quot; } }
+  x.report(&quot;&lt;&lt; method&quot;) { n.times {string2 = &quot;ddd&quot; &lt;&lt; &quot;11111&quot; &lt;&lt; &quot;Helodd&quot;} }
+end
+</code></pre></div>
+<p>结果如下:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">usermatoMacBook-Pro:test qichunren$ ruby test.rb
+Rehearsal ---------------------------------------------
++ method    0.000000   0.000000   0.000000 (  0.001722)
+&lt;&lt; method   0.000000   0.000000   0.000000 (  0.001073)
+------------------------------------ total: 0.000000sec
+
+                user     system      total        real
++ method    0.000000   0.000000   0.000000 (  0.001040)
+&lt;&lt; method   0.000000   0.000000   0.000000 (  0.000719)
+</code></pre></div>
+<h3>参考资料</h3>
+
+<ul>
+<li><a href="http://ruby-doc.org/stdlib/libdoc/benchmark/rdoc/index.html">Benchmark Rdoc</a></li>
+<li><a href="http://www.kuqin.com/rubycndocument/man/addlib/benchmark.html">Ruby参考手册</a></li>
+<li><a href="https://github.com/acangiano/ruby-benchmark-suite">ruby-benchmark-suite</a></li>
+</ul>
+
+          <br />
+<p>
+  Til next time,<br/>
+  蕲春人
+  <span class="muted">at 12:01</span>
+</p>
+<p>
+  <img src="/images/scribble3.png" alt="scribble" /> 
+</p>
+
+
+        </section>
+      </div>
+      
+
+      
+      <div class="block">
+  
+    <a target="_top" class="main" href="/about">About</a>
+  
+    <a target="_blank" class="main" href="http://qichunren.github.io">Blog</a>
+  
+    <a target="_blank" class="main" href="mailto:whyruby@gmail.com">Email</a>
+  
+    <a target="_blank" class="main" href="http://github.com/qichunren">GitHub</a>
+  
+</div>
+    </div>
+    <footer>
+  <a href="http://github.com/muan/scribble" class="muted">built with Jekyll using Scribble theme</a>
+  <br />
+  <br />
+  <img src="/images/scribble2.png" alt="scribble" /> 
+</footer>
+  </body>
+</html>

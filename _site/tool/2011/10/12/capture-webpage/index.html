@@ -1,0 +1,192 @@
+<html>
+  <head>
+    <meta content='网页截屏的方法 - 蕲春人的博客' property='og:title' />
+    <title>网页截屏的方法 - 蕲春人的博客</title>
+    <link href='/images/fav.png' rel='shortcut icon'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css' />
+<link href='/stylesheets/style.css' rel='stylesheet' type='text/css' />
+<link href='/stylesheets/syntax.css' rel='stylesheet' type='text/css' />
+<link href='/stylesheets/responsive.css' rel='stylesheet' type='text/css' />
+<!-- - -->
+<script src='/javascripts/jquery.js' type='text/javascript'></script>
+<script src='/javascripts/pd.js' type='text/javascript'></script>
+<script src='/javascripts/basics.js' type='text/javascript'></script>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<!-- - -->
+<meta content='width=device-width, initial-scale=1.0, user-scalable=no' name='viewport'>
+<meta content='text/html; charset=utf-8' http-equiv='content-type' />
+<meta content="http://muan.co/images/og.png" property="og:image" />
+<meta content="" property="fb:app_id" />
+
+  <meta content='/tool/2011/10/12/capture-webpage/' property='og:url' />
+  <meta content="曾经很想有这样一个app, 它可以将微博上用户的微博用图片的形式自动保存起来，留此存照。前几个月的那段时间，微博上很网页截屏的基本原理就是通过取得webkit渲染（render）的数据来生成图片的，我经过一段时间研究，找到了两个方法来..." property='og:description' />
+  <meta content="article" property="og:type" />
+
+<!-- - -->
+<script type='text/javascript'>
+  //<![CDATA[
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-6344646-4']);
+    _gaq.push(['_trackPageview']);
+    
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  //]]>
+</script>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=604714799556697";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+  </head>
+  <body>
+    <header>
+<a id="go-back-home" href="/"><img src="/images/scribble.png" alt="scribble" width="53" height="59"></a>
+<p>蕲春人的博客</p>
+</header>
+    <div id='container'>
+      <div class="block">
+  
+    <a target="_top" class="main" href="/about">About</a>
+  
+    <a target="_blank" class="main" href="http://qichunren.github.io">Blog</a>
+  
+    <a target="_blank" class="main" href="mailto:whyruby@gmail.com">Email</a>
+  
+    <a target="_blank" class="main" href="http://github.com/qichunren">GitHub</a>
+  
+</div>
+      <section class="paging">
+  
+    <div class="left">
+      <a href="/ruby/jruby/rails/deploy/2011/08/26/deploy-rails-project-with-jruby/">
+        ‹
+      </a>
+    </div>
+  
+  
+    <div class="right">
+      <a href="/linux/shell/2011/10/18/learning-shell-tip-note/">
+        ›
+      </a>
+    </div>
+  
+</section>
+      <div class="content">
+        <section class='post'>
+          <h1 class="upcase">
+            <div class='date'>12 Oct 2011</div>
+            网页截屏的方法
+          </h1>
+          <p>曾经很想有这样一个app, 它可以将微博上用户的微博用图片的形式自动保存起来，留此存照。前几个月的那段时间，微博上很
+网页截屏的基本原理就是通过取得webkit渲染（render）的数据来生成图片的，我经过一段时间研究，找到了两个方法来解决这个问题。</p>
+
+<p>一个工具叫<a href="http://www.phantomjs.org/">phantomjs</a>，另一个工具叫<a href="http://cutycapt.sourceforge.net/">cutycapt</a></p>
+
+<p>两个工具都不错，个人比较喜欢使用cutycapt这个工具，它是直接提供一个命令行来生成网页截图的，而前者是通过javascript来调用底层webkit接品(page.render方法)来实现的，两者的侧重点不一样。
+并且cutycapt是将整个网截下来，phantomjs是将浏览器当前视区的一屏截下来。</p>
+
+<p>Cutycapt的用法如下
+&ldquo;`
+qichunren@qichunren-desktop:~/github/cutycapt/CutyCapt$ ./CutyCapt </p>
+
+<hr>
+
+<p>Usage: CutyCapt &ndash;url=http://www.example.org/ &ndash;out=localfile.png            </p>
+
+<hr>
+
+<p>&ndash;help                         Print this help page and exit<br>
+  &ndash;url=<url>                    The URL to capture (http:&hellip;|file:&hellip;|&hellip;)<br>
+  &ndash;out=<path>                   The target file (.png|pdf|ps|svg|jpeg|&hellip;)<br>
+  &ndash;out-format=<f>               Like extension in &ndash;out, overrides heuristic 
+  &ndash;min-width=<int>              Minimal width for the image (default: 800)<br>
+  &ndash;min-height=<int>             Minimal height for the image (default: 600)<br>
+  &ndash;max-wait=<ms>                Don&rsquo;t wait more than (default: 90000, inf: 0)
+  &ndash;delay=<ms>                   After successful load, wait (default: 0)<br>
+  &ndash;user-style-path=<path>       Location of user style sheet file, if any<br>
+  &ndash;user-style-string=<css>      User style rules specified as text<br>
+  &ndash;header=<name>:<value>        request header; repeatable; some can&rsquo;t be set
+  &ndash;method=<get|post|put>        Specifies the request method (default: get)<br>
+  &ndash;body-string=<string>         Unencoded request body (default: none)<br>
+  &ndash;body-base64=<base64>         Base64-encoded request body (default: none)<br>
+  &ndash;app-name=<name>              appName used in User-Agent; default is none<br>
+  &ndash;app-version=<version>        appVers used in User-Agent; default is none<br>
+  &ndash;user-agent=<string>          Override the User-Agent header Qt would set<br>
+  &ndash;javascript=<on|off>          JavaScript execution (default: on)<br>
+  &ndash;java=<on|off>                Java execution (default: unknown)<br>
+  &ndash;plugins=<on|off>             Plugin execution (default: unknown)<br>
+  &ndash;private-browsing=<on|off>    Private browsing (default: unknown)<br>
+  &ndash;auto-load-images=<on|off>    Automatic image loading (default: on)<br>
+  &ndash;js-can-open-windows=<on|off> Script can open windows? (default: unknown)<br>
+  &ndash;js-can-access-clipboard=<on|off> Script clipboard privs (default: unknown)
+  &ndash;print-backgrounds=<on|off>   Backgrounds in PDF/PS output (default: off)<br>
+  &ndash;zoom-factor=<float>          Page zoom factor (default: no zooming)<br>
+  &ndash;zoom-text-only=<on|off>      Whether to zoom only the text (default: off) 
+  &ndash;http-proxy=<url>             Address for HTTP proxy server (default: none)</p>
+
+<hr>
+
+<p><f> is svg,ps,pdf,itext,html,rtree,png,jpeg,mng,tiff,gif,bmp,ppm,xbm,xpm    </p>
+
+<hr>
+
+<p>http://cutycapt.sf.net - &copy; 2003-2010 Bjoern Hoehrmann - bjoern@hoehrmann.de
+qichunren@qichunren-desktop:~/github/cutycapt/CutyCapt$
+&rdquo;`</p>
+
+<p>phantomjs截屏的用法如下：
+<code>
+qichunren@qichunren-desktop:~/github$ cd phantomjs/
+qichunren@qichunren-desktop:~/github/phantomjs$ ls
+bin         ChangeLog  ff.png     iteye.png    Makefile       python     src
+capture.js  examples   hello.png  LICENSE.BSD  phantomjs.pro  README.md           
+qichunren@qichunren-desktop:~/github/phantomjs$ ./bin/phantomjs examples/rasterize.js 
+Usage: rasterize.js URL filename [paperwidth*paperheight|paperformat]
+  paper (pdf output) examples: &quot;5in*7.5in&quot;, &quot;10cm*20cm&quot;, &quot;A4&quot;, &quot;Letter&quot;
+qichunren@qichunren-desktop:~/github/phantomjs$ ./bin/phantomjs examples/rasterize.js http://www.iteye.com iteye.png
+qichunren@qichunren-desktop:~/github/phantomjs$
+</code></p>
+
+          <br />
+<p>
+  Til next time,<br/>
+  蕲春人
+  <span class="muted">at 22:09</span>
+</p>
+<p>
+  <img src="/images/scribble3.png" alt="scribble" /> 
+</p>
+
+
+        </section>
+      </div>
+      
+
+      
+      <div class="block">
+  
+    <a target="_top" class="main" href="/about">About</a>
+  
+    <a target="_blank" class="main" href="http://qichunren.github.io">Blog</a>
+  
+    <a target="_blank" class="main" href="mailto:whyruby@gmail.com">Email</a>
+  
+    <a target="_blank" class="main" href="http://github.com/qichunren">GitHub</a>
+  
+</div>
+    </div>
+    <footer>
+  <a href="http://github.com/muan/scribble" class="muted">built with Jekyll using Scribble theme</a>
+  <br />
+  <br />
+  <img src="/images/scribble2.png" alt="scribble" /> 
+</footer>
+  </body>
+</html>

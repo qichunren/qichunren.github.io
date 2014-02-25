@@ -1,0 +1,204 @@
+<html>
+  <head>
+    <meta content='在Rails项目中导出Excel - 蕲春人的博客' property='og:title' />
+    <title>在Rails项目中导出Excel - 蕲春人的博客</title>
+    <link href='/images/fav.png' rel='shortcut icon'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css' />
+<link href='/stylesheets/style.css' rel='stylesheet' type='text/css' />
+<link href='/stylesheets/syntax.css' rel='stylesheet' type='text/css' />
+<link href='/stylesheets/responsive.css' rel='stylesheet' type='text/css' />
+<!-- - -->
+<script src='/javascripts/jquery.js' type='text/javascript'></script>
+<script src='/javascripts/pd.js' type='text/javascript'></script>
+<script src='/javascripts/basics.js' type='text/javascript'></script>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<!-- - -->
+<meta content='width=device-width, initial-scale=1.0, user-scalable=no' name='viewport'>
+<meta content='text/html; charset=utf-8' http-equiv='content-type' />
+<meta content="http://muan.co/images/og.png" property="og:image" />
+<meta content="" property="fb:app_id" />
+
+  <meta content='/2011/05/04/export_data_to_excel_in_rails/' property='og:url' />
+  <meta content="[excel_rails](https://github.com/asanghi/excel_rails) 这个工具可以实现导出Excel数据的功能。它本身是基于[ruby-spreadsheet ](https://github.c..." property='og:description' />
+  <meta content="article" property="og:type" />
+
+<!-- - -->
+<script type='text/javascript'>
+  //<![CDATA[
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-6344646-4']);
+    _gaq.push(['_trackPageview']);
+    
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  //]]>
+</script>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=604714799556697";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+  </head>
+  <body>
+    <header>
+<a id="go-back-home" href="/"><img src="/images/scribble.png" alt="scribble" width="53" height="59"></a>
+<p>蕲春人的博客</p>
+</header>
+    <div id='container'>
+      <div class="block">
+  
+    <a target="_top" class="main" href="/about">About</a>
+  
+    <a target="_blank" class="main" href="http://qichunren.github.io">Blog</a>
+  
+    <a target="_blank" class="main" href="mailto:whyruby@gmail.com">Email</a>
+  
+    <a target="_blank" class="main" href="http://github.com/qichunren">GitHub</a>
+  
+</div>
+      <section class="paging">
+  
+    <div class="left">
+      <a href="/life/music/2011/05/03/listen-to-sara/">
+        ‹
+      </a>
+    </div>
+  
+  
+    <div class="right">
+      <a href="/2011/05/05/try_rails_31_beta/">
+        ›
+      </a>
+    </div>
+  
+</section>
+      <div class="content">
+        <section class='post'>
+          <h1 class="upcase">
+            <div class='date'>04 May 2011</div>
+            在Rails项目中导出Excel
+          </h1>
+          <p><a href="https://github.com/asanghi/excel_rails">excel_rails</a> 这个工具可以实现导出Excel数据的功能。它本身是基于<a href="https://github.com/jacobat/ruby-spreadsheet">ruby-spreadsheet </a></p>
+
+<h3>使用方法</h3>
+
+<ol>
+<li>安装
+在Gemfile中</li>
+</ol>
+
+<div class="highlight"><pre><code class="ruby">    <span class="c1"># Excel</span>
+    <span class="n">gem</span> <span class="s1">&#39;excel_rails&#39;</span>
+    <span class="c1"># excel_rails need this</span>
+    <span class="n">gem</span> <span class="s1">&#39;spreadsheet&#39;</span>
+</code></pre></div>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">bundle install
+</code></pre></div>
+<ol>
+<li>使用
+在控制器中</li>
+</ol>
+
+<div class="highlight"><pre><code class="ruby"><span class="c1"># encoding: utf-8</span>
+<span class="k">class</span> <span class="nc">RemitNotificationsController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+  <span class="k">def</span> <span class="nf">index</span>
+    <span class="vi">@search</span> <span class="o">=</span> <span class="no">RemitNotification</span><span class="o">.</span><span class="n">valid</span><span class="o">.</span><span class="n">order</span><span class="p">(</span><span class="s2">&quot;id DESC&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:search</span><span class="o">]</span><span class="p">)</span>
+    <span class="vi">@remit_notifications</span> <span class="o">=</span> <span class="vi">@search</span><span class="o">.</span><span class="n">paginate</span> <span class="ss">:per_page</span> <span class="o">=&gt;</span> <span class="mi">20</span><span class="p">,</span> <span class="ss">:page</span> <span class="o">=&gt;</span> <span class="n">params</span><span class="o">[</span><span class="ss">:page</span><span class="o">]</span>
+    <span class="n">respond_to</span> <span class="k">do</span> <span class="o">|</span><span class="nb">format</span><span class="o">|</span>
+      <span class="nb">format</span><span class="o">.</span><span class="n">html</span> <span class="c1"># index.html.erb</span>
+      <span class="nb">format</span><span class="o">.</span><span class="n">xml</span>  <span class="p">{</span> <span class="n">render</span> <span class="ss">:xml</span> <span class="o">=&gt;</span> <span class="vi">@remit_notifications</span> <span class="p">}</span>
+      <span class="nb">format</span><span class="o">.</span><span class="n">xls</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+
+<span class="k">end</span>
+</code></pre></div>
+
+<p>在视图中</p>
+
+<div class="highlight"><pre><code class="ruby"><span class="c1"># encoding: utf-8</span>
+<span class="n">excel_document</span><span class="p">(</span><span class="ss">:filename</span> <span class="o">=&gt;</span> <span class="s2">&quot;all_lines.xls&quot;</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">workbook</span><span class="o">|</span>
+  <span class="n">sheet</span> <span class="o">=</span> <span class="n">workbook</span><span class="o">.</span><span class="n">create_worksheet</span>
+  <span class="n">sheet</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;What&#39;s in a name&quot;</span>
+
+  <span class="n">sheet</span><span class="o">.</span><span class="n">row</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">concat</span> <span class="sx">%w{汇款告知}</span>
+
+  <span class="c1"># sheet[1,0] = &#39;Japan&#39;</span>
+  <span class="c1"># row = sheet.row(1)</span>
+  <span class="c1"># row.push &#39;Creator of Ruby&#39;</span>
+  <span class="c1"># row.push &#39;Creator of rails&#39;</span>
+  <span class="c1"># row.unshift &#39;Yukihiro Matsumoto&#39;</span>
+  <span class="c1"># sheet.row(5).unshift &#39;HaHa&#39;</span>
+  <span class="c1"># sheet.row(3).push &#39;Charles Lowe&#39;, &#39;Author of the ruby-ole Library&#39;</span>
+  <span class="c1"># sheet.row(3).insert 1, &#39;Unknown&#39;</span>
+  <span class="c1"># sheet.update_row 4, &#39;Hannes Wyss&#39;, &#39;Switzerland&#39;, &#39;Author&#39;</span>
+
+  <span class="n">sheet</span><span class="o">.</span><span class="n">row</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span> <span class="o">[</span> <span class="s1">&#39;流水号&#39;</span><span class="p">,</span> <span class="s1">&#39;客户名称&#39;</span><span class="p">,</span><span class="s1">&#39;客户号&#39;</span><span class="p">,</span><span class="s1">&#39;金额&#39;</span><span class="p">,</span><span class="s1">&#39;通过认证时间&#39;</span><span class="p">,</span><span class="s1">&#39;不通过时间&#39;</span><span class="p">,</span><span class="s1">&#39;创建时间&#39;</span> <span class="o">]</span>
+
+  <span class="n">sheet</span><span class="o">.</span><span class="n">row</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="mi">18</span>
+  <span class="n">sheet</span><span class="o">.</span><span class="n">row</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="mi">18</span>
+
+  <span class="nb">format</span> <span class="o">=</span> <span class="no">Spreadsheet</span><span class="o">::</span><span class="no">Format</span><span class="o">.</span><span class="n">new</span> <span class="ss">:color</span> <span class="o">=&gt;</span> <span class="ss">:blue</span><span class="p">,</span><span class="ss">:weight</span> <span class="o">=&gt;</span> <span class="ss">:bold</span><span class="p">,</span><span class="ss">:size</span> <span class="o">=&gt;</span> <span class="mi">18</span>
+
+  <span class="n">sheet</span><span class="o">.</span><span class="n">row</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">default_format</span> <span class="o">=</span> <span class="nb">format</span>
+
+  <span class="c1"># 设置表格的标题栏为粗体</span>
+  <span class="n">bold</span> <span class="o">=</span> <span class="no">Spreadsheet</span><span class="o">::</span><span class="no">Format</span><span class="o">.</span><span class="n">new</span> <span class="ss">:weight</span> <span class="o">=&gt;</span> <span class="ss">:bold</span><span class="p">,</span><span class="ss">:horizontal_align</span> <span class="o">=&gt;</span> <span class="ss">:center</span>
+  <span class="mi">7</span><span class="o">.</span><span class="n">times</span> <span class="k">do</span> <span class="o">|</span><span class="n">x</span><span class="o">|</span> <span class="n">sheet</span><span class="o">.</span><span class="n">row</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">set_format</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">bold</span><span class="p">)</span> <span class="k">end</span>
+
+  <span class="vi">@remit_notifications</span><span class="o">.</span><span class="n">each_with_index</span> <span class="k">do</span> <span class="o">|</span><span class="n">remite</span><span class="p">,</span><span class="n">index</span><span class="o">|</span>
+    <span class="n">sheet</span><span class="o">.</span><span class="n">row</span><span class="p">(</span><span class="n">index</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">push</span> <span class="n">remite</span><span class="o">.</span><span class="n">id</span><span class="p">,</span><span class="n">remite</span><span class="o">.</span><span class="n">user_name</span><span class="p">,</span><span class="n">remite</span><span class="o">.</span><span class="n">user_id</span><span class="p">,</span><span class="n">remite</span><span class="o">.</span><span class="n">money</span><span class="p">,</span><span class="n">date_format</span><span class="p">(</span><span class="n">remite</span><span class="o">.</span><span class="n">verified_at</span><span class="p">),</span><span class="n">date_format</span><span class="p">(</span><span class="n">remite</span><span class="o">.</span><span class="n">refused_at</span><span class="p">),</span><span class="n">date_format</span><span class="p">(</span><span class="n">remite</span><span class="o">.</span><span class="n">created_at</span><span class="p">)</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div>
+
+<h3>相关资源</h3>
+
+<ul>
+<li><a href="https://github.com/10to1/spreadsheet_on_rails">10to1/spreadsheet<em>on</em>rails </a></li>
+<li><a href="http://blog.plataformatec.com.br/2009/09/exporting-data-to-csv-and-excel-in-your-rails-app/">Exporting data to CSV and Excel in your Rails apps</a></li>
+<li><a href="http://fastercsv.rubyforge.org/">FasterCSV</a></li>
+</ul>
+
+          <br />
+<p>
+  Til next time,<br/>
+  蕲春人
+  <span class="muted">at 00:00</span>
+</p>
+<p>
+  <img src="/images/scribble3.png" alt="scribble" /> 
+</p>
+
+
+        </section>
+      </div>
+      
+
+      
+      <div class="block">
+  
+    <a target="_top" class="main" href="/about">About</a>
+  
+    <a target="_blank" class="main" href="http://qichunren.github.io">Blog</a>
+  
+    <a target="_blank" class="main" href="mailto:whyruby@gmail.com">Email</a>
+  
+    <a target="_blank" class="main" href="http://github.com/qichunren">GitHub</a>
+  
+</div>
+    </div>
+    <footer>
+  <a href="http://github.com/muan/scribble" class="muted">built with Jekyll using Scribble theme</a>
+  <br />
+  <br />
+  <img src="/images/scribble2.png" alt="scribble" /> 
+</footer>
+  </body>
+</html>

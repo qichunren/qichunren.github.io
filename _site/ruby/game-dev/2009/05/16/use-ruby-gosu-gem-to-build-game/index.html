@@ -1,0 +1,187 @@
+<html>
+  <head>
+    <meta content='Ruby游戏开发利器Gosu - 蕲春人的博客' property='og:title' />
+    <title>Ruby游戏开发利器Gosu - 蕲春人的博客</title>
+    <link href='/images/fav.png' rel='shortcut icon'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css' />
+<link href='/stylesheets/style.css' rel='stylesheet' type='text/css' />
+<link href='/stylesheets/syntax.css' rel='stylesheet' type='text/css' />
+<link href='/stylesheets/responsive.css' rel='stylesheet' type='text/css' />
+<!-- - -->
+<script src='/javascripts/jquery.js' type='text/javascript'></script>
+<script src='/javascripts/pd.js' type='text/javascript'></script>
+<script src='/javascripts/basics.js' type='text/javascript'></script>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<!-- - -->
+<meta content='width=device-width, initial-scale=1.0, user-scalable=no' name='viewport'>
+<meta content='text/html; charset=utf-8' http-equiv='content-type' />
+<meta content="http://muan.co/images/og.png" property="og:image" />
+<meta content="" property="fb:app_id" />
+
+  <meta content='/ruby/game-dev/2009/05/16/use-ruby-gosu-gem-to-build-game/' property='og:url' />
+  <meta content="在2009年的Railsconf大会上，Hongli Lai和Ninh Bui of Phusion（开发Passenger的家伙）为了展示Ruby语言的强大，能运行3D游戏，他们构建了一个Wolfenstein游戏的山寨版，用的是[..." property='og:description' />
+  <meta content="article" property="og:type" />
+
+<!-- - -->
+<script type='text/javascript'>
+  //<![CDATA[
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-6344646-4']);
+    _gaq.push(['_trackPageview']);
+    
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  //]]>
+</script>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=604714799556697";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+  </head>
+  <body>
+    <header>
+<a id="go-back-home" href="/"><img src="/images/scribble.png" alt="scribble" width="53" height="59"></a>
+<p>蕲春人的博客</p>
+</header>
+    <div id='container'>
+      <div class="block">
+  
+    <a target="_top" class="main" href="/about">About</a>
+  
+    <a target="_blank" class="main" href="http://qichunren.github.io">Blog</a>
+  
+    <a target="_blank" class="main" href="mailto:whyruby@gmail.com">Email</a>
+  
+    <a target="_blank" class="main" href="http://github.com/qichunren">GitHub</a>
+  
+</div>
+      <section class="paging">
+  
+    <div class="left">
+      <a href="/ruby/rails/database/oracle/2009/05/07/connect-to-oracle-in-rails/">
+        ‹
+      </a>
+    </div>
+  
+  
+    <div class="right">
+      <a href="/life/2009/12/17/i-fell-unhappy/">
+        ›
+      </a>
+    </div>
+  
+</section>
+      <div class="content">
+        <section class='post'>
+          <h1 class="upcase">
+            <div class='date'>16 May 2009</div>
+            Ruby游戏开发利器Gosu
+          </h1>
+          <p>在2009年的Railsconf大会上，Hongli Lai和Ninh Bui of Phusion（开发Passenger的家伙）为了展示Ruby语言的强大，能运行3D游戏，他们构建了一个Wolfenstein游戏的山寨版，用的是<a href="http://www.libgosu.org/">Gosu</a> 游戏开发库。 </p>
+
+<p><img src="http://www.libgosu.org/website_header.png" alt="Gosu Logo"></p>
+
+<p>Zed Shaw 在游戏中扮演BOSS   </p>
+
+<p>体验方法： 
+项目地址：<a href="http://github.com/FooBarWidget/rubystein/tree/master">http://github.com/FooBarWidget/rubystein/tree/master</a>
+Git拖下来：</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">git clone git://github.com/FooBarWidget/rubystein.git （没有Git也可以直接在项目主页中下载） 
+</code></pre></div>
+<p>在运行游戏之前在安装gosu gem </p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">gem install gosu 
+</code></pre></div>
+<p>我是在ubuntu下测试的，为了安装gosu,还要先安装依赖的库： </p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">sudo apt-get install g++ libgl1-mesa-dev libpango1.0-dev libboost-dev libsdl-mixer1.2-dev 
+</code></pre></div>
+<p>在安装好了gosu gem后，直接运行游戏目录中的wolf3d.rb文件： </p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">ruby wolf3d.rb 
+</code></pre></div>
+<p>如图： 
+<img src="http://qichunren.iteye.com/upload/picture/pic/36923/13a5698c-ac4e-3ab5-910a-db865d5648fb.jpg" alt="game preview"></p>
+
+<p>空格键开枪 </p>
+
+<p>很强大吧。 </p>
+
+<p>游戏程序代码的大体结构如下，很简单，很明了： </p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">require &#39;rubygems&#39;  
+require &#39;gosu&#39;  
+
+class GameWindow &lt; Gosu::Window  
+  def initialize  
+    super(640, 480, false)  
+    self.caption = &quot;Gosu Tutorial Game&quot;  
+  end  
+
+  def update  
+   # 更新游戏画面的方法  
+  end  
+
+  def draw  
+    # 游戏画面的绘画方法  
+  end  
+end  
+
+window = GameWindow.new  
+window.show  
+</code></pre></div>
+<p>我在gosu的网站又找到了几个case,都很不错，用gosu开发游戏很不错，代码结构很清析和容易理解。 </p>
+
+<p>1.Space Jumper(和雷电类似的游戏) ： 
+<a href="http://andre.semler-service.de/games/SpaceJumper.zip">下载地址</a></p>
+
+<p><img src="http://andre.semler-service.de/SJ.png" alt="Space Jumper preview"></p>
+
+<p>2.Space shooter ，这个游戏和上面也差不多 
+<a href="http://github.com/belen-albeza/space-shooter">项目地址</a></p>
+
+<p><img src="http://farm4.static.flickr.com/3658/3503765473_95c1b36ea4_m.jpg" alt="Space shooter preview"> </p>
+
+<p>强烈推荐想要用Ruby玩玩游戏开发的同学们用这个<a href="https://github.com/jlnr/gosu">gosu</a>库。另外好像有一个叫rubygame的开发库，不知道怎么样，有时间也研究一下。</p>
+
+<p><em><a href="http://www.iteye.com/topic/389181">我在javaeye上的原文链接</a></em></p>
+
+          <br />
+<p>
+  Til next time,<br/>
+  蕲春人
+  <span class="muted">at 17:45</span>
+</p>
+<p>
+  <img src="/images/scribble3.png" alt="scribble" /> 
+</p>
+
+
+        </section>
+      </div>
+      
+
+      
+      <div class="block">
+  
+    <a target="_top" class="main" href="/about">About</a>
+  
+    <a target="_blank" class="main" href="http://qichunren.github.io">Blog</a>
+  
+    <a target="_blank" class="main" href="mailto:whyruby@gmail.com">Email</a>
+  
+    <a target="_blank" class="main" href="http://github.com/qichunren">GitHub</a>
+  
+</div>
+    </div>
+    <footer>
+  <a href="http://github.com/muan/scribble" class="muted">built with Jekyll using Scribble theme</a>
+  <br />
+  <br />
+  <img src="/images/scribble2.png" alt="scribble" /> 
+</footer>
+  </body>
+</html>

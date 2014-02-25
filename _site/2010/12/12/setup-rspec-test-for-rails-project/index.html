@@ -1,0 +1,149 @@
+<html>
+  <head>
+    <meta content='建立rspec测试的环境 - 蕲春人的博客' property='og:title' />
+    <title>建立rspec测试的环境 - 蕲春人的博客</title>
+    <link href='/images/fav.png' rel='shortcut icon'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css' />
+<link href='/stylesheets/style.css' rel='stylesheet' type='text/css' />
+<link href='/stylesheets/syntax.css' rel='stylesheet' type='text/css' />
+<link href='/stylesheets/responsive.css' rel='stylesheet' type='text/css' />
+<!-- - -->
+<script src='/javascripts/jquery.js' type='text/javascript'></script>
+<script src='/javascripts/pd.js' type='text/javascript'></script>
+<script src='/javascripts/basics.js' type='text/javascript'></script>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<!-- - -->
+<meta content='width=device-width, initial-scale=1.0, user-scalable=no' name='viewport'>
+<meta content='text/html; charset=utf-8' http-equiv='content-type' />
+<meta content="http://muan.co/images/og.png" property="og:image" />
+<meta content="" property="fb:app_id" />
+
+  <meta content='/2010/12/12/setup-rspec-test-for-rails-project/' property='og:url' />
+  <meta content="我个人感觉rspec的风格比rails自带项目的test好用一些，更符合我的口味。在这里记录一下rspec的搭建方法，说是搭建，其实没有那么烦琐，就是一些工具的组合起来，这样测试更方便，效率更高。{% highlight ruby %..." property='og:description' />
+  <meta content="article" property="og:type" />
+
+<!-- - -->
+<script type='text/javascript'>
+  //<![CDATA[
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-6344646-4']);
+    _gaq.push(['_trackPageview']);
+    
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  //]]>
+</script>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=604714799556697";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+  </head>
+  <body>
+    <header>
+<a id="go-back-home" href="/"><img src="/images/scribble.png" alt="scribble" width="53" height="59"></a>
+<p>蕲春人的博客</p>
+</header>
+    <div id='container'>
+      <div class="block">
+  
+    <a target="_top" class="main" href="/about">About</a>
+  
+    <a target="_blank" class="main" href="http://qichunren.github.io">Blog</a>
+  
+    <a target="_blank" class="main" href="mailto:whyruby@gmail.com">Email</a>
+  
+    <a target="_blank" class="main" href="http://github.com/qichunren">GitHub</a>
+  
+</div>
+      <section class="paging">
+  
+    <div class="left">
+      <a href="/ruby/rails/test/2010/12/10/things-in-rails-test/">
+        ‹
+      </a>
+    </div>
+  
+  
+    <div class="right">
+      <a href="/rails/test/2010/12/21/talk-about-rspec-1/">
+        ›
+      </a>
+    </div>
+  
+</section>
+      <div class="content">
+        <section class='post'>
+          <h1 class="upcase">
+            <div class='date'>12 Dec 2010</div>
+            建立rspec测试的环境
+          </h1>
+          <p>我个人感觉rspec的风格比rails自带项目的test好用一些，更符合我的口味。在这里记录一下rspec的搭建方法，说是搭建，其实没有那么烦琐，就是一些工具的组合起来，这样测试更方便，效率更高。</p>
+
+<div class="highlight"><pre><code class="ruby"><span class="c1"># in Gemfile</span>
+<span class="n">group</span> <span class="ss">:test</span><span class="p">,</span> <span class="ss">:development</span> <span class="k">do</span>
+  <span class="n">gem</span> <span class="s2">&quot;rspec-rails&quot;</span><span class="p">,</span> <span class="s2">&quot;~&gt; 2.5.0&quot;</span>
+  <span class="n">gem</span> <span class="s1">&#39;shoulda-matchers&#39;</span><span class="p">,</span> <span class="s2">&quot;1.0.0.beta1&quot;</span>
+  <span class="n">gem</span> <span class="s1">&#39;factory_girl_rails&#39;</span><span class="p">,</span> <span class="s2">&quot;1.0.1&quot;</span>
+<span class="k">end</span>
+</code></pre></div>
+
+<p>然后bundle install,
+然后rails g rspec:install
+然后你可以将默认的test目录删除掉。</p>
+
+<p>然后，rails g controller pages test来试试，现在生成的测试代码再也不是原来的unit test代码了，是用了新的rspec了。</p>
+
+<p>rspec2将rails项目中的测试分为几块：
+controllers
+models
+helpers
+lib
+views
+requests
+routing</p>
+
+<p>划分得蛮细的，每一部分测试相对应的代码。</p>
+
+          <br />
+<p>
+  Til next time,<br/>
+  蕲春人
+  <span class="muted">at 00:00</span>
+</p>
+<p>
+  <img src="/images/scribble3.png" alt="scribble" /> 
+</p>
+
+
+        </section>
+      </div>
+      
+
+      
+      <div class="block">
+  
+    <a target="_top" class="main" href="/about">About</a>
+  
+    <a target="_blank" class="main" href="http://qichunren.github.io">Blog</a>
+  
+    <a target="_blank" class="main" href="mailto:whyruby@gmail.com">Email</a>
+  
+    <a target="_blank" class="main" href="http://github.com/qichunren">GitHub</a>
+  
+</div>
+    </div>
+    <footer>
+  <a href="http://github.com/muan/scribble" class="muted">built with Jekyll using Scribble theme</a>
+  <br />
+  <br />
+  <img src="/images/scribble2.png" alt="scribble" /> 
+</footer>
+  </body>
+</html>

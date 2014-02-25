@@ -1,0 +1,144 @@
+<html>
+  <head>
+    <meta content='使用feedzirra分析提取Feed - 蕲春人的博客' property='og:title' />
+    <title>使用feedzirra分析提取Feed - 蕲春人的博客</title>
+    <link href='/images/fav.png' rel='shortcut icon'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css' />
+<link href='/stylesheets/style.css' rel='stylesheet' type='text/css' />
+<link href='/stylesheets/syntax.css' rel='stylesheet' type='text/css' />
+<link href='/stylesheets/responsive.css' rel='stylesheet' type='text/css' />
+<!-- - -->
+<script src='/javascripts/jquery.js' type='text/javascript'></script>
+<script src='/javascripts/pd.js' type='text/javascript'></script>
+<script src='/javascripts/basics.js' type='text/javascript'></script>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<!-- - -->
+<meta content='width=device-width, initial-scale=1.0, user-scalable=no' name='viewport'>
+<meta content='text/html; charset=utf-8' http-equiv='content-type' />
+<meta content="http://muan.co/images/og.png" property="og:image" />
+<meta content="" property="fb:app_id" />
+
+  <meta content='/ruby/tool/2011/05/04/use_feedzirra_to_fetch_feed/' property='og:url' />
+  <meta content="[feedzirra](https://github.com/pauldix/feedzirra) 是一个很好用的提取和分析feed的工具。用法如下：{% highlight ruby %}# encoding: utf-8requi..." property='og:description' />
+  <meta content="article" property="og:type" />
+
+<!-- - -->
+<script type='text/javascript'>
+  //<![CDATA[
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-6344646-4']);
+    _gaq.push(['_trackPageview']);
+    
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  //]]>
+</script>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=604714799556697";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+  </head>
+  <body>
+    <header>
+<a id="go-back-home" href="/"><img src="/images/scribble.png" alt="scribble" width="53" height="59"></a>
+<p>蕲春人的博客</p>
+</header>
+    <div id='container'>
+      <div class="block">
+  
+    <a target="_top" class="main" href="/about">About</a>
+  
+    <a target="_blank" class="main" href="http://qichunren.github.io">Blog</a>
+  
+    <a target="_blank" class="main" href="mailto:whyruby@gmail.com">Email</a>
+  
+    <a target="_blank" class="main" href="http://github.com/qichunren">GitHub</a>
+  
+</div>
+      <section class="paging">
+  
+    <div class="left">
+      <a href="/2011/05/05/try_rails_31_beta/">
+        ‹
+      </a>
+    </div>
+  
+  
+    <div class="right">
+      <a href="/2011/05/07/add-rspec2-task-to-rakefile/">
+        ›
+      </a>
+    </div>
+  
+</section>
+      <div class="content">
+        <section class='post'>
+          <h1 class="upcase">
+            <div class='date'>04 May 2011</div>
+            使用feedzirra分析提取Feed
+          </h1>
+          <p><a href="https://github.com/pauldix/feedzirra">feedzirra</a> 是一个很好用的提取和分析feed的工具。用法如下：</p>
+
+<div class="highlight"><pre><code class="ruby"><span class="c1"># encoding: utf-8</span>
+<span class="nb">require</span> <span class="s2">&quot;feedzirra&quot;</span>
+
+<span class="k">def</span> <span class="nf">fetch_feed</span><span class="p">(</span><span class="n">feed_url</span><span class="p">)</span>
+  <span class="n">feed</span> <span class="o">=</span> <span class="no">Feedzirra</span><span class="o">::</span><span class="no">Feed</span><span class="o">.</span><span class="n">fetch_and_parse</span><span class="p">(</span><span class="n">feed_url</span><span class="p">)</span>
+
+  <span class="n">feed_entries</span> <span class="o">=</span> <span class="n">feed</span><span class="o">.</span><span class="n">entries</span>
+  <span class="n">feed_entries</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">entry</span><span class="o">|</span>
+    <span class="nb">puts</span> <span class="n">entry</span><span class="o">.</span><span class="n">inspect</span>
+  <span class="k">end</span> <span class="c1"># end each</span>
+<span class="k">end</span>
+
+<span class="n">fetch_feed</span> <span class="s2">&quot;http://tech.163.com/special/000944OI/kejitongxin.xml&quot;</span>
+</code></pre></div>
+
+<p>结果：</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">usermatoMacBook-Pro:gitcard qichunren$ ruby lib/blog_fetcher.rb
+#&lt;Feedzirra::Parser::RSSEntry:0x00000102137858 @title=&quot;外媒分析称微软是黑莓和必应合作最大赢家&quot;, @url=&quot;http://tech.163.com/11/0504/16/737NSCOS000915BE.html&quot;, @summary=&quot;【赛迪网讯】5月4日消息，据国外媒体报道，在BlackBerry World上RIM请到一位令人意外的客座讲师——微软CEO史蒂夫-鲍尔默（Steve Ballmer）。鲍尔默在会上公开了与RIM的合作关系，称日后微软的Bing将代替谷歌成为黑莓移动设备上的默认搜索引擎。微软明显将从合作关系中获利，但RIM能够得到什么利益？鲍尔默表示，微软将对黑 ......&quot;, @published=&quot;2011-05-04 16:55:22&quot;&gt;
+#&lt;Feedzirra::Parser::RSSEntry:0x0000010212e140 @title=&quot;工信部4月上半月发放241款电信设备进网许可证&quot;, @url=&quot;http://tech.163.com/11/0504/09/736SR7MQ000915BE.html&quot;, @summary=&quot;飞象网讯（崔玉贤/文）飞象网得知工信部4月份上半月发放了241款电信设备进网许可证，其中包含10款进网试用批文。 据悉，4月份上半月工信部共发放了TD终端22款，TD-SCDMA/GSM双模数字移动电话机15款，TD-SCDMA/GSM双模无线数据终端2款，TD-SCDMA固定无线终端5款。其中，TD-SCDMA/GSM双模数字移动电话机有5款进网试用批文，夏 ......&quot;, @published=&quot;2011-05-04 09:02:53&quot;&gt;
+</code></pre></div>
+          <br />
+<p>
+  Til next time,<br/>
+  蕲春人
+  <span class="muted">at 19:12</span>
+</p>
+<p>
+  <img src="/images/scribble3.png" alt="scribble" /> 
+</p>
+
+
+        </section>
+      </div>
+      
+
+      
+      <div class="block">
+  
+    <a target="_top" class="main" href="/about">About</a>
+  
+    <a target="_blank" class="main" href="http://qichunren.github.io">Blog</a>
+  
+    <a target="_blank" class="main" href="mailto:whyruby@gmail.com">Email</a>
+  
+    <a target="_blank" class="main" href="http://github.com/qichunren">GitHub</a>
+  
+</div>
+    </div>
+    <footer>
+  <a href="http://github.com/muan/scribble" class="muted">built with Jekyll using Scribble theme</a>
+  <br />
+  <br />
+  <img src="/images/scribble2.png" alt="scribble" /> 
+</footer>
+  </body>
+</html>

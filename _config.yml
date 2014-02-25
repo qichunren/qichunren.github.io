@@ -1,0 +1,26 @@
+title: "蕲春人的博客"
+description:      "记录我的生活。"
+url:              "" # Site url.
+signoff:          "蕲春人"
+disqus_shortname: "qichunrensblog" # disqus comment thread for post header options. ( leave blank if unwanted. )
+facebook_appid:   "" # appid for like button, remove from /_includes/share.html if unwanted.
+google_analytics: "UA-6344646-4"
+
+links:
+  - name:         About
+    url:          /about
+  - name:         Blog
+    url:          http://qichunren.github.io
+    external:     true
+  - name:         Email
+    url:          mailto:whyruby@gmail.com
+    external:     true
+  - name:         GitHub
+    url:          http://github.com/qichunren
+    external:     true
+pygments:         true
+permalink:        pretty
+markdown:         redcarpet
+redcarpet:
+  extensions:
+    - smart

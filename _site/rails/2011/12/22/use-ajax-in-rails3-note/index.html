@@ -1,0 +1,150 @@
+<html>
+  <head>
+    <meta content='在Rails3中使用ajax - 蕲春人的博客' property='og:title' />
+    <title>在Rails3中使用ajax - 蕲春人的博客</title>
+    <link href='/images/fav.png' rel='shortcut icon'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css' />
+<link href='/stylesheets/style.css' rel='stylesheet' type='text/css' />
+<link href='/stylesheets/syntax.css' rel='stylesheet' type='text/css' />
+<link href='/stylesheets/responsive.css' rel='stylesheet' type='text/css' />
+<!-- - -->
+<script src='/javascripts/jquery.js' type='text/javascript'></script>
+<script src='/javascripts/pd.js' type='text/javascript'></script>
+<script src='/javascripts/basics.js' type='text/javascript'></script>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<!-- - -->
+<meta content='width=device-width, initial-scale=1.0, user-scalable=no' name='viewport'>
+<meta content='text/html; charset=utf-8' http-equiv='content-type' />
+<meta content="http://muan.co/images/og.png" property="og:image" />
+<meta content="" property="fb:app_id" />
+
+  <meta content='/rails/2011/12/22/use-ajax-in-rails3-note/' property='og:url' />
+  <meta content="今天写代码的时候突然发现 我之前在Rails3中使用ajax的方式是不太正确的，我走了弯路。我之前在Rails3项目中使用ajax是这样的：如果是直接发送一个ajax请求，我就给标签加上:remote => true。如果我在此基础上..." property='og:description' />
+  <meta content="article" property="og:type" />
+
+<!-- - -->
+<script type='text/javascript'>
+  //<![CDATA[
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-6344646-4']);
+    _gaq.push(['_trackPageview']);
+    
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  //]]>
+</script>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=604714799556697";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+  </head>
+  <body>
+    <header>
+<a id="go-back-home" href="/"><img src="/images/scribble.png" alt="scribble" width="53" height="59"></a>
+<p>蕲春人的博客</p>
+</header>
+    <div id='container'>
+      <div class="block">
+  
+    <a target="_top" class="main" href="/about">About</a>
+  
+    <a target="_blank" class="main" href="http://qichunren.github.io">Blog</a>
+  
+    <a target="_blank" class="main" href="mailto:whyruby@gmail.com">Email</a>
+  
+    <a target="_blank" class="main" href="http://github.com/qichunren">GitHub</a>
+  
+</div>
+      <section class="paging">
+  
+    <div class="left">
+      <a href="/tool/nosql/database/mongodb/2011/12/20/mongodb-ui-client-mongohub/">
+        ‹
+      </a>
+    </div>
+  
+  
+    <div class="right">
+      <a href="/ios/2012/01/04/arc4random-in-ios/">
+        ›
+      </a>
+    </div>
+  
+</section>
+      <div class="content">
+        <section class='post'>
+          <h1 class="upcase">
+            <div class='date'>22 Dec 2011</div>
+            在Rails3中使用ajax
+          </h1>
+          <p>今天写代码的时候突然发现 我之前在Rails3中使用ajax的方式是不太正确的，我走了弯路。</p>
+
+<p>我之前在Rails3项目中使用ajax是这样的：</p>
+
+<p>如果是直接发送一个ajax请求，我就给标签加上:remote =&gt; true。如果我在此基础上还要做其它的操作，如ajax表单提交前要对表单字段验证，我之前以为那样UJS就不能搞定了，需要我自己写代码来处理。然后我就使用jquery中的相关ajax操作来处理。</p>
+
+<p>今天我才了解到UJS的AJAX操作已经为我们提供了6个自定义事件方法：</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">ajax:before – right before ajax call
+ajax:loading – before ajax call, but after XmlHttpRequest object is created)
+ajax:success – successful ajax call
+ajax:failure – failed ajax call
+ajax:complete – completion of ajax call (after ajax:success and ajax:failure)
+ajax:after – after ajax call is sent (note: not after it returns)
+</code></pre></div>
+<p>所以对于上面我说的那个事例，如果要对一个ajax表单在提交前作表单验证或者其它的一些检查，只需要写提交前的检查代码，然后通过事件绑定的方式，将余下的表单ajax提交让UJS来完成，这是多么地简单啊，我以前真是做了好多无用功。</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">$(document).ready(function() {
+  return $(&quot;#new_post_comment&quot;).bind(&quot;ajax:before&quot;, function() {
+    if($(&quot;#post_comment_body&quot;).val()==&quot;&quot;){
+      return false;
+    }
+  });
+});
+</code></pre></div>
+<h3>参考资料</h3>
+
+<p><a href="http://net.tutsplus.com/tutorials/javascript-ajax/using-unobtrusive-javascript-and-ajax-with-rails-3/">Using Unobtrusive JavaScript and AJAX with Rails 3</a>
+<a href="http://www.alfajango.com/blog/rails-3-remote-links-and-forms-data-type-with-jquery/">Rails 3 Remote Links and Forms Part 2: Data-type (with jQuery)</a></p>
+
+          <br />
+<p>
+  Til next time,<br/>
+  蕲春人
+  <span class="muted">at 16:36</span>
+</p>
+<p>
+  <img src="/images/scribble3.png" alt="scribble" /> 
+</p>
+
+
+        </section>
+      </div>
+      
+
+      
+      <div class="block">
+  
+    <a target="_top" class="main" href="/about">About</a>
+  
+    <a target="_blank" class="main" href="http://qichunren.github.io">Blog</a>
+  
+    <a target="_blank" class="main" href="mailto:whyruby@gmail.com">Email</a>
+  
+    <a target="_blank" class="main" href="http://github.com/qichunren">GitHub</a>
+  
+</div>
+    </div>
+    <footer>
+  <a href="http://github.com/muan/scribble" class="muted">built with Jekyll using Scribble theme</a>
+  <br />
+  <br />
+  <img src="/images/scribble2.png" alt="scribble" /> 
+</footer>
+  </body>
+</html>
