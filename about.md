@@ -6,8 +6,8 @@ comments: true
 footer: false
 ---
 
-I am Qichunren, my english name is David.
+I am Qichunren, and my english name is David.
 
-I am a programing developor,  focused on web devlopment and mobile app design. I am familiar with Ruby, PHP, Objective-C, mysql, redis, mongodb.
+I am a software engineer, focused on web devlopment and mobile app design.
 
-I am loving linux, mac, opensource. My github profile is [https://github.com/qichunren](https://github.com/qichunren)
+You can find my activity on [GitHub](https://github.com/qichunren) .

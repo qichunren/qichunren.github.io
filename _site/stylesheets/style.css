@@ -78,6 +78,10 @@ blockquote {
 header {
   text-align: center; }
 
+header p {
+  margin-top: 30px;
+  font-weight: bold; }
+
 footer {
   width: 100%;
   max-width: 600px;

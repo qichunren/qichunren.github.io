@@ -7,6 +7,58 @@
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>我的2013年总结</title>
+        <description>&lt;p&gt;2013年已经过去了，感觉这一年过得太快了。工作很忙碌，我又是一个严重拖延症患者，难得今天抽出时间写这个年终总结。我认为这是很有必要的，总结经验，不断进步。&lt;/p&gt;
+
+&lt;p&gt;2013年这一年都在忙，从去年7年月份开始的一个工程项目，这不是一个专门的软件项目，它是从硬件设计到应用软件开发一整套的项目，实现了网络语音对讲、广播、媒体播放的功能，可用于银行、学校、监狱等场所。我在这个项目中主要负责系统的信息管理配置，包括设备信息管理、频道管理、媒体库管理等功能。&lt;/p&gt;
+
+&lt;p&gt;到5月末，这个项目看似完成了，然后我们在上海这边的团队去广州那边的合作伙伴公司，与他们负责硬件的团队一起配合，完成系统的最后部分。没有想到这一去就是整整半年。在14年1月份的时候还去了山西的某监狱中出差，负责系统的软件安装配置。这整个过程就不在这里细说了，反正感觉不好受，以后我再也不想经历这种状态下的工作经历。现在我想总结一下的想法。&lt;/p&gt;
+
+&lt;h3&gt;阶段工作要做好&lt;/h3&gt;
+
+&lt;p&gt;一个比较正式的软件工程项目大致可以分为五个阶段：需求分析、系统设计、程序开发、系统测试、部署安装。这五个阶段都是至关重要的，任何一个阶段的工作没有做好的话，都会导致问题发生。&lt;/p&gt;
+
+&lt;h3&gt;沟通与合作&lt;/h3&gt;
+
+&lt;p&gt;沟通怎么强调也不为过。在一个团队中，积极沟通，可以让团队人员合作得愉快。在现实生活中，个体之间由于差异化，加上程序员一般有些自傲的特性，交流起来得需要一些方法，有一个段子是这样的：&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;你也不能对一个程序员说：你的代码有bug。他的第一反应是：
+1，你的环境有问题吧；
+2，傻逼你会用吗。
+如果你委婉地说：你这个程序和预期的有点不一致，你看看是不是我的使用方法有问题。
+他本能地会想：操，是不是出bug了！&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3&gt;做减法&lt;/h3&gt;
+
+&lt;p&gt;做减法是敢于去掉不必须或者目前不那么重要的工作，把精力和资源集中到最重要的目标上，高质量地实现，尽早发布，让人看到。在产品的需求分析方面，广州公司这边是希望做出来的产品功能全面，可以适合于各种场合。他想到的功能，和从竞争对手产品看到的功能，都向需求列表中添加。我知道他们是为了让自己的产品强大，但是我人个是希望是相关人员站在公司战略发展的角度来规划整个产品线，将产品分阶段版本发布，这样可以保证每一版产品都稳定实用。当初的iPhone也不是一下子就完美无缺的。我希望是每一个发布版的产品都是于用户实用的，而不是功能点多，却很多功能都有问题。每一版中多提出一个功能，意味着开发要多做事情，意味着测试要多做事情。我们团队一共才5个人。&lt;/p&gt;
+
+&lt;p&gt;另外做减法，我在开发过程也有体会。Ruby写代码很直观，加上经常出来一些新技术工具Gem包之类的，我就尝试它们，觉得不错的话就应用到我们的项目中，因为写代码很容易嘛，花不了多少时间的。然后在以后的某个时候，随着产品需求的明确化，发现其实之前我写的某些代码是多余的。多写了代码，就多了一维护，就多了一个入口。项目中多加一个Gem，以后如果升级项目时，就多了一份检查包兼容检查的工作。&lt;/p&gt;
+
+&lt;h3&gt;站在用户的角度来思考问题&lt;/h3&gt;
+
+&lt;p&gt;我的主要经验是在WEB开发上面，感觉设计用户界面是一个比较重要的工作。做出的产品，最终在用户方面，他的使用感受是与产品相关的。&lt;/p&gt;
+
+&lt;p&gt;团队中没有产品经理方面的角色，项目前期也没有很具体的界面方面的文档，前期系统是直接借用网上的一个后台模板，然后根据项目的具体情况改进的。在山西那边出差时，在监狱中安装系统，进行系统配置管理时，我发现我做出的界面操作起来很难受，300多台机器呀，应该有的批量操作没有实际用途，而在现场需要的某些批量操作功能却没有。那些时候真是感觉很沮丧。这个促使我在设计界面时，一定要根据产品的实际使用场合来思考构思界面的设计，思考怎么样直观操作，高效操作。&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;h2&gt;收获与希望&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;在广州呆了半年，也算是在”去过的地方中”中加一个地点，感受了这个城市。&lt;/li&gt;
+&lt;li&gt;了解了一个产品诞生的过程，大概知道了硬件是怎么样设计出来的。&lt;/li&gt;
+&lt;li&gt;加强沟通能力&lt;/li&gt;
+&lt;li&gt;学习C/C++等比较底层一点的知识，多了解一下与电子方面有关的知识。&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Fri, 24 Jan 2014 22:43:00 +0800</pubDate>
+        <link>/tool/2014/01/24/my-2013/</link>
+        <guid isPermaLink="true">/tool/2014/01/24/my-2013/</guid>
+      </item>
+    
+      <item>
         <title>开始使用vagrant</title>
         <description>&lt;h1&gt;Vagrant&lt;/h1&gt;
 
@@ -785,66 +837,6 @@ date of purchase. We do email support.&lt;/p&gt;
         <pubDate>Mon, 27 Feb 2012 13:10:00 +0800</pubDate>
         <link>/ruby/2012/02/27/use-rubyencoder-encrypt-ruby-code/</link>
         <guid isPermaLink="true">/ruby/2012/02/27/use-rubyencoder-encrypt-ruby-code/</guid>
-      </item>
-    
-      <item>
-        <title>Create custom tags in Smarty 3</title>
-        <description>&lt;p&gt;接着上一篇，还是来说说PHP模板引擎Smarty。PHP的众多CMS框架，如DEDE CMS，对于前端展示都是有一套自己开发的标签，用于显示管理后台维护的数据。在DEDECMS中，如下的代码&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;&amp;lt;h2&amp;gt;最近新闻&amp;lt;/h2&amp;gt;
-&amp;lt;ul&amp;gt;
-    {dede:arclist typeid=&amp;#39;1&amp;#39; row=&amp;#39;10&amp;#39;}
-    &amp;lt;li&amp;gt;[field:textlink/]&amp;lt;/li&amp;gt;
-    {/dede:arclist}
-&amp;lt;/ul&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;就可以显示最近type id为1的10条新闻。在Smarty中创建属于自己的标签是很容易的，我之前在网络上搜索的关于创建smarty标签的内容大多数都是基于Smarty2的，我基于Smarty3中的plugins目录的代码了解到在Smarty3中创建自定义标签更为简单直观。&lt;/p&gt;
-
-&lt;p&gt;在smarty程序包的plugins目录中，可以看到有block \ function \ modifier 等几种前缀的php文件。像block前缀的php文件可以创建闭合的标签，就如上文提到的那个dede cms新闻标签的例子。现在我正是要创建这样类型的标签。&lt;/p&gt;
-
-&lt;p&gt;我结合CodeIgniter来说明，我现在创建一个用户列表的标签，可以显示最近注册的用户。
-在smarty的plugins目录中创建的文件会自动被smarty加载而识别的，文件名和其中的function 名称需要特定的约定好的格式。
-我现在想创建一个users标签,还有一个limit参数，用来显示取多少条数据&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;用户列表：
-&amp;lt;ul&amp;gt;
-    &amp;lt;{users limit=&amp;#39;3&amp;#39;}&amp;gt;
-        &amp;lt;li&amp;gt;&amp;lt;{$user-&amp;gt;login}&amp;gt;&amp;lt;/li&amp;gt;
-    &amp;lt;{/users}&amp;gt;
-&amp;lt;/ul&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;那么文件名就应该指定为block.users.php，然后function应该命名为smarty&lt;em&gt;block&lt;/em&gt;users：&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;&amp;lt;?php
-function smarty_block_users($params, $content, $smarty, &amp;amp;$repeat){
-    if (empty($content)){
-        if (empty($params[&amp;#39;limit&amp;#39;])) {
-            $limit = 10;
-        } else {
-            $limit = $params[&amp;#39;limit&amp;#39;];
-        }
-        $CI =&amp;amp; get_instance();
-        $GLOBALS[&amp;#39;users&amp;#39;] = $CI-&amp;gt;db-&amp;gt;query(&amp;quot;select * from users order by created_at desc limit $limit&amp;quot;)-&amp;gt;result();
-    }
-    if(isset($GLOBALS[&amp;#39;users&amp;#39;]) != NULL &amp;amp;&amp;amp; count($GLOBALS[&amp;#39;users&amp;#39;])&amp;gt;0){
-        $user = array_shift($GLOBALS[&amp;#39;users&amp;#39;]);
-        $smarty-&amp;gt;assign(&amp;#39;user&amp;#39;, $user);
-        if (count($GLOBALS[&amp;#39;users&amp;#39;]) == 0){
-            unset($GLOBALS[&amp;#39;users&amp;#39;]);
-            $repeat = false;
-        }
-        $repeat = true;
-    }else {
-        $repeat = false;
-    }
-
-    return $content;
-}
-?&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;这个function中有四个参数，$params参数存储的是标签中的属性信息，如上面的limit。$content是标签中间的内容，$smarty是smarty的实例对象，$repeat用于指定block是否重复执行。
-解释完了function的参数，我想其中的执行原理应该很容易看明白了吧。&lt;/p&gt;
-</description>
-        <pubDate>Sun, 26 Feb 2012 14:21:00 +0800</pubDate>
-        <link>/php/2012/02/26/create-custom-tags-in-smarty/</link>
-        <guid isPermaLink="true">/php/2012/02/26/create-custom-tags-in-smarty/</guid>
       </item>
     
   </channel>
