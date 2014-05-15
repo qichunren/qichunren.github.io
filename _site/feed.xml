@@ -7,6 +7,39 @@
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>《写给大家看的设计书》笔记</title>
+        <description>&lt;p&gt;最近又将《写给大家看的设计书》这本书翻阅了一遍，又有了一些新的体会，感觉非常棒。真的非常佩服和感谢作者能够将关于设计的东西通过如此简明的理论给表达出来，让普通的人可以明白和感受设计的奥妙窍门。&lt;/p&gt;
+
+&lt;p&gt;我平时主要是作WEB开发方面的工作，在网上看到许多优秀的网页设计排版，感觉非常舒服。我之前一直在思考为什么我就不能设计出来这样类型的网页，只能从形式上去模仿，没有找到设计的精髓，感觉没有头绪。自从看到了《写给大家看的设计书》这本书后，我一口气把它读完了，感觉非常满足。它指点了我，让我从迷惘中走出来。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://img3.douban.com/lpic/s23486434.jpg&quot; alt=&quot;封面&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;再次将书中的一些段落摘抄下来感受一下：&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;优秀的设计就这么容易&lt;/p&gt;
+
+&lt;p&gt;1 学习4大基本原则，它们比你想象得要简单。&lt;/p&gt;
+
+&lt;p&gt;2 认识到自己没有使用这些原则。形诸文字 &amp;mdash;- 陈述问题。&lt;/p&gt;
+
+&lt;p&gt;3 应用基本原则。结果将使你大吃一惊。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;书中提到的4大基本原则是对比，重复，对齐，亲密性。分别在每一章节中讲述了其中的运用方法，并有实例配套。&lt;/p&gt;
+
+&lt;p&gt;最后我想知道的是，在生活中有没有和这本书中类似的看似常人不易掌握，但是经过高人点拨和总结，然后一下子豁然明朗的技能呢？&lt;/p&gt;
+
+&lt;h2&gt;相关链接&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://book.douban.com/subject/3323633/&quot;&gt;《写给大家看的设计书》&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Fri, 16 May 2014 00:57:00 +0800</pubDate>
+        <link>/tool/2014/05/16/The-Non-Designers-Design-Book-Note/</link>
+        <guid isPermaLink="true">/tool/2014/05/16/The-Non-Designers-Design-Book-Note/</guid>
+      </item>
+    
+      <item>
         <title>我的2013年总结</title>
         <description>&lt;p&gt;2013年已经过去了，感觉这一年过得太快了。工作很忙碌，我又是一个严重拖延症患者，难得今天抽出时间写这个年终总结。我认为这是很有必要的，总结经验，不断进步。&lt;/p&gt;
 
@@ -729,114 +762,6 @@ esac&lt;/p&gt;
         <pubDate>Wed, 14 Mar 2012 11:30:00 +0800</pubDate>
         <link>/linux/2012/03/14/how-to-managing-services-with-update-rc-dot-d/</link>
         <guid isPermaLink="true">/linux/2012/03/14/how-to-managing-services-with-update-rc-dot-d/</guid>
-      </item>
-    
-      <item>
-        <title>Use Rubyencoder encrypt ruby code</title>
-        <description>&lt;p&gt;前些时候研究了一下ruby encoder的加密技术应用，在这里记录一下它的使用过程。&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://rubyencoder.com/&quot;&gt;Ruby Encoder&lt;/a&gt;将ruby代码加密成不易阅读的格式，然后通过它提供的加载类型来载入ruby代码，从而达到加密的目的。它是一个付费软件，一个许可证要159美金，提供试用版，可以试用一个星期，支持Linux \ FreeBSD \ Mac OS X \ Windows系统。&lt;/p&gt;
-
-&lt;p&gt;首先在Ruby Encoder上注册一个帐号，登录进去后，我这里选择下载Mac OS X版的，RubyEncoder Trial for Mac OS X （RubyEncoder&lt;em&gt;1.3&lt;/em&gt;Trial.dmg），下载后，将dmg中的程序拖到applications目录，就算安装好了。
-&lt;code&gt;
-qichunren:~ qichunren$ cd /Applications/RubyEncoder/
-qichunren:RubyEncoder qichunren$ ls
-Icon?               RubyEncoder_User_Manual.pdf bin/
-README              Start RubyEncoder.app*      rgloader/
-&lt;/code&gt;
-第一次使用的话，需要它的官方网站给你提供一个许可证文件(文件名为encode.lic),进行Ruby Encoder的bin目录,执行其中的rubyencoder文件, 它会输出一些它的软件声明信息，一直回车后几次后，阅读完许可声明，它还要求你输入&amp;lsquo;I AGREE&amp;#39;后，然后输出一个注册码（Reg Key）,要求你登录到它的网站中，在个人帐户里，在页面最下面的Available Licenses中填入注册码，然后下载它提供的encode.lic文件，放在Ruby Encoder的bin目录中，现在就可以使用Ruby Encoder了。&lt;/p&gt;
-
-&lt;p&gt;直接执行一下rubyencoder命令，可以先了解一下它的用法。
-&amp;ldquo;`
-qichunren:bin qichunren$ ./rubyencoder 
-RubyEncoder 1.3 Evaluation (built: Aug 31 2010 11:55:25)
-Copyright &amp;copy; 2008-2010 rubyencoder.com
-Supports encoding for Ruby versions: 1.8.6,1.8.7,1.9.0,1.9.1,1.9.2&lt;/p&gt;
-
-&lt;p&gt;Usage,    single file: rubyencoder [options] file.rb
-       multiple files: rubyencoder [options] file1.rb file2.rb file3.rb
-            file mask: rubyencoder [options] &amp;rdquo;*.rb&amp;quot;
-            file list: rubyencoder [options] @filelist&lt;/p&gt;
-
-&lt;p&gt;&amp;ndash;ruby &lt;version x.y&gt;              Encode for Ruby ver (1.8 default and/or 1.9)
-* &amp;ndash;expire &lt;dd/mm/yyyy&gt;             Set script expiration date
-* &amp;ndash;days &lt;nn&gt;                       Set script expiration days (from today)
-* &amp;ndash;domain &lt;domain&gt;                 Bind script to domain name
-* &amp;ndash;domain-encrypt &lt;domain&gt;         Bind and encrypt to domain name (one only)
-* &amp;ndash;ip &lt;x.x.x.x[/y.y.y.y]&gt;          Bind script to ip/mask
-* &amp;ndash;ip-encrypt &lt;x.x.x.x[/y.y.y.y]&gt;  Bind and encrypt to ip/mask (one only)
-* &amp;ndash;mac &lt;x:x:x:x:x:x&gt;               Bind script to mac address
-* &amp;ndash;external &lt;filename&gt;             Script will require license file to run
-* &amp;ndash;projid &lt;value&gt;                  Set project id (required for ext license)
-* &amp;ndash;projkey &lt;value&gt;                 Set project key (required for ext license)
-* &amp;ndash;time-server &lt;server,server,...&gt; Set time server (for expiration date check)
-* script locking options are disabled for evaluation version&lt;/p&gt;
-
-&lt;p&gt;&amp;ndash;const name=value                Set custom defined constant
-  &amp;ndash;catch err=function              Set custom error handler&lt;/p&gt;
-
-&lt;p&gt;-p &amp;ldquo;code&amp;rdquo;|@file  Prepend header code
-  -j &amp;ldquo;code&amp;rdquo;|@file  Change default loader error code
-  -b &lt;ext&gt;         Set file extension for backup files (bak is default)
-  -b-              Disable backup of source files (be careful!)
-  -r               Recurse subdirectories (use quotes for file masks)
-  -x &amp;ldquo;mask&amp;rdquo;|@list  Exclude files from encoding
-  -f &amp;ldquo;mask&amp;rdquo;|@list  Encode only these files
-  -o &lt;output_dir&gt;  Specify output directory for encoded scripts
-  -w               Wait for key press before exit
-  -q               Display settings and request confirmation
-  -v               Display version number
-  -l               Display license information
-  -h               Display this help
-&amp;ldquo;`&lt;/p&gt;
-
-&lt;p&gt;像我给公司做的一个小项目，我只需要加密rails目录中的app目录就足够了，官方也建议只加密app目录就行了，可能是为了避免一些加密问题？
-&lt;code&gt;
-qichunren:bin qichunren$ ./rubyencoder --ruby 1.9 /Users/qichunren/code/menu/app/**/*.rb
-&lt;/code&gt;
-这样就完成了app目录中的rb代码加密，同时它还备份了原来的rb文件，是同名的后缀为bak的文件，在部署中应该将.bak文件都删除掉。还有一件事情要做，需要把Ruby Encoder的相当于解密的加载器文件复制到app目录中，也就是加密代码的上一级目录里面来，这样项目可以正常执行了。
-&lt;code&gt;
-qichunren:RubyEncoder qichunren$ pwd
-/Applications/RubyEncoder
-qichunren:RubyEncoder qichunren$ cp -r rgloader/ /Users/qichunren/code/menu/app/
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;下面是我咨询的关于Ruby Encoder的许可证相关的几个问题的官方回复邮件。
-&amp;rdquo;`
-Hi,&lt;/p&gt;
-
-&lt;p&gt;Thank you for your interest in RubyEncoder. Please find answers below.&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;After I paid $159 for RubyEncoder, do I have license to run rubyencoder on different machines for different systems(mac or linux). I have serval machines for development and deployment.
-RubyEncoder is licensed per-machine. One license lets you install and
-use the encoder to one physical or virtual machine. If you use multiple
-machines for development you may purchase additional licenses for $99
-each. Note, loaders that are required to run protected files are free.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;I developed on Mac OSX system usually, then deploy my rails application on Linux (Ubuntu 11). This goes well currently. I want to know after encode my rails 3 application on mac, then will it goes well on my deployed Linux machine?
-Yes, you encode on your Mac and then install encoded files to your Linux
-machine as usual. To run protected files on Linux you need to install
-(copy a folder) RubyEncoder loaders for Linux to your rails root folder.
-With version 1.3 you can encode your application controllers, helpers
-and model rails files. Do not encode any other standard or configuration
-rails files. For non-rails Ruby files you may encode any code. Ruby
-verisons 1.8.6,1.8.7.1.9.0-1.9.3 are supported.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;After I paid $159 for RubyEncoder, do I have to paid again for your update version? Can I get free follow-on support service and software update?
-Once you pay you get 1 year of free support and updates.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;How long is a paid license?&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;A license is time unlimited. Support is included for 1 year since the
-date of purchase. We do email support.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Feel free to contact me if you have any further questions.
-&amp;ldquo;`&lt;/p&gt;
-</description>
-        <pubDate>Mon, 27 Feb 2012 13:10:00 +0800</pubDate>
-        <link>/ruby/2012/02/27/use-rubyencoder-encrypt-ruby-code/</link>
-        <guid isPermaLink="true">/ruby/2012/02/27/use-rubyencoder-encrypt-ruby-code/</guid>
       </item>
     
   </channel>
