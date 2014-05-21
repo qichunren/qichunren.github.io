@@ -1,7 +1,7 @@
 Qichunren's blog
 ========
 
-[qichunren.github.io](qichunren.github.io)
+[qichunren.github.io](http://qichunren.github.io/)
 
 -------------
 
