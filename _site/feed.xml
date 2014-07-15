@@ -7,6 +7,53 @@
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>将Shadownsocks代理转换成http proxy类型</title>
+        <description>&lt;p&gt;　
+主要就是安装 &lt;em&gt;polipo&lt;/em&gt; 工具。&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;brew install polipo
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;然后就是启动polipo程序开机自动启动。&lt;/p&gt;
+
+&lt;p&gt;首先要修改自动启动的配置文件 &lt;em&gt;/usr/local/opt/polipo/homebrew.mxcl.polipo.plist&lt;/em&gt;，需要给polipo命令加上命令行参数 &lt;strong&gt;socksParentProxy=localhost:1080&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;  &amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;
+  &amp;lt;!DOCTYPE plist PUBLIC &amp;quot;-//Apple//DTD PLIST 1.0//EN&amp;quot; &amp;quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&amp;quot;&amp;gt;
+  &amp;lt;plist version=&amp;quot;1.0&amp;quot;&amp;gt;
+    &amp;lt;dict&amp;gt;
+      &amp;lt;key&amp;gt;Label&amp;lt;/key&amp;gt;
+      &amp;lt;string&amp;gt;homebrew.mxcl.polipo&amp;lt;/string&amp;gt;
+      &amp;lt;key&amp;gt;RunAtLoad&amp;lt;/key&amp;gt;
+      &amp;lt;true/&amp;gt;
+      &amp;lt;key&amp;gt;KeepAlive&amp;lt;/key&amp;gt;
+      &amp;lt;true/&amp;gt;
+      &amp;lt;key&amp;gt;ProgramArguments&amp;lt;/key&amp;gt;
+      &amp;lt;array&amp;gt;
+        &amp;lt;string&amp;gt;/usr/local/opt/polipo/bin/polipo&amp;lt;/string&amp;gt;
+        &amp;lt;string&amp;gt;socksParentProxy=localhost:1080&amp;lt;/string&amp;gt;
+      &amp;lt;/array&amp;gt;
+    &amp;lt;/dict&amp;gt;
+  &amp;lt;/plist&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;然后执行以下命令，搞定收工。
+&lt;code&gt;
+ln -sfv /usr/local/opt/polipo/*.plist ~/Library/LaunchAgents
+launchctl load ~/Library/LaunchAgents/homebrew.mxcl.polipo.plist
+&lt;/code&gt;&lt;/p&gt;
+</description>
+        <pubDate>Tue, 15 Jul 2014 17:04:00 +0800</pubDate>
+        <link>/tool/2014/07/15/Convert-shadowsocks-into-http-proxy-on-mac/</link>
+        <guid isPermaLink="true">/tool/2014/07/15/Convert-shadowsocks-into-http-proxy-on-mac/</guid>
+      </item>
+    
+      <item>
+        <title>PostgreSQL 数据库中的高级数据类型</title>
+        <description>&lt;p&gt;未完成 &amp;hellip;&lt;/p&gt;
+</description>
+        <pubDate>Mon, 14 Jul 2014 17:04:00 +0800</pubDate>
+        <link>/tool/2014/07/14/Anvanced-data-types-in-postgresql-for-rails-developers/</link>
+        <guid isPermaLink="true">/tool/2014/07/14/Anvanced-data-types-in-postgresql-for-rails-developers/</guid>
+      </item>
+    
+      <item>
         <title>《写给大家看的设计书》笔记</title>
         <description>&lt;p&gt;最近又将《写给大家看的设计书》这本书翻阅了一遍，又有了一些新的体会，感觉非常棒。真的非常佩服和感谢作者能够将关于设计的东西通过如此简明的理论给表达出来，让普通的人可以明白和感受设计的奥妙窍门。&lt;/p&gt;
 
@@ -532,236 +579,6 @@ ccTexParams params = {GL_LINEAR, GL_LINEAR, GL_REPEAT, GL_REPEAT};
         <pubDate>Sun, 03 Jun 2012 22:01:00 +0800</pubDate>
         <link>/ios/cocos2d/game-dev/2012/06/03/fixed-a-problem-with-creating-texture-background-in-cocos2d/</link>
         <guid isPermaLink="true">/ios/cocos2d/game-dev/2012/06/03/fixed-a-problem-with-creating-texture-background-in-cocos2d/</guid>
-      </item>
-    
-      <item>
-        <title>怎么样从git提交历史里永久删除一个文件?</title>
-        <description>&lt;p&gt;需要整理&lt;/p&gt;
-
-&lt;h2&gt;参考资料&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;http://help.github.com/remove-sensitive-data/&quot;&gt;Remove sensitive data&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://stackoverflow.com/questions/872565/how-do-i-remove-sensitive-files-from-gits-history&quot;&gt;How do I remove sensitive files from git&amp;rsquo;s history&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://dound.com/2009/04/git-forever-remove-files-or-folders-from-history/&quot;&gt;git: forever remove files or folders from history&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Thu, 17 May 2012 15:04:00 +0800</pubDate>
-        <link>/git/2012/05/17/how-to-remove-a-file-from-git-history-forever/</link>
-        <guid isPermaLink="true">/git/2012/05/17/how-to-remove-a-file-from-git-history-forever/</guid>
-      </item>
-    
-      <item>
-        <title>通过update-rc.d来管理Ubuntu系统的自动启动程序</title>
-        <description>&lt;p&gt;转载, 并记下我的使用心得。&lt;/p&gt;
-
-&lt;p&gt;Linux services can be started, stopped and reloaded with the use of scripts stocked in /etc/init.d/.
-However, during start up or when changing runlevel, those scripts are searched in /etc/rcX.d/ where X is the runlevel number.
-This tutorial will explain how one can activate, deactivate or modify a service start up.
-When installing a new service under debian, the default is to enable it. So for instance, if you just installed apache2 package, after you installed it, apache service will be started and so will it be upon the next reboots.
-If you do not use apache all the time, you might want to disable this service from starting up upon boot up and simply start it manually when you actually need it by running this command:
-&lt;code&gt;
-/etc/init.d/apache2 start
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;You could either disable this service on boot up by removing any symbolic links in &lt;strong&gt;&lt;em&gt;/etc/rcX.d/SYYapache2&lt;/em&gt;&lt;/strong&gt; or by using &lt;strong&gt;update-rc.d&lt;/strong&gt;.
-The advantage of using update-rc.d is that it will take care of removing/adding any required links to /etc/init.d automatically.
-Taking apache2 as an example, let&amp;rsquo;s examine how /etc/rcX.d is looking like:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;# ls -l /etc/rc?.d/*apache2
-lrwxrwxrwx 1 root root 17 2007-07-05 22:51 /etc/rc0.d/K91apache2 -&amp;gt; ../init.d/apache2
-lrwxrwxrwx 1 root root 17 2007-07-05 22:51 /etc/rc1.d/K91apache2 -&amp;gt; ../init.d/apache2
-lrwxrwxrwx 1 root root 17 2007-07-05 22:51 /etc/rc2.d/S91apache2 -&amp;gt; ../init.d/apache2
-lrwxrwxrwx 1 root root 17 2007-07-05 22:51 /etc/rc3.d/S91apache2 -&amp;gt; ../init.d/apache2
-lrwxrwxrwx 1 root root 17 2007-07-05 22:51 /etc/rc4.d/S91apache2 -&amp;gt; ../init.d/apache2
-lrwxrwxrwx 1 root root 17 2007-07-05 22:51 /etc/rc5.d/S91apache2 -&amp;gt; ../init.d/apache2
-lrwxrwxrwx 1 root root 17 2007-07-05 22:51 /etc/rc6.d/K91apache2 -&amp;gt; ../init.d/apache2
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;As you can see, for runlevels 0, 1 and 6 there is a K at the beginning of the link, for runlevels 2, 3, 4 and 5, there is a S. Those two letters stands for Kill and Start.
-On Debian and Ubuntu, runlevels 2, 3, 4 and 5 are multi-users runlevels.
-Runlevel 0 is Halt.
-Runlevel 1 is single user mode
-Runlevel 6 is reboot&lt;/p&gt;
-
-&lt;h3&gt;1. Removing A Service&lt;/h3&gt;
-
-&lt;p&gt;If you want to totally disable apache2 service by hand, you would need to delete every single link in /etc/rcX.d/. Using &lt;strong&gt;update-rc.d&lt;/strong&gt; it is as simple as:
-&lt;code&gt;
-update-rc.d -f apache2 remove
-&lt;/code&gt;
-The use of &lt;strong&gt;&lt;em&gt;-f&lt;/em&gt;&lt;/strong&gt; is to force the removal of the symlinks even if there is still /etc/init.d/apache2.&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;    Note: This command will only disable the service until next time the service is upgraded. If you want to make sure the service won&amp;#39;t be re-enabled upon upgrade, you should also type the following:
-    # update-rc.d apache2 stop 80 0 1 2 3 4 5 6 .
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3&gt;2. Adding A Service&lt;/h3&gt;
-
-&lt;h4&gt;2.1. Default Priorities&lt;/h4&gt;
-
-&lt;p&gt;Now, if you want to re-add this service to be started on boot up, you can simply use:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;# update-rc.d apache2 defaults
-Adding system startup for /etc/init.d/apache2 ...
-/etc/rc0.d/K20apache2 -&amp;gt; ../init.d/apache2
-/etc/rc1.d/K20apache2 -&amp;gt; ../init.d/apache2
-/etc/rc6.d/K20apache2 -&amp;gt; ../init.d/apache2
-/etc/rc2.d/S20apache2 -&amp;gt; ../init.d/apache2
-/etc/rc3.d/S20apache2 -&amp;gt; ../init.d/apache2
-/etc/rc4.d/S20apache2 -&amp;gt; ../init.d/apache2
-/etc/rc5.d/S20apache2 -&amp;gt; ../init.d/apache2
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h4&gt;2.2. Custom Priorities&lt;/h4&gt;
-
-&lt;p&gt;But as you can see, the default value is 20 which is pretty different than 91 &amp;hellip; a S20 link is started before a S91 and and K91 is kill before K20.
-To force apache2 to be started with priorities 91 for both Start and Kill, we need to use the following command:
-&amp;ldquo;`&lt;/p&gt;
-
-&lt;h1&gt;update-rc.d apache2 defaults 91&lt;/h1&gt;
-
-&lt;p&gt;Adding system startup for /etc/init.d/apache2 &amp;hellip;
-/etc/rc0.d/K91apache2 -&amp;gt; ../init.d/apache2
-/etc/rc1.d/K91apache2 -&amp;gt; ../init.d/apache2
-/etc/rc6.d/K91apache2 -&amp;gt; ../init.d/apache2
-/etc/rc2.d/S91apache2 -&amp;gt; ../init.d/apache2
-/etc/rc3.d/S91apache2 -&amp;gt; ../init.d/apache2
-/etc/rc4.d/S91apache2 -&amp;gt; ../init.d/apache2
-/etc/rc5.d/S91apache2 -&amp;gt; ../init.d/apache2
-&amp;rdquo;`&lt;/p&gt;
-
-&lt;h3&gt;2.3. Different Priorities For Start And Kill&lt;/h3&gt;
-
-&lt;p&gt;Alternatively, if you want to set different priorities for Start than for Kill, let say Start with 20 and Kill with 80, you will need to run:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;# update-rc.d apache2 defaults 20 80
-Adding system startup for /etc/init.d/apache2 ...
-/etc/rc0.d/K80apache2 -&amp;gt; ../init.d/apache2
-/etc/rc1.d/K80apache2 -&amp;gt; ../init.d/apache2
-/etc/rc6.d/K80apache2 -&amp;gt; ../init.d/apache2
-/etc/rc2.d/S20apache2 -&amp;gt; ../init.d/apache2
-/etc/rc3.d/S20apache2 -&amp;gt; ../init.d/apache2
-/etc/rc4.d/S20apache2 -&amp;gt; ../init.d/apache2
-/etc/rc5.d/S20apache2 -&amp;gt; ../init.d/apache2
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h2&gt;3. Specifying Custom Runlevels&lt;/h2&gt;
-
-&lt;p&gt;Finally, if you only want to Start and Kill on specific runlevels, like for instance starting apache with priority 20 on runlevels 2, 3, 4 and 5 and Kill with priority 80 on runlevels 0, 1 and 6:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;# update-rc.d apache2 start 20 2 3 4 5 . stop 80 0 1 6 .
-Adding system startup for /etc/init.d/apache2 ...
-/etc/rc0.d/K80apache2 -&amp;gt; ../init.d/apache2
-/etc/rc1.d/K80apache2 -&amp;gt; ../init.d/apache2
-/etc/rc6.d/K80apache2 -&amp;gt; ../init.d/apache2
-/etc/rc2.d/S20apache2 -&amp;gt; ../init.d/apache2
-/etc/rc3.d/S20apache2 -&amp;gt; ../init.d/apache2
-/etc/rc4.d/S20apache2 -&amp;gt; ../init.d/apache2
-/etc/rc5.d/S20apache2 -&amp;gt; ../init.d/apache2
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Or, to start with priority 20 for runlevel 2, 3 and 4 and priority 30 for runlevel 5 and kill with priority 80 for runlevel 0, 1 and 6:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;# update-rc.d apache2 start 20 2 3 4 . start 30 5 . stop 80 0 1 6 .
-Adding system startup for /etc/init.d/apache2 ...
-/etc/rc0.d/K80apache2 -&amp;gt; ../init.d/apache2
-/etc/rc1.d/K80apache2 -&amp;gt; ../init.d/apache2
-/etc/rc6.d/K80apache2 -&amp;gt; ../init.d/apache2
-/etc/rc2.d/S20apache2 -&amp;gt; ../init.d/apache2
-/etc/rc3.d/S20apache2 -&amp;gt; ../init.d/apache2
-/etc/rc4.d/S20apache2 -&amp;gt; ../init.d/apache2
-/etc/rc5.d/S30apache2 -&amp;gt; ../init.d/apache2
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h2&gt;我的总结&lt;/h2&gt;
-
-&lt;p&gt;通过 update-rc.d 来管理Linux下开机自动运行，的确很方便，但是我在实际部署实践中，还是遇到了一些问题，导致开机后没有正常自动启动，但是手工通过service xxx start可以启动。我经过排查发现，原因是在Linux系统启动中，在执行/etc/init.d/中的脚本时，此时系统有可能没有加载好系统中的PATH变量，所以需要在init.d脚本中手工指定，对于使用Ruby脚本写的程序，需要GEM&lt;em&gt;HOME\GEM&lt;/em&gt;PATH等环境变量，我这里是用RVM来管理Ruby的，这是我使用的：
-&lt;code&gt;
-PATH=&amp;quot;/usr/local/rvm/gems/ruby-1.9.2-p290/bin:/usr/local/rvm/rubies/ruby-1.9.2-p290/bin:/usr/local/rvm/bin:/opt/node/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games&amp;quot;
-RUBY_VERSION=&amp;quot;ruby-1.9.2-p290&amp;quot;
-GEM_HOME=&amp;quot;/usr/local/rvm/gems/ruby-1.9.2-p290&amp;quot;
-GEM_PATH=&amp;quot;/usr/local/rvm/gems/ruby-1.9.2-p290:/usr/local/rvm/gems/ruby-1.9.2-p290@global&amp;quot;
-export PATH=$PATH
-export RUBY_VERSION=$RUBY_VERSION
-export GEM_HOME=$GEM_HOME
-export GEM_PATH=$GEM_PATH
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;另外还有一些其它的变量（如果你的启动程序需要），也需要手工指定，如在Ruby 1.9中，就有可能需要指定，比如说unicorn启动脚本：
-&lt;code&gt;
-export LANG=&amp;#39;en_US.UTF-8&amp;#39;
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;最后附上一个常用的init.d启动脚本的样本：
-&amp;ldquo;`&lt;/p&gt;
-
-&lt;h1&gt;!/bin/sh&lt;/h1&gt;
-
-&lt;h3&gt;BEGIN INIT INFO&lt;/h3&gt;
-
-&lt;h1&gt;Provides:          gps&lt;/h1&gt;
-
-&lt;h1&gt;Required-Start:    $syslog $remote_fs $network&lt;/h1&gt;
-
-&lt;h1&gt;Required-Stop:     $syslog $remote_fs $network&lt;/h1&gt;
-
-&lt;h1&gt;Should-Start:      fam&lt;/h1&gt;
-
-&lt;h1&gt;Should-Stop:       fam&lt;/h1&gt;
-
-&lt;h1&gt;Default-Start:     2 3 4 5&lt;/h1&gt;
-
-&lt;h1&gt;Default-Stop:      0 1 6&lt;/h1&gt;
-
-&lt;h1&gt;Short-Description: Start the gps.&lt;/h1&gt;
-
-&lt;h3&gt;END INIT INFO&lt;/h3&gt;
-
-&lt;p&gt;PATH=/usr/local/rvm/gems/ruby-1.9.2-p290/bin:/usr/local/rvm/gems/ruby-1.9.2-p290@global/bin:/usr/local/rvm/rubies/ruby-1.9.2-p290/bin:/usr/local/rvm/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
-DAEMON=/www/georgia/current/lib/gps/gps.rb
-NAME=ntgps
-DESC=&amp;quot;ntgps daemon&amp;rdquo;
-PIDFILE=/var/run/$NAME.pid
-SCRIPTNAME=/etc/init.d/$NAME&lt;/p&gt;
-
-&lt;p&gt;DAEMON_OPTS=&amp;ldquo;&amp;rdquo;&lt;/p&gt;
-
-&lt;p&gt;set -e
-. /lib/lsb/init-functions
-export LANG=&amp;lsquo;en&lt;em&gt;US.UTF-8&amp;rsquo;
-export PATH=$PATH
-export GEM&lt;/em&gt;HOME=/usr/local/rvm/gems/ruby-1.9.2-p290
-export GEM_PATH=/usr/local/rvm/gems/ruby-1.9.2-p290:/usr/local/rvm/gems/ruby-1.9.2-p290@global&lt;/p&gt;
-
-&lt;p&gt;case &amp;ldquo;$1&amp;rdquo; in
-    start)
-        log&lt;em&gt;daemon&lt;/em&gt;msg &amp;ldquo;Starting $DESC&amp;rdquo; $NAME
-        if ! start-stop-daemon &amp;ndash;start -m &amp;ndash;background &amp;ndash;oknodo &amp;ndash;quiet &amp;ndash;pidfile $PIDFILE &amp;ndash;exec /usr/local/rvm/rubies/ruby-1.9.2-p290/bin/ruby $DAEMON &amp;ndash; $DAEMON&lt;em&gt;OPTS
-        then
-            log&lt;/em&gt;end&lt;em&gt;msg 1
-        else
-            log&lt;/em&gt;end&lt;em&gt;msg 0
-        fi
-        ;;
-    stop)
-        log&lt;/em&gt;daemon&lt;em&gt;msg &amp;ldquo;Stopping $DESC&amp;rdquo; $NAME
-        if kill  -9 &lt;code&gt;cat $PIDFILE&lt;/code&gt;
-        then
-            rm -f $PIDFILE
-            log&lt;/em&gt;end&lt;em&gt;msg 0
-        else
-            log&lt;/em&gt;end&lt;em&gt;msg 1
-        fi
-        ;;
-    restart)
-        $0 stop
-        $0 start
-        ;;
-    status)
-        status&lt;/em&gt;of_proc -p &amp;ldquo;$PIDFILE&amp;rdquo; &amp;ldquo;$DAEMON&amp;rdquo; $NAME &amp;amp;&amp;amp; exit 0 || exit $?
-        ;;
-    *)
-        echo &amp;ldquo;Usage: $SCRIPTNAME {start|stop|restart|status}&amp;rdquo; &amp;gt;&amp;amp;2
-        exit 1
-        ;;
-esac&lt;/p&gt;
-
-&lt;p&gt;exit 0&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;## Resources:
-[How-To: Managing services with update-rc.d](http://www.debuntu.org/how-to-manage-services-with-update-rc.d)
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
-        <pubDate>Wed, 14 Mar 2012 11:30:00 +0800</pubDate>
-        <link>/linux/2012/03/14/how-to-managing-services-with-update-rc-dot-d/</link>
-        <guid isPermaLink="true">/linux/2012/03/14/how-to-managing-services-with-update-rc-dot-d/</guid>
       </item>
     
   </channel>
