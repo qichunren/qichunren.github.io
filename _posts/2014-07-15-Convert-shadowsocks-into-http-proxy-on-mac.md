@@ -41,3 +41,5 @@ ln -sfv /usr/local/opt/polipo/*.plist ~/Library/LaunchAgents
 launchctl load ~/Library/LaunchAgents/homebrew.mxcl.polipo.plist
 ```
 
+polipo进程默认监听8123端口，在命令行使用export http_proxy=localhost:8123 就可以使用代理了。
+
