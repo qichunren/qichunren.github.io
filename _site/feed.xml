@@ -7,6 +7,79 @@
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>Game resources note</title>
+        <description>&lt;p&gt;Game replay video here: https://everyplay.com&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.pixelprospector.com/the-big-list-of-game-design/&quot;&gt;The Big List Of Game Design&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2&gt;Audio:&lt;/h2&gt;
+
+&lt;p&gt;http://www.bfxr.net/ generate small music sound, such as &amp;lsquo;power up&amp;rsquo;, &amp;lsquo;coin collect&amp;rsquo;, &amp;lsquo;Attack&amp;rsquo;, &amp;lsquo;Explosion&amp;rsquo;&lt;/p&gt;
+
+&lt;p&gt;http://www.flashkit.com/ sound resources.&lt;/p&gt;
+
+&lt;h2&gt;Images&lt;/h2&gt;
+
+&lt;p&gt;VOXEL Builder http://voxelbuilder.com/
+2.5D model tool: http://www.angryoctopus.co.nz/?p=177
+http://opengameart.org/&lt;/p&gt;
+
+&lt;h3&gt;Tileset&lt;/h3&gt;
+
+&lt;p&gt;https://vxresource.wordpress.com/category/resources/tilesets/
+http://www.engine001.com/resources/tilesets.htm
+http://opengameart.org/content/isometric-tiles&lt;/p&gt;
+
+&lt;h2&gt;Threoy&lt;/h2&gt;
+
+&lt;p&gt;http://www.lostgarden.com/
+&lt;a href=&quot;http://gamemechanicexplorer.com/&quot;&gt;http://gamemechanicexplorer.com/&lt;/a&gt;里面基于Phaser引擎讲解了许多游戏中常用的设计算法，如角色行走，导弹路径，光，视野等。&lt;/p&gt;
+
+&lt;h2&gt;Games&lt;/h2&gt;
+
+&lt;p&gt;http://spryfox.com/our-games/&lt;/p&gt;
+
+&lt;h3&gt;Voxel editors&lt;/h3&gt;
+
+&lt;p&gt;https://bitbucket.org/volumesoffun/polyvox/wiki/Voxel%20editors&lt;/p&gt;
+
+&lt;h2&gt;WebSites&lt;/h2&gt;
+
+&lt;p&gt;http://www.gamasutra.com/
+http://gamedevelopment.tutsplus.com/&lt;/p&gt;
+
+&lt;p&gt;Create tile game tutuoal: http://www.tonypa.pri.ee/tbw/start.html&lt;/p&gt;
+
+&lt;p&gt;Isometric Tiles Introduction: http://flarerpg.org/tutorials/isometric_intro/&lt;/p&gt;
+
+&lt;p&gt;Character Generator: http://gaurav.munjal.us/Universal-LPC-Spritesheet-Character-Generator/&lt;/p&gt;
+</description>
+        <pubDate>Thu, 23 Oct 2014 17:05:00 +0800</pubDate>
+        <link>/development/2014/10/23/game-resources-note/</link>
+        <guid isPermaLink="true">/development/2014/10/23/game-resources-note/</guid>
+      </item>
+    
+      <item>
+        <title>欧洲旅行记录</title>
+        <description>&lt;p&gt;2014年9月21到9月30号跟着公司团到欧洲旅行了一圈，这是我的第一次出国。&lt;/p&gt;
+
+&lt;p&gt;这次欧洲行游历了四个国家：德国，荷兰，比利时和法国。去过的欧洲城市有柏林，科隆，阿姆斯特丹，布鲁塞尔，巴黎。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/posts/afetower.jpg&quot; alt=&quot;巴黎埃菲尔铁塔&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;购物方面：物价比中国国内便宜。买许多东西比国内便宜，如红酒，化妆品，保健品，手表，奶粉。
+交通：在欧洲我经过的几个城市，柏林的交通算比较好，巴黎人口密度大，车也多。然后大家都很遵守交通规则，我没有看到有闯红灯的现象，路上机动车随便变道的情况也非常少，几乎没有鸣喇叭的现象，骑自行车的很多，没有人骑电瓶车，要么就是骑摩托车。&lt;/p&gt;
+
+&lt;p&gt;欧洲是一个值得细细感受的地方，如果我下次再来的话，一定会选一个地方，好好呆上一段时间，仔细感受其中的文化底蕴和人化风俗。&lt;/p&gt;
+
+&lt;p&gt;最近在看一本书叫《欧洲极简史》，希望能多多了解一下欧洲这片土地。&lt;/p&gt;
+</description>
+        <pubDate>Sat, 04 Oct 2014 12:05:00 +0800</pubDate>
+        <link>/life/2014/10/04/europe-travel/</link>
+        <guid isPermaLink="true">/life/2014/10/04/europe-travel/</guid>
+      </item>
+    
+      <item>
         <title>将Shadownsocks代理转换成http proxy类型</title>
         <description>&lt;p&gt;　
 主要就是安装 &lt;em&gt;polipo&lt;/em&gt; 工具。&lt;/p&gt;
@@ -38,6 +111,8 @@
 ln -sfv /usr/local/opt/polipo/*.plist ~/Library/LaunchAgents
 launchctl load ~/Library/LaunchAgents/homebrew.mxcl.polipo.plist
 &lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;polipo进程默认监听8123端口，在命令行使用export http_proxy=localhost:8123 就可以使用代理了。&lt;/p&gt;
 </description>
         <pubDate>Tue, 15 Jul 2014 17:04:00 +0800</pubDate>
         <link>/tool/2014/07/15/Convert-shadowsocks-into-http-proxy-on-mac/</link>
@@ -539,46 +614,6 @@ UPDATE 1
         <pubDate>Mon, 18 Jun 2012 14:56:00 +0800</pubDate>
         <link>/web/2012/06/18/i-build-ruby-china-chrome-extension/</link>
         <guid isPermaLink="true">/web/2012/06/18/i-build-ruby-china-chrome-extension/</guid>
-      </item>
-    
-      <item>
-        <title>使用SSH代理来访访问远程mysql机器</title>
-        <description>&lt;p&gt;默认安装的mysql的Linux机器基于安全的原因，一般不支持mysql的远程连接访问。有几种方法可以修改配置来让mysql服务器支持远程连接。但是通过ssh的代理功能，可以不用修改服务器配置，来支持从远程连接mysql服务器。&lt;/p&gt;
-
-&lt;p&gt;在本地通过ssh连接远程的mysql所在的服务器&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;ssh -L 1036:localhost:3306 root@xxx.xx.xx.xxx
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;这样就将远程的mysql主机代理到本地了，端口是1036。 &lt;a href=&quot;http://zh.wikipedia.org/zh/SSH&quot;&gt;SSH&lt;/a&gt;太强大了&lt;/p&gt;
-</description>
-        <pubDate>Mon, 04 Jun 2012 17:31:00 +0800</pubDate>
-        <link>/linux/2012/06/04/use-ssh-proxy-port-trick/</link>
-        <guid isPermaLink="true">/linux/2012/06/04/use-ssh-proxy-port-trick/</guid>
-      </item>
-    
-      <item>
-        <title>Fixed a problem with creating texture background in cocos2d</title>
-        <description>&lt;p&gt;我尝试在cocos2d游戏中使用小图片重复平铺的方式来创建游戏背景时, 总是遇到这个问题，报错如下: &lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;Terminating app due to uncaught exception &amp;#39;NSInternalInconsistencyException&amp;#39;, reason: &amp;#39;GL_CLAMP_TO_EDGE should be used in NPOT dimensions&amp;#39;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;我的代码是这样的:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;CCSprite *wall = [CCSprite spriteWithFile:@&amp;quot;pattern1.png&amp;quot; rect:CGRectMake(0, 0, 320, 480)];
-wall.anchorPoint = ccp(0,0);
-[self addChild:wall z:-1 tag:111];
-ccTexParams params = {GL_LINEAR, GL_LINEAR, GL_REPEAT, GL_REPEAT};
-//ccTexParams params = {GL_LINEAR,GL_LINEAR,GL_CLAMP_TO_EDGE, GL_CLAMP_TO_EDGE};
-[wall.texture setTexParameters:&amp;amp;params];
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;我运行cocos2d项目的测试例子, 却发现它的例子是工作正常的, 百思不得其解啊. 然后我看到它代码的注释中写着:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;// The .png image MUST be power of 2 in order to create a continue effect.
-// eg: 32x64, 512x128, 256x1024, 64x64, etc..
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;我想可能是我的图片尺寸不符合规格，检查了一下，果然发现纹理图片的不是2的次方的正方形。&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;总结，使用小图片重复平铺来创建背景纹理图片的小图片尺寸必须设置成2的n次方的正方形大小。&lt;/em&gt;&lt;/p&gt;
-</description>
-        <pubDate>Sun, 03 Jun 2012 22:01:00 +0800</pubDate>
-        <link>/ios/cocos2d/game-dev/2012/06/03/fixed-a-problem-with-creating-texture-background-in-cocos2d/</link>
-        <guid isPermaLink="true">/ios/cocos2d/game-dev/2012/06/03/fixed-a-problem-with-creating-texture-background-in-cocos2d/</guid>
       </item>
     
   </channel>

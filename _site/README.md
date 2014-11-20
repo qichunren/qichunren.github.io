@@ -5,6 +5,4 @@ Qichunren's blog
 
 -------------
 
-```
-jekyll server --watch
-```
+Local writing: just create post in _posts folder, and run `jekyll server --watch` to preview at http://localhost:4000
