@@ -7,6 +7,66 @@
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>在QT5中使用JSON库json-c</title>
+        <description>&lt;p&gt;首先需要安装json-c库:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;sudo apt-get install libjson-c-dev
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;在QT的项目中，修改.pro文件，加入：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;CONFIG += link_pkgconfig
+PKGCONFIG += json-c
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;上代码：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;        #include &amp;lt;json/json.h&amp;gt;
+
+        /*Creating a json object*/
+        json_object * jobj = json_object_new_object();
+
+        /*Creating a json string*/
+        json_object *jstring = json_object_new_string(&amp;quot;Joys of Programming&amp;quot;);
+
+        /*Creating a json integer*/
+        json_object *jint = json_object_new_int(10);
+
+        /*Creating a json boolean*/
+        json_object *jboolean = json_object_new_boolean(1);
+
+        /*Creating a json double*/
+        json_object *jdouble = json_object_new_double(2.14);
+
+        /*Creating a json array*/
+        json_object *jarray = json_object_new_array();
+
+        /*Creating json strings*/
+        json_object *jstring1 = json_object_new_string(&amp;quot;c&amp;quot;);
+        json_object *jstring2 = json_object_new_string(&amp;quot;c++&amp;quot;);
+        json_object *jstring3 = json_object_new_string(&amp;quot;php&amp;quot;);
+
+        /*Adding the above created json strings to the array*/
+        json_object_array_add(jarray,jstring1);
+        json_object_array_add(jarray,jstring2);
+        json_object_array_add(jarray,jstring3);
+        json_object_array_add(jarray,jstring4);
+
+        /*Form the json object*/
+        /*Each of these is like a key value pair*/
+        json_object_object_add(jobj,&amp;quot;Site Name&amp;quot;, jstring);
+        json_object_object_add(jobj,&amp;quot;Technical blog&amp;quot;, jboolean);
+        json_object_object_add(jobj,&amp;quot;Average posts per day&amp;quot;, jdouble);
+        json_object_object_add(jobj,&amp;quot;Number of posts&amp;quot;, jint);
+        json_object_object_add(jobj,&amp;quot;Categories&amp;quot;, jarray);
+
+        /*Now printing the json object*/
+        printf (&amp;quot;The json object created: %sn&amp;quot;,json_object_to_json_string(jobj));    
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;程序结果是：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;  The json object created: { &amp;quot;Site Name&amp;quot;: &amp;quot;Joys of Programming&amp;quot;, &amp;quot;Technical blog&amp;quot;: true, &amp;quot;Average posts per day&amp;quot;: 2.140000, &amp;quot;Number of posts&amp;quot;: 10, &amp;quot;Categories&amp;quot;: [ &amp;quot;c&amp;quot;, &amp;quot;c++&amp;quot;, &amp;quot;php&amp;quot; ] }n/            
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+        <pubDate>Mon, 13 Jul 2015 12:30:00 +0800</pubDate>
+        <link>/development/2015/07/13/use-json-in-qt5/</link>
+        <guid isPermaLink="true">/development/2015/07/13/use-json-in-qt5/</guid>
+      </item>
+    
+      <item>
         <title>Game resources note</title>
         <description>&lt;p&gt;Game replay video here: https://everyplay.com&lt;/p&gt;
 
@@ -65,8 +125,6 @@ http://gamedevelopment.tutsplus.com/&lt;/p&gt;
 
 &lt;p&gt;这次欧洲行游历了四个国家：德国，荷兰，比利时和法国。去过的欧洲城市有柏林，科隆，阿姆斯特丹，布鲁塞尔，巴黎。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/posts/afetower.jpg&quot; alt=&quot;巴黎埃菲尔铁塔&quot;&gt;&lt;/p&gt;
-
 &lt;p&gt;购物方面：物价比中国国内便宜。买许多东西比国内便宜，如红酒，化妆品，保健品，手表，奶粉。
 交通：在欧洲我经过的几个城市，柏林的交通算比较好，巴黎人口密度大，车也多。然后大家都很遵守交通规则，我没有看到有闯红灯的现象，路上机动车随便变道的情况也非常少，几乎没有鸣喇叭的现象，骑自行车的很多，没有人骑电瓶车，要么就是骑摩托车。&lt;/p&gt;
 
@@ -117,15 +175,6 @@ launchctl load ~/Library/LaunchAgents/homebrew.mxcl.polipo.plist
         <pubDate>Tue, 15 Jul 2014 17:04:00 +0800</pubDate>
         <link>/tool/2014/07/15/Convert-shadowsocks-into-http-proxy-on-mac/</link>
         <guid isPermaLink="true">/tool/2014/07/15/Convert-shadowsocks-into-http-proxy-on-mac/</guid>
-      </item>
-    
-      <item>
-        <title>PostgreSQL 数据库中的高级数据类型</title>
-        <description>&lt;p&gt;未完成 &amp;hellip;&lt;/p&gt;
-</description>
-        <pubDate>Mon, 14 Jul 2014 17:04:00 +0800</pubDate>
-        <link>/tool/2014/07/14/Anvanced-data-types-in-postgresql-for-rails-developers/</link>
-        <guid isPermaLink="true">/tool/2014/07/14/Anvanced-data-types-in-postgresql-for-rails-developers/</guid>
       </item>
     
       <item>
