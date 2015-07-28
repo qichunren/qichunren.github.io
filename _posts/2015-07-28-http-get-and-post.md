@@ -8,7 +8,7 @@ categories: Development
 
 对使用http请求的GET和POST的一点思考
 
-在web开发中，一个http请求方法有GET / HEAD / PUT / DELETE / OPTIONS / CONNECT几个形式，对此不多究。我想谈谈我对使用GET和POST请求的一些思考。
+在web开发中，一个http请求方法有GET / HEAD / PUT / DELETE / OPTIONS / CONNECT几个形式，对此不多究。我今天主要想谈谈常见的GET和POST两种方法的使用思考。
 
 先来讲一个我最近做的一个 Ruby on Rails 项目，在那个项目中，用户(User)可以选择某一个数据集合(DataSet)项目参与其中做任务(Task)。模型关系如下
 
@@ -30,7 +30,7 @@ categories: Development
     end
 
 在数据集合(DataSet)列表页面，列出多个集合(DataSet)，用户可以选择其中一个参与任务(Task)。如果用户还没有参与其中的某个项目，显示“开始工作”，否则显示“继续工作”，页面部分代码如下：
-    <% @data_sets.each do |data_set| %>
+      <% @data_sets.each do |data_set| %>
 
       <div class="col-sm-6 col-md-4">
         <div class="thumbnail">
@@ -83,7 +83,7 @@ DataSetsController中的部分代码如下：
 
 现在我将这个逻辑分开写了 POST /data_sets/{id}/choose_task 和 GET /data_sets/{id}/workspace 两个请求，代码逻辑是很合理的。用户可以随意刷新他的工作台，而不用担心刷新会改变什么数据。
 
-啰嗦了这么多，其实这是一个很小的问题，但是容易忽略。之前在一个公司维护一个项目，发现页面中做的一个商品多条件查询表单居然是用POST请求的。每次在浏览器中查询商品后，按F5刷新，总是提示是否重复提交请求。另外我还没有办法把我查询找到的商品结果页面发给我其他的朋友。
+啰嗦了这么多，其实这是一个很小的问题，但是容易忽略。之前在一个公司维护一个项目，发现页面中做的一个商品多条件查询表单居然是用POST请求的。每次在浏览器中查询商品后，按F5刷新，总是提示是否重复提交请求，用户体验很不好。另外我还没有办法把我查询找到的商品结果页面发给我其他的朋友。
 
 现在我来总结一下http请求的GET和POST方法使用。
 
