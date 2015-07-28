@@ -91,25 +91,25 @@ class Task &lt; ActiveRecord::Base
   belongs_to :data_set
 end
 </code></pre></div>
-<p>在数据集合(DataSet)列表页面，列出多个集合(DataSet)，用户可以选择其中一个参与任务(Task)。如果用户还没有参与其中的某个项目，显示“开始工作”，否则显示“继续工作”，页面部分代码如下：
-      &lt;% @data<em>sets.each do |data</em>set| %&gt;</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">  &lt;div class=&quot;col-sm-6 col-md-4&quot;&gt;
-    &lt;div class=&quot;thumbnail&quot;&gt;
-      &lt;%= image_tag data_set.logo.url %&gt;
-      &lt;div class=&quot;caption&quot;&gt;
-        &lt;h3&gt;&lt;%= data_set.name %&gt;&lt;/h3&gt;
-        &lt;p&gt;&lt;%= data_set.description %&gt;&lt;/p&gt;
-        &lt;p&gt;
-          &lt;% if data_set.user_task(current_user).present? %&gt;
-            &lt;%= link_to &#39;继续工作&#39;, workspace_data_set_path(data_set), class: &#39;btn btn-primary&#39; %&gt;
-          &lt;% else %&gt;
-            &lt;%= link_to &#39;开始工作&#39;, choose_task_data_set_path(data_set), method: :post, class: &#39;btn btn-primary&#39; %&gt;
-          &lt;% end %&gt;
-        &lt;/p&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-  &lt;% end %&gt;
+<p>在数据集合(DataSet)列表页面，列出多个集合(DataSet)，用户可以选择其中一个参与任务(Task)。如果用户还没有参与其中的某个项目，显示“开始工作”，否则显示“继续工作”，页面部分代码如下：</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">        &lt;% @data_sets.each do |data_set| %&gt;
+        &lt;div class=&quot;col-sm-6 col-md-4&quot;&gt;
+          &lt;div class=&quot;thumbnail&quot;&gt;
+            &lt;%= image_tag data_set.logo.url %&gt;
+            &lt;div class=&quot;caption&quot;&gt;
+              &lt;h3&gt;&lt;%= data_set.name %&gt;&lt;/h3&gt;
+              &lt;p&gt;&lt;%= data_set.description %&gt;&lt;/p&gt;
+              &lt;p&gt;
+                &lt;% if data_set.user_task(current_user).present? %&gt;
+                  &lt;%= link_to &#39;继续工作&#39;, workspace_data_set_path(data_set), class: &#39;btn btn-primary&#39; %&gt;
+                &lt;% else %&gt;
+                  &lt;%= link_to &#39;开始工作&#39;, choose_task_data_set_path(data_set), method: :post, class: &#39;btn btn-primary&#39; %&gt;
+                &lt;% end %&gt;
+              &lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;% end %&gt;
 </code></pre></div>
 <p>DataSetsController中的部分代码如下：</p>
 <div class="highlight"><pre><code class="text language-text" data-lang="text">class DataSetsController &lt; ApplicationController

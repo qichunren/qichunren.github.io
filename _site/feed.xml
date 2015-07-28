@@ -30,25 +30,25 @@ class Task &amp;lt; ActiveRecord::Base
   belongs_to :data_set
 end
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;在数据集合(DataSet)列表页面，列出多个集合(DataSet)，用户可以选择其中一个参与任务(Task)。如果用户还没有参与其中的某个项目，显示“开始工作”，否则显示“继续工作”，页面部分代码如下：
-      &amp;lt;% @data&lt;em&gt;sets.each do |data&lt;/em&gt;set| %&amp;gt;&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;  &amp;lt;div class=&amp;quot;col-sm-6 col-md-4&amp;quot;&amp;gt;
-    &amp;lt;div class=&amp;quot;thumbnail&amp;quot;&amp;gt;
-      &amp;lt;%= image_tag data_set.logo.url %&amp;gt;
-      &amp;lt;div class=&amp;quot;caption&amp;quot;&amp;gt;
-        &amp;lt;h3&amp;gt;&amp;lt;%= data_set.name %&amp;gt;&amp;lt;/h3&amp;gt;
-        &amp;lt;p&amp;gt;&amp;lt;%= data_set.description %&amp;gt;&amp;lt;/p&amp;gt;
-        &amp;lt;p&amp;gt;
-          &amp;lt;% if data_set.user_task(current_user).present? %&amp;gt;
-            &amp;lt;%= link_to &amp;#39;继续工作&amp;#39;, workspace_data_set_path(data_set), class: &amp;#39;btn btn-primary&amp;#39; %&amp;gt;
-          &amp;lt;% else %&amp;gt;
-            &amp;lt;%= link_to &amp;#39;开始工作&amp;#39;, choose_task_data_set_path(data_set), method: :post, class: &amp;#39;btn btn-primary&amp;#39; %&amp;gt;
-          &amp;lt;% end %&amp;gt;
-        &amp;lt;/p&amp;gt;
-      &amp;lt;/div&amp;gt;
-    &amp;lt;/div&amp;gt;
-  &amp;lt;/div&amp;gt;
-  &amp;lt;% end %&amp;gt;
+&lt;p&gt;在数据集合(DataSet)列表页面，列出多个集合(DataSet)，用户可以选择其中一个参与任务(Task)。如果用户还没有参与其中的某个项目，显示“开始工作”，否则显示“继续工作”，页面部分代码如下：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;        &amp;lt;% @data_sets.each do |data_set| %&amp;gt;
+        &amp;lt;div class=&amp;quot;col-sm-6 col-md-4&amp;quot;&amp;gt;
+          &amp;lt;div class=&amp;quot;thumbnail&amp;quot;&amp;gt;
+            &amp;lt;%= image_tag data_set.logo.url %&amp;gt;
+            &amp;lt;div class=&amp;quot;caption&amp;quot;&amp;gt;
+              &amp;lt;h3&amp;gt;&amp;lt;%= data_set.name %&amp;gt;&amp;lt;/h3&amp;gt;
+              &amp;lt;p&amp;gt;&amp;lt;%= data_set.description %&amp;gt;&amp;lt;/p&amp;gt;
+              &amp;lt;p&amp;gt;
+                &amp;lt;% if data_set.user_task(current_user).present? %&amp;gt;
+                  &amp;lt;%= link_to &amp;#39;继续工作&amp;#39;, workspace_data_set_path(data_set), class: &amp;#39;btn btn-primary&amp;#39; %&amp;gt;
+                &amp;lt;% else %&amp;gt;
+                  &amp;lt;%= link_to &amp;#39;开始工作&amp;#39;, choose_task_data_set_path(data_set), method: :post, class: &amp;#39;btn btn-primary&amp;#39; %&amp;gt;
+                &amp;lt;% end %&amp;gt;
+              &amp;lt;/p&amp;gt;
+            &amp;lt;/div&amp;gt;
+          &amp;lt;/div&amp;gt;
+        &amp;lt;/div&amp;gt;
+        &amp;lt;% end %&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;DataSetsController中的部分代码如下：&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;class DataSetsController &amp;lt; ApplicationController

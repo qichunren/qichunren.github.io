@@ -30,25 +30,25 @@ categories: Development
     end
 
 在数据集合(DataSet)列表页面，列出多个集合(DataSet)，用户可以选择其中一个参与任务(Task)。如果用户还没有参与其中的某个项目，显示“开始工作”，否则显示“继续工作”，页面部分代码如下：
-      <% @data_sets.each do |data_set| %>
-
-      <div class="col-sm-6 col-md-4">
-        <div class="thumbnail">
-          <%= image_tag data_set.logo.url %>
-          <div class="caption">
-            <h3><%= data_set.name %></h3>
-            <p><%= data_set.description %></p>
-            <p>
-              <% if data_set.user_task(current_user).present? %>
-                <%= link_to '继续工作', workspace_data_set_path(data_set), class: 'btn btn-primary' %>
-              <% else %>
-                <%= link_to '开始工作', choose_task_data_set_path(data_set), method: :post, class: 'btn btn-primary' %>
-              <% end %>
-            </p>
-          </div>
-        </div>
-      </div>
-      <% end %>
+       
+            <% @data_sets.each do |data_set| %>
+            <div class="col-sm-6 col-md-4">
+              <div class="thumbnail">
+                <%= image_tag data_set.logo.url %>
+                <div class="caption">
+                  <h3><%= data_set.name %></h3>
+                  <p><%= data_set.description %></p>
+                  <p>
+                    <% if data_set.user_task(current_user).present? %>
+                      <%= link_to '继续工作', workspace_data_set_path(data_set), class: 'btn btn-primary' %>
+                    <% else %>
+                      <%= link_to '开始工作', choose_task_data_set_path(data_set), method: :post, class: 'btn btn-primary' %>
+                    <% end %>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <% end %>
       
 DataSetsController中的部分代码如下：
 
