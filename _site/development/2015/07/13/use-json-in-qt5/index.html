@@ -1,0 +1,162 @@
+<html>
+  <head>
+    <meta content='在QT5中使用JSON库json-c - 蕲春人的博客' property='og:title' />
+    <title>在QT5中使用JSON库json-c - 蕲春人的博客</title>
+    <link href='/images/fav.png' rel='shortcut icon'>
+<link href='/stylesheets/style.css' rel='stylesheet' type='text/css' />
+<link href='/stylesheets/syntax.css' rel='stylesheet' type='text/css' />
+<link href='/stylesheets/responsive.css' rel='stylesheet' type='text/css' />
+<!-- - -->
+<script src='/javascripts/jquery.js' type='text/javascript'></script>
+<script src='/javascripts/pd.js' type='text/javascript'></script>
+<script src='/javascripts/basics.js' type='text/javascript'></script>
+<!--<script type="text/javascript" src="https://www.google.com/jsapi"></script>-->
+<!-- - -->
+<meta content='width=device-width, initial-scale=1.0, user-scalable=no' name='viewport'>
+<meta content='text/html; charset=utf-8' http-equiv='content-type' />
+<meta content="http://muan.co/images/og.png" property="og:image" />
+<meta content="" property="fb:app_id" />
+
+  <meta content='/development/2015/07/13/use-json-in-qt5/' property='og:url' />
+  <meta content="首先需要安装json-c库:    sudo apt-get install libjson-c-dev在QT的项目中，修改.pro文件，加入：        CONFIG += link_pkgconfig    PKGCONFIG..." property='og:description' />
+  <meta content="article" property="og:type" />
+
+<!-- - -->
+<script type='text/javascript'>
+  //<![CDATA[
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-6344646-4']);
+    _gaq.push(['_trackPageview']);
+    
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  //]]>
+</script>
+
+  </head>
+  <body>
+    <header>
+<p>蕲春人的博客</p>
+</header>
+    <div id='container'>
+      <div class="block">
+  
+    <a target="_top" class="main" href="/about">About</a>
+  
+    <a target="_blank" class="main" href="http://qichunren.github.io">Blog</a>
+  
+    <a target="_blank" class="main" href="mailto:whyruby@gmail.com">Email</a>
+  
+    <a target="_blank" class="main" href="http://github.com/qichunren">GitHub</a>
+  
+</div>
+      <section class="paging">
+  
+    <div class="left">
+      <a href="/development/2014/10/23/game-resources-note/">
+        ‹
+      </a>
+    </div>
+  
+  
+    <div class="right">
+      <a href="/development/2015/07/28/http-get-and-post/">
+        ›
+      </a>
+    </div>
+  
+</section>
+      <div class="content">
+        <section class='post'>
+          <h1 class="upcase">
+            <div class='date'>13 Jul 2015</div>
+            在QT5中使用JSON库json-c
+          </h1>
+          <p>首先需要安装json-c库:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">sudo apt-get install libjson-c-dev
+</code></pre></div>
+<p>在QT的项目中，修改.pro文件，加入：</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">CONFIG += link_pkgconfig
+PKGCONFIG += json-c
+</code></pre></div>
+<p>上代码：</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">        #include &lt;json/json.h&gt;
+
+        /*Creating a json object*/
+        json_object * jobj = json_object_new_object();
+
+        /*Creating a json string*/
+        json_object *jstring = json_object_new_string(&quot;Joys of Programming&quot;);
+
+        /*Creating a json integer*/
+        json_object *jint = json_object_new_int(10);
+
+        /*Creating a json boolean*/
+        json_object *jboolean = json_object_new_boolean(1);
+
+        /*Creating a json double*/
+        json_object *jdouble = json_object_new_double(2.14);
+
+        /*Creating a json array*/
+        json_object *jarray = json_object_new_array();
+
+        /*Creating json strings*/
+        json_object *jstring1 = json_object_new_string(&quot;c&quot;);
+        json_object *jstring2 = json_object_new_string(&quot;c++&quot;);
+        json_object *jstring3 = json_object_new_string(&quot;php&quot;);
+
+        /*Adding the above created json strings to the array*/
+        json_object_array_add(jarray,jstring1);
+        json_object_array_add(jarray,jstring2);
+        json_object_array_add(jarray,jstring3);
+        json_object_array_add(jarray,jstring4);
+
+        /*Form the json object*/
+        /*Each of these is like a key value pair*/
+        json_object_object_add(jobj,&quot;Site Name&quot;, jstring);
+        json_object_object_add(jobj,&quot;Technical blog&quot;, jboolean);
+        json_object_object_add(jobj,&quot;Average posts per day&quot;, jdouble);
+        json_object_object_add(jobj,&quot;Number of posts&quot;, jint);
+        json_object_object_add(jobj,&quot;Categories&quot;, jarray);
+
+        /*Now printing the json object*/
+        printf (&quot;The json object created: %sn&quot;,json_object_to_json_string(jobj));    
+</code></pre></div>
+<p>程序结果是：</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">  The json object created: { &quot;Site Name&quot;: &quot;Joys of Programming&quot;, &quot;Technical blog&quot;: true, &quot;Average posts per day&quot;: 2.140000, &quot;Number of posts&quot;: 10, &quot;Categories&quot;: [ &quot;c&quot;, &quot;c++&quot;, &quot;php&quot; ] }n/            
+</code></pre></div>
+          <br />
+<p>
+  蕲春人
+  <span class="muted">at 12:30</span>
+</p>
+<p>
+  <img src="/images/scribble3.png" alt="scribble" />
+</p>
+
+
+        </section>
+      </div>
+      
+
+      
+      <div class="block">
+  
+    <a target="_top" class="main" href="/about">About</a>
+  
+    <a target="_blank" class="main" href="http://qichunren.github.io">Blog</a>
+  
+    <a target="_blank" class="main" href="mailto:whyruby@gmail.com">Email</a>
+  
+    <a target="_blank" class="main" href="http://github.com/qichunren">GitHub</a>
+  
+</div>
+    </div>
+    <footer>
+  <a href="http://github.com/muan/scribble" class="muted">built with Jekyll using Scribble theme</a>
+</footer>
+  </body>
+</html>
