@@ -7,6 +7,101 @@
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>对使用http请求的GET和POST的一点思考</title>
+        <description>&lt;p&gt;对使用http请求的GET和POST的一点思考&lt;/p&gt;
+
+&lt;p&gt;在web开发中，一个http请求方法有GET / HEAD / PUT / DELETE / OPTIONS / CONNECT几个形式，对此不多究。我想谈谈我对使用GET和POST请求的一些思考。&lt;/p&gt;
+
+&lt;p&gt;先来讲一个我最近做的一个 Ruby on Rails 项目，在那个项目中，用户(User)可以选择某一个数据集合(DataSet)项目参与其中做任务(Task)。模型关系如下&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;class User &amp;lt; ActiveRecord::Base
+  has_many :tasks       
+end
+
+class DataSet &amp;lt; ActiveRecord::Base
+
+  def user_task(user)
+    user.tasks.where(data_set_id: self.id).first
+  end
+
+end
+
+class Task &amp;lt; ActiveRecord::Base
+  belongs_to :user
+  belongs_to :data_set
+end
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;在数据集合(DataSet)列表页面，列出多个集合(DataSet)，用户可以选择其中一个参与任务(Task)。如果用户还没有参与其中的某个项目，显示“开始工作”，否则显示“继续工作”，页面部分代码如下：
+    &amp;lt;% @data&lt;em&gt;sets.each do |data&lt;/em&gt;set| %&amp;gt;&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;  &amp;lt;div class=&amp;quot;col-sm-6 col-md-4&amp;quot;&amp;gt;
+    &amp;lt;div class=&amp;quot;thumbnail&amp;quot;&amp;gt;
+      &amp;lt;%= image_tag data_set.logo.url %&amp;gt;
+      &amp;lt;div class=&amp;quot;caption&amp;quot;&amp;gt;
+        &amp;lt;h3&amp;gt;&amp;lt;%= data_set.name %&amp;gt;&amp;lt;/h3&amp;gt;
+        &amp;lt;p&amp;gt;&amp;lt;%= data_set.description %&amp;gt;&amp;lt;/p&amp;gt;
+        &amp;lt;p&amp;gt;
+          &amp;lt;% if data_set.user_task(current_user).present? %&amp;gt;
+            &amp;lt;%= link_to &amp;#39;继续工作&amp;#39;, workspace_data_set_path(data_set), class: &amp;#39;btn btn-primary&amp;#39; %&amp;gt;
+          &amp;lt;% else %&amp;gt;
+            &amp;lt;%= link_to &amp;#39;开始工作&amp;#39;, choose_task_data_set_path(data_set), method: :post, class: &amp;#39;btn btn-primary&amp;#39; %&amp;gt;
+          &amp;lt;% end %&amp;gt;
+        &amp;lt;/p&amp;gt;
+      &amp;lt;/div&amp;gt;
+    &amp;lt;/div&amp;gt;
+  &amp;lt;/div&amp;gt;
+  &amp;lt;% end %&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;DataSetsController中的部分代码如下：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;class DataSetsController &amp;lt; ApplicationController
+  before_action :authenticate_user!
+  before_action :set_data_set, only: [:show, :edit, :update, :destroy, :choose_task, :workspace, :mark_picture]
+
+  # GET /data_sets
+  # GET /data_sets.json
+  def index
+    @data_sets = DataSet.all
+  end
+
+  # POST /data_sets/1/choose_task
+  def choose_task
+    if current_user.tasks.where(data_set_id: @data_set.id).first.nil?
+      current_user.tasks.build(data_set_id: @data_set.id).save
+    end
+
+    redirect_to workspace_data_set_path(@data_set)
+  end
+
+  # GET /data_sets/1/workspace
+  def workspace   
+    # ...
+  end
+end 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;当初在设计这个页面上逻辑的时候，一开始以为直接用一个方法请求就搞定了,页面点击“开始工作”或者“继续工作”按钮，直接GET请求跳转到用户工作台链接/data&lt;em&gt;sets/{id}/workspace，在workspace action中加入额外的逻辑判断是否要创建用户的任务(Task)。我接着认真思考了一下，发现这样不妥。原因有是GET /data&lt;/em&gt;sets/{id}/workspace中的逻辑不纯粹， 与它的URL本身语义不符合。也不利于测试。&lt;/p&gt;
+
+&lt;p&gt;那也许有人会说我将workspace这个action改成POST显示可以吗？答案也是不可以的，因为你点击按钮进入这个页面后，你如果刷新当前的workspace页面，浏览器会提示是否重复提交请求的提示，给用户的体验也不好。实质是这个请求不可cache。另外在其它页面地方也不能通过一般的a link的方式进入workspace页面，不可传播。&lt;/p&gt;
+
+&lt;p&gt;现在我将这个逻辑分开写了 POST /data&lt;em&gt;sets/{id}/choose&lt;/em&gt;task 和 GET /data_sets/{id}/workspace 两个请求，代码逻辑是很合理的。用户可以随意刷新他的工作台，而不用担心刷新会改变什么数据。&lt;/p&gt;
+
+&lt;p&gt;啰嗦了这么多，其实这是一个很小的问题，但是容易忽略。之前在一个公司维护一个项目，发现页面中做的一个商品多条件查询表单居然是用POST请求的。每次在浏览器中查询商品后，按F5刷新，总是提示是否重复提交请求。另外我还没有办法把我查询找到的商品结果页面发给我其他的朋友。&lt;/p&gt;
+
+&lt;p&gt;现在我来总结一下http请求的GET和POST方法使用。&lt;/p&gt;
+
+&lt;p&gt;首先如名词所示，GET是用来从服务器上请求指定的资源，请求携带的信息都是体现在URL参数上面，如/products?category=1&amp;amp;color=red。URL长度有限制。&lt;/p&gt;
+
+&lt;p&gt;POST是向服务器中提交数据，请求携带的信息一般放在http请求的消息体中，上传的数据长度在服务器端可以限制。&lt;/p&gt;
+
+&lt;p&gt;从这里应该可以明确一点：GET请求应该不会带来影响的，重复请求不会改动服务器上的资源，它只负责取数据。POST请求是想服务器提交数据，重复提交动作对服务器资源是有影响的。那么GET请求是可以被前端缓存的，而POST请求不行。&lt;/p&gt;
+
+&lt;p&gt;在用户的浏览器中，GET请求的URL是可以被保存书签的，POST请求不行。GET请求的URL是有历史记录的，可以前进 / 后退 / 刷新。POST请求则不行。&lt;/p&gt;
+
+&lt;p&gt;完。&lt;/p&gt;
+</description>
+        <pubDate>Tue, 28 Jul 2015 20:30:00 +0800</pubDate>
+        <link>/development/2015/07/28/http-get-and-post/</link>
+        <guid isPermaLink="true">/development/2015/07/28/http-get-and-post/</guid>
+      </item>
+    
+      <item>
         <title>在QT5中使用JSON库json-c</title>
         <description>&lt;p&gt;首先需要安装json-c库:&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;sudo apt-get install libjson-c-dev
@@ -645,24 +740,6 @@ UPDATE 1
         <pubDate>Tue, 27 Nov 2012 10:52:00 +0800</pubDate>
         <link>/database/2012/11/27/start-use-postgresql/</link>
         <guid isPermaLink="true">/database/2012/11/27/start-use-postgresql/</guid>
-      </item>
-    
-      <item>
-        <title>Ruby China Chrome浏览器插件</title>
-        <description>&lt;p&gt;前几天，我花了几天业余时间制作了Ruby China社区网站的Chrome浏览器插件，通过这个插件可以：&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;不用前往Ruby China网站去浏览主题帖子，直接点击插件图标查看主题。&lt;/li&gt;
-&lt;li&gt;显示个人未读消息提醒&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;另外，我发现Chrome浏览器的插件开发非常简单，自由度很大，根据它的开发规范，可以非常容易实现扩展开发。在我了解了这一点之后，我更加喜欢Chrome浏览器了。&lt;/p&gt;
-
-&lt;p&gt;这个Chrome浏览器插件项目是开源的，代码在&lt;a href=&quot;https://github.com/qichunren/ruby-china-chrome&quot;&gt;https://github.com/qichunren/ruby-china-chrome&lt;/a&gt;&lt;/p&gt;
-</description>
-        <pubDate>Mon, 18 Jun 2012 14:56:00 +0800</pubDate>
-        <link>/web/2012/06/18/i-build-ruby-china-chrome-extension/</link>
-        <guid isPermaLink="true">/web/2012/06/18/i-build-ruby-china-chrome-extension/</guid>
       </item>
     
   </channel>
