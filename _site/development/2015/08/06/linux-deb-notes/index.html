@@ -1,7 +1,7 @@
 <html>
   <head>
-    <meta content='买票记 - 蕲春人的博客' property='og:title' />
-    <title>买票记 - 蕲春人的博客</title>
+    <meta content='Linux Deb package notes - 蕲春人的博客' property='og:title' />
+    <title>Linux Deb package notes - 蕲春人的博客</title>
     <link href='/images/fav.png' rel='shortcut icon'>
 <link href='/stylesheets/style.css' rel='stylesheet' type='text/css' />
 <link href='/stylesheets/syntax.css' rel='stylesheet' type='text/css' />
@@ -17,8 +17,8 @@
 <meta content="http://muan.co/images/og.png" property="og:image" />
 <meta content="" property="fb:app_id" />
 
-  <meta content='/life/2010/02/01/buy-tickets/' property='og:url' />
-  <meta content="昨天是周日，下午三点起开售2月10号的票。 早上就搬一个小板凳去排队。 火车站几百个临时售票窗口前条条长队，哦，还有很多武警。 车票信息屏上显示着到全国各地的车票信息。 下午三点正式售票了。我看着车票信息屏，感觉就像是股市开早盘了，不..." property='og:description' />
+  <meta content='/development/2015/08/06/linux-deb-notes/' property='og:url' />
+  <meta content="使用dh_make命令可以在项目中生成默认的debian目录，此debian目录中包含了默认的deb打包规范的一系列文件。    dh_make --createorig --single -e whyruby@gmail.com -..." property='og:description' />
   <meta content="article" property="og:type" />
 
 <!-- - -->
@@ -56,47 +56,49 @@
       <section class="paging">
   
     <div class="left">
-      <a href="/life/2009/12/17/i-fell-unhappy/">
+      <a href="/development/2015/07/28/http-get-and-post/">
         ‹
       </a>
     </div>
   
   
-    <div class="right">
-      <a href="/rails/2010/04/06/create-static-page-class-in-model/">
-        ›
-      </a>
-    </div>
-  
 </section>
       <div class="content">
         <section class='post'>
           <h1 class="upcase">
-            <div class='date'>01 Feb 2010</div>
-            买票记
+            <div class='date'>06 Aug 2015</div>
+            Linux Deb package notes
           </h1>
-          <p>昨天是周日，下午三点起开售2月10号的票。 </p>
+          <p>使用dh_make命令可以在项目中生成默认的debian目录，此debian目录中包含了默认的deb打包规范的一系列文件。</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">dh_make --createorig --single -e whyruby@gmail.com -c gpl
+</code></pre></div>
+<p>需要注意的是在项目目录中执行dh_make命令的时候，会提示项目目录必须要是project-name-1.0类似的形式。</p>
 
-<p>早上就搬一个小板凳去排队。 </p>
+<p>在dh_make命令执行后，继续运行</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">dpkg-buildpackage -uc -us
+</code></pre></div>
+<p>会在当前项目目录的上一层生成deb文件。</p>
 
-<p>火车站几百个临时售票窗口前条条长队，哦，还有很多武警。 </p>
+<p>deb包的构建规范中规定了一系列的规则，最常用的有安装时的文件路经对应，此文件位于debian/install中，如将编译文件的可执行文件将安装的/usr/bin目录，将程序执行图标文件放在/usr/share/applications目录。install文件中类似这样：</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">bin/new-pis usr/bin
+new-pis.desktop /usr/share/applications
+new-pis-icon.png /usr/share/pixmaps
+db/data.db /var/lib/new-pis
+</code></pre></div>
+<p>debian目录中其它的文件如提供cron job的文件，日志文件分割等以后深究。</p>
 
-<p>车票信息屏上显示着到全国各地的车票信息。 </p>
+<h3>References</h3>
 
-<p>下午三点正式售票了。我看着车票信息屏，感觉就像是股市开早盘了，不过比股市更疯狂，在不一个小时的时间里，几百张上千张的到各地的2月10号的车票大部分一售而空，剩余票数从几百一下子变成了0。票务系统都有些卡了。 </p>
-
-<p>买到票的人兴奋不已，我看到他们一个劲的仔细的看着他的票。 </p>
-
-<p>同时我看到了黄牛党混在其中，兴奋不已，搞到一次票后，又来后面排队。 </p>
-
-<p>我没有杯具，买到了一张到三亚的票。不过我一个同学就杯具了，问的时候还有票，付钱的时候就没有票了，只能期待今天能买到11号的票了。 </p>
-
-<p>一个小时后售票处就冷清下来了。</p>
+<ul>
+<li><a href="https://www.debian.org/doc/manuals/debian-faq/ch-pkg_basics.en.html">Basics of the Debian package management system </a></li>
+<li><a href="https://www.debian.org/doc/manuals/debmake-doc/index.en.html">Guide for Debian Maintainers</a></li>
+<li><a href="http://www.tldp.org/HOWTO/Debian-Binary-Package-Building-HOWTO/index.html">Debian Binary Package Building HOWTO</a></li>
+</ul>
 
           <br />
 <p>
   蕲春人
-  <span class="muted">at 11:54</span>
+  <span class="muted">at 20:30</span>
 </p>
 <p>
   <img src="/images/scribble3.png" alt="scribble" />

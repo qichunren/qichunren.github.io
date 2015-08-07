@@ -11,13 +11,13 @@ links:
     url:          /about
   - name:         Blog
     url:          http://qichunren.github.io
-    external:     true
+    external:     false
   - name:         Email
     url:          mailto:whyruby@gmail.com
     external:     true
   - name:         GitHub
-    url:          http://github.com/qichunren
-    external:     true
+    url:          https://github.com/qichunren
+    external:     false
 pygments:         true
 permalink:        pretty
 markdown:         redcarpet

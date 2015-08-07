@@ -7,6 +7,39 @@
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>Linux Deb package notes</title>
+        <description>&lt;p&gt;使用dh_make命令可以在项目中生成默认的debian目录，此debian目录中包含了默认的deb打包规范的一系列文件。&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;dh_make --createorig --single -e whyruby@gmail.com -c gpl
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;需要注意的是在项目目录中执行dh_make命令的时候，会提示项目目录必须要是project-name-1.0类似的形式。&lt;/p&gt;
+
+&lt;p&gt;在dh_make命令执行后，继续运行&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;dpkg-buildpackage -uc -us
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;会在当前项目目录的上一层生成deb文件。&lt;/p&gt;
+
+&lt;p&gt;deb包的构建规范中规定了一系列的规则，最常用的有安装时的文件路经对应，此文件位于debian/install中，如将编译文件的可执行文件将安装的/usr/bin目录，将程序执行图标文件放在/usr/share/applications目录。install文件中类似这样：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;bin/new-pis usr/bin
+new-pis.desktop /usr/share/applications
+new-pis-icon.png /usr/share/pixmaps
+db/data.db /var/lib/new-pis
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;debian目录中其它的文件如提供cron job的文件，日志文件分割等以后深究。&lt;/p&gt;
+
+&lt;h3&gt;References&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.debian.org/doc/manuals/debian-faq/ch-pkg_basics.en.html&quot;&gt;Basics of the Debian package management system &lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.debian.org/doc/manuals/debmake-doc/index.en.html&quot;&gt;Guide for Debian Maintainers&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.tldp.org/HOWTO/Debian-Binary-Package-Building-HOWTO/index.html&quot;&gt;Debian Binary Package Building HOWTO&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Thu, 06 Aug 2015 20:30:00 +0800</pubDate>
+        <link>/development/2015/08/06/linux-deb-notes/</link>
+        <guid isPermaLink="true">/development/2015/08/06/linux-deb-notes/</guid>
+      </item>
+    
+      <item>
         <title>对使用http请求的GET和POST的一点思考</title>
         <description>&lt;p&gt;对使用http请求的GET和POST的一点思考&lt;/p&gt;
 
@@ -408,21 +441,6 @@ vagrant box add precise64 http://files.vagrantup.com/precise64.box&lt;/li&gt;
         <pubDate>Sun, 22 Sep 2013 20:43:00 +0800</pubDate>
         <link>/tool/2013/09/22/start-use-vagrant/</link>
         <guid isPermaLink="true">/tool/2013/09/22/start-use-vagrant/</guid>
-      </item>
-    
-      <item>
-        <title>最近的境况</title>
-        <description>&lt;p&gt;好久没有写点东西了。平时虽然脑中想到的东西蛮多的，但是要把它们完整地通过文字表达出来居然有些困难。这是我不想看到的结果。我需要克服各种困难，提高自己的执行效率，提高自己的表达能力。&lt;/p&gt;
-
-&lt;p&gt;我在最近的公司项目中遇到了一些困难，导致工作进展缓慢，压力很大。项目的需求在一个多月之前发生了较多的变化，导致之前的软件设计有许多变化。基于演变后的需求进行的结构逻辑设计方面，在我看来，感觉有些混乱，代码写得不顺畅。然后产品客户方面的界面需求与我们现有的产品设计之间在理解上还有不少差距。项目上线发布时间越来越近，如何在产品发布之前，做出一个完美的产品，真的挑战蛮大的。&lt;/p&gt;
-
-&lt;p&gt;我现在要做的事情就是克服困难，积极沟通，发现问题，及时解决问题。&lt;/p&gt;
-
-&lt;p&gt;加油！&lt;/p&gt;
-</description>
-        <pubDate>Wed, 22 May 2013 00:03:00 +0800</pubDate>
-        <link>/life/2013/05/22/recently-my-thought/</link>
-        <guid isPermaLink="true">/life/2013/05/22/recently-my-thought/</guid>
       </item>
     
   </channel>
