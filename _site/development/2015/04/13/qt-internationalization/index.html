@@ -1,7 +1,7 @@
 <html>
   <head>
-    <meta content='Game resources note - 蕲春人的博客' property='og:title' />
-    <title>Game resources note - 蕲春人的博客</title>
+    <meta content='在QT5中使用国际化语言 - 蕲春人的博客' property='og:title' />
+    <title>在QT5中使用国际化语言 - 蕲春人的博客</title>
     <link href='/images/fav.png' rel='shortcut icon'>
 <link href='/stylesheets/style.css' rel='stylesheet' type='text/css' />
 <link href='/stylesheets/syntax.css' rel='stylesheet' type='text/css' />
@@ -17,8 +17,8 @@
 <meta content="http://muan.co/images/og.png" property="og:image" />
 <meta content="" property="fb:app_id" />
 
-  <meta content='/development/2014/10/23/game-resources-note/' property='og:url' />
-  <meta content="Game replay video here: https://everyplay.com[The Big List Of Game Design](http://www.pixelprospector.com/the-big-lis..." property='og:description' />
+  <meta content='/development/2015/04/13/qt-internationalization/' property='og:url' />
+  <meta content="QT程序启动时加载Translator    QTranslator translator;    translator.load("ntptu_" + QLocale::system().name(),               ..." property='og:description' />
   <meta content="article" property="og:type" />
 
 <!-- - -->
@@ -56,14 +56,14 @@
       <section class="paging">
   
     <div class="left">
-      <a href="/life/2014/10/04/europe-travel/">
+      <a href="/development/2015/01/13/c-plus-plus-single-instance-notes/">
         ‹
       </a>
     </div>
   
   
     <div class="right">
-      <a href="/development/2015/01/13/c-plus-plus-single-instance-notes/">
+      <a href="/development/2015/07/01/my-dev-notes1/">
         ›
       </a>
     </div>
@@ -72,59 +72,51 @@
       <div class="content">
         <section class='post'>
           <h1 class="upcase">
-            <div class='date'>23 Oct 2014</div>
-            Game resources note
+            <div class='date'>13 Apr 2015</div>
+            在QT5中使用国际化语言
           </h1>
-          <p>Game replay video here: https://everyplay.com</p>
+          <p>QT程序启动时加载Translator</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">QTranslator translator;
+translator.load(&quot;ntptu_&quot; + QLocale::system().name(),
+                      &quot;:/translations&quot;);
+a.installTranslator(&amp;translator);
 
-<p><a href="http://www.pixelprospector.com/the-big-list-of-game-design/">The Big List Of Game Design</a></p>
 
-<h2>Audio:</h2>
-
-<p>http://www.bfxr.net/ generate small music sound, such as &lsquo;power up&rsquo;, &lsquo;coin collect&rsquo;, &lsquo;Attack&rsquo;, &lsquo;Explosion&rsquo;</p>
-
-<p>http://www.flashkit.com/ sound resources.</p>
-
-<h2>Images</h2>
-
-<p>VOXEL Builder http://voxelbuilder.com/
-2.5D model tool: http://www.angryoctopus.co.nz/?p=177
-http://opengameart.org/</p>
-
-<h3>Tileset</h3>
-
-<p>https://vxresource.wordpress.com/category/resources/tilesets/
-http://www.engine001.com/resources/tilesets.htm
-http://opengameart.org/content/isometric-tiles</p>
-
-<h2>Threoy</h2>
-
-<p>http://www.lostgarden.com/
-<a href="http://gamemechanicexplorer.com/">http://gamemechanicexplorer.com/</a>里面基于Phaser引擎讲解了许多游戏中常用的设计算法，如角色行走，导弹路径，光，视野等。</p>
-
-<h2>Games</h2>
-
-<p>http://spryfox.com/our-games/</p>
-
-<h3>Voxel editors</h3>
-
-<p>https://bitbucket.org/volumesoffun/polyvox/wiki/Voxel%20editors</p>
-
-<h2>WebSites</h2>
-
-<p>http://www.gamasutra.com/
-http://gamedevelopment.tutsplus.com/</p>
-
-<p>Create tile game tutuoal: http://www.tonypa.pri.ee/tbw/start.html</p>
-
-<p>Isometric Tiles Introduction: http://flarerpg.org/tutorials/isometric_intro/</p>
-
-<p>Character Generator: http://gaurav.munjal.us/Universal-LPC-Spritesheet-Character-Generator/</p>
-
+QString message(tr(&quot;voices directory did not exist in data directory %1!&quot;));
+message.arg(dir.absolutePath());
+</code></pre></div>
+<p>lupdate工具是解析程序代码中使用tr方法和ui文件中的字符串，生成ts文件</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">lupdate -verbose project.pro
+</code></pre></div>
+<p>linguist这个工具可以直接在程序界面上翻译代码和ui文件中的字符串。</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">linguist project_zh_CN.ts
+</code></pre></div>
+<p>lrelease是将ts文件生成pm文件</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">lrelease -verbose project_zh_CN.ts
+</code></pre></div>
+<p>设置环境变量进行测试</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">qichunren@qichunren-desktop:~/code/new-pis$ locale
+LANG=zh_CN.UTF-8
+LANGUAGE=en_US
+LC_CTYPE=&quot;zh_CN.UTF-8&quot;
+LC_NUMERIC=&quot;zh_CN.UTF-8&quot;
+LC_TIME=&quot;zh_CN.UTF-8&quot;
+LC_COLLATE=&quot;zh_CN.UTF-8&quot;
+LC_MONETARY=&quot;zh_CN.UTF-8&quot;
+LC_MESSAGES=&quot;zh_CN.UTF-8&quot;
+LC_PAPER=&quot;zh_CN.UTF-8&quot;
+LC_NAME=&quot;zh_CN.UTF-8&quot;
+LC_ADDRESS=&quot;zh_CN.UTF-8&quot;
+LC_TELEPHONE=&quot;zh_CN.UTF-8&quot;
+LC_MEASUREMENT=&quot;zh_CN.UTF-8&quot;
+LC_IDENTIFICATION=&quot;zh_CN.UTF-8&quot;
+LC_ALL=zh_CN.UTF-8
+qichunren@qichunren-desktop:~/code/new-pis$ export LANGUAGE=zh_CN
+</code></pre></div>
           <br />
 <p>
   蕲春人
-  <span class="muted">at 17:05</span>
+  <span class="muted">at 18:42</span>
 </p>
 <p>
   <img src="/images/scribble3.png" alt="scribble" />
