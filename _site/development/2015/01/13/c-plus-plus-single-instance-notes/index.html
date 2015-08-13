@@ -84,13 +84,15 @@
   class DataPackage : public QObject
   {
       Q_OBJECT
-  public:
-      explicit DataPackage(QObject *parent = 0);
+  public:          
       static DataPackage &amp;instance();
 
   signals:
 
   public slots:
+
+  private:
+      explicit DataPackage(QObject *parent = 0);
 
   };
 
@@ -117,6 +119,10 @@
   DataPackage::instance();
 </code></pre></div>
 <p>连续调用两次instance方法，发现只会示例一次。搞定。</p>
+
+<h2>参考资料</h2>
+
+<p><a href="http://stackoverflow.com/questions/1008019/c-singleton-design-pattern">C++ Singleton design pattern</a></p>
 
           <br />
 <p>

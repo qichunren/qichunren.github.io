@@ -16,13 +16,15 @@ data_package.h文件
       class DataPackage : public QObject
       {
           Q_OBJECT
-      public:
-          explicit DataPackage(QObject *parent = 0);
+      public:          
           static DataPackage &instance();
 
       signals:
 
       public slots:
+
+      private:
+          explicit DataPackage(QObject *parent = 0);
 
       };
 
@@ -54,3 +56,7 @@ data_package.cpp文件
 
 
 连续调用两次instance方法，发现只会示例一次。搞定。
+
+## 参考资料
+
+[C++ Singleton design pattern](http://stackoverflow.com/questions/1008019/c-singleton-design-pattern)

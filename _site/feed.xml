@@ -261,13 +261,15 @@ qichunren@qichunren-desktop:~/code/new-pis$ export LANGUAGE=zh_CN
   class DataPackage : public QObject
   {
       Q_OBJECT
-  public:
-      explicit DataPackage(QObject *parent = 0);
+  public:          
       static DataPackage &amp;amp;instance();
 
   signals:
 
   public slots:
+
+  private:
+      explicit DataPackage(QObject *parent = 0);
 
   };
 
@@ -294,6 +296,10 @@ qichunren@qichunren-desktop:~/code/new-pis$ export LANGUAGE=zh_CN
   DataPackage::instance();
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;连续调用两次instance方法，发现只会示例一次。搞定。&lt;/p&gt;
+
+&lt;h2&gt;参考资料&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://stackoverflow.com/questions/1008019/c-singleton-design-pattern&quot;&gt;C++ Singleton design pattern&lt;/a&gt;&lt;/p&gt;
 </description>
         <pubDate>Tue, 13 Jan 2015 10:43:00 +0800</pubDate>
         <link>/development/2015/01/13/c-plus-plus-single-instance-notes/</link>
