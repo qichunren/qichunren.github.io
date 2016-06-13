@@ -1,7 +1,7 @@
 <html>
   <head>
-    <meta content='Linux Deb package notes - 蕲春人的博客' property='og:title' />
-    <title>Linux Deb package notes - 蕲春人的博客</title>
+    <meta content='FANN NOTES - 蕲春人的博客' property='og:title' />
+    <title>FANN NOTES - 蕲春人的博客</title>
     <link href='/images/fav.png' rel='shortcut icon'>
 <link href='/stylesheets/style.css' rel='stylesheet' type='text/css' />
 <link href='/stylesheets/syntax.css' rel='stylesheet' type='text/css' />
@@ -17,8 +17,8 @@
 <meta content="http://muan.co/images/og.png" property="og:image" />
 <meta content="" property="fb:app_id" />
 
-  <meta content='/development/2015/08/06/linux-deb-notes/' property='og:url' />
-  <meta content="使用dh_make命令可以在项目中生成默认的debian目录，此debian目录中包含了默认的deb打包规范的一系列文件。    dh_make --createorig --single -e whyruby@gmail.com -..." property='og:description' />
+  <meta content='/development/2015/08/18/fann-notes/' property='og:url' />
+  <meta content="* [用BP人工神经网络识别手写数字——《Python也可以》之三 ](http://pythonic.zoomquiet.io/data/20120202112907/index.html)* [libfann/fann](http..." property='og:description' />
   <meta content="article" property="og:type" />
 
 <!-- - -->
@@ -56,14 +56,14 @@
       <section class="paging">
   
     <div class="left">
-      <a href="/development/2015/07/28/http-get-and-post/">
+      <a href="/development/2015/08/06/linux-deb-notes/">
         ‹
       </a>
     </div>
   
   
     <div class="right">
-      <a href="/development/2015/08/18/fann-notes/">
+      <a href="/development/2016/03/24/capture-all-request-webpage-send/">
         ›
       </a>
     </div>
@@ -72,33 +72,14 @@
       <div class="content">
         <section class='post'>
           <h1 class="upcase">
-            <div class='date'>06 Aug 2015</div>
-            Linux Deb package notes
+            <div class='date'>18 Aug 2015</div>
+            FANN NOTES
           </h1>
-          <p>使用dh_make命令可以在项目中生成默认的debian目录，此debian目录中包含了默认的deb打包规范的一系列文件。</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">dh_make --createorig --single -e whyruby@gmail.com -c gpl
-</code></pre></div>
-<p>需要注意的是在项目目录中执行dh_make命令的时候，会提示项目目录必须要是project-name-1.0类似的形式。</p>
-
-<p>在dh_make命令执行后，继续运行</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">dpkg-buildpackage -uc -us
-</code></pre></div>
-<p>会在当前项目目录的上一层生成deb文件。</p>
-
-<p>deb包的构建规范中规定了一系列的规则，最常用的有安装时的文件路经对应，此文件位于debian/install中，如将编译文件的可执行文件将安装的/usr/bin目录，将程序执行图标文件放在/usr/share/applications目录。install文件中类似这样：</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">bin/new-pis usr/bin
-new-pis.desktop /usr/share/applications
-new-pis-icon.png /usr/share/pixmaps
-db/data.db /var/lib/new-pis
-</code></pre></div>
-<p>debian目录中其它的文件如提供cron job的文件，日志文件分割等以后深究。</p>
-
-<h3>References</h3>
-
-<ul>
-<li><a href="https://www.debian.org/doc/manuals/debian-faq/ch-pkg_basics.en.html">Basics of the Debian package management system </a></li>
-<li><a href="https://www.debian.org/doc/manuals/debmake-doc/index.en.html">Guide for Debian Maintainers</a></li>
-<li><a href="http://www.tldp.org/HOWTO/Debian-Binary-Package-Building-HOWTO/index.html">Debian Binary Package Building HOWTO</a></li>
+          <ul>
+<li><a href="http://pythonic.zoomquiet.io/data/20120202112907/index.html">用BP人工神经网络识别手写数字——《Python也可以》之三 </a></li>
+<li><a href="https://github.com/libfann/fann">libfann/fann</a></li>
+<li><a href="http://neuralnetworksanddeeplearning.com/index.html">Neural Networks and Deep Learning</a></li>
+<li><a href="http://karpathy.github.io/neuralnets/">Hacker&rsquo;s guide to Neural Networks</a></li>
 </ul>
 
           <br />
