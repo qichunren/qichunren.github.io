@@ -200,7 +200,7 @@ end
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;CONFIG += link_pkgconfig
 PKGCONFIG += json-c
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;上代码：&lt;/p&gt;
+&lt;p&gt;构建JSON的方法如下    &lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;        #include &amp;lt;json/json.h&amp;gt;
 
         /*Creating a json object*/
@@ -244,7 +244,54 @@ PKGCONFIG += json-c
         printf (&amp;quot;The json object created: %sn&amp;quot;,json_object_to_json_string(jobj));    
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;程序结果是：&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;  The json object created: { &amp;quot;Site Name&amp;quot;: &amp;quot;Joys of Programming&amp;quot;, &amp;quot;Technical blog&amp;quot;: true, &amp;quot;Average posts per day&amp;quot;: 2.140000, &amp;quot;Number of posts&amp;quot;: 10, &amp;quot;Categories&amp;quot;: [ &amp;quot;c&amp;quot;, &amp;quot;c++&amp;quot;, &amp;quot;php&amp;quot; ] }n/            
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;  The json object created: { &amp;quot;Site Name&amp;quot;: &amp;quot;Joys of Programming&amp;quot;, &amp;quot;Technical blog&amp;quot;: true, &amp;quot;Average posts per day&amp;quot;: 2.140000, &amp;quot;Number of posts&amp;quot;: 10, &amp;quot;Categories&amp;quot;: [ &amp;quot;c&amp;quot;, &amp;quot;c++&amp;quot;, &amp;quot;php&amp;quot; ] }
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;解析JSON字符串的方法如下&lt;/p&gt;
+
+&lt;p&gt;例如有如下的字符串&lt;/p&gt;
+
+&lt;p&gt;{&amp;ldquo;column&amp;rdquo;:[&amp;ldquo;symbol&amp;rdquo;,&amp;ldquo;name&amp;rdquo;],&amp;ldquo;data&amp;rdquo;:[[&amp;ldquo;SZ000001&amp;rdquo;,&amp;ldquo;平安银行&amp;rdquo;],[&amp;ldquo;SZ000005&amp;rdquo;,&amp;ldquo;世纪星源&amp;rdquo;],[&amp;ldquo;SZ000006&amp;rdquo;,&amp;ldquo;深振业A&amp;rdquo;],[&amp;ldquo;SZ000008&amp;rdquo;,&amp;ldquo;神州高铁&amp;rdquo;],[&amp;ldquo;SZ000009&amp;rdquo;,&amp;ldquo;中国宝安&amp;rdquo;]],&amp;ldquo;count&amp;rdquo;:1544.0}      &lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;QByteArray json_content_arr = network_reply-&amp;gt;readAll();
+const char *json_content = json_content_arr.constData();
+puts(&amp;quot;Sync from xueqiu&amp;quot;);
+
+struct json_tokener *tokener;
+struct json_object *json_root, *data_array_child, *stock_item_child, *stock_code_child, *stock_name_child;
+
+tokener = json_tokener_new();
+json_root = json_tokener_parse_ex(tokener, json_content, strlen(json_content));
+json_tokener_free(tokener);
+if(json_root == NULL) {
+    return;
+}
+json_object_object_get_ex(json_root, &amp;quot;data&amp;quot;, &amp;amp;data_array_child);
+if(data_array_child != NULL) {
+
+
+    FILE *f = fopen(&amp;quot;/home/qichunren/logs.txt&amp;quot;, &amp;quot;a+&amp;quot;);
+    if (f == NULL) {
+        printf(&amp;quot;Error opening file!\n&amp;quot;);
+        return;
+    }
+        int array_len = json_object_array_length(data_array_child);
+        printf(&amp;quot;stock length %d\n&amp;quot;, array_len);
+        for(int i=0;i&amp;lt;array_len;i++) {
+            stock_item_child = json_object_array_get_idx(data_array_child, i);
+            if(stock_item_child == NULL) {
+                continue;
+            }
+            stock_code_child = json_object_array_get_idx(stock_item_child, 0);
+            stock_name_child = json_object_array_get_idx(stock_item_child, 1);
+            if(stock_code_child != NULL &amp;amp;&amp;amp; stock_name_child != NULL) {
+                const char *stock_code = json_object_get_string(stock_code_child);
+                const char *stock_name = json_object_get_string(stock_name_child);
+                fprintf(f, &amp;quot;%s %s\r\n&amp;quot;, stock_code, stock_name);
+            }
+        }
+        fclose(f);
+}
+//qDebug() &amp;lt;&amp;lt; json_content_arr;
+network_reply-&amp;gt;deleteLater();
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
         <pubDate>Mon, 13 Jul 2015 12:30:00 +0800</pubDate>
         <link>/development/2015/07/13/use-json-in-qt5/</link>

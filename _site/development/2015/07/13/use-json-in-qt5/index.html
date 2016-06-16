@@ -82,7 +82,7 @@
 <div class="highlight"><pre><code class="text language-text" data-lang="text">CONFIG += link_pkgconfig
 PKGCONFIG += json-c
 </code></pre></div>
-<p>上代码：</p>
+<p>构建JSON的方法如下    </p>
 <div class="highlight"><pre><code class="text language-text" data-lang="text">        #include &lt;json/json.h&gt;
 
         /*Creating a json object*/
@@ -126,7 +126,54 @@ PKGCONFIG += json-c
         printf (&quot;The json object created: %sn&quot;,json_object_to_json_string(jobj));    
 </code></pre></div>
 <p>程序结果是：</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">  The json object created: { &quot;Site Name&quot;: &quot;Joys of Programming&quot;, &quot;Technical blog&quot;: true, &quot;Average posts per day&quot;: 2.140000, &quot;Number of posts&quot;: 10, &quot;Categories&quot;: [ &quot;c&quot;, &quot;c++&quot;, &quot;php&quot; ] }n/            
+<div class="highlight"><pre><code class="text language-text" data-lang="text">  The json object created: { &quot;Site Name&quot;: &quot;Joys of Programming&quot;, &quot;Technical blog&quot;: true, &quot;Average posts per day&quot;: 2.140000, &quot;Number of posts&quot;: 10, &quot;Categories&quot;: [ &quot;c&quot;, &quot;c++&quot;, &quot;php&quot; ] }
+</code></pre></div>
+<p>解析JSON字符串的方法如下</p>
+
+<p>例如有如下的字符串</p>
+
+<p>{&ldquo;column&rdquo;:[&ldquo;symbol&rdquo;,&ldquo;name&rdquo;],&ldquo;data&rdquo;:[[&ldquo;SZ000001&rdquo;,&ldquo;平安银行&rdquo;],[&ldquo;SZ000005&rdquo;,&ldquo;世纪星源&rdquo;],[&ldquo;SZ000006&rdquo;,&ldquo;深振业A&rdquo;],[&ldquo;SZ000008&rdquo;,&ldquo;神州高铁&rdquo;],[&ldquo;SZ000009&rdquo;,&ldquo;中国宝安&rdquo;]],&ldquo;count&rdquo;:1544.0}      </p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">QByteArray json_content_arr = network_reply-&gt;readAll();
+const char *json_content = json_content_arr.constData();
+puts(&quot;Sync from xueqiu&quot;);
+
+struct json_tokener *tokener;
+struct json_object *json_root, *data_array_child, *stock_item_child, *stock_code_child, *stock_name_child;
+
+tokener = json_tokener_new();
+json_root = json_tokener_parse_ex(tokener, json_content, strlen(json_content));
+json_tokener_free(tokener);
+if(json_root == NULL) {
+    return;
+}
+json_object_object_get_ex(json_root, &quot;data&quot;, &amp;data_array_child);
+if(data_array_child != NULL) {
+
+
+    FILE *f = fopen(&quot;/home/qichunren/logs.txt&quot;, &quot;a+&quot;);
+    if (f == NULL) {
+        printf(&quot;Error opening file!\n&quot;);
+        return;
+    }
+        int array_len = json_object_array_length(data_array_child);
+        printf(&quot;stock length %d\n&quot;, array_len);
+        for(int i=0;i&lt;array_len;i++) {
+            stock_item_child = json_object_array_get_idx(data_array_child, i);
+            if(stock_item_child == NULL) {
+                continue;
+            }
+            stock_code_child = json_object_array_get_idx(stock_item_child, 0);
+            stock_name_child = json_object_array_get_idx(stock_item_child, 1);
+            if(stock_code_child != NULL &amp;&amp; stock_name_child != NULL) {
+                const char *stock_code = json_object_get_string(stock_code_child);
+                const char *stock_name = json_object_get_string(stock_name_child);
+                fprintf(f, &quot;%s %s\r\n&quot;, stock_code, stock_name);
+            }
+        }
+        fclose(f);
+}
+//qDebug() &lt;&lt; json_content_arr;
+network_reply-&gt;deleteLater();
 </code></pre></div>
           <br />
 <p>
