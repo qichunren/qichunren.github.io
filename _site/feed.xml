@@ -7,6 +7,38 @@
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>Linux里GUI程序自启动</title>
+        <description>&lt;p&gt;将.desktop文件复制到 /home/${user}/.config/autostart/目录下即可。&lt;/p&gt;
+
+&lt;p&gt;另外很多时候程序需要用root权限启动，需要修改.desktop文件, 在执行命令前加sudo&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;    [Desktop Entry]
+      Version=1.0
+      Type=Application
+      Terminal=false
+      Name=NTPIS1
+      Exec=sudo /usr/bin/nt-web-app
+      Comment=Shanghai NT PIS 25t
+      Icon=/usr/share/pixmaps/nt-web-icon.png
+      StartupNotify=false
+      Encoding=UTF-8
+      Categories=Development;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;为了让自启动程序不用如入sudo的密码，还需要修改/etc/sudoers文件&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;sudo visudo
+
+add line
+
+    %sudo   ALL=(ALL) NOPASSWD: /usr/bin/nt-web-app
+
+after
+    %sudo   ALL=(ALL:ALL) ALL
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+        <pubDate>Thu, 16 Jun 2016 15:27:00 +0800</pubDate>
+        <link>/development/2016/06/16/autostart-app-linux/</link>
+        <guid isPermaLink="true">/development/2016/06/16/autostart-app-linux/</guid>
+      </item>
+    
+      <item>
         <title>Capture all reqeust web page send</title>
         <description>&lt;p&gt;The main process is to set QNetworkAccessManager instance to a QWebPage object, then use finished signal to capture QNetworkReply reply.&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;MainWindow::MainWindow(QWidget *parent) :
@@ -461,24 +493,6 @@ http://gamedevelopment.tutsplus.com/&lt;/p&gt;
         <pubDate>Thu, 23 Oct 2014 17:05:00 +0800</pubDate>
         <link>/development/2014/10/23/game-resources-note/</link>
         <guid isPermaLink="true">/development/2014/10/23/game-resources-note/</guid>
-      </item>
-    
-      <item>
-        <title>欧洲旅行记录</title>
-        <description>&lt;p&gt;2014年9月21到9月30号跟着公司团到欧洲旅行了一圈，这是我的第一次出国。&lt;/p&gt;
-
-&lt;p&gt;这次欧洲行游历了四个国家：德国，荷兰，比利时和法国。去过的欧洲城市有柏林，科隆，阿姆斯特丹，布鲁塞尔，巴黎。&lt;/p&gt;
-
-&lt;p&gt;购物方面：物价比中国国内便宜。买许多东西比国内便宜，如红酒，化妆品，保健品，手表，奶粉。
-交通：在欧洲我经过的几个城市，柏林的交通算比较好，巴黎人口密度大，车也多。然后大家都很遵守交通规则，我没有看到有闯红灯的现象，路上机动车随便变道的情况也非常少，几乎没有鸣喇叭的现象，骑自行车的很多，没有人骑电瓶车，要么就是骑摩托车。&lt;/p&gt;
-
-&lt;p&gt;欧洲是一个值得细细感受的地方，如果我下次再来的话，一定会选一个地方，好好呆上一段时间，仔细感受其中的文化底蕴和人化风俗。&lt;/p&gt;
-
-&lt;p&gt;最近在看一本书叫《欧洲极简史》，希望能多多了解一下欧洲这片土地。&lt;/p&gt;
-</description>
-        <pubDate>Sat, 04 Oct 2014 12:05:00 +0800</pubDate>
-        <link>/life/2014/10/04/europe-travel/</link>
-        <guid isPermaLink="true">/life/2014/10/04/europe-travel/</guid>
       </item>
     
   </channel>

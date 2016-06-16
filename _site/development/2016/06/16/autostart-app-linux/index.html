@@ -1,7 +1,7 @@
 <html>
   <head>
-    <meta content='Capture all reqeust web page send - 蕲春人的博客' property='og:title' />
-    <title>Capture all reqeust web page send - 蕲春人的博客</title>
+    <meta content='Linux里GUI程序自启动 - 蕲春人的博客' property='og:title' />
+    <title>Linux里GUI程序自启动 - 蕲春人的博客</title>
     <link href='/images/fav.png' rel='shortcut icon'>
 <link href='/stylesheets/style.css' rel='stylesheet' type='text/css' />
 <link href='/stylesheets/syntax.css' rel='stylesheet' type='text/css' />
@@ -17,8 +17,8 @@
 <meta content="http://muan.co/images/og.png" property="og:image" />
 <meta content="" property="fb:app_id" />
 
-  <meta content='/development/2016/03/24/capture-all-request-webpage-send/' property='og:url' />
-  <meta content="The main process is to set QNetworkAccessManager instance to a QWebPage object, then use finished signal to capture Q..." property='og:description' />
+  <meta content='/development/2016/06/16/autostart-app-linux/' property='og:url' />
+  <meta content="将.desktop文件复制到 /home/${user}/.config/autostart/目录下即可。另外很多时候程序需要用root权限启动，需要修改.desktop文件, 在执行命令前加sudo```	[Desktop Entr..." property='og:description' />
   <meta content="article" property="og:type" />
 
 <!-- - -->
@@ -56,65 +56,48 @@
       <section class="paging">
   
     <div class="left">
-      <a href="/development/2015/08/18/fann-notes/">
+      <a href="/development/2016/03/24/capture-all-request-webpage-send/">
         ‹
       </a>
     </div>
   
   
-    <div class="right">
-      <a href="/development/2016/06/16/autostart-app-linux/">
-        ›
-      </a>
-    </div>
-  
 </section>
       <div class="content">
         <section class='post'>
           <h1 class="upcase">
-            <div class='date'>24 Mar 2016</div>
-            Capture all reqeust web page send
+            <div class='date'>16 Jun 2016</div>
+            Linux里GUI程序自启动
           </h1>
-          <p>The main process is to set QNetworkAccessManager instance to a QWebPage object, then use finished signal to capture QNetworkReply reply.</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">MainWindow::MainWindow(QWidget *parent) :
-    QMainWindow(parent),
-    ui(new Ui::MainWindow)
-{
-    ui-&gt;setupUi(this);
-    QWebSettings::globalSettings()-&gt;setAttribute(QWebSettings::PluginsEnabled, true);
-    QWebSettings::globalSettings()-&gt;setAttribute(QWebSettings::AutoLoadImages, true);
-    QWebSettings::globalSettings()-&gt;setAttribute(QWebSettings::JavascriptEnabled, true);
-    QWebSettings::globalSettings ()-&gt;setAttribute (QWebSettings::DeveloperExtrasEnabled, true);
-    static QWebView * view;
-    view = new QWebView(this);
-    ui-&gt;verticalLayout-&gt;addWidget(view);
-    nm = new QNetworkAccessManager(this);
-    QNetworkRequest *request = new QNetworkRequest(QUrl(&quot;http://music.baidu.com/song/s/6307e667db90856f3ab7c?fm=altg_new3&quot;));
-    QWebPage *page = new QWebPage();
-    page-&gt;settings()-&gt;setAttribute(QWebSettings::PluginsEnabled, true);
-    page-&gt;setNetworkAccessManager(nm);
-    connect(nm, SIGNAL(finished(QNetworkReply*)), this, SLOT(when_reply_finished(QNetworkReply*)));
-  //  const QWebFrame *frame = page-&gt;mainFrame();
-    view-&gt;setPage(page);
-    view-&gt;load(*request);
+          <p>将.desktop文件复制到 /home/${user}/.config/autostart/目录下即可。</p>
 
-}
+<p>另外很多时候程序需要用root权限启动，需要修改.desktop文件, 在执行命令前加sudo</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">    [Desktop Entry]
+      Version=1.0
+      Type=Application
+      Terminal=false
+      Name=NTPIS1
+      Exec=sudo /usr/bin/nt-web-app
+      Comment=Shanghai NT PIS 25t
+      Icon=/usr/share/pixmaps/nt-web-icon.png
+      StartupNotify=false
+      Encoding=UTF-8
+      Categories=Development;
+</code></pre></div>
+<p>为了让自启动程序不用如入sudo的密码，还需要修改/etc/sudoers文件</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">sudo visudo
 
-MainWindow::~MainWindow()
-{
-    delete ui;
-}
+add line
 
+    %sudo   ALL=(ALL) NOPASSWD: /usr/bin/nt-web-app
 
-void MainWindow::when_reply_finished(QNetworkReply *reply) {
-    const QString &amp;url = reply-&gt;url().toString();
-    qDebug() &lt;&lt; url;
-}
+after
+    %sudo   ALL=(ALL:ALL) ALL
 </code></pre></div>
           <br />
 <p>
   蕲春人
-  <span class="muted">at 10:10</span>
+  <span class="muted">at 15:27</span>
 </p>
 <p>
   <img src="/images/scribble3.png" alt="scribble" />
