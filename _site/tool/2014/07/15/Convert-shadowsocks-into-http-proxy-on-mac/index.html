@@ -18,7 +18,7 @@
 <meta content="" property="fb:app_id" />
 
   <meta content='/tool/2014/07/15/Convert-shadowsocks-into-http-proxy-on-mac/' property='og:url' />
-  <meta content="　主要就是安装 *polipo* 工具。```brew install polipo```然后就是启动polipo程序开机自动启动。首先要修改自动启动的配置文件 _/usr/local/opt/polipo/homebrew.mxcl..." property='og:description' />
+  <meta content="　主要就是安装 polipo 工具。brew install polipo然后就是启动polipo程序开机自动启动。首先要修改自动启动的配置文件 /usr/local/opt/polipo/homebrew.mxcl.polipo.p..." property='og:description' />
   <meta content="article" property="og:type" />
 
 <!-- - -->
@@ -77,36 +77,42 @@
           </h1>
           <p>　
 主要就是安装 <em>polipo</em> 工具。</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">brew install polipo
-</code></pre></div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>brew install polipo
+</code></pre>
+</div>
+
 <p>然后就是启动polipo程序开机自动启动。</p>
 
 <p>首先要修改自动启动的配置文件 <em>/usr/local/opt/polipo/homebrew.mxcl.polipo.plist</em>，需要给polipo命令加上命令行参数 <strong>socksParentProxy=localhost:1080</strong></p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">  &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-  &lt;!DOCTYPE plist PUBLIC &quot;-//Apple//DTD PLIST 1.0//EN&quot; &quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&quot;&gt;
-  &lt;plist version=&quot;1.0&quot;&gt;
-    &lt;dict&gt;
-      &lt;key&gt;Label&lt;/key&gt;
-      &lt;string&gt;homebrew.mxcl.polipo&lt;/string&gt;
-      &lt;key&gt;RunAtLoad&lt;/key&gt;
-      &lt;true/&gt;
-      &lt;key&gt;KeepAlive&lt;/key&gt;
-      &lt;true/&gt;
-      &lt;key&gt;ProgramArguments&lt;/key&gt;
-      &lt;array&gt;
-        &lt;string&gt;/usr/local/opt/polipo/bin/polipo&lt;/string&gt;
-        &lt;string&gt;socksParentProxy=localhost:1080&lt;/string&gt;
-      &lt;/array&gt;
-    &lt;/dict&gt;
-  &lt;/plist&gt;
-</code></pre></div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>  <span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+  <span class="cp">&lt;!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;</span>
+  <span class="nt">&lt;plist</span> <span class="na">version=</span><span class="s">"1.0"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;dict&gt;</span>
+      <span class="nt">&lt;key&gt;</span>Label<span class="nt">&lt;/key&gt;</span>
+      <span class="nt">&lt;string&gt;</span>homebrew.mxcl.polipo<span class="nt">&lt;/string&gt;</span>
+      <span class="nt">&lt;key&gt;</span>RunAtLoad<span class="nt">&lt;/key&gt;</span>
+      <span class="nt">&lt;true/&gt;</span>
+      <span class="nt">&lt;key&gt;</span>KeepAlive<span class="nt">&lt;/key&gt;</span>
+      <span class="nt">&lt;true/&gt;</span>
+      <span class="nt">&lt;key&gt;</span>ProgramArguments<span class="nt">&lt;/key&gt;</span>
+      <span class="nt">&lt;array&gt;</span>
+        <span class="nt">&lt;string&gt;</span>/usr/local/opt/polipo/bin/polipo<span class="nt">&lt;/string&gt;</span>
+        <span class="nt">&lt;string&gt;</span>socksParentProxy=localhost:1080<span class="nt">&lt;/string&gt;</span>
+      <span class="nt">&lt;/array&gt;</span>
+    <span class="nt">&lt;/dict&gt;</span>
+  <span class="nt">&lt;/plist&gt;</span>
+</code></pre>
+</div>
 <p>然后执行以下命令，搞定收工。
-<code>
+<code class="highlighter-rouge">
 ln -sfv /usr/local/opt/polipo/*.plist ~/Library/LaunchAgents
 launchctl load ~/Library/LaunchAgents/homebrew.mxcl.polipo.plist
 </code></p>
 
 <p>polipo进程默认监听8123端口，在命令行使用export http_proxy=localhost:8123 就可以使用代理了。</p>
+
 
           <br />
 <p>

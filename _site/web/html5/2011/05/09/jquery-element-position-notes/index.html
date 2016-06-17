@@ -18,7 +18,7 @@
 <meta content="" property="fb:app_id" />
 
   <meta content='/web/html5/2011/05/09/jquery-element-position-notes/' property='og:url' />
-  <meta content="Juqery中元素位置的几个方法笔记最近在研究页面滚动时，研究了Jquery中几个方法。记录一下。### offset functionoffset()方法返回一个元素在整个document中的位置，返回结果是一个对象, 类似 Obj..." property='og:description' />
+  <meta content="Juqery中元素位置的几个方法笔记最近在研究页面滚动时，研究了Jquery中几个方法。记录一下。offset functionoffset()方法返回一个元素在整个document中的位置，返回结果是一个对象, 类似 Object ..." property='og:description' />
   <meta content="article" property="og:type" />
 
 <!-- - -->
@@ -56,14 +56,14 @@
       <section class="paging">
   
     <div class="left">
-      <a href="/2011/05/07/add-rspec2-task-to-rakefile/">
+      <a href="/web/html5/2011/05/09/learn-html5/">
         ‹
       </a>
     </div>
   
   
     <div class="right">
-      <a href="/web/html5/2011/05/09/learn-html5/">
+      <a href="/mac/tool/2011/05/12/use-gitX-on-mac/">
         ›
       </a>
     </div>
@@ -79,17 +79,17 @@
 
 <p>最近在研究页面滚动时，研究了Jquery中几个方法。记录一下。</p>
 
-<h3>offset function</h3>
+<h3 id="offset-function">offset function</h3>
 
 <p>offset()方法返回一个元素在整个document中的位置，返回结果是一个对象, 类似 Object { top: 2593.199951171875, left: 452.5 }</p>
 
-<h3>屏幕和窗口尺寸</h3>
+<h3 id="section">屏幕和窗口尺寸</h3>
 
 <p>$(window).width()和$(window).height()返回当前网页窗口的可视部分的宽度和高度，窗口放大和缩小后会相应变化。</p>
 
 <p>$(document).width()和$(document).height()是返回浏览器渲染的页面尺寸。</p>
 
-<h3>window的scrollTop function</h3>
+<h3 id="windowscrolltop-function">window的scrollTop function</h3>
 
 <p>$(window).scrollTop()返回滚动条相对于其顶部的偏移。</p>
 
@@ -106,9 +106,9 @@ $(window).scrollTop(); # return 2296</p>
 
 <p>你会发现 3376-1080=2296</p>
 
-<h3>滚动窗口到某个元素的位置</h3>
+<h3 id="section-1">滚动窗口到某个元素的位置</h3>
 
-<p>$(&lsquo;html, body&rsquo;).animate({scrollTop: $(&ldquo;#page&rdquo;).offset().top}, 2000);</p>
+<p>$(‘html, body’).animate({scrollTop: $(“#page”).offset().top}, 2000);</p>
 
           <br />
 <p>

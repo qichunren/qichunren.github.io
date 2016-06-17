@@ -82,14 +82,15 @@ However, during start up or when changing runlevel, those scripts are searched i
 This tutorial will explain how one can activate, deactivate or modify a service start up.
 When installing a new service under debian, the default is to enable it. So for instance, if you just installed apache2 package, after you installed it, apache service will be started and so will it be upon the next reboots.
 If you do not use apache all the time, you might want to disable this service from starting up upon boot up and simply start it manually when you actually need it by running this command:
-<code>
+<code class="highlighter-rouge">
 /etc/init.d/apache2 start
 </code></p>
 
 <p>You could either disable this service on boot up by removing any symbolic links in <strong><em>/etc/rcX.d/SYYapache2</em></strong> or by using <strong>update-rc.d</strong>.
 The advantage of using update-rc.d is that it will take care of removing/adding any required links to /etc/init.d automatically.
-Taking apache2 as an example, let&rsquo;s examine how /etc/rcX.d is looking like:</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text"># ls -l /etc/rc?.d/*apache2
+Taking apache2 as an example, let’s examine how /etc/rcX.d is looking like:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># ls -l /etc/rc?.d/*apache2
 lrwxrwxrwx 1 root root 17 2007-07-05 22:51 /etc/rc0.d/K91apache2 -&gt; ../init.d/apache2
 lrwxrwxrwx 1 root root 17 2007-07-05 22:51 /etc/rc1.d/K91apache2 -&gt; ../init.d/apache2
 lrwxrwxrwx 1 root root 17 2007-07-05 22:51 /etc/rc2.d/S91apache2 -&gt; ../init.d/apache2
@@ -97,29 +98,35 @@ lrwxrwxrwx 1 root root 17 2007-07-05 22:51 /etc/rc3.d/S91apache2 -&gt; ../init.d
 lrwxrwxrwx 1 root root 17 2007-07-05 22:51 /etc/rc4.d/S91apache2 -&gt; ../init.d/apache2
 lrwxrwxrwx 1 root root 17 2007-07-05 22:51 /etc/rc5.d/S91apache2 -&gt; ../init.d/apache2
 lrwxrwxrwx 1 root root 17 2007-07-05 22:51 /etc/rc6.d/K91apache2 -&gt; ../init.d/apache2
-</code></pre></div>
+</code></pre>
+</div>
+
 <p>As you can see, for runlevels 0, 1 and 6 there is a K at the beginning of the link, for runlevels 2, 3, 4 and 5, there is a S. Those two letters stands for Kill and Start.
 On Debian and Ubuntu, runlevels 2, 3, 4 and 5 are multi-users runlevels.
 Runlevel 0 is Halt.
 Runlevel 1 is single user mode
 Runlevel 6 is reboot</p>
 
-<h3>1. Removing A Service</h3>
+<h3 id="removing-a-service">1. Removing A Service</h3>
 
 <p>If you want to totally disable apache2 service by hand, you would need to delete every single link in /etc/rcX.d/. Using <strong>update-rc.d</strong> it is as simple as:
-<code>
+<code class="highlighter-rouge">
 update-rc.d -f apache2 remove
 </code>
 The use of <strong><em>-f</em></strong> is to force the removal of the symlinks even if there is still /etc/init.d/apache2.</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">    Note: This command will only disable the service until next time the service is upgraded. If you want to make sure the service won&#39;t be re-enabled upon upgrade, you should also type the following:
-    # update-rc.d apache2 stop 80 0 1 2 3 4 5 6 .
-</code></pre></div>
-<h3>2. Adding A Service</h3>
 
-<h4>2.1. Default Priorities</h4>
+<div class="highlighter-rouge"><pre class="highlight"><code>    Note: This command will only disable the service until next time the service is upgraded. If you want to make sure the service won't be re-enabled upon upgrade, you should also type the following:
+    # update-rc.d apache2 stop 80 0 1 2 3 4 5 6 .
+</code></pre>
+</div>
+
+<h3 id="adding-a-service">2. Adding A Service</h3>
+
+<h4 id="default-priorities">2.1. Default Priorities</h4>
 
 <p>Now, if you want to re-add this service to be started on boot up, you can simply use:</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text"># update-rc.d apache2 defaults
+
+<div class="highlighter-rouge"><pre class="highlight"><code># update-rc.d apache2 defaults
 Adding system startup for /etc/init.d/apache2 ...
 /etc/rc0.d/K20apache2 -&gt; ../init.d/apache2
 /etc/rc1.d/K20apache2 -&gt; ../init.d/apache2
@@ -128,16 +135,16 @@ Adding system startup for /etc/init.d/apache2 ...
 /etc/rc3.d/S20apache2 -&gt; ../init.d/apache2
 /etc/rc4.d/S20apache2 -&gt; ../init.d/apache2
 /etc/rc5.d/S20apache2 -&gt; ../init.d/apache2
-</code></pre></div>
-<h4>2.2. Custom Priorities</h4>
+</code></pre>
+</div>
 
-<p>But as you can see, the default value is 20 which is pretty different than 91 &hellip; a S20 link is started before a S91 and and K91 is kill before K20.
+<h4 id="custom-priorities">2.2. Custom Priorities</h4>
+
+<p>But as you can see, the default value is 20 which is pretty different than 91 … a S20 link is started before a S91 and and K91 is kill before K20.
 To force apache2 to be started with priorities 91 for both Start and Kill, we need to use the following command:
-&ldquo;`</p>
-
-<h1>update-rc.d apache2 defaults 91</h1>
-
-<p>Adding system startup for /etc/init.d/apache2 &hellip;
+<code class="highlighter-rouge">
+# update-rc.d apache2 defaults 91
+Adding system startup for /etc/init.d/apache2 ...
 /etc/rc0.d/K91apache2 -&gt; ../init.d/apache2
 /etc/rc1.d/K91apache2 -&gt; ../init.d/apache2
 /etc/rc6.d/K91apache2 -&gt; ../init.d/apache2
@@ -145,12 +152,13 @@ To force apache2 to be started with priorities 91 for both Start and Kill, we ne
 /etc/rc3.d/S91apache2 -&gt; ../init.d/apache2
 /etc/rc4.d/S91apache2 -&gt; ../init.d/apache2
 /etc/rc5.d/S91apache2 -&gt; ../init.d/apache2
-&rdquo;`</p>
+</code></p>
 
-<h3>2.3. Different Priorities For Start And Kill</h3>
+<h3 id="different-priorities-for-start-and-kill">2.3. Different Priorities For Start And Kill</h3>
 
 <p>Alternatively, if you want to set different priorities for Start than for Kill, let say Start with 20 and Kill with 80, you will need to run:</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text"># update-rc.d apache2 defaults 20 80
+
+<div class="highlighter-rouge"><pre class="highlight"><code># update-rc.d apache2 defaults 20 80
 Adding system startup for /etc/init.d/apache2 ...
 /etc/rc0.d/K80apache2 -&gt; ../init.d/apache2
 /etc/rc1.d/K80apache2 -&gt; ../init.d/apache2
@@ -159,11 +167,14 @@ Adding system startup for /etc/init.d/apache2 ...
 /etc/rc3.d/S20apache2 -&gt; ../init.d/apache2
 /etc/rc4.d/S20apache2 -&gt; ../init.d/apache2
 /etc/rc5.d/S20apache2 -&gt; ../init.d/apache2
-</code></pre></div>
-<h2>3. Specifying Custom Runlevels</h2>
+</code></pre>
+</div>
+
+<h2 id="specifying-custom-runlevels">3. Specifying Custom Runlevels</h2>
 
 <p>Finally, if you only want to Start and Kill on specific runlevels, like for instance starting apache with priority 20 on runlevels 2, 3, 4 and 5 and Kill with priority 80 on runlevels 0, 1 and 6:</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text"># update-rc.d apache2 start 20 2 3 4 5 . stop 80 0 1 6 .
+
+<div class="highlighter-rouge"><pre class="highlight"><code># update-rc.d apache2 start 20 2 3 4 5 . stop 80 0 1 6 .
 Adding system startup for /etc/init.d/apache2 ...
 /etc/rc0.d/K80apache2 -&gt; ../init.d/apache2
 /etc/rc1.d/K80apache2 -&gt; ../init.d/apache2
@@ -172,9 +183,12 @@ Adding system startup for /etc/init.d/apache2 ...
 /etc/rc3.d/S20apache2 -&gt; ../init.d/apache2
 /etc/rc4.d/S20apache2 -&gt; ../init.d/apache2
 /etc/rc5.d/S20apache2 -&gt; ../init.d/apache2
-</code></pre></div>
+</code></pre>
+</div>
+
 <p>Or, to start with priority 20 for runlevel 2, 3 and 4 and priority 30 for runlevel 5 and kill with priority 80 for runlevel 0, 1 and 6:</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text"># update-rc.d apache2 start 20 2 3 4 . start 30 5 . stop 80 0 1 6 .
+
+<div class="highlighter-rouge"><pre class="highlight"><code># update-rc.d apache2 start 20 2 3 4 . start 30 5 . stop 80 0 1 6 .
 Adding system startup for /etc/init.d/apache2 ...
 /etc/rc0.d/K80apache2 -&gt; ../init.d/apache2
 /etc/rc1.d/K80apache2 -&gt; ../init.d/apache2
@@ -183,15 +197,17 @@ Adding system startup for /etc/init.d/apache2 ...
 /etc/rc3.d/S20apache2 -&gt; ../init.d/apache2
 /etc/rc4.d/S20apache2 -&gt; ../init.d/apache2
 /etc/rc5.d/S30apache2 -&gt; ../init.d/apache2
-</code></pre></div>
-<h2>我的总结</h2>
+</code></pre>
+</div>
 
-<p>通过 update-rc.d 来管理Linux下开机自动运行，的确很方便，但是我在实际部署实践中，还是遇到了一些问题，导致开机后没有正常自动启动，但是手工通过service xxx start可以启动。我经过排查发现，原因是在Linux系统启动中，在执行/etc/init.d/中的脚本时，此时系统有可能没有加载好系统中的PATH变量，所以需要在init.d脚本中手工指定，对于使用Ruby脚本写的程序，需要GEM<em>HOME\GEM</em>PATH等环境变量，我这里是用RVM来管理Ruby的，这是我使用的：
-<code>
-PATH=&quot;/usr/local/rvm/gems/ruby-1.9.2-p290/bin:/usr/local/rvm/rubies/ruby-1.9.2-p290/bin:/usr/local/rvm/bin:/opt/node/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games&quot;
-RUBY_VERSION=&quot;ruby-1.9.2-p290&quot;
-GEM_HOME=&quot;/usr/local/rvm/gems/ruby-1.9.2-p290&quot;
-GEM_PATH=&quot;/usr/local/rvm/gems/ruby-1.9.2-p290:/usr/local/rvm/gems/ruby-1.9.2-p290@global&quot;
+<h2 id="section">我的总结</h2>
+
+<p>通过 update-rc.d 来管理Linux下开机自动运行，的确很方便，但是我在实际部署实践中，还是遇到了一些问题，导致开机后没有正常自动启动，但是手工通过service xxx start可以启动。我经过排查发现，原因是在Linux系统启动中，在执行/etc/init.d/中的脚本时，此时系统有可能没有加载好系统中的PATH变量，所以需要在init.d脚本中手工指定，对于使用Ruby脚本写的程序，需要GEM_HOME\GEM_PATH等环境变量，我这里是用RVM来管理Ruby的，这是我使用的：
+<code class="highlighter-rouge">
+PATH="/usr/local/rvm/gems/ruby-1.9.2-p290/bin:/usr/local/rvm/rubies/ruby-1.9.2-p290/bin:/usr/local/rvm/bin:/opt/node/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games"
+RUBY_VERSION="ruby-1.9.2-p290"
+GEM_HOME="/usr/local/rvm/gems/ruby-1.9.2-p290"
+GEM_PATH="/usr/local/rvm/gems/ruby-1.9.2-p290:/usr/local/rvm/gems/ruby-1.9.2-p290@global"
 export PATH=$PATH
 export RUBY_VERSION=$RUBY_VERSION
 export GEM_HOME=$GEM_HOME
@@ -199,69 +215,58 @@ export GEM_PATH=$GEM_PATH
 </code></p>
 
 <p>另外还有一些其它的变量（如果你的启动程序需要），也需要手工指定，如在Ruby 1.9中，就有可能需要指定，比如说unicorn启动脚本：
-<code>
-export LANG=&#39;en_US.UTF-8&#39;
+<code class="highlighter-rouge">
+export LANG='en_US.UTF-8'
 </code></p>
 
 <p>最后附上一个常用的init.d启动脚本的样本：
-&ldquo;`</p>
-
-<h1>!/bin/sh</h1>
-
-<h3>BEGIN INIT INFO</h3>
-
-<h1>Provides:          gps</h1>
-
-<h1>Required-Start:    $syslog $remote_fs $network</h1>
-
-<h1>Required-Stop:     $syslog $remote_fs $network</h1>
-
-<h1>Should-Start:      fam</h1>
-
-<h1>Should-Stop:       fam</h1>
-
-<h1>Default-Start:     2 3 4 5</h1>
-
-<h1>Default-Stop:      0 1 6</h1>
-
-<h1>Short-Description: Start the gps.</h1>
-
-<h3>END INIT INFO</h3>
+```
+#!/bin/sh
+### BEGIN INIT INFO
+# Provides:          gps
+# Required-Start:    $syslog $remote_fs $network
+# Required-Stop:     $syslog $remote_fs $network
+# Should-Start:      fam
+# Should-Stop:       fam
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Start the gps.
+### END INIT INFO</p>
 
 <p>PATH=/usr/local/rvm/gems/ruby-1.9.2-p290/bin:/usr/local/rvm/gems/ruby-1.9.2-p290@global/bin:/usr/local/rvm/rubies/ruby-1.9.2-p290/bin:/usr/local/rvm/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
 DAEMON=/www/georgia/current/lib/gps/gps.rb
 NAME=ntgps
-DESC=&quot;ntgps daemon&rdquo;
+DESC=”ntgps daemon”
 PIDFILE=/var/run/$NAME.pid
 SCRIPTNAME=/etc/init.d/$NAME</p>
 
-<p>DAEMON_OPTS=&ldquo;&rdquo;</p>
+<p>DAEMON_OPTS=””</p>
 
 <p>set -e
 . /lib/lsb/init-functions
-export LANG=&lsquo;en<em>US.UTF-8&rsquo;
+export LANG=’en_US.UTF-8’
 export PATH=$PATH
-export GEM</em>HOME=/usr/local/rvm/gems/ruby-1.9.2-p290
+export GEM_HOME=/usr/local/rvm/gems/ruby-1.9.2-p290
 export GEM_PATH=/usr/local/rvm/gems/ruby-1.9.2-p290:/usr/local/rvm/gems/ruby-1.9.2-p290@global</p>
 
-<p>case &ldquo;$1&rdquo; in
+<p>case “$1” in
     start)
-        log<em>daemon</em>msg &ldquo;Starting $DESC&rdquo; $NAME
-        if ! start-stop-daemon &ndash;start -m &ndash;background &ndash;oknodo &ndash;quiet &ndash;pidfile $PIDFILE &ndash;exec /usr/local/rvm/rubies/ruby-1.9.2-p290/bin/ruby $DAEMON &ndash; $DAEMON<em>OPTS
+        log_daemon_msg “Starting $DESC” $NAME
+        if ! start-stop-daemon –start -m –background –oknodo –quiet –pidfile $PIDFILE –exec /usr/local/rvm/rubies/ruby-1.9.2-p290/bin/ruby $DAEMON – $DAEMON_OPTS
         then
-            log</em>end<em>msg 1
+            log_end_msg 1
         else
-            log</em>end<em>msg 0
+            log_end_msg 0
         fi
         ;;
     stop)
-        log</em>daemon<em>msg &ldquo;Stopping $DESC&rdquo; $NAME
-        if kill  -9 <code>cat $PIDFILE</code>
+        log_daemon_msg “Stopping $DESC” $NAME
+        if kill  -9 <code class="highlighter-rouge">cat $PIDFILE</code>
         then
             rm -f $PIDFILE
-            log</em>end<em>msg 0
+            log_end_msg 0
         else
-            log</em>end<em>msg 1
+            log_end_msg 1
         fi
         ;;
     restart)
@@ -269,18 +274,21 @@ export GEM_PATH=/usr/local/rvm/gems/ruby-1.9.2-p290:/usr/local/rvm/gems/ruby-1.9
         $0 start
         ;;
     status)
-        status</em>of_proc -p &ldquo;$PIDFILE&rdquo; &ldquo;$DAEMON&rdquo; $NAME &amp;&amp; exit 0 || exit $?
+        status_of_proc -p “$PIDFILE” “$DAEMON” $NAME &amp;&amp; exit 0 || exit $?
         ;;
     *)
-        echo &ldquo;Usage: $SCRIPTNAME {start|stop|restart|status}&rdquo; &gt;&amp;2
+        echo “Usage: $SCRIPTNAME {start|stop|restart|status}” &gt;&amp;2
         exit 1
         ;;
 esac</p>
 
 <p>exit 0</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">## Resources:
-[How-To: Managing services with update-rc.d](http://www.debuntu.org/how-to-manage-services-with-update-rc.d)
-</code></pre></div>
+
+<p>```</p>
+
+<h2 id="resources">Resources:</h2>
+<p><a href="http://www.debuntu.org/how-to-manage-services-with-update-rc.d">How-To: Managing services with update-rc.d</a></p>
+
           <br />
 <p>
   蕲春人

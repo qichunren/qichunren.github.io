@@ -18,7 +18,7 @@
 <meta content="" property="fb:app_id" />
 
   <meta content='/php/2012/02/11/use-smarty-template-in-codeigniter/' property='og:url' />
-  <meta content="[CodeIgniter](http://codeigniter.com/)是一个不错的PHP开发框架，很合我的口味，我做的一些PHP项目就是用的它。[Smarty](http://www.smarty.net/)是目前业界最著名的P..." property='og:description' />
+  <meta content="CodeIgniter是一个不错的PHP开发框架，很合我的口味，我做的一些PHP项目就是用的它。Smarty是目前业界最著名的PHP模板引擎之一。它分离了逻辑代码和外在的内容，提供了一种易于管理和使用的方法，用来将原本与HTML代码混..." property='og:description' />
   <meta content="article" property="og:type" />
 
 <!-- - -->
@@ -86,37 +86,36 @@
 <p>我这里使用的CodeIgniter和Smarty都是最新版本,2.1.0和3.1.7</p>
 
 <p>1: 将Smarty包下载后，解压后，放入CodeIgniter项目中的application/libraries目录.
-<code>
+<code class="highlighter-rouge">
 caojinhua:company caojinhua$ ls application/libraries/
-Smarty.php  index.html  smarty/
+Smarty.php	index.html	smarty/
 caojinhua:company caojinhua$ ls application/libraries/smarty/
-Smarty.class.php    SmartyBC.class.php  debug.tpl       plugins/        sysplugins/
+Smarty.class.php	SmartyBC.class.php	debug.tpl		plugins/		sysplugins/
 </code></p>
 
 <p>2: 在application/libraries目录中创建Smarty.php文件。</p>
 
-<div class="highlight"><pre><code class="php"><span class="cp">&lt;?php</span> <span class="k">if</span> <span class="p">(</span> <span class="o">!</span> <span class="nb">defined</span><span class="p">(</span><span class="s1">&#39;BASEPATH&#39;</span><span class="p">))</span> <span class="k">exit</span><span class="p">(</span><span class="s1">&#39;No direct script access allowed&#39;</span><span class="p">);</span>
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span> <span class="k">if</span> <span class="p">(</span> <span class="o">!</span> <span class="nb">defined</span><span class="p">(</span><span class="s1">'BASEPATH'</span><span class="p">))</span> <span class="k">exit</span><span class="p">(</span><span class="s1">'No direct script access allowed'</span><span class="p">);</span>
 
-<span class="k">require_once</span><span class="p">(</span><span class="s1">&#39;smarty/Smarty.class.php&#39;</span><span class="p">);</span>
+<span class="k">require_once</span><span class="p">(</span><span class="s1">'smarty/Smarty.class.php'</span><span class="p">);</span>
 
 <span class="k">class</span> <span class="nc">CI_Smarty</span> <span class="k">extends</span> <span class="nx">Smarty</span> <span class="p">{</span>
         <span class="k">function</span> <span class="nf">__construct</span><span class="p">(){</span>
           <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">();</span>
-                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">compile_dir</span> <span class="o">=</span> <span class="nx">FCPATH</span> <span class="o">.</span> <span class="s2">&quot;application/views/templates_c&quot;</span><span class="p">;</span>
-                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">template_dir</span> <span class="o">=</span> <span class="nx">FCPATH</span> <span class="o">.</span> <span class="s2">&quot;application/views/templates&quot;</span><span class="p">;</span>
-                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">cache_dir</span> <span class="o">=</span> <span class="nx">FCPATH</span> <span class="o">.</span> <span class="s2">&quot;application/views/cache&quot;</span><span class="p">;</span><span class="c1">//缓存目录</span>
-                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">caching</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-                <span class="c1">//$this-&gt;cache_lifetime = 120; //缓存更新时间</span>
-                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">debugging</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
-                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">compile_check</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span> <span class="c1">// 检查当前的模板是否自上次编译后被更改；如果被更改了，它将重新编译该模板。</span>
-                <span class="c1">//$this-&gt;force_compile = true; // 强制重新编译模板</span>
-                <span class="c1">//$this-&gt;allow_php_templates= true; // 开启PHP模板</span>
-                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">left_delimiter</span> <span class="o">=</span> <span class="s2">&quot;{&quot;</span><span class="p">;</span> <span class="c1">//左定界符</span>
-                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">right_delimiter</span> <span class="o">=</span> <span class="s2">&quot;}&quot;</span><span class="p">;</span> <span class="c1">//右定界符</span>
-        <span class="p">}</span>
+                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">compile_dir</span> <span class="o">=</span> <span class="nx">FCPATH</span> <span class="o">.</span> <span class="s2">"application/views/templates_c"</span><span class="p">;</span>
+                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">template_dir</span> <span class="o">=</span> <span class="nx">FCPATH</span> <span class="o">.</span> <span class="s2">"application/views/templates"</span><span class="p">;</span>
+                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">cache_dir</span> <span class="o">=</span> <span class="nx">FCPATH</span> <span class="o">.</span> <span class="s2">"application/views/cache"</span><span class="p">;</span><span class="c1">//缓存目录
+</span>                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">caching</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+                <span class="c1">//$this-&gt;cache_lifetime = 120; //缓存更新时间
+</span>                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">debugging</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">compile_check</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span> <span class="c1">// 检查当前的模板是否自上次编译后被更改；如果被更改了，它将重新编译该模板。
+</span>                <span class="c1">//$this-&gt;force_compile = true; // 强制重新编译模板
+</span>                <span class="c1">//$this-&gt;allow_php_templates= true; // 开启PHP模板
+</span>                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">left_delimiter</span> <span class="o">=</span> <span class="s2">"{"</span><span class="p">;</span> <span class="c1">//左定界符
+</span>                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">right_delimiter</span> <span class="o">=</span> <span class="s2">"}"</span><span class="p">;</span> <span class="c1">//右定界符
+</span>        <span class="p">}</span>
 <span class="p">}</span>
-<span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div>
+<span class="cp">?&gt;</span></code></pre></figure>
 
 <p>根据代码中的smarty目录配置，需要在application/views中建立templates_c\templates\cache三个目录.
 这就算创建好了。</p>
@@ -124,47 +123,47 @@ Smarty.class.php    SmartyBC.class.php  debug.tpl       plugins/        sysplugi
 <p>3: 使用方法。
 控制器中的代码:</p>
 
-<div class="highlight"><pre><code class="php"><span class="cp">&lt;?php</span> <span class="k">if</span> <span class="p">(</span> <span class="o">!</span> <span class="nb">defined</span><span class="p">(</span><span class="s1">&#39;BASEPATH&#39;</span><span class="p">))</span> <span class="k">exit</span><span class="p">(</span><span class="s1">&#39;No direct script access allowed&#39;</span><span class="p">);</span>
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span> <span class="k">if</span> <span class="p">(</span> <span class="o">!</span> <span class="nb">defined</span><span class="p">(</span><span class="s1">'BASEPATH'</span><span class="p">))</span> <span class="k">exit</span><span class="p">(</span><span class="s1">'No direct script access allowed'</span><span class="p">);</span>
 
 <span class="k">class</span> <span class="nc">Debug</span> <span class="k">extends</span> <span class="nx">MY_Controller</span> <span class="p">{</span>
 
   <span class="k">function</span> <span class="nf">__construct</span><span class="p">()</span>
   <span class="p">{</span>
     <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">();</span>
-    <span class="c1">// Write your own initialize code</span>
-  <span class="p">}</span>
+    <span class="c1">// Write your own initialize code
+</span>  <span class="p">}</span>
 
     <span class="k">function</span> <span class="nf">index</span><span class="p">(){</span>
-      <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">load</span><span class="o">-&gt;</span><span class="na">library</span><span class="p">(</span><span class="s1">&#39;smarty&#39;</span><span class="p">);</span>
-      <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">smarty</span><span class="o">-&gt;</span><span class="na">assign</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">,</span><span class="s2">&quot;smarty template&quot;</span><span class="p">);</span>
-      <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">smarty</span><span class="o">-&gt;</span><span class="na">assign</span><span class="p">(</span><span class="s2">&quot;body&quot;</span><span class="p">,</span><span class="s2">&quot;欢迎使用smarty模板引擎&quot;</span><span class="p">);</span>
-      <span class="nv">$arr</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="mi">1</span> <span class="o">=&gt;</span> <span class="s1">&#39;number 1&#39;</span><span class="p">,</span> <span class="mi">2</span> <span class="o">=&gt;</span> <span class="s1">&#39;number 2&#39;</span><span class="p">,</span> <span class="mi">3</span> <span class="o">=&gt;</span> <span class="s1">&#39;number 3&#39;</span><span class="p">);</span>
-      <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">smarty</span><span class="o">-&gt;</span><span class="na">assign</span><span class="p">(</span><span class="s2">&quot;myarray&quot;</span><span class="p">,</span> <span class="nv">$arr</span><span class="p">);</span>
-      <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">smarty</span><span class="o">-&gt;</span><span class="na">display</span><span class="p">(</span><span class="s1">&#39;index.html&#39;</span><span class="p">);</span>
+      <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">load</span><span class="o">-&gt;</span><span class="na">library</span><span class="p">(</span><span class="s1">'smarty'</span><span class="p">);</span>
+      <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">smarty</span><span class="o">-&gt;</span><span class="na">assign</span><span class="p">(</span><span class="s2">"title"</span><span class="p">,</span><span class="s2">"smarty template"</span><span class="p">);</span>
+      <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">smarty</span><span class="o">-&gt;</span><span class="na">assign</span><span class="p">(</span><span class="s2">"body"</span><span class="p">,</span><span class="s2">"欢迎使用smarty模板引擎"</span><span class="p">);</span>
+      <span class="nv">$arr</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="mi">1</span> <span class="o">=&gt;</span> <span class="s1">'number 1'</span><span class="p">,</span> <span class="mi">2</span> <span class="o">=&gt;</span> <span class="s1">'number 2'</span><span class="p">,</span> <span class="mi">3</span> <span class="o">=&gt;</span> <span class="s1">'number 3'</span><span class="p">);</span>
+      <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">smarty</span><span class="o">-&gt;</span><span class="na">assign</span><span class="p">(</span><span class="s2">"myarray"</span><span class="p">,</span> <span class="nv">$arr</span><span class="p">);</span>
+      <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">smarty</span><span class="o">-&gt;</span><span class="na">display</span><span class="p">(</span><span class="s1">'index.html'</span><span class="p">);</span>
     <span class="p">}</span>
 
-<span class="p">}</span>
-</code></pre></div>
+<span class="p">}</span></code></pre></figure>
 
 <p>模板代码:
-<code>
-&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
-&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
-&lt;head&gt;
-&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
-&lt;title&gt;smarty模板使用示例&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;h1&gt;{$title}&lt;/h1&gt;
-&lt;p&gt;{$body}&lt;/p&gt;
-&lt;ul&gt;
+```
+&lt;!DOCTYPE html PUBLIC “-//W3C//DTD XHTML 1.0 Transitional//EN” “http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd”&gt;</p>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>smarty模板使用示例</title>
+</head>
+<body>
+<h1>{$title}</h1>
+<p>{$body}</p>
+<ul>
         {foreach from=$myarray item=v}
-        &lt;li&gt;{$v}&lt;/li&gt;
+        <li>{$v}</li>
        {/foreach}
-&lt;/ul&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</code></p>
+</ul>
+</body>
+</html>
+<p>```</p>
+
 
           <br />
 <p>

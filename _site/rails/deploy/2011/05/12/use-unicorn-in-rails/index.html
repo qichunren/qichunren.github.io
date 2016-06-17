@@ -75,12 +75,16 @@
             <div class='date'>12 May 2011</div>
             使用Unicorn
           </h1>
-          <h3>Install</h3>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">gem install unicorn
-</code></pre></div>
-<p>Then add gem &lsquo;unicorn&rsquo; to Gemfile.
-bundle exec unicorn_rails to start rails app at 8080 port.</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">caojinhua:qichunren.github.com caojinhua$ unicorn_rails --help
+          <h3 id="install">Install</h3>
+
+<pre><code>
+gem install unicorn
+</code></pre>
+
+<p>Then add gem ‘unicorn’ to Gemfile. bundle exec unicorn_rails to start rails app at 8080 port.</p>
+
+<pre><code>
+caojinhua:qichunren.github.com caojinhua$ unicorn_rails --help
 Usage: unicorn_rails [ruby options] [unicorn_rails options] [rackup config file]
 Ruby options:
   -e, --eval LINE          evaluate a LINE of code
@@ -103,16 +107,19 @@ unicorn_rails options:
 Common options:
   -h, --help               Show this message
   -v, --version            Show version
-</code></pre></div>
+</code></pre>
+
 <p>This is a smaple unicorn config file:</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">worker_processes 2
+
+<pre><code>
+worker_processes 2
 working_directory &quot;/www/temp/ntmenu2/current&quot;
 listen 3000, :tcp_nopush =&gt; true
 timeout 30
 pid &quot;/www/temp/ntmenu2/current/tmp/pids/unicorn.pid&quot;
 stderr_path &quot;/www/temp/unicorn.stderr.log&quot;
 stdout_path &quot;/www/temp/unicorn.stdout.log&quot;
-</code></pre></div>
+</code></pre>
           <br />
 <p>
   蕲春人

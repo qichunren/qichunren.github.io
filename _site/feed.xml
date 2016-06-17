@@ -11,28 +11,34 @@
         <description>&lt;p&gt;将.desktop文件复制到 /home/${user}/.config/autostart/目录下即可。&lt;/p&gt;
 
 &lt;p&gt;另外很多时候程序需要用root权限启动，需要修改.desktop文件, 在执行命令前加sudo&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;    [Desktop Entry]
-      Version=1.0
-      Type=Application
-      Terminal=false
-      Name=NTPIS1
-      Exec=sudo /usr/bin/nt-web-app
-      Comment=Shanghai NT PIS 25t
-      Icon=/usr/share/pixmaps/nt-web-icon.png
-      StartupNotify=false
-      Encoding=UTF-8
-      Categories=Development;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[Desktop Entry]
+  Version=1.0
+  Type=Application
+  Terminal=false
+  Name=NTPIS1
+  Exec=sudo /usr/bin/nt-web-app
+  Comment=Shanghai NT PIS 25t
+  Icon=/usr/share/pixmaps/nt-web-icon.png
+  StartupNotify=false
+  Encoding=UTF-8
+  Categories=Development;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
 &lt;p&gt;为了让自启动程序不用如入sudo的密码，还需要修改/etc/sudoers文件&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;sudo visudo
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo visudo
 
 add line
 
-    %sudo   ALL=(ALL) NOPASSWD: /usr/bin/nt-web-app
+	%sudo   ALL=(ALL) NOPASSWD: /usr/bin/nt-web-app
 
 after
-    %sudo   ALL=(ALL:ALL) ALL
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+	%sudo   ALL=(ALL:ALL) ALL
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+</description>
         <pubDate>Thu, 16 Jun 2016 15:27:00 +0800</pubDate>
         <link>/development/2016/06/16/autostart-app-linux/</link>
         <guid isPermaLink="true">/development/2016/06/16/autostart-app-linux/</guid>
@@ -41,7 +47,8 @@ after
       <item>
         <title>Capture all reqeust web page send</title>
         <description>&lt;p&gt;The main process is to set QNetworkAccessManager instance to a QWebPage object, then use finished signal to capture QNetworkReply reply.&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;MainWindow::MainWindow(QWidget *parent) :
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
@@ -54,7 +61,7 @@ after
     view = new QWebView(this);
     ui-&amp;gt;verticalLayout-&amp;gt;addWidget(view);
     nm = new QNetworkAccessManager(this);
-    QNetworkRequest *request = new QNetworkRequest(QUrl(&amp;quot;http://music.baidu.com/song/s/6307e667db90856f3ab7c?fm=altg_new3&amp;quot;));
+    QNetworkRequest *request = new QNetworkRequest(QUrl(&quot;http://music.baidu.com/song/s/6307e667db90856f3ab7c?fm=altg_new3&quot;));
     QWebPage *page = new QWebPage();
     page-&amp;gt;settings()-&amp;gt;setAttribute(QWebSettings::PluginsEnabled, true);
     page-&amp;gt;setNetworkAccessManager(nm);
@@ -75,7 +82,9 @@ void MainWindow::when_reply_finished(QNetworkReply *reply) {
     const QString &amp;amp;url = reply-&amp;gt;url().toString();
     qDebug() &amp;lt;&amp;lt; url;
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+</description>
         <pubDate>Thu, 24 Mar 2016 10:10:00 +0800</pubDate>
         <link>/development/2016/03/24/capture-all-request-webpage-send/</link>
         <guid isPermaLink="true">/development/2016/03/24/capture-all-request-webpage-send/</guid>
@@ -84,10 +93,10 @@ void MainWindow::when_reply_finished(QNetworkReply *reply) {
       <item>
         <title>FANN NOTES</title>
         <description>&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;http://pythonic.zoomquiet.io/data/20120202112907/index.html&quot;&gt;用BP人工神经网络识别手写数字——《Python也可以》之三 &lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/libfann/fann&quot;&gt;libfann/fann&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://neuralnetworksanddeeplearning.com/index.html&quot;&gt;Neural Networks and Deep Learning&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://karpathy.github.io/neuralnets/&quot;&gt;Hacker&amp;rsquo;s guide to Neural Networks&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://pythonic.zoomquiet.io/data/20120202112907/index.html&quot;&gt;用BP人工神经网络识别手写数字——《Python也可以》之三 &lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/libfann/fann&quot;&gt;libfann/fann&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://neuralnetworksanddeeplearning.com/index.html&quot;&gt;Neural Networks and Deep Learning&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://karpathy.github.io/neuralnets/&quot;&gt;Hacker’s guide to Neural Networks&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
         <pubDate>Tue, 18 Aug 2015 20:30:00 +0800</pubDate>
@@ -98,29 +107,38 @@ void MainWindow::when_reply_finished(QNetworkReply *reply) {
       <item>
         <title>Linux Deb package notes</title>
         <description>&lt;p&gt;使用dh_make命令可以在项目中生成默认的debian目录，此debian目录中包含了默认的deb打包规范的一系列文件。&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;dh_make --createorig --single -e whyruby@gmail.com -c gpl
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dh_make --createorig --single -e whyruby@gmail.com -c gpl
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
 &lt;p&gt;需要注意的是在项目目录中执行dh_make命令的时候，会提示项目目录必须要是project-name-1.0类似的形式。&lt;/p&gt;
 
 &lt;p&gt;在dh_make命令执行后，继续运行&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;dpkg-buildpackage -uc -us
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dpkg-buildpackage -uc -us
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
 &lt;p&gt;会在当前项目目录的上一层生成deb文件。&lt;/p&gt;
 
 &lt;p&gt;deb包的构建规范中规定了一系列的规则，最常用的有安装时的文件路经对应，此文件位于debian/install中，如将编译文件的可执行文件将安装的/usr/bin目录，将程序执行图标文件放在/usr/share/applications目录。install文件中类似这样：&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;bin/new-pis usr/bin
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bin/new-pis usr/bin
 new-pis.desktop /usr/share/applications
 new-pis-icon.png /usr/share/pixmaps
 db/data.db /var/lib/new-pis
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
 &lt;p&gt;debian目录中其它的文件如提供cron job的文件，日志文件分割等以后深究。&lt;/p&gt;
 
-&lt;h3&gt;References&lt;/h3&gt;
+&lt;h3 id=&quot;references&quot;&gt;References&lt;/h3&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://www.debian.org/doc/manuals/debian-faq/ch-pkg_basics.en.html&quot;&gt;Basics of the Debian package management system &lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://www.debian.org/doc/manuals/debmake-doc/index.en.html&quot;&gt;Guide for Debian Maintainers&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://www.tldp.org/HOWTO/Debian-Binary-Package-Building-HOWTO/index.html&quot;&gt;Debian Binary Package Building HOWTO&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.debian.org/doc/manuals/debian-faq/ch-pkg_basics.en.html&quot;&gt;Basics of the Debian package management system &lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.debian.org/doc/manuals/debmake-doc/index.en.html&quot;&gt;Guide for Debian Maintainers&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.tldp.org/HOWTO/Debian-Binary-Package-Building-HOWTO/index.html&quot;&gt;Debian Binary Package Building HOWTO&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
         <pubDate>Thu, 06 Aug 2015 20:30:00 +0800</pubDate>
@@ -135,7 +153,8 @@ db/data.db /var/lib/new-pis
 &lt;p&gt;在web开发中，一个http请求方法有GET / HEAD / PUT / DELETE / OPTIONS / CONNECT几个形式，对此不多究。我今天主要想谈谈常见的GET和POST两种方法的使用思考。&lt;/p&gt;
 
 &lt;p&gt;先来讲一个我最近做的一个 Ruby on Rails 项目，在那个项目中，用户(User)可以选择某一个数据集合(DataSet)项目参与其中做任务(Task)。模型关系如下&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;class User &amp;lt; ActiveRecord::Base
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;class User &amp;lt; ActiveRecord::Base
   has_many :tasks       
 end
 
@@ -151,29 +170,35 @@ class Task &amp;lt; ActiveRecord::Base
   belongs_to :user
   belongs_to :data_set
 end
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
 &lt;p&gt;在数据集合(DataSet)列表页面，列出多个集合(DataSet)，用户可以选择其中一个参与任务(Task)。如果用户还没有参与其中的某个项目，显示“开始工作”，否则显示“继续工作”，页面部分代码如下：&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;        &amp;lt;% @data_sets.each do |data_set| %&amp;gt;
-        &amp;lt;div class=&amp;quot;col-sm-6 col-md-4&amp;quot;&amp;gt;
-          &amp;lt;div class=&amp;quot;thumbnail&amp;quot;&amp;gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;        &amp;lt;% @data_sets.each do |data_set| %&amp;gt;
+        &amp;lt;div class=&quot;col-sm-6 col-md-4&quot;&amp;gt;
+          &amp;lt;div class=&quot;thumbnail&quot;&amp;gt;
             &amp;lt;%= image_tag data_set.logo.url %&amp;gt;
-            &amp;lt;div class=&amp;quot;caption&amp;quot;&amp;gt;
+            &amp;lt;div class=&quot;caption&quot;&amp;gt;
               &amp;lt;h3&amp;gt;&amp;lt;%= data_set.name %&amp;gt;&amp;lt;/h3&amp;gt;
               &amp;lt;p&amp;gt;&amp;lt;%= data_set.description %&amp;gt;&amp;lt;/p&amp;gt;
               &amp;lt;p&amp;gt;
                 &amp;lt;% if data_set.user_task(current_user).present? %&amp;gt;
-                  &amp;lt;%= link_to &amp;#39;继续工作&amp;#39;, workspace_data_set_path(data_set), class: &amp;#39;btn btn-primary&amp;#39; %&amp;gt;
+                  &amp;lt;%= link_to &#39;继续工作&#39;, workspace_data_set_path(data_set), class: &#39;btn btn-primary&#39; %&amp;gt;
                 &amp;lt;% else %&amp;gt;
-                  &amp;lt;%= link_to &amp;#39;开始工作&amp;#39;, choose_task_data_set_path(data_set), method: :post, class: &amp;#39;btn btn-primary&amp;#39; %&amp;gt;
+                  &amp;lt;%= link_to &#39;开始工作&#39;, choose_task_data_set_path(data_set), method: :post, class: &#39;btn btn-primary&#39; %&amp;gt;
                 &amp;lt;% end %&amp;gt;
               &amp;lt;/p&amp;gt;
             &amp;lt;/div&amp;gt;
           &amp;lt;/div&amp;gt;
         &amp;lt;/div&amp;gt;
         &amp;lt;% end %&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
 &lt;p&gt;DataSetsController中的部分代码如下：&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;class DataSetsController &amp;lt; ApplicationController
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;class DataSetsController &amp;lt; ApplicationController
   before_action :authenticate_user!
   before_action :set_data_set, only: [:show, :edit, :update, :destroy, :choose_task, :workspace, :mark_picture]
 
@@ -197,12 +222,14 @@ end
     # ...
   end
 end 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;当初在设计这个页面上逻辑的时候，一开始以为直接用一个方法请求就搞定了,页面点击“开始工作”或者“继续工作”按钮，直接GET请求跳转到用户工作台链接/data&lt;em&gt;sets/{id}/workspace，在workspace action中加入额外的逻辑判断是否要创建用户的任务(Task)。我接着认真思考了一下，发现这样不妥。原因有是GET /data&lt;/em&gt;sets/{id}/workspace中的逻辑不纯粹， 与它的URL本身语义不符合。也不利于测试。&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;当初在设计这个页面上逻辑的时候，一开始以为直接用一个方法请求就搞定了,页面点击“开始工作”或者“继续工作”按钮，直接GET请求跳转到用户工作台链接/data_sets/{id}/workspace，在workspace action中加入额外的逻辑判断是否要创建用户的任务(Task)。我接着认真思考了一下，发现这样不妥。原因有是GET /data_sets/{id}/workspace中的逻辑不纯粹， 与它的URL本身语义不符合。也不利于测试。&lt;/p&gt;
 
 &lt;p&gt;那也许有人会说我将workspace这个action改成POST显示可以吗？答案也是不可以的，因为你点击按钮进入这个页面后，你如果刷新当前的workspace页面，浏览器会提示是否重复提交请求的提示，给用户的体验也不好。实质是这个请求不可cache。另外在其它页面地方也不能通过一般的a link的方式进入workspace页面，不可传播。&lt;/p&gt;
 
-&lt;p&gt;现在我将这个逻辑分开写了 POST /data&lt;em&gt;sets/{id}/choose&lt;/em&gt;task 和 GET /data_sets/{id}/workspace 两个请求，代码逻辑是很合理的。用户可以随意刷新他的工作台，而不用担心刷新会改变什么数据。&lt;/p&gt;
+&lt;p&gt;现在我将这个逻辑分开写了 POST /data_sets/{id}/choose_task 和 GET /data_sets/{id}/workspace 两个请求，代码逻辑是很合理的。用户可以随意刷新他的工作台，而不用担心刷新会改变什么数据。&lt;/p&gt;
 
 &lt;p&gt;啰嗦了这么多，其实这是一个很小的问题，但是容易忽略。之前在一个公司维护一个项目，发现页面中做的一个商品多条件查询表单居然是用POST请求的。每次在浏览器中查询商品后，按F5刷新，总是提示是否重复提交请求，用户体验很不好。另外我还没有办法把我查询找到的商品结果页面发给我其他的朋友。&lt;/p&gt;
 
@@ -226,20 +253,27 @@ end
       <item>
         <title>在QT5中使用JSON库json-c</title>
         <description>&lt;p&gt;首先需要安装json-c库:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;sudo apt-get install libjson-c-dev
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;在QT的项目中，修改.pro文件，加入：&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;CONFIG += link_pkgconfig
-PKGCONFIG += json-c
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;构建JSON的方法如下    &lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;        #include &amp;lt;json/json.h&amp;gt;
 
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo apt-get install libjson-c-dev
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;在QT的项目中，修改.pro文件，加入：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;CONFIG += link_pkgconfig
+PKGCONFIG += json-c
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;构建JSON的方法如下&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;        #include &amp;lt;json/json.h&amp;gt;
+        
         /*Creating a json object*/
         json_object * jobj = json_object_new_object();
 
         /*Creating a json string*/
-        json_object *jstring = json_object_new_string(&amp;quot;Joys of Programming&amp;quot;);
+        json_object *jstring = json_object_new_string(&quot;Joys of Programming&quot;);
 
         /*Creating a json integer*/
         json_object *jint = json_object_new_int(10);
@@ -254,9 +288,9 @@ PKGCONFIG += json-c
         json_object *jarray = json_object_new_array();
 
         /*Creating json strings*/
-        json_object *jstring1 = json_object_new_string(&amp;quot;c&amp;quot;);
-        json_object *jstring2 = json_object_new_string(&amp;quot;c++&amp;quot;);
-        json_object *jstring3 = json_object_new_string(&amp;quot;php&amp;quot;);
+        json_object *jstring1 = json_object_new_string(&quot;c&quot;);
+        json_object *jstring2 = json_object_new_string(&quot;c++&quot;);
+        json_object *jstring3 = json_object_new_string(&quot;php&quot;);
 
         /*Adding the above created json strings to the array*/
         json_object_array_add(jarray,jstring1);
@@ -266,26 +300,34 @@ PKGCONFIG += json-c
 
         /*Form the json object*/
         /*Each of these is like a key value pair*/
-        json_object_object_add(jobj,&amp;quot;Site Name&amp;quot;, jstring);
-        json_object_object_add(jobj,&amp;quot;Technical blog&amp;quot;, jboolean);
-        json_object_object_add(jobj,&amp;quot;Average posts per day&amp;quot;, jdouble);
-        json_object_object_add(jobj,&amp;quot;Number of posts&amp;quot;, jint);
-        json_object_object_add(jobj,&amp;quot;Categories&amp;quot;, jarray);
+        json_object_object_add(jobj,&quot;Site Name&quot;, jstring);
+        json_object_object_add(jobj,&quot;Technical blog&quot;, jboolean);
+        json_object_object_add(jobj,&quot;Average posts per day&quot;, jdouble);
+        json_object_object_add(jobj,&quot;Number of posts&quot;, jint);
+        json_object_object_add(jobj,&quot;Categories&quot;, jarray);
 
         /*Now printing the json object*/
-        printf (&amp;quot;The json object created: %sn&amp;quot;,json_object_to_json_string(jobj));    
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+        printf (&quot;The json object created: %sn&quot;,json_object_to_json_string(jobj));    
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
 &lt;p&gt;程序结果是：&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;  The json object created: { &amp;quot;Site Name&amp;quot;: &amp;quot;Joys of Programming&amp;quot;, &amp;quot;Technical blog&amp;quot;: true, &amp;quot;Average posts per day&amp;quot;: 2.140000, &amp;quot;Number of posts&amp;quot;: 10, &amp;quot;Categories&amp;quot;: [ &amp;quot;c&amp;quot;, &amp;quot;c++&amp;quot;, &amp;quot;php&amp;quot; ] }
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  The json object created: { &quot;Site Name&quot;: &quot;Joys of Programming&quot;, &quot;Technical blog&quot;: true, &quot;Average posts per day&quot;: 2.140000, &quot;Number of posts&quot;: 10, &quot;Categories&quot;: [ &quot;c&quot;, &quot;c++&quot;, &quot;php&quot; ] }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
 &lt;p&gt;解析JSON字符串的方法如下&lt;/p&gt;
 
 &lt;p&gt;例如有如下的字符串&lt;/p&gt;
 
-&lt;p&gt;{&amp;ldquo;column&amp;rdquo;:[&amp;ldquo;symbol&amp;rdquo;,&amp;ldquo;name&amp;rdquo;],&amp;ldquo;data&amp;rdquo;:[[&amp;ldquo;SZ000001&amp;rdquo;,&amp;ldquo;平安银行&amp;rdquo;],[&amp;ldquo;SZ000005&amp;rdquo;,&amp;ldquo;世纪星源&amp;rdquo;],[&amp;ldquo;SZ000006&amp;rdquo;,&amp;ldquo;深振业A&amp;rdquo;],[&amp;ldquo;SZ000008&amp;rdquo;,&amp;ldquo;神州高铁&amp;rdquo;],[&amp;ldquo;SZ000009&amp;rdquo;,&amp;ldquo;中国宝安&amp;rdquo;]],&amp;ldquo;count&amp;rdquo;:1544.0}      &lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;QByteArray json_content_arr = network_reply-&amp;gt;readAll();
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;column&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;symbol&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;data&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:[[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;SZ000001&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;平安银行&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;SZ000005&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;世纪星源&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;SZ000006&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;深振业A&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;SZ000008&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;神州高铁&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;SZ000009&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;中国宝安&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]],&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;count&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;1544.0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;      
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;QByteArray json_content_arr = network_reply-&amp;gt;readAll();
 const char *json_content = json_content_arr.constData();
-puts(&amp;quot;Sync from xueqiu&amp;quot;);
+puts(&quot;Sync from xueqiu&quot;);
 
 struct json_tokener *tokener;
 struct json_object *json_root, *data_array_child, *stock_item_child, *stock_code_child, *stock_name_child;
@@ -296,17 +338,17 @@ json_tokener_free(tokener);
 if(json_root == NULL) {
     return;
 }
-json_object_object_get_ex(json_root, &amp;quot;data&amp;quot;, &amp;amp;data_array_child);
+json_object_object_get_ex(json_root, &quot;data&quot;, &amp;amp;data_array_child);
 if(data_array_child != NULL) {
 
 
-    FILE *f = fopen(&amp;quot;/home/qichunren/logs.txt&amp;quot;, &amp;quot;a+&amp;quot;);
+    FILE *f = fopen(&quot;/home/qichunren/logs.txt&quot;, &quot;a+&quot;);
     if (f == NULL) {
-        printf(&amp;quot;Error opening file!\n&amp;quot;);
+        printf(&quot;Error opening file!\n&quot;);
         return;
     }
         int array_len = json_object_array_length(data_array_child);
-        printf(&amp;quot;stock length %d\n&amp;quot;, array_len);
+        printf(&quot;stock length %d\n&quot;, array_len);
         for(int i=0;i&amp;lt;array_len;i++) {
             stock_item_child = json_object_array_get_idx(data_array_child, i);
             if(stock_item_child == NULL) {
@@ -317,14 +359,17 @@ if(data_array_child != NULL) {
             if(stock_code_child != NULL &amp;amp;&amp;amp; stock_name_child != NULL) {
                 const char *stock_code = json_object_get_string(stock_code_child);
                 const char *stock_name = json_object_get_string(stock_name_child);
-                fprintf(f, &amp;quot;%s %s\r\n&amp;quot;, stock_code, stock_name);
+                fprintf(f, &quot;%s %s\r\n&quot;, stock_code, stock_name);
             }
         }
         fclose(f);
 }
 //qDebug() &amp;lt;&amp;lt; json_content_arr;
 network_reply-&amp;gt;deleteLater();
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+</description>
         <pubDate>Mon, 13 Jul 2015 12:30:00 +0800</pubDate>
         <link>/development/2015/07/13/use-json-in-qt5/</link>
         <guid isPermaLink="true">/development/2015/07/13/use-json-in-qt5/</guid>
@@ -344,43 +389,58 @@ network_reply-&amp;gt;deleteLater();
       <item>
         <title>在QT5中使用国际化语言</title>
         <description>&lt;p&gt;QT程序启动时加载Translator&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;QTranslator translator;
-translator.load(&amp;quot;ntptu_&amp;quot; + QLocale::system().name(),
-                      &amp;quot;:/translations&amp;quot;);
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;QTranslator translator;
+translator.load(&quot;ntptu_&quot; + QLocale::system().name(),
+                      &quot;:/translations&quot;);
 a.installTranslator(&amp;amp;translator);
 
 
-QString message(tr(&amp;quot;voices directory did not exist in data directory %1!&amp;quot;));
+QString message(tr(&quot;voices directory did not exist in data directory %1!&quot;));
 message.arg(dir.absolutePath());
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
 &lt;p&gt;lupdate工具是解析程序代码中使用tr方法和ui文件中的字符串，生成ts文件&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;lupdate -verbose project.pro
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;lupdate -verbose project.pro
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
 &lt;p&gt;linguist这个工具可以直接在程序界面上翻译代码和ui文件中的字符串。&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;linguist project_zh_CN.ts
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;linguist project_zh_CN.ts
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
 &lt;p&gt;lrelease是将ts文件生成pm文件&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;lrelease -verbose project_zh_CN.ts
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;lrelease -verbose project_zh_CN.ts
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
 &lt;p&gt;设置环境变量进行测试&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;qichunren@qichunren-desktop:~/code/new-pis$ locale
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;qichunren@qichunren-desktop:~/code/new-pis$ locale
 LANG=zh_CN.UTF-8
 LANGUAGE=en_US
-LC_CTYPE=&amp;quot;zh_CN.UTF-8&amp;quot;
-LC_NUMERIC=&amp;quot;zh_CN.UTF-8&amp;quot;
-LC_TIME=&amp;quot;zh_CN.UTF-8&amp;quot;
-LC_COLLATE=&amp;quot;zh_CN.UTF-8&amp;quot;
-LC_MONETARY=&amp;quot;zh_CN.UTF-8&amp;quot;
-LC_MESSAGES=&amp;quot;zh_CN.UTF-8&amp;quot;
-LC_PAPER=&amp;quot;zh_CN.UTF-8&amp;quot;
-LC_NAME=&amp;quot;zh_CN.UTF-8&amp;quot;
-LC_ADDRESS=&amp;quot;zh_CN.UTF-8&amp;quot;
-LC_TELEPHONE=&amp;quot;zh_CN.UTF-8&amp;quot;
-LC_MEASUREMENT=&amp;quot;zh_CN.UTF-8&amp;quot;
-LC_IDENTIFICATION=&amp;quot;zh_CN.UTF-8&amp;quot;
+LC_CTYPE=&quot;zh_CN.UTF-8&quot;
+LC_NUMERIC=&quot;zh_CN.UTF-8&quot;
+LC_TIME=&quot;zh_CN.UTF-8&quot;
+LC_COLLATE=&quot;zh_CN.UTF-8&quot;
+LC_MONETARY=&quot;zh_CN.UTF-8&quot;
+LC_MESSAGES=&quot;zh_CN.UTF-8&quot;
+LC_PAPER=&quot;zh_CN.UTF-8&quot;
+LC_NAME=&quot;zh_CN.UTF-8&quot;
+LC_ADDRESS=&quot;zh_CN.UTF-8&quot;
+LC_TELEPHONE=&quot;zh_CN.UTF-8&quot;
+LC_MEASUREMENT=&quot;zh_CN.UTF-8&quot;
+LC_IDENTIFICATION=&quot;zh_CN.UTF-8&quot;
 LC_ALL=zh_CN.UTF-8
 qichunren@qichunren-desktop:~/code/new-pis$ export LANGUAGE=zh_CN
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+</description>
         <pubDate>Mon, 13 Apr 2015 18:42:00 +0800</pubDate>
         <link>/development/2015/04/13/qt-internationalization/</link>
         <guid isPermaLink="true">/development/2015/04/13/qt-internationalization/</guid>
@@ -389,7 +449,8 @@ qichunren@qichunren-desktop:~/code/new-pis$ export LANGUAGE=zh_CN
       <item>
         <title>C++中实现单例</title>
         <description>&lt;p&gt;data_package.h文件&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;  #ifndef DATA_PACKAGE_H
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  #ifndef DATA_PACKAGE_H
   #define DATA_PACKAGE_H
 
   #include &amp;lt;QObject&amp;gt;
@@ -410,15 +471,18 @@ qichunren@qichunren-desktop:~/code/new-pis$ export LANGUAGE=zh_CN
   };
 
   #endif // DATA_PACKAGE_H
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
 &lt;p&gt;data_package.cpp文件&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;  #include &amp;quot;data_package.h&amp;quot;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  #include &quot;data_package.h&quot;
   #include &amp;lt;QDebug&amp;gt;
 
   DataPackage::DataPackage(QObject *parent) :
       QObject(parent)
   {
-      qDebug() &amp;lt;&amp;lt; &amp;quot;init data package&amp;quot;;
+      qDebug() &amp;lt;&amp;lt; &quot;init data package&quot;;
   }
 
   DataPackage&amp;amp; DataPackage::instance()
@@ -426,14 +490,19 @@ qichunren@qichunren-desktop:~/code/new-pis$ export LANGUAGE=zh_CN
       static DataPackage _instance;
       return _instance;
   }
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
 &lt;p&gt;调用：&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;  DataPackage::instance();
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  DataPackage::instance();
   DataPackage::instance();
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
 &lt;p&gt;连续调用两次instance方法，发现只会示例一次。搞定。&lt;/p&gt;
 
-&lt;h2&gt;参考资料&lt;/h2&gt;
+&lt;h2 id=&quot;section&quot;&gt;参考资料&lt;/h2&gt;
 
 &lt;p&gt;&lt;a href=&quot;http://stackoverflow.com/questions/1008019/c-singleton-design-pattern&quot;&gt;C++ Singleton design pattern&lt;/a&gt;&lt;/p&gt;
 </description>
@@ -448,38 +517,35 @@ qichunren@qichunren-desktop:~/code/new-pis$ export LANGUAGE=zh_CN
 
 &lt;p&gt;&lt;a href=&quot;http://www.pixelprospector.com/the-big-list-of-game-design/&quot;&gt;The Big List Of Game Design&lt;/a&gt;&lt;/p&gt;
 
-&lt;h2&gt;Audio:&lt;/h2&gt;
+&lt;h2 id=&quot;audio&quot;&gt;Audio:&lt;/h2&gt;
 
-&lt;p&gt;http://www.bfxr.net/ generate small music sound, such as &amp;lsquo;power up&amp;rsquo;, &amp;lsquo;coin collect&amp;rsquo;, &amp;lsquo;Attack&amp;rsquo;, &amp;lsquo;Explosion&amp;rsquo;&lt;/p&gt;
+&lt;p&gt;http://www.bfxr.net/ generate small music sound, such as ‘power up’, ‘coin collect’, ‘Attack’, ‘Explosion’&lt;/p&gt;
 
 &lt;p&gt;http://www.flashkit.com/ sound resources.&lt;/p&gt;
 
-&lt;h2&gt;Images&lt;/h2&gt;
+&lt;h2 id=&quot;images&quot;&gt;Images&lt;/h2&gt;
 
 &lt;p&gt;VOXEL Builder http://voxelbuilder.com/
 2.5D model tool: http://www.angryoctopus.co.nz/?p=177
 http://opengameart.org/&lt;/p&gt;
 
-&lt;h3&gt;Tileset&lt;/h3&gt;
-
+&lt;h3 id=&quot;tileset&quot;&gt;Tileset&lt;/h3&gt;
 &lt;p&gt;https://vxresource.wordpress.com/category/resources/tilesets/
 http://www.engine001.com/resources/tilesets.htm
 http://opengameart.org/content/isometric-tiles&lt;/p&gt;
 
-&lt;h2&gt;Threoy&lt;/h2&gt;
-
+&lt;h2 id=&quot;threoy&quot;&gt;Threoy&lt;/h2&gt;
 &lt;p&gt;http://www.lostgarden.com/
 &lt;a href=&quot;http://gamemechanicexplorer.com/&quot;&gt;http://gamemechanicexplorer.com/&lt;/a&gt;里面基于Phaser引擎讲解了许多游戏中常用的设计算法，如角色行走，导弹路径，光，视野等。&lt;/p&gt;
 
-&lt;h2&gt;Games&lt;/h2&gt;
+&lt;h2 id=&quot;games&quot;&gt;Games&lt;/h2&gt;
 
 &lt;p&gt;http://spryfox.com/our-games/&lt;/p&gt;
 
-&lt;h3&gt;Voxel editors&lt;/h3&gt;
-
+&lt;h3 id=&quot;voxel-editors&quot;&gt;Voxel editors&lt;/h3&gt;
 &lt;p&gt;https://bitbucket.org/volumesoffun/polyvox/wiki/Voxel%20editors&lt;/p&gt;
 
-&lt;h2&gt;WebSites&lt;/h2&gt;
+&lt;h2 id=&quot;websites&quot;&gt;WebSites&lt;/h2&gt;
 
 &lt;p&gt;http://www.gamasutra.com/
 http://gamedevelopment.tutsplus.com/&lt;/p&gt;

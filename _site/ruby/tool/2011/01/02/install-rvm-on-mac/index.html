@@ -18,7 +18,7 @@
 <meta content="" property="fb:app_id" />
 
   <meta content='/ruby/tool/2011/01/02/install-rvm-on-mac/' property='og:url' />
-  <meta content="[安装方法](http://beginrescueend.com/rvm/install/)首先需要安装好git然后，```bash < <(curl -s https://rvm.beginrescueend.com/install..." property='og:description' />
+  <meta content="安装方法首先需要安装好git然后，bash &lt; &lt;(curl -s https://rvm.beginrescueend.com/install/rvm)然后配置一下，echo '[[ -s "$HOME/.rvm/scr..." property='og:description' />
   <meta content="article" property="og:type" />
 
 <!-- - -->
@@ -79,20 +79,30 @@
 
 <p>首先需要安装好git
 然后，</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">bash &lt; &lt;(curl -s https://rvm.beginrescueend.com/install/rvm)
-</code></pre></div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>bash &lt; &lt;(curl -s https://rvm.beginrescueend.com/install/rvm)
+</code></pre>
+</div>
+
 <p>然后配置一下，</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">echo &#39;[[ -s &quot;$HOME/.rvm/scripts/rvm&quot; ]] &amp;&amp; . &quot;$HOME/.rvm/scripts/rvm&quot; # Load RVM function&#39; &gt;&gt; ~/.bash_profile
-</code></pre></div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>echo '[[ -s "$HOME/.rvm/scripts/rvm" ]] &amp;&amp; . "$HOME/.rvm/scripts/rvm" # Load RVM function' &gt;&gt; ~/.bash_profile
+</code></pre>
+</div>
+
 <p>使配置文件生效，</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">source .bash_profile
-</code></pre></div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>source .bash_profile
+</code></pre>
+</div>
+
 <p>rvm notes:</p>
+
 
           <br />
 <p>
   蕲春人
-  <span class="muted">at 09:09</span>
+  <span class="muted">at 17:09</span>
 </p>
 <p>
   <img src="/images/scribble3.png" alt="scribble" />

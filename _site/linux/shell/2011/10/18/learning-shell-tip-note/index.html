@@ -56,7 +56,7 @@
       <section class="paging">
   
     <div class="left">
-      <a href="/tool/2011/10/12/capture-webpage/">
+      <a href="/tool/2011/10/13/capture-webpage/">
         ‹
       </a>
     </div>
@@ -79,34 +79,37 @@
 
 <p>我随便总结一下几个知识点</p>
 
-<h4>字符串</h4>
+<h4 id="section">字符串</h4>
 
 <p>声明一个字符串变量后，使用的时候，在变量名前面加一个$符号才能将其值取出来</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">DATA_FILE=data.tar.gz
+
+<div class="highlighter-rouge"><pre class="highlight"><code>DATA_FILE=data.tar.gz
 echo $DATA_FILE
-</code></pre></div>
+</code></pre>
+</div>
+
 <p>字符串拼接
-<code>
+<code class="highlighter-rouge">
 DATA_DIR=/Users/caojinhua/code/
 DATA_FILE=data.tar.gz
-DATA_PATH=$DATA_DIR&quot;&quot;$DATA_FILE
+DATA_PATH=$DATA_DIR""$DATA_FILE
 </code></p>
 
 <p>将命令执行的结果保存在变量中
-<code>
+<code class="highlighter-rouge">
 sha1=`ls -al`
 </code></p>
 
-<h4>if语句结构</h4>
+<h4 id="if">if语句结构</h4>
 
 <p>if语句条件测试命令：
-<code>
-[ -d DIR ]  如果DIR存在并且是一个目录则为真
-[ -f FILE ] 如果FILE存在且是一个普通文件则为真
-[ -z STRING ]   如果STRING的长度为零则为真
-[ -n STRING ]   如果STRING的长度非零则为真
-[ STRING1 = STRING2 ]   如果两个字符串相同则为真
-[ STRING1 != STRING2 ]  如果字符串不相同则为真
+<code class="highlighter-rouge">
+[ -d DIR ]	如果DIR存在并且是一个目录则为真
+[ -f FILE ]	如果FILE存在且是一个普通文件则为真
+[ -z STRING ]	如果STRING的长度为零则为真
+[ -n STRING ]	如果STRING的长度非零则为真
+[ STRING1 = STRING2 ]	如果两个字符串相同则为真
+[ STRING1 != STRING2 ]	如果字符串不相同则为真
 [ ARG1 OP ARG2 ]
 </code></p>
 
@@ -115,7 +118,8 @@ sha1=`ls -al`
 <p>之前弄错好几次，中括号前后的空格不能少。</p>
 
 <p>if语句的结构</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">if [ xxx ]
+
+<div class="highlighter-rouge"><pre class="highlight"><code>if [ xxx ]
 then
 fi
 
@@ -130,16 +134,21 @@ if [ xxx ]; then
 elif [ ! xxx ]; then
 
 fi
-</code></pre></div>
-<h4>时间格式化</h4>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">date  +%Y%m%d
+</code></pre>
+</div>
+
+<h4 id="section-1">时间格式化</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>date  +%Y%m%d
 
 a=`date +%Y%m%d`
 echo $a
-</code></pre></div>
-<h4>参考资料</h4>
+</code></pre>
+</div>
 
+<h4 id="section-2">参考资料</h4>
 <p><a href="http://learn.akae.cn/media/ch31s05.html">Shell脚本语法</a></p>
+
 
           <br />
 <p>

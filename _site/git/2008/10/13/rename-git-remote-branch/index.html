@@ -63,7 +63,7 @@
   
   
     <div class="right">
-      <a href="/javascript/2008/10/29/difference-between-functions-define-in-js/">
+      <a href="/javascript/2008/10/30/difference-between-functions-define-in-js/">
         ›
       </a>
     </div>
@@ -80,12 +80,15 @@
 <p>要修改远程仓库的分支名称，只能是基于现在的分支，向远程仓库中推送一个新分支，然后将原来的分支从远程仓库中删除掉。</p>
 
 <p>比如我向远程仓库中推送了一个名为feature的分支，现在要改名为preview。</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">git checkout feature
+
+<div class="highlighter-rouge"><pre class="highlight"><code>git checkout feature
 git checkout -b preview
 git push origin preview
 git push origin :feature
 git branch -d feature
-</code></pre></div>
+</code></pre>
+</div>
+
           <br />
 <p>
   蕲春人

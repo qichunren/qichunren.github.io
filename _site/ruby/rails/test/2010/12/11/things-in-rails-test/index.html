@@ -1,0 +1,129 @@
+<html>
+  <head>
+    <meta content='Rails中的测试那些事 - 蕲春人的博客' property='og:title' />
+    <title>Rails中的测试那些事 - 蕲春人的博客</title>
+    <link href='/images/fav.png' rel='shortcut icon'>
+<link href='/stylesheets/style.css' rel='stylesheet' type='text/css' />
+<link href='/stylesheets/syntax.css' rel='stylesheet' type='text/css' />
+<link href='/stylesheets/responsive.css' rel='stylesheet' type='text/css' />
+<!-- - -->
+<script src='/javascripts/jquery.js' type='text/javascript'></script>
+<script src='/javascripts/pd.js' type='text/javascript'></script>
+<script src='/javascripts/basics.js' type='text/javascript'></script>
+<!--<script type="text/javascript" src="https://www.google.com/jsapi"></script>-->
+<!-- - -->
+<meta content='width=device-width, initial-scale=1.0, user-scalable=no' name='viewport'>
+<meta content='text/html; charset=utf-8' http-equiv='content-type' />
+<meta content="http://muan.co/images/og.png" property="og:image" />
+<meta content="" property="fb:app_id" />
+
+  <meta content='/ruby/rails/test/2010/12/11/things-in-rails-test/' property='og:url' />
+  <meta content="这个本早该记一下的。现在RUBY社区发展得太快了，各种新技术层出不穷，测试方面同样如此。我记下我在Rails3项目中所用的测试方面的技术点。首先是rspec-rails，它是rspec 2的对rails3项目支持的一个gem，只需要在..." property='og:description' />
+  <meta content="article" property="og:type" />
+
+<!-- - -->
+<script type='text/javascript'>
+  //<![CDATA[
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-6344646-4']);
+    _gaq.push(['_trackPageview']);
+    
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  //]]>
+</script>
+
+  </head>
+  <body>
+    <header>
+<p>蕲春人的博客</p>
+</header>
+    <div id='container'>
+      <div class="block">
+  
+    <a target="_top" class="main" href="/about">About</a>
+  
+    <a target="_top" class="main" href="http://qichunren.github.io">Blog</a>
+  
+    <a target="_blank" class="main" href="mailto:whyruby@gmail.com">Email</a>
+  
+    <a target="_top" class="main" href="https://github.com/qichunren">GitHub</a>
+  
+</div>
+      <section class="paging">
+  
+    <div class="left">
+      <a href="/ruby/rails/2010/10/30/mark-rails-write-code/">
+        ‹
+      </a>
+    </div>
+  
+  
+    <div class="right">
+      <a href="/2010/12/12/setup-rspec-test-for-rails-project/">
+        ›
+      </a>
+    </div>
+  
+</section>
+      <div class="content">
+        <section class='post'>
+          <h1 class="upcase">
+            <div class='date'>11 Dec 2010</div>
+            Rails中的测试那些事
+          </h1>
+          <p>这个本早该记一下的。</p>
+
+<p>现在RUBY社区发展得太快了，各种新技术层出不穷，测试方面同样如此。</p>
+
+<p>我记下我在Rails3项目中所用的测试方面的技术点。</p>
+
+<p>首先是rspec-rails，它是rspec 2的对rails3项目支持的一个gem，只需要在Gemfile中指定rspec-rails就可以了，不用指定rspec2依赖。</p>
+
+<p>然后我还要用到factorygirl-rails，它同样是factorygirl对于rails3项目支持的一个gem，只需要在Gemfile中指定factorygirl-rails就可以了，不用指定factorygirl依赖。</p>
+
+<p>还有一个rspec的match封装gem，remarkable/active_record，用它可以测试 validates,association(关联等)，说到这里，“测试”这个词我觉得不合适，我用到来感觉这个gem太强大了，它简直就是一个代码监管的工具。</p>
+
+<p>另外，<a href="https://github.com/EmmanuelOga/ffaker">ffaker</a> 这个是用来产生随机数据的gem，它可以用来产生email, name, company name等，另外我提交了可以产生中文姓名的<a href="https://github.com/EmmanuelOga/ffaker/pull/9">代码</a> ，可是到现在作者还没有将其融合进去，真希望他快点啊。</p>
+
+<p>其它的如cucumber太过先进的东西我还没有在项目中常用。感觉上面介绍的组合就够我用了。</p>
+
+<p>最后持续集成测试方面我还没有在项目中用到，有时间的时候我打算研究一下 <a href="https://github.com/rails/rails/blob/master/ci/ci_setup_notes.txt">cinabox</a> ，为什么要研究这个呢，因为我看到rails项目中就是到的这个来作为它的持续测试的工具，它是基本ubuntu系统上的一个项目，看介绍，安装很方便的，到时候试试。</p>
+
+<p>我以下写下这些，一是作了大致的记录，另外也防止自己out了，如果大家有更好用的工具，也请分享一下。</p>
+
+          <br />
+<p>
+  蕲春人
+  <span class="muted">at 07:23</span>
+</p>
+<p>
+  <img src="/images/scribble3.png" alt="scribble" />
+</p>
+
+
+        </section>
+      </div>
+      
+
+      
+      <div class="block">
+  
+    <a target="_top" class="main" href="/about">About</a>
+  
+    <a target="_top" class="main" href="http://qichunren.github.io">Blog</a>
+  
+    <a target="_blank" class="main" href="mailto:whyruby@gmail.com">Email</a>
+  
+    <a target="_top" class="main" href="https://github.com/qichunren">GitHub</a>
+  
+</div>
+    </div>
+    <footer>
+  <a href="http://github.com/muan/scribble" class="muted">built with Jekyll using Scribble theme</a>
+</footer>
+  </body>
+</html>

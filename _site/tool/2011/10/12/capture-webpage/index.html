@@ -75,65 +75,57 @@
             <div class='date'>12 Oct 2011</div>
             网页截屏的方法
           </h1>
-          <p>曾经很想有这样一个app, 它可以将微博上用户的微博用图片的形式自动保存起来，留此存照。前几个月的那段时间，微博上很
-网页截屏的基本原理就是通过取得webkit渲染（render）的数据来生成图片的，我经过一段时间研究，找到了两个方法来解决这个问题。</p>
+          <p>曾经很想有这样一个app, 它可以将微博上用户的微博用图片的形式自动保存起来，留此存照。前几个月的那段时间，微博上很 网页截屏的基本原理就是通过取得webkit渲染（render）的数据来生成图片的，我经过一段时间研究，找到了两个方法来解决这个问题。</p>
 
 <p>一个工具叫<a href="http://www.phantomjs.org/">phantomjs</a>，另一个工具叫<a href="http://cutycapt.sourceforge.net/">cutycapt</a></p>
 
-<p>两个工具都不错，个人比较喜欢使用cutycapt这个工具，它是直接提供一个命令行来生成网页截图的，而前者是通过javascript来调用底层webkit接品(page.render方法)来实现的，两者的侧重点不一样。
-并且cutycapt是将整个网截下来，phantomjs是将浏览器当前视区的一屏截下来。</p>
+<p>两个工具都不错，个人比较喜欢使用cutycapt这个工具，它是直接提供一个命令行来生成网页截图的，而前者是通过javascript来调用底层webkit接品(page.render方法)来实现的，两者的侧重点不一样。 并且cutycapt是将整个网截下来，phantomjs是将浏览器当前视区的一屏截下来。</p>
 
-<p>Cutycapt的用法如下
-&ldquo;`
-qichunren@qichunren-desktop:~/github/cutycapt/CutyCapt$ ./CutyCapt </p>
+<p>Cutycapt的用法如下</p>
 
-<hr>
-
-<p>Usage: CutyCapt &ndash;url=http://www.example.org/ &ndash;out=localfile.png            </p>
-
-<hr>
-
-<p>&ndash;help                         Print this help page and exit<br>
-  &ndash;url=<url>                    The URL to capture (http:&hellip;|file:&hellip;|&hellip;)<br>
-  &ndash;out=<path>                   The target file (.png|pdf|ps|svg|jpeg|&hellip;)<br>
-  &ndash;out-format=<f>               Like extension in &ndash;out, overrides heuristic 
-  &ndash;min-width=<int>              Minimal width for the image (default: 800)<br>
-  &ndash;min-height=<int>             Minimal height for the image (default: 600)<br>
-  &ndash;max-wait=<ms>                Don&rsquo;t wait more than (default: 90000, inf: 0)
-  &ndash;delay=<ms>                   After successful load, wait (default: 0)<br>
-  &ndash;user-style-path=<path>       Location of user style sheet file, if any<br>
-  &ndash;user-style-string=<css>      User style rules specified as text<br>
-  &ndash;header=<name>:<value>        request header; repeatable; some can&rsquo;t be set
-  &ndash;method=<get|post|put>        Specifies the request method (default: get)<br>
-  &ndash;body-string=<string>         Unencoded request body (default: none)<br>
-  &ndash;body-base64=<base64>         Base64-encoded request body (default: none)<br>
-  &ndash;app-name=<name>              appName used in User-Agent; default is none<br>
-  &ndash;app-version=<version>        appVers used in User-Agent; default is none<br>
-  &ndash;user-agent=<string>          Override the User-Agent header Qt would set<br>
-  &ndash;javascript=<on|off>          JavaScript execution (default: on)<br>
-  &ndash;java=<on|off>                Java execution (default: unknown)<br>
-  &ndash;plugins=<on|off>             Plugin execution (default: unknown)<br>
-  &ndash;private-browsing=<on|off>    Private browsing (default: unknown)<br>
-  &ndash;auto-load-images=<on|off>    Automatic image loading (default: on)<br>
-  &ndash;js-can-open-windows=<on|off> Script can open windows? (default: unknown)<br>
-  &ndash;js-can-access-clipboard=<on|off> Script clipboard privs (default: unknown)
-  &ndash;print-backgrounds=<on|off>   Backgrounds in PDF/PS output (default: off)<br>
-  &ndash;zoom-factor=<float>          Page zoom factor (default: no zooming)<br>
-  &ndash;zoom-text-only=<on|off>      Whether to zoom only the text (default: off) 
-  &ndash;http-proxy=<url>             Address for HTTP proxy server (default: none)</p>
-
-<hr>
-
-<p><f> is svg,ps,pdf,itext,html,rtree,png,jpeg,mng,tiff,gif,bmp,ppm,xbm,xpm    </p>
-
-<hr>
-
-<p>http://cutycapt.sf.net - &copy; 2003-2010 Bjoern Hoehrmann - bjoern@hoehrmann.de
+<pre><code>
+qichunren@qichunren-desktop:~/github/cutycapt/CutyCapt$ ./CutyCapt 
+ -----------------------------------------------------------------------------
+ Usage: CutyCapt --url=http://www.example.org/ --out=localfile.png            
+ -----------------------------------------------------------------------------
+  --help                         Print this help page and exit                
+  --url=&lt;url&gt;                    The URL to capture (http:...|file:...|...)   
+  --out=&lt;path&gt;                   The target file (.png|pdf|ps|svg|jpeg|...)   
+  --out-format=&lt;f&gt;               Like extension in --out, overrides heuristic 
+  --min-width=&lt;int&gt;              Minimal width for the image (default: 800)   
+  --min-height=&lt;int&gt;             Minimal height for the image (default: 600)  
+  --max-wait=&lt;ms&gt;                Don't wait more than (default: 90000, inf: 0)
+  --delay=&lt;ms&gt;                   After successful load, wait (default: 0)     
+  --user-style-path=&lt;path&gt;       Location of user style sheet file, if any    
+  --user-style-string=&lt;css&gt;      User style rules specified as text           
+  --header=&lt;name&gt;:&lt;value&gt;        request header; repeatable; some can't be set
+  --method=&lt;get|post|put&gt;        Specifies the request method (default: get)  
+  --body-string=&lt;string&gt;         Unencoded request body (default: none)       
+  --body-base64=&lt;base64&gt;         Base64-encoded request body (default: none)  
+  --app-name=&lt;name&gt;              appName used in User-Agent; default is none  
+  --app-version=&lt;version&gt;        appVers used in User-Agent; default is none  
+  --user-agent=&lt;string&gt;          Override the User-Agent header Qt would set  
+  --javascript=&lt;on|off&gt;          JavaScript execution (default: on)           
+  --java=&lt;on|off&gt;                Java execution (default: unknown)            
+  --plugins=&lt;on|off&gt;             Plugin execution (default: unknown)          
+  --private-browsing=&lt;on|off&gt;    Private browsing (default: unknown)          
+  --auto-load-images=&lt;on|off&gt;    Automatic image loading (default: on)        
+  --js-can-open-windows=&lt;on|off&gt; Script can open windows? (default: unknown)  
+  --js-can-access-clipboard=&lt;on|off&gt; Script clipboard privs (default: unknown)
+  --print-backgrounds=&lt;on|off&gt;   Backgrounds in PDF/PS output (default: off)  
+  --zoom-factor=&lt;float&gt;          Page zoom factor (default: no zooming)       
+  --zoom-text-only=&lt;on|off&gt;      Whether to zoom only the text (default: off) 
+  --http-proxy=&lt;url&gt;             Address for HTTP proxy server (default: none)
+ -----------------------------------------------------------------------------
+  &lt;f&gt; is svg,ps,pdf,itext,html,rtree,png,jpeg,mng,tiff,gif,bmp,ppm,xbm,xpm    
+ -----------------------------------------------------------------------------
+ http://cutycapt.sf.net - (c) 2003-2010 Bjoern Hoehrmann - bjoern@hoehrmann.de
 qichunren@qichunren-desktop:~/github/cutycapt/CutyCapt$
-&rdquo;`</p>
+</code></pre>
 
-<p>phantomjs截屏的用法如下：
-<code>
+<p>phantomjs截屏的用法如下：</p>
+
+<pre><code>
 qichunren@qichunren-desktop:~/github$ cd phantomjs/
 qichunren@qichunren-desktop:~/github/phantomjs$ ls
 bin         ChangeLog  ff.png     iteye.png    Makefile       python     src
@@ -143,8 +135,7 @@ Usage: rasterize.js URL filename [paperwidth*paperheight|paperformat]
   paper (pdf output) examples: &quot;5in*7.5in&quot;, &quot;10cm*20cm&quot;, &quot;A4&quot;, &quot;Letter&quot;
 qichunren@qichunren-desktop:~/github/phantomjs$ ./bin/phantomjs examples/rasterize.js http://www.iteye.com iteye.png
 qichunren@qichunren-desktop:~/github/phantomjs$
-</code></p>
-
+</code></pre>
           <br />
 <p>
   蕲春人

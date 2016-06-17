@@ -80,7 +80,8 @@
 <p>在web开发中，一个http请求方法有GET / HEAD / PUT / DELETE / OPTIONS / CONNECT几个形式，对此不多究。我今天主要想谈谈常见的GET和POST两种方法的使用思考。</p>
 
 <p>先来讲一个我最近做的一个 Ruby on Rails 项目，在那个项目中，用户(User)可以选择某一个数据集合(DataSet)项目参与其中做任务(Task)。模型关系如下</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">class User &lt; ActiveRecord::Base
+
+<div class="highlighter-rouge"><pre class="highlight"><code>class User &lt; ActiveRecord::Base
   has_many :tasks       
 end
 
@@ -96,29 +97,35 @@ class Task &lt; ActiveRecord::Base
   belongs_to :user
   belongs_to :data_set
 end
-</code></pre></div>
+</code></pre>
+</div>
+
 <p>在数据集合(DataSet)列表页面，列出多个集合(DataSet)，用户可以选择其中一个参与任务(Task)。如果用户还没有参与其中的某个项目，显示“开始工作”，否则显示“继续工作”，页面部分代码如下：</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">        &lt;% @data_sets.each do |data_set| %&gt;
-        &lt;div class=&quot;col-sm-6 col-md-4&quot;&gt;
-          &lt;div class=&quot;thumbnail&quot;&gt;
+
+<div class="highlighter-rouge"><pre class="highlight"><code>        &lt;% @data_sets.each do |data_set| %&gt;
+        &lt;div class="col-sm-6 col-md-4"&gt;
+          &lt;div class="thumbnail"&gt;
             &lt;%= image_tag data_set.logo.url %&gt;
-            &lt;div class=&quot;caption&quot;&gt;
+            &lt;div class="caption"&gt;
               &lt;h3&gt;&lt;%= data_set.name %&gt;&lt;/h3&gt;
               &lt;p&gt;&lt;%= data_set.description %&gt;&lt;/p&gt;
               &lt;p&gt;
                 &lt;% if data_set.user_task(current_user).present? %&gt;
-                  &lt;%= link_to &#39;继续工作&#39;, workspace_data_set_path(data_set), class: &#39;btn btn-primary&#39; %&gt;
+                  &lt;%= link_to '继续工作', workspace_data_set_path(data_set), class: 'btn btn-primary' %&gt;
                 &lt;% else %&gt;
-                  &lt;%= link_to &#39;开始工作&#39;, choose_task_data_set_path(data_set), method: :post, class: &#39;btn btn-primary&#39; %&gt;
+                  &lt;%= link_to '开始工作', choose_task_data_set_path(data_set), method: :post, class: 'btn btn-primary' %&gt;
                 &lt;% end %&gt;
               &lt;/p&gt;
             &lt;/div&gt;
           &lt;/div&gt;
         &lt;/div&gt;
         &lt;% end %&gt;
-</code></pre></div>
+</code></pre>
+</div>
+
 <p>DataSetsController中的部分代码如下：</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">class DataSetsController &lt; ApplicationController
+
+<div class="highlighter-rouge"><pre class="highlight"><code>class DataSetsController &lt; ApplicationController
   before_action :authenticate_user!
   before_action :set_data_set, only: [:show, :edit, :update, :destroy, :choose_task, :workspace, :mark_picture]
 
@@ -142,12 +149,14 @@ end
     # ...
   end
 end 
-</code></pre></div>
-<p>当初在设计这个页面上逻辑的时候，一开始以为直接用一个方法请求就搞定了,页面点击“开始工作”或者“继续工作”按钮，直接GET请求跳转到用户工作台链接/data<em>sets/{id}/workspace，在workspace action中加入额外的逻辑判断是否要创建用户的任务(Task)。我接着认真思考了一下，发现这样不妥。原因有是GET /data</em>sets/{id}/workspace中的逻辑不纯粹， 与它的URL本身语义不符合。也不利于测试。</p>
+</code></pre>
+</div>
+
+<p>当初在设计这个页面上逻辑的时候，一开始以为直接用一个方法请求就搞定了,页面点击“开始工作”或者“继续工作”按钮，直接GET请求跳转到用户工作台链接/data_sets/{id}/workspace，在workspace action中加入额外的逻辑判断是否要创建用户的任务(Task)。我接着认真思考了一下，发现这样不妥。原因有是GET /data_sets/{id}/workspace中的逻辑不纯粹， 与它的URL本身语义不符合。也不利于测试。</p>
 
 <p>那也许有人会说我将workspace这个action改成POST显示可以吗？答案也是不可以的，因为你点击按钮进入这个页面后，你如果刷新当前的workspace页面，浏览器会提示是否重复提交请求的提示，给用户的体验也不好。实质是这个请求不可cache。另外在其它页面地方也不能通过一般的a link的方式进入workspace页面，不可传播。</p>
 
-<p>现在我将这个逻辑分开写了 POST /data<em>sets/{id}/choose</em>task 和 GET /data_sets/{id}/workspace 两个请求，代码逻辑是很合理的。用户可以随意刷新他的工作台，而不用担心刷新会改变什么数据。</p>
+<p>现在我将这个逻辑分开写了 POST /data_sets/{id}/choose_task 和 GET /data_sets/{id}/workspace 两个请求，代码逻辑是很合理的。用户可以随意刷新他的工作台，而不用担心刷新会改变什么数据。</p>
 
 <p>啰嗦了这么多，其实这是一个很小的问题，但是容易忽略。之前在一个公司维护一个项目，发现页面中做的一个商品多条件查询表单居然是用POST请求的。每次在浏览器中查询商品后，按F5刷新，总是提示是否重复提交请求，用户体验很不好。另外我还没有办法把我查询找到的商品结果页面发给我其他的朋友。</p>
 

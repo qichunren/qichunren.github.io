@@ -75,22 +75,27 @@
             <div class='date'>17 Aug 2011</div>
             Set proxy in server side to get crossing domain ajax request
           </h1>
-          <div class="highlight"><pre><code class="text language-text" data-lang="text">class ProxyController &lt; ApplicationController
+          <pre><code>
+class ProxyController &lt; ApplicationController
 
   # GET /proxy/:url
   def get_handle
-    require &#39;open-uri&#39;
+    require 'open-uri'
     file = open(params[:url])
     contents = file.read
     render :text =&gt; contents
   end
 
 end
-</code></pre></div><div class="highlight"><pre><code class="text language-text" data-lang="text">    get &quot;/proxy&quot; =&gt; &quot;proxy#get_handle&quot;
-</code></pre></div><div class="highlight"><pre><code class="text language-text" data-lang="text">```
+</code></pre>
+
+<pre><code>
+    get &quot;/proxy&quot; =&gt; &quot;proxy#get_handle&quot;
+</code></pre>
+
+<pre><code>```
 $.get(&quot;/proxy?url=&quot; + remote_url, function(data){
-```
-</code></pre></div>
+```</code></pre>
           <br />
 <p>
   蕲春人

@@ -18,7 +18,7 @@
 <meta content="" property="fb:app_id" />
 
   <meta content='/web/html5/2011/05/09/learn-html5/' property='og:url' />
-  <meta content="### 什么是 HTML5？HTML5 将成为 HTML、XHTML 以及 HTML DOM 的新标准。HTML 的上一个版本诞生于 1999 年。自从那以后，Web 世界已经经历了巨变。HTML5 仍处于完善之中。然而，大部分现代浏..." property='og:description' />
+  <meta content="什么是 HTML5？HTML5 将成为 HTML、XHTML 以及 HTML DOM 的新标准。HTML 的上一个版本诞生于 1999 年。自从那以后，Web 世界已经经历了巨变。HTML5 仍处于完善之中。然而，大部分现代浏览器已经..." property='og:description' />
   <meta content="article" property="og:type" />
 
 <!-- - -->
@@ -56,14 +56,14 @@
       <section class="paging">
   
     <div class="left">
-      <a href="/web/html5/2011/05/09/jquery-element-position-notes/">
+      <a href="/2011/05/07/add-rspec2-task-to-rakefile/">
         ‹
       </a>
     </div>
   
   
     <div class="right">
-      <a href="/mac/tool/2011/05/11/use-gitX-on-mac/">
+      <a href="/web/html5/2011/05/09/jquery-element-position-notes/">
         ›
       </a>
     </div>
@@ -75,14 +75,12 @@
             <div class='date'>09 May 2011</div>
             学习HTML5杂记
           </h1>
-          <h3>什么是 HTML5？</h3>
-
+          <h3 id="html5">什么是 HTML5？</h3>
 <p>HTML5 将成为 HTML、XHTML 以及 HTML DOM 的新标准。
 HTML 的上一个版本诞生于 1999 年。自从那以后，Web 世界已经经历了巨变。
 HTML5 仍处于完善之中。然而，大部分现代浏览器已经具备了某些 HTML5 支持。</p>
 
-<h3>新特性</h3>
-
+<h3 id="section">新特性</h3>
 <p>HTML5 中的一些有趣的新特性：
 + 用于绘画的 canvas 元素
 + 用于媒介回放的 video 和 audio 元素
@@ -90,58 +88,51 @@ HTML5 仍处于完善之中。然而，大部分现代浏览器已经具备了�
 + 新的特殊内容元素，比如 article、footer、header、nav、section
 + 新的表单控件，比如 calendar、date、time、email、url、search</p>
 
-<h4>Video标签</h4>
-
+<h4 id="video">Video标签</h4>
 <p><a href="http://www.w3school.com.cn/html5/html_5_video.asp">参考资料</a></p>
 
-<div class="highlight"><pre><code class="html"><span class="cp">&lt;!DOCTYPE HTML&gt;</span>
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="cp">&lt;!DOCTYPE HTML&gt;</span>
 <span class="nt">&lt;html&gt;</span>
 <span class="nt">&lt;body&gt;</span>
 
-<span class="nt">&lt;video</span> <span class="na">width=</span><span class="s">&quot;320&quot;</span> <span class="na">height=</span><span class="s">&quot;240&quot;</span> <span class="na">controls=</span><span class="s">&quot;controls&quot;</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;source</span> <span class="na">src=</span><span class="s">&quot;movie.ogg&quot;</span> <span class="na">type=</span><span class="s">&quot;video/ogg&quot;</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;source</span> <span class="na">src=</span><span class="s">&quot;movie.mp4&quot;</span> <span class="na">type=</span><span class="s">&quot;video/mp4&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;video</span> <span class="na">width=</span><span class="s">"320"</span> <span class="na">height=</span><span class="s">"240"</span> <span class="na">controls=</span><span class="s">"controls"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;source</span> <span class="na">src=</span><span class="s">"movie.ogg"</span> <span class="na">type=</span><span class="s">"video/ogg"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;source</span> <span class="na">src=</span><span class="s">"movie.mp4"</span> <span class="na">type=</span><span class="s">"video/mp4"</span><span class="nt">&gt;</span>
 Your browser does not support the video tag.
 <span class="nt">&lt;/video&gt;</span>
 
 <span class="nt">&lt;/body&gt;</span>
-<span class="nt">&lt;/html&gt;</span>
-</code></pre></div>
+<span class="nt">&lt;/html&gt;</span></code></pre></figure>
 
-<h4>Audio标签</h4>
-
+<h4 id="audio">Audio标签</h4>
 <p><a href="http://www.w3school.com.cn/html5/html_5_audio.asp">参考资料</a></p>
 
-<div class="highlight"><pre><code class="html"><span class="cp">&lt;!DOCTYPE HTML&gt;</span>
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="cp">&lt;!DOCTYPE HTML&gt;</span>
 <span class="nt">&lt;html&gt;</span>
 <span class="nt">&lt;body&gt;</span>
 
-<span class="nt">&lt;audio</span> <span class="na">controls=</span><span class="s">&quot;controls&quot;</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;source</span> <span class="na">src=</span><span class="s">&quot;song.ogg&quot;</span> <span class="na">type=</span><span class="s">&quot;audio/ogg&quot;</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;source</span> <span class="na">src=</span><span class="s">&quot;song.mp3&quot;</span> <span class="na">type=</span><span class="s">&quot;audio/mpeg&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;audio</span> <span class="na">controls=</span><span class="s">"controls"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;source</span> <span class="na">src=</span><span class="s">"song.ogg"</span> <span class="na">type=</span><span class="s">"audio/ogg"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;source</span> <span class="na">src=</span><span class="s">"song.mp3"</span> <span class="na">type=</span><span class="s">"audio/mpeg"</span><span class="nt">&gt;</span>
 Your browser does not support the audio tag.
 <span class="nt">&lt;/audio&gt;</span> 
 
 <span class="nt">&lt;/body&gt;</span>
-<span class="nt">&lt;/html&gt;</span>
-</code></pre></div>
-  
+<span class="nt">&lt;/html&gt;</span></code></pre></figure>
 
-<h4>Canvas元素</h4>
+<h4 id="canvas">Canvas元素</h4>
+<p><a href="http://www.w3school.com.cn/html5/html_5_canvas.asp">参考资料</a></p>
 
-<p><a href="http://www.w3school.com.cn/html5/html_5_canvas.asp">参考资料</a> </p>
+<h4 id="html5-web">HTML5 Web存储</h4>
+<p><a href="http://www.w3school.com.cn/html5/html_5_webstorage.asp">参考资料</a></p>
 
-<h4>HTML5 Web存储</h4>
+<h4 id="section-1">标签</h4>
 
-<p><a href="http://www.w3school.com.cn/html5/html_5_webstorage.asp">参考资料</a> </p>
+<h4 id="section-2">属性</h4>
 
-<h4>标签</h4>
+<h4 id="section-3">事件</h4>
 
-<h4>属性</h4>
-
-<h4>事件</h4>
-
-<h3>Resources</h3>
+<h3 id="resources">Resources</h3>
 
           <br />
 <p>

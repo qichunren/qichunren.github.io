@@ -18,7 +18,7 @@
 <meta content="" property="fb:app_id" />
 
   <meta content='/development/2015/04/13/qt-internationalization/' property='og:url' />
-  <meta content="QT程序启动时加载Translator    QTranslator translator;    translator.load("ntptu_" + QLocale::system().name(),               ..." property='og:description' />
+  <meta content="QT程序启动时加载TranslatorQTranslator translator;translator.load("ntptu_" + QLocale::system().name(),                      "..." property='og:description' />
   <meta content="article" property="og:type" />
 
 <!-- - -->
@@ -76,43 +76,58 @@
             在QT5中使用国际化语言
           </h1>
           <p>QT程序启动时加载Translator</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">QTranslator translator;
-translator.load(&quot;ntptu_&quot; + QLocale::system().name(),
-                      &quot;:/translations&quot;);
+
+<div class="highlighter-rouge"><pre class="highlight"><code>QTranslator translator;
+translator.load("ntptu_" + QLocale::system().name(),
+                      ":/translations");
 a.installTranslator(&amp;translator);
 
 
-QString message(tr(&quot;voices directory did not exist in data directory %1!&quot;));
+QString message(tr("voices directory did not exist in data directory %1!"));
 message.arg(dir.absolutePath());
-</code></pre></div>
+</code></pre>
+</div>
+
 <p>lupdate工具是解析程序代码中使用tr方法和ui文件中的字符串，生成ts文件</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">lupdate -verbose project.pro
-</code></pre></div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>lupdate -verbose project.pro
+</code></pre>
+</div>
+
 <p>linguist这个工具可以直接在程序界面上翻译代码和ui文件中的字符串。</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">linguist project_zh_CN.ts
-</code></pre></div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>linguist project_zh_CN.ts
+</code></pre>
+</div>
+
 <p>lrelease是将ts文件生成pm文件</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">lrelease -verbose project_zh_CN.ts
-</code></pre></div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>lrelease -verbose project_zh_CN.ts
+</code></pre>
+</div>
+
 <p>设置环境变量进行测试</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">qichunren@qichunren-desktop:~/code/new-pis$ locale
+
+<div class="highlighter-rouge"><pre class="highlight"><code>qichunren@qichunren-desktop:~/code/new-pis$ locale
 LANG=zh_CN.UTF-8
 LANGUAGE=en_US
-LC_CTYPE=&quot;zh_CN.UTF-8&quot;
-LC_NUMERIC=&quot;zh_CN.UTF-8&quot;
-LC_TIME=&quot;zh_CN.UTF-8&quot;
-LC_COLLATE=&quot;zh_CN.UTF-8&quot;
-LC_MONETARY=&quot;zh_CN.UTF-8&quot;
-LC_MESSAGES=&quot;zh_CN.UTF-8&quot;
-LC_PAPER=&quot;zh_CN.UTF-8&quot;
-LC_NAME=&quot;zh_CN.UTF-8&quot;
-LC_ADDRESS=&quot;zh_CN.UTF-8&quot;
-LC_TELEPHONE=&quot;zh_CN.UTF-8&quot;
-LC_MEASUREMENT=&quot;zh_CN.UTF-8&quot;
-LC_IDENTIFICATION=&quot;zh_CN.UTF-8&quot;
+LC_CTYPE="zh_CN.UTF-8"
+LC_NUMERIC="zh_CN.UTF-8"
+LC_TIME="zh_CN.UTF-8"
+LC_COLLATE="zh_CN.UTF-8"
+LC_MONETARY="zh_CN.UTF-8"
+LC_MESSAGES="zh_CN.UTF-8"
+LC_PAPER="zh_CN.UTF-8"
+LC_NAME="zh_CN.UTF-8"
+LC_ADDRESS="zh_CN.UTF-8"
+LC_TELEPHONE="zh_CN.UTF-8"
+LC_MEASUREMENT="zh_CN.UTF-8"
+LC_IDENTIFICATION="zh_CN.UTF-8"
 LC_ALL=zh_CN.UTF-8
 qichunren@qichunren-desktop:~/code/new-pis$ export LANGUAGE=zh_CN
-</code></pre></div>
+</code></pre>
+</div>
+
           <br />
 <p>
   蕲春人

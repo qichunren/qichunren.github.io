@@ -18,7 +18,7 @@
 <meta content="" property="fb:app_id" />
 
   <meta content='/ios/cocos2d/game-dev/2012/06/03/fixed-a-problem-with-creating-texture-background-in-cocos2d/' property='og:url' />
-  <meta content="我尝试在cocos2d游戏中使用小图片重复平铺的方式来创建游戏背景时, 总是遇到这个问题，报错如下: ```Terminating app due to uncaught exception 'NSInternalInconsiste..." property='og:description' />
+  <meta content="我尝试在cocos2d游戏中使用小图片重复平铺的方式来创建游戏背景时, 总是遇到这个问题，报错如下:Terminating app due to uncaught exception 'NSInternalInconsistencyE..." property='og:description' />
   <meta content="article" property="og:type" />
 
 <!-- - -->
@@ -75,21 +75,30 @@
             <div class='date'>03 Jun 2012</div>
             Fixed a problem with creating texture background in cocos2d
           </h1>
-          <p>我尝试在cocos2d游戏中使用小图片重复平铺的方式来创建游戏背景时, 总是遇到这个问题，报错如下: </p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">Terminating app due to uncaught exception &#39;NSInternalInconsistencyException&#39;, reason: &#39;GL_CLAMP_TO_EDGE should be used in NPOT dimensions&#39;
-</code></pre></div>
+          <p>我尝试在cocos2d游戏中使用小图片重复平铺的方式来创建游戏背景时, 总是遇到这个问题，报错如下:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Terminating app due to uncaught exception 'NSInternalInconsistencyException', reason: 'GL_CLAMP_TO_EDGE should be used in NPOT dimensions'
+</code></pre>
+</div>
+
 <p>我的代码是这样的:</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">CCSprite *wall = [CCSprite spriteWithFile:@&quot;pattern1.png&quot; rect:CGRectMake(0, 0, 320, 480)];
+
+<div class="highlighter-rouge"><pre class="highlight"><code>CCSprite *wall = [CCSprite spriteWithFile:@"pattern1.png" rect:CGRectMake(0, 0, 320, 480)];
 wall.anchorPoint = ccp(0,0);
 [self addChild:wall z:-1 tag:111];
 ccTexParams params = {GL_LINEAR, GL_LINEAR, GL_REPEAT, GL_REPEAT};
 //ccTexParams params = {GL_LINEAR,GL_LINEAR,GL_CLAMP_TO_EDGE, GL_CLAMP_TO_EDGE};
 [wall.texture setTexParameters:&amp;params];
-</code></pre></div>
+</code></pre>
+</div>
+
 <p>我运行cocos2d项目的测试例子, 却发现它的例子是工作正常的, 百思不得其解啊. 然后我看到它代码的注释中写着:</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">// The .png image MUST be power of 2 in order to create a continue effect.
+
+<div class="highlighter-rouge"><pre class="highlight"><code>// The .png image MUST be power of 2 in order to create a continue effect.
 // eg: 32x64, 512x128, 256x1024, 64x64, etc..
-</code></pre></div>
+</code></pre>
+</div>
+
 <p>我想可能是我的图片尺寸不符合规格，检查了一下，果然发现纹理图片的不是2的次方的正方形。</p>
 
 <p><em>总结，使用小图片重复平铺来创建背景纹理图片的小图片尺寸必须设置成2的n次方的正方形大小。</em></p>

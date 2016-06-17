@@ -78,11 +78,6 @@ blockquote {
 header {
   text-align: center; }
 
-header p {
-  margin-top: 20px;
-  font-weight: bold;
-  font-size: 16px; }
-
 footer {
   width: 100%;
   max-width: 600px;
@@ -101,7 +96,7 @@ footer {
   width: 100%;
   max-width: 600px;
   background: #fff;
-  margin: 20px auto 20px;
+  margin: 40px auto 20px;
   border-radius: 7px;
   border: 1px solid #eee;
   position: relative; }
@@ -147,7 +142,7 @@ footer {
   width: 100%;
   border-width: 0;
   border-style: solid;
-  padding: 20px 60px;
+  padding: 30px 60px;
   margin: auto; }
 
 a, .as-link {
@@ -311,7 +306,7 @@ section.post, section > p {
       width: 7px !important;
       white-space: normal; }
   section.post li .highlight, section > p li .highlight {
-    padding: 0 10px; }
+    padding: 10px; }
   section.post li p, section > p li p {
     margin-bottom: 5px; }
 
@@ -319,7 +314,7 @@ section.post, section > p {
   margin: 0;
   padding: 0; }
 
-pre {
+pre, .highlighter-rouge > pre {
   overflow-x: auto;
   padding: 10px 0;
   width: 100%;

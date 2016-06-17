@@ -18,7 +18,7 @@
 <meta content="" property="fb:app_id" />
 
   <meta content='/development/2015/01/13/c-plus-plus-single-instance-notes/' property='og:url' />
-  <meta content="data_package.h文件      #ifndef DATA_PACKAGE_H      #define DATA_PACKAGE_H      #include       class DataPackage : publ..." property='og:description' />
+  <meta content="data_package.h文件  #ifndef DATA_PACKAGE_H  #define DATA_PACKAGE_H  #include &lt;QObject&gt;  class DataPackage : publi..." property='og:description' />
   <meta content="article" property="og:type" />
 
 <!-- - -->
@@ -76,7 +76,8 @@
             C++中实现单例
           </h1>
           <p>data_package.h文件</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">  #ifndef DATA_PACKAGE_H
+
+<div class="highlighter-rouge"><pre class="highlight"><code>  #ifndef DATA_PACKAGE_H
   #define DATA_PACKAGE_H
 
   #include &lt;QObject&gt;
@@ -97,15 +98,18 @@
   };
 
   #endif // DATA_PACKAGE_H
-</code></pre></div>
+</code></pre>
+</div>
+
 <p>data_package.cpp文件</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">  #include &quot;data_package.h&quot;
+
+<div class="highlighter-rouge"><pre class="highlight"><code>  #include "data_package.h"
   #include &lt;QDebug&gt;
 
   DataPackage::DataPackage(QObject *parent) :
       QObject(parent)
   {
-      qDebug() &lt;&lt; &quot;init data package&quot;;
+      qDebug() &lt;&lt; "init data package";
   }
 
   DataPackage&amp; DataPackage::instance()
@@ -113,14 +117,19 @@
       static DataPackage _instance;
       return _instance;
   }
-</code></pre></div>
+</code></pre>
+</div>
+
 <p>调用：</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">  DataPackage::instance();
+
+<div class="highlighter-rouge"><pre class="highlight"><code>  DataPackage::instance();
   DataPackage::instance();
-</code></pre></div>
+</code></pre>
+</div>
+
 <p>连续调用两次instance方法，发现只会示例一次。搞定。</p>
 
-<h2>参考资料</h2>
+<h2 id="section">参考资料</h2>
 
 <p><a href="http://stackoverflow.com/questions/1008019/c-singleton-design-pattern">C++ Singleton design pattern</a></p>
 

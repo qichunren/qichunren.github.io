@@ -18,7 +18,7 @@
 <meta content="" property="fb:app_id" />
 
   <meta content='/ios/2012/01/04/arc4random-in-ios/' property='og:url' />
-  <meta content="通过arc4random() 获取0到x-1之间的整数的代码如下:```int value = arc4random() % x; ``` 获取1到x之间的整数的代码如下: ```int value = (arc4random() %..." property='og:description' />
+  <meta content="通过arc4random() 获取0到x-1之间的整数的代码如下:int value = arc4random() % x; 获取1到x之间的整数的代码如下: int value = (arc4random() % x) + 1;最后..." property='og:description' />
   <meta content="article" property="og:type" />
 
 <!-- - -->
@@ -76,23 +76,24 @@
             iOS中的arc4random方法
           </h1>
           <p>通过arc4random() 获取0到x-1之间的整数的代码如下:
-<code>
+<code class="highlighter-rouge">
 int value = arc4random() % x; 
 </code></p>
 
 <p>获取1到x之间的整数的代码如下: 
-<code>
+<code class="highlighter-rouge">
 int value = (arc4random() % x) + 1;
 </code></p>
 
 <p>最后如果想生成一个浮点数，可以在项目中定义如下宏：
-&ldquo;`</p>
+<code class="highlighter-rouge">
+#define ARC4RANDOM_MAX      0x100000000 
+</code></p>
 
-<h1>define ARC4RANDOM_MAX      0x100000000</h1>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">然后就可以使用arc4random() 来获取0到100之间浮点数了（精度是rand（）的两倍），代码如下：
-</code></pre></div>
-<p>double val = floorf(((double)arc4random() / ARC4RANDOM_MAX) * 100.0f);
-&rdquo;`</p>
+<p>然后就可以使用arc4random() 来获取0到100之间浮点数了（精度是rand（）的两倍），代码如下：
+<code class="highlighter-rouge">
+double val = floorf(((double)arc4random() / ARC4RANDOM_MAX) * 100.0f);
+</code></p>
 
           <br />
 <p>

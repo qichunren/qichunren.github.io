@@ -76,7 +76,8 @@
             Capture all reqeust web page send
           </h1>
           <p>The main process is to set QNetworkAccessManager instance to a QWebPage object, then use finished signal to capture QNetworkReply reply.</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">MainWindow::MainWindow(QWidget *parent) :
+
+<div class="highlighter-rouge"><pre class="highlight"><code>MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
@@ -89,7 +90,7 @@
     view = new QWebView(this);
     ui-&gt;verticalLayout-&gt;addWidget(view);
     nm = new QNetworkAccessManager(this);
-    QNetworkRequest *request = new QNetworkRequest(QUrl(&quot;http://music.baidu.com/song/s/6307e667db90856f3ab7c?fm=altg_new3&quot;));
+    QNetworkRequest *request = new QNetworkRequest(QUrl("http://music.baidu.com/song/s/6307e667db90856f3ab7c?fm=altg_new3"));
     QWebPage *page = new QWebPage();
     page-&gt;settings()-&gt;setAttribute(QWebSettings::PluginsEnabled, true);
     page-&gt;setNetworkAccessManager(nm);
@@ -110,7 +111,9 @@ void MainWindow::when_reply_finished(QNetworkReply *reply) {
     const QString &amp;url = reply-&gt;url().toString();
     qDebug() &lt;&lt; url;
 }
-</code></pre></div>
+</code></pre>
+</div>
+
           <br />
 <p>
   蕲春人

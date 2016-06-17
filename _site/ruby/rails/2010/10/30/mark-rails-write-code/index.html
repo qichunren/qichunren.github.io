@@ -1,0 +1,124 @@
+<html>
+  <head>
+    <meta content='写Rails程序容易出现的几个不好的地方 - 蕲春人的博客' property='og:title' />
+    <title>写Rails程序容易出现的几个不好的地方 - 蕲春人的博客</title>
+    <link href='/images/fav.png' rel='shortcut icon'>
+<link href='/stylesheets/style.css' rel='stylesheet' type='text/css' />
+<link href='/stylesheets/syntax.css' rel='stylesheet' type='text/css' />
+<link href='/stylesheets/responsive.css' rel='stylesheet' type='text/css' />
+<!-- - -->
+<script src='/javascripts/jquery.js' type='text/javascript'></script>
+<script src='/javascripts/pd.js' type='text/javascript'></script>
+<script src='/javascripts/basics.js' type='text/javascript'></script>
+<!--<script type="text/javascript" src="https://www.google.com/jsapi"></script>-->
+<!-- - -->
+<meta content='width=device-width, initial-scale=1.0, user-scalable=no' name='viewport'>
+<meta content='text/html; charset=utf-8' http-equiv='content-type' />
+<meta content="http://muan.co/images/og.png" property="og:image" />
+<meta content="" property="fb:app_id" />
+
+  <meta content='/ruby/rails/2010/10/30/mark-rails-write-code/' property='og:url' />
+  <meta content="这几个地方不知道大家有注意到没有，我今天发现的一个地方就是class EcGood &lt; ActiveRecord::Bas  #商品分类  GoodCategory = Category.find(:all).map{|cate..." property='og:description' />
+  <meta content="article" property="og:type" />
+
+<!-- - -->
+<script type='text/javascript'>
+  //<![CDATA[
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-6344646-4']);
+    _gaq.push(['_trackPageview']);
+    
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  //]]>
+</script>
+
+  </head>
+  <body>
+    <header>
+<p>蕲春人的博客</p>
+</header>
+    <div id='container'>
+      <div class="block">
+  
+    <a target="_top" class="main" href="/about">About</a>
+  
+    <a target="_top" class="main" href="http://qichunren.github.io">Blog</a>
+  
+    <a target="_blank" class="main" href="mailto:whyruby@gmail.com">Email</a>
+  
+    <a target="_top" class="main" href="https://github.com/qichunren">GitHub</a>
+  
+</div>
+      <section class="paging">
+  
+    <div class="left">
+      <a href="/datebase/oracle/2010/10/29/get-oracle-unlocked/">
+        ‹
+      </a>
+    </div>
+  
+  
+    <div class="right">
+      <a href="/ruby/rails/test/2010/12/11/things-in-rails-test/">
+        ›
+      </a>
+    </div>
+  
+</section>
+      <div class="content">
+        <section class='post'>
+          <h1 class="upcase">
+            <div class='date'>30 Oct 2010</div>
+            写Rails程序容易出现的几个不好的地方
+          </h1>
+          <p>这几个地方不知道大家有注意到没有，我今天发现的一个地方就是</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">EcGood</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Bas</span>
+  <span class="c1">#商品分类</span>
+  <span class="no">GoodCategory</span> <span class="o">=</span> <span class="no">Category</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="ss">:all</span><span class="p">).</span><span class="nf">map</span><span class="p">{</span><span class="o">|</span><span class="n">category</span><span class="o">|</span><span class="p">[</span><span class="n">category</span><span class="p">.</span><span class="nf">cn_n</span><span class="p">,</span> <span class="n">category</span><span class="p">.</span><span class="nf">id</span><span class="p">]</span> <span class="p">}</span>
+  <span class="c1">#商品品牌</span>
+  <span class="no">GoodBrand</span> <span class="o">=</span> <span class="no">EcBrand</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="ss">:all</span><span class="p">).</span><span class="nf">map</span><span class="p">{</span><span class="o">|</span><span class="n">brand</span><span class="o">|</span><span class="p">[</span><span class="n">brand</span><span class="p">.</span><span class="nf">brand_name</span><span class="p">,</span> <span class="n">brand</span><span class="p">.</span><span class="nf">id</span><span class="p">]</span> <span class="p">}</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>在ActiveRecord中有这样的代码，实在不应该啊。</p>
+
+<p>初次一看没有什么问题，可是Ruby代码是自上而下来执行的，这样会给数据库带来无关的查询。解决办法就是将这个封装到方法中去，另外也说明全局变量要少用。</p>
+
+<p>有时间再更新一下这篇文章来反思一下自己。</p>
+
+          <br />
+<p>
+  蕲春人
+  <span class="muted">at 05:20</span>
+</p>
+<p>
+  <img src="/images/scribble3.png" alt="scribble" />
+</p>
+
+
+        </section>
+      </div>
+      
+
+      
+      <div class="block">
+  
+    <a target="_top" class="main" href="/about">About</a>
+  
+    <a target="_top" class="main" href="http://qichunren.github.io">Blog</a>
+  
+    <a target="_blank" class="main" href="mailto:whyruby@gmail.com">Email</a>
+  
+    <a target="_top" class="main" href="https://github.com/qichunren">GitHub</a>
+  
+</div>
+    </div>
+    <footer>
+  <a href="http://github.com/muan/scribble" class="muted">built with Jekyll using Scribble theme</a>
+</footer>
+  </body>
+</html>

@@ -76,21 +76,24 @@
             两种javascript定义function的区别
           </h1>
           <p>Javascript代码</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">function1(); // works fine
+
+<pre><code>
+function1(); // works fine
 function2(); // causes an error
 
-// This function is accessible before it&#39;s defined
+// This function is accessible before it's defined
 function function1() {
     $(&quot;body&quot;).append(&quot;Test 1&quot;);
 }
 
-// This function is not accessible until after it&#39;s defined
+// This function is not accessible until after it's defined
 var function2 = function() {
     $(&quot;body&quot;).append(&quot;Test 2&quot;);
 }
-</code></pre></div>
-<p>在以上的代码中，function1()会工作正常，而function2()调用会出错，因为JS解译器发现此时function2还没有定义。</p>
 
+</code></pre>
+
+<p>在以上的代码中，function1()会工作正常，而function2()调用会出错，因为JS解译器发现此时function2还没有定义。</p>
           <br />
 <p>
   蕲春人
