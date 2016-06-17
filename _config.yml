@@ -18,5 +18,10 @@ links:
   - name:         GitHub
     url:          https://github.com/qichunren
     external:     false
-pygments:         true
 permalink:        pretty
+
+highlighter: rouge
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false

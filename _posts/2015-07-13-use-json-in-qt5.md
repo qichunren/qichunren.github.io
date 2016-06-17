@@ -70,7 +70,9 @@ categories: Development
 
 例如有如下的字符串
 
+```
 {"column":["symbol","name"],"data":[["SZ000001","平安银行"],["SZ000005","世纪星源"],["SZ000006","深振业A"],["SZ000008","神州高铁"],["SZ000009","中国宝安"]],"count":1544.0}      
+```
                 
                 
     QByteArray json_content_arr = network_reply->readAll();

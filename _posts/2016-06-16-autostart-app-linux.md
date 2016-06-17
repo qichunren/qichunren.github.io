@@ -10,7 +10,7 @@ categories: Development
 
 另外很多时候程序需要用root权限启动，需要修改.desktop文件, 在执行命令前加sudo
 
-```
+
 	[Desktop Entry]
 	  Version=1.0
 	  Type=Application
@@ -22,7 +22,7 @@ categories: Development
 	  StartupNotify=false
 	  Encoding=UTF-8
 	  Categories=Development;
-```
+
 
 为了让自启动程序不用如入sudo的密码，还需要修改/etc/sudoers文件
 

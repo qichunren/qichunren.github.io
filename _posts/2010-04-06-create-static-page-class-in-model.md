@@ -15,15 +15,14 @@ The following code can help us to display static pages.
 
 + Step 1:-Create Rails project
 
-```
-rails static_site
-```
+	rails static_site
+
 
 + Step 2:-Generate StaticPage Controller
 
-```
-ruby script/generate controller static_pages page
-```
+
+	ruby script/generate controller static_pages page
+
 
 + Step 3:- Create StaticPage Class in Model
 
@@ -40,9 +39,9 @@ end
 
 + Step 4:- Add following line in routes.rb
 
-```
-map.page "page/:filename.:format", :controller => 'static_pages', :action => 'page'
-```
+
+	map.page "page/:filename.:format", :controller => 'static_pages', :action => 'page'
+
 
 + Step 5:- Now add following line into static_pages controller
 
@@ -57,7 +56,7 @@ def page
 
 Step 7 :- Start server and Type url as shown below.
 
-```
-ruby script/server
-```
+
+	ruby script/server
+
 

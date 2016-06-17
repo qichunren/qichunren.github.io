@@ -6,8 +6,6 @@ comments: true
 footer: false
 ---
 
-I am Qichunren, and my english name is David.
-
-I am a software engineer, focused on web devlopment and mobile app design.
+I am Qichunren (蕲春人). Just do IT.
 
 You can find my activity on [GitHub](https://github.com/qichunren) .
