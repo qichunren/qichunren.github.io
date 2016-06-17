@@ -20,7 +20,3 @@ links:
     external:     false
 pygments:         true
 permalink:        pretty
-markdown:         redcarpet
-redcarpet:
-  extensions:
-    - smart
