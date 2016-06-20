@@ -20,3 +20,19 @@
 
 		sudo mkfs.ext4 /dev/sdb2
 		sudo tar -xpvf rootfs.tar.gz -C /media/qichunren/0df13c64-ea92-4412-9353-3ac56f3d478a
+
+
+### Backup data from sdcard
+
+
+		sudo fdisk -l
+		cd /media
+		sudo mkdir disk
+		sudo mount /dev/sdb1 disk
+		sudo umount disk
+		sudo dd if=/dev/sdb of=/dev/sda bs=16M
+
+		sudo dd if=/dev/sdb > gzip pis-200km-2016-03-28.img.gz
+
+
+		gunzip -c pis-200km-2016-03-28.img.gz | sudo dd of=/dev/sda bs=16M		
