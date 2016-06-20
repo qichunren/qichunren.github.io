@@ -1,0 +1,177 @@
+<html>
+  <head>
+    <meta content='ntp with multicast mode - 蕲春人的博客' name='title' />
+    <meta content='ntp with multicast mode - 蕲春人的博客' name='og:title' />
+    <title>ntp with multicast mode - 蕲春人的博客</title>
+    <link href='/images/fav.png' rel='shortcut icon'>
+<link href='/stylesheets/style.css' rel='stylesheet' type='text/css' />
+<link href='/stylesheets/syntax.css' rel='stylesheet' type='text/css' />
+<link href='/stylesheets/responsive.css' rel='stylesheet' type='text/css' />
+<!-- - -->
+<script src='/javascripts/jquery.js' type='text/javascript'></script>
+<script src='/javascripts/pd.js' type='text/javascript'></script>
+<script src='/javascripts/basics.js' type='text/javascript'></script>
+<!--<script type="text/javascript" src="https://www.google.com/jsapi"></script>-->
+<!-- - -->
+<meta content='width=device-width, initial-scale=1.0, user-scalable=no' name='viewport'>
+<meta content='text/html; charset=utf-8' http-equiv='content-type' />
+<meta content="http://muan.co/images/og.png" property="og:image" />
+<meta content="" property="fb:app_id" />
+
+  <meta content='/wiki/ntp_in_multicast_mode/' property='og:url' />
+  <meta content="## Install NTP	sudo apt-get update	sudo apt-get install ntp## Config NTP ServerEdit /etc/ntp.conf file, below is a re..." property='og:description' />
+  <meta content="article" property="og:type" />
+
+<!-- - -->
+<script type='text/javascript'>
+  //<![CDATA[
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-6344646-4']);
+    _gaq.push(['_trackPageview']);
+    
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  //]]>
+</script>
+
+  </head>
+  <body>
+    <header>
+<p>蕲春人的博客</p>
+</header>
+    <div id='container'>
+      <div class="block">
+  
+    <a target="_top" class="main" href="/about">About</a>
+  
+    <a target="_top" class="main" href="http://qichunren.github.io">Blog</a>
+  
+    <a target="_blank" class="main" href="mailto:whyruby@gmail.com">Email</a>
+  
+    <a target="_top" class="main" href="https://github.com/qichunren">GitHub</a>
+  
+</div>
+      <div class="content">
+          <section class='post'>
+            <h1>ntp with multicast mode</h1>
+            <h2 id="install-ntp">Install NTP</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>sudo apt-get update
+sudo apt-get install ntp
+</code></pre>
+</div>
+
+<h2 id="config-ntp-server">Config NTP Server</h2>
+
+<p>Edit /etc/ntp.conf file, below is a real sample:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># /etc/ntp.conf, configuration for ntpd; see ntp.conf(5) for help
+
+driftfile /var/lib/ntp/ntp.drift
+logfile /var/log/ntp.log
+
+
+# Enable this if you want statistics to be logged.
+#statsdir /var/log/ntpstats/
+
+statistics loopstats peerstats clockstats
+filegen loopstats file loopstats type day enable
+filegen peerstats file peerstats type day enable
+filegen clockstats file clockstats type day enable
+
+# Specify one or more NTP servers.
+
+# Use servers from the NTP Pool Project. Approved by Ubuntu Techni                                                         cal Board
+# on 2011-02-08 (LP: #104525). See http://www.pool.ntp.org/join.ht                                                         ml for
+# more information.
+#server 0.ubuntu.pool.ntp.org
+#server 1.ubuntu.pool.ntp.org
+#server 2.ubuntu.pool.ntp.org
+#server 3.ubuntu.pool.ntp.org
+
+broadcast 224.0.1.1 minpoll 3, maxpoll 4
+
+# Use Ubuntu's ntp server as a fallback.
+#server ntp.ubuntu.com
+server 127.127.1.1
+fudge  127.127.1.1 stratum 10
+# Access control configuration; see /usr/share/doc/ntp-doc/html/ac                                                         copt.html for
+# details.  The web page &lt;http://support.ntp.org/bin/view/Support/                                                         AccessRestrictions&gt;
+# might also be helpful.
+#
+# Note that "restrict" applies to both servers and clients, so a c                                                         onfiguration
+# that might be intended to block requests from certain clients co                                                         uld also end
+# up blocking replies from your own upstream servers.
+
+# By default, exchange time with everybody, but don't allow config                                                         uration.
+restrict -4 default kod notrap nomodify
+restrict -6 default kod notrap nomodify
+
+# Local users may interrogate the ntp server more closely.
+restrict 127.0.0.1
+restrict ::1
+
+# Clients from this (example!) subnet have unlimited access, but o                                                         nly if
+# cryptographically authenticated.
+restrict 192.168.0.0 mask 255.255.0.0 trust
+
+# If you want to provide time to your local subnet, change the nex                                                         t line.
+# (Again, the address is an example only.)
+# broadcast 255.255.255.255
+
+# If you want to listen to time broadcasts on your local subnet, d                                                         e-comment the
+# next lines.  Please do this only if you trust everybody on the n                                                         etwork!
+disable auth
+#broadcastclient
+</code></pre>
+</div>
+
+<p>Edit /etc/ntp.conf</p>
+
+<p>Start/Stop/Restart NTP daemon
+/etc/init.d/ntp start/stop/restart</p>
+
+<p><code class="highlighter-rouge">/sbin/route add -net 224.0.0.0 netmask 240.0.0.0 eth0</code></p>
+
+<h2 id="config-ntp-client">Config NTP Client</h2>
+
+<p>Edit /etc/ntp.conf file, below is a real sample:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>#server 0.pool.ntp.org iburst
+#server 1.pool.ntp.org iburst
+
+tinker panic 0
+interface listen eth0
+
+restrict default kod nomodify notrap
+restrict -6 default kod nomodify notrap
+
+restrict 127.0.0.1
+restrict -6 ::1
+multicastclient 224.0.1.1
+disable auth
+logfile /var/log/ntp.log
+</code></pre>
+</div>
+
+<p>View NTP server list</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>root@arm:~# ntpq -p
+     remote           refid      st t when poll reach   delay   offset  jitter
+==============================================================================
+*192.168.11.240  LOCAL(1)        11 m    4    8  376   41.552   -3.044   0.289
++192.168.101.11  LOCAL(1)        11 m    4    8  376   58.331    5.223   0.296
+</code></pre>
+</div>
+
+          </section>
+        </div>
+    </div>
+    <footer>
+  <a href="http://github.com/muan/scribble" class="muted">built with Jekyll using Scribble theme</a>
+</footer>
+  </body>
+</html>
