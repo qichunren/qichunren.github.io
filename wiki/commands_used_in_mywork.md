@@ -36,3 +36,8 @@
 
 
 		gunzip -c pis-200km-2016-03-28.img.gz | sudo dd of=/dev/sda bs=16M		
+
+
+### Change read only file system to read writeable
+
+		mount -o remount,rw /		
