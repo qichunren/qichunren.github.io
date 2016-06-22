@@ -41,3 +41,8 @@
 ### Change read only file system to read writeable
 
 		mount -o remount,rw /		
+
+
+### Temp change ip
+
+		sudo ifconfig eth1:2 192.168.8.104 netmask 255.255.255.0 		
