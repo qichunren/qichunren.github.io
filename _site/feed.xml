@@ -7,6 +7,131 @@
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>Work with binary data</title>
+        <description>&lt;p&gt;最近在做一些网络编程方面的东西，之前大多数情况接触的都是文本协议，现在接触的是二进制协议。在此补一下相关知识，下面基本上是以Ruby语言来描述用法。&lt;/p&gt;
+
+&lt;p&gt;在Ruby中字面常量二近制数据以0b开头。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;qichunren@qichunren-work:~$ irb
+1.9.3-p194 :001 &amp;gt; 0b1010
+ =&amp;gt; 10 
+1.9.3-p194 :002 &amp;gt; 0b10
+ =&amp;gt; 2 
+1.9.3-p194 :003 &amp;gt; 0b11
+ =&amp;gt; 3 
+1.9.3-p194 :004 &amp;gt; 0b100
+ =&amp;gt; 4
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;fixnumtosbase--10&quot;&gt;Fixnum#to_s(base = 10)&lt;/h3&gt;
+
+&lt;p&gt;Fixnum#to_s(base = 10) 方法用于各种进制之间的转换。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;### 二进制转换成十进制
+
+qichunren@qichunren-work:~$ irb
+1.9.3-p194 :001 &amp;gt; 0b10.to_s(10)
+ =&amp;gt; &quot;2&quot; 
+1.9.3-p194 :002 &amp;gt; 0b11.to_s(10)
+ =&amp;gt; &quot;3&quot; 
+1.9.3-p194 :003 &amp;gt; 0b100.to_s(10)
+ =&amp;gt; &quot;4&quot;
+ 
+ 
+### 十进制转换成二进制
+
+qichunren@qichunren-work:~$ irb
+1.9.3-p194 :001 &amp;gt; 10.to_s(2)
+ =&amp;gt; &quot;1010&quot; 
+1.9.3-p194 :002 &amp;gt; 4.to_s(2)
+ =&amp;gt; &quot;100&quot; 
+1.9.3-p194 :003 &amp;gt; 2.to_s(2)
+ =&amp;gt; &quot;10&quot;
+
+### 十六进制转换成十进制
+
+1.9.3-p194 :004 &amp;gt; 0xFF.to_s(10)
+ =&amp;gt; &quot;255&quot; 
+1.9.3-p194 :005 &amp;gt; 0xFF.to_s
+ =&amp;gt; &quot;255&quot; 
+
+### 十六进制转换成二进制
+
+1.9.3-p194 :006 &amp;gt; 0xFF.to_s(2)
+ =&amp;gt; &quot;11111111&quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;stringtoibase--10&quot;&gt;String#to_i(base = 10)&lt;/h3&gt;
+
+&lt;p&gt;String#to_i(base = 10) 方法用于将各种进制的字符串转换成十进制数。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;qichunren@qichunren-work:~$ irb
+1.9.3-p194 :001 &amp;gt; &quot;0b100&quot;.to_i(2)
+ =&amp;gt; 4 
+1.9.3-p194 :002 &amp;gt; &quot;0100&quot;.to_i(10)
+ =&amp;gt; 100 
+1.9.3-p194 :003 &amp;gt; &quot;0xFF&quot;.to_i(16)
+ =&amp;gt; 255   
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;注意：String#to_i方法的参数一定要和字符串本身的进制一致，否则将得不到预期的结果。&lt;/p&gt;
+
+&lt;h3 id=&quot;packing-and-unpacking&quot;&gt;Packing and unpacking&lt;/h3&gt;
+
+&lt;p&gt;String#unpack 和 Array#pack在网络程序中处理二进制时用得比较多。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; qichunren@qichunren-work:~$ irb
+ 1.9.3-p194 :045 &amp;gt; &quot;\xff\x00\x2a&quot;.unpack(&#39;C*&#39;)
+  =&amp;gt; [255, 0, 42]
+ 1.9.3-p194 :042 &amp;gt; [192,168,1,1].pack(&#39;C*&#39;)
+  =&amp;gt; &quot;\xC0\xA8\x01\x01&quot; 
+ 1.9.3-p194 :043 &amp;gt; [255,255,255,255].pack(&#39;C*&#39;)
+  =&amp;gt; &quot;\xFF\xFF\xFF\xFF&quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;下面是一个UDP广播二进制数据的例子&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;require &#39;socket&#39;
+
+udp_socket = UDPSocket.new 
+udp_socket.bind(&quot;0.0.0.0&quot;, 8086)
+udp_socket.setsockopt(Socket::SOL_SOCKET, Socket::SO_BROADCAST, true) 
+100.times do |i| 
+    puts &quot;Broadcast message ...&quot;
+    udp_socket.send([0x01, 0x10, 0x00, 0x03, 0x00, 0x04, 0x00, 0x00, 0x96, 0x96, 0xc1, 0x0c].pack(&#39;C*&#39;), 0, &quot;255.255.255.255&quot;, 1112) 
+    sleep 3
+end     
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;位操作&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;amp; bitwise AND
+| bitwise OR
+^ bitwise XOR
+~ bitwise NOT
+&amp;gt;&amp;gt; right shift
+&amp;lt;&amp;lt; left shift         
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;resources&quot;&gt;Resources&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://blog.bigbinary.com/2011/07/20/ruby-pack-unpack.html&quot;&gt;Ruby pack unpack&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://calleerlandsson.com/2014/02/06/rubys-bitwise-operators/&quot;&gt;Ruby’s bitwise operators&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Wed, 22 Jun 2016 11:25:00 +0800</pubDate>
+        <link>/development/2016/06/22/work-with-binary-data/</link>
+        <guid isPermaLink="true">/development/2016/06/22/work-with-binary-data/</guid>
+      </item>
+    
+      <item>
         <title>Buildroot简单使用</title>
         <description>&lt;p&gt;使用 &lt;a href=&quot;https://buildroot.org/&quot;&gt;Buildroot&lt;/a&gt; 可以方便的灵活的构建一个定制的用于嵌入式平台的Linux系统。&lt;/p&gt;
 
@@ -587,71 +712,6 @@ qichunren@qichunren-desktop:~/code/new-pis$ export LANGUAGE=zh_CN
         <pubDate>Mon, 13 Apr 2015 18:42:00 +0800</pubDate>
         <link>/development/2015/04/13/qt-internationalization/</link>
         <guid isPermaLink="true">/development/2015/04/13/qt-internationalization/</guid>
-      </item>
-    
-      <item>
-        <title>C++中实现单例</title>
-        <description>&lt;p&gt;data_package.h文件&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  #ifndef DATA_PACKAGE_H
-  #define DATA_PACKAGE_H
-
-  #include &amp;lt;QObject&amp;gt;
-
-  class DataPackage : public QObject
-  {
-      Q_OBJECT
-  public:          
-      static DataPackage &amp;amp;instance();
-
-  signals:
-
-  public slots:
-
-  private:
-      explicit DataPackage(QObject *parent = 0);
-
-  };
-
-  #endif // DATA_PACKAGE_H
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;data_package.cpp文件&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  #include &quot;data_package.h&quot;
-  #include &amp;lt;QDebug&amp;gt;
-
-  DataPackage::DataPackage(QObject *parent) :
-      QObject(parent)
-  {
-      qDebug() &amp;lt;&amp;lt; &quot;init data package&quot;;
-  }
-
-  DataPackage&amp;amp; DataPackage::instance()
-  {
-      static DataPackage _instance;
-      return _instance;
-  }
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;调用：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  DataPackage::instance();
-  DataPackage::instance();
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;连续调用两次instance方法，发现只会示例一次。搞定。&lt;/p&gt;
-
-&lt;h2 id=&quot;section&quot;&gt;参考资料&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://stackoverflow.com/questions/1008019/c-singleton-design-pattern&quot;&gt;C++ Singleton design pattern&lt;/a&gt;&lt;/p&gt;
-</description>
-        <pubDate>Tue, 13 Jan 2015 10:43:00 +0800</pubDate>
-        <link>/development/2015/01/13/c-plus-plus-single-instance-notes/</link>
-        <guid isPermaLink="true">/development/2015/01/13/c-plus-plus-single-instance-notes/</guid>
       </item>
     
   </channel>

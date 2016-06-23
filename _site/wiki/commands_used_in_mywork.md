@@ -36,3 +36,13 @@
 
 
 		gunzip -c pis-200km-2016-03-28.img.gz | sudo dd of=/dev/sda bs=16M		
+
+
+### Change read only file system to read writeable
+
+		mount -o remount,rw /		
+
+
+### Temp change ip
+
+		sudo ifconfig eth1:2 192.168.8.104 netmask 255.255.255.0 		
