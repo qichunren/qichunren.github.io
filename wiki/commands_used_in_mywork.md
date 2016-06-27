@@ -46,3 +46,11 @@
 ### Temp change ip
 
 		sudo ifconfig eth1:2 192.168.8.104 netmask 255.255.255.0 		
+
+
+### LD_LIBRARY_PATH
+
+qichunren@qichunren-work:~/code/imx6-test-util$ ./imx6-test-util 
+./imx6-test-util: error while loading shared libraries: libnttest.so: cannot open shared object file: No such file or directory
+
+		export LD_LIBRARY_PATH=./		
