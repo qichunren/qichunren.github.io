@@ -54,3 +54,10 @@ qichunren@qichunren-work:~/code/imx6-test-util$ ./imx6-test-util
 ./imx6-test-util: error while loading shared libraries: libnttest.so: cannot open shared object file: No such file or directory
 
 		export LD_LIBRARY_PATH=./		
+
+
+### How to cancel a local git commit
+
+   	 git reset HEAD~1	
+
+http://stackoverflow.com/questions/4850717/how-to-cancel-a-local-git-commit   	 
