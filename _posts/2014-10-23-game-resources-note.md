@@ -33,6 +33,7 @@ http://opengameart.org/content/isometric-tiles
 ## Threoy
 http://www.lostgarden.com/
 [http://gamemechanicexplorer.com/](http://gamemechanicexplorer.com/)里面基于Phaser引擎讲解了许多游戏中常用的设计算法，如角色行走，导弹路径，光，视野等。
+[http://www.redblobgames.com/](http://www.redblobgames.com/) 其中有讲解一些游戏算法，如A星寻路。
 
 ## Games
 
