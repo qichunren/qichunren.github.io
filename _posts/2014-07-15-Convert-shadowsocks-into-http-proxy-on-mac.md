@@ -41,5 +41,8 @@ ln -sfv /usr/local/opt/polipo/*.plist ~/Library/LaunchAgents
 launchctl load ~/Library/LaunchAgents/homebrew.mxcl.polipo.plist
 ```
 
-polipo进程默认监听8123端口，在命令行使用export http_proxy=localhost:8123 就可以使用代理了。
+polipo进程默认监听8123端口，在命令行使用export http_proxy=http://localhost:8123 就可以使用代理了。
+
+export https_proxy=http://localhost:8123
+export ftp_proxy=http://localhost:8123
 
