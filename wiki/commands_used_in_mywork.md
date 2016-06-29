@@ -61,3 +61,8 @@ qichunren@qichunren-work:~/code/imx6-test-util$ ./imx6-test-util
    	 git reset HEAD~1	
 
 http://stackoverflow.com/questions/4850717/how-to-cancel-a-local-git-commit   	 
+
+
+### Serve current local directory http service.
+
+        ruby -run -e httpd . -p 5000 -b 0.0.0.0
