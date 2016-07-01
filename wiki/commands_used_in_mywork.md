@@ -66,3 +66,14 @@ http://stackoverflow.com/questions/4850717/how-to-cancel-a-local-git-commit
 ### Serve current local directory http service.
 
         ruby -run -e httpd . -p 5000 -b 0.0.0.0
+
+
+### Find command
+
+	find -name "*.png" -exec ls {} \;
+
+
+
+### convert
+
+	find -name "*.png" -exec convert {} -crop 234x234+28+28 {}	 \;	
