@@ -77,3 +77,7 @@ http://stackoverflow.com/questions/4850717/how-to-cancel-a-local-git-commit
 ### convert
 
 	find -name "*.png" -exec convert {} -crop 234x234+28+28 {}	 \;	
+
+### SSH invoke ui app
+
+	export DISPLAY=:0	
