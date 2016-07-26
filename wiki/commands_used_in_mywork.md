@@ -32,7 +32,9 @@
 		sudo umount disk
 		sudo dd if=/dev/sdb of=/dev/sda bs=16M
 
-		sudo dd if=/dev/sdb > gzip pis-200km-2016-03-28.img.gz
+		sudo dd if=/dev/sdb > gzip
+
+		 pis-200km-2016-03-28.img.gz
 
 
 		gunzip -c pis-200km-2016-03-28.img.gz | sudo dd of=/dev/sda bs=16M		
