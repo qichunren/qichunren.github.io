@@ -7,6 +7,30 @@
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>Get started with autotools</title>
+        <description>&lt;p&gt;Follow this &lt;a href=&quot;https://www.gnu.org/software/automake/manual/html_node/Hello-World.html#Hello-World&quot;&gt;tutorial&lt;/a&gt; to get started with autotools.&lt;/p&gt;
+
+&lt;p&gt;Create files:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;src/main.c
+README
+configure.ac
+Makefile.am
+src/Makefile.am
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Command &lt;code class=&quot;highlighter-rouge&quot;&gt;autoreconf --install&lt;/code&gt; parse configure.ac into configure file.
+Command &lt;code class=&quot;highlighter-rouge&quot;&gt;./configure&lt;/code&gt; generate Makefie and src/Makefile from *.am files.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.gnu.org/software/automake/manual/html_node/Autotools-Introduction.html#Autotools-Introduction&quot;&gt;An Introduction to the Autotools&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Mon, 15 Aug 2016 15:20:00 +0800</pubDate>
+        <link>/development/2016/08/15/get-started-with-autotools/</link>
+        <guid isPermaLink="true">/development/2016/08/15/get-started-with-autotools/</guid>
+      </item>
+    
+      <item>
         <title>Work with binary data</title>
         <description>&lt;p&gt;最近在做一些网络编程方面的东西，之前大多数情况接触的都是文本协议，现在接触的是二进制协议。在此补一下相关知识，下面基本上是以Ruby语言来描述用法。&lt;/p&gt;
 
@@ -652,66 +676,6 @@ network_reply-&amp;gt;deleteLater();
         <pubDate>Wed, 01 Jul 2015 20:30:00 +0800</pubDate>
         <link>/development/2015/07/01/my-dev-notes1/</link>
         <guid isPermaLink="true">/development/2015/07/01/my-dev-notes1/</guid>
-      </item>
-    
-      <item>
-        <title>在QT5中使用国际化语言</title>
-        <description>&lt;p&gt;QT程序启动时加载Translator&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;QTranslator translator;
-translator.load(&quot;ntptu_&quot; + QLocale::system().name(),
-                      &quot;:/translations&quot;);
-a.installTranslator(&amp;amp;translator);
-
-
-QString message(tr(&quot;voices directory did not exist in data directory %1!&quot;));
-message.arg(dir.absolutePath());
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;lupdate工具是解析程序代码中使用tr方法和ui文件中的字符串，生成ts文件&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;lupdate -verbose project.pro
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;linguist这个工具可以直接在程序界面上翻译代码和ui文件中的字符串。&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;linguist project_zh_CN.ts
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;lrelease是将ts文件生成pm文件&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;lrelease -verbose project_zh_CN.ts
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;设置环境变量进行测试&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;qichunren@qichunren-desktop:~/code/new-pis$ locale
-LANG=zh_CN.UTF-8
-LANGUAGE=en_US
-LC_CTYPE=&quot;zh_CN.UTF-8&quot;
-LC_NUMERIC=&quot;zh_CN.UTF-8&quot;
-LC_TIME=&quot;zh_CN.UTF-8&quot;
-LC_COLLATE=&quot;zh_CN.UTF-8&quot;
-LC_MONETARY=&quot;zh_CN.UTF-8&quot;
-LC_MESSAGES=&quot;zh_CN.UTF-8&quot;
-LC_PAPER=&quot;zh_CN.UTF-8&quot;
-LC_NAME=&quot;zh_CN.UTF-8&quot;
-LC_ADDRESS=&quot;zh_CN.UTF-8&quot;
-LC_TELEPHONE=&quot;zh_CN.UTF-8&quot;
-LC_MEASUREMENT=&quot;zh_CN.UTF-8&quot;
-LC_IDENTIFICATION=&quot;zh_CN.UTF-8&quot;
-LC_ALL=zh_CN.UTF-8
-qichunren@qichunren-desktop:~/code/new-pis$ export LANGUAGE=zh_CN
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-</description>
-        <pubDate>Mon, 13 Apr 2015 18:42:00 +0800</pubDate>
-        <link>/development/2015/04/13/qt-internationalization/</link>
-        <guid isPermaLink="true">/development/2015/04/13/qt-internationalization/</guid>
       </item>
     
   </channel>

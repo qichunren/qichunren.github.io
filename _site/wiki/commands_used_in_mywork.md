@@ -32,10 +32,13 @@
 		sudo umount disk
 		sudo dd if=/dev/sdb of=/dev/sda bs=16M
 
-		sudo dd if=/dev/sdb > gzip pis-200km-2016-03-28.img.gz
+		sudo dd if=/dev/sdb > gzip
 
+		 pis-200km-2016-03-28.img.gz
 
-		gunzip -c pis-200km-2016-03-28.img.gz | sudo dd of=/dev/sda bs=16M		
+		sudo dd if=/dev/sdb bs=1M count=5000 | gzip > imx-test-util-2016-08-03.img.gz
+		sudo umount /dev/sdb?
+		gunzip -c imx-test-util-2016-08-03.img.gz | sudo dd of=/dev/sdb bs=16M	
 
 
 ### Change read only file system to read writeable
@@ -46,3 +49,38 @@
 ### Temp change ip
 
 		sudo ifconfig eth1:2 192.168.8.104 netmask 255.255.255.0 		
+
+
+### LD_LIBRARY_PATH
+
+qichunren@qichunren-work:~/code/imx6-test-util$ ./imx6-test-util 
+./imx6-test-util: error while loading shared libraries: libnttest.so: cannot open shared object file: No such file or directory
+
+		export LD_LIBRARY_PATH=./		
+
+
+### How to cancel a local git commit
+
+   	 git reset HEAD~1	
+
+http://stackoverflow.com/questions/4850717/how-to-cancel-a-local-git-commit   	 
+
+
+### Serve current local directory http service.
+
+        ruby -run -e httpd . -p 5000 -b 0.0.0.0
+
+
+### Find command
+
+	find -name "*.png" -exec ls {} \;
+
+
+
+### convert
+
+	find -name "*.png" -exec convert {} -crop 234x234+28+28 {}	 \;	
+
+### SSH invoke ui app
+
+	export DISPLAY=:0	

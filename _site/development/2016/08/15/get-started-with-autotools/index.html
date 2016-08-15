@@ -1,8 +1,7 @@
 <html>
   <head>
-    <meta content='Qichunren's Resume - 蕲春人的博客' name='title' />
-    <meta content='Qichunren's Resume - 蕲春人的博客' name='og:title' />
-    <title>Qichunren's Resume - 蕲春人的博客</title>
+    <meta content='Get started with autotools - 蕲春人的博客' property='og:title' />
+    <title>Get started with autotools - 蕲春人的博客</title>
     <link href='/images/fav.png' rel='shortcut icon'>
 <link href='/stylesheets/style.css' rel='stylesheet' type='text/css' />
 <link href='/stylesheets/syntax.css' rel='stylesheet' type='text/css' />
@@ -18,8 +17,8 @@
 <meta content="http://muan.co/images/og.png" property="og:image" />
 <meta content="" property="fb:app_id" />
 
-  <meta content='/qichunren_resume/' property='og:url' />
-  <meta content="## 基本信息      Email: whyruby@gmail.com    TEL: 18657621095        Twitter: @qichunren    Github: https://github.com/qi..." property='og:description' />
+  <meta content='/development/2016/08/15/get-started-with-autotools/' property='og:url' />
+  <meta content="Follow this tutorial to get started with autotools.Create files:src/main.cREADMEconfigure.acMakefile.amsrc/Makefile.a..." property='og:description' />
   <meta content="article" property="og:type" />
 
 <!-- - -->
@@ -54,58 +53,65 @@
     <a target="_top" class="main" href="https://github.com/qichunren">GitHub</a>
   
 </div>
+      <section class="paging">
+  
+    <div class="left">
+      <a href="/development/2016/06/22/work-with-binary-data/">
+        ‹
+      </a>
+    </div>
+  
+  
+</section>
       <div class="content">
-          <section class='post'>
-            <h1>Qichunren's Resume</h1>
-            <h2 id="section">基本信息</h2>
+        <section class='post'>
+          <h1 class="upcase">
+            <div class='date'>15 Aug 2016</div>
+            Get started with autotools
+          </h1>
+          <p>Follow this <a href="https://www.gnu.org/software/automake/manual/html_node/Hello-World.html#Hello-World">tutorial</a> to get started with autotools.</p>
 
-<table>
-  <tr>
-    <td>Email: whyruby@gmail.com</td>
-    <td>TEL: 18657621095</td>
-  </tr>
-  <tr>
-    <td>Twitter: @qichunren</td>
-    <td>Github: https://github.com/qichunren</td>
-  </tr>
-  <tr>
-    <td>Blog: http://qichunren.github.io</td>
-    <td>RubyChina: http://ruby-china.org/qichunren</td>
-  </tr>
-</table>
+<p>Create files:</p>
 
-<h2 id="work">工作 WORK</h2>
+<div class="highlighter-rouge"><pre class="highlight"><code>src/main.c
+README
+configure.ac
+Makefile.am
+src/Makefile.am
+</code></pre>
+</div>
 
-<ul>
-  <li>
-    <p>2005,9 ~ 2008,7
-重庆</p>
-  </li>
-  <li>
-    <p>2009,3 ~ 2009,5
-苏州</p>
-  </li>
-  <li>2009,6 ~ 2010,7 zhaoonline.com
-上海</li>
-  <li>2010,8 ~ 2011,3 huabind.com
-　上海</li>
-  <li>2011,7 ~ 2014,6 上海新技</li>
-</ul>
+<p>Command <code class="highlighter-rouge">autoreconf --install</code> parse configure.ac into configure file.
+Command <code class="highlighter-rouge">./configure</code> generate Makefie and src/Makefile from *.am files.</p>
 
-<h2 id="skills">技能 SKILLS</h2>
+<p><a href="https://www.gnu.org/software/automake/manual/html_node/Autotools-Introduction.html#Autotools-Introduction">An Introduction to the Autotools</a></p>
 
-<ul>
-  <li>熟悉Ruby/Ruby On Rails，具有独立开发和与人协作开发的能力</li>
-  <li>熟悉ubuntu/debian/mac osxt等*nix平台的运营维护</li>
-  <li>了解PHP的常用开发技术，掌握了CodeIgniter框架的运用，学习能力强</li>
-  <li>了解iOS平台上的常用开发技术</li>
-  <li>熟悉iOS平台上的游戏开发，能独立运用cocos2d-iphone独立开发简单的小游戏</li>
-  <li>具有一定的设计能力，能运用Sketch,Photoshop等工具制作和处理项目中的图片</li>
-</ul>
+          <br />
+<p>
+  蕲春人
+  <span class="muted">at 15:20</span>
+</p>
+<p>
+  <img src="/images/scribble3.png" alt="scribble" />
+</p>
 
 
-          </section>
-        </div>
+        </section>
+      </div>
+      
+
+      
+      <div class="block">
+  
+    <a target="_top" class="main" href="/about">About</a>
+  
+    <a target="_top" class="main" href="http://qichunren.github.io">Blog</a>
+  
+    <a target="_blank" class="main" href="mailto:whyruby@gmail.com">Email</a>
+  
+    <a target="_top" class="main" href="https://github.com/qichunren">GitHub</a>
+  
+</div>
     </div>
     <footer>
   <a href="http://github.com/muan/scribble" class="muted">built with Jekyll using Scribble theme</a>
