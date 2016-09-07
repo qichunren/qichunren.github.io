@@ -48,7 +48,16 @@
 
 ### Temp change ip
 
-		sudo ifconfig eth1:2 192.168.8.104 netmask 255.255.255.0 		
+		sudo ifconfig eth1:2 192.168.8.104 netmask 255.255.255.0 	
+		route add default gw 192.168.8.5
+
+/usr/sbin/gpsd -F /var/run/gpsd.sock -P /var/run/gpsd.pid /dev/ttymxc3		
+/usr/sbin/gpsd -F /var/run/gpsd.sock -P /var/run/gpsd.pid /dev/ttymxc3
+
+ubuntu:cpu 8.3 mem 2.8
+       gpsd 7.6 0.2
+		
+			
 
 
 ### LD_LIBRARY_PATH
@@ -69,6 +78,10 @@ http://stackoverflow.com/questions/4850717/how-to-cancel-a-local-git-commit
 ### Serve current local directory http service.
 
         ruby -run -e httpd . -p 5000 -b 0.0.0.0
+        
+        
+        /usr/bin/ntpis1 -d -platform eglfs \
+            -plugin evdevtouch:/dev/input/event0
 
 
 ### Find command
@@ -84,3 +97,15 @@ http://stackoverflow.com/questions/4850717/how-to-cancel-a-local-git-commit
 ### SSH invoke ui app
 
 	export DISPLAY=:0	
+	
+	
+	
+	/usr/bin/ntpis1  -platform eglfs  -plugin evdevtouch:/dev/input/event0
+	
+	
+sudo dd if=/dev/sdb bs=1G count=20 | gzip > 25t-pis-imx6-20160826.img.gz	
+	
+
+
+
+	inet addr:192.168.8.220  Bcast:192.168.11.255  Mask:255.255.252.0
