@@ -32,6 +32,8 @@
 		sudo umount disk
 		sudo dd if=/dev/sdb of=/dev/sda bs=16M
 
+		sudo dd if=/dev/sdb bs=1M count=4000 | gzip > ~/paigo-sd-2016-09-09.img.gz
+
 		sudo dd if=/dev/sdb > gzip
 
 		 pis-200km-2016-03-28.img.gz
@@ -103,9 +105,4 @@ http://stackoverflow.com/questions/4850717/how-to-cancel-a-local-git-commit
 	/usr/bin/ntpis1  -platform eglfs  -plugin evdevtouch:/dev/input/event0
 	
 	
-sudo dd if=/dev/sdb bs=1G count=20 | gzip > 25t-pis-imx6-20160826.img.gz	
-	
-
-
-
-	inet addr:192.168.8.220  Bcast:192.168.11.255  Mask:255.255.252.0
+sudo dd if=/dev/sdb bs=1G count=20 | gzip > 25t-pis-imx6-20160826.img.gz
