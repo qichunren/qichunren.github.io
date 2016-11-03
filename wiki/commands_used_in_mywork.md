@@ -41,6 +41,7 @@
 		sudo dd if=/dev/sdb bs=1M count=5000 | gzip > imx-test-util-2016-08-03.img.gz
 		sudo umount /dev/sdb?
 		gunzip -c imx-test-util-2016-08-03.img.gz | sudo dd of=/dev/sdb bs=16M	
+		unxz -c paigo.emmc-latest.img.xz | dd of=/dev/mmcblk0 bs=16M
 
 
 ### Change read only file system to read writeable
