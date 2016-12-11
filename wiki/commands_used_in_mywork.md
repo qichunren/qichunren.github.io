@@ -41,6 +41,7 @@
 		sudo dd if=/dev/sdb bs=1M count=5000 | gzip > imx-test-util-2016-08-03.img.gz
 		sudo umount /dev/sdb?
 		gunzip -c imx-test-util-2016-08-03.img.gz | sudo dd of=/dev/sdb bs=16M	
+		unxz -c paigo.sd-latest.img.xz | sudo dd of=/dev/sdb bs=16M
 
 
 ### Change read only file system to read writeable
@@ -80,6 +81,8 @@ http://stackoverflow.com/questions/4850717/how-to-cancel-a-local-git-commit
 ### Serve current local directory http service.
 
         ruby -run -e httpd . -p 5000 -b 0.0.0.0
+or
+        python -m SimpleHTTPServer 5000
         
         
         /usr/bin/ntpis1 -d -platform eglfs \
