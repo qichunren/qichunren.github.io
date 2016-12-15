@@ -19,9 +19,10 @@ http://www.flashkit.com/ sound resources.
 
 ## Images
 
-VOXEL Builder http://voxelbuilder.com/
-2.5D model tool: http://www.angryoctopus.co.nz/?p=177
-http://opengameart.org/
+* VOXEL Builder http://voxelbuilder.com/
+* 2.5D model tool: http://www.angryoctopus.co.nz/?p=177
+* http://opengameart.org/
+* https://itch.io/game-assets
 
 
 ### Tileset
@@ -46,6 +47,7 @@ https://bitbucket.org/volumesoffun/polyvox/wiki/Voxel%20editors
 
 http://www.gamasutra.com/
 http://gamedevelopment.tutsplus.com/
+https://mytxt.xyz/games/
 
 Create tile game tutuoal: http://www.tonypa.pri.ee/tbw/start.html
 
@@ -54,3 +56,8 @@ Isometric Tiles Introduction: http://flarerpg.org/tutorials/isometric_intro/
 
 
 Character Generator: http://gaurav.munjal.us/Universal-LPC-Spritesheet-Character-Generator/
+
+## Community
+
+* [Game Development Stack Exchange](http://gaedev.stackexchange.com/)
+* http://indienova.com/
