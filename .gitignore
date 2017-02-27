@@ -13,3 +13,5 @@ vendor
 node_modules
 .themes
 .idea
+*.o
+moc_*.cpp
