@@ -32,6 +32,26 @@
 		sudo umount disk
 		sudo dd if=/dev/sdb of=/dev/sda bs=16M
 
+备份的时候，可以只备份有数据的空间，未使用的空间可以不用备份。使用parted命令查看设备的“End”位置，然后dd时设置bs、count参数。
+
+qichunren@qichunren-work:~/code/paigo-qt$ sudo parted /dev/sdb
+GNU Parted 2.3
+Using /dev/sdb
+Welcome to GNU Parted! Type 'help' to view a list of commands.
+(parted) p                                                                
+Model: Mass Storage Device (scsi)
+Disk /dev/sdb: 15.6GB
+Sector size (logical/physical): 512B/512B
+Partition Table: msdos
+
+Number  Start   End     Size    Type     File system  Flags
+ 1      1049kB  34.6MB  33.6MB  primary  fat16        boot, lba
+ 2      34.6MB  3180MB  3146MB  primary  ext4
+ 3      3180MB  3442MB  262MB   primary  ext4
+ 4      3442MB  3547MB  105MB   primary  ext4
+
+(parted) q
+
 		sudo dd if=/dev/sdb bs=1M count=4000 | gzip > ~/paigo-sd-2016-09-09.img.gz
 
 		sudo dd if=/dev/sdb > gzip
@@ -40,7 +60,8 @@
 
 		sudo dd if=/dev/sdb bs=1M count=5000 | gzip > imx-test-util-2016-08-03.img.gz
 		sudo umount /dev/sdb?
-		gunzip -c imx-test-util-2016-08-03.img.gz | sudo dd of=/dev/sdb bs=16M	
+		gunzip -c imx-test-util-2016-08-03.img.gz | sudo dd of=/dev/sdb bs=16M
+		unxz -c paigo.sd-latest.img.xz | sudo dd of=/dev/sdb bs=16M
 
 
 ### Change read only file system to read writeable
@@ -80,6 +101,8 @@ http://stackoverflow.com/questions/4850717/how-to-cancel-a-local-git-commit
 ### Serve current local directory http service.
 
         ruby -run -e httpd . -p 5000 -b 0.0.0.0
+or
+        python -m SimpleHTTPServer 5000
         
         
         /usr/bin/ntpis1 -d -platform eglfs \

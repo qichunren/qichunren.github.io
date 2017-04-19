@@ -24,6 +24,14 @@ src/Makefile.am
 Command &lt;code class=&quot;highlighter-rouge&quot;&gt;./configure&lt;/code&gt; generate Makefie and src/Makefile from *.am files.&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&quot;https://www.gnu.org/software/automake/manual/html_node/Autotools-Introduction.html#Autotools-Introduction&quot;&gt;An Introduction to the Autotools&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;resources&quot;&gt;Resources&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.gnu.org/software/automake/&quot;&gt;Automake homepage&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://freesoftwaremagazine.com/books/autotools_a_guide_to_autoconf_automake_libtool/&quot;&gt;Autotools: a practitioner’s guide to Autoconf, Automake and Libtool&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.aireadfun.com/blog/2012/12/03/study-automake/&quot;&gt;Step-By-Step Example Of Autotools For Beginner&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 </description>
         <pubDate>Mon, 15 Aug 2016 15:20:00 +0800</pubDate>
         <link>/development/2016/08/15/get-started-with-autotools/</link>
@@ -383,6 +391,61 @@ void MainWindow::when_reply_finished(QNetworkReply *reply) {
       </item>
     
       <item>
+        <title>Wacthdog notes</title>
+        <description>&lt;p&gt;第一种方法，通过一个SHELL脚本守护进程检查目标进程是否存在。&lt;/p&gt;
+
+&lt;p&gt;第二中方法，通过一个守护进程与目标进程进行本地SOCKET通信。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/sh&lt;/span&gt;
+
+&lt;span class=&quot;nv&quot;&gt;PATH&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/sbin:/usr/local/bin:&lt;span class=&quot;nv&quot;&gt;$PATH&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;trap &lt;/span&gt;process_user_sig SIGUSR1
+
+process_user_sig&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;ntpis-watchdog is still alive!&quot;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;Waiting for ntpis startup....&#39;&lt;/span&gt;
+sleep 30
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;Watchdog starting....&#39;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;DROP_CACHE_COUNT&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;0
+
+&lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; :
+&lt;span class=&quot;k&quot;&gt;do
+    &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;LEVEL&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;runlevel | cut -f2 -d &lt;span class=&quot;s1&quot;&gt;&#39; &#39;&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$LEVEL&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;6&quot;&lt;/span&gt; -o &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$LEVEL&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;0&quot;&lt;/span&gt; -o &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$LEVEL&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;1&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; ; &lt;span class=&quot;k&quot;&gt;then
+        &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;break
+    &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;fi
+
+    &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;PAIGOQT_PID&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;pidof -s ntpis&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;
+    &lt;span class=&quot;nv&quot;&gt;RESTARTED&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;0&quot;&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; -z &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$PAIGOQT_PID&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; ; &lt;span class=&quot;k&quot;&gt;then
+        &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;date&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot; # ntpis is dead, restarting....&quot;&lt;/span&gt; &amp;gt;&amp;gt; /var/log/ntpis/info.log
+        killall -9 ntpis
+        /usr/bin/ntpis -d -platform linuxfb
+        &lt;span class=&quot;nv&quot;&gt;RESTARTED&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;1&quot;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;fi
+
+    if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$RESTARTED&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;1&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; ; &lt;span class=&quot;k&quot;&gt;then
+        &lt;/span&gt;sleep 30
+        &lt;span class=&quot;k&quot;&gt;continue
+    fi
+done&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;第二种方法详情见代码。&lt;/p&gt;
+</description>
+        <pubDate>Tue, 18 Aug 2015 20:30:00 +0800</pubDate>
+        <link>/development/2015/08/18/watchdog-notes/</link>
+        <guid isPermaLink="true">/development/2015/08/18/watchdog-notes/</guid>
+      </item>
+    
+      <item>
         <title>FANN NOTES</title>
         <description>&lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;http://pythonic.zoomquiet.io/data/20120202112907/index.html&quot;&gt;用BP人工神经网络识别手写数字——《Python也可以》之三 &lt;/a&gt;&lt;/li&gt;
@@ -665,17 +728,6 @@ network_reply-&amp;gt;deleteLater();
         <pubDate>Mon, 13 Jul 2015 12:30:00 +0800</pubDate>
         <link>/development/2015/07/13/use-json-in-qt5/</link>
         <guid isPermaLink="true">/development/2015/07/13/use-json-in-qt5/</guid>
-      </item>
-    
-      <item>
-        <title>我的开发感悟（2）</title>
-        <description>&lt;p&gt;在调研某一项技术时，没有深入到其中之前，会认为它不适合自己的口味，或者认为它比较难以入门。但是某一天当你静下心来研究，一旦入门了，就会感叹：原来如此，我怎么没有早点了解它呢？&lt;/p&gt;
-
-&lt;p&gt;最近在研究&lt;a href=&quot;http://backbonejs.org/&quot;&gt;Backbone&lt;/a&gt;这个JS库时，再次有这个感受。Backbone真是一个小而美的前端MVC库，虽然不像AngularJS那样来的直接，但是Backbone层次逻辑清楚，虽然自己需要多写一些代码，但是一切都在掌握之中的感觉真不错，它适合有一定基础并希望可以自由度大一点的开发人员。&lt;/p&gt;
-</description>
-        <pubDate>Wed, 01 Jul 2015 20:30:00 +0800</pubDate>
-        <link>/development/2015/07/01/my-dev-notes1/</link>
-        <guid isPermaLink="true">/development/2015/07/01/my-dev-notes1/</guid>
       </item>
     
   </channel>
