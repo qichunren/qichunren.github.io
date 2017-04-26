@@ -17,6 +17,9 @@ dpkg -l | grep libopencv-core-dev
 搜索包名
 apt-cache search keyword1 keyword2
 
+搜索代码
+grep --include \*.c "memcpy" -R .
+
 
 ## pkg-config
 
