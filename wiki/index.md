@@ -9,3 +9,4 @@ footer: false
 * [在线教育](/wiki/online_edu)
 * [NTP](/wiki/ntp_in_multicast_mode)
 * [Tool Box](/wiki/tool_box)
+* [Design](/wiki/design-links)
