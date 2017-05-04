@@ -6,7 +6,7 @@ comments: false
 footer: false
 ---
 
-* [在线教育](online_edu)
-* [NTP](ntp_in_multicast_mode)
-* [Tool Box](tool_box)
-* [Design](design-links)
+* [在线教育](online_edu.md)
+* [NTP](ntp_in_multicast_mode.md)
+* [Tool Box](tool_box.md)
+* [Design](design-links.md)
