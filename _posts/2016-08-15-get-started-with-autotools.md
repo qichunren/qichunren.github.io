@@ -8,6 +8,27 @@ categories: Development
 
 Follow this [tutorial](https://www.gnu.org/software/automake/manual/html_node/Hello-World.html#Hello-World) to get started with autotools.
 
+### configure.ac文件
+使用*autoconf*工具生成configure.scan文件，将它重命名为configure.ac，默认的文件内容如下：
+
+    #                                               -*- Autoconf -*-
+    # Process this file with autoconf to produce a configure script.
+
+    AC_PREREQ([2.69])
+    AC_INIT([FULL-PACKAGE-NAME], [VERSION], [BUG-REPORT-ADDRESS])
+
+    # Checks for programs.
+
+    # Checks for libraries.
+
+    # Checks for header files.
+
+    # Checks for typedefs, structures, and compiler characteristics.
+
+    # Checks for library functions.
+
+    AC_OUTPUT
+
 Create files:
 
     src/main.c
