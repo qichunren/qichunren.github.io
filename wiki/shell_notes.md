@@ -9,4 +9,4 @@
 
 
 
-nheqminer -l equihash.eu.nicehash.com:3357 -u 18g1N9S2v163hfzMCibwkvn4NR7d7kqVMb.worker1 -t 6 -cd 0 1
+nheqminer -l equihash.hk.nicehash.com:3357 -u 18g1N9S2v163hfzMCibwkvn4NR7d7kqVMb.worker1 -t 6 -cd 0 1
