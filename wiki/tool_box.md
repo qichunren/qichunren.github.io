@@ -16,6 +16,7 @@ footer: false
 
 * [Online Markdown Editor](http://dillinger.io/)
 * [StackEdit](https://stackedit.io/)
+* [Markdown Tables Generator](http://www.tablesgenerator.com/markdown_tables)
 
 
 ## Graph
