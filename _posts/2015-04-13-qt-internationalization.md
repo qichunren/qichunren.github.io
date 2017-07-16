@@ -6,6 +6,30 @@ comments: true
 categories: Development
 ---
 
+要在QT项目中使用国际化，以支持多种语言，需要如下步骤。
+
+1. 在pro文件中声明TRANSLATIONS文件，如下面的例子，声明了两个ts文件，一个是zh-CN，另一个en的。
+
+    TRANSLATIONS = translations/ntptu_zh-CN.ts translations/ntptu_en.ts
+
+2. 在项目的主目录中的命令行中运行 lupdate -verbose ntptu.pro
+
+
+	lupdate -verbose ntptu.pro
+	lupdate warning: no TS files specified. Only diagnostics will be produced for 'D:/code/ntptu/ntptu.pro'.
+	Updating 'src/translations/ntptu_zh-CN.ts'...
+	    Found 104 source text(s) (104 new and 0 already existing)
+	Updating 'src/translations/ntptu_en.ts'...
+	    Found 104 source text(s) (104 new and 0 already existing)
+	    
+3. 使用linguist.exe工具打开上一步生成的ts文件，进行翻译工作。将两个语言的文件都翻译好。
+
+4. lrelease -verbose project_zh_CN.ts生成.qm文件
+
+4. 将qm文件添加了资源中。
+
+5.
+
 QT程序启动时加载Translator
 
     QTranslator translator;
@@ -17,17 +41,6 @@ QT程序启动时加载Translator
     QString message(tr("voices directory did not exist in data directory %1!"));
     message.arg(dir.absolutePath());
     
-
-lupdate工具是解析程序代码中使用tr方法和ui文件中的字符串，生成ts文件
-
-    lupdate -verbose project.pro
-    
-
-linguist这个工具可以直接在程序界面上翻译代码和ui文件中的字符串。
-
-    linguist project_zh_CN.ts
-
-lrelease是将ts文件生成pm文件
 
     lrelease -verbose project_zh_CN.ts
     
