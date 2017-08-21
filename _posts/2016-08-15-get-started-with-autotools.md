@@ -9,7 +9,7 @@ categories: Development
 Follow this [tutorial](https://www.gnu.org/software/automake/manual/html_node/Hello-World.html#Hello-World) to get started with autotools.
 
 ### configure.ac文件
-使用*autoconf*工具生成configure.scan文件，将它重命名为configure.ac，默认的文件内容如下：
+使用 *autoscan* 工具生成configure.scan文件，将它重命名为configure.ac，默认的文件内容如下：
 
     #                                               -*- Autoconf -*-
     # Process this file with autoconf to produce a configure script.
@@ -29,7 +29,7 @@ Follow this [tutorial](https://www.gnu.org/software/automake/manual/html_node/He
 
     AC_OUTPUT
 
-Create files:
+然后创建如下的项目目录结构:
 
     src/main.c
     README
@@ -38,7 +38,10 @@ Create files:
     src/Makefile.am
 
 Command `autoreconf --install` parse configure.ac into configure file.
-Command `./configure` generate Makefie and src/Makefile from *.am files.
+Command `automake` generate Makefile.in files.
+Command `./configure` generate Makefie and src/Makefile from Makefile.in files.
+
+我这里有一个基础的使用autotools工具的[项目](https://github.com/qichunren/glib-guide/tree/aa04d7151926ee197b7a16c57ddbff4db8673dc7)，展示了其中最基本的用法。
 
 [An Introduction to the Autotools](https://www.gnu.org/software/automake/manual/html_node/Autotools-Introduction.html#Autotools-Introduction)
 
@@ -48,3 +51,4 @@ Command `./configure` generate Makefie and src/Makefile from *.am files.
 * [Automake homepage](https://www.gnu.org/software/automake/)
 * [Autotools: a practitioner's guide to Autoconf, Automake and Libtool](http://freesoftwaremagazine.com/books/autotools_a_guide_to_autoconf_automake_libtool/)
 * [Step-By-Step Example Of Autotools For Beginner](http://www.aireadfun.com/blog/2012/12/03/study-automake/)
+* [Autotools Mythbuster](https://autotools.io/index.html)
