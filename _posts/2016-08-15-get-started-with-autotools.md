@@ -52,3 +52,4 @@ Command `./configure` generate Makefie and src/Makefile from Makefile.in files.
 * [Autotools: a practitioner's guide to Autoconf, Automake and Libtool](http://freesoftwaremagazine.com/books/autotools_a_guide_to_autoconf_automake_libtool/)
 * [Step-By-Step Example Of Autotools For Beginner](http://www.aireadfun.com/blog/2012/12/03/study-automake/)
 * [Autotools Mythbuster](https://autotools.io/index.html)
+* [Writing GNOME Applications](http://openbooks.sourceforge.net/books/wga/creating-configuration.html)

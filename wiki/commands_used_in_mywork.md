@@ -129,3 +129,22 @@ or
 	
 	
 sudo dd if=/dev/sdb bs=1G count=20 | gzip > 25t-pis-imx6-20160826.img.gz
+
+
+
+
+
+
+sudo tar -xpvf rootfs.tar -C /mnt/home
+
+
+### Catch network packet
+
+
+Receive data from a UDP broadcast port:
+
+	socat -u udp-recv:3900,reuseaddr -
+### NMAP
+      扫描主机上的80,21,23端口
+      nmap -p80,21,23 192.168.1.1-255
+    
