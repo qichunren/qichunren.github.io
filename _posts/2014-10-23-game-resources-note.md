@@ -13,9 +13,11 @@ Game replay video here: https://everyplay.com
 
 ## Audio:
 
-http://www.bfxr.net/ generate small music sound, such as 'power up', 'coin collect', 'Attack', 'Explosion'
+* http://www.bfxr.net/ generate small music sound, such as 'power up', 'coin collect', 'Attack', 'Explosion'
 
-http://www.flashkit.com/ sound resources.
+* http://www.flashkit.com/ sound resources.
+
+* [Super Dialogue Audio Pack](https://stuckeast.itch.io/sdap)
 
 ## Images
 
@@ -23,6 +25,11 @@ http://www.flashkit.com/ sound resources.
 * 2.5D model tool: http://www.angryoctopus.co.nz/?p=177
 * http://opengameart.org/
 * https://itch.io/game-assets
+* [The Must-Have Game Assets for Designers and Digital Artists](https://design.tutsplus.com/articles/the-must-have-game-assets-for-designers-and-digital-artists--cms-26641?_ga=2.172490467.1310106111.1511253630-76199773.1511253630)
+* [FREE ASSETS FOR EVERYONE](https://www.gameart2d.com/freebies.html)
+* [Free Assets on itch.io](https://itch.io/game-assets/free)
+* [Pixel Art for your GameDev](http://pixelgameart.org/web/)
+* [Kenney assets](http://www.kenney.nl/assets)
 
 
 ### Tileset
