@@ -46,12 +46,17 @@ http://opengameart.org/content/isometric-tiles
 * [natureofcode](http://natureofcode.com/book/) 讲解运动理论
 * [Understanding Steering Behaviors](https://gamedevelopment.tutsplus.com/series/understanding-steering-behaviors--gamedev-12732) 讲解运动理论
 
+* [游戏编程模式](http://gpp.tkchu.me/) Book
+
 ## Games
 
 http://spryfox.com/our-games/
 
 ### Voxel editors
-https://bitbucket.org/volumesoffun/polyvox/wiki/Voxel%20editors
+
+* https://bitbucket.org/volumesoffun/polyvox/wiki/Voxel%20editors
+* [MagicaVoxel @ ephtracy](https://ephtracy.github.io/)
+
 
 ## WebSites
 
