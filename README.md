@@ -1,8 +1,7 @@
 Qichunren's blog
 ========
 
-[qichunren.github.io](http://qichunren.github.io/)
+[qichunren.github.io](http://qichunren.github.io/), record my thought and notes.
 
 -------------
 
-Local writing: just create post in _posts folder, and run `jekyll server --watch` to preview at http://localhost:4000
