@@ -148,3 +148,11 @@ Receive data from a UDP broadcast port:
       扫描主机上的80,21,23端口
       nmap -p80,21,23 192.168.1.1-255
     
+
+### Fix USB Disk
+
+sudo fsck.vfat /dev/sdc1
+
+### 335x核心板截屏
+
+    fbgrab main_ui.png
