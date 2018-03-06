@@ -28,8 +28,14 @@ grep --include \*.c "memcpy" -R .
 ## 常用库
 
 * libcurl
+
+    deb: libcurl4-openssl-dev
+
 * glib
 * gstreamer
 * gtk
+   
+    gtk+-3.0 => deb: libgtk-3-dev
+
 * qt5
 * zlib
