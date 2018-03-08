@@ -92,6 +92,22 @@
 
 ubuntu:cpu 8.3 mem 2.8
        gpsd 7.6 0.2
+
+
+查找大文件
+
+
+查找当前目录中的子目录的大文件
+
+::
+
+  root@sdfsd:/var/lib# du -hs * | sort -rh | head -5
+  32G	mysql
+  403M	mongodb
+  159M	apt
+  32M	dpkg
+  17M	aptitude
+
 		
 			
 
@@ -111,11 +127,11 @@ qichunren@qichunren-work:~/code/imx6-test-util$ ./imx6-test-util
 http://stackoverflow.com/questions/4850717/how-to-cancel-a-local-git-commit   	 
 
 
-### Serve current local directory http service.
+建立WEB文件服务器
 
-        ruby -run -e httpd . -p 5000 -b 0.0.0.0
-or
-        python -m SimpleHTTPServer 5000
+::
+
+  ruby -run -e httpd . -p 5000 -b 0.0.0.0 # python -m SimpleHTTPServer 5000
         
         
         /usr/bin/ntpis1 -d -platform eglfs \
