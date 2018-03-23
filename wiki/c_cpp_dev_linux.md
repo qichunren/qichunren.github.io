@@ -23,6 +23,17 @@ grep --include \*.c "memcpy" -R .
 
 ## pkg-config
 
+*.pc 文件一般位于 /usr/lib/x86_64-linux-gnu/pkgconfig 目录
+
+* pkg-config --list-all 列出当前所有包名
+* pkg-config --cflags gio-2.0
+    
+    -pthread -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include
+
+* pkg-config --libs gio-2.0
+
+    -lgio-2.0 -lgobject-2.0 -lglib-2.0
+
 ## autotools
 
 ## 常用库
@@ -39,3 +50,6 @@ grep --include \*.c "memcpy" -R .
 
 * qt5
 * zlib
+* readline
+
+    deb: libreadline6-dev
