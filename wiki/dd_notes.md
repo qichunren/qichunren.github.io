@@ -20,3 +20,7 @@ For example, if your /sdev/sdb used size is 4G, you can dd like this:
 ## dd from backup file
 
     gunzip -c imx-test-util-2016-08-03.img.gz | sudo dd of=/dev/sdb bs=16M	
+
+## View dd progress
+
+  sudo killall -USR1 dd
