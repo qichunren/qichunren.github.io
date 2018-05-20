@@ -77,7 +77,9 @@
 
 ### Change read only file system to read writeable
 
-		mount -o remount,rw /		
+::
+
+  mount -o remount,rw /		
 
 
 临时设置IP地址
@@ -109,8 +111,6 @@ ubuntu:cpu 8.3 mem 2.8
   17M	aptitude
 
 		
-			
-
 
 ### LD_LIBRARY_PATH
 
@@ -140,20 +140,22 @@ http://stackoverflow.com/questions/4850717/how-to-cancel-a-local-git-commit
 
 ### Find command
 
-	find -name "*.png" -exec ls {} \;
+::
 
+  find -name "*.png" -exec ls {} \;
 
 
 ### convert
 
-	find -name "*.png" -exec convert {} -crop 234x234+28+28 {}	 \;	
+::
+  
+  find -name "*.png" -exec convert {} -crop 234x234+28+28 {}	 \;	
 
 ### SSH invoke ui app
 
+::
+
 	export DISPLAY=:0	
-	
-	
-	
 	/usr/bin/ntpis1  -platform eglfs  -plugin evdevtouch:/dev/input/event0
 	
 	
@@ -172,16 +174,27 @@ sudo tar -xpvf rootfs.tar -C /mnt/home
 
 Receive data from a UDP broadcast port:
 
+::
+
 	socat -u udp-recv:3900,reuseaddr -
+
 ### NMAP
-      扫描主机上的80,21,23端口
-      nmap -p80,21,23 192.168.1.1-255
+
+扫描主机上的80,21,23端口
+
+::
+
+  nmap -p80,21,23 192.168.1.1-255
     
 
 ### Fix USB Disk
 
-sudo fsck.vfat /dev/sdc1
+::
+
+  sudo fsck.vfat /dev/sdc1
 
 ### 335x核心板截屏
+
+::
 
     fbgrab main_ui.png
