@@ -35,26 +35,31 @@ footer: false
   上海
 * 2010,8 ~ 2011,3 huabind.com
 　上海
-* 2011,7 ~ 2014,6 上海新技
+* 2011,7 ~ 至今 上海新技
 
 ## 项目经历 PROJECT
 
 * 2011-06 ~ 2012-08 25T PIS 项目
 * 2012-07 ~ 2015-06 Luna 语音对讲项目
 * 2015-09 ~ 2016-05 160公里 PIS 项目
-* 2016-07 ~ 2017-11 葡萄 Paigo 机器人项目
+* 2016-07 ~ 2017-11 葡萄 [Paigo](http://www.putao.com/page/paigo) 机器人 Core Service
 * 2017-06 ~ 2017-11 PIS MVB 调试
 * 2017-02 ~ 2018-02 160公里 PIS 项目
 * 2017-07 ~ 2017-12 PTU软件Windows版
-* 2018-01 ~ 2018-03 Umine 日志系统
+* 2018-01 ~ 2018-03 Umine 矿机日志系统
+* 2018-04 ~ 至今 雷山地铁 PIS 系统
 
 ## 技能 SKILLS
 
 * 熟悉Ruby/Ruby On Rails，具有独立开发和与人协作开发的能力
 * 熟悉ubuntu/debian/mac osxt等*nix平台的运营维护
-* 了解PHP的常用开发技术，掌握了CodeIgniter框架的运用，学习能力强
-* 了解iOS平台上的常用开发技术
-* 熟悉iOS平台上的游戏开发，能独立运用cocos2d-iphone独立开发简单的小游戏
+* 熟悉 Linux 平台下的 c/c++ 软件开发
+* ~~了解PHP的常用开发技术，掌握了CodeIgniter框架的运用，学习能力强~~
+* ~~了解iOS平台上的常用开发技术~~
+* ~~熟悉iOS平台上的游戏开发，能独立运用cocos2d-iphone独立开发简单的小游戏~~
 * 具有一定的设计能力，能运用Sketch,Photoshop等工具制作和处理项目中的图片
 
+## 技术栈关键字  ##
+
+QT5, GLib, Ruby On Rails, Ubuntu, Vue
 
