@@ -9,7 +9,8 @@ categories: Development
 Follow this [tutorial](https://www.gnu.org/software/automake/manual/html_node/Hello-World.html#Hello-World) to get started with autotools.
 
 ### configure.ac文件
-使用 *autoscan* 工具生成configure.scan文件，将它重命名为configure.ac，默认的文件内容如下：
+
+使用 *autoscan* 工具生成 configure.scan 文件，将它重命名为 configure.ac ，默认的文件内容如下：
 
     #                                               -*- Autoconf -*-
     # Process this file with autoconf to produce a configure script.
@@ -53,3 +54,4 @@ Command `./configure` generate Makefie and src/Makefile from Makefile.in files.
 * [Step-By-Step Example Of Autotools For Beginner](http://www.aireadfun.com/blog/2012/12/03/study-automake/)
 * [Autotools Mythbuster](https://autotools.io/index.html)
 * [Writing GNOME Applications](http://openbooks.sourceforge.net/books/wga/creating-configuration.html)
+* [Autotools Mythbuster](https://autotools.io/index.html)
