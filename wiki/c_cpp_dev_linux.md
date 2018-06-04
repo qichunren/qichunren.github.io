@@ -43,6 +43,9 @@ grep --include \*.c "memcpy" -R .
     deb: libcurl4-openssl-dev
 
 * glib
+
+    apt-get install libglib2.0-0-dbg GLib调式符号
+ 
 * gstreamer
 * gtk
    
