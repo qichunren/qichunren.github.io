@@ -23,7 +23,22 @@ footer: false
 
 * [Online Diagram ](https://creately.com/)
 * [Online Diagram: ProcessOn ](https://www.processon.com)
+* [ICO file editor](http://www.xiconeditor.com/)
 
 ## Game Resources
 
 * [OpenGameArt](http://opengameart.org/)
+* [MagicaVoxel @ ephtracy](https://ephtracy.github.io/)
+
+## Youtube download
+
+https://www.onlinevideoconverter.com/zh/video-convert
+
+## MediaWiki
+
+
+wget https://releases.wikimedia.org/mediawiki/1.31/mediawiki-1.31.0.tar.gz
+
+Install Postgresql server first
+
+sudo apt-get install postgresql postgresql-contrib

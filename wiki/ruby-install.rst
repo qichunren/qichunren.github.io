@@ -2,10 +2,12 @@
 Install rbenv
 --------------------------------
 
-https://github.com/rbenv/rbenv
-
 ::
 
+  apt-get install gcc make build-essential
+  apt-get install nodejs # Rails need nodejs runtime.
+
+  apt-get install -y libssl-dev libreadline-dev zlib1g-dev
   git clone git://github.com/sstephenson/rbenv.git ~/.rbenv
   echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
   echo 'eval "$(rbenv init -)"' >> ~/.bashrc
