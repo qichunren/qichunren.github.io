@@ -5,6 +5,9 @@
 
 [http://quaternius.com/assets.html](http://quaternius.com/assets.html)
 
+[http://unluckystudio.com/](http://unluckystudio.com/)
+[http://www.2dgameartguru.com/](http://www.2dgameartguru.com/)
+
 [Anna Lepeshkina](https://www.youtube.com/channel/UCOka-ILmhM6DWaxZNNsL4tQ/videos)
 [GDquest at youtube](https://www.youtube.com/channel/UCxboW7x0jZqFdvMdCFKTMsQ/videos)
 [Jeremy Bullock at youtube](https://www.youtube.com/channel/UCwJw2-V5S1TkBjLQ3_Ws54g/videos)
