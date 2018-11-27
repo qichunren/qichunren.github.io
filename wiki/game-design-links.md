@@ -7,6 +7,7 @@
 
 [http://unluckystudio.com/](http://unluckystudio.com/)
 [http://www.2dgameartguru.com/](http://www.2dgameartguru.com/)
+[https://game-icons.net/](https://game-icons.net/)
 
 [Anna Lepeshkina](https://www.youtube.com/channel/UCOka-ILmhM6DWaxZNNsL4tQ/videos)
 [GDquest at youtube](https://www.youtube.com/channel/UCxboW7x0jZqFdvMdCFKTMsQ/videos)
