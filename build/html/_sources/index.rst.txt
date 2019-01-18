@@ -11,6 +11,8 @@ Qichunren blog
     
     linux/index
     game-design/index
+    web/index
+    windows/index
 
 =======================
 Links

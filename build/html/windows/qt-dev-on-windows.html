@@ -1,0 +1,293 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Qt5 Windows 平台开发 &mdash; Qichunren blog  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Qichunren blog  documentation" href="../index.html"/>
+        <link rel="up" title="Windows notes" href="index.html"/>
+        <link rel="prev" title="Windows notes" href="index.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Qichunren blog
+          
+
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../linux/index.html">Linux notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../linux/dd.html">dd notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../linux/find.html">find notes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../game-design/index.html">Game design notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../game-design/godot/get_started.html">Get started with godot</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../web/index.html">Web development notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../web/rails5-deploy-notes.html">Ruby On Rails 5 deploy notes</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Windows notes</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Qt5 Windows 平台开发</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">第三方依赖库管理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#qt">安装 Qt 开发环境</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">项目编译</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Qt 程序打包</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qichunren blog</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Windows notes</a> &raquo;</li>
+        
+      <li>Qt5 Windows 平台开发</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="qt5-windows">
+<h1>Qt5 Windows 平台开发<a class="headerlink" href="#qt5-windows" title="Permalink to this headline">¶</a></h1>
+<p>使用 Qt 库开发开发运行在 Windows 平台上的软件， 通过 <a class="reference external" href="https://www.msys2.org/">msys2</a> 工具集是一个快捷的方法。</p>
+<div class="section" id="id1">
+<h2>第三方依赖库管理<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>msys2 使用 pacman 命令作为包管理工具，类似在 UBuntu 发行版中的 apt 命令。</p>
+<p>安装软件包:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ pacman -S package_name1 package_name2 ...
+</pre></div>
+</div>
+<p>删除软件包:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ pacman -R package_name
+</pre></div>
+</div>
+<p>查找软件包:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ pacman -Ss string1 string2 ...
+</pre></div>
+</div>
+<p>查询文件所属的包名:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ pacman -Qo file
+</pre></div>
+</div>
+<p>例如我查询 qmake 命令所属的包名:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ which qmake
+  /mingw32/bin/qmake
+$ pacman -Qo /mingw32/bin/qmake.exe
+  /mingw32/bin/qmake.exe is owned by mingw-w64-i686-qt5 5.10.1-2
+</pre></div>
+</div>
+<p>升级软件包</p>
+<p>通过下面的命令升级本地安装的所有包，这将花费一些时间:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ pacman -Syu
+</pre></div>
+</div>
+</div>
+<div class="section" id="qt">
+<h2>安装 Qt 开发环境<a class="headerlink" href="#qt" title="Permalink to this headline">¶</a></h2>
+<p>安装 Qt5 编译工具和 Qt Creator IDE:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pacman</span> <span class="o">-</span><span class="n">S</span> <span class="n">mingw</span><span class="o">-</span><span class="n">w64</span><span class="o">-</span><span class="n">i686</span><span class="o">-</span><span class="n">qt5</span>  <span class="n">mingw</span><span class="o">-</span><span class="n">w64</span><span class="o">-</span><span class="n">i686</span><span class="o">-</span><span class="n">qt</span><span class="o">-</span><span class="n">creator</span>
+</pre></div>
+</div>
+<p>然后在命令行输入 qtcreator 命令即可运行 Qt Creator 了。</p>
+</div>
+<div class="section" id="id2">
+<h2>项目编译<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>在 Qt 项目的主目录中执行 qmake 命令后，然后执行 mingw32-make.exe 即可开始编译项目，项目编译完成后，可以直接在命令行运行项目了。</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ qmake -config release # In development mode, just type &#39;qmake&#39;
+$ mingw32-make.exe
+</pre></div>
+</div>
+<p>此时如果直接在文件管理器中找到编译好的二进制文件，双击运行是不能正常运行的，会提示缺少相关的 dll 文件，这个就涉及到下面 Qt 程序打包的内容了。</p>
+</div>
+<div class="section" id="id3">
+<h2>Qt 程序打包<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Qichunren.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
