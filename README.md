@@ -8,3 +8,6 @@
 
 -------------
 
+## Build
+
+    cd doc && ./build.sh
