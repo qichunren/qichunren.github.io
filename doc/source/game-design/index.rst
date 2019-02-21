@@ -6,3 +6,4 @@ Game design notes
     :name: toc-game-design
     
     godot/get_started
+    godot/awesome-links
