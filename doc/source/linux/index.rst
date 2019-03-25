@@ -7,3 +7,5 @@ Linux notes
     
     dd
     find
+    rsync
+    media
