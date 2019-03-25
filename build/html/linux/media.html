@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Game design notes &mdash; Qichunren blog  documentation</title>
+  <title>媒体文件文件相关笔记 &mdash; Qichunren blog  documentation</title>
   
 
   
@@ -36,8 +36,9 @@
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="Qichunren blog  documentation" href="../index.html"/>
-        <link rel="next" title="Get started with godot" href="godot/get_started.html"/>
-        <link rel="prev" title="媒体文件文件相关笔记" href="../linux/media.html"/> 
+        <link rel="up" title="Linux notes" href="index.html"/>
+        <link rel="next" title="Game design notes" href="../game-design/index.html"/>
+        <link rel="prev" title="&lt;no title&gt;" href="rsync.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -84,15 +85,15 @@
             
             
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../linux/index.html">Linux notes</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../linux/dd.html">Linux dd 命令</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../linux/find.html">Linux find 文件查找命令</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../linux/media.html">媒体文件文件相关笔记</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Linux notes</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="dd.html">Linux dd 命令</a></li>
+<li class="toctree-l2"><a class="reference internal" href="find.html">Linux find 文件查找命令</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">媒体文件文件相关笔记</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Game design notes</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="godot/get_started.html">Get started with godot</a></li>
-<li class="toctree-l2"><a class="reference internal" href="godot/awesome-links.html">Awesome links about Godot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../game-design/index.html">Game design notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../game-design/godot/get_started.html">Get started with godot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../game-design/godot/awesome-links.html">Awesome links about Godot</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../web/index.html">Web development notes</a><ul>
@@ -156,7 +157,9 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Game design notes</li>
+          <li><a href="index.html">Linux notes</a> &raquo;</li>
+        
+      <li>媒体文件文件相关笔记</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -173,13 +176,29 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="game-design-notes">
-<h1>Game design notes<a class="headerlink" href="#game-design-notes" title="Permalink to this headline">¶</a></h1>
-<div class="toctree-wrapper compound" id="toc-game-design">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="godot/get_started.html">Get started with godot</a></li>
-<li class="toctree-l1"><a class="reference internal" href="godot/awesome-links.html">Awesome links about Godot</a></li>
-</ul>
+  <div class="section" id="doc-media-process-notes">
+<span id="id1"></span><h1>媒体文件文件相关笔记<a class="headerlink" href="#doc-media-process-notes" title="Permalink to this headline">¶</a></h1>
+<p>播放48K音频:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>gst-launch-1.0 audiotestsrc ! audio/x-raw,rate=48000 ! alsasink
+</pre></div>
+</div>
+<p>播放音频文件,wav和mp3都支持:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>gst-launch-1.0 filesrc location=/dingdong.wav ! decodebin ! audioconvert ! audioresample ! audio/x-raw,rate=48000 ! alsasink
+</pre></div>
+</div>
+<p>修改MP3文件sample rate:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ffmpeg</span> <span class="o">-</span><span class="n">i</span> <span class="mi">11</span><span class="o">-</span><span class="n">starting</span><span class="o">.</span><span class="n">mp3</span> <span class="o">-</span><span class="n">ar</span> <span class="mi">48000</span> <span class="n">A11</span><span class="o">-</span><span class="n">starting</span><span class="o">.</span><span class="n">mp3</span>
+</pre></div>
+</div>
+<p>多个音频文件拼接成一个音频文件:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sox</span> <span class="o">--</span><span class="n">combine</span> <span class="n">sequence</span> <span class="n">dingdong</span><span class="o">-</span><span class="n">prefix</span><span class="o">.</span><span class="n">mp3</span> <span class="n">A11</span><span class="o">-</span><span class="n">starting</span><span class="o">.</span><span class="n">mp3</span> <span class="n">output</span><span class="o">.</span><span class="n">mp3</span>
+</pre></div>
+</div>
+<p>生成二维码:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">qrencode</span> <span class="n">hello</span> <span class="o">-</span><span class="n">o</span> <span class="o">/</span><span class="n">hello</span><span class="o">.</span><span class="n">png</span> <span class="o">-</span><span class="n">s</span> <span class="mi">10</span>
+<span class="n">convert</span> <span class="o">/</span><span class="n">hello</span><span class="o">.</span><span class="n">png</span> <span class="o">-</span><span class="n">crop</span> <span class="mi">234</span><span class="n">x234</span><span class="o">+</span><span class="mi">28</span><span class="o">+</span><span class="mi">28</span> <span class="o">/</span><span class="n">hello_c</span><span class="o">.</span><span class="n">png</span>
+<span class="n">convert</span> <span class="o">/</span><span class="n">hello_c</span><span class="o">.</span><span class="n">png</span> <span class="o">-</span><span class="n">resize</span> <span class="mi">80</span><span class="n">x80</span> <span class="o">/</span><span class="n">hello_80</span><span class="o">.</span><span class="n">png</span>
+</pre></div>
 </div>
 </div>
 

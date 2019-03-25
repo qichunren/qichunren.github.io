@@ -14,6 +14,16 @@ Qichunren blog
     web/index
     windows/index
 
+
+=======================
+Pages
+=======================
+
+.. toctree::
+    :maxdepth: 1    
+
+    links
+
 =======================
 Links
 =======================
