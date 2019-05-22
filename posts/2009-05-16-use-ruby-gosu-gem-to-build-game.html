@@ -1,0 +1,324 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.16.3 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Ruby游戏开发利器Gosu - Qichunren’s blog</title>
+<meta name="description" content="在2009年的Railsconf大会上，Hongli Lai和Ninh Bui of Phusion（开发Passenger的家伙）为了展示Ruby语言的强大，能运行3D游戏，他们构建了一个Wolfenstein游戏的山寨版，用的是Gosu 游戏开发库。">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Qichunren's blog">
+<meta property="og:title" content="Ruby游戏开发利器Gosu">
+<meta property="og:url" content="http://localhost:4000/posts/2009-05-16-use-ruby-gosu-gem-to-build-game.html">
+
+
+  <meta property="og:description" content="在2009年的Railsconf大会上，Hongli Lai和Ninh Bui of Phusion（开发Passenger的家伙）为了展示Ruby语言的强大，能运行3D游戏，他们构建了一个Wolfenstein游戏的山寨版，用的是Gosu 游戏开发库。">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2009-05-16T17:45:00+08:00">
+
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/posts/2009-05-16-use-ruby-gosu-gem-to-build-game.html">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Qichunren's blog Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE ]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">Qichunren's blog</a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/" >Quick-Start Guide</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Ruby游戏开发利器Gosu">
+    <meta itemprop="description" content="在2009年的Railsconf大会上，Hongli Lai和Ninh Bui of Phusion（开发Passenger的家伙）为了展示Ruby语言的强大，能运行3D游戏，他们构建了一个Wolfenstein游戏的山寨版，用的是Gosu 游戏开发库。">
+    <meta itemprop="datePublished" content="May 16, 2009">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Ruby游戏开发利器Gosu
+</h1>
+          
+            <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p>在2009年的Railsconf大会上，Hongli Lai和Ninh Bui of Phusion（开发Passenger的家伙）为了展示Ruby语言的强大，能运行3D游戏，他们构建了一个Wolfenstein游戏的山寨版，用的是<a href="http://www.libgosu.org/">Gosu</a> 游戏开发库。</p>
+
+<p><img src="http://www.libgosu.org/website_header.png" alt="Gosu Logo" /></p>
+
+<p>Zed Shaw 在游戏中扮演BOSS</p>
+
+<p>体验方法： 
+项目地址：<a href="http://github.com/FooBarWidget/rubystein/tree/master">http://github.com/FooBarWidget/rubystein/tree/master</a>
+Git拖下来：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone git://github.com/FooBarWidget/rubystein.git （没有Git也可以直接在项目主页中下载） 
+</code></pre></div></div>
+
+<p>在运行游戏之前在安装gosu gem</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem install gosu 
+</code></pre></div></div>
+
+<p>我是在ubuntu下测试的，为了安装gosu,还要先安装依赖的库：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo apt-get install g++ libgl1-mesa-dev libpango1.0-dev libboost-dev libsdl-mixer1.2-dev 
+</code></pre></div></div>
+
+<p>在安装好了gosu gem后，直接运行游戏目录中的wolf3d.rb文件：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ruby wolf3d.rb 
+</code></pre></div></div>
+
+<p>如图： 
+<img src="http://qichunren.iteye.com/upload/picture/pic/36923/13a5698c-ac4e-3ab5-910a-db865d5648fb.jpg" alt="game preview" /></p>
+
+<p>空格键开枪</p>
+
+<p>很强大吧。</p>
+
+<p>游戏程序代码的大体结构如下，很简单，很明了：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>require 'rubygems'  
+require 'gosu'  
+  
+class GameWindow &lt; Gosu::Window  
+  def initialize  
+    super(640, 480, false)  
+    self.caption = "Gosu Tutorial Game"  
+  end  
+  
+  def update  
+   # 更新游戏画面的方法  
+  end  
+  
+  def draw  
+    # 游戏画面的绘画方法  
+  end  
+end  
+  
+window = GameWindow.new  
+window.show  
+</code></pre></div></div>
+
+<p>我在gosu的网站又找到了几个case,都很不错，用gosu开发游戏很不错，代码结构很清析和容易理解。</p>
+
+<p>1.Space Jumper(和雷电类似的游戏) ： 
+<a href="http://andre.semler-service.de/games/SpaceJumper.zip">下载地址</a></p>
+
+<p><img src="http://andre.semler-service.de/SJ.png" alt="Space Jumper preview" /></p>
+
+<p>2.Space shooter ，这个游戏和上面也差不多 
+<a href="http://github.com/belen-albeza/space-shooter">项目地址</a></p>
+
+<p><img src="http://farm4.static.flickr.com/3658/3503765473_95c1b36ea4_m.jpg" alt="Space shooter preview" /></p>
+
+<p>强烈推荐想要用Ruby玩玩游戏开发的同学们用这个<a href="https://github.com/jlnr/gosu">gosu</a>库。另外好像有一个叫rubygame的开发库，不知道怎么样，有时间也研究一下。</p>
+
+<p><em><a href="http://www.iteye.com/topic/389181">我在javaeye上的原文链接</a></em></p>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2009-05-16T17:45:00+08:00">May 16, 2009</time></p>
+        
+      </footer>
+
+      
+
+      
+  <nav class="pagination">
+    
+      <a href="/posts/2009-05-07-connect-to-oracle-in-rails.html" class="pagination--pager" title="Rails中连接Oracle数据库
+">Previous</a>
+    
+    
+      <a href="/posts/2009-12-17-i-fell-unhappy.html" class="pagination--pager" title="最近有些郁闷
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2019 qichunren. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.8.1/js/all.js" integrity="sha384-g5uSoOSBd7KkhAMlnQILrecXvzst9TdC09/VM+pjDTCM+1il8RHz5fKANTFFb+gQ" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "http://localhost:4000/posts/2009-05-16-use-ruby-gosu-gem-to-build-game.html";  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.identifier = "/posts/use-ruby-gosu-gem-to-build-game"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = 'https://qichunrensblog.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
+
+
+
+
+
+  </body>
+</html>

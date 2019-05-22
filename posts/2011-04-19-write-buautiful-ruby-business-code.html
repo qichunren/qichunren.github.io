@@ -1,0 +1,272 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.16.3 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>怎么样写好的ruby业务代码 - Qichunren’s blog</title>
+<meta name="description" content="标题很强，心中却很烦乱，写下这个解解闷，吐吐苦水。">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Qichunren's blog">
+<meta property="og:title" content="怎么样写好的ruby业务代码">
+<meta property="og:url" content="http://localhost:4000/posts/2011-04-19-write-buautiful-ruby-business-code.html">
+
+
+  <meta property="og:description" content="标题很强，心中却很烦乱，写下这个解解闷，吐吐苦水。">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2011-04-19T05:12:12+08:00">
+
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/posts/2011-04-19-write-buautiful-ruby-business-code.html">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Qichunren's blog Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE ]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">Qichunren's blog</a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/" >Quick-Start Guide</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="怎么样写好的ruby业务代码">
+    <meta itemprop="description" content="标题很强，心中却很烦乱，写下这个解解闷，吐吐苦水。">
+    <meta itemprop="datePublished" content="April 19, 2011">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">怎么样写好的ruby业务代码
+</h1>
+          
+            <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p><em>标题很强，心中却很烦乱，写下这个解解闷，吐吐苦水。</em></p>
+
+<p>最近与一个小Ruby程序员共事，交流起来还没有什么问题，可是看他写的代码，虽然坏不到哪里去，但我还是心里一阵阵反感，这和我平时阅读从github 上拉下的代码的感觉是完成不一样的。</p>
+
+<p>给我不爽的地方有：首先他在用程序员的思维写业务代码。这一点虽然对程序的最终运行结果没有什么影响，但我是非常反感这一点。我一直对自己说，我要写可读的英语的，并且本身能说明它是要做什么事情的代码，尤其我是当在做电子商务方面的业务系统。</p>
+
+<p>我们应该站在设计人员的角度来写代码。我们是整个系统的设计师，控制人员，管理人员，我们可以通过代码的方式为系统来设计各种业务规则。而不仅仅是为了用程序代码来码完业务操作。这种特点的典型特征就是在程序中（特别是在model 中）有很多这样的方法命名，如update_xxx, delete_xxx, set_x_to_y,这种类似的命名，它就是纯粹的数据操作，而不是用代码来表达业务!</p>
+
+<p>都说程序要写耦合内聚什么的，模块化啦，抽取啦，减少重复，但是在这之间把握一个平衡还是要有很多磨练的。我之前一些时候在写Rails代码时就时常被这个问题折磨过，心里总是努力想把代码写得好一点，可最终完成业务目标时，看着自己的代码总是感觉不对劲.</p>
+
+<p>不劲的地方有：</p>
+
+<p>总是在考虑“我这段代码到底是单独抽出来呢，还是就这样放在其中呢”，“我感觉这个命名怎么那么别扭啊，哪里不对了？”等等之内的问题，然后花时间在这些代码段之间穿梭。其实我现在想明白了。要想让自己写的代码（我这里尤其是处理业务逻辑的代码）看得明白，读得顺畅，要把握好几点。</p>
+
+<p>第一，要记得上面第一条中说到的。</p>
+
+<p>第二，英语表达要不能太糟糕。 他英语不太过关，写的一些代码都是去google翻译查的，这我还是不说什么，可以有的翻译真的好离谱啊，再加上他自己的一些润色，完全可以我把搞迷糊。</p>
+
+<p>第三点，要清楚业务需要的实质，明白什么是将来可能变化的，什么是肯定不变化的。明白了这一点，就知道一个业务操作中，到底是应该把方法怎么折分。不变的代码，就都写在一个方法中也是没有问题的，即实代码长一点，那样整个操作是一个整体，到时时候维护起来会很明了。</p>
+
+<p>第四点，对于业务操作的方法，一般写得内聚紧凑一点很是没有什么问题的。不要惦记什么一个方法不能超过多少行代码的信条。</p>
+
+<p>第五点就是测试了，这个一定得搞。</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2011-04-19T05:12:12+08:00">April 19, 2011</time></p>
+        
+      </footer>
+
+      
+
+      
+  <nav class="pagination">
+    
+      <a href="/posts/2011-03-26-use-capybara-to-integrate-test.html" class="pagination--pager" title="使用capybara来自动化测试业务流程
+">Previous</a>
+    
+    
+      <a href="/posts/2011-04-20-rails-test-note.html" class="pagination--pager" title="最近实践中学到的Rails测试技巧
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2019 qichunren. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.8.1/js/all.js" integrity="sha384-g5uSoOSBd7KkhAMlnQILrecXvzst9TdC09/VM+pjDTCM+1il8RHz5fKANTFFb+gQ" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "http://localhost:4000/posts/2011-04-19-write-buautiful-ruby-business-code.html";  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.identifier = "/posts/write-buautiful-ruby-business-code"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = 'https://qichunrensblog.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
+
+
+
+
+
+  </body>
+</html>

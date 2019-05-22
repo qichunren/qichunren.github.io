@@ -1,0 +1,301 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.16.3 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Get started with autotools - Qichunren’s blog</title>
+<meta name="description" content="Follow this tutorial to get started with autotools.">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Qichunren's blog">
+<meta property="og:title" content="Get started with autotools">
+<meta property="og:url" content="http://localhost:4000/posts/2016-08-15-get-started-with-autotools.html">
+
+
+  <meta property="og:description" content="Follow this tutorial to get started with autotools.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2016-08-15T15:20:00+08:00">
+
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/posts/2016-08-15-get-started-with-autotools.html">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Qichunren's blog Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE ]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">Qichunren's blog</a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/" >Quick-Start Guide</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Get started with autotools">
+    <meta itemprop="description" content="Follow this tutorial to get started with autotools.">
+    <meta itemprop="datePublished" content="August 15, 2016">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Get started with autotools
+</h1>
+          
+            <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p>Follow this <a href="https://www.gnu.org/software/automake/manual/html_node/Hello-World.html#Hello-World">tutorial</a> to get started with autotools.</p>
+
+<h3 id="configureac文件">configure.ac文件</h3>
+
+<p>使用 <em>autoscan</em> 工具生成 configure.scan 文件，将它重命名为 configure.ac ，默认的文件内容如下：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#                                               -*- Autoconf -*-
+# Process this file with autoconf to produce a configure script.
+
+AC_PREREQ([2.69])
+AC_INIT([FULL-PACKAGE-NAME], [VERSION], [BUG-REPORT-ADDRESS])
+
+# Checks for programs.
+
+# Checks for libraries.
+
+# Checks for header files.
+
+# Checks for typedefs, structures, and compiler characteristics.
+
+# Checks for library functions.
+
+AC_OUTPUT
+</code></pre></div></div>
+
+<p>然后创建如下的项目目录结构:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>src/main.c
+README
+configure.ac
+Makefile.am
+src/Makefile.am
+</code></pre></div></div>
+
+<p>Command <code class="highlighter-rouge">autoreconf --install</code> parse configure.ac into configure file.
+Command <code class="highlighter-rouge">automake</code> generate Makefile.in files.
+Command <code class="highlighter-rouge">./configure</code> generate Makefie and src/Makefile from Makefile.in files.</p>
+
+<p>我这里有一个基础的使用autotools工具的<a href="https://github.com/qichunren/glib-guide/tree/aa04d7151926ee197b7a16c57ddbff4db8673dc7">项目</a>，展示了其中最基本的用法。</p>
+
+<p><a href="https://www.gnu.org/software/automake/manual/html_node/Autotools-Introduction.html#Autotools-Introduction">An Introduction to the Autotools</a></p>
+
+<h2 id="resources">Resources</h2>
+
+<ul>
+  <li><a href="https://www.gnu.org/software/automake/">Automake homepage</a></li>
+  <li><a href="http://freesoftwaremagazine.com/books/autotools_a_guide_to_autoconf_automake_libtool/">Autotools: a practitioner’s guide to Autoconf, Automake and Libtool</a></li>
+  <li><a href="http://www.aireadfun.com/blog/2012/12/03/study-automake/">Step-By-Step Example Of Autotools For Beginner</a></li>
+  <li><a href="https://autotools.io/index.html">Autotools Mythbuster</a></li>
+  <li><a href="http://openbooks.sourceforge.net/books/wga/creating-configuration.html">Writing GNOME Applications</a></li>
+  <li><a href="https://autotools.io/index.html">Autotools Mythbuster</a></li>
+</ul>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2016-08-15T15:20:00+08:00">August 15, 2016</time></p>
+        
+      </footer>
+
+      
+
+      
+  <nav class="pagination">
+    
+      <a href="/posts/2016-06-22-work-with-binary-data.html" class="pagination--pager" title="Work with binary data
+">Previous</a>
+    
+    
+      <a href="/posts/2019-05-22-welcome-to-jekyll.html" class="pagination--pager" title="Welcome to Jekyll!
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2019 qichunren. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.8.1/js/all.js" integrity="sha384-g5uSoOSBd7KkhAMlnQILrecXvzst9TdC09/VM+pjDTCM+1il8RHz5fKANTFFb+gQ" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "http://localhost:4000/posts/2016-08-15-get-started-with-autotools.html";  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.identifier = "/posts/get-started-with-autotools"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = 'https://qichunrensblog.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
+
+
+
+
+
+  </body>
+</html>
