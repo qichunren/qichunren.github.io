@@ -1,0 +1,42 @@
+<h1 id="rsa应用举例">RSA应用举例</h1>
+
+<h2 id="生成私匙和公钥">生成私匙和公钥</h2>
+
+<p>产生1024位RSA私匙，用3DES加密它，口令为trousers，输出到文件rsaprivatekey.pem</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>openssl genrsa -out rsaprivatekey.pem -passout pass:trousers -des3 1024
+</code></pre></div></div>
+
+<p>从文件rsaprivatekey.pem读取私匙，用口令trousers解密，生成的公钥匙输出到文件rsapublickey.pem</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>openssl rsa -in rsaprivatekey.pem -passin pass:trousers -pubout -out rsapubckey.pem
+</code></pre></div></div>
+
+<h2 id="公私钥加密解密">公私钥加密解密</h2>
+
+<p>用公钥匙rsapublickey.pem加密文件plain.txt，输出到文件cipher.txt</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>openssl rsautl -encrypt -pubin -inkey rsapublickey.pem -in plain.txt -out cipher.txt
+</code></pre></div></div>
+
+<p>使用私钥匙rsaprivatekey.pem解密密文cipher.txt，输出到文件plain.txt</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>openssl rsautl -decrypt -inkey rsaprivatekey.pem -in cipher.txt -out plain.txt
+</code></pre></div></div>
+
+<h2 id="签名">签名</h2>
+
+<p>用私钥匙rsaprivatekey.pem给文件plain.txt签名，输出到文件signature.bin</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>openssl rsautl -sign -inkey rsaprivatekey.pem -in plain.txt -out signature.bin
+</code></pre></div></div>
+
+<p>用公钥匙rsapublickey.pem验证签名signature.bin，输出到文件plain.txt</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>openssl rsautl -verify -pubin -inkey rsapublickey.pem -in signature.bin -out plain
+</code></pre></div></div>
+
+<h1 id="对称加密">对称加密</h1>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>openssl enc -aes-256-cbc -salt -in update.tar.xz -out update.tar.xz.enc -pass file:./key.bin
+</code></pre></div></div>

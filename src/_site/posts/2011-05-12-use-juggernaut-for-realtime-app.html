@@ -1,0 +1,541 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.16.3 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>使用Juggernaut - Qichunren’s blog</title>
+<meta name="description" content="Juggernaut是基于Node.js的一个实时(Realtime)Web的解决方案。使用起来很方便。">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Qichunren's blog">
+<meta property="og:title" content="使用Juggernaut">
+<meta property="og:url" content="http://localhost:4000/posts/2011-05-12-use-juggernaut-for-realtime-app.html">
+
+
+  <meta property="og:description" content="Juggernaut是基于Node.js的一个实时(Realtime)Web的解决方案。使用起来很方便。">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2011-05-12T17:12:12+08:00">
+
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/posts/2011-05-12-use-juggernaut-for-realtime-app.html">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Qichunren's blog Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE ]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">Qichunren's blog</a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/about/" >About</a>
+            </li><li class="masthead__menu-item">
+              <a href="/" >Posts</a>
+            </li><li class="masthead__menu-item">
+              <a href="/collection-archive/" >Posts by Collection</a>
+            </li><li class="masthead__menu-item">
+              <a href="https://github.com/qichunren" >Github</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name"></h3>
+    
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="使用Juggernaut">
+    <meta itemprop="description" content="Juggernaut是基于Node.js的一个实时(Realtime)Web的解决方案。使用起来很方便。">
+    <meta itemprop="datePublished" content="May 12, 2011">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">使用Juggernaut
+</h1>
+          
+            <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p><a href="https://github.com/maccman/juggernaut">Juggernaut</a>是基于<a href="http://nodejs.org/">Node.js</a>的一个实时(Realtime)Web的解决方案。使用起来很方便。</p>
+
+<h3 id="安装方法">安装方法</h3>
+
+<ol>
+  <li>安装Node.js: brew install node</li>
+  <li>安装<a href="http://code.google.com/p/redis">Redis</a>: brew install redis</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>安装<a href="http://npmjs.org/">NPM</a>: curl http://npmjs.org/install.sh</td>
+          <td>sh</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>安装Juggernaut: 这个会把Juggernaut安装到当前目录，所以我应该先进行项目的/vendor/third目录，然后执行 npm install juggernaut</li>
+</ol>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    usermatoMacBook-Pro:third qichunren$ npm install juggernaut
+    redis@0.5.11 ./node_modules/juggernaut/node_modules/redis
+    node-static-maccman@0.5.3 ./node_modules/juggernaut/node_modules/node-static-maccman
+    socket.io@0.6.17 ./node_modules/juggernaut/node_modules/socket.io
+    juggernaut@2.0.4 ./node_modules/juggernaut
+    usermatoMacBook-Pro:third qichunren$
+</code></pre></div></div>
+
+<ol>
+  <li>安装Juggernaut gem:</li>
+</ol>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem install juggernaut
+</code></pre></div></div>
+
+<h3 id="使用方法">使用方法</h3>
+
+<p>我们在自己的项目中只需要引入http://localhost:8080/application.js 这个js文件即可。
+然后在页面中可以这样接收服务器端的消息：</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
+  <span class="kd">var</span> <span class="nx">jug</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Juggernaut</span><span class="p">;</span>
+  <span class="nx">jug</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s2">"channel1"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">){</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Got data: "</span> <span class="o">+</span> <span class="nx">data</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="nt">&lt;/script&gt;</span></code></pre></figure>
+
+<p>服务器端直接发消息：</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">require</span> <span class="s2">"juggernaut"</span>
+<span class="no">Juggernaut</span><span class="p">.</span><span class="nf">publish</span><span class="p">(</span><span class="s2">"channel1"</span><span class="p">,</span> <span class="s2">"Some data"</span><span class="p">)</span></code></pre></figure>
+
+<p>另外在启动了Juggernaut后，它默认在8080端口上有一个Helloword的应用，可以了解一下。</p>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2011-05-12T17:12:12+08:00">May 12, 2011</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%E4%BD%BF%E7%94%A8Juggernaut%20http%3A%2F%2Flocalhost%3A4000%2Fposts%2F2011-05-12-use-juggernaut-for-realtime-app.html" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fposts%2F2011-05-12-use-juggernaut-for-realtime-app.html" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fposts%2F2011-05-12-use-juggernaut-for-realtime-app.html" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/posts/2011-05-12-use-gitX-on-mac.html" class="pagination--pager" title="在Mac上使用gitX
+">Previous</a>
+    
+    
+      <a href="/posts/2011-05-13-use-unicorn-in-rails.html" class="pagination--pager" title="使用Unicorn
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You May Also Enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/posts/2019-05-22-welcome-to-jekyll.html" rel="permalink">Welcome to Jekyll!
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different wa...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/posts/2016-08-15-get-started-with-autotools.html" rel="permalink">Get started with autotools
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Follow this tutorial to get started with autotools.
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/posts/2016-06-22-work-with-binary-data.html" rel="permalink">Work with binary data
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  1 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">最近在做一些网络编程方面的东西，之前大多数情况接触的都是文本协议，现在接触的是二进制协议。在此补一下相关知识，下面基本上是以Ruby语言来描述用法。
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/posts/2016-06-21-use-buildroot-cross-build-app.html" rel="permalink">Buildroot简单使用
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">使用 Buildroot 可以方便的灵活的构建一个定制的用于嵌入式平台的Linux系统。
+
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><input type="search" id="search" aria-placeholder="Enter your search term..." class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+    <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2019 qichunren. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.8.1/js/all.js" integrity="sha384-g5uSoOSBd7KkhAMlnQILrecXvzst9TdC09/VM+pjDTCM+1il8RHz5fKANTFFb+gQ" crossorigin="anonymous"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "http://localhost:4000/posts/2011-05-12-use-juggernaut-for-realtime-app.html";  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.identifier = "/posts/use-juggernaut-for-realtime-app"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = 'https://qichunrensblog.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
+
+
+
+
+
+  </body>
+</html>

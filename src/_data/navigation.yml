@@ -1,0 +1,9 @@
+main:
+  - title: "About"
+    url: /about/
+  - title: "Posts"
+    url: /
+  - title: "Posts by Collection"
+    url: /collection-archive/
+  - title: "Github"
+    url: https://github.com/qichunren

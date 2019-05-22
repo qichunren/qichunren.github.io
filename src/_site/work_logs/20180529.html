@@ -1,0 +1,300 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.16.3 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>20180529 - Qichunren&#8217;s blog</title>
+<meta name="description" content="qt5在mysys2(mingw)平台上没有跟进到 QT最新采用的 WebEngine, 目前还是只能使用之前的 Webkit">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Qichunren's blog">
+<meta property="og:title" content="20180529">
+<meta property="og:url" content="http://localhost:4000/work_logs/20180529.html">
+
+
+  <meta property="og:description" content="qt5在mysys2(mingw)平台上没有跟进到 QT最新采用的 WebEngine, 目前还是只能使用之前的 Webkit">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2019-05-22T18:41:14+08:00">
+
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/work_logs/20180529.html">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Qichunren's blog Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE ]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">Qichunren's blog</a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/about/" >About</a>
+            </li><li class="masthead__menu-item">
+              <a href="/" >Posts</a>
+            </li><li class="masthead__menu-item">
+              <a href="/collection-archive/" >Posts by Collection</a>
+            </li><li class="masthead__menu-item">
+              <a href="https://github.com/qichunren" >Github</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="20180529">
+    <meta itemprop="description" content="qt5在mysys2(mingw)平台上没有跟进到 QT最新采用的 WebEngine, 目前还是只能使用之前的 Webkit">
+    
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">20180529
+</h1>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p>qt5在mysys2(mingw)平台上没有跟进到 QT最新采用的 WebEngine, 目前还是只能使用之前的 Webkit</p>
+
+<p>折腾 Windows 平台上的应用程序开发，基于 QT5 或者 GTK3</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pacman -S mingw-w64-x86_64-devhelp
+pacman -S   mingw-w64-i686-webkitgtk3
+find / -name "*.pc" | grep web
+</code></pre></div></div>
+
+<p>Build via:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gcc `pkg-config --cflags gtk+-3.0` `pkg-config --cflags /mingw32/lib/pkgconfig/webkitgtk-3.0.pc` -o example-0 example-0.c `pkg-config --libs gtk+-3.0` `pkg-config --libs /mingw32/lib/pkgconfig/webkitgtk-3.0.pc`
+</code></pre></div></div>
+
+<p>example-0.c</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#include &lt;gtk/gtk.h&gt;
+#include &lt;webkit/webkit.h&gt;
+
+static void activate (GtkApplication* app, gpointer        user_data)
+{
+    /* Create the widgets */
+    GtkWidget *main_window = gtk_application_window_new (app);
+    GtkWidget *scrolled_window = gtk_scrolled_window_new (NULL, NULL);
+    GtkWidget *web_view = webkit_web_view_new ();
+
+    /* Place the WebKitWebView in the GtkScrolledWindow */
+    gtk_container_add (GTK_CONTAINER (scrolled_window), web_view);
+    gtk_container_add (GTK_CONTAINER (main_window), scrolled_window);
+
+    /* Open a webpage */
+    webkit_web_view_load_uri (WEBKIT_WEB_VIEW (web_view), "http://www.gnome.org");
+
+    /* Show the result */
+    gtk_window_set_default_size (GTK_WINDOW (main_window), 800, 600);
+    gtk_widget_show_all (main_window);
+}
+
+int main (int argc, char **argv)
+{
+    GtkApplication *app;
+    int status;
+
+    app = gtk_application_new ("org.gtk.example", G_APPLICATION_FLAGS_NONE);
+    g_signal_connect (app, "activate", G_CALLBACK (activate), NULL);
+    status = g_application_run (G_APPLICATION (app), argc, argv);
+    g_object_unref (app);
+
+    return status;
+}
+
+
+## References
+
+[WebKit.WebView classes](https://lazka.github.io/pgi-docs/WebKit-3.0/classes/WebView.html)
+[GTK download for Windows](https://www.gtk.org/download/windows.php)
+</code></pre></div></div>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+      </footer>
+
+      
+
+      
+  <nav class="pagination">
+    
+      <a href="/work_logs/20180524.html" class="pagination--pager" title="20180524
+">Previous</a>
+    
+    
+      <a href="/work_logs/20180607.html" class="pagination--pager" title="20180607
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><input type="search" id="search" aria-placeholder="Enter your search term..." class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+    <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2019 qichunren. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.8.1/js/all.js" integrity="sha384-g5uSoOSBd7KkhAMlnQILrecXvzst9TdC09/VM+pjDTCM+1il8RHz5fKANTFFb+gQ" crossorigin="anonymous"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+
+
+  </body>
+</html>

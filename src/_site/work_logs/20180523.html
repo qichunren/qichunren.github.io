@@ -1,0 +1,300 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.16.3 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>20180523 - Qichunren&#8217;s blog</title>
+<meta name="description" content="加密解密">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Qichunren's blog">
+<meta property="og:title" content="20180523">
+<meta property="og:url" content="http://localhost:4000/work_logs/20180523.html">
+
+
+  <meta property="og:description" content="加密解密">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2019-05-22T18:41:14+08:00">
+
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/work_logs/20180523.html">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Qichunren's blog Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE ]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">Qichunren's blog</a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/about/" >About</a>
+            </li><li class="masthead__menu-item">
+              <a href="/" >Posts</a>
+            </li><li class="masthead__menu-item">
+              <a href="/collection-archive/" >Posts by Collection</a>
+            </li><li class="masthead__menu-item">
+              <a href="https://github.com/qichunren" >Github</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="20180523">
+    <meta itemprop="description" content="加密解密">
+    
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">20180523
+</h1>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <h2 id="加密解密">加密解密</h2>
+
+<p>今天在设计软件更新机制时的一些想法和笔记。</p>
+
+<p>目的：</p>
+
+<ul>
+  <li>为了确保软件更新包的构建源头是我方开发人员。</li>
+  <li>加密软件更新包，防止他人查看其内容。</li>
+</ul>
+
+<h2 id="对称密码">对称密码</h2>
+
+<p>通信的双方都使用同一个密钥加解密。</p>
+
+<h2 id="非对称加密">非对称加密</h2>
+
+<ul>
+  <li>密钥和公钥作为一对密码，自己保护好密钥，公钥可以公开。</li>
+  <li>发送方用自己的私钥对内容签名，接收方用发送方的公钥验证签名的内容</li>
+  <li>发送方使用接收方的公钥加密内容，然后发给对方，接收方使用自己的私钥解密</li>
+</ul>
+
+<h2 id="软件更新包的设计方法">软件更新包的设计方法</h2>
+
+<p>创建软件更新包时加密，然后在目标机器上获取软件更新包后，进行解密验证。</p>
+
+<p>非对称加密中，加密和验证信息大的内容是非常耗资源的，这样做效率低。可以将对称密码和非对称加密结合</p>
+
+<h3 id="在开发机上创建加密更新包的过程">在开发机上创建加密更新包的过程</h3>
+
+<ol>
+  <li>在开发机器上创建私钥和公钥，同时将公钥上传到产品机器。</li>
+  <li>将软件更新包的版本号、包文件大小、更新包sha512，再加上随机数，作为密码。</li>
+  <li>用私钥加密第2步生成的密码。</li>
+  <li>利用第2步的生成的密码，通过AES加密的方法，将软件更新包加密。</li>
+  <li>将第3步的加密后的密码，连同第4步加密后的软件包一同打包，作为最终分发的软件更新包。</li>
+</ol>
+
+<h3 id="在产品机上解密验证更新包的过程">在产品机上解密验证更新包的过程</h3>
+
+<ol>
+  <li>解压软件更新包</li>
+  <li>利用公钥验证加密的密码，获取实际密码，从中可以得到更新包的sha512摘要信息、版本信息。</li>
+  <li>利用第2步解析出的实际密码，解密 加密的更新包。</li>
+  <li>通过第2步的sha512摘要信息验证第3步解密出来的软件更新包。</li>
+</ol>
+
+<h3 id="验证">验证</h3>
+
+<p>通过以上的方法，不法分子就算通过办法获取到了产品机器上的公钥，他也只能查看到更新包的实际内容，但是他无法二次修改更新包的内容，伪造新的更新包。</p>
+
+<h3 id="参考资料">参考资料</h3>
+
+<ul>
+  <li><a href="https://www.openssl.org/docs/manmaster/man1/rsa.html">openssl rsa doc</a></li>
+</ul>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+      </footer>
+
+      
+
+      
+  <nav class="pagination">
+    
+      <a href="/work_logs/20160907.html" class="pagination--pager" title="20160907
+">Previous</a>
+    
+    
+      <a href="/work_logs/20180524.html" class="pagination--pager" title="20180524
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><input type="search" id="search" aria-placeholder="Enter your search term..." class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+    <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2019 qichunren. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.8.1/js/all.js" integrity="sha384-g5uSoOSBd7KkhAMlnQILrecXvzst9TdC09/VM+pjDTCM+1il8RHz5fKANTFFb+gQ" crossorigin="anonymous"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+
+
+  </body>
+</html>
