@@ -10,7 +10,7 @@
     <meta charset="utf-8">
 
 <!-- begin _includes/seo.html --><title>Tool Box - Qichunren’s blog</title>
-<meta name="description" content="Record my thoughts, development notes.">
+<meta name="description" content="Community">
 
 
 
@@ -18,8 +18,10 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Qichunren's blog">
 <meta property="og:title" content="Tool Box">
-<meta property="og:url" content="http://localhost:4000/wiki/tool_box.html">
+<meta property="og:url" content="/wiki/tool_box.html">
 
+
+  <meta property="og:description" content="Community">
 
 
 
@@ -34,7 +36,7 @@
 
 
 
-<link rel="canonical" href="http://localhost:4000/wiki/tool_box.html">
+<link rel="canonical" href="/wiki/tool_box.html">
 
 
 
@@ -103,8 +105,21 @@
         
         <a class="site-title" href="/">Qichunren's blog</a>
         <ul class="visible-links"><li class="masthead__menu-item">
-              <a href="https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/" >Quick-Start Guide</a>
+              <a href="/about/" >About</a>
+            </li><li class="masthead__menu-item">
+              <a href="/" >Posts</a>
+            </li><li class="masthead__menu-item">
+              <a href="/collection-archive/" >Posts by Collection</a>
+            </li><li class="masthead__menu-item">
+              <a href="https://github.com/qichunren" >Github</a>
             </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
         
         <button class="greedy-nav__toggle hidden" type="button">
           <span class="visually-hidden">Toggle menu</span>
@@ -127,7 +142,7 @@
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
     <meta itemprop="headline" content="Tool Box">
-    
+    <meta itemprop="description" content="Community">
     <meta itemprop="datePublished" content="September 13, 2016">
     
 
@@ -201,6 +216,17 @@
       
 
       
+  <nav class="pagination">
+    
+      <a href="/wiki/use_qrencode_generate_image.html" class="pagination--pager" title="qrencode generator
+">Previous</a>
+    
+    
+      <a href="/wiki/windows_dev_notes.html" class="pagination--pager" title="Windows_dev_notes
+">Next</a>
+    
+  </nav>
+
     </div>
 
     
@@ -212,6 +238,12 @@
 
     </div>
 
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><input type="search" id="search" aria-placeholder="Enter your search term..." class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+    <div id="results" class="results"></div></div>
+
+      </div>
     
 
     <div class="page__footer">
@@ -240,6 +272,10 @@
 
 
 
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
 
 
 
