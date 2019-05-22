@@ -28,7 +28,8 @@ permalink: /posts/:year-:month-:day-:title:output_ext
 paginate: 5 # amount of posts to show
 paginate_path: /page:num/
 
-destination         : ../
+include:
+  - _pages   
 
 # Build settings
 theme: minimal-mistakes-jekyll
@@ -36,18 +37,56 @@ markdown: kramdown
 plugins:
   - jekyll-feed
 
+search: true  
+
+collections:
+  work_logs:
+    output: true
+    permalink: /:collection/:path:output_ext
+  wiki:
+    output: true
+    permalink: /:collection/:path:output_ext
+
 defaults:
   # _posts
   - scope:
       path: ""
       type: posts
     values:
-      read_time: true  
+      layout: single
+      author_profile: true
+      read_time: true
+      comments: true
+      share: true
+      related: true
+  # _pages
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: single
+      author_profile: true      
+  - scope:
+      path: ""
+      type: work_logs
+    values:
+      layout: single
+      read_time: false
+      comments: false
+      author_profile: false
+  - scope:
+        path: ""
+        type: work_logs111
+    values:
+      layout: single
+      read_time: false
+      comments: false
+      author_profile: false   
 
 comments:
   provider: "disqus"
   disqus:
-    shortname: "qichunrensblog"      
+    shortname: "qichunrensblog"
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
