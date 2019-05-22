@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: "iOS中的arc4random方法"
 date: 2012-01-04 22:49
 comments: true

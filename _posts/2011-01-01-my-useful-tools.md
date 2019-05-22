@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: 我的常用工具
 tags: 工具
 ---        

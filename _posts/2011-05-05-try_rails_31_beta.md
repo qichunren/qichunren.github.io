@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: 初试Rails 3.1 Beta
 tags: Rails3
 ---

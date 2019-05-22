@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: 使用Jruby来部署Rails应用
 date: 2011-08-26 22:36:22
 categories: [ruby, jruby, rails, deploy]

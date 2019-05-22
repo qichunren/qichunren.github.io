@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: 当心ActiveRecord::RecordNotSaved异常
 date: 2011-02-27 22:01
 comments: true

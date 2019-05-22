@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: "最近有些郁闷"
 date: 2009-12-17 16:30
 comments: true

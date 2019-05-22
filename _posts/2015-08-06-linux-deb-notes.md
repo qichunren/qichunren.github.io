@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: Linux Deb package notes
 date: 2015-08-06 20:30
 comments: true

@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: Juqery中元素位置的几个方法笔记
 date: 2011-05-09 11:30
 comments: true

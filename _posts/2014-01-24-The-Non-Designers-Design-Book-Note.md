@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: "《写给大家看的设计书》笔记"
 date: 2014-05-16 00:57
 comments: true

@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: 在QT5中使用国际化语言
 date: 2015-4-13 18:42
 comments: true

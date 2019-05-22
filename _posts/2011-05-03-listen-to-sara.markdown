@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: 听《Sara》
 date: 2011-05-03 09:10:12
 comments: true

@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: "解决NTFS格式移动硬盘在MAC系统上不能读的问题"
 date: 2014-05-04 16:44
 comments: true

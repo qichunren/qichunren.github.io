@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: 使用ffaker来产生随机数据
 date: 2012-01-19 22:01
 comments: true

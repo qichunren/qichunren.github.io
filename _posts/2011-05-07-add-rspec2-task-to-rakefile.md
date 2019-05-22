@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: 将Rspec的测试任务添加到Rakefile中
 tags: Rspec
 ---

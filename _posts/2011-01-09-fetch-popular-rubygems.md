@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: 分析rubygems.org上受欢迎的gem包
 date: 2011-01-09 12:12:12
 comments: true

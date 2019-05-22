@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: "使用SSH代理来访访问远程mysql机器"
 date: 2012-06-04 17:31
 comments: true

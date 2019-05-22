@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: "在Rails3中使用ajax"
 date: 2011-12-22 16:36
 comments: true

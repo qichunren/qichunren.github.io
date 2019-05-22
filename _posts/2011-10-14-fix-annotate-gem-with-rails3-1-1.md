@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: Fix problem annotate is broken with rails 3.1.1
 date: 2011-06-03 22:01
 comments: true

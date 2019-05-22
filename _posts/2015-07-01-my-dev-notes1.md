@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: 我的开发感悟（2）
 date: 2015-7-01 20:30
 comments: true

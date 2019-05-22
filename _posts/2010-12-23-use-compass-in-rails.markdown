@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: 在Rails项目中使用compass来管理css 
 date: 2010-12-23 23:12:12
 comments: true

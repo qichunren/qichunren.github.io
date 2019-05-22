@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: 说说rspec的测试(1)
 date: 2010-12-21 09:12:12
 comments: true

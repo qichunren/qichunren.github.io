@@ -1,14 +1,14 @@
 ---
-layout: post
+layout: single
 title: Ruby Array的头尾操作的4个方法
 date: 2008-10-09 12:01:11
 comments: true
 categories: [ruby]
 ---
 
-在Ruby中，Array对于数组头部和尾部操作有四个方法可以方便的添加和删除元素，这四个方法是shift / unshift / push / pop。它们两两对应。
+在 Ruby 中，Array 对于数组头部和尾部操作有四个方法可以方便的添加和删除元素，这四个方法是shift / unshift / push / pop。它们两两对应。
 
-shift方法将数组头部第一个元素从数组中删除，并返回这个元素。
+shift 方法将数组头部第一个元素从数组中删除，并返回这个元素。
 
 unshift方法接受一个或者参数，将元素添加到数组头部。
 

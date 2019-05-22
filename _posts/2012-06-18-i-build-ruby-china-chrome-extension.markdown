@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: "Ruby China Chrome浏览器插件"
 date: 2012-06-18 14:56
 comments: true

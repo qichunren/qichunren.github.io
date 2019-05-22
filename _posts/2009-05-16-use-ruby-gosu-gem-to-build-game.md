@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: "Ruby游戏开发利器Gosu"
 date: 2009-05-16 17:45
 comments: true

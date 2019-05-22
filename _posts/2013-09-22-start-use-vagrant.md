@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: "开始使用vagrant"
 date: 2013-09-22 20:43
 comments: true

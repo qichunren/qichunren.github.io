@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: 学习和了解Redis
 date: 2011-05-13 23:12:12
 comments: true

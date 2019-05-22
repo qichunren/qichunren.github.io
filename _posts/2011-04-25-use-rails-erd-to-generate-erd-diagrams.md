@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: 使用Rails ERD生成数据库实体关系图
 date: 2011-04-25 21:12:12
 comments: true

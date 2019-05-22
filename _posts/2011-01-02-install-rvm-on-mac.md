@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: 在Mac上安装RVM
 date: 2011-01-02 09:09:09
 comments: true

@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: Linux里GUI程序自启动
 date: 2016-06-16 15:27
 comments: true

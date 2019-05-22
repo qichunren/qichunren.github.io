@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: "Use Rubyencoder encrypt ruby code"
 date: 2012-02-27 13:10
 comments: true

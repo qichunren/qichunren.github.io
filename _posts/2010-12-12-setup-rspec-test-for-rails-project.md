@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: 建立rspec测试的环境
 tags:
 - rspec

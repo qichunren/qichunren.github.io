@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: "Fixed a problem with creating texture background in cocos2d"
 date: 2012-06-03 22:01
 comments: true

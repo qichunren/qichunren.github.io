@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: 去掉textmate源代码中的隐形空格
 date: 2011-05-16 17:20:33
 categories: [tool]

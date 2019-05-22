@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: "Use postgres database on Mac Lion"
 date: 2012-11-27 10:52
 comments: true

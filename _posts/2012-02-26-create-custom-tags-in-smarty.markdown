@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: "Create custom tags in Smarty 3"
 date: 2012-02-26 14:21
 comments: true

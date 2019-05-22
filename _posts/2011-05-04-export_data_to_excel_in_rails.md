@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: 在Rails项目中导出Excel
 tags:
 - Excel

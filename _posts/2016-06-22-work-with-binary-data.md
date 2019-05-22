@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: Work with binary data
 date: 2016-06-22 11:25
 comments: true

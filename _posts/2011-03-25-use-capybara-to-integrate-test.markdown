@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: 使用capybara来自动化测试业务流程
 date: 2011-03-25 21:12:12
 comments: true

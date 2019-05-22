@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: Jekyll usage
 date: 2010-08-08 22:20:32
 categories: [tool]

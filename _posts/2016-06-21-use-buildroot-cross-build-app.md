@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: Buildroot简单使用
 date: 2016-06-21 18:12
 comments: true

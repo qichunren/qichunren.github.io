@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: Benchmark用法
 date: 2008-10-09 12:01:11
 comments: true
@@ -10,14 +10,15 @@ categories: [ruby, test]
 
 用法很简单:
 
-```
+{% highlight ruby %}
 require 'benchmark'
 n = 1500
 Benchmark.bmbm do |x|
   x.report("+ method") { n.times {string1 = "ddd" + "11111" + "Helodd" } }
   x.report("<< method") { n.times {string2 = "ddd" << "11111" << "Helodd"} }
 end
-```
+{% endhighlight %}    
+
 
 结果如下:
 

@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: 怎么样写好的ruby业务代码
 date: 2011-04-18 21:12:12
 comments: true

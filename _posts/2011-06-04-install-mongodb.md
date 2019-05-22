@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: Install mongo on mac
 date: 2011-06-04 22:01
 comments: true

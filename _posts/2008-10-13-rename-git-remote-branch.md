@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: "重命名远程仓库中的分支"
 date: 2008-10-13 14:22
 comments: true

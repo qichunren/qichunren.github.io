@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: "Customizing rails generator templates"
 date: 2012-01-12 13:49
 comments: true

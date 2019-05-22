@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: "How to update a forked repository from original repository at github?"
 date: 2012-01-09 12:39
 comments: true

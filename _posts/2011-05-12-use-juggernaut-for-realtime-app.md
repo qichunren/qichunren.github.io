@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: 使用Juggernaut
 date: 2011-05-12 09:12:12
 comments: true

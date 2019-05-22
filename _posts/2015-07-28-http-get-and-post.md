@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: 对使用http请求的GET和POST的一点思考 
 date: 2015-7-28 20:30
 comments: true

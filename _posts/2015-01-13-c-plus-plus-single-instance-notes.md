@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: C++中实现单例
 date: 2015-01-13 10:43
 comments: true

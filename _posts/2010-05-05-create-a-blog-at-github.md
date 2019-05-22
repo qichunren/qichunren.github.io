@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: Create a blog at github
 date: 2010-05-05 09:09:09
 comments: true

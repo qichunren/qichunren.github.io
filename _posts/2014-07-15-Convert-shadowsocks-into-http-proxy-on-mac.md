@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: 将Shadownsocks代理转换成http proxy类型
 date: 2014-07-15 17:04
 comments: true

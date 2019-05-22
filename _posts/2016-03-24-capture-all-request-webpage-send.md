@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: Capture all reqeust web page send
 date: 2016-03-24 10:10
 comments: true

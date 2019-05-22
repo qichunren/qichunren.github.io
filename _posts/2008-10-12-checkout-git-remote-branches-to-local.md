@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: "在本地签出远程仓库上的分支"
 date: 2008-10-12 14:27
 comments: true

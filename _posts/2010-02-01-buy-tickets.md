@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: "买票记"
 date: 2010-02-01 11:54
 comments: true

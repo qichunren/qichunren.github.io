@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: 在Mac上安装homebrew
 date: 2011-01-03 12:12:12
 comments: true

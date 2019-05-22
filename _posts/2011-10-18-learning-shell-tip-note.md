@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: Shell学习小记录
 date: 2011-10-18 20:44
 categories: [linux, shell]

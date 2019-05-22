@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: 写Rails程序容易出现的几个不好的地方
 date: 2010-10-29 21:20:33
 categories: [ruby, rails]

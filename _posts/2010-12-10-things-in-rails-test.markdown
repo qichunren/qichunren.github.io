@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: Rails中的测试那些事  
 date: 2010-12-10 23:23:33
 categories: [ruby, rails, test]

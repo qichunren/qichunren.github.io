@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: "Use Smarty template in CodeIgniter"
 date: 2012-02-11 16:57
 comments: true

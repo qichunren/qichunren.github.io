@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: Oracle解锁
 date: 2010-10-29 12:12:12
 comments: true

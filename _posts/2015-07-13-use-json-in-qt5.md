@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: 在QT5中使用JSON库json-c
 date: 2015-7-13 12:30
 comments: true

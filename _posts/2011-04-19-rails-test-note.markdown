@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: 最近实践中学到的Rails测试技巧
 date: 2011-04-19 23:12:12
 categories: [rails, test]

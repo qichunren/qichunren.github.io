@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: Create a blog at github using jekyll
 date: 2010-08-06 12:24:22
 categories: [tool]

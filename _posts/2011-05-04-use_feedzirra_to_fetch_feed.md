@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: 使用feedzirra分析提取Feed
 date: 2011-05-04 19:12:12
 comments: true

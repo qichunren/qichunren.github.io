@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: "通过update-rc.d来管理Ubuntu系统的自动启动程序"
 date: 2012-03-14 11:30
 comments: true

@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: Show more detail info on will_paginate bar
 tags:
 - Rails

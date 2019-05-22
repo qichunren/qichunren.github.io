@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: Get started with autotools
 date: 2016-08-15 15:20
 comments: true

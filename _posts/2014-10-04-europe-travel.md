@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: 欧洲旅行记录
 date: 2014-10-04 12:05
 comments: true

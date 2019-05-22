@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: Game resources note
 date: 2014-10-23 17:05
 comments: true

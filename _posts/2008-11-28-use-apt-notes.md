@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: "Ubuntu下apt使用记录"
 date: 2008-11-28 08:22
 comments: true

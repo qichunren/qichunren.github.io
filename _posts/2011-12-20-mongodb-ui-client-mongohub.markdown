@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: "mongodb的可视化客户端工具:MongoHub"
 date: 2011-12-20 17:31
 comments: true

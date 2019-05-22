@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: "最近的境况"
 date: 2013-05-22 00:03
 comments: true

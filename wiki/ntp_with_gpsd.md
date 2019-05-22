@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: single
 title: "NTP with GPSD"
 date: 2016-04-30 16:08
 comments: false

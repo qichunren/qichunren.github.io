@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: "两种javascript定义function的区别"
 date: 2008-10-29 18:26:46
 comments: true

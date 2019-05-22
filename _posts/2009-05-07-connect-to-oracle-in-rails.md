@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: Rails中连接Oracle数据库
 date: 2009-05-07 12:01
 comments: true

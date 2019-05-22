@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: Set proxy in server side to get crossing domain ajax request
 date: 2011-08-17 23:12:12
 categories: [rails]

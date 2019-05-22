@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: 网页截屏的方法
 date: 2011-10-12 22:09:09
 comments: true

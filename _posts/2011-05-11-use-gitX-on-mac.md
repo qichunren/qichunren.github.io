@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: 在Mac上使用gitX
 date: 2011-05-11 19:19:19
 comments: true

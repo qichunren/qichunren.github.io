@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: "Static site using rails"
 date: "2010-04-06 09:12:12"
 comments: true
