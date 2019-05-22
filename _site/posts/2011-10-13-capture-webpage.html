@@ -1,0 +1,308 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.16.3 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>网页截屏的方法 - Qichunren’s blog</title>
+<meta name="description" content="曾经很想有这样一个app, 它可以将微博上用户的微博用图片的形式自动保存起来，留此存照。前几个月的那段时间，微博上很网页截屏的基本原理就是通过取得webkit渲染（render）的数据来生成图片的，我经过一段时间研究，找到了两个方法来解决这个问题。">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Qichunren's blog">
+<meta property="og:title" content="网页截屏的方法">
+<meta property="og:url" content="/posts/2011-10-13-capture-webpage.html">
+
+
+  <meta property="og:description" content="曾经很想有这样一个app, 它可以将微博上用户的微博用图片的形式自动保存起来，留此存照。前几个月的那段时间，微博上很网页截屏的基本原理就是通过取得webkit渲染（render）的数据来生成图片的，我经过一段时间研究，找到了两个方法来解决这个问题。">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2011-10-13T06:09:09+08:00">
+
+
+
+
+
+
+<link rel="canonical" href="/posts/2011-10-13-capture-webpage.html">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Qichunren's blog Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE ]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">Qichunren's blog</a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/" >Quick-Start Guide</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="网页截屏的方法">
+    <meta itemprop="description" content="曾经很想有这样一个app, 它可以将微博上用户的微博用图片的形式自动保存起来，留此存照。前几个月的那段时间，微博上很网页截屏的基本原理就是通过取得webkit渲染（render）的数据来生成图片的，我经过一段时间研究，找到了两个方法来解决这个问题。">
+    <meta itemprop="datePublished" content="October 13, 2011">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">网页截屏的方法
+</h1>
+          
+            <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  1 minute read
+</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p>曾经很想有这样一个app, 它可以将微博上用户的微博用图片的形式自动保存起来，留此存照。前几个月的那段时间，微博上很
+网页截屏的基本原理就是通过取得webkit渲染（render）的数据来生成图片的，我经过一段时间研究，找到了两个方法来解决这个问题。</p>
+
+<p>一个工具叫<a href="http://www.phantomjs.org/">phantomjs</a>，另一个工具叫<a href="http://cutycapt.sourceforge.net/">cutycapt</a></p>
+
+<p>两个工具都不错，个人比较喜欢使用cutycapt这个工具，它是直接提供一个命令行来生成网页截图的，而前者是通过javascript来调用底层webkit接品(page.render方法)来实现的，两者的侧重点不一样。
+并且cutycapt是将整个网截下来，phantomjs是将浏览器当前视区的一屏截下来。</p>
+
+<p>Cutycapt的用法如下</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>qichunren@qichunren-desktop:~/github/cutycapt/CutyCapt$ ./CutyCapt 
+ -----------------------------------------------------------------------------
+ Usage: CutyCapt --url=http://www.example.org/ --out=localfile.png            
+ -----------------------------------------------------------------------------
+  --help                         Print this help page and exit                
+  --url=&lt;url&gt;                    The URL to capture (http:...|file:...|...)   
+  --out=&lt;path&gt;                   The target file (.png|pdf|ps|svg|jpeg|...)   
+  --out-format=&lt;f&gt;               Like extension in --out, overrides heuristic 
+  --min-width=&lt;int&gt;              Minimal width for the image (default: 800)   
+  --min-height=&lt;int&gt;             Minimal height for the image (default: 600)  
+  --max-wait=&lt;ms&gt;                Don't wait more than (default: 90000, inf: 0)
+  --delay=&lt;ms&gt;                   After successful load, wait (default: 0)     
+  --user-style-path=&lt;path&gt;       Location of user style sheet file, if any    
+  --user-style-string=&lt;css&gt;      User style rules specified as text           
+  --header=&lt;name&gt;:&lt;value&gt;        request header; repeatable; some can't be set
+  --method=&lt;get|post|put&gt;        Specifies the request method (default: get)  
+  --body-string=&lt;string&gt;         Unencoded request body (default: none)       
+  --body-base64=&lt;base64&gt;         Base64-encoded request body (default: none)  
+  --app-name=&lt;name&gt;              appName used in User-Agent; default is none  
+  --app-version=&lt;version&gt;        appVers used in User-Agent; default is none  
+  --user-agent=&lt;string&gt;          Override the User-Agent header Qt would set  
+  --javascript=&lt;on|off&gt;          JavaScript execution (default: on)           
+  --java=&lt;on|off&gt;                Java execution (default: unknown)            
+  --plugins=&lt;on|off&gt;             Plugin execution (default: unknown)          
+  --private-browsing=&lt;on|off&gt;    Private browsing (default: unknown)          
+  --auto-load-images=&lt;on|off&gt;    Automatic image loading (default: on)        
+  --js-can-open-windows=&lt;on|off&gt; Script can open windows? (default: unknown)  
+  --js-can-access-clipboard=&lt;on|off&gt; Script clipboard privs (default: unknown)
+  --print-backgrounds=&lt;on|off&gt;   Backgrounds in PDF/PS output (default: off)  
+  --zoom-factor=&lt;float&gt;          Page zoom factor (default: no zooming)       
+  --zoom-text-only=&lt;on|off&gt;      Whether to zoom only the text (default: off) 
+  --http-proxy=&lt;url&gt;             Address for HTTP proxy server (default: none)
+ -----------------------------------------------------------------------------
+  &lt;f&gt; is svg,ps,pdf,itext,html,rtree,png,jpeg,mng,tiff,gif,bmp,ppm,xbm,xpm    
+ -----------------------------------------------------------------------------
+ http://cutycapt.sf.net - (c) 2003-2010 Bjoern Hoehrmann - bjoern@hoehrmann.de
+qichunren@qichunren-desktop:~/github/cutycapt/CutyCapt$
+</code></pre></div></div>
+
+<p>phantomjs截屏的用法如下：</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>qichunren@qichunren-desktop:~/github$ cd phantomjs/
+qichunren@qichunren-desktop:~/github/phantomjs$ ls
+bin         ChangeLog  ff.png     iteye.png    Makefile       python     src
+capture.js  examples   hello.png  LICENSE.BSD  phantomjs.pro  README.md           
+qichunren@qichunren-desktop:~/github/phantomjs$ ./bin/phantomjs examples/rasterize.js 
+Usage: rasterize.js URL filename [paperwidth*paperheight|paperformat]
+  paper (pdf output) examples: "5in*7.5in", "10cm*20cm", "A4", "Letter"
+qichunren@qichunren-desktop:~/github/phantomjs$ ./bin/phantomjs examples/rasterize.js http://www.iteye.com iteye.png
+qichunren@qichunren-desktop:~/github/phantomjs$
+</code></pre></div></div>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2011-10-13T06:09:09+08:00">October 13, 2011</time></p>
+        
+      </footer>
+
+      
+
+      
+  <nav class="pagination">
+    
+      <a href="/posts/2011-08-27-deploy-rails-project-with-jruby.html" class="pagination--pager" title="使用Jruby来部署Rails应用
+">Previous</a>
+    
+    
+      <a href="/posts/2011-10-18-learning-shell-tip-note.html" class="pagination--pager" title="Shell学习小记录
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2019 qichunren. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.8.1/js/all.js" integrity="sha384-g5uSoOSBd7KkhAMlnQILrecXvzst9TdC09/VM+pjDTCM+1il8RHz5fKANTFFb+gQ" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "/posts/2011-10-13-capture-webpage.html";  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.identifier = "/posts/capture-webpage"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = 'https://qichunrensblog.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
+
+
+
+
+
+  </body>
+</html>

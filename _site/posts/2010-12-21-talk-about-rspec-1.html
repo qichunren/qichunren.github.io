@@ -1,0 +1,328 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.16.3 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>说说rspec的测试(1) - Qichunren’s blog</title>
+<meta name="description" content="虽然之前就用过rspec来测试系统的各种业务流程和业务逻辑，最近又在开始一个新的系统的测试，写起来又感觉很开心，很安心。所以就想说说用rspec来写rails项目测试的总结和体会。">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Qichunren's blog">
+<meta property="og:title" content="说说rspec的测试(1)">
+<meta property="og:url" content="/posts/2010-12-21-talk-about-rspec-1.html">
+
+
+  <meta property="og:description" content="虽然之前就用过rspec来测试系统的各种业务流程和业务逻辑，最近又在开始一个新的系统的测试，写起来又感觉很开心，很安心。所以就想说说用rspec来写rails项目测试的总结和体会。">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2010-12-21T17:12:12+08:00">
+
+
+
+
+
+
+<link rel="canonical" href="/posts/2010-12-21-talk-about-rspec-1.html">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Qichunren's blog Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE ]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">Qichunren's blog</a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/" >Quick-Start Guide</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="说说rspec的测试(1)">
+    <meta itemprop="description" content="虽然之前就用过rspec来测试系统的各种业务流程和业务逻辑，最近又在开始一个新的系统的测试，写起来又感觉很开心，很安心。所以就想说说用rspec来写rails项目测试的总结和体会。">
+    <meta itemprop="datePublished" content="December 21, 2010">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">说说rspec的测试(1)
+</h1>
+          
+            <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p>虽然之前就用过rspec来测试系统的各种业务流程和业务逻辑，最近又在开始一个新的系统的测试，写起来又感觉很开心，很安心。所以就想说说用rspec来写rails项目测试的总结和体会。</p>
+
+<p>rspec项目 在github上很活跃，rspec2较之 1.x的版本变得更模块化了，从<a href="https://github.com/rspec/">这里</a> 看以到rspec的各个子项目，rspec2依赖于<a href="https://github.com/rspec/rspec-core">rspec-core</a> <a href="https://github.com/rspec/rspec-expectations">rspec-expectations</a> <a href="https://github.com/rspec/rspec-mocks">rspec-mocks</a></p>
+
+<p>在Rails 3项目中，只需要在指定rspec-rails这个gem即可，它会自动依赖rspec2。</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem "rspec-rails", "2.3.1"
+</code></pre></div></div>
+
+<p>在rspec2中，Rails3项的测试被分成控制器（controller）、模型（model）、请求（request）、路由（routing）、助手（helper）、视图（view）六大块的测试。从中可以看出rspec2力图让你的测试变得更为职责清楚和模块化，减少各种类型测试的影响，让测试变得更有效率和保证。我个人最喜欢的是模型（model）和请求的测试（request），这两个测试写得最为直接和有效，其它类型的测试如controller测试在复杂一点的业务中需要mock、stub等等，会将代码弄得有些复杂，当然这其中也有我对mock和stub没有用得理解的原因，不过我感觉测试controller还不如直接测试request来得直接。另外在factory-girl的帮助下能很快地写出有保证的测试。</p>
+
+<p>在这里我贴出我系统中登录测试这一块的例子，从中可以看出测试目的是很明显的，测试效率是很高的。</p>
+
+<p>这里的管理员(Admin)登录系统(AdminSession)是用到authlogic这个gem的。</p>
+
+<p>这个是factory-girl的数据文件：</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># spec/factories/admins.rb</span>
+<span class="c1"># encoding: utf-8</span>
+<span class="no">Factory</span><span class="p">.</span><span class="nf">define</span> <span class="ss">:admin</span> <span class="k">do</span> <span class="o">|</span><span class="n">a</span><span class="o">|</span>
+  <span class="n">a</span><span class="p">.</span><span class="nf">sequence</span><span class="p">(</span><span class="ss">:login</span><span class="p">)</span> <span class="p">{</span><span class="o">|</span><span class="n">i</span><span class="o">|</span> <span class="s2">"worker</span><span class="si">#{</span><span class="n">i</span><span class="si">}</span><span class="s2">"</span> <span class="p">}</span>
+  <span class="n">a</span><span class="p">.</span><span class="nf">name</span>             <span class="p">{</span><span class="o">|</span><span class="n">a</span><span class="o">|</span> <span class="n">a</span><span class="p">.</span><span class="nf">login</span>      <span class="p">}</span>
+  <span class="n">a</span><span class="p">.</span><span class="nf">email</span>            <span class="p">{</span><span class="o">|</span><span class="n">a</span><span class="o">|</span> <span class="s2">"</span><span class="si">#{</span><span class="n">a</span><span class="p">.</span><span class="nf">login</span><span class="si">}</span><span class="s2">@gmail.com"</span> <span class="p">}</span>
+  <span class="n">a</span><span class="p">.</span><span class="nf">password</span>         <span class="p">{</span><span class="o">|</span><span class="n">a</span><span class="o">|</span> <span class="n">a</span><span class="p">.</span><span class="nf">login</span> <span class="p">}</span>
+  <span class="n">a</span><span class="p">.</span><span class="nf">password_confirmation</span> <span class="p">{</span><span class="o">|</span><span class="n">a</span><span class="o">|</span> <span class="n">a</span><span class="p">.</span><span class="nf">login</span> <span class="p">}</span>
+
+  <span class="n">a</span><span class="p">.</span><span class="nf">active</span>           <span class="kp">false</span>
+  <span class="n">a</span><span class="p">.</span><span class="nf">dept</span>             <span class="mi">0</span>
+<span class="k">end</span>
+
+<span class="no">Factory</span><span class="p">.</span><span class="nf">define</span> <span class="ss">:actived_admin</span><span class="p">,</span> <span class="ss">:parent</span> <span class="o">=&gt;</span> <span class="ss">:admin</span> <span class="k">do</span> <span class="o">|</span><span class="n">a</span><span class="o">|</span>
+  <span class="n">a</span><span class="p">.</span><span class="nf">login</span> <span class="s2">"actived_admin"</span>
+  <span class="n">a</span><span class="p">.</span><span class="nf">active</span>  <span class="kp">true</span>
+<span class="k">end</span>
+
+<span class="no">Factory</span><span class="p">.</span><span class="nf">define</span> <span class="ss">:unactived_admin</span><span class="p">,</span> <span class="ss">:class</span> <span class="o">=&gt;</span> <span class="no">Admin</span> <span class="k">do</span> <span class="o">|</span><span class="n">a</span><span class="o">|</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>这里测试管理员登录系统的逻辑：</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># spec/requests/root_request_spec.rb</span>
+<span class="c1"># encoding: utf-8</span>
+<span class="nb">require</span> <span class="s1">'spec_helper'</span>
+
+<span class="n">describe</span> <span class="s2">"AdminSessions"</span> <span class="k">do</span>
+
+  <span class="k">def</span> <span class="nf">login_with</span><span class="p">(</span><span class="n">admin_login</span><span class="p">,</span> <span class="n">admin_password</span><span class="p">)</span>
+    <span class="n">post</span> <span class="s2">"/admin_session"</span><span class="p">,</span> <span class="ss">:admin_session</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="ss">:login</span> <span class="o">=&gt;</span> <span class="n">admin_login</span><span class="p">,</span>
+                                               <span class="ss">:password</span> <span class="o">=&gt;</span> <span class="n">admin_password</span> <span class="p">}</span>
+  <span class="k">end</span>
+
+  <span class="n">describe</span> <span class="s2">"GET /"</span> <span class="k">do</span>
+
+    <span class="n">it</span> <span class="s2">"should redirect to login page"</span> <span class="k">do</span>
+      <span class="n">get</span> <span class="s2">"/"</span>
+      <span class="n">response</span><span class="p">.</span><span class="nf">should</span> <span class="n">redirect_to</span><span class="p">(</span><span class="n">new_admin_session_path</span><span class="p">)</span>
+      <span class="n">get</span> <span class="n">new_admin_session_path</span>
+      <span class="n">response</span><span class="p">.</span><span class="nf">should</span> <span class="n">contain</span><span class="p">(</span><span class="s2">"你还没有登录，请先登录"</span><span class="p">)</span>
+    <span class="k">end</span>
+
+    <span class="n">it</span> <span class="s2">"should not redirect to loign page if logged"</span> <span class="k">do</span>
+      <span class="n">current_admin</span> <span class="o">=</span> <span class="no">Factory</span><span class="p">(</span><span class="s2">"actived_admin"</span><span class="p">)</span>
+      <span class="n">login_with</span><span class="p">(</span><span class="s2">"actived_admin"</span><span class="p">,</span> <span class="s2">"actived_admin"</span><span class="p">)</span>
+      <span class="n">response</span><span class="p">.</span><span class="nf">should</span> <span class="n">redirect_to</span><span class="p">(</span><span class="n">root_path</span><span class="p">)</span>
+      <span class="n">get</span> <span class="s2">"/"</span>
+      <span class="n">response</span><span class="p">.</span><span class="nf">should</span> <span class="n">be_success</span>
+      <span class="n">response</span><span class="p">.</span><span class="nf">should</span> <span class="n">contain</span><span class="p">(</span><span class="s2">"登录成功!"</span><span class="p">)</span>
+    <span class="k">end</span>
+
+    <span class="n">it</span> <span class="s2">"should show error info with wrong loign id"</span> <span class="k">do</span>
+      <span class="n">current_admin</span> <span class="o">=</span> <span class="no">Factory</span><span class="p">(</span><span class="s2">"actived_admin"</span><span class="p">)</span>
+      <span class="n">login_with</span><span class="p">(</span><span class="s2">"actived_admin"</span><span class="p">,</span> <span class="s2">"adminpassword_error"</span><span class="p">)</span>
+      <span class="n">response</span><span class="p">.</span><span class="nf">should</span> <span class="n">contain</span><span class="p">(</span><span class="s2">"你输入的帐号或密码不正确!"</span><span class="p">)</span>
+    <span class="k">end</span>
+
+  <span class="k">end</span>
+
+<span class="k">end</span></code></pre></figure>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2010-12-21T17:12:12+08:00">December 21, 2010</time></p>
+        
+      </footer>
+
+      
+
+      
+  <nav class="pagination">
+    
+      <a href="/posts/2010-12-12-setup-rspec-test-for-rails-project.html" class="pagination--pager" title="建立rspec测试的环境
+">Previous</a>
+    
+    
+      <a href="/posts/2010-12-24-use-compass-in-rails.html" class="pagination--pager" title="在Rails项目中使用compass来管理css
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2019 qichunren. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.8.1/js/all.js" integrity="sha384-g5uSoOSBd7KkhAMlnQILrecXvzst9TdC09/VM+pjDTCM+1il8RHz5fKANTFFb+gQ" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "/posts/2010-12-21-talk-about-rspec-1.html";  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.identifier = "/posts/talk-about-rspec-1"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = 'https://qichunrensblog.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
+
+
+
+
+
+  </body>
+</html>

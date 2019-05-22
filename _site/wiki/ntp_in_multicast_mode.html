@@ -1,0 +1,318 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.16.3 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>ntp with multicast mode - Qichunren’s blog</title>
+<meta name="description" content="Record my thoughts, development notes.">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Qichunren's blog">
+<meta property="og:title" content="ntp with multicast mode">
+<meta property="og:url" content="/wiki/ntp_in_multicast_mode.html">
+
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2016-04-30T12:04:00+08:00">
+
+
+
+
+
+
+<link rel="canonical" href="/wiki/ntp_in_multicast_mode.html">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Qichunren's blog Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE ]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">Qichunren's blog</a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/" >Quick-Start Guide</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="ntp with multicast mode">
+    
+    <meta itemprop="datePublished" content="April 30, 2016">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">ntp with multicast mode
+</h1>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <h2 id="install-ntp">Install NTP</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo apt-get update
+sudo apt-get install ntp
+</code></pre></div></div>
+
+<h2 id="config-ntp-server">Config NTP Server</h2>
+
+<p>Edit /etc/ntp.conf file, below is a real sample:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># /etc/ntp.conf, configuration for ntpd; see ntp.conf(5) for help
+
+driftfile /var/lib/ntp/ntp.drift
+logfile /var/log/ntp.log
+
+
+# Enable this if you want statistics to be logged.
+#statsdir /var/log/ntpstats/
+
+statistics loopstats peerstats clockstats
+filegen loopstats file loopstats type day enable
+filegen peerstats file peerstats type day enable
+filegen clockstats file clockstats type day enable
+
+# Specify one or more NTP servers.
+
+# Use servers from the NTP Pool Project. Approved by Ubuntu Techni                                                         cal Board
+# on 2011-02-08 (LP: #104525). See http://www.pool.ntp.org/join.ht                                                         ml for
+# more information.
+#server 0.ubuntu.pool.ntp.org
+#server 1.ubuntu.pool.ntp.org
+#server 2.ubuntu.pool.ntp.org
+#server 3.ubuntu.pool.ntp.org
+
+broadcast 224.0.1.1 minpoll 3, maxpoll 4
+
+# Use Ubuntu's ntp server as a fallback.
+#server ntp.ubuntu.com
+server 127.127.1.1
+fudge  127.127.1.1 stratum 10
+# Access control configuration; see /usr/share/doc/ntp-doc/html/ac                                                         copt.html for
+# details.  The web page &lt;http://support.ntp.org/bin/view/Support/                                                         AccessRestrictions&gt;
+# might also be helpful.
+#
+# Note that "restrict" applies to both servers and clients, so a c                                                         onfiguration
+# that might be intended to block requests from certain clients co                                                         uld also end
+# up blocking replies from your own upstream servers.
+
+# By default, exchange time with everybody, but don't allow config                                                         uration.
+restrict -4 default kod notrap nomodify
+restrict -6 default kod notrap nomodify
+
+# Local users may interrogate the ntp server more closely.
+restrict 127.0.0.1
+restrict ::1
+
+# Clients from this (example!) subnet have unlimited access, but o                                                         nly if
+# cryptographically authenticated.
+restrict 192.168.0.0 mask 255.255.0.0 trust
+
+# If you want to provide time to your local subnet, change the nex                                                         t line.
+# (Again, the address is an example only.)
+# broadcast 255.255.255.255
+
+# If you want to listen to time broadcasts on your local subnet, d                                                         e-comment the
+# next lines.  Please do this only if you trust everybody on the n                                                         etwork!
+disable auth
+#broadcastclient
+</code></pre></div></div>
+
+<p>Edit /etc/ntp.conf</p>
+
+<p>Start/Stop/Restart NTP daemon
+/etc/init.d/ntp start/stop/restart</p>
+
+<p><code class="highlighter-rouge">/sbin/route add -net 224.0.0.0 netmask 240.0.0.0 eth0</code></p>
+
+<h2 id="config-ntp-client">Config NTP Client</h2>
+
+<p>Edit /etc/ntp.conf file, below is a real sample:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#server 0.pool.ntp.org iburst
+#server 1.pool.ntp.org iburst
+
+tinker panic 0
+interface listen eth0
+
+restrict default kod nomodify notrap
+restrict -6 default kod nomodify notrap
+
+restrict 127.0.0.1
+restrict -6 ::1
+multicastclient 224.0.1.1
+disable auth
+logfile /var/log/ntp.log
+</code></pre></div></div>
+
+<p>View NTP server list</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>root@arm:~# ntpq -p
+     remote           refid      st t when poll reach   delay   offset  jitter
+==============================================================================
+*192.168.11.240  LOCAL(1)        11 m    4    8  376   41.552   -3.044   0.289
++192.168.101.11  LOCAL(1)        11 m    4    8  376   58.331    5.223   0.296
+</code></pre></div></div>
+
+<ul>
+  <li><a href="/wiki/ntp_with_gpsd">NTP with GPSD</a></li>
+</ul>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2016-04-30T12:04:00+08:00">April 30, 2016</time></p>
+        
+      </footer>
+
+      
+
+      
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2019 qichunren. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.8.1/js/all.js" integrity="sha384-g5uSoOSBd7KkhAMlnQILrecXvzst9TdC09/VM+pjDTCM+1il8RHz5fKANTFFb+gQ" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

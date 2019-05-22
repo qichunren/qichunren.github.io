@@ -1,0 +1,278 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.16.3 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Oracle解锁 - Qichunren’s blog</title>
+<meta name="description" content="今天在Plsql中，给Oracle数据库中一个表添加字段的时候，出错了错误，提示：">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Qichunren's blog">
+<meta property="og:title" content="Oracle解锁">
+<meta property="og:url" content="/posts/2010-10-29-get-oracle-unlocked.html">
+
+
+  <meta property="og:description" content="今天在Plsql中，给Oracle数据库中一个表添加字段的时候，出错了错误，提示：">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2010-10-29T20:12:12+08:00">
+
+
+
+
+
+
+<link rel="canonical" href="/posts/2010-10-29-get-oracle-unlocked.html">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Qichunren's blog Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE ]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">Qichunren's blog</a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/" >Quick-Start Guide</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Oracle解锁">
+    <meta itemprop="description" content="今天在Plsql中，给Oracle数据库中一个表添加字段的时候，出错了错误，提示：">
+    <meta itemprop="datePublished" content="October 29, 2010">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Oracle解锁
+</h1>
+          
+            <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p>今天在Plsql中，给Oracle数据库中一个表添加字段的时候，出错了错误，提示：</p>
+
+<p>Oracle资源正忙,要求指定NOWAIT</p>
+
+<p>在网上一查，是表给锁住了，用如下的方法来解决。</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>select t2.username,t2.sid,t2.serial#,t2.logon_time
+from v$locked_object t1,v$session t2
+where t1.session_id=t2.sid order by t2.logon_time;
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  USERNAME                              SID    SERIAL# LOGON_TIME
+  ——————————————— -———- -———- -————
+  QICHUNREN                                   37       9731 2010-4-10 1
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   alter system kill session '37,9731';
+</code></pre></div></div>
+<p>System altered</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   select * from v$session where sid=?;
+</code></pre></div></div>
+
+<h3 id="相关的博客">相关的博客：</h3>
+
+<ul>
+  <li><a href="http://bot.javaeye.com/blog/429478">OraclePLSQL中不能for update的解决办法</a></li>
+  <li><a href="http://hi.baidu.com/shuyangwhj/blog/item/c321aa133812f4846538dbc5.html">Oracle资源正忙,要求指定NOWAIT——Oracle解锁问题</a></li>
+</ul>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2010-10-29T20:12:12+08:00">October 29, 2010</time></p>
+        
+      </footer>
+
+      
+
+      
+  <nav class="pagination">
+    
+      <a href="/posts/2010-08-09-jekyll-usage.html" class="pagination--pager" title="Jekyll usage
+">Previous</a>
+    
+    
+      <a href="/posts/2010-10-30-mark-rails-write-code.html" class="pagination--pager" title="写Rails程序容易出现的几个不好的地方
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2019 qichunren. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.8.1/js/all.js" integrity="sha384-g5uSoOSBd7KkhAMlnQILrecXvzst9TdC09/VM+pjDTCM+1il8RHz5fKANTFFb+gQ" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "/posts/2010-10-29-get-oracle-unlocked.html";  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.identifier = "/posts/get-oracle-unlocked"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = 'https://qichunrensblog.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
+
+
+
+
+
+  </body>
+</html>

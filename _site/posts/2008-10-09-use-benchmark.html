@@ -1,0 +1,279 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.16.3 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Benchmark用法 - Qichunren’s blog</title>
+<meta name="description" content="Benchmark 可以用来测试某个函数或者任何代码的执行时间。">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Qichunren's blog">
+<meta property="og:title" content="Benchmark用法">
+<meta property="og:url" content="/posts/2008-10-09-use-benchmark.html">
+
+
+  <meta property="og:description" content="Benchmark 可以用来测试某个函数或者任何代码的执行时间。">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2008-10-09T20:01:11+08:00">
+
+
+
+
+
+
+<link rel="canonical" href="/posts/2008-10-09-use-benchmark.html">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Qichunren's blog Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE ]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">Qichunren's blog</a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/" >Quick-Start Guide</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Benchmark用法">
+    <meta itemprop="description" content="Benchmark 可以用来测试某个函数或者任何代码的执行时间。">
+    <meta itemprop="datePublished" content="October 09, 2008">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Benchmark用法
+</h1>
+          
+            <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p><a href="http://rubybenchmark.com/">Benchmark</a> 可以用来测试某个函数或者任何代码的执行时间。</p>
+
+<p>用法很简单:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">require</span> <span class="s1">'benchmark'</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">1500</span>
+<span class="no">Benchmark</span><span class="p">.</span><span class="nf">bmbm</span> <span class="k">do</span> <span class="o">|</span><span class="n">x</span><span class="o">|</span>
+  <span class="n">x</span><span class="p">.</span><span class="nf">report</span><span class="p">(</span><span class="s2">"+ method"</span><span class="p">)</span> <span class="p">{</span> <span class="n">n</span><span class="p">.</span><span class="nf">times</span> <span class="p">{</span><span class="n">string1</span> <span class="o">=</span> <span class="s2">"ddd"</span> <span class="o">+</span> <span class="s2">"11111"</span> <span class="o">+</span> <span class="s2">"Helodd"</span> <span class="p">}</span> <span class="p">}</span>
+  <span class="n">x</span><span class="p">.</span><span class="nf">report</span><span class="p">(</span><span class="s2">"&lt;&lt; method"</span><span class="p">)</span> <span class="p">{</span> <span class="n">n</span><span class="p">.</span><span class="nf">times</span> <span class="p">{</span><span class="n">string2</span> <span class="o">=</span> <span class="s2">"ddd"</span> <span class="o">&lt;&lt;</span> <span class="s2">"11111"</span> <span class="o">&lt;&lt;</span> <span class="s2">"Helodd"</span><span class="p">}</span> <span class="p">}</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>结果如下:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>usermatoMacBook-Pro:test qichunren$ ruby test.rb
+Rehearsal ---------------------------------------------
++ method    0.000000   0.000000   0.000000 (  0.001722)
+&lt;&lt; method   0.000000   0.000000   0.000000 (  0.001073)
+------------------------------------ total: 0.000000sec
+
+                user     system      total        real
++ method    0.000000   0.000000   0.000000 (  0.001040)
+&lt;&lt; method   0.000000   0.000000   0.000000 (  0.000719)
+</code></pre></div></div>
+
+<h3 id="参考资料">参考资料</h3>
+<ul>
+  <li><a href="http://ruby-doc.org/stdlib/libdoc/benchmark/rdoc/index.html">Benchmark Rdoc</a></li>
+  <li><a href="http://www.kuqin.com/rubycndocument/man/addlib/benchmark.html">Ruby参考手册</a></li>
+  <li><a href="https://github.com/acangiano/ruby-benchmark-suite">ruby-benchmark-suite</a></li>
+</ul>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2008-10-09T20:01:11+08:00">October 09, 2008</time></p>
+        
+      </footer>
+
+      
+
+      
+  <nav class="pagination">
+    
+      <a href="/posts/2008-10-09-array-4-operation-methods.html" class="pagination--pager" title="Ruby Array的头尾操作的4个方法
+">Previous</a>
+    
+    
+      <a href="/posts/2008-10-12-checkout-git-remote-branches-to-local.html" class="pagination--pager" title="在本地签出远程仓库上的分支
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2019 qichunren. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.8.1/js/all.js" integrity="sha384-g5uSoOSBd7KkhAMlnQILrecXvzst9TdC09/VM+pjDTCM+1il8RHz5fKANTFFb+gQ" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "/posts/2008-10-09-use-benchmark.html";  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.identifier = "/posts/use-benchmark"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = 'https://qichunrensblog.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
+
+
+
+
+
+  </body>
+</html>

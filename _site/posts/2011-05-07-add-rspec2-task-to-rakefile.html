@@ -1,0 +1,250 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.16.3 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>将Rspec的测试任务添加到Rakefile中 - Qichunren’s blog</title>
+<meta name="description" content="写好Rspec测试好，一般是通过rspec spec/xxx_spec.rb这样来进行测试，这样不能批量进行多个spec文件的测试，解决方法是将rspec的测试任务添加了项目根目录中的Rakefile文件中去，以后直接执行rake或者rake spec就直接测试所有用例了。">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Qichunren's blog">
+<meta property="og:title" content="将Rspec的测试任务添加到Rakefile中">
+<meta property="og:url" content="/posts/2011-05-07-add-rspec2-task-to-rakefile.html">
+
+
+  <meta property="og:description" content="写好Rspec测试好，一般是通过rspec spec/xxx_spec.rb这样来进行测试，这样不能批量进行多个spec文件的测试，解决方法是将rspec的测试任务添加了项目根目录中的Rakefile文件中去，以后直接执行rake或者rake spec就直接测试所有用例了。">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2011-05-07T00:00:00+08:00">
+
+
+
+
+
+
+<link rel="canonical" href="/posts/2011-05-07-add-rspec2-task-to-rakefile.html">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Qichunren's blog Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE ]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">Qichunren's blog</a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/" >Quick-Start Guide</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="将Rspec的测试任务添加到Rakefile中">
+    <meta itemprop="description" content="写好Rspec测试好，一般是通过rspec spec/xxx_spec.rb这样来进行测试，这样不能批量进行多个spec文件的测试，解决方法是将rspec的测试任务添加了项目根目录中的Rakefile文件中去，以后直接执行rake或者rake spec就直接测试所有用例了。">
+    <meta itemprop="datePublished" content="May 07, 2011">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">将Rspec的测试任务添加到Rakefile中
+</h1>
+          
+            <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p>写好Rspec测试好，一般是通过rspec spec/xxx_spec.rb这样来进行测试，这样不能批量进行多个spec文件的测试，解决方法是将rspec的测试任务添加了项目根目录中的Rakefile文件中去，以后直接执行rake或者rake spec就直接测试所有用例了。</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">require</span> <span class="s2">"rubygems"</span>
+<span class="nb">require</span> <span class="s1">'rake'</span>
+<span class="nb">require</span> <span class="s1">'rspec/core/rake_task'</span>
+
+<span class="n">task</span> <span class="ss">:default</span> <span class="o">=&gt;</span> <span class="ss">:spec</span>
+
+<span class="no">RSpec</span><span class="o">::</span><span class="no">Core</span><span class="o">::</span><span class="no">RakeTask</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">:spec</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
+  <span class="n">t</span><span class="p">.</span><span class="nf">pattern</span> <span class="o">=</span> <span class="no">Dir</span><span class="p">.</span><span class="nf">glob</span><span class="p">(</span><span class="s1">'spec/**/*_spec.rb'</span><span class="p">)</span>
+  <span class="n">t</span><span class="p">.</span><span class="nf">rspec_opts</span> <span class="o">=</span> <span class="s1">'--format progress -c'</span>
+<span class="k">end</span></code></pre></figure>
+
+<h3 id="resources">Resources</h3>
+
+<ul>
+  <li><a href="http://lukaszwrobel.pl/blog/rspec-rake-task">RSpec Rake Task</a> 已过期，它是Rspec 1</li>
+  <li><a href="https://github.com/rspec/rspec-core/blob/master/lib/rspec/core/rake_task.rb">rspec/core/rake_task.rb</a></li>
+  <li><a href="https://github.com/rspec/rspec-rails/blob/master/lib/rspec/rails/tasks/rspec.rake">rake test in rails project</a></li>
+</ul>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2011-05-07T00:00:00+08:00">May 07, 2011</time></p>
+        
+      </footer>
+
+      
+
+      
+  <nav class="pagination">
+    
+      <a href="/posts/2011-05-05-use_feedzirra_to_fetch_feed.html" class="pagination--pager" title="使用feedzirra分析提取Feed
+">Previous</a>
+    
+    
+      <a href="/posts/2011-05-09-learn-html5.html" class="pagination--pager" title="学习HTML5杂记
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2019 qichunren. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.8.1/js/all.js" integrity="sha384-g5uSoOSBd7KkhAMlnQILrecXvzst9TdC09/VM+pjDTCM+1il8RHz5fKANTFFb+gQ" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>
