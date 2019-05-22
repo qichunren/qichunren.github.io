@@ -30,7 +30,6 @@ paginate_path: /page:num/
 
 # Build settings
 markdown: kramdown
-remote_theme: mmistakes/made-mistakes-jekyll
 plugins:
   - jekyll-feed
 
