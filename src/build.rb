@@ -5,6 +5,6 @@ Dir.glob(d + "/*").each do |file|
   
   if !file.end_with?("/src")
     puts "Remove #{file}"
-    sysmte("rm -rf #{file}")
+    system("rm -rf #{file}")
   end
 end
