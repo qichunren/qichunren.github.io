@@ -18,7 +18,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Qichunren's blog">
 <meta property="og:title" content="Show more detail info on will_paginate bar">
-<meta property="og:url" content="/posts/2010-08-08-show-more-info-on-will-paginate-bar.html">
+<meta property="og:url" content="http://localhost:4000/posts/2010-08-08-show-more-info-on-will-paginate-bar.html">
 
 
   <meta property="og:description" content="Just create an extension in lib directory:class PaginationDetailLinkRenderer &lt; WillPaginate::LinkRenderer  # useage: &lt;%=will_paginate @auctions, :renderer =&gt; PaginationDetailLinkRenderer %&gt;  def to_html    links = @options[:page_links] ? windowed_links : []    links.unshift page_link_or_span(@collection.previous_page, &#39;disabled prev_page&#39;, @options[:previous_label])    links.push    page_link_or_span(@collection.next_page,     &#39;disabled next_page&#39;, @options[:next_label])    html = links.join(@options[:separator])    html = &quot;每页显示&lt;b&gt;#{@collection.per_page}&lt;/b&gt;条数据,共有&lt;b&gt;#{total_pages}&lt;/b&gt;页,  共有&lt;b&gt;#{@collection.total_entries}&lt;/b&gt;条数据&quot; + html    @options[:container] ? @template.content_tag(:div, html, html_attributes) : html  endendAnd the result is like this:">
@@ -36,7 +36,7 @@
 
 
 
-<link rel="canonical" href="/posts/2010-08-08-show-more-info-on-will-paginate-bar.html">
+<link rel="canonical" href="http://localhost:4000/posts/2010-08-08-show-more-info-on-will-paginate-bar.html">
 
 
 

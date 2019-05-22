@@ -18,7 +18,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Qichunren's blog">
 <meta property="og:title" content="Static site using rails">
-<meta property="og:url" content="/posts/2010-04-06-create-static-page-class-in-model.html">
+<meta property="og:url" content="http://localhost:4000/posts/2010-04-06-create-static-page-class-in-model.html">
 
 
   <meta property="og:description" content="原文地址：Static site using rails.As we know rails is mainly used for dynamic website.we can also display static web pages or we can deploy full static website using rails.The following code can help us to display static pages.      Step 1:-Create Rails project    rails static_site        Step 2:-Generate StaticPage Controller    ruby script/generate controller static_pages page        Step 3:- Create StaticPage Class in Model  class StaticPage  Formats = {      &quot;html&quot; =&gt; &quot;text/html&quot;,      &quot;png&quot; =&gt; &quot;image/png&quot;,      &quot;jpg&quot; =&gt; &quot;image/jpg&quot;    }end      Step 4:- Add following line in routes.rb    map.page “page/:filename.:format”, :controller =&gt; ‘static_pages’, :action =&gt; ‘page’        Step 5:- Now add following line into static_pages controller  def page send_file &quot;#{Rails.root}/app/views/static_pages/#{params[:filename]}.#{params[:format]}&quot;,:disposition =&gt;&#39;inline&#39;,:type =&gt; StaticPage::Formats[params[:format]] end  Step 6:- All the static pages place in RAILS_ROOT/app/views/static_pages/ folderStep 7 :- Start server and Type url as shown below.ruby script/server">
@@ -36,7 +36,7 @@
 
 
 
-<link rel="canonical" href="/posts/2010-04-06-create-static-page-class-in-model.html">
+<link rel="canonical" href="http://localhost:4000/posts/2010-04-06-create-static-page-class-in-model.html">
 
 
 
@@ -280,7 +280,7 @@ The following code can help us to display static pages.</p>
     
   <script>
     var disqus_config = function () {
-      this.page.url = "/posts/2010-04-06-create-static-page-class-in-model.html";  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.url = "http://localhost:4000/posts/2010-04-06-create-static-page-class-in-model.html";  // Replace PAGE_URL with your page's canonical URL variable
       this.page.identifier = "/posts/create-static-page-class-in-model"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
     (function() { // DON'T EDIT BELOW THIS LINE
