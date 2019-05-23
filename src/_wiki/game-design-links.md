@@ -1,4 +1,6 @@
 ---
+layout: single
+position: Developer
 ---
 
 [Red Blob Games](https://www.redblobgames.com/)

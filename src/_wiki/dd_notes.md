@@ -1,4 +1,6 @@
 ---
+layout: single
+position: Developer
 ---
 
 Before back up a device data, you should umount it.

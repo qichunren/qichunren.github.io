@@ -1,4 +1,6 @@
 ---
+layout: single
+position: Developer
 ---
 
 http://blog.honeybadger.io/index.html

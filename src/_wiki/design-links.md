@@ -1,4 +1,6 @@
 ---
+layout: single
+position: Developer
 ---
 
 ## Design links

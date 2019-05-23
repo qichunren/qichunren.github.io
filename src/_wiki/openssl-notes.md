@@ -1,4 +1,6 @@
 ---
+layout: single
+position: Developer
 ---
 
 # RSA应用举例
@@ -13,13 +15,11 @@
 
     openssl rsa -in rsaprivatekey.pem -passin pass:trousers -pubout -out rsapubckey.pem
 
-
 ## 公私钥加密解密
 
 用公钥匙rsapublickey.pem加密文件plain.txt，输出到文件cipher.txt
 
     openssl rsautl -encrypt -pubin -inkey rsapublickey.pem -in plain.txt -out cipher.txt
-
 
 使用私钥匙rsaprivatekey.pem解密密文cipher.txt，输出到文件plain.txt
 
@@ -34,7 +34,6 @@
 用公钥匙rsapublickey.pem验证签名signature.bin，输出到文件plain.txt
 
     openssl rsautl -verify -pubin -inkey rsapublickey.pem -in signature.bin -out plain
-
 
 # 对称加密
 

@@ -1,4 +1,6 @@
 ---
+layout: single
+position: Developer
 ---
 
 ## 好用的物品清单

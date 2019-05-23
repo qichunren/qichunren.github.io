@@ -1,4 +1,6 @@
 ---
+layout: single
+position: Developer
 ---
 
 # 日常Linux（Ubuntu）下的开发工具链记录

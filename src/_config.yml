@@ -76,7 +76,7 @@ defaults:
       author_profile: false
   - scope:
         path: ""
-        type: work_logs111
+        type: wiki
     values:
       layout: single
       read_time: false

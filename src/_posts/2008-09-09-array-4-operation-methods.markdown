@@ -49,4 +49,5 @@ pop方法将数据尾部最后一个元素从数组中删除，并返回这个�
 ```
 
 ### 参考资料
+
 + [Array doc](http://www.ruby-doc.org/core-1.9.3/Array.html)

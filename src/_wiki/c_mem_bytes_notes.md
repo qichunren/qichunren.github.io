@@ -1,4 +1,6 @@
 ---
+layout: single
+position: Developer
 ---
 
 memset(buffer, 0, len);

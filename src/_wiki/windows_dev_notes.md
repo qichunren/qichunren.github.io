@@ -1,4 +1,6 @@
 ---
+layout: single
+position: Developer
 ---
 
 ## Windows平台应用程序开发

@@ -8,26 +8,24 @@ footer: false
 
 ## QT Console application pro file:
 
-<pre>
-#-------------------------------------------------
-#
-# Project created by QtCreator 2014-03-31T13:20:57
-#
-#-------------------------------------------------
+    #-------------------------------------------------
+    #
+    # Project created by QtCreator 2014-03-31T13:20:57
+    #
+    #-------------------------------------------------
 
-QT       += core
+    QT       += core
 
-QT       -= gui
+    QT       -= gui
 
-TARGET = Todo
-CONFIG   += console
-CONFIG   -= app_bundle
+    TARGET = Todo
+    CONFIG   += console
+    CONFIG   -= app_bundle
 
-TEMPLATE = app
+    TEMPLATE = app
 
 
-SOURCES += main.cpp
-</pre>
+    SOURCES += main.cpp
 
 ## QT Widget application pro file:
 

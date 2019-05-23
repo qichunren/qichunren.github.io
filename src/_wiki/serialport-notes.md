@@ -1,4 +1,6 @@
 ---
+layout: single
+position: Developer
 ---
 
 ## 设置串口波特率
