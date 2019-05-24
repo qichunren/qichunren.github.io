@@ -13,7 +13,7 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: Qichunren's blog
+title: Qichunren blog
 name: qichunren
 email: your-email@example.com
 description: >- # this means to ignore newlines until "baseurl:"
@@ -22,10 +22,11 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: qichunren
 github_username:  qichunren
+locale: zh
 
 permalink: /posts/:year-:month-:day-:title:output_ext
 
-paginate: 5 # amount of posts to show
+paginate: 12 # amount of posts to show
 paginate_path: /page:num/
 
 include:
@@ -54,7 +55,7 @@ defaults:
       type: posts
     values:
       layout: single
-      author_profile: true
+      author_profile: false
       read_time: true
       comments: true
       share: true
