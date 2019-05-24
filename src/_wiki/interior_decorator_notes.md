@@ -1,7 +1,9 @@
----
+﻿---
 layout: single
 position: Developer
 ---
+
+# 装修笔记
 
 ## 好用的物品清单
 

@@ -1,4 +1,4 @@
----
+﻿---
 layout: single
 title: "ntp with multicast mode"
 date: 2016-04-30 12:04
@@ -6,6 +6,7 @@ comments: false
 footer: false
 ---
 
+# NTP
 
 ## Install NTP
 
@@ -115,6 +116,5 @@ View NTP server list
 	==============================================================================
 	*192.168.11.240  LOCAL(1)        11 m    4    8  376   41.552   -3.044   0.289
 	+192.168.101.11  LOCAL(1)        11 m    4    8  376   58.331    5.223   0.296
-
 
 * [NTP with GPSD](/wiki/ntp_with_gpsd)

@@ -1,11 +1,11 @@
----
+﻿---
 layout: single
 position: Developer
 ---
 
-----------------------------------------------
-Install nvm
-----------------------------------------------
+# Node Install
+
+## nvm install
 
 https://github.com/creationix/nvm
 
@@ -17,9 +17,4 @@ To install or update nvm, you can use the install script using cURL:
 
 Then exit current shell, and open a new shell:
 
-::
-
   nvm install node
-
-
-

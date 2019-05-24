@@ -1,10 +1,12 @@
----
+﻿---
 layout: single
 title: "NTP with GPSD"
 date: 2016-04-30 16:08
 comments: false
 footer: false
 ---
+
+# NTP with GPSD
 
 Reference page: [http://www.catb.org/gpsd/gpsd-time-service-howto.html](http://www.catb.org/gpsd/gpsd-time-service-howto.html)
 

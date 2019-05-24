@@ -1,8 +1,8 @@
----
+﻿---
 layout: single
 position: Developer
 ---
-
+ 
 ## 设置串口波特率
 
     stty -F /dev/ttyO1 speed 4800 raw

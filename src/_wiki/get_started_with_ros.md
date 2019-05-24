@@ -17,8 +17,6 @@ I assume you are familiar with Ubuntu OS and C++/Python development.
 
 Continue to move forward
 
-
-
 ## Resources links
 
 

@@ -1,7 +1,8 @@
----
+﻿---
 layout: single
 position: Developer
 ---
+
 
          ls -tr /var/log/paigo/stm32-data-* | head -n -6 | xargs rm || true
 

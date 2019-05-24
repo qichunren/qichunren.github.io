@@ -1,14 +1,9 @@
----
+﻿---
 layout: single
 position: Developer
 ---
 
-==============================
-常用命令
-==============================
-
-
-::
+## 常用命令
 
   qichunren@qichunren-work:~$ df -h
   Filesystem      Size  Used Avail Use% Mounted on

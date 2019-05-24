@@ -1,10 +1,12 @@
----
+﻿---
 layout: single
 title: "qrencode generator"
 date: 2016-06-28 20:04
 comments: false
 footer: false
 ---
+
+# QRCODE 
 
 	sudo apt-get install qrencode
 	qrencode '12345 -o code.png -s 10

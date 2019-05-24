@@ -1,11 +1,13 @@
----
+﻿---
 layout: single
 position: Developer
 ---
 
---------------------------------
-Install rbenv
---------------------------------
+# Ruby Install
+
+
+## Install rbenv
+
 
 ::
 

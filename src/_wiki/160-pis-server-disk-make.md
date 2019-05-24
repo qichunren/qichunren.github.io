@@ -1,7 +1,9 @@
----
+﻿---
 layout: single
 position: Developer
 ---
+
+# Server Disk make
 
     cd /
     sudo mount /dev/sdb2 /mnt
