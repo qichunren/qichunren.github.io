@@ -1,6 +1,7 @@
 ﻿---
 layout: single
 position: Developer
+title: Wiki
 ---
 
 # Wiki

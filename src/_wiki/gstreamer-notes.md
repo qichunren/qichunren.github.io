@@ -1,6 +1,11 @@
 ---
 layout: single
 position: Developer
+sidebar:
+  - title: "GStreamer Framework"
+    url: https://gstreamer.freedesktop.org/
+  - title: "Another Title"
+    text: "More text here."
 ---
 
 # GStreamer notes
