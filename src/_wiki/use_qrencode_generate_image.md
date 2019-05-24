@@ -1,4 +1,4 @@
-﻿---
+---
 layout: single
 title: "qrencode generator"
 date: 2016-06-28 20:04

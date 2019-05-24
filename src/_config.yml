@@ -37,6 +37,7 @@ theme: minimal-mistakes-jekyll
 markdown: kramdown
 plugins:
   - jekyll-feed
+  - jekyll-seo-tag
 
 search: true  
 
@@ -80,6 +81,7 @@ defaults:
         type: wiki
     values:
       layout: single
+      classes: wide
       read_time: false
       comments: false
       author_profile: false   

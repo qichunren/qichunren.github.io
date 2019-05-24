@@ -1,4 +1,4 @@
-﻿---
+---
 layout: single
 title: "QT Notes"
 date: 2014-03-30 12:04

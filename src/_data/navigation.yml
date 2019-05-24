@@ -3,7 +3,7 @@ main:
     url: /about/
   - title: "Posts"
     url: /
-  - title: "Posts by Collection"
-    url: /collection-archive/
+  - title: "Wiki"
+    url: /wiki/
   - title: "Github"
     url: https://github.com/qichunren

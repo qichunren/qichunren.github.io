@@ -1,4 +1,4 @@
-﻿---
+---
 layout: single
 title: "ntp with multicast mode"
 date: 2016-04-30 12:04
