@@ -44,6 +44,10 @@ List all containers:
     e05c8a7f913c        hello-world         "/hello"            2 weeks ago         Exited (0) 2 weeks ago                         festive_feynman
     69bbeba04e34        hello-world         "/hello"            2 weeks ago         Exited (0) 2 weeks ago                         eloquent_newton
 
+Stop running container:
+
+    $ docker stop [CONTAINER ID]
+
 ## Build a docker image
 
 Create a `Dockerfile` file in your project root path. There is a sample for ruby project:
