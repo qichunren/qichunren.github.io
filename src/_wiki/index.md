@@ -13,3 +13,4 @@ title: Wiki
 ## Get Started series
 
 [Get started with Docker](get_started_with_docker)
+[Get started with PyQt5](get_started_with_pyqt5)

@@ -17,3 +17,7 @@ position: Developer
 * [Anna Lepeshkina at youtube](https://www.youtube.com/channel/UCOka-ILmhM6DWaxZNNsL4tQ)
 * [Somnit: Low poly modeller](https://sketchfab.com/burunduk)
 * [Somnit](https://sketchfab.com/burunduk)
+
+## Low poly
+
+* [Low Poly Lab](https://www.lowpolylab.net/)

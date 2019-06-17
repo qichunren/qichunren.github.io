@@ -1,6 +1,5 @@
 ---
 layout: single
-position: Developer
 title: Get started with Docker
 ---
 
