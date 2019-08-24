@@ -1,16 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2019-05-22T18:55:40+08:00</updated><id>/feed.xml</id><title type="html">Qichunren’s blog</title><subtitle>Record my thoughts, development notes.</subtitle><entry><title type="html">Welcome to Jekyll!</title><link href="/posts/2019-05-22-welcome-to-jekyll.html" rel="alternate" type="text/html" title="Welcome to Jekyll!" /><published>2019-05-22T13:54:37+08:00</published><updated>2019-05-22T13:54:37+08:00</updated><id>/posts/welcome-to-jekyll</id><content type="html" xml:base="/posts/2019-05-22-welcome-to-jekyll.html">&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
-
-&lt;p&gt;To add new posts, simply add a file in the &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code class=&quot;highlighter-rouge&quot;&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
-
-&lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Hi, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Tom'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints 'Hi, Tom' to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Check out the &lt;a href=&quot;https://jekyllrb.com/docs/home&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://talk.jekyllrb.com/&quot;&gt;Jekyll Talk&lt;/a&gt;.&lt;/p&gt;</content><author><name></name></author><summary type="html">You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run jekyll serve, which launches a web server and auto-regenerates your site when a file is updated.</summary></entry><entry><title type="html">Get started with autotools</title><link href="/posts/2016-08-15-get-started-with-autotools.html" rel="alternate" type="text/html" title="Get started with autotools" /><published>2016-08-15T15:20:00+08:00</published><updated>2016-08-15T15:20:00+08:00</updated><id>/posts/get-started-with-autotools</id><content type="html" xml:base="/posts/2016-08-15-get-started-with-autotools.html">&lt;p&gt;Follow this &lt;a href=&quot;https://www.gnu.org/software/automake/manual/html_node/Hello-World.html#Hello-World&quot;&gt;tutorial&lt;/a&gt; to get started with autotools.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2019-08-24T12:42:19+08:00</updated><id>/feed.xml</id><title type="html">Qichunren blog</title><subtitle>Record my thoughts, development notes.</subtitle><entry><title type="html">Get started with autotools</title><link href="/posts/2016-08-15-get-started-with-autotools.html" rel="alternate" type="text/html" title="Get started with autotools" /><published>2016-08-15T15:20:00+08:00</published><updated>2016-08-15T15:20:00+08:00</updated><id>/posts/get-started-with-autotools</id><content type="html" xml:base="/posts/2016-08-15-get-started-with-autotools.html">&lt;p&gt;Follow this &lt;a href=&quot;https://www.gnu.org/software/automake/manual/html_node/Hello-World.html#Hello-World&quot;&gt;tutorial&lt;/a&gt; to get started with autotools.&lt;/p&gt;
 
 &lt;h3 id=&quot;configureac文件&quot;&gt;configure.ac文件&lt;/h3&gt;
 
@@ -536,4 +524,113 @@ end
 
 &lt;p&gt;在用户的浏览器中，GET请求的URL是可以被保存书签的，POST请求不行。GET请求的URL是有历史记录的，可以前进 / 后退 / 刷新。POST请求则不行。&lt;/p&gt;
 
-&lt;p&gt;完。&lt;/p&gt;</content><author><name></name></author><summary type="html">对使用http请求的GET和POST的一点思考</summary></entry></feed>
+&lt;p&gt;完。&lt;/p&gt;</content><author><name></name></author><summary type="html">对使用http请求的GET和POST的一点思考</summary></entry><entry><title type="html">在QT5中使用JSON库json-c</title><link href="/posts/2015-07-13-use-json-in-qt5.html" rel="alternate" type="text/html" title="在QT5中使用JSON库json-c" /><published>2015-07-13T12:30:00+08:00</published><updated>2015-07-13T12:30:00+08:00</updated><id>/posts/use-json-in-qt5</id><content type="html" xml:base="/posts/2015-07-13-use-json-in-qt5.html">&lt;p&gt;首先需要安装json-c库:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo apt-get install libjson-c-dev
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;在QT的项目中，修改.pro文件，加入：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;CONFIG += link_pkgconfig
+PKGCONFIG += json-c
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;构建JSON的方法如下&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;        #include &amp;lt;json/json.h&amp;gt;
+        
+        /*Creating a json object*/
+        json_object * jobj = json_object_new_object();
+
+        /*Creating a json string*/
+        json_object *jstring = json_object_new_string(&quot;Joys of Programming&quot;);
+
+        /*Creating a json integer*/
+        json_object *jint = json_object_new_int(10);
+
+        /*Creating a json boolean*/
+        json_object *jboolean = json_object_new_boolean(1);
+
+        /*Creating a json double*/
+        json_object *jdouble = json_object_new_double(2.14);
+
+        /*Creating a json array*/
+        json_object *jarray = json_object_new_array();
+
+        /*Creating json strings*/
+        json_object *jstring1 = json_object_new_string(&quot;c&quot;);
+        json_object *jstring2 = json_object_new_string(&quot;c++&quot;);
+        json_object *jstring3 = json_object_new_string(&quot;php&quot;);
+
+        /*Adding the above created json strings to the array*/
+        json_object_array_add(jarray,jstring1);
+        json_object_array_add(jarray,jstring2);
+        json_object_array_add(jarray,jstring3);
+        json_object_array_add(jarray,jstring4);
+
+        /*Form the json object*/
+        /*Each of these is like a key value pair*/
+        json_object_object_add(jobj,&quot;Site Name&quot;, jstring);
+        json_object_object_add(jobj,&quot;Technical blog&quot;, jboolean);
+        json_object_object_add(jobj,&quot;Average posts per day&quot;, jdouble);
+        json_object_object_add(jobj,&quot;Number of posts&quot;, jint);
+        json_object_object_add(jobj,&quot;Categories&quot;, jarray);
+
+        /*Now printing the json object*/
+        printf (&quot;The json object created: %sn&quot;,json_object_to_json_string(jobj));    
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;程序结果是：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  The json object created: { &quot;Site Name&quot;: &quot;Joys of Programming&quot;, &quot;Technical blog&quot;: true, &quot;Average posts per day&quot;: 2.140000, &quot;Number of posts&quot;: 10, &quot;Categories&quot;: [ &quot;c&quot;, &quot;c++&quot;, &quot;php&quot; ] }
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;解析JSON字符串的方法如下&lt;/p&gt;
+
+&lt;p&gt;例如有如下的字符串&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{&quot;column&quot;:[&quot;symbol&quot;,&quot;name&quot;],&quot;data&quot;:[[&quot;SZ000001&quot;,&quot;平安银行&quot;],[&quot;SZ000005&quot;,&quot;世纪星源&quot;],[&quot;SZ000006&quot;,&quot;深振业A&quot;],[&quot;SZ000008&quot;,&quot;神州高铁&quot;],[&quot;SZ000009&quot;,&quot;中国宝安&quot;]],&quot;count&quot;:1544.0}      
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;QByteArray json_content_arr = network_reply-&amp;gt;readAll();
+const char *json_content = json_content_arr.constData();
+puts(&quot;Sync from xueqiu&quot;);
+
+struct json_tokener *tokener;
+struct json_object *json_root, *data_array_child, *stock_item_child, *stock_code_child, *stock_name_child;
+
+tokener = json_tokener_new();
+json_root = json_tokener_parse_ex(tokener, json_content, strlen(json_content));
+json_tokener_free(tokener);
+if(json_root == NULL) {
+    return;
+}
+json_object_object_get_ex(json_root, &quot;data&quot;, &amp;amp;data_array_child);
+if(data_array_child != NULL) {
+
+
+    FILE *f = fopen(&quot;/home/qichunren/logs.txt&quot;, &quot;a+&quot;);
+    if (f == NULL) {
+        printf(&quot;Error opening file!\n&quot;);
+        return;
+    }
+        int array_len = json_object_array_length(data_array_child);
+        printf(&quot;stock length %d\n&quot;, array_len);
+        for(int i=0;i&amp;lt;array_len;i++) {
+            stock_item_child = json_object_array_get_idx(data_array_child, i);
+            if(stock_item_child == NULL) {
+                continue;
+            }
+            stock_code_child = json_object_array_get_idx(stock_item_child, 0);
+            stock_name_child = json_object_array_get_idx(stock_item_child, 1);
+            if(stock_code_child != NULL &amp;amp;&amp;amp; stock_name_child != NULL) {
+                const char *stock_code = json_object_get_string(stock_code_child);
+                const char *stock_name = json_object_get_string(stock_name_child);
+                fprintf(f, &quot;%s %s\r\n&quot;, stock_code, stock_name);
+            }
+        }
+        fclose(f);
+}
+//qDebug() &amp;lt;&amp;lt; json_content_arr;
+network_reply-&amp;gt;deleteLater();
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author><summary type="html">首先需要安装json-c库:</summary></entry></feed>

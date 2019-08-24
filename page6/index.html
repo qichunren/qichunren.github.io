@@ -1,23 +1,23 @@
 <!doctype html>
 <!--
-  Minimal Mistakes Jekyll Theme 4.16.3 by Michael Rose
+  Minimal Mistakes Jekyll Theme 4.16.6 by Michael Rose
   Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
   Free for personal and commercial use under the MIT license
   https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
 -->
-<html lang="en" class="no-js">
+<html lang="zh" class="no-js">
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Qichunren's blog - Page 6</title>
+<!-- begin _includes/seo.html --><title>Qichunren blog - Page 6</title>
 <meta name="description" content="Record my thoughts, development notes.">
 
 
 
 <meta property="og:type" content="website">
-<meta property="og:locale" content="en_US">
-<meta property="og:site_name" content="Qichunren's blog">
-<meta property="og:title" content="Qichunren’s blog">
+<meta property="og:locale" content="zh">
+<meta property="og:site_name" content="Qichunren blog">
+<meta property="og:title" content="Qichunren blog">
 <meta property="og:url" content="/page6/">
 
 
@@ -41,9 +41,16 @@
   <link rel="next" href="/page7/">
 
 
-
-
-
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "qichunren",
+      "url": "/"
+    
+  }
+</script>
 
 
 
@@ -53,7 +60,7 @@
 <!-- end _includes/seo.html -->
 
 
-<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Qichunren's blog Feed">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Qichunren blog Feed">
 
 <!-- https://t.co/dKP3o1e -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -91,6 +98,14 @@
   </head>
 
   <body class="layout--home">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
 
     <!--[if lt IE 9]>
 <div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
@@ -103,13 +118,16 @@
     <div class="masthead__menu">
       <nav id="site-nav" class="greedy-nav">
         
-        <a class="site-title" href="/">Qichunren's blog</a>
+        <a class="site-title" href="/">
+          Qichunren blog
+          
+        </a>
         <ul class="visible-links"><li class="masthead__menu-item">
               <a href="/about/" >About</a>
             </li><li class="masthead__menu-item">
               <a href="/" >Posts</a>
             </li><li class="masthead__menu-item">
-              <a href="/collection-archive/" >Posts by Collection</a>
+              <a href="/wiki/" >Wiki</a>
             </li><li class="masthead__menu-item">
               <a href="https://github.com/qichunren" >Github</a>
             </li></ul>
@@ -242,7 +260,7 @@
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/posts/2012-06-04-use-ssh-proxy-port-trick.html" rel="permalink">使用SSH代理来访访问远程mysql机器
+        <a href="/posts/2011-02-27-active-record-exception.html" rel="permalink">当心ActiveRecord::RecordNotSaved异常
 </a>
       
     </h2>
@@ -255,7 +273,7 @@
   less than 1 minute read
 </p>
     
-    <p class="archive__item-excerpt" itemprop="description">默认安装的mysql的Linux机器基于安全的原因，一般不支持mysql的远程连接访问。有几种方法可以修改配置来让mysql服务器支持远程连接。但是通过ssh的代理功能，可以不用修改服务器配置，来支持从远程连接mysql服务器。
+    <p class="archive__item-excerpt" itemprop="description">昨天晚上遇到记录不能保存成功，一直遭遇ActiveRecord::RecordNotSaved异常，弄了半小时，找到了原因。
 
 </p>
   </article>
@@ -271,7 +289,7 @@
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/posts/2012-06-03-fixed-a-problem-with-creating-texture-background-in-cocos2d.html" rel="permalink">Fixed a problem with creating texture background in cocos2d
+        <a href="/posts/2011-01-09-fetch-popular-rubygems.html" rel="permalink">分析rubygems.org上受欢迎的gem包
 </a>
       
     </h2>
@@ -284,7 +302,7 @@
   less than 1 minute read
 </p>
     
-    <p class="archive__item-excerpt" itemprop="description">我尝试在cocos2d游戏中使用小图片重复平铺的方式来创建游戏背景时, 总是遇到这个问题，报错如下:
+    <p class="archive__item-excerpt" itemprop="description">用下载量来作为一个gem包的爱欢迎度的标准。
 
 </p>
   </article>
@@ -300,7 +318,7 @@
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/posts/2012-05-17-how-to-remove-a-file-from-git-history-forever.html" rel="permalink">怎么样从git提交历史里永久删除一个文件?
+        <a href="/posts/2011-01-03-install-homebrew-on-mac.html" rel="permalink">在Mac上安装homebrew
 </a>
       
     </h2>
@@ -313,7 +331,7 @@
   less than 1 minute read
 </p>
     
-    <p class="archive__item-excerpt" itemprop="description">需要整理
+    <p class="archive__item-excerpt" itemprop="description">homebrew是为mac打造的一个软件包管理工具
 
 </p>
   </article>
@@ -329,7 +347,7 @@
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/posts/2012-03-14-how-to-managing-services-with-update-rc-dot-d.html" rel="permalink">通过update-rc.d来管理Ubuntu系统的自动启动程序
+        <a href="/posts/2011-01-02-install-rvm-on-mac.html" rel="permalink">在Mac上安装RVM
 </a>
       
     </h2>
@@ -339,10 +357,10 @@
 
 
 
-  4 minute read
+  less than 1 minute read
 </p>
     
-    <p class="archive__item-excerpt" itemprop="description">转载, 并记下我的使用心得。
+    <p class="archive__item-excerpt" itemprop="description">安装方法
 
 </p>
   </article>
@@ -358,7 +376,7 @@
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/posts/2012-02-27-use-rubyencoder-encrypt-ruby-code.html" rel="permalink">Use Rubyencoder encrypt ruby code
+        <a href="/posts/2011-01-01-my-useful-tools.html" rel="permalink">我的常用工具
 </a>
       
     </h2>
@@ -368,10 +386,219 @@
 
 
 
-  3 minute read
+  less than 1 minute read
 </p>
     
-    <p class="archive__item-excerpt" itemprop="description">前些时候研究了一下ruby encoder的加密技术应用，在这里记录一下它的使用过程。
+    <p class="archive__item-excerpt" itemprop="description">Textmate
+OmniGraffle
+Homebrew
+gitK
+Redmine 
+Firebug    
+VMware Funsion
+Sequel Pro: MySQL database management for Mac OS X
+Air Mouse
+7zX
+</p>
+  </article>
+</div>
+
+
+  
+
+
+
+<div class="list__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/posts/2010-12-24-use-compass-in-rails.html" rel="permalink">在Rails项目中使用compass来管理css
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  1 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">对如今的web项目开发（个人开发），用Rails来快速实现，但是前端这一块会花掉比较多的时间，其中CSS的管理维护是一个越来越麻烦的事情，由于它只是一门单纯的静态标记的语法（说法不准确），我的意思是，比如我设计一个三栏的网页，页面宽度是960px，那么每栏应该是960px的三分之一宽度320px，在css文件中，...</p>
+  </article>
+</div>
+
+
+  
+
+
+
+<div class="list__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/posts/2010-12-21-talk-about-rspec-1.html" rel="permalink">说说rspec的测试(1)
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">虽然之前就用过rspec来测试系统的各种业务流程和业务逻辑，最近又在开始一个新的系统的测试，写起来又感觉很开心，很安心。所以就想说说用rspec来写rails项目测试的总结和体会。
+
+</p>
+  </article>
+</div>
+
+
+  
+
+
+
+<div class="list__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/posts/2010-12-12-setup-rspec-test-for-rails-project.html" rel="permalink">建立rspec测试的环境
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">我个人感觉rspec的风格比rails自带项目的test好用一些，更符合我的口味。在这里记录一下rspec的搭建方法，说是搭建，其实没有那么烦琐，就是一些工具的组合起来，这样测试更方便，效率更高。
+
+</p>
+  </article>
+</div>
+
+
+  
+
+
+
+<div class="list__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/posts/2010-12-11-things-in-rails-test.html" rel="permalink">Rails中的测试那些事
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">这个本早该记一下的。
+
+</p>
+  </article>
+</div>
+
+
+  
+
+
+
+<div class="list__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/posts/2010-10-30-mark-rails-write-code.html" rel="permalink">写Rails程序容易出现的几个不好的地方
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">这几个地方不知道大家有注意到没有，我今天发现的一个地方就是
+
+</p>
+  </article>
+</div>
+
+
+  
+
+
+
+<div class="list__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/posts/2010-10-29-get-oracle-unlocked.html" rel="permalink">Oracle解锁
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">今天在Plsql中，给Oracle数据库中一个表添加字段的时候，出错了错误，提示：
+
+</p>
+  </article>
+</div>
+
+
+  
+
+
+
+<div class="list__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/posts/2010-08-09-jekyll-usage.html" rel="permalink">Jekyll usage
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">首先建立一个新的目录，如mkdir qichunren_blog，然后在目录中建立如图中所示的文件和目录结构。
 
 </p>
   </article>
@@ -432,21 +659,12 @@
         <li><a href="/page7/">7</a></li>
       
     
-      
-        
-        
-        
-        <li><a href="/page8/">8</a></li>
-      
-    
 
     
     
-      <li><a href="#" class="disabled">&hellip;</a></li>
-    
 
     
-      <li><a href="/page18/">18</a></li>
+      <li><a href="/page8/">8</a></li>
     
 
     
@@ -464,13 +682,18 @@
 
     
       <div class="search-content">
-        <div class="search-content__inner-wrap"><input type="search" id="search" aria-placeholder="Enter your search term..." class="search-input" tabindex="-1" placeholder="Enter your search term..." />
-    <div id="results" class="results"></div></div>
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
 
       </div>
     
 
-    <div class="page__footer">
+    <div id="footer" class="page__footer">
       <footer>
         <!-- start custom footer snippets -->
 
@@ -492,7 +715,7 @@
 
     
   <script src="/assets/js/main.min.js"></script>
-  <script defer src="https://use.fontawesome.com/releases/v5.8.1/js/all.js" integrity="sha384-g5uSoOSBd7KkhAMlnQILrecXvzst9TdC09/VM+pjDTCM+1il8RHz5fKANTFFb+gQ" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
 
 
 

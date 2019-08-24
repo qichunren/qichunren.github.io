@@ -1,22 +1,22 @@
 <!doctype html>
 <!--
-  Minimal Mistakes Jekyll Theme 4.16.3 by Michael Rose
+  Minimal Mistakes Jekyll Theme 4.16.6 by Michael Rose
   Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
   Free for personal and commercial use under the MIT license
   https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
 -->
-<html lang="en" class="no-js">
+<html lang="zh" class="no-js">
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>在Rails项目中使用compass来管理css - Qichunren’s blog</title>
+<!-- begin _includes/seo.html --><title>在Rails项目中使用compass来管理css - Qichunren blog</title>
 <meta name="description" content="对如今的web项目开发（个人开发），用Rails来快速实现，但是前端这一块会花掉比较多的时间，其中CSS的管理维护是一个越来越麻烦的事情，由于它只是一门单纯的静态标记的语法（说法不准确），我的意思是，比如我设计一个三栏的网页，页面宽度是960px，那么每栏应该是960px的三分之一宽度320px，在css文件中，需要“硬编码”写入单栏的宽度： .box{width:320px;}    然后有一天，某某人说要改网站页面宽度，要调成1200px，这样需要找出css文件中相关的地方都要改成新的400px的宽度。对我来说，做这种事情一点也不爽。如果能自动计算出每栏是网页宽度的三分之一那多好。 Sass 就是做这事情的，而 Compass 是基于Sass之上的一个集成，它让我们在Rails项目中可以更为容易地使用sass，它集成了如 blueprint 这样的css框架。    以上都是废话，哈哈，看看在项目中如何使用起compass，通过它来高级地管理项目的css。    # 在Gemfile中加入gem “compass”, 然后bundle install # 在项目的根目录执行compass init rails .    # 以上两步搭建好了基础，接下来就是编写sass和引入css文件.    # in application.html.erb   &lt;%= stylesheet_link_tag &quot;compiled/screen.css&quot;, :media =&gt; &quot;screen, projection&quot; %&gt; &lt;%= stylesheet_link_tag &quot;compiled/print.css&quot;, :media =&gt; &quot;print&quot; %&gt;    接上开头说的那个问题，我可以在/app/stylesheets/screen.scss中这样来写：       $page_width: 960px; body { width: $page_width; } .box { width: $page_width / 3; } 具体的操作信息从我这里可以看出：```usermatoMacBook-Pro:weixiaoshuo qichunren$ compass init rails .Compass recommends that you keep your stylesheets in app/stylesheetsinstead of the Sass default location of public/stylesheets/sass.Is this OK? (Y/n) y">
 
 
 
 <meta property="og:type" content="article">
-<meta property="og:locale" content="en_US">
-<meta property="og:site_name" content="Qichunren's blog">
+<meta property="og:locale" content="zh">
+<meta property="og:site_name" content="Qichunren blog">
 <meta property="og:title" content="在Rails项目中使用compass来管理css">
 <meta property="og:url" content="/posts/2010-12-24-use-compass-in-rails.html">
 
@@ -41,9 +41,16 @@
 
 
 
-
-
-
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "qichunren",
+      "url": "/"
+    
+  }
+</script>
 
 
 
@@ -53,7 +60,7 @@
 <!-- end _includes/seo.html -->
 
 
-<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Qichunren's blog Feed">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Qichunren blog Feed">
 
 <!-- https://t.co/dKP3o1e -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -91,6 +98,14 @@
   </head>
 
   <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
 
     <!--[if lt IE 9]>
 <div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
@@ -103,13 +118,16 @@
     <div class="masthead__menu">
       <nav id="site-nav" class="greedy-nav">
         
-        <a class="site-title" href="/">Qichunren's blog</a>
+        <a class="site-title" href="/">
+          Qichunren blog
+          
+        </a>
         <ul class="visible-links"><li class="masthead__menu-item">
               <a href="/about/" >About</a>
             </li><li class="masthead__menu-item">
               <a href="/" >Posts</a>
             </li><li class="masthead__menu-item">
-              <a href="/collection-archive/" >Posts by Collection</a>
+              <a href="/wiki/" >Wiki</a>
             </li><li class="masthead__menu-item">
               <a href="https://github.com/qichunren" >Github</a>
             </li></ul>
@@ -139,90 +157,6 @@
 
 <div id="main" role="main">
   
-  <div class="sidebar sticky">
-  
-
-
-<div itemscope itemtype="https://schema.org/Person">
-
-  
-
-  <div class="author__content">
-    
-      <h3 class="author__name" itemprop="name"></h3>
-    
-    
-  </div>
-
-  <div class="author__urls-wrapper">
-    <button class="btn btn--inverse">Follow</button>
-    <ul class="author__urls social-icons">
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      <!--
-  <li>
-    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
-      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
-    </a>
-  </li>
--->
-    </ul>
-  </div>
-</div>
-
-  
-  </div>
-
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
     <meta itemprop="headline" content="在Rails项目中使用compass来管理css">
@@ -368,33 +302,6 @@ usermatoMacBook-Pro:weixiaoshuo qichunren$
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/posts/2019-05-22-welcome-to-jekyll.html" rel="permalink">Welcome to Jekyll!
-</a>
-      
-    </h2>
-    
-      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
-
-
-
-
-  less than 1 minute read
-</p>
-    
-    <p class="archive__item-excerpt" itemprop="description">You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different wa...</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
         <a href="/posts/2016-08-15-get-started-with-autotools.html" rel="permalink">Get started with autotools
 </a>
       
@@ -473,6 +380,35 @@ usermatoMacBook-Pro:weixiaoshuo qichunren$
 </div>
 
         
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/posts/2016-06-16-autostart-app-linux.html" rel="permalink">Linux里GUI程序自启动
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">将.desktop文件复制到 /home/${user}/.config/autostart/目录下即可。
+
+</p>
+  </article>
+</div>
+
+        
       </div>
     </div>
   
@@ -483,13 +419,18 @@ usermatoMacBook-Pro:weixiaoshuo qichunren$
 
     
       <div class="search-content">
-        <div class="search-content__inner-wrap"><input type="search" id="search" aria-placeholder="Enter your search term..." class="search-input" tabindex="-1" placeholder="Enter your search term..." />
-    <div id="results" class="results"></div></div>
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
 
       </div>
     
 
-    <div class="page__footer">
+    <div id="footer" class="page__footer">
       <footer>
         <!-- start custom footer snippets -->
 
@@ -511,7 +452,7 @@ usermatoMacBook-Pro:weixiaoshuo qichunren$
 
     
   <script src="/assets/js/main.min.js"></script>
-  <script defer src="https://use.fontawesome.com/releases/v5.8.1/js/all.js" integrity="sha384-g5uSoOSBd7KkhAMlnQILrecXvzst9TdC09/VM+pjDTCM+1il8RHz5fKANTFFb+gQ" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
 
 
 

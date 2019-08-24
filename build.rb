@@ -7,4 +7,7 @@ Dir.glob(d + "/*").each do |file|
     puts "Remove #{file}"
     system("rm -rf #{file}")
   end
+
 end
+
+puts "Run cd src && jekyll build && cp -r _site/* .."

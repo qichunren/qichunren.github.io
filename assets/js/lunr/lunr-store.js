@@ -70,8 +70,8 @@ var store = [{
         "url": "/posts/2010-08-06-create-a-blog-use-jekyll-at-github.html",
         "teaser":null},{
         "title": "Show more detail info on will_paginate bar",
-        "excerpt":"Just create an extension in lib directory: class PaginationDetailLinkRenderer &lt; WillPaginate::LinkRenderer # useage: &lt;%=will_paginate @auctions, :renderer =&gt; PaginationDetailLinkRenderer %&gt; def to_html links = @options[:page_links] ? windowed_links : [] links.unshift page_link_or_span(@collection.previous_page, 'disabled prev_page', @options[:previous_label]) links.push page_link_or_span(@collection.next_page, 'disabled next_page', @options[:next_label]) html = links.join(@options[:separator]) html = \"每页显示&lt;b&gt;#{@collection.per_page}&lt;/b&gt;条数据,共有&lt;b&gt;#{total_pages}&lt;/b&gt;页, 共有&lt;b&gt;#{@collection.total_entries}&lt;/b&gt;条数据\" + html @options[:container] ? @template.content_tag(:div,...","categories": [],
-        "tags": ["Rails"],
+        "excerpt":"Just create an extension in lib directory:   And the result is like this:     ","categories": [],
+        "tags": [],
         "url": "/posts/2010-08-08-show-more-info-on-will-paginate-bar.html",
         "teaser":null},{
         "title": "Jekyll usage",
@@ -345,7 +345,7 @@ var store = [{
         "url": "/posts/2014-05-04-enable-ntfs-write-on-mac.html",
         "teaser":null},{
         "title": "《写给大家看的设计书》笔记",
-        "excerpt":"最近又将《写给大家看的设计书》这本书翻阅了一遍，又有了一些新的体会，感觉非常棒。真的非常佩服和感谢作者能够将关于设计的东西通过如此简明的理论给表达出来，让普通的人可以明白和感受设计的奥妙窍门。   我平时主要是作WEB开发方面的工作，在网上看到许多优秀的网页设计排版，感觉非常舒服。我之前一直在思考为什么我就不能设计出来这样类型的网页，只能从形式上去模仿，没有找到设计的精髓，感觉没有头绪。自从看到了《写给大家看的设计书》这本书后，我一口气把它读完了，感觉非常满足。它指点了我，让我从迷惘中走出来。      再次将书中的一些段落摘抄下来感受一下：      优秀的设计就这么容易       1 学习4大基本原则，它们比你想象得要简单。     2 认识到自己没有使用这些原则。形诸文字 —- 陈述问题。     3 应用基本原则。结果将使你大吃一惊。     书中提到的4大基本原则是对比，重复，对齐，亲密性。分别在每一章节中讲述了其中的运用方法，并有实例配套。   最后我想知道的是，在生活中有没有和这本书中类似的看似常人不易掌握，但是经过高人点拨和总结，然后一下子豁然明朗的技能呢？   相关链接   《写给大家看的设计书》  ","categories": ["Tool"],
+        "excerpt":"最近又将《写给大家看的设计书》这本书翻阅了一遍，又有了一些新的体会，感觉非常棒。真的非常佩服和感谢作者能够将关于设计的东西通过如此简明的理论给表达出来，让普通的人可以明白和感受设计的奥妙窍门。   我平时主要是作 WEB 开发方面的工作，在网上看到许多优秀的网页设计排版，感觉非常舒服。我之前一直在思考为什么我就不能设计出来这样类型的网页，只能从形式上去模仿，没有找到设计的精髓，感觉没有头绪。自从看到了《写给大家看的设计书》这本书后，我一口气把它读完了，感觉非常满足。它指点了我，让我从迷惘中走出来。      再次将书中的一些段落摘抄下来感受一下：      优秀的设计就这么容易       1 学习4大基本原则，它们比你想象得要简单。     2 认识到自己没有使用这些原则。形诸文字 —- 陈述问题。     3 应用基本原则。结果将使你大吃一惊。     书中提到的4大基本原则是对比，重复，对齐，亲密性。分别在每一章节中讲述了其中的运用方法，并有实例配套。   最后我想知道的是，在生活中有没有和这本书中类似的看似常人不易掌握，但是经过高人点拨和总结，然后一下子豁然明朗的技能呢？   相关链接   《写给大家看的设计书》  ","categories": ["Tool"],
         "tags": [],
         "url": "/posts/2014-05-16-The-Non-Designers-Design-Book-Note.html",
         "teaser":null},{
@@ -355,7 +355,7 @@ var store = [{
         "url": "/posts/2014-07-14-Anvanced-data-types-in-postgresql-for-rails-developers.html",
         "teaser":null},{
         "title": "将Shadownsocks代理转换成http proxy类型",
-        "excerpt":"　 主要就是安装 polipo 工具。 brew install polipo 然后就是启动polipo程序开机自动启动。 首先要修改自动启动的配置文件 /usr/local/opt/polipo/homebrew.mxcl.polipo.plist，需要给polipo命令加上命令行参数 socksParentProxy=localhost:1080 &lt;?xml version=\"1.0\" encoding=\"UTF-8\"?&gt; &lt;!DOCTYPE plist PUBLIC \"-//Apple//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\"&gt; &lt;plist version=\"1.0\"&gt; &lt;dict&gt; &lt;key&gt;Label&lt;/key&gt; &lt;string&gt;homebrew.mxcl.polipo&lt;/string&gt; &lt;key&gt;RunAtLoad&lt;/key&gt; &lt;true/&gt; &lt;key&gt;KeepAlive&lt;/key&gt; &lt;true/&gt; &lt;key&gt;ProgramArguments&lt;/key&gt; &lt;array&gt; &lt;string&gt;/usr/local/opt/polipo/bin/polipo&lt;/string&gt; &lt;string&gt;socksParentProxy=localhost:1080&lt;/string&gt; &lt;/array&gt; &lt;/dict&gt; &lt;/plist&gt; 然后执行以下命令，搞定收工。 ln -sfv /usr/local/opt/polipo/*.plist ~/Library/LaunchAgents launchctl load ~/Library/LaunchAgents/homebrew.mxcl.polipo.plist polipo进程默认监听8123端口，在命令行使用export http_proxy=http://localhost:8123 就可以使用代理了。 export https_proxy=http://localhost:8123...","categories": ["Tool"],
+        "excerpt":"　 将Shadownsocks代理转换成http proxy类型， 主要就是安装 polipo 工具   brew install polipo   然后就是启动polipo程序开机自动启动。   首先要修改自动启动的配置文件 /usr/local/opt/polipo/homebrew.mxcl.polipo.plist，需要给 polipo 命令加上命令行参数 socksParentProxy=localhost:1080     &lt;!DOCTYPE plist PUBLIC \"-//Apple//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\"&gt;         Label     homebrew.mxcl.polipo     RunAtLoad          KeepAlive          ProgramArguments            /usr/local/opt/polipo/bin/polipo       socksParentProxy=localhost:1080            然后执行以下命令，搞定收工。   ln -sfv /usr/local/opt/polipo/*.plist ~/Library/LaunchAgents launchctl load ~/Library/LaunchAgents/homebrew.mxcl.polipo.plist   polipo 进程默认监听8123端口，在命令行使用 export http_proxy=http://localhost:8123 就可以使用代理了。   export https_proxy=http://localhost:8123 export ftp_proxy=http://localhost:8123  ","categories": ["Tool"],
         "tags": [],
         "url": "/posts/2014-07-15-Convert-shadowsocks-into-http-proxy-on-mac.html",
         "teaser":null},{
@@ -434,23 +434,13 @@ var store = [{
         "tags": [],
         "url": "/posts/2016-08-15-get-started-with-autotools.html",
         "teaser":null},{
-        "title": "Welcome to Jekyll!",
-        "excerpt":"You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run jekyll serve, which launches a web server and auto-regenerates your site when...","categories": ["jekyll","update"],
-        "tags": [],
-        "url": "/posts/2019-05-22-welcome-to-jekyll.html",
-        "teaser":null},{
         "title": "160 Pis Server Disk Make",
-        "excerpt":"cd / sudo mount /dev/sdb2 /mnt cd /mnt ls lib lost+found sudo mkdir var sudo mount /dev/sdb3 var df -h Filesystem Size Used Avail Use% Mounted on udev 3.2G 0 3.2G 0% /dev tmpfs 649M 9.1M 640M 2% /run /dev/sda1 72G 65G 2.6G 97% / tmpfs 3.2G 164K 3.2G 1%...","categories": [],
+        "excerpt":"Server Disk make cd / sudo mount /dev/sdb2 /mnt cd /mnt ls lib lost+found sudo mkdir var sudo mount /dev/sdb3 var df -h Filesystem Size Used Avail Use% Mounted on udev 3.2G 0 3.2G 0% /dev tmpfs 649M 9.1M 640M 2% /run /dev/sda1 72G 65G 2.6G 97% / tmpfs 3.2G...","categories": [],
         "tags": [],
         "url": "/wiki/160-pis-server-disk-make.html",
         "teaser":null},{
-        "title": "Readme",
-        "excerpt":"   在线教育   NTP   Tool Box   Design   日常Linux（Ubuntu）下的开发工具链记录  ","categories": [],
-        "tags": [],
-        "url": "/wiki/README.html",
-        "teaser":null},{
         "title": "Blockchain Notes",
-        "excerpt":" ","categories": [],
+        "excerpt":"Block chain notes   Block chain.  ","categories": [],
         "tags": [],
         "url": "/wiki/blockchain-notes.html",
         "teaser":null},{
@@ -459,30 +449,25 @@ var store = [{
         "tags": [],
         "url": "/wiki/c_cpp_dev_linux.html",
         "teaser":null},{
-        "title": "C_mem_bytes_notes",
-        "excerpt":"memset(buffer, 0, len); memcpy(buffer+2, item-&gt;uuid, sizeof(uuid_t));  ","categories": [],
-        "tags": [],
-        "url": "/wiki/c_mem_bytes_notes.html",
-        "teaser":null},{
-        "title": "Commands_used_in_mywork",
-        "excerpt":"============================== 常用命令 ============================== :: qichunren@qichunren-work:~$ df -h Filesystem Size Used Avail Use% Mounted on /dev/sda1 235G 11G 213G 5% / none 4.0K 0 4.0K 0% /sys/fs/cgroup udev 3.9G 4.0K 3.9G 1% /dev tmpfs 788M 1.3M 786M 1% /run none 5.0M 0 5.0M 0% /run/lock none 3.9G 13M 3.9G 1% /run/shm...","categories": [],
-        "tags": [],
-        "url": "/wiki/commands_used_in_mywork.rst",
-        "teaser":null},{
         "title": "Dd_notes",
         "excerpt":"Before back up a device data, you should umount it. sudo umount /dev/sdb? Backup /dev/sdb data into a gz file. sudo dd if=/dev/sdb bs=16M | gzip &gt; ~/ntpis-sd-2016-09-09.img.gz If your /dev/sdb data space is not full, you may only backup data port. For example, if your /sdev/sdb used size is...","categories": [],
         "tags": [],
         "url": "/wiki/dd_notes.html",
         "teaser":null},{
         "title": "Design Links",
-        "excerpt":"Design links      The 75 GoodUI ideas   Adobe color cc   Icon Finder   FLATICON   CG-Artist      Artem RHADS Chebokha   Anna Lepeshkina at youtube  ","categories": [],
+        "excerpt":"Design links      The 75 GoodUI ideas   Adobe color cc   Icon Finder   FLATICON   reddit low poly   CG-Artist      Artem RHADS Chebokha   Anna Lepeshkina at youtube   Somnit: Low poly modeller   Somnit   Low poly      Low Poly Lab  ","categories": [],
         "tags": [],
         "url": "/wiki/design-links.html",
         "teaser":null},{
-        "title": "Game Design Links",
-        "excerpt":"Red Blob Games Game Mechanic Explorer 基本Phaser来讲解常用的基本游戏算法 Amit’s Game Programming Information 收集了各种游戏编程算法 Game Programming Patterns book   http://quaternius.com/assets.html   http://unluckystudio.com/ http://www.2dgameartguru.com/ https://game-icons.net/   Anna Lepeshkina GDquest at youtube Jeremy Bullock at youtube Low poly game assets http://soundimage.org/ Low poly blender models   https://www.youtube.com/channel/UCpljFlcQVNj1nUYs8v02IAQ/videos   https://www.youtube.com/user/brainchildo/videos Pigdev at youtube   https://www.reddit.com/comments/8fiipa  ","categories": [],
+        "title": "Get started with Docker",
+        "excerpt":"Check docker process: $ ps -ef | grep docker /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock Check docker version: $ docker --version Docker version 18.09.6, build 481bc77 Check docker info: $ docker info Containers: 5 Running: 0 Paused: 0 Stopped: 5 Images: 2 Server Version: 18.09.6 Storage Driver: overlay2 ... List all docker...","categories": [],
         "tags": [],
-        "url": "/wiki/game-design-links.html",
+        "url": "/wiki/get_started_with_docker.html",
+        "teaser":null},{
+        "title": "Get started with PyQt5",
+        "excerpt":"PyQt5 is a set of Python bindings for v5 of the Qt application framework from The Qt Company.   Usefull links      PyQt5 Reference Guide  ","categories": [],
+        "tags": [],
+        "url": "/wiki/get_started_with_pyqt5.html",
         "teaser":null},{
         "title": "Get_started_with_ros",
         "excerpt":"Get Started with ROS I assume you are familiar with Ubuntu OS and C++/Python development. Browse ROS Wiki to install ROS packages on you work pc. Follow ROS Tutorials to see how ros apps work. Construe node, topic, service, message in ROS. Follow book &lt;ROS by example volume 1&gt; and...","categories": [],
@@ -490,39 +475,29 @@ var store = [{
         "url": "/wiki/get_started_with_ros.html",
         "teaser":null},{
         "title": "Gstreamer Notes",
-        "excerpt":"GStreamer notes   Test if audio output device is ok   gst-launch-1.0 audiotestsrc ! alsasink   udpsink   gst-launch-1.0 -v audiotestsrc ! udpsink   Encode microphone audio to UDP RTP   gst-launch-1.0 alsasrc ! audioconvert ! audio/x-raw,channels=1,depth=16,width=16,rate=22000 ! rtpL16pay ! udpsink host=255.255.255.255 port=5000  ","categories": [],
+        "excerpt":"GStreamer notes Test if audio output device is ok gst-launch-1.0 audiotestsrc ! alsasink udpsink gst-launch-1.0 -v audiotestsrc ! udpsink Encode microphone audio to UDP RTP gst-launch-1.0 alsasrc ! audioconvert ! audio/x-raw,channels=1,depth=16,width=16,rate=22000 ! rtpL16pay ! udpsink host=255.255.255.255 port=5000 RTSP Related gst-launch-1.0 rtspsrc location=rtsp://admin:novo1234@192.168.110.71/ ! rtph264depay ! h264parse ! matroskamux! filesink location=test.mkv...","categories": [],
         "tags": [],
         "url": "/wiki/gstreamer-notes.html",
         "teaser":null},{
-        "title": "Interior_decorator_notes",
+        "title": "Wiki",
+        "excerpt":"   在线教育   NTP   Tool Box   Design   日常Linux（Ubuntu）下的开发工具链记录   Get Started series   Get started with Docker Get started with PyQt5  ","categories": [],
+        "tags": [],
+        "url": "/wiki/index.html",
+        "teaser":null},{
+        "title": "装修笔记",
         "excerpt":"好用的物品清单 前置反冲洗过滤器 家庭垃圾处理器 FRANKE 断路器 洗碗机 - Panasonic NP-TR1HECN 离子除臭抽湿机 - SHARP DW-CE15F-W 加湿器 - 智米除菌加湿器 扫地机器人 - 小米扫地机器人 加湿器 - 智米除菌加湿器 dyson pure cool link dyson V6 Absolute 电动牙刷 - PHILIPS Sonicare HX9392 男生必备 鼻毛修剪器 - Panasonic ER-GN30-K 吹风机 Dyson Supersonic 电炖盅 - Bear DDZ-A08D1 0.8L 自动烘干毛巾架 智能晾衣夹 环保...","categories": [],
         "tags": [],
         "url": "/wiki/interior_decorator_notes.html",
         "teaser":null},{
-        "title": "Links",
-        "excerpt":"http://blog.honeybadger.io/index.html   v2ex.com   http://www.zuojiaju.com/portal.php   https://www.chiphell.com/  ","categories": [],
-        "tags": [],
-        "url": "/wiki/links.html",
-        "teaser":null},{
         "title": "Node Install",
-        "excerpt":"---------------------------------------------- Install nvm ----------------------------------------------  https://github.com/creationix/nvm  To install or update nvm, you can use the install script using cURL:  ::    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash    Then exit current shell, and open a new shell:  ::    nvm install node    ","categories": [],
+        "excerpt":"Node Install   nvm install   https://github.com/creationix/nvm   To install or update nvm, you can use the install script using cURL:   ::                  curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh       bash           Then exit current shell, and open a new shell:   nvm install node  ","categories": [],
         "tags": [],
-        "url": "/wiki/node-install.rst",
+        "url": "/wiki/node-install.html",
         "teaser":null},{
         "title": "Online EDU",
-        "excerpt":"        http://www.lynda.com/            程序员面试、算法研究、编程艺术、红黑树、数据挖掘5大系列集锦      ","categories": [],
+        "excerpt":"   http://www.lynda.com/   程序员面试、算法研究、编程艺术、红黑树、数据挖掘5大系列集锦  ","categories": [],
         "tags": [],
         "url": "/wiki/online_edu.html",
-        "teaser":null},{
-        "title": "Openssl Notes",
-        "excerpt":"RSA应用举例 生成私匙和公钥 产生1024位RSA私匙，用3DES加密它，口令为trousers，输出到文件rsaprivatekey.pem openssl genrsa -out rsaprivatekey.pem -passout pass:trousers -des3 1024 从文件rsaprivatekey.pem读取私匙，用口令trousers解密，生成的公钥匙输出到文件rsapublickey.pem openssl rsa -in rsaprivatekey.pem -passin pass:trousers -pubout -out rsapubckey.pem 公私钥加密解密 用公钥匙rsapublickey.pem加密文件plain.txt，输出到文件cipher.txt openssl rsautl -encrypt -pubin -inkey rsapublickey.pem -in plain.txt -out cipher.txt 使用私钥匙rsaprivatekey.pem解密密文cipher.txt，输出到文件plain.txt openssl rsautl -decrypt -inkey rsaprivatekey.pem -in cipher.txt -out plain.txt 签名 用私钥匙rsaprivatekey.pem给文件plain.txt签名，输出到文件signature.bin openssl rsautl -sign -inkey rsaprivatekey.pem...","categories": [],
-        "tags": [],
-        "url": "/wiki/openssl-notes.html",
-        "teaser":null},{
-        "title": "Proxy Notes",
-        "excerpt":"====================== Proxy Notes ======================    socat作端口转发 **********   使用场景:   A 访问 B很慢，C访问B很快，现在可以将C作为中间跳板，使A通过访问C达到加速访问B的目的   在C的机器上执行以下命令   socat TCP-LISTEN:8913,fork TCP:108.61.161.174:22  ","categories": [],
-        "tags": [],
-        "url": "/wiki/proxy-notes.html",
         "teaser":null},{
         "title": "QT Notes",
         "excerpt":"QT Console application pro file: #------------------------------------------------- # # Project created by QtCreator 2014-03-31T13:20:57 # #------------------------------------------------- QT += core QT -= gui TARGET = Todo CONFIG += console CONFIG -= app_bundle TEMPLATE = app SOURCES += main.cpp QT Widget application pro file: #------------------------------------------------- # # Project created by QtCreator 2014-03-31T13:27:53 #...","categories": [],
@@ -530,24 +505,29 @@ var store = [{
         "url": "/wiki/qt.html",
         "teaser":null},{
         "title": "ntp with multicast mode",
-        "excerpt":"Install NTP sudo apt-get update sudo apt-get install ntp Config NTP Server Edit /etc/ntp.conf file, below is a real sample: # /etc/ntp.conf, configuration for ntpd; see ntp.conf(5) for help driftfile /var/lib/ntp/ntp.drift logfile /var/log/ntp.log # Enable this if you want statistics to be logged. #statsdir /var/log/ntpstats/ statistics loopstats peerstats clockstats filegen...","categories": [],
+        "excerpt":"NTP Install NTP sudo apt-get update sudo apt-get install ntp Config NTP Server Edit /etc/ntp.conf file, below is a real sample: # /etc/ntp.conf, configuration for ntpd; see ntp.conf(5) for help driftfile /var/lib/ntp/ntp.drift logfile /var/log/ntp.log # Enable this if you want statistics to be logged. #statsdir /var/log/ntpstats/ statistics loopstats peerstats clockstats...","categories": [],
         "tags": [],
         "url": "/wiki/ntp_in_multicast_mode.html",
         "teaser":null},{
         "title": "NTP with GPSD",
-        "excerpt":"Reference page: http://www.catb.org/gpsd/gpsd-time-service-howto.html cp /etc/ntp.conf /etc/ntp.conf.origin pool us.pool.ntp.org iburst driftfile /var/lib/ntp/ntp.drift logfile /var/log/ntp.log restrict default kod nomodify notrap nopeer noquery restrict -6 default kod nomodify notrap nopeer noquery restrict 127.0.0.1 mask 255.255.255.0 restrict -6 ::1 # GPS Serial data reference server 127.127.28.0 fudge 127.127.28.0 time1 0.9999 refid GPS # GPS...","categories": [],
+        "excerpt":"NTP with GPSD Reference page: http://www.catb.org/gpsd/gpsd-time-service-howto.html cp /etc/ntp.conf /etc/ntp.conf.origin pool us.pool.ntp.org iburst driftfile /var/lib/ntp/ntp.drift logfile /var/log/ntp.log restrict default kod nomodify notrap nopeer noquery restrict -6 default kod nomodify notrap nopeer noquery restrict 127.0.0.1 mask 255.255.255.0 restrict -6 ::1 # GPS Serial data reference server 127.127.28.0 fudge 127.127.28.0 time1 0.9999 refid...","categories": [],
         "tags": [],
         "url": "/wiki/ntp_with_gpsd.html",
         "teaser":null},{
-        "title": "Ruby Install",
-        "excerpt":"-------------------------------- Install rbenv -------------------------------- :: apt-get install gcc make build-essential apt-get install nodejs # Rails need nodejs runtime. apt-get install -y libssl-dev libreadline-dev zlib1g-dev git clone git://github.com/sstephenson/rbenv.git ~/.rbenv echo 'export PATH=\"$HOME/.rbenv/bin:$PATH\"' >> ~/.bashrc echo 'eval \"$(rbenv init -)\"' >> ~/.bashrc -------------------------------- Install ruby-build -------------------------------- https://github.com/rbenv/ruby-build :: # As an rbenv...","categories": [],
+        "title": "Openssl Notes",
+        "excerpt":"RSA应用举例 生成私匙和公钥 产生1024位RSA私匙，用3DES加密它，口令为trousers，输出到文件rsaprivatekey.pem openssl genrsa -out rsaprivatekey.pem -passout pass:trousers -des3 1024 从文件rsaprivatekey.pem读取私匙，用口令trousers解密，生成的公钥匙输出到文件rsapublickey.pem openssl rsa -in rsaprivatekey.pem -passin pass:trousers -pubout -out rsapubckey.pem 公私钥加密解密 用公钥匙rsapublickey.pem加密文件plain.txt，输出到文件cipher.txt openssl rsautl -encrypt -pubin -inkey rsapublickey.pem -in plain.txt -out cipher.txt 使用私钥匙rsaprivatekey.pem解密密文cipher.txt，输出到文件plain.txt openssl rsautl -decrypt -inkey rsaprivatekey.pem -in cipher.txt -out plain.txt 签名 用私钥匙rsaprivatekey.pem给文件plain.txt签名，输出到文件signature.bin openssl rsautl -sign -inkey rsaprivatekey.pem...","categories": [],
         "tags": [],
-        "url": "/wiki/ruby-install.rst",
+        "url": "/wiki/openssl-notes.html",
         "teaser":null},{
-        "title": "Serialport Notes",
-        "excerpt":"设置串口波特率   stty -F /dev/ttyO1 speed 4800 raw   向串口发送16进制数据   echo -en '\\xa5\\x01\\x81\\x0d\\x00\\x03\\x00\\x2b\\x00\\x01\\xe7\\xc4\\x5a' &gt; /dev/ttyO1   两个串口设置互联,实现从一个串口发送数据,从另一个串口接收数据   socat FILE:/dev/ttyO2,b4800,raw,echo=0 FILE:/dev/ttyO1,b4800,raw,echo=0  ","categories": [],
+        "title": "Proxy Notes",
+        "excerpt":"Proxy Notes   socat作端口转发   使用场景:   A 访问 B很慢，C访问B很快，现在可以将C作为中间跳板，使A通过访问C达到加速访问B的目的   在C的机器上执行以下命令   socat TCP-LISTEN:8913,fork TCP:108.61.161.174:22  ","categories": [],
         "tags": [],
-        "url": "/wiki/serialport-notes.html",
+        "url": "/wiki/proxy-notes.html",
+        "teaser":null},{
+        "title": "Rsync_notes",
+        "excerpt":"https://www.samba.org/ftp/rsync/rsync.html   将当前 pis-ui 目录同步到远程机器中的 /home/ntwork/ 目录下，注意 pis-ui 后面没有斜线 ‘/’   rsync -ar  pis-ui ntwork@192.168.8.196:/home/ntwork/   ","categories": [],
+        "tags": [],
+        "url": "/wiki/rsync_notes.html",
         "teaser":null},{
         "title": "Shell_notes",
         "excerpt":"     ls -tr /var/log/paigo/stm32-data-* | head -n -6 | xargs rm || true       log_size_kb=`du -k /var/log/paigo/info.log  | cut -f1`     if [[ \"$log_size_kb\" -gt 30720 ]] ; then         # 30Mb         echo \"\" &gt; /var/log/paigo/info.log     fi   nheqminer -l equihash.hk.nicehash.com:3357 -u 18g1N9S2v163hfzMCibwkvn4NR7d7kqVMb.worker1 -t 6 -cd 0 1  ","categories": [],
@@ -555,7 +535,7 @@ var store = [{
         "url": "/wiki/shell_notes.html",
         "teaser":null},{
         "title": "qrencode generator",
-        "excerpt":"sudo apt-get install qrencode qrencode '12345 -o code.png -s 10 SN_SOURCE = [\"A\", \"B\", \"C\", \"D\", \"E\", \"F\", \"G\", \"H\", \"I\", \"J\", \"K\", \"L\", \"M\", \"N\", \"O\", \"P\", \"Q\", \"R\", \"S\", \"T\", \"U\", \"V\", \"W\", \"X\", \"Y\", \"Z\", \"0\", \"1\", \"2\", \"3\", \"4\", \"5\", \"6\", \"7\", \"8\", \"9\"] def self.generate_sn...","categories": [],
+        "excerpt":"QRCODE sudo apt-get install qrencode qrencode '12345 -o code.png -s 10 SN_SOURCE = [\"A\", \"B\", \"C\", \"D\", \"E\", \"F\", \"G\", \"H\", \"I\", \"J\", \"K\", \"L\", \"M\", \"N\", \"O\", \"P\", \"Q\", \"R\", \"S\", \"T\", \"U\", \"V\", \"W\", \"X\", \"Y\", \"Z\", \"0\", \"1\", \"2\", \"3\", \"4\", \"5\", \"6\", \"7\", \"8\", \"9\"] def...","categories": [],
         "tags": [],
         "url": "/wiki/use_qrencode_generate_image.html",
         "teaser":null},{
@@ -565,17 +545,17 @@ var store = [{
         "url": "/wiki/tool_box.html",
         "teaser":null},{
         "title": "Windows_dev_notes",
-        "excerpt":"Windows平台应用程序开发   采用 msys2 工具将 Linux 平台上开发的软件移植到 Windows 平台上   pacman -Sy mingw32/mingw-w64-i686-make pacman -Ss make i686 pacman -Sy git gdb g++  pacman -Sy autoconf automake libtool   Synchronizing package databases   pacman -Syu   Common packages           uuid: libutil-linux-devel       qichunren@DESKTOP-CGH8J7I MINGW32 ~/code/pudgeptu $ echo $PKG_CONFIG_PATH /mingw32/lib/pkgconfig:/mingw32/share/pkgconfig  qichunren@DESKTOP-CGH8J7I MINGW32 ~/code/pudgeptu $ export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/lib/pkgconfig                json-c:  mingw-w64-i686-json-c       ","categories": [],
+        "excerpt":"Windows Dev Notes Windows平台应用程序开发 采用 msys2 工具将 Linux 平台上开发的软件移植到 Windows 平台上 pacman -Sy mingw32/mingw-w64-i686-make pacman -Ss make i686 pacman -Sy git gdb g++ pacman -Sy autoconf automake libtool Synchronizing package databases pacman -Syu Common packages uuid: libutil-linux-devel qichunren@DESKTOP-CGH8J7I MINGW32 ~/code/pudgeptu $ echo $PKG_CONFIG_PATH /mingw32/lib/pkgconfig:/mingw32/share/pkgconfig qichunren@DESKTOP-CGH8J7I MINGW32 ~/code/pudgeptu $ export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/lib/pkgconfig...","categories": [],
         "tags": [],
         "url": "/wiki/windows_dev_notes.html",
         "teaser":null},{
         "title": "Wireshark_usage",
-        "excerpt":"Wireshark filter usage:   udp.dstport==8086 udp.srcport==8086  ","categories": [],
+        "excerpt":"Wireshark notes   Wireshark filter usage:   udp.dstport==8086 udp.srcport==8086  ","categories": [],
         "tags": [],
         "url": "/wiki/wireshark_usage.html",
         "teaser":null},{
         "title": "20160522",
-        "excerpt":"== TODO ==     整理PIS系统通讯协议。   改写160公里PIS的屏通讯协议。   配置GPS NTP功能。   测试GPS报站功能。   PAIGO测试程序摄像头测试功能。   TBOX平台展示车辆轨迹。   学习Angular2。   学习GLib的网络通讯接口。   ","categories": [],
+        "excerpt":"20160522   TODO      整理PIS系统通讯协议。   改写160公里PIS的屏通讯协议。   配置GPS NTP功能。   测试GPS报站功能。   PAIGO测试程序摄像头测试功能。   TBOX平台展示车辆轨迹。   学习Angular2。   学习GLib的网络通讯接口。   ","categories": [],
         "tags": [],
         "url": "/work_logs/20160522.html",
         "teaser":null},{
@@ -603,4 +583,39 @@ var store = [{
         "excerpt":"自行设置 so 的位置   在程序启动之前， export LD_LIBRARY_PATH=/a/b/c   然后 so 文件需要做如下命名的软链接形式：   cd /a/b/c  ln -sf liblunapudge.so.2.0.0 liblunapudge.so.2.0 ln -sf liblunapudge.so.2.0.0 liblunapudge.so.2 ln -sf liblunapudge.so.2.0.0 liblunapudge.so   Windows QT5 软件包分发   除了必须的那些dll文件和主程序在一起外，还需要 ./platforms/qwindows.dll , 这个文件位于 D:\\app\\msys32\\mingw32\\share\\qt5\\plugins\\platforms 目录之中。  ","categories": [],
         "tags": [],
         "url": "/work_logs/20180607.html",
+        "teaser":null},{
+        "title": "20190612",
+        "excerpt":"QT I18N steps      Tools -&gt; External -&gt; Linguist -&gt; Update translation (lupdate)   Run linguist src/pis-ui.ts to open edit tool, edit translations, then save.   lrelease generate qm file.   Add qm file into qt resource file.   API:   QTranslator translator; translator.load(\":/translations/cn.qm\"); QCoreApplication::installTranslator(&amp;translator);  ","categories": [],
+        "tags": [],
+        "url": "/work_logs/20190612.html",
+        "teaser":null},{
+        "title": "20190613",
+        "excerpt":"   Continue improve ntpis-cmon UI.   Baisc godot 3d scene setup.   Android hello word app learn.   Get started with gradle tool.   Create a mask popup dialog.  ","categories": [],
+        "tags": [],
+        "url": "/work_logs/20190613.html",
+        "teaser":null},{
+        "title": "20190614",
+        "excerpt":"To do list      Continue improve ntpis-comon (media-camview) user interface.   Usefull commands   Kill running daemon by name.   ps -A | grep ntpis-cmon | awk '{print $1}' | xargs kill -9   Sync local directory to remote device.   rsync -a --delete pis-ui ntdeck@192.168.9.153:/home/ntdeck/  ","categories": [],
+        "tags": [],
+        "url": "/work_logs/20190614.html",
+        "teaser":null},{
+        "title": "20190617",
+        "excerpt":"To do list Movie system management feature improve. [EMS] Learn Android dev from its documentation. Did *　VLC andriod build. Basic android ui switch. Usefull commands Code snipets Get device ip address in android: WifiManager wifiMan = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE); WifiInfo wifiInf = wifiMan.getConnectionInfo(); int ipAddress = wifiInf.getIpAddress(); String ip_string = String.format(\"%d.%d.%d.%d\",...","categories": [],
+        "tags": [],
+        "url": "/work_logs/20190617.html",
+        "teaser":null},{
+        "title": "20190618",
+        "excerpt":"To do list Android 界面切换 ntpis-cmon-media-only 软件使用说明书 非接触PIS CCU 控制协议 EMS 项目分类管理以及给分类加图片 Code snipets Message tip with toast: String welcome = getString(R.string.welcome); Toast.makeText(getApplicationContext(), welcome, Toast.LENGTH_LONG).show() 2019-06-19 编写非接触 PIS CCU 控制协议文档 研究 Android Webview 2019-06-20 编写非接触 PIS CCU 控制协议文档 优化 EMS 页面在平板上的表现 Learn Android navigation: https://developer.android.com/guide/navigation Learn Android Fragment: https://developer.android.com/guide/components/fragments 2019-06-21...","categories": [],
+        "tags": [],
+        "url": "/work_logs/20190618.html",
+        "teaser":null},{
+        "title": "20190624",
+        "excerpt":"To do list 到北京联调 3B PIS Did 安装最新 ntpis 到 CPU 板 修复 ntpis-cmon camera-view 的一些 bug. Usefull commands rsync -avz --delete qichunren@192.168.9.6:/home/qichunren/pis_data /root/pis_data # 设置连接外网 # # route add default gw 192.168.8.5 # echo \"nameserver 192.168.8.5\" &gt;&gt; /etc/resolv.conf Code snipets 2019-06-25 Did 优化 ntpis mvb代码 2019-06-27 优化 ntpis mvb代码...","categories": [],
+        "tags": [],
+        "url": "/work_logs/20190624.html",
+        "teaser":null},{
+        "title": "20190812",
+        "excerpt":"通过 Rmagick 将文字或者图片渲染到图片中，然后查询图片中每一个像素，从而将整个图片转换成点阵信息，然后根据 LED 屏协议，将数据写入 LED 设备的串口， 使得可以在 LED 屏上显示文字和图片。     ","categories": [],
+        "tags": [],
+        "url": "/work_logs/20190812.html",
         "teaser":null}]

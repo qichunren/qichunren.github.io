@@ -2,7 +2,7 @@
    Default skin
    ========================================================================== */
 /*!
- * Minimal Mistakes Jekyll Theme 4.16.3 by Michael Rose
+ * Minimal Mistakes Jekyll Theme 4.16.6 by Michael Rose
  * Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
  * Licensed under MIT (https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE)
 */
@@ -916,7 +916,7 @@ form {
     border: 0;
     white-space: normal; }
   form p {
-    margin-bottom: 5px / 2; }
+    margin-bottom: 2.5px; }
   form ul {
     list-style-type: none;
     margin: 0 0 5px 0;
@@ -1686,6 +1686,10 @@ th {
   font-weight: bold;
   z-index: 20; }
 
+.site-subtitle {
+  display: block;
+  font-size: 0.625em; }
+
 .masthead__menu {
   float: left;
   margin-left: 0;
@@ -2252,6 +2256,8 @@ th {
     @media (min-width: 80em) {
       .search-content__inner-wrap {
         max-width: 1280px; } }
+  .search-content__form {
+    background-color: transparent; }
   .search-content .search-input {
     display: block;
     margin-bottom: 0;
@@ -3375,6 +3381,11 @@ a.reversefootnote {
 
 .archive__item {
   position: relative; }
+  .archive__item a {
+    position: relative;
+    z-index: 10; }
+  .archive__item a[rel="permalink"] {
+    position: static; }
 
 .archive__subtitle {
   margin: 1.414em 0 0;
@@ -3391,15 +3402,13 @@ a.reversefootnote {
   line-height: initial;
   overflow: hidden;
   text-overflow: ellipsis; }
-  .archive__item-title a::before {
+  .archive__item-title a[rel="permalink"]::before {
     content: '';
     position: absolute;
     left: 0;
     top: 0;
     right: 0;
     bottom: 0; }
-  .archive__item-title a[rel="permalink"]::before {
-    content: none; }
   .archive__item-title a + a {
     opacity: 0.5; }
 

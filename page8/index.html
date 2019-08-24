@@ -1,23 +1,23 @@
 <!doctype html>
 <!--
-  Minimal Mistakes Jekyll Theme 4.16.3 by Michael Rose
+  Minimal Mistakes Jekyll Theme 4.16.6 by Michael Rose
   Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
   Free for personal and commercial use under the MIT license
   https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
 -->
-<html lang="en" class="no-js">
+<html lang="zh" class="no-js">
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Qichunren's blog - Page 8</title>
+<!-- begin _includes/seo.html --><title>Qichunren blog - Page 8</title>
 <meta name="description" content="Record my thoughts, development notes.">
 
 
 
 <meta property="og:type" content="website">
-<meta property="og:locale" content="en_US">
-<meta property="og:site_name" content="Qichunren's blog">
-<meta property="og:title" content="Qichunren’s blog">
+<meta property="og:locale" content="zh">
+<meta property="og:site_name" content="Qichunren blog">
+<meta property="og:title" content="Qichunren blog">
 <meta property="og:url" content="/page8/">
 
 
@@ -38,12 +38,17 @@
   <link rel="prev" href="/page7/">
 
 
-  <link rel="next" href="/page9/">
 
-
-
-
-
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "qichunren",
+      "url": "/"
+    
+  }
+</script>
 
 
 
@@ -53,7 +58,7 @@
 <!-- end _includes/seo.html -->
 
 
-<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Qichunren's blog Feed">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Qichunren blog Feed">
 
 <!-- https://t.co/dKP3o1e -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -91,6 +96,14 @@
   </head>
 
   <body class="layout--home">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
 
     <!--[if lt IE 9]>
 <div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
@@ -103,13 +116,16 @@
     <div class="masthead__menu">
       <nav id="site-nav" class="greedy-nav">
         
-        <a class="site-title" href="/">Qichunren's blog</a>
+        <a class="site-title" href="/">
+          Qichunren blog
+          
+        </a>
         <ul class="visible-links"><li class="masthead__menu-item">
               <a href="/about/" >About</a>
             </li><li class="masthead__menu-item">
               <a href="/" >Posts</a>
             </li><li class="masthead__menu-item">
-              <a href="/collection-archive/" >Posts by Collection</a>
+              <a href="/wiki/" >Wiki</a>
             </li><li class="masthead__menu-item">
               <a href="https://github.com/qichunren" >Github</a>
             </li></ul>
@@ -242,7 +258,7 @@
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/posts/2012-01-04-arc4random-in-ios.html" rel="permalink">iOS中的arc4random方法
+        <a href="/posts/2008-10-12-checkout-git-remote-branches-to-local.html" rel="permalink">在本地签出远程仓库上的分支
 </a>
       
     </h2>
@@ -255,43 +271,7 @@
   less than 1 minute read
 </p>
     
-    <p class="archive__item-excerpt" itemprop="description">通过arc4random() 获取0到x-1之间的整数的代码如下:
-int value = arc4random() % x; 
-
-
-获取1到x之间的整数的代码如下:
-int value = (arc4random() % x) + 1;
-
-
-最后如果想生成一个浮点数，可以在项目中定义如下宏：
-#define A...</p>
-  </article>
-</div>
-
-
-  
-
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="/posts/2011-12-22-use-ajax-in-rails3-note.html" rel="permalink">在Rails3中使用ajax
-</a>
-      
-    </h2>
-    
-      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
-
-
-
-
-  less than 1 minute read
-</p>
-    
-    <p class="archive__item-excerpt" itemprop="description">今天写代码的时候突然发现 我之前在Rails3中使用ajax的方式是不太正确的，我走了弯路。
+    <p class="archive__item-excerpt" itemprop="description">从远程仓库克隆下来一个项目后，默认是在master分支。
 
 </p>
   </article>
@@ -307,7 +287,7 @@ int value = (arc4random() % x) + 1;
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/posts/2011-12-20-mongodb-ui-client-mongohub.html" rel="permalink">mongodb的可视化客户端工具:MongoHub
+        <a href="/posts/2008-10-09-use-benchmark.html" rel="permalink">Benchmark用法
 </a>
       
     </h2>
@@ -320,7 +300,7 @@ int value = (arc4random() % x) + 1;
   less than 1 minute read
 </p>
     
-    <p class="archive__item-excerpt" itemprop="description">最近在使用mongodb,经常要调试，然后找到了MongoHub这款工具，感觉很好。
+    <p class="archive__item-excerpt" itemprop="description">Benchmark 可以用来测试某个函数或者任何代码的执行时间。
 
 </p>
   </article>
@@ -336,7 +316,7 @@ int value = (arc4random() % x) + 1;
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/posts/2011-12-18-ios-learn-note.html" rel="permalink">近期iOS学习点
+        <a href="/posts/2008-10-09-array-4-operation-methods.html" rel="permalink">Ruby Array的头尾操作的4个方法
 </a>
       
     </h2>
@@ -349,36 +329,9 @@ int value = (arc4random() % x) + 1;
   less than 1 minute read
 </p>
     
-    <p class="archive__item-excerpt" itemprop="description">虽然我业余在学iOS，但是感觉进步缓慢。为了使我的iOS开发的学习效率高一点，我决定先列一个简要的提纲，明确当前一个阶段的学习计划。
+    <p class="archive__item-excerpt" itemprop="description">在 Ruby 中，Array 对于数组头部和尾部操作有四个方法可以方便的添加和删除元素，这四个方法是shift / unshift / push / pop。它们两两对应。
 
 </p>
-  </article>
-</div>
-
-
-  
-
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="/posts/2011-10-18-learning-shell-tip-note.html" rel="permalink">Shell学习小记录
-</a>
-      
-    </h2>
-    
-      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
-
-
-
-
-  less than 1 minute read
-</p>
-    
-    <p class="archive__item-excerpt" itemprop="description">最近为了一些自动化的任务，要写一些脚本。可以使用Ruby脚本、Ruby的rake\thor等等，我为了简洁和性能，我了解了一下Shell，发现用Shell来做这个事情更合适。性能，命令行，管道，丰富的现有工具，基于Linux本身，Shell真是一个好东西。以前认为用Ruby来做这个事情是一个不错的选择，现在知道了...</p>
   </article>
 </div>
 
@@ -426,37 +379,17 @@ int value = (arc4random() % x) + 1;
         <li><a href="/page7/">7</a></li>
       
     
-      
-        <li><a href="/page8/" class="disabled current">8</a></li>
-      
+
     
-      
-        
-        
-        
-        <li><a href="/page9/">9</a></li>
-      
     
-      
-        
-        
-        
-        <li><a href="/page10/">10</a></li>
-      
+
+    
+      <li><a href="#" class="disabled current">8</a></li>
     
 
     
     
-      <li><a href="#" class="disabled">&hellip;</a></li>
-    
-
-    
-      <li><a href="/page18/">18</a></li>
-    
-
-    
-    
-      <li><a href="/page9/">Next</a></li>
+      <li><a href="#" class="disabled"><span aria-hidden="true">Next</span></a></li>
     
   </ul>
 </nav>
@@ -469,13 +402,18 @@ int value = (arc4random() % x) + 1;
 
     
       <div class="search-content">
-        <div class="search-content__inner-wrap"><input type="search" id="search" aria-placeholder="Enter your search term..." class="search-input" tabindex="-1" placeholder="Enter your search term..." />
-    <div id="results" class="results"></div></div>
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
 
       </div>
     
 
-    <div class="page__footer">
+    <div id="footer" class="page__footer">
       <footer>
         <!-- start custom footer snippets -->
 
@@ -497,7 +435,7 @@ int value = (arc4random() % x) + 1;
 
     
   <script src="/assets/js/main.min.js"></script>
-  <script defer src="https://use.fontawesome.com/releases/v5.8.1/js/all.js" integrity="sha384-g5uSoOSBd7KkhAMlnQILrecXvzst9TdC09/VM+pjDTCM+1il8RHz5fKANTFFb+gQ" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
 
 
 

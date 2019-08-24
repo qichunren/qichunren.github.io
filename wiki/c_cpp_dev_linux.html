@@ -1,24 +1,201 @@
-<h1 id="日常linuxubuntu下的开发工具链记录">日常Linux（Ubuntu）下的开发工具链记录</h1>
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.16.6 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="zh" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>C_cpp_dev_linux - Qichunren blog</title>
+<meta name="description" content="日常Linux（Ubuntu）下的开发工具链记录">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="zh">
+<meta property="og:site_name" content="Qichunren blog">
+<meta property="og:title" content="C_cpp_dev_linux">
+<meta property="og:url" content="/wiki/c_cpp_dev_linux.html">
+
+
+  <meta property="og:description" content="日常Linux（Ubuntu）下的开发工具链记录">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2019-08-24T12:42:19+08:00">
+
+
+
+
+
+
+<link rel="canonical" href="/wiki/c_cpp_dev_linux.html">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "qichunren",
+      "url": "/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Qichunren blog Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE ]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single wide">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Qichunren blog
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/about/" >About</a>
+            </li><li class="masthead__menu-item">
+              <a href="/" >Posts</a>
+            </li><li class="masthead__menu-item">
+              <a href="/wiki/" >Wiki</a>
+            </li><li class="masthead__menu-item">
+              <a href="https://github.com/qichunren" >Github</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="C_cpp_dev_linux">
+    <meta itemprop="description" content="日常Linux（Ubuntu）下的开发工具链记录">
+    
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">C_cpp_dev_linux
+</h1>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <h1 id="日常linuxubuntu下的开发工具链记录">日常Linux（Ubuntu）下的开发工具链记录</h1>
 
 <h2 id="包管理工具">包管理工具</h2>
 
 <p>查找头文件的信息，包括包名、文件具体路径
-dpkg -S opencv.hpp</p>
+    dpkg -S opencv.hpp</p>
 
 <p>查看包安装好的所有文件和目录
-dpkg -L libopencv-core-dev</p>
+    dpkg -L libopencv-core-dev</p>
 
 <p>查看包信息
-apt-cache show libopencv-core-dev</p>
+    apt-cache show libopencv-core-dev</p>
 
 <p>查看包是否安装
-dpkg -l | grep libopencv-core-dev</p>
+    dpkg -l | grep libopencv-core-dev</p>
 
 <p>搜索包名
-apt-cache search keyword1 keyword2</p>
+    apt-cache search keyword1 keyword2</p>
 
 <p>搜索代码
-grep –include *.c “memcpy” -R .</p>
+    grep –include *.c “memcpy” -R .</p>
 
 <h2 id="pkg-config">pkg-config</h2>
 
@@ -27,9 +204,8 @@ grep –include *.c “memcpy” -R .</p>
 <ul>
   <li>pkg-config –list-all 列出当前所有包名</li>
   <li>
-    <p>pkg-config –cflags gio-2.0</p>
-
-    <p>-pthread -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include</p>
+    <p>pkg-config –cflags gio-2.0
+  -pthread -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include</p>
   </li>
   <li>
     <p>pkg-config –libs gio-2.0</p>
@@ -43,27 +219,100 @@ grep –include *.c “memcpy” -R .</p>
 <h2 id="常用库">常用库</h2>
 
 <ul>
-  <li>
-    <p>libcurl</p>
-
-    <p>deb: libcurl4-openssl-dev</p>
-  </li>
-  <li>
-    <p>glib</p>
-
-    <p>apt-get install libglib2.0-0-dbg GLib调式符号</p>
-  </li>
+  <li>libcurl: libcurl4-openssl-dev</li>
+  <li>glib: apt-get install libglib2.0-0-dbg GLib调式符号</li>
   <li>gstreamer</li>
-  <li>
-    <p>gtk</p>
-
-    <p>gtk+-3.0 =&gt; deb: libgtk-3-dev</p>
-  </li>
+  <li>gtk: gtk+-3.0 =&gt; deb: libgtk-3-dev</li>
   <li>qt5</li>
   <li>zlib</li>
-  <li>
-    <p>readline</p>
-
-    <p>deb: libreadline6-dev</p>
-  </li>
+  <li>readline: libreadline6-dev</li>
 </ul>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+      </footer>
+
+      
+
+      
+  <nav class="pagination">
+    
+      <a href="/wiki/blockchain-notes.html" class="pagination--pager" title="Blockchain Notes
+">Previous</a>
+    
+    
+      <a href="/wiki/dd_notes.html" class="pagination--pager" title="Dd_notes
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2019 qichunren. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+
+
+  </body>
+</html>

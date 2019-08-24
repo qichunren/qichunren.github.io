@@ -1,23 +1,23 @@
 <!doctype html>
 <!--
-  Minimal Mistakes Jekyll Theme 4.16.3 by Michael Rose
+  Minimal Mistakes Jekyll Theme 4.16.6 by Michael Rose
   Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
   Free for personal and commercial use under the MIT license
   https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
 -->
-<html lang="en" class="no-js">
+<html lang="zh" class="no-js">
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Qichunren's blog - Page 3</title>
+<!-- begin _includes/seo.html --><title>Qichunren blog - Page 3</title>
 <meta name="description" content="Record my thoughts, development notes.">
 
 
 
 <meta property="og:type" content="website">
-<meta property="og:locale" content="en_US">
-<meta property="og:site_name" content="Qichunren's blog">
-<meta property="og:title" content="Qichunren’s blog">
+<meta property="og:locale" content="zh">
+<meta property="og:site_name" content="Qichunren blog">
+<meta property="og:title" content="Qichunren blog">
 <meta property="og:url" content="/page3/">
 
 
@@ -41,9 +41,16 @@
   <link rel="next" href="/page4/">
 
 
-
-
-
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "qichunren",
+      "url": "/"
+    
+  }
+</script>
 
 
 
@@ -53,7 +60,7 @@
 <!-- end _includes/seo.html -->
 
 
-<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Qichunren's blog Feed">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Qichunren blog Feed">
 
 <!-- https://t.co/dKP3o1e -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -91,6 +98,14 @@
   </head>
 
   <body class="layout--home">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
 
     <!--[if lt IE 9]>
 <div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
@@ -103,13 +118,16 @@
     <div class="masthead__menu">
       <nav id="site-nav" class="greedy-nav">
         
-        <a class="site-title" href="/">Qichunren's blog</a>
+        <a class="site-title" href="/">
+          Qichunren blog
+          
+        </a>
         <ul class="visible-links"><li class="masthead__menu-item">
               <a href="/about/" >About</a>
             </li><li class="masthead__menu-item">
               <a href="/" >Posts</a>
             </li><li class="masthead__menu-item">
-              <a href="/collection-archive/" >Posts by Collection</a>
+              <a href="/wiki/" >Wiki</a>
             </li><li class="masthead__menu-item">
               <a href="https://github.com/qichunren" >Github</a>
             </li></ul>
@@ -242,7 +260,7 @@
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/posts/2015-07-13-use-json-in-qt5.html" rel="permalink">在QT5中使用JSON库json-c
+        <a href="/posts/2012-06-04-use-ssh-proxy-port-trick.html" rel="permalink">使用SSH代理来访访问远程mysql机器
 </a>
       
     </h2>
@@ -252,10 +270,10 @@
 
 
 
-  1 minute read
+  less than 1 minute read
 </p>
     
-    <p class="archive__item-excerpt" itemprop="description">首先需要安装json-c库:
+    <p class="archive__item-excerpt" itemprop="description">默认安装的mysql的Linux机器基于安全的原因，一般不支持mysql的远程连接访问。有几种方法可以修改配置来让mysql服务器支持远程连接。但是通过ssh的代理功能，可以不用修改服务器配置，来支持从远程连接mysql服务器。
 
 </p>
   </article>
@@ -271,7 +289,7 @@
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/posts/2015-07-01-my-dev-notes1.html" rel="permalink">我的开发感悟（2）
+        <a href="/posts/2012-06-03-fixed-a-problem-with-creating-texture-background-in-cocos2d.html" rel="permalink">Fixed a problem with creating texture background in cocos2d
 </a>
       
     </h2>
@@ -284,7 +302,7 @@
   less than 1 minute read
 </p>
     
-    <p class="archive__item-excerpt" itemprop="description">在调研某一项技术时，没有深入到其中之前，会认为它不适合自己的口味，或者认为它比较难以入门。但是某一天当你静下心来研究，一旦入门了，就会感叹：原来如此，我怎么没有早点了解它呢？
+    <p class="archive__item-excerpt" itemprop="description">我尝试在cocos2d游戏中使用小图片重复平铺的方式来创建游戏背景时, 总是遇到这个问题，报错如下:
 
 </p>
   </article>
@@ -300,7 +318,7 @@
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/posts/2015-04-13-qt-internationalization.html" rel="permalink">在QT5中使用国际化语言
+        <a href="/posts/2012-05-17-how-to-remove-a-file-from-git-history-forever.html" rel="permalink">怎么样从git提交历史里永久删除一个文件?
 </a>
       
     </h2>
@@ -313,7 +331,7 @@
   less than 1 minute read
 </p>
     
-    <p class="archive__item-excerpt" itemprop="description">要在QT项目中使用国际化，以支持多种语言，需要如下步骤。
+    <p class="archive__item-excerpt" itemprop="description">需要整理
 
 </p>
   </article>
@@ -329,7 +347,7 @@
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/posts/2015-01-13-c-plus-plus-single-instance-notes.html" rel="permalink">C++中实现单例
+        <a href="/posts/2012-03-14-how-to-managing-services-with-update-rc-dot-d.html" rel="permalink">通过update-rc.d来管理Ubuntu系统的自动启动程序
 </a>
       
     </h2>
@@ -339,10 +357,10 @@
 
 
 
-  less than 1 minute read
+  4 minute read
 </p>
     
-    <p class="archive__item-excerpt" itemprop="description">data_package.h文件
+    <p class="archive__item-excerpt" itemprop="description">转载, 并记下我的使用心得。
 
 </p>
   </article>
@@ -358,7 +376,36 @@
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/posts/2014-10-23-game-resources-note.html" rel="permalink">Game resources note
+        <a href="/posts/2012-02-27-use-rubyencoder-encrypt-ruby-code.html" rel="permalink">Use Rubyencoder encrypt ruby code
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  3 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">前些时候研究了一下ruby encoder的加密技术应用，在这里记录一下它的使用过程。
+
+</p>
+  </article>
+</div>
+
+
+  
+
+
+
+<div class="list__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/posts/2012-02-26-create-custom-tags-in-smarty.html" rel="permalink">Create custom tags in Smarty 3
 </a>
       
     </h2>
@@ -371,7 +418,188 @@
   less than 1 minute read
 </p>
     
-    <p class="archive__item-excerpt" itemprop="description">Game replay video here: https://everyplay.com
+    <p class="archive__item-excerpt" itemprop="description">接着上一篇，还是来说说PHP模板引擎Smarty。PHP的众多CMS框架，如DEDE CMS，对于前端展示都是有一套自己开发的标签，用于显示管理后台维护的数据。在DEDECMS中，如下的代码
+
+</p>
+  </article>
+</div>
+
+
+  
+
+
+
+<div class="list__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/posts/2012-02-11-use-smarty-template-in-codeigniter.html" rel="permalink">Use Smarty template in CodeIgniter
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">CodeIgniter是一个不错的PHP开发框架，很合我的口味，我做的一些PHP项目就是用的它。
+
+</p>
+  </article>
+</div>
+
+
+  
+
+
+
+<div class="list__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/posts/2012-01-19-use-ffaker.html" rel="permalink">使用ffaker来产生随机数据
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">ffaker是一个用来产生随机name\email之类的工具，可以用在开发时先产生一些有意义的随机数据，将数据写在db/seeds.rb中，这样你就不用每次急燥地添加一些asasddfdsf这样的数据。一个好的工作开发环境，可以让心情舒畅，效率加倍。
+
+</p>
+  </article>
+</div>
+
+
+  
+
+
+
+<div class="list__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/posts/2012-01-12-customizing-rails-generator-templates.html" rel="permalink">Customizing rails generator templates
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Rails framework and twitter bootstrap are good for your startup project, build-in generators generate source code by its way. It is  a good starting point.
+
+</p>
+  </article>
+</div>
+
+
+  
+
+
+
+<div class="list__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/posts/2012-01-09-update-forked-repository-from-original-repository-at-github.html" rel="permalink">How to update a forked repository from original repository at github?
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">If you use github, you can follow this.
+
+</p>
+  </article>
+</div>
+
+
+  
+
+
+
+<div class="list__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/posts/2012-01-04-arc4random-in-ios.html" rel="permalink">iOS中的arc4random方法
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">通过arc4random() 获取0到x-1之间的整数的代码如下:
+int value = arc4random() % x; 
+
+
+获取1到x之间的整数的代码如下:
+int value = (arc4random() % x) + 1;
+
+
+最后如果想生成一个浮点数，可以在项目中定义如下宏：
+#define A...</p>
+  </article>
+</div>
+
+
+  
+
+
+
+<div class="list__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/posts/2011-12-22-use-ajax-in-rails3-note.html" rel="permalink">在Rails3中使用ajax
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">今天写代码的时候突然发现 我之前在Rails3中使用ajax的方式是不太正确的，我走了弯路。
 
 </p>
   </article>
@@ -435,7 +663,7 @@
     
 
     
-      <li><a href="/page18/">18</a></li>
+      <li><a href="/page8/">8</a></li>
     
 
     
@@ -453,13 +681,18 @@
 
     
       <div class="search-content">
-        <div class="search-content__inner-wrap"><input type="search" id="search" aria-placeholder="Enter your search term..." class="search-input" tabindex="-1" placeholder="Enter your search term..." />
-    <div id="results" class="results"></div></div>
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
 
       </div>
     
 
-    <div class="page__footer">
+    <div id="footer" class="page__footer">
       <footer>
         <!-- start custom footer snippets -->
 
@@ -481,7 +714,7 @@
 
     
   <script src="/assets/js/main.min.js"></script>
-  <script defer src="https://use.fontawesome.com/releases/v5.8.1/js/all.js" integrity="sha384-g5uSoOSBd7KkhAMlnQILrecXvzst9TdC09/VM+pjDTCM+1il8RHz5fKANTFFb+gQ" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
 
 
 

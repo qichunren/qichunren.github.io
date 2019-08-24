@@ -1,23 +1,23 @@
 <!doctype html>
 <!--
-  Minimal Mistakes Jekyll Theme 4.16.3 by Michael Rose
+  Minimal Mistakes Jekyll Theme 4.16.6 by Michael Rose
   Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
   Free for personal and commercial use under the MIT license
   https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
 -->
-<html lang="en" class="no-js">
+<html lang="zh" class="no-js">
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Qichunren's blog - Page 4</title>
+<!-- begin _includes/seo.html --><title>Qichunren blog - Page 4</title>
 <meta name="description" content="Record my thoughts, development notes.">
 
 
 
 <meta property="og:type" content="website">
-<meta property="og:locale" content="en_US">
-<meta property="og:site_name" content="Qichunren's blog">
-<meta property="og:title" content="Qichunren’s blog">
+<meta property="og:locale" content="zh">
+<meta property="og:site_name" content="Qichunren blog">
+<meta property="og:title" content="Qichunren blog">
 <meta property="og:url" content="/page4/">
 
 
@@ -41,9 +41,16 @@
   <link rel="next" href="/page5/">
 
 
-
-
-
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "qichunren",
+      "url": "/"
+    
+  }
+</script>
 
 
 
@@ -53,7 +60,7 @@
 <!-- end _includes/seo.html -->
 
 
-<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Qichunren's blog Feed">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Qichunren blog Feed">
 
 <!-- https://t.co/dKP3o1e -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -91,6 +98,14 @@
   </head>
 
   <body class="layout--home">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
 
     <!--[if lt IE 9]>
 <div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
@@ -103,13 +118,16 @@
     <div class="masthead__menu">
       <nav id="site-nav" class="greedy-nav">
         
-        <a class="site-title" href="/">Qichunren's blog</a>
+        <a class="site-title" href="/">
+          Qichunren blog
+          
+        </a>
         <ul class="visible-links"><li class="masthead__menu-item">
               <a href="/about/" >About</a>
             </li><li class="masthead__menu-item">
               <a href="/" >Posts</a>
             </li><li class="masthead__menu-item">
-              <a href="/collection-archive/" >Posts by Collection</a>
+              <a href="/wiki/" >Wiki</a>
             </li><li class="masthead__menu-item">
               <a href="https://github.com/qichunren" >Github</a>
             </li></ul>
@@ -242,7 +260,7 @@
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/posts/2014-10-04-europe-travel.html" rel="permalink">欧洲旅行记录
+        <a href="/posts/2011-12-20-mongodb-ui-client-mongohub.html" rel="permalink">mongodb的可视化客户端工具:MongoHub
 </a>
       
     </h2>
@@ -255,7 +273,7 @@
   less than 1 minute read
 </p>
     
-    <p class="archive__item-excerpt" itemprop="description">2014年9月21到9月30号跟着公司团到欧洲旅行了一圈，这是我的第一次出国。
+    <p class="archive__item-excerpt" itemprop="description">最近在使用mongodb,经常要调试，然后找到了MongoHub这款工具，感觉很好。
 
 </p>
   </article>
@@ -271,7 +289,7 @@
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/posts/2014-07-15-Convert-shadowsocks-into-http-proxy-on-mac.html" rel="permalink">将Shadownsocks代理转换成http proxy类型
+        <a href="/posts/2011-12-18-ios-learn-note.html" rel="permalink">近期iOS学习点
 </a>
       
     </h2>
@@ -284,8 +302,7 @@
   less than 1 minute read
 </p>
     
-    <p class="archive__item-excerpt" itemprop="description">　
-主要就是安装 polipo 工具。
+    <p class="archive__item-excerpt" itemprop="description">虽然我业余在学iOS，但是感觉进步缓慢。为了使我的iOS开发的学习效率高一点，我决定先列一个简要的提纲，明确当前一个阶段的学习计划。
 
 </p>
   </article>
@@ -301,7 +318,7 @@
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/posts/2014-07-14-Anvanced-data-types-in-postgresql-for-rails-developers.html" rel="permalink">PostgreSQL 数据库中的高级数据类型
+        <a href="/posts/2011-10-18-learning-shell-tip-note.html" rel="permalink">Shell学习小记录
 </a>
       
     </h2>
@@ -314,7 +331,36 @@
   less than 1 minute read
 </p>
     
-    <p class="archive__item-excerpt" itemprop="description">未完成 …
+    <p class="archive__item-excerpt" itemprop="description">最近为了一些自动化的任务，要写一些脚本。可以使用Ruby脚本、Ruby的rake\thor等等，我为了简洁和性能，我了解了一下Shell，发现用Shell来做这个事情更合适。性能，命令行，管道，丰富的现有工具，基于Linux本身，Shell真是一个好东西。以前认为用Ruby来做这个事情是一个不错的选择，现在知道了...</p>
+  </article>
+</div>
+
+
+  
+
+
+
+<div class="list__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/posts/2011-10-13-capture-webpage.html" rel="permalink">网页截屏的方法
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  1 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">曾经很想有这样一个app, 它可以将微博上用户的微博用图片的形式自动保存起来，留此存照。前几个月的那段时间，微博上很
+网页截屏的基本原理就是通过取得webkit渲染（render）的数据来生成图片的，我经过一段时间研究，找到了两个方法来解决这个问题。
+
 </p>
   </article>
 </div>
@@ -329,7 +375,7 @@
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/posts/2014-05-16-The-Non-Designers-Design-Book-Note.html" rel="permalink">《写给大家看的设计书》笔记
+        <a href="/posts/2011-08-27-deploy-rails-project-with-jruby.html" rel="permalink">使用Jruby来部署Rails应用
 </a>
       
     </h2>
@@ -339,10 +385,10 @@
 
 
 
-  less than 1 minute read
+  5 minute read
 </p>
     
-    <p class="archive__item-excerpt" itemprop="description">最近又将《写给大家看的设计书》这本书翻阅了一遍，又有了一些新的体会，感觉非常棒。真的非常佩服和感谢作者能够将关于设计的东西通过如此简明的理论给表达出来，让普通的人可以明白和感受设计的奥妙窍门。
+    <p class="archive__item-excerpt" itemprop="description">为了保护最近做的产品的源代码，需要将项目中的源代码进行保护起来。我目前了解到的方案有以下两种：
 
 </p>
   </article>
@@ -358,7 +404,7 @@
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/posts/2014-05-04-enable-ntfs-write-on-mac.html" rel="permalink">解决NTFS格式移动硬盘在MAC系统上不能读的问题
+        <a href="/posts/2011-08-18-proxy-in-server-side-for-ajax-crossing-domain.html" rel="permalink">Set proxy in server side to get crossing domain ajax request
 </a>
       
     </h2>
@@ -371,7 +417,184 @@
   less than 1 minute read
 </p>
     
-    <p class="archive__item-excerpt" itemprop="description">插上移动硬盘后，在命令行终端里输入命令
+    <p class="archive__item-excerpt" itemprop="description">```
+class ProxyController &lt; ApplicationController
+
+</p>
+  </article>
+</div>
+
+
+  
+
+
+
+<div class="list__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/posts/2011-06-04-install-mongodb.html" rel="permalink">Install mongo on mac
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">```
+caojinhuamatoMacBook-Pro:code caojinhua$ brew install mongodb
+==&gt; Downloading http://fastdl.mongodb.org/osx/mongodb-osx-x86_64-1.8.1.tgz
+#############...</p>
+  </article>
+</div>
+
+
+  
+
+
+
+<div class="list__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/posts/2011-06-03-fix-annotate-gem-with-rails3-1-1.html" rel="permalink">Fix problem annotate is broken with rails 3.1.1
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">今天在做一个小工具，使用最新的Rails版本3.1.1, 在使用annotate(2.4.0)这个gem的时候出错了：
+
+</p>
+  </article>
+</div>
+
+
+  
+
+
+
+<div class="list__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/posts/2011-05-17-remove-hidden-space-soure-code.html" rel="permalink">去掉textmate源代码中的隐形空格
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">有这个需要，主要是因为不想在git提交后的diff中无看到不有意思的diff显示。使用textmate的同学可以用这个工具来解决这个小问题。
+
+</p>
+  </article>
+</div>
+
+
+  
+
+
+
+<div class="list__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/posts/2011-05-14-learn-redis-db.html" rel="permalink">学习和了解Redis
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Redis
+redis-rb gem install redis 
+redis-objects是基于redis-rb的一个ruby对象与redis对象映射的gem
+</p>
+  </article>
+</div>
+
+
+  
+
+
+
+<div class="list__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/posts/2011-05-13-use-unicorn-in-rails.html" rel="permalink">使用Unicorn
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Install
+
+</p>
+  </article>
+</div>
+
+
+  
+
+
+
+<div class="list__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/posts/2011-05-12-use-juggernaut-for-realtime-app.html" rel="permalink">使用Juggernaut
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Juggernaut是基于Node.js的一个实时(Realtime)Web的解决方案。使用起来很方便。
 
 </p>
   </article>
@@ -435,6 +658,13 @@
         <li><a href="/page6/">6</a></li>
       
     
+      
+        
+        
+        
+        <li><a href="/page7/">7</a></li>
+      
+    
 
     
     
@@ -442,7 +672,7 @@
     
 
     
-      <li><a href="/page18/">18</a></li>
+      <li><a href="/page8/">8</a></li>
     
 
     
@@ -460,13 +690,18 @@
 
     
       <div class="search-content">
-        <div class="search-content__inner-wrap"><input type="search" id="search" aria-placeholder="Enter your search term..." class="search-input" tabindex="-1" placeholder="Enter your search term..." />
-    <div id="results" class="results"></div></div>
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
 
       </div>
     
 
-    <div class="page__footer">
+    <div id="footer" class="page__footer">
       <footer>
         <!-- start custom footer snippets -->
 
@@ -488,7 +723,7 @@
 
     
   <script src="/assets/js/main.min.js"></script>
-  <script defer src="https://use.fontawesome.com/releases/v5.8.1/js/all.js" integrity="sha384-g5uSoOSBd7KkhAMlnQILrecXvzst9TdC09/VM+pjDTCM+1il8RHz5fKANTFFb+gQ" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
 
 
 

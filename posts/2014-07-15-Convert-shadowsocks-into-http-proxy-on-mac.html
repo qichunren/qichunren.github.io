@@ -1,27 +1,27 @@
 <!doctype html>
 <!--
-  Minimal Mistakes Jekyll Theme 4.16.3 by Michael Rose
+  Minimal Mistakes Jekyll Theme 4.16.6 by Michael Rose
   Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
   Free for personal and commercial use under the MIT license
   https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
 -->
-<html lang="en" class="no-js">
+<html lang="zh" class="no-js">
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>将Shadownsocks代理转换成http proxy类型 - Qichunren’s blog</title>
-<meta name="description" content="　主要就是安装 polipo 工具。">
+<!-- begin _includes/seo.html --><title>将Shadownsocks代理转换成http proxy类型 - Qichunren blog</title>
+<meta name="description" content="　将Shadownsocks代理转换成http proxy类型， 主要就是安装 polipo 工具">
 
 
 
 <meta property="og:type" content="article">
-<meta property="og:locale" content="en_US">
-<meta property="og:site_name" content="Qichunren's blog">
+<meta property="og:locale" content="zh">
+<meta property="og:site_name" content="Qichunren blog">
 <meta property="og:title" content="将Shadownsocks代理转换成http proxy类型">
 <meta property="og:url" content="/posts/2014-07-15-Convert-shadowsocks-into-http-proxy-on-mac.html">
 
 
-  <meta property="og:description" content="　主要就是安装 polipo 工具。">
+  <meta property="og:description" content="　将Shadownsocks代理转换成http proxy类型， 主要就是安装 polipo 工具">
 
 
 
@@ -41,9 +41,16 @@
 
 
 
-
-
-
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "qichunren",
+      "url": "/"
+    
+  }
+</script>
 
 
 
@@ -53,7 +60,7 @@
 <!-- end _includes/seo.html -->
 
 
-<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Qichunren's blog Feed">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Qichunren blog Feed">
 
 <!-- https://t.co/dKP3o1e -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -91,6 +98,14 @@
   </head>
 
   <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
 
     <!--[if lt IE 9]>
 <div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
@@ -103,13 +118,16 @@
     <div class="masthead__menu">
       <nav id="site-nav" class="greedy-nav">
         
-        <a class="site-title" href="/">Qichunren's blog</a>
+        <a class="site-title" href="/">
+          Qichunren blog
+          
+        </a>
         <ul class="visible-links"><li class="masthead__menu-item">
               <a href="/about/" >About</a>
             </li><li class="masthead__menu-item">
               <a href="/" >Posts</a>
             </li><li class="masthead__menu-item">
-              <a href="/collection-archive/" >Posts by Collection</a>
+              <a href="/wiki/" >Wiki</a>
             </li><li class="masthead__menu-item">
               <a href="https://github.com/qichunren" >Github</a>
             </li></ul>
@@ -139,94 +157,10 @@
 
 <div id="main" role="main">
   
-  <div class="sidebar sticky">
-  
-
-
-<div itemscope itemtype="https://schema.org/Person">
-
-  
-
-  <div class="author__content">
-    
-      <h3 class="author__name" itemprop="name"></h3>
-    
-    
-  </div>
-
-  <div class="author__urls-wrapper">
-    <button class="btn btn--inverse">Follow</button>
-    <ul class="author__urls social-icons">
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      <!--
-  <li>
-    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
-      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
-    </a>
-  </li>
--->
-    </ul>
-  </div>
-</div>
-
-  
-  </div>
-
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
     <meta itemprop="headline" content="将Shadownsocks代理转换成http proxy类型">
-    <meta itemprop="description" content="　主要就是安装 polipo 工具。">
+    <meta itemprop="description" content="　将Shadownsocks代理转换成http proxy类型， 主要就是安装 polipo 工具">
     <meta itemprop="datePublished" content="July 15, 2014">
     
 
@@ -250,43 +184,46 @@
       <section class="page__content" itemprop="text">
         
         <p>　
-主要就是安装 <em>polipo</em> 工具。</p>
+将Shadownsocks代理转换成http proxy类型， 主要就是安装 <em>polipo</em> 工具</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew install polipo
 </code></pre></div></div>
 
 <p>然后就是启动polipo程序开机自动启动。</p>
 
-<p>首先要修改自动启动的配置文件 <em>/usr/local/opt/polipo/homebrew.mxcl.polipo.plist</em>，需要给polipo命令加上命令行参数 <strong>socksParentProxy=localhost:1080</strong></p>
+<p>首先要修改自动启动的配置文件 <em>/usr/local/opt/polipo/homebrew.mxcl.polipo.plist</em>，需要给 polipo 命令加上命令行参数 <strong>socksParentProxy=localhost:1080</strong></p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
-  <span class="cp">&lt;!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;</span>
-  <span class="nt">&lt;plist</span> <span class="na">version=</span><span class="s">"1.0"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;dict&gt;</span>
-      <span class="nt">&lt;key&gt;</span>Label<span class="nt">&lt;/key&gt;</span>
-      <span class="nt">&lt;string&gt;</span>homebrew.mxcl.polipo<span class="nt">&lt;/string&gt;</span>
-      <span class="nt">&lt;key&gt;</span>RunAtLoad<span class="nt">&lt;/key&gt;</span>
-      <span class="nt">&lt;true/&gt;</span>
-      <span class="nt">&lt;key&gt;</span>KeepAlive<span class="nt">&lt;/key&gt;</span>
-      <span class="nt">&lt;true/&gt;</span>
-      <span class="nt">&lt;key&gt;</span>ProgramArguments<span class="nt">&lt;/key&gt;</span>
-      <span class="nt">&lt;array&gt;</span>
-        <span class="nt">&lt;string&gt;</span>/usr/local/opt/polipo/bin/polipo<span class="nt">&lt;/string&gt;</span>
-        <span class="nt">&lt;string&gt;</span>socksParentProxy=localhost:1080<span class="nt">&lt;/string&gt;</span>
-      <span class="nt">&lt;/array&gt;</span>
-    <span class="nt">&lt;/dict&gt;</span>
-  <span class="nt">&lt;/plist&gt;</span>
-</code></pre></div></div>
+<pre>
+<?xml version="1.0" encoding="UTF-8"?>
+&lt;!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;
+<plist version="1.0">
+  <dict>
+    <key>Label</key>
+    <string>homebrew.mxcl.polipo</string>
+    <key>RunAtLoad</key>
+    <true />
+    <key>KeepAlive</key>
+    <true />
+    <key>ProgramArguments</key>
+    <array>
+      <string>/usr/local/opt/polipo/bin/polipo</string>
+      <string>socksParentProxy=localhost:1080</string>
+    </array>
+  </dict>
+</plist>
+</pre>
+
 <p>然后执行以下命令，搞定收工。</p>
+
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ln -sfv /usr/local/opt/polipo/*.plist ~/Library/LaunchAgents
 launchctl load ~/Library/LaunchAgents/homebrew.mxcl.polipo.plist
 </code></pre></div></div>
 
-<p>polipo进程默认监听8123端口，在命令行使用export http_proxy=http://localhost:8123 就可以使用代理了。</p>
+<p>polipo 进程默认监听8123端口，在命令行使用 <code class="highlighter-rouge">export http_proxy=http://localhost:8123</code> 就可以使用代理了。</p>
 
-<p>export https_proxy=http://localhost:8123
-export ftp_proxy=http://localhost:8123</p>
-
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>export https_proxy=http://localhost:8123
+export ftp_proxy=http://localhost:8123
+</code></pre></div></div>
 
         
       </section>
@@ -334,33 +271,6 @@ export ftp_proxy=http://localhost:8123</p>
     <div class="page__related">
       <h4 class="page__related-title">You May Also Enjoy</h4>
       <div class="grid__wrapper">
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="/posts/2019-05-22-welcome-to-jekyll.html" rel="permalink">Welcome to Jekyll!
-</a>
-      
-    </h2>
-    
-      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
-
-
-
-
-  less than 1 minute read
-</p>
-    
-    <p class="archive__item-excerpt" itemprop="description">You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different wa...</p>
-  </article>
-</div>
-
         
           
 
@@ -449,6 +359,35 @@ export ftp_proxy=http://localhost:8123</p>
 </div>
 
         
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/posts/2016-06-16-autostart-app-linux.html" rel="permalink">Linux里GUI程序自启动
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">将.desktop文件复制到 /home/${user}/.config/autostart/目录下即可。
+
+</p>
+  </article>
+</div>
+
+        
       </div>
     </div>
   
@@ -459,13 +398,18 @@ export ftp_proxy=http://localhost:8123</p>
 
     
       <div class="search-content">
-        <div class="search-content__inner-wrap"><input type="search" id="search" aria-placeholder="Enter your search term..." class="search-input" tabindex="-1" placeholder="Enter your search term..." />
-    <div id="results" class="results"></div></div>
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
 
       </div>
     
 
-    <div class="page__footer">
+    <div id="footer" class="page__footer">
       <footer>
         <!-- start custom footer snippets -->
 
@@ -487,7 +431,7 @@ export ftp_proxy=http://localhost:8123</p>
 
     
   <script src="/assets/js/main.min.js"></script>
-  <script defer src="https://use.fontawesome.com/releases/v5.8.1/js/all.js" integrity="sha384-g5uSoOSBd7KkhAMlnQILrecXvzst9TdC09/VM+pjDTCM+1il8RHz5fKANTFFb+gQ" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
 
 
 

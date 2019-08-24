@@ -1,27 +1,27 @@
 <!doctype html>
 <!--
-  Minimal Mistakes Jekyll Theme 4.16.3 by Michael Rose
+  Minimal Mistakes Jekyll Theme 4.16.6 by Michael Rose
   Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
   Free for personal and commercial use under the MIT license
   https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
 -->
-<html lang="en" class="no-js">
+<html lang="zh" class="no-js">
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Show more detail info on will_paginate bar - Qichunren’s blog</title>
-<meta name="description" content="Just create an extension in lib directory:class PaginationDetailLinkRenderer &lt; WillPaginate::LinkRenderer  # useage: &lt;%=will_paginate @auctions, :renderer =&gt; PaginationDetailLinkRenderer %&gt;  def to_html    links = @options[:page_links] ? windowed_links : []    links.unshift page_link_or_span(@collection.previous_page, &#39;disabled prev_page&#39;, @options[:previous_label])    links.push    page_link_or_span(@collection.next_page,     &#39;disabled next_page&#39;, @options[:next_label])    html = links.join(@options[:separator])    html = &quot;每页显示&lt;b&gt;#{@collection.per_page}&lt;/b&gt;条数据,共有&lt;b&gt;#{total_pages}&lt;/b&gt;页,  共有&lt;b&gt;#{@collection.total_entries}&lt;/b&gt;条数据&quot; + html    @options[:container] ? @template.content_tag(:div, html, html_attributes) : html  endendAnd the result is like this:">
+<!-- begin _includes/seo.html --><title>Show more detail info on will_paginate bar - Qichunren blog</title>
+<meta name="description" content="Just create an extension in lib directory:">
 
 
 
 <meta property="og:type" content="article">
-<meta property="og:locale" content="en_US">
-<meta property="og:site_name" content="Qichunren's blog">
+<meta property="og:locale" content="zh">
+<meta property="og:site_name" content="Qichunren blog">
 <meta property="og:title" content="Show more detail info on will_paginate bar">
 <meta property="og:url" content="/posts/2010-08-08-show-more-info-on-will-paginate-bar.html">
 
 
-  <meta property="og:description" content="Just create an extension in lib directory:class PaginationDetailLinkRenderer &lt; WillPaginate::LinkRenderer  # useage: &lt;%=will_paginate @auctions, :renderer =&gt; PaginationDetailLinkRenderer %&gt;  def to_html    links = @options[:page_links] ? windowed_links : []    links.unshift page_link_or_span(@collection.previous_page, &#39;disabled prev_page&#39;, @options[:previous_label])    links.push    page_link_or_span(@collection.next_page,     &#39;disabled next_page&#39;, @options[:next_label])    html = links.join(@options[:separator])    html = &quot;每页显示&lt;b&gt;#{@collection.per_page}&lt;/b&gt;条数据,共有&lt;b&gt;#{total_pages}&lt;/b&gt;页,  共有&lt;b&gt;#{@collection.total_entries}&lt;/b&gt;条数据&quot; + html    @options[:container] ? @template.content_tag(:div, html, html_attributes) : html  endendAnd the result is like this:">
+  <meta property="og:description" content="Just create an extension in lib directory:">
 
 
 
@@ -41,9 +41,16 @@
 
 
 
-
-
-
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "qichunren",
+      "url": "/"
+    
+  }
+</script>
 
 
 
@@ -53,7 +60,7 @@
 <!-- end _includes/seo.html -->
 
 
-<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Qichunren's blog Feed">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Qichunren blog Feed">
 
 <!-- https://t.co/dKP3o1e -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -91,6 +98,14 @@
   </head>
 
   <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
 
     <!--[if lt IE 9]>
 <div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
@@ -103,13 +118,16 @@
     <div class="masthead__menu">
       <nav id="site-nav" class="greedy-nav">
         
-        <a class="site-title" href="/">Qichunren's blog</a>
+        <a class="site-title" href="/">
+          Qichunren blog
+          
+        </a>
         <ul class="visible-links"><li class="masthead__menu-item">
               <a href="/about/" >About</a>
             </li><li class="masthead__menu-item">
               <a href="/" >Posts</a>
             </li><li class="masthead__menu-item">
-              <a href="/collection-archive/" >Posts by Collection</a>
+              <a href="/wiki/" >Wiki</a>
             </li><li class="masthead__menu-item">
               <a href="https://github.com/qichunren" >Github</a>
             </li></ul>
@@ -139,94 +157,10 @@
 
 <div id="main" role="main">
   
-  <div class="sidebar sticky">
-  
-
-
-<div itemscope itemtype="https://schema.org/Person">
-
-  
-
-  <div class="author__content">
-    
-      <h3 class="author__name" itemprop="name"></h3>
-    
-    
-  </div>
-
-  <div class="author__urls-wrapper">
-    <button class="btn btn--inverse">Follow</button>
-    <ul class="author__urls social-icons">
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      <!--
-  <li>
-    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
-      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
-    </a>
-  </li>
--->
-    </ul>
-  </div>
-</div>
-
-  
-  </div>
-
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
     <meta itemprop="headline" content="Show more detail info on will_paginate bar">
-    <meta itemprop="description" content="Just create an extension in lib directory:class PaginationDetailLinkRenderer &lt; WillPaginate::LinkRenderer  # useage: &lt;%=will_paginate @auctions, :renderer =&gt; PaginationDetailLinkRenderer %&gt;  def to_html    links = @options[:page_links] ? windowed_links : []    links.unshift page_link_or_span(@collection.previous_page, &#39;disabled prev_page&#39;, @options[:previous_label])    links.push    page_link_or_span(@collection.next_page,     &#39;disabled next_page&#39;, @options[:next_label])    html = links.join(@options[:separator])    html = &quot;每页显示&lt;b&gt;#{@collection.per_page}&lt;/b&gt;条数据,共有&lt;b&gt;#{total_pages}&lt;/b&gt;页,  共有&lt;b&gt;#{@collection.total_entries}&lt;/b&gt;条数据&quot; + html    @options[:container] ? @template.content_tag(:div, html, html_attributes) : html  endendAnd the result is like this:">
+    <meta itemprop="description" content="Just create an extension in lib directory:">
     <meta itemprop="datePublished" content="August 08, 2010">
     
 
@@ -251,24 +185,9 @@
         
         <p>Just create an extension in lib directory:</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">PaginationDetailLinkRenderer</span> <span class="o">&lt;</span> <span class="no">WillPaginate</span><span class="o">::</span><span class="no">LinkRenderer</span>
+<p>And the result is like this:</p>
 
-  <span class="c1"># useage: &lt;%=will_paginate @auctions, :renderer =&gt; PaginationDetailLinkRenderer %&gt;
-</span>
-
-  <span class="k">def</span> <span class="nf">to_html</span>
-    <span class="n">links</span> <span class="o">=</span> <span class="vi">@options</span><span class="p">[</span><span class="ss">:page_links</span><span class="p">]</span> <span class="p">?</span> <span class="n">windowed_links</span> <span class="p">:</span> <span class="p">[]</span>
-    <span class="n">links</span><span class="p">.</span><span class="nf">unshift</span> <span class="n">page_link_or_span</span><span class="p">(</span><span class="vi">@collection</span><span class="p">.</span><span class="nf">previous_page</span><span class="p">,</span> <span class="s1">'disabled prev_page'</span><span class="p">,</span> <span class="vi">@options</span><span class="p">[</span><span class="ss">:previous_label</span><span class="p">])</span>
-    <span class="n">links</span><span class="p">.</span><span class="nf">push</span>    <span class="n">page_link_or_span</span><span class="p">(</span><span class="vi">@collection</span><span class="p">.</span><span class="nf">next_page</span><span class="p">,</span>     <span class="s1">'disabled next_page'</span><span class="p">,</span> <span class="vi">@options</span><span class="p">[</span><span class="ss">:next_label</span><span class="p">])</span>
-    <span class="n">html</span> <span class="o">=</span> <span class="n">links</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="vi">@options</span><span class="p">[</span><span class="ss">:separator</span><span class="p">])</span>
-    <span class="n">html</span> <span class="o">=</span> <span class="s2">"每页显示&lt;b&gt;</span><span class="si">#{</span><span class="vi">@collection</span><span class="p">.</span><span class="nf">per_page</span><span class="si">}</span><span class="s2">&lt;/b&gt;条数据,共有&lt;b&gt;</span><span class="si">#{</span><span class="n">total_pages</span><span class="si">}</span><span class="s2">&lt;/b&gt;页,  共有&lt;b&gt;</span><span class="si">#{</span><span class="vi">@collection</span><span class="p">.</span><span class="nf">total_entries</span><span class="si">}</span><span class="s2">&lt;/b&gt;条数据"</span> <span class="o">+</span> <span class="n">html</span>
-    <span class="vi">@options</span><span class="p">[</span><span class="ss">:container</span><span class="p">]</span> <span class="p">?</span> <span class="vi">@template</span><span class="p">.</span><span class="nf">content_tag</span><span class="p">(:</span><span class="n">div</span><span class="p">,</span> <span class="n">html</span><span class="p">,</span> <span class="n">html_attributes</span><span class="p">)</span> <span class="p">:</span> <span class="n">html</span>
-  <span class="k">end</span>
-
-<span class="k">end</span></code></pre></figure>
-
-<p>And the result is like this:
-<img src="/images/posts/2010-08-08-paginate-bar.jpg" alt="will_paginate bar" title="will_paginate bar" /></p>
+<p><img src="/images/posts/2010-08-08-paginate-bar.jpg" alt="will_paginate bar" title="will_paginate bar" /></p>
 
         
       </section>
@@ -316,33 +235,6 @@
     <div class="page__related">
       <h4 class="page__related-title">You May Also Enjoy</h4>
       <div class="grid__wrapper">
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="/posts/2019-05-22-welcome-to-jekyll.html" rel="permalink">Welcome to Jekyll!
-</a>
-      
-    </h2>
-    
-      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
-
-
-
-
-  less than 1 minute read
-</p>
-    
-    <p class="archive__item-excerpt" itemprop="description">You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different wa...</p>
-  </article>
-</div>
-
         
           
 
@@ -431,6 +323,35 @@
 </div>
 
         
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/posts/2016-06-16-autostart-app-linux.html" rel="permalink">Linux里GUI程序自启动
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">将.desktop文件复制到 /home/${user}/.config/autostart/目录下即可。
+
+</p>
+  </article>
+</div>
+
+        
       </div>
     </div>
   
@@ -441,13 +362,18 @@
 
     
       <div class="search-content">
-        <div class="search-content__inner-wrap"><input type="search" id="search" aria-placeholder="Enter your search term..." class="search-input" tabindex="-1" placeholder="Enter your search term..." />
-    <div id="results" class="results"></div></div>
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
 
       </div>
     
 
-    <div class="page__footer">
+    <div id="footer" class="page__footer">
       <footer>
         <!-- start custom footer snippets -->
 
@@ -469,7 +395,7 @@
 
     
   <script src="/assets/js/main.min.js"></script>
-  <script defer src="https://use.fontawesome.com/releases/v5.8.1/js/all.js" integrity="sha384-g5uSoOSBd7KkhAMlnQILrecXvzst9TdC09/VM+pjDTCM+1il8RHz5fKANTFFb+gQ" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
 
 
 
