@@ -27,3 +27,8 @@ https://www.youtube.com/user/brainchildo/videos
 [Pigdev at youtube](https://www.youtube.com/channel/UCFK9ZoVDqDgY6KGMcHEloFw/videos)
 
 https://www.reddit.com/comments/8fiipa
+
+
+## 3D inspiration
+
+* https://demos.littleworkshop.fr/infinitown
