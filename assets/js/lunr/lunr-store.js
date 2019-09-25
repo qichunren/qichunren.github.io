@@ -435,7 +435,7 @@ var store = [{
         "url": "/posts/2016-08-15-get-started-with-autotools.html",
         "teaser":null},{
         "title": "解决Ruby Gem 扩展的交叉编译",
-        "excerpt":"Fixed ruby gem package cross compile on ARM / i.MX6 with Buildroot tool. Ariaboard core board 在 ARM 或者 i.MX6 平台上使用 Ruby 不是一件容易的事情，原因在于 Buildroot 的 Ruby 包 中不支持在目标平台上编译带有 C/C++ 扩展的 GEM　包，像一些常用 GEM 包，如 Eventmachine、串口操作的 ruby-serialport 等都没有办法在目标平台上使用，只能安装使用纯 Ruby 代码编写的 GEM 包。 在解决问题的过程中，我查找了不少资料，包括 Buildroot的，包括 gcc 编译相关的，最终都无果。 后来我突发奇想，Ruby 源代码中的 ext 目录的 C 扩展的标准库都可以编译出来，如...","categories": ["Development"],
+        "excerpt":"Fixed ruby gem package cross compile on ARM / i.MX6 with Buildroot tool. 在 ARM 或者 i.MX6 平台上使用 Ruby 不是一件容易的事情，原因在于 Buildroot 的 Ruby 包 中不支持在目标平台上编译带有 C/C++ 扩展的 GEM　包，像一些常用 GEM 包，如 Eventmachine、串口操作的 ruby-serialport 等都没有办法在目标平台上使用，只能安装使用纯 Ruby 代码编写的 GEM 包。 在解决问题的过程中，我查找了不少资料，包括 Buildroot的，包括 gcc 编译相关的，最终都无果。 后来我突发奇想，Ruby 源代码中的 ext 目录的 C 扩展的标准库都可以编译出来，如 socket 、readline 等，那我将...","categories": ["Development"],
         "tags": [],
         "url": "/posts/2019-09-25-fixed-gem-extension-build-on-arm-buildroot.html",
         "teaser":null},{
