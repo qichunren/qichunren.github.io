@@ -21,3 +21,7 @@ position: Developer
 ## Low poly
 
 * [Low Poly Lab](https://www.lowpolylab.net/)
+
+## Web templates
+
+* [Free - Bootstrap Themes & Templates by Xiaoying Riley](https://themes.3rdwavemedia.com/bootstrap-templates/free/)
