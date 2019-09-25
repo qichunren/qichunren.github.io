@@ -8,11 +8,11 @@ categories: Development
 
 Fixed ruby gem package cross compile on ARM / i.MX6 with Buildroot tool. 
 
-[Ariaboard core board](../images/ariaboard-coreboard.jpg)
+![Ariaboard core board](/images/ariaboard-coreboard.jpg)
 
 在 ARM 或者 i.MX6 平台上使用 Ruby 不是一件容易的事情，原因在于 [Buildroot](https://buildroot.org/) 的 [Ruby 包](https://github.com/maximeh/buildroot/blob/master/package/ruby/ruby.mk) 中不支持在目标平台上编译带有 C/C++ 扩展的 GEM　包，像一些常用 GEM 包，如 [Eventmachine](https://github.com/eventmachine/eventmachine)、串口操作的 [ruby-serialport](https://github.com/hparra/ruby-serialport) 等都没有办法在目标平台上使用，只能安装使用纯 Ruby 代码编写的 GEM 包。
 
-![Ruby Buildroot package problem](./images/ruby-buildroot-package-problem.png)
+![Ruby Buildroot package problem](/images/ruby-buildroot-package-problem.png)
 
 在解决问题的过程中，我查找了不少资料，包括 Buildroot的，包括 gcc 编译相关的，最终都无果。
 
