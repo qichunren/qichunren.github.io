@@ -1,4 +1,39 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2019-08-24T12:42:19+08:00</updated><id>/feed.xml</id><title type="html">Qichunren blog</title><subtitle>Record my thoughts, development notes.</subtitle><entry><title type="html">Get started with autotools</title><link href="/posts/2016-08-15-get-started-with-autotools.html" rel="alternate" type="text/html" title="Get started with autotools" /><published>2016-08-15T15:20:00+08:00</published><updated>2016-08-15T15:20:00+08:00</updated><id>/posts/get-started-with-autotools</id><content type="html" xml:base="/posts/2016-08-15-get-started-with-autotools.html">&lt;p&gt;Follow this &lt;a href=&quot;https://www.gnu.org/software/automake/manual/html_node/Hello-World.html#Hello-World&quot;&gt;tutorial&lt;/a&gt; to get started with autotools.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2019-09-25T12:50:38+08:00</updated><id>/feed.xml</id><title type="html">Qichunren blog</title><subtitle>Record my thoughts, development notes.</subtitle><entry><title type="html">解决Ruby Gem 扩展的交叉编译</title><link href="/posts/2019-09-25-fixed-gem-extension-build-on-arm-buildroot.html" rel="alternate" type="text/html" title="解决Ruby Gem 扩展的交叉编译" /><published>2019-09-25T10:20:00+08:00</published><updated>2019-09-25T10:20:00+08:00</updated><id>/posts/fixed-gem-extension-build-on-arm-buildroot</id><content type="html" xml:base="/posts/2019-09-25-fixed-gem-extension-build-on-arm-buildroot.html">&lt;p&gt;Fixed ruby gem package cross compile on ARM / i.MX6 with Buildroot tool.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;../images/ariaboard-coreboard.jpg&quot;&gt;Ariaboard core board&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;在 ARM 或者 i.MX6 平台上使用 Ruby 不是一件容易的事情，原因在于 &lt;a href=&quot;https://buildroot.org/&quot;&gt;Buildroot&lt;/a&gt; 的 &lt;a href=&quot;https://github.com/maximeh/buildroot/blob/master/package/ruby/ruby.mk&quot;&gt;Ruby 包&lt;/a&gt; 中不支持在目标平台上编译带有 C/C++ 扩展的 GEM　包，像一些常用 GEM 包，如 &lt;a href=&quot;https://github.com/eventmachine/eventmachine&quot;&gt;Eventmachine&lt;/a&gt;、串口操作的 &lt;a href=&quot;https://github.com/hparra/ruby-serialport&quot;&gt;ruby-serialport&lt;/a&gt; 等都没有办法在目标平台上使用，只能安装使用纯 Ruby 代码编写的 GEM 包。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;./images/ruby-buildroot-package-problem.png&quot; alt=&quot;Ruby Buildroot package problem&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;在解决问题的过程中，我查找了不少资料，包括 Buildroot的，包括 gcc 编译相关的，最终都无果。&lt;/p&gt;
+
+&lt;p&gt;后来我突发奇想，Ruby 源代码中的 ext 目录的 C 扩展的标准库都可以编译出来，如 socket 、readline 等，那我将 GEM 包的源代码放进 ext 目录中是不是也可以直接作为标准库的一部分给自动编译出来呢？答案是可以的，不过有一些问题需要注意。&lt;/p&gt;
+
+&lt;p&gt;观察 &lt;a href=&quot;https://github.com/ruby/ruby/tree/master/ext&quot;&gt;ext 目录&lt;/a&gt; 中的 C 扩展接口，发现每个 C 扩展目录中带有一个 &lt;em&gt;extconf.rb&lt;/em&gt; 文件，C 代码直接位于目录中，然后其中的 lib 目录中是 Ruby 的代码。所以我将 GEM 包的 ext 目录中的内容复制到扩展目录中，然后将 GEM 包的 lib 目录也复制到扩展目录，然后正常 configure / make / make install 的步骤就可以了。&lt;/p&gt;
+
+&lt;p&gt;下面先在 x86 平台上来验证我的想法:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;wget https://cache.ruby-lang.org/pub/ruby/2.6/ruby-2.6.4.tar.gz
+tar zxf ruby-2.6.4.tar.gz
+wget https://github.com/hparra/ruby-serialport/archive/master.zip 
+unzip master.zip
+cd ruby-2.6.4
+mkdir ext/serialport
+cp -r ../ruby-serialport/ext/* ext/serialport/
+cp -r ../ruby-serialport/lib ext/serialport/
+./configure --prefix=/usr/local/ruby-2.6.4 --disable-install-doc
+make
+sudo make install
+cd /usr/local/ruby-2.6.4/bin
+./irb
+irb(main):002:0&amp;gt; require 'serialport'
+=&amp;gt; true
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;成功了，serialport 已经作为标准库的一部分，可以直接使用了。对于在 Buildroot中&lt;a href=&quot;https://github.com/maximeh/buildroot/blob/master/package/ruby/ruby.mk&quot;&gt;编译&lt;/a&gt;，可以使用 patch 的方法，将 GEM 包加到 ext 中，从而直接解决了交叉编译的难题。&lt;/p&gt;
+
+&lt;p&gt;后记：在编译 &lt;a href=&quot;https://github.com/eventmachine/eventmachine&quot;&gt;Eventmachine&lt;/a&gt; 包的时候，不知道为什么需要手动在 project.h 和 em.h 文件中手动加入 #include “extconf.h” ，可能是 CPP 写的扩展包导致 extconf.h 头文件在 Makefile 中没有生效还是什么原因，待解决。&lt;/p&gt;</content><author><name></name></author><summary type="html">Fixed ruby gem package cross compile on ARM / i.MX6 with Buildroot tool.</summary></entry><entry><title type="html">Get started with autotools</title><link href="/posts/2016-08-15-get-started-with-autotools.html" rel="alternate" type="text/html" title="Get started with autotools" /><published>2016-08-15T15:20:00+08:00</published><updated>2016-08-15T15:20:00+08:00</updated><id>/posts/get-started-with-autotools</id><content type="html" xml:base="/posts/2016-08-15-get-started-with-autotools.html">&lt;p&gt;Follow this &lt;a href=&quot;https://www.gnu.org/software/automake/manual/html_node/Hello-World.html#Hello-World&quot;&gt;tutorial&lt;/a&gt; to get started with autotools.&lt;/p&gt;
 
 &lt;h3 id=&quot;configureac文件&quot;&gt;configure.ac文件&lt;/h3&gt;
 
@@ -51,9 +86,9 @@ Command &lt;code class=&quot;highlighter-rouge&quot;&gt;./configure&lt;/code&gt;
   &lt;li&gt;&lt;a href=&quot;https://autotools.io/index.html&quot;&gt;Autotools Mythbuster&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;</content><author><name></name></author><summary type="html">Follow this tutorial to get started with autotools.</summary></entry><entry><title type="html">Work with binary data</title><link href="/posts/2016-06-22-work-with-binary-data.html" rel="alternate" type="text/html" title="Work with binary data" /><published>2016-06-22T11:25:00+08:00</published><updated>2016-06-22T11:25:00+08:00</updated><id>/posts/work-with-binary-data</id><content type="html" xml:base="/posts/2016-06-22-work-with-binary-data.html">&lt;p&gt;最近在做一些网络编程方面的东西，之前大多数情况接触的都是文本协议，现在接触的是二进制协议。在此补一下相关知识，下面基本上是以Ruby语言来描述用法。&lt;/p&gt;
 
-&lt;p&gt;在Ruby中字面常量二近制数据以0b开头。&lt;/p&gt;
+&lt;p&gt;在Ruby中字面常量二近制数据以 0b 开头:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;qichunren@qichunren-work:~$ irb
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ irb
 1.9.3-p194 :001 &amp;gt; 0b1010
  =&amp;gt; 10 
 1.9.3-p194 :002 &amp;gt; 0b10
@@ -70,7 +105,7 @@ Command &lt;code class=&quot;highlighter-rouge&quot;&gt;./configure&lt;/code&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;### 二进制转换成十进制
 
-qichunren@qichunren-work:~$ irb
+$ irb
 1.9.3-p194 :001 &amp;gt; 0b10.to_s(10)
  =&amp;gt; &quot;2&quot; 
 1.9.3-p194 :002 &amp;gt; 0b11.to_s(10)
@@ -81,7 +116,7 @@ qichunren@qichunren-work:~$ irb
  
 ### 十进制转换成二进制
 
-qichunren@qichunren-work:~$ irb
+$ irb
 1.9.3-p194 :001 &amp;gt; 10.to_s(2)
  =&amp;gt; &quot;1010&quot; 
 1.9.3-p194 :002 &amp;gt; 4.to_s(2)
@@ -91,22 +126,20 @@ qichunren@qichunren-work:~$ irb
 
 ### 十六进制转换成十进制
 
-1.9.3-p194 :004 &amp;gt; 0xFF.to_s(10)
- =&amp;gt; &quot;255&quot; 
-1.9.3-p194 :005 &amp;gt; 0xFF.to_s
- =&amp;gt; &quot;255&quot; 
+0xFF.to_s(10) # &quot;255&quot; 
+0xFF.to_s # &quot;255&quot; 
+&quot;FF&quot;.hex # 255 
 
 ### 十六进制转换成二进制
 
-1.9.3-p194 :006 &amp;gt; 0xFF.to_s(2)
- =&amp;gt; &quot;11111111&quot;
+0xFF.to_s(2) # &quot;11111111&quot;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h3 id=&quot;stringto_ibase--10&quot;&gt;String#to_i(base = 10)&lt;/h3&gt;
 
 &lt;p&gt;String#to_i(base = 10) 方法用于将各种进制的字符串转换成十进制数。&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;qichunren@qichunren-work:~$ irb
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ irb
 1.9.3-p194 :001 &amp;gt; &quot;0b100&quot;.to_i(2)
  =&amp;gt; 4 
 1.9.3-p194 :002 &amp;gt; &quot;0100&quot;.to_i(10)
@@ -121,7 +154,7 @@ qichunren@qichunren-work:~$ irb
 
 &lt;p&gt;String#unpack 和 Array#pack在网络程序中处理二进制时用得比较多。&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; qichunren@qichunren-work:~$ irb
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; $ irb
  1.9.3-p194 :045 &amp;gt; &quot;\xff\x00\x2a&quot;.unpack('C*')
   =&amp;gt; [255, 0, 42]
  1.9.3-p194 :042 &amp;gt; [192,168,1,1].pack('C*')
@@ -153,12 +186,26 @@ end
 &amp;gt;&amp;gt; right shift
 &amp;lt;&amp;lt; left shift         
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;一个字节是8位，每个位上是0或者1。判断字节中某一个是否是1，使用 &amp;amp; 操作判断结果是否大于0：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;a_byte = 0b10100001
+a_byte &amp;amp; (1 &amp;lt;&amp;lt; 0) # 1
+a_byte &amp;amp; (1 &amp;lt;&amp;lt; 1) # 0
+a_byte &amp;amp; (1 &amp;lt;&amp;lt; 5) # 32
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;整数数据类型&quot;&gt;整数数据类型&lt;/h3&gt;
+
+&lt;p&gt;在 Ruby 中 Integer 没有像 大多数语言有区别 整数的数据类型 uint8, uint16, uint32&lt;/p&gt;
+
+&lt;p&gt;将一个 Integer 转换成 int8： a_int &amp;amp; 0xff&lt;/p&gt;
 
 &lt;h4 id=&quot;resources&quot;&gt;Resources&lt;/h4&gt;
 
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;http://blog.bigbinary.com/2011/07/20/ruby-pack-unpack.html&quot;&gt;Ruby pack unpack&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://calleerlandsson.com/2014/02/06/rubys-bitwise-operators/&quot;&gt;Ruby’s bitwise operators&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/dmendel/bindata&quot;&gt;Ruby bindata gem&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;</content><author><name></name></author><summary type="html">最近在做一些网络编程方面的东西，之前大多数情况接触的都是文本协议，现在接触的是二进制协议。在此补一下相关知识，下面基本上是以Ruby语言来描述用法。</summary></entry><entry><title type="html">Buildroot简单使用</title><link href="/posts/2016-06-21-use-buildroot-cross-build-app.html" rel="alternate" type="text/html" title="Buildroot简单使用" /><published>2016-06-21T18:12:00+08:00</published><updated>2016-06-21T18:12:00+08:00</updated><id>/posts/use-buildroot-cross-build-app</id><content type="html" xml:base="/posts/2016-06-21-use-buildroot-cross-build-app.html">&lt;p&gt;使用 &lt;a href=&quot;https://buildroot.org/&quot;&gt;Buildroot&lt;/a&gt; 可以方便的灵活的构建一个定制的用于嵌入式平台的Linux系统。&lt;/p&gt;
 
 &lt;p&gt;公司里有自己开发的类beaglebone的核心板。我之前调试QT程序都时需要在板子里编译程序，很花费时间，也不方便。&lt;/p&gt;
@@ -524,113 +571,4 @@ end
 
 &lt;p&gt;在用户的浏览器中，GET请求的URL是可以被保存书签的，POST请求不行。GET请求的URL是有历史记录的，可以前进 / 后退 / 刷新。POST请求则不行。&lt;/p&gt;
 
-&lt;p&gt;完。&lt;/p&gt;</content><author><name></name></author><summary type="html">对使用http请求的GET和POST的一点思考</summary></entry><entry><title type="html">在QT5中使用JSON库json-c</title><link href="/posts/2015-07-13-use-json-in-qt5.html" rel="alternate" type="text/html" title="在QT5中使用JSON库json-c" /><published>2015-07-13T12:30:00+08:00</published><updated>2015-07-13T12:30:00+08:00</updated><id>/posts/use-json-in-qt5</id><content type="html" xml:base="/posts/2015-07-13-use-json-in-qt5.html">&lt;p&gt;首先需要安装json-c库:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo apt-get install libjson-c-dev
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;在QT的项目中，修改.pro文件，加入：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;CONFIG += link_pkgconfig
-PKGCONFIG += json-c
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;构建JSON的方法如下&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;        #include &amp;lt;json/json.h&amp;gt;
-        
-        /*Creating a json object*/
-        json_object * jobj = json_object_new_object();
-
-        /*Creating a json string*/
-        json_object *jstring = json_object_new_string(&quot;Joys of Programming&quot;);
-
-        /*Creating a json integer*/
-        json_object *jint = json_object_new_int(10);
-
-        /*Creating a json boolean*/
-        json_object *jboolean = json_object_new_boolean(1);
-
-        /*Creating a json double*/
-        json_object *jdouble = json_object_new_double(2.14);
-
-        /*Creating a json array*/
-        json_object *jarray = json_object_new_array();
-
-        /*Creating json strings*/
-        json_object *jstring1 = json_object_new_string(&quot;c&quot;);
-        json_object *jstring2 = json_object_new_string(&quot;c++&quot;);
-        json_object *jstring3 = json_object_new_string(&quot;php&quot;);
-
-        /*Adding the above created json strings to the array*/
-        json_object_array_add(jarray,jstring1);
-        json_object_array_add(jarray,jstring2);
-        json_object_array_add(jarray,jstring3);
-        json_object_array_add(jarray,jstring4);
-
-        /*Form the json object*/
-        /*Each of these is like a key value pair*/
-        json_object_object_add(jobj,&quot;Site Name&quot;, jstring);
-        json_object_object_add(jobj,&quot;Technical blog&quot;, jboolean);
-        json_object_object_add(jobj,&quot;Average posts per day&quot;, jdouble);
-        json_object_object_add(jobj,&quot;Number of posts&quot;, jint);
-        json_object_object_add(jobj,&quot;Categories&quot;, jarray);
-
-        /*Now printing the json object*/
-        printf (&quot;The json object created: %sn&quot;,json_object_to_json_string(jobj));    
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;程序结果是：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  The json object created: { &quot;Site Name&quot;: &quot;Joys of Programming&quot;, &quot;Technical blog&quot;: true, &quot;Average posts per day&quot;: 2.140000, &quot;Number of posts&quot;: 10, &quot;Categories&quot;: [ &quot;c&quot;, &quot;c++&quot;, &quot;php&quot; ] }
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;解析JSON字符串的方法如下&lt;/p&gt;
-
-&lt;p&gt;例如有如下的字符串&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{&quot;column&quot;:[&quot;symbol&quot;,&quot;name&quot;],&quot;data&quot;:[[&quot;SZ000001&quot;,&quot;平安银行&quot;],[&quot;SZ000005&quot;,&quot;世纪星源&quot;],[&quot;SZ000006&quot;,&quot;深振业A&quot;],[&quot;SZ000008&quot;,&quot;神州高铁&quot;],[&quot;SZ000009&quot;,&quot;中国宝安&quot;]],&quot;count&quot;:1544.0}      
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;QByteArray json_content_arr = network_reply-&amp;gt;readAll();
-const char *json_content = json_content_arr.constData();
-puts(&quot;Sync from xueqiu&quot;);
-
-struct json_tokener *tokener;
-struct json_object *json_root, *data_array_child, *stock_item_child, *stock_code_child, *stock_name_child;
-
-tokener = json_tokener_new();
-json_root = json_tokener_parse_ex(tokener, json_content, strlen(json_content));
-json_tokener_free(tokener);
-if(json_root == NULL) {
-    return;
-}
-json_object_object_get_ex(json_root, &quot;data&quot;, &amp;amp;data_array_child);
-if(data_array_child != NULL) {
-
-
-    FILE *f = fopen(&quot;/home/qichunren/logs.txt&quot;, &quot;a+&quot;);
-    if (f == NULL) {
-        printf(&quot;Error opening file!\n&quot;);
-        return;
-    }
-        int array_len = json_object_array_length(data_array_child);
-        printf(&quot;stock length %d\n&quot;, array_len);
-        for(int i=0;i&amp;lt;array_len;i++) {
-            stock_item_child = json_object_array_get_idx(data_array_child, i);
-            if(stock_item_child == NULL) {
-                continue;
-            }
-            stock_code_child = json_object_array_get_idx(stock_item_child, 0);
-            stock_name_child = json_object_array_get_idx(stock_item_child, 1);
-            if(stock_code_child != NULL &amp;amp;&amp;amp; stock_name_child != NULL) {
-                const char *stock_code = json_object_get_string(stock_code_child);
-                const char *stock_name = json_object_get_string(stock_name_child);
-                fprintf(f, &quot;%s %s\r\n&quot;, stock_code, stock_name);
-            }
-        }
-        fclose(f);
-}
-//qDebug() &amp;lt;&amp;lt; json_content_arr;
-network_reply-&amp;gt;deleteLater();
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author><summary type="html">首先需要安装json-c库:</summary></entry></feed>
+&lt;p&gt;完。&lt;/p&gt;</content><author><name></name></author><summary type="html">对使用http请求的GET和POST的一点思考</summary></entry></feed>

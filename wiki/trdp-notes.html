@@ -9,34 +9,34 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>20160522 - Qichunren blog</title>
-<meta name="description" content="20160522">
+<!-- begin _includes/seo.html --><title>TRDP Notes - Qichunren blog</title>
+<meta name="description" content="  Include headers:">
 
 
 
 <meta property="og:type" content="article">
 <meta property="og:locale" content="zh">
 <meta property="og:site_name" content="Qichunren blog">
-<meta property="og:title" content="20160522">
-<meta property="og:url" content="/work_logs/20160522.html">
+<meta property="og:title" content="TRDP Notes">
+<meta property="og:url" content="/wiki/trdp-notes.html">
 
 
-  <meta property="og:description" content="20160522">
-
-
-
-
-
-
-
-  <meta property="article:published_time" content="2019-09-25T12:50:38+08:00">
+  <meta property="og:description" content="  Include headers:">
 
 
 
 
 
 
-<link rel="canonical" href="/work_logs/20160522.html">
+
+  <meta property="article:published_time" content="2019-08-29T15:29:00+08:00">
+
+
+
+
+
+
+<link rel="canonical" href="/wiki/trdp-notes.html">
 
 
 
@@ -97,7 +97,7 @@
 
   </head>
 
-  <body class="layout--single">
+  <body class="layout--single wide">
     <nav class="skip-links">
   <h2 class="screen-reader-text">Skip links</h2>
   <ul>
@@ -159,15 +159,15 @@
   
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="20160522">
-    <meta itemprop="description" content="20160522">
-    
+    <meta itemprop="headline" content="TRDP Notes">
+    <meta itemprop="description" content="  Include headers:">
+    <meta itemprop="datePublished" content="August 29, 2019">
     
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">20160522
+          <h1 id="page-title" class="page__title" itemprop="headline">TRDP Notes
 </h1>
           
         </header>
@@ -175,21 +175,89 @@
 
       <section class="page__content" itemprop="text">
         
-        <h1 id="20160522">20160522</h1>
+        <ol>
+  <li>
+    <p>Include headers:</p>
 
-<h2 id="todo">TODO</h2>
+    <p>#include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h></string.h></stdlib.h></stdio.h></p>
 
-<ul>
-  <li>整理PIS系统通讯协议。</li>
-  <li>改写160公里PIS的屏通讯协议。</li>
-  <li>配置GPS NTP功能。</li>
-  <li>测试GPS报站功能。</li>
-  <li>PAIGO测试程序摄像头测试功能。</li>
-  <li>TBOX平台展示车辆轨迹。</li>
-  <li>学习Angular2。</li>
-  <li>学习GLib的网络通讯接口。</li>
-</ul>
+    <p>#if defined (POSIX)
+ #include <unistd.h>
+ #include &lt;sys/select.h&gt;
+ #elif (defined (WIN32) || defined (WIN64))
+ #include "getopt.h"
+ #endif</unistd.h></p>
 
+    <p>#include “trdp_if_light.h”
+ #include “vos_thread.h”
+ #include “vos_utils.h”</p>
+  </li>
+  <li>
+    <p>Init the library:
+ tlc_init</p>
+  </li>
+  <li>
+    <p>Open a session:</p>
+
+    <p>tlc_openSession(&amp;appHandle,
+                     ownIP, 0,               /* use default IP address           <em>/
+                     NULL,                   /</em> no Marshalling                   <em>/
+                     &amp;pdConfiguration, NULL, /</em> system defaults for PD and MD    */
+                     &amp;processConfig)</p>
+  </li>
+  <li>
+    <p>Copy the packet into the internal send queue, prepare for sending. If we change the data, just re-publish it</p>
+
+    <p>tlp_publish(  appHandle,                  /*    our application identifier    <em>/
+                     &amp;pubHandle,                 /</em>    our pulication identifier     <em>/
+                     NULL, NULL,
+                     0u,
+                     comId,                      /</em>    ComID to send                 <em>/
+                     0u,                          /</em>    etbTopoCnt = 0 for local consist only     <em>/
+                     0u,                          /</em>    opTopoCnt = 0 for non-directinal data     <em>/
+                     ownIP,                      /</em>    default source IP             <em>/
+                     destIP,                     /</em>    where to send to              <em>/
+                     cycleTime,                  /</em>    Cycle time in us              <em>/
+                     0u,                          /</em>    not redundant                 <em>/
+                     TRDP_FLAGS_NONE,            /</em>    Use callback for errors       <em>/
+                     NULL,                       /</em>    default qos and ttl           <em>/
+                     (UINT8 *)outputBuffer,      /</em>    initial data                  <em>/
+                     outputBufferSize            /</em>    data size                     */
+                     );</p>
+  </li>
+  <li>
+    <p>In a while loop:</p>
+
+    <p>/*
+     Check for overdue PDs (sending and receiving)
+     Send any pending PDs if it’s time…
+     Detect missing PDs…
+     ‘rv’ will be updated to show the handled events, if there are
+     more than one…
+     The callback function will be called from within the tlc_process
+     function (in it’s context and thread)!
+ */
+ (void) tlc_process(appHandle, &amp;rfds, &amp;rv);</p>
+  </li>
+  <li>
+    <p>Fill send data:
+ tlp_put(appHandle, pubHandle, outputBuffer, outputBufferSize);</p>
+  </li>
+  <li>
+    <p>Terminate:</p>
+
+    <p>/*</p>
+    <ul>
+      <li>We always clean up behind us!
+  */
+ tlp_unpublish(appHandle, pubHandle);
+ tlc_closeSession(appHandle);
+ tlc_terminate();</li>
+    </ul>
+  </li>
+</ol>
 
         
       </section>
@@ -200,6 +268,8 @@
 
 
         
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2019-08-29T15:29:00+08:00">August 29, 2019</time></p>
+        
       </footer>
 
       
@@ -207,10 +277,11 @@
       
   <nav class="pagination">
     
-      <a href="#" class="pagination--pager disabled">Previous</a>
+      <a href="/wiki/tool_box.html" class="pagination--pager" title="Tool Box
+">Previous</a>
     
     
-      <a href="/work_logs/20160907.html" class="pagination--pager" title="20160907
+      <a href="/wiki/windows_dev_notes.html" class="pagination--pager" title="Windows_dev_notes
 ">Next</a>
     
   </nav>

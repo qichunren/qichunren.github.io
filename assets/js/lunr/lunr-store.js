@@ -425,7 +425,7 @@ var store = [{
         "url": "/posts/2016-06-21-use-buildroot-cross-build-app.html",
         "teaser":null},{
         "title": "Work with binary data",
-        "excerpt":"最近在做一些网络编程方面的东西，之前大多数情况接触的都是文本协议，现在接触的是二进制协议。在此补一下相关知识，下面基本上是以Ruby语言来描述用法。 在Ruby中字面常量二近制数据以0b开头。 qichunren@qichunren-work:~$ irb 1.9.3-p194 :001 &gt; 0b1010 =&gt; 10 1.9.3-p194 :002 &gt; 0b10 =&gt; 2 1.9.3-p194 :003 &gt; 0b11 =&gt; 3 1.9.3-p194 :004 &gt; 0b100 =&gt; 4 Fixnum#to_s(base = 10) Fixnum#to_s(base = 10) 方法用于各种进制之间的转换。 ### 二进制转换成十进制 qichunren@qichunren-work:~$ irb 1.9.3-p194 :001 &gt; 0b10.to_s(10) =&gt; \"2\" 1.9.3-p194 :002 &gt; 0b11.to_s(10) =&gt;...","categories": ["Development"],
+        "excerpt":"最近在做一些网络编程方面的东西，之前大多数情况接触的都是文本协议，现在接触的是二进制协议。在此补一下相关知识，下面基本上是以Ruby语言来描述用法。 在Ruby中字面常量二近制数据以 0b 开头: $ irb 1.9.3-p194 :001 &gt; 0b1010 =&gt; 10 1.9.3-p194 :002 &gt; 0b10 =&gt; 2 1.9.3-p194 :003 &gt; 0b11 =&gt; 3 1.9.3-p194 :004 &gt; 0b100 =&gt; 4 Fixnum#to_s(base = 10) Fixnum#to_s(base = 10) 方法用于各种进制之间的转换。 ### 二进制转换成十进制 $ irb 1.9.3-p194 :001 &gt; 0b10.to_s(10) =&gt; \"2\" 1.9.3-p194 :002 &gt;...","categories": ["Development"],
         "tags": [],
         "url": "/posts/2016-06-22-work-with-binary-data.html",
         "teaser":null},{
@@ -433,6 +433,11 @@ var store = [{
         "excerpt":"Follow this tutorial to get started with autotools. configure.ac文件 使用 autoscan 工具生成 configure.scan 文件，将它重命名为 configure.ac ，默认的文件内容如下： # -*- Autoconf -*- # Process this file with autoconf to produce a configure script. AC_PREREQ([2.69]) AC_INIT([FULL-PACKAGE-NAME], [VERSION], [BUG-REPORT-ADDRESS]) # Checks for programs. # Checks for libraries. # Checks for header files. # Checks...","categories": ["Development"],
         "tags": [],
         "url": "/posts/2016-08-15-get-started-with-autotools.html",
+        "teaser":null},{
+        "title": "解决Ruby Gem 扩展的交叉编译",
+        "excerpt":"Fixed ruby gem package cross compile on ARM / i.MX6 with Buildroot tool. Ariaboard core board 在 ARM 或者 i.MX6 平台上使用 Ruby 不是一件容易的事情，原因在于 Buildroot 的 Ruby 包 中不支持在目标平台上编译带有 C/C++ 扩展的 GEM　包，像一些常用 GEM 包，如 Eventmachine、串口操作的 ruby-serialport 等都没有办法在目标平台上使用，只能安装使用纯 Ruby 代码编写的 GEM 包。 在解决问题的过程中，我查找了不少资料，包括 Buildroot的，包括 gcc 编译相关的，最终都无果。 后来我突发奇想，Ruby 源代码中的 ext 目录的 C 扩展的标准库都可以编译出来，如...","categories": ["Development"],
+        "tags": [],
+        "url": "/posts/2019-09-25-fixed-gem-extension-build-on-arm-buildroot.html",
         "teaser":null},{
         "title": "160 Pis Server Disk Make",
         "excerpt":"Server Disk make cd / sudo mount /dev/sdb2 /mnt cd /mnt ls lib lost+found sudo mkdir var sudo mount /dev/sdb3 var df -h Filesystem Size Used Avail Use% Mounted on udev 3.2G 0 3.2G 0% /dev tmpfs 649M 9.1M 640M 2% /run /dev/sda1 72G 65G 2.6G 97% / tmpfs 3.2G...","categories": [],
@@ -455,7 +460,7 @@ var store = [{
         "url": "/wiki/dd_notes.html",
         "teaser":null},{
         "title": "Design Links",
-        "excerpt":"Design links      The 75 GoodUI ideas   Adobe color cc   Icon Finder   FLATICON   reddit low poly   CG-Artist      Artem RHADS Chebokha   Anna Lepeshkina at youtube   Somnit: Low poly modeller   Somnit   Low poly      Low Poly Lab  ","categories": [],
+        "excerpt":"Design links      The 75 GoodUI ideas   Adobe color cc   Icon Finder   FLATICON   reddit low poly   CG-Artist      Artem RHADS Chebokha   Anna Lepeshkina at youtube   Somnit: Low poly modeller   Somnit   Low poly      Low Poly Lab   Web templates      Free - Bootstrap Themes &amp; Templates by Xiaoying Riley  ","categories": [],
         "tags": [],
         "url": "/wiki/design-links.html",
         "teaser":null},{
@@ -543,6 +548,11 @@ var store = [{
         "excerpt":"Community      Github   StackOverflow   Ruby-China   Editor      Online Markdown Editor   StackEdit   Markdown Tables Generator   Graph      Online Diagram    Online Diagram: ProcessOn    ICO file editor   Game Resources      OpenGameArt   MagicaVoxel @ ephtracy   Youtube download   https://www.onlinevideoconverter.com/zh/video-convert   MediaWiki   wget https://releases.wikimedia.org/mediawiki/1.31/mediawiki-1.31.0.tar.gz   Install Postgresql server first   sudo apt-get install postgresql postgresql-contrib  ","categories": [],
         "tags": [],
         "url": "/wiki/tool_box.html",
+        "teaser":null},{
+        "title": "TRDP Notes",
+        "excerpt":"Include headers: #include #include #include #if defined (POSIX) #include #include &lt;sys/select.h&gt; #elif (defined (WIN32) || defined (WIN64)) #include \"getopt.h\" #endif #include “trdp_if_light.h” #include “vos_thread.h” #include “vos_utils.h” Init the library: tlc_init Open a session: tlc_openSession(&amp;appHandle, ownIP, 0, /* use default IP address / NULL, / no Marshalling / &amp;pdConfiguration, NULL, /...","categories": [],
+        "tags": [],
+        "url": "/wiki/trdp-notes.html",
         "teaser":null},{
         "title": "Windows_dev_notes",
         "excerpt":"Windows Dev Notes Windows平台应用程序开发 采用 msys2 工具将 Linux 平台上开发的软件移植到 Windows 平台上 pacman -Sy mingw32/mingw-w64-i686-make pacman -Ss make i686 pacman -Sy git gdb g++ pacman -Sy autoconf automake libtool Synchronizing package databases pacman -Syu Common packages uuid: libutil-linux-devel qichunren@DESKTOP-CGH8J7I MINGW32 ~/code/pudgeptu $ echo $PKG_CONFIG_PATH /mingw32/lib/pkgconfig:/mingw32/share/pkgconfig qichunren@DESKTOP-CGH8J7I MINGW32 ~/code/pudgeptu $ export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/lib/pkgconfig...","categories": [],

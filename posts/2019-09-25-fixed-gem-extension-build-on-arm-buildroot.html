@@ -9,34 +9,34 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>开始使用vagrant - Qichunren blog</title>
-<meta name="description" content="Vagrant">
+<!-- begin _includes/seo.html --><title>解决Ruby Gem 扩展的交叉编译 - Qichunren blog</title>
+<meta name="description" content="Fixed ruby gem package cross compile on ARM / i.MX6 with Buildroot tool.">
 
 
 
 <meta property="og:type" content="article">
 <meta property="og:locale" content="zh">
 <meta property="og:site_name" content="Qichunren blog">
-<meta property="og:title" content="开始使用vagrant">
-<meta property="og:url" content="/posts/2013-09-22-start-use-vagrant.html">
+<meta property="og:title" content="解决Ruby Gem 扩展的交叉编译">
+<meta property="og:url" content="/posts/2019-09-25-fixed-gem-extension-build-on-arm-buildroot.html">
 
 
-  <meta property="og:description" content="Vagrant">
-
-
-
-
-
-
-
-  <meta property="article:published_time" content="2013-09-22T20:43:00+08:00">
+  <meta property="og:description" content="Fixed ruby gem package cross compile on ARM / i.MX6 with Buildroot tool.">
 
 
 
 
 
 
-<link rel="canonical" href="/posts/2013-09-22-start-use-vagrant.html">
+
+  <meta property="article:published_time" content="2019-09-25T10:20:00+08:00">
+
+
+
+
+
+
+<link rel="canonical" href="/posts/2019-09-25-fixed-gem-extension-build-on-arm-buildroot.html">
 
 
 
@@ -159,15 +159,15 @@
   
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="开始使用vagrant">
-    <meta itemprop="description" content="Vagrant">
-    <meta itemprop="datePublished" content="September 22, 2013">
+    <meta itemprop="headline" content="解决Ruby Gem 扩展的交叉编译">
+    <meta itemprop="description" content="Fixed ruby gem package cross compile on ARM / i.MX6 with Buildroot tool.">
+    <meta itemprop="datePublished" content="September 25, 2019">
     
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">开始使用vagrant
+          <h1 id="page-title" class="page__title" itemprop="headline">解决Ruby Gem 扩展的交叉编译
 </h1>
           
             <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
@@ -183,45 +183,42 @@
 
       <section class="page__content" itemprop="text">
         
-        <h1 id="vagrant">Vagrant</h1>
+        <p>Fixed ruby gem package cross compile on ARM / i.MX6 with Buildroot tool.</p>
 
-<p><a href="http://www.vagrantup.com/">Vagrant</a> 是一个虚拟机配置管理工具。</p>
+<p><a href="../images/ariaboard-coreboard.jpg">Ariaboard core board</a></p>
 
-<p>简单来说，Vagrant 可以让你用一个文本文件 Vagrantfile 描述一个虚拟机环境，然后根据你的描述启动这样的一台虚拟机，同时将 Vagrantfile 所在的目录的所有内容，和虚拟机中的 /vagrant 这个目录自动实时同步。入门文档在<a href="http://docs.vagrantup.com/v2/getting-started/index.html">这里</a>。</p>
+<p>在 ARM 或者 i.MX6 平台上使用 Ruby 不是一件容易的事情，原因在于 <a href="https://buildroot.org/">Buildroot</a> 的 <a href="https://github.com/maximeh/buildroot/blob/master/package/ruby/ruby.mk">Ruby 包</a> 中不支持在目标平台上编译带有 C/C++ 扩展的 GEM　包，像一些常用 GEM 包，如 <a href="https://github.com/eventmachine/eventmachine">Eventmachine</a>、串口操作的 <a href="https://github.com/hparra/ruby-serialport">ruby-serialport</a> 等都没有办法在目标平台上使用，只能安装使用纯 Ruby 代码编写的 GEM 包。</p>
 
-<h2 id="get-started">Get started</h2>
+<p><img src="./images/ruby-buildroot-package-problem.png" alt="Ruby Buildroot package problem" /></p>
 
-<ol>
-  <li>下载vagrant, 从<a href="http://downloads.vagrantup.com/">http://downloads.vagrantup.com/</a>页面中，根据自己的操作系统平台选择相应的版本下载，我在写这个文档的时候它的最新版本是<em>v1.3.1</em></li>
-  <li>安装完成后，在命令行终端中会有一个vagrant命令。</li>
-  <li>进行自己平时的工作目录，执行</li>
-</ol>
+<p>在解决问题的过程中，我查找了不少资料，包括 Buildroot的，包括 gcc 编译相关的，最终都无果。</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone git@github.com:qichunren/luna-vagrant.git
-cd luna-vagrant
-vagrant box add precise64 http://files.vagrantup.com/precise64.box # 下载box，它是一个VirtualBox虚拟机导出的文件，版本是Ubuntu 12.04 LTS 64位
-vagrant up
+<p>后来我突发奇想，Ruby 源代码中的 ext 目录的 C 扩展的标准库都可以编译出来，如 socket 、readline 等，那我将 GEM 包的源代码放进 ext 目录中是不是也可以直接作为标准库的一部分给自动编译出来呢？答案是可以的，不过有一些问题需要注意。</p>
+
+<p>观察 <a href="https://github.com/ruby/ruby/tree/master/ext">ext 目录</a> 中的 C 扩展接口，发现每个 C 扩展目录中带有一个 <em>extconf.rb</em> 文件，C 代码直接位于目录中，然后其中的 lib 目录中是 Ruby 的代码。所以我将 GEM 包的 ext 目录中的内容复制到扩展目录中，然后将 GEM 包的 lib 目录也复制到扩展目录，然后正常 configure / make / make install 的步骤就可以了。</p>
+
+<p>下面先在 x86 平台上来验证我的想法:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget https://cache.ruby-lang.org/pub/ruby/2.6/ruby-2.6.4.tar.gz
+tar zxf ruby-2.6.4.tar.gz
+wget https://github.com/hparra/ruby-serialport/archive/master.zip 
+unzip master.zip
+cd ruby-2.6.4
+mkdir ext/serialport
+cp -r ../ruby-serialport/ext/* ext/serialport/
+cp -r ../ruby-serialport/lib ext/serialport/
+./configure --prefix=/usr/local/ruby-2.6.4 --disable-install-doc
+make
+sudo make install
+cd /usr/local/ruby-2.6.4/bin
+./irb
+irb(main):002:0&gt; require 'serialport'
+=&gt; true
 </code></pre></div></div>
 
-<p>自己的工作目录（就是luna-vagrant项目的上一层项目）是实时与虚拟机中的/code目录保持同步。
-luna-vagrant目录是实时与虚拟机中的/vagrant目录保持同步。</p>
+<p>成功了，serialport 已经作为标准库的一部分，可以直接使用了。对于在 Buildroot中<a href="https://github.com/maximeh/buildroot/blob/master/package/ruby/ruby.mk">编译</a>，可以使用 patch 的方法，将 GEM 包加到 ext 中，从而直接解决了交叉编译的难题。</p>
 
-<h2 id="常用命令">常用命令</h2>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vagrant up  # 启动虚拟机
-vagrant ssh # ssh登录机器
-vagrant halt # 关闭虚拟机
-vagrant destory # 删除虚拟机
-vagrant status # 显示虚拟机状态
-</code></pre></div></div>
-
-<h2 id="faq">FAQ</h2>
-
-<ol>
-  <li>怎么样添加box?
-  vagrant box add precise64 http://files.vagrantup.com/precise64.box</li>
-</ol>
-
+<p>后记：在编译 <a href="https://github.com/eventmachine/eventmachine">Eventmachine</a> 包的时候，不知道为什么需要手动在 project.h 和 em.h 文件中手动加入 #include “extconf.h” ，可能是 CPP 写的扩展包导致 extconf.h 头文件在 Makefile 中没有生效还是什么原因，待解决。</p>
 
         
       </section>
@@ -232,30 +229,29 @@ vagrant status # 显示虚拟机状态
 
 
         
-          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2013-09-22T20:43:00+08:00">September 22, 2013</time></p>
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2019-09-25T10:20:00+08:00">September 25, 2019</time></p>
         
       </footer>
 
       <section class="page__share">
   
 
-  <a href="https://twitter.com/intent/tweet?text=%E5%BC%80%E5%A7%8B%E4%BD%BF%E7%94%A8vagrant%20%2Fposts%2F2013-09-22-start-use-vagrant.html" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=%E8%A7%A3%E5%86%B3Ruby+Gem+%E6%89%A9%E5%B1%95%E7%9A%84%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91%20%2Fposts%2F2019-09-25-fixed-gem-extension-build-on-arm-buildroot.html" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=%2Fposts%2F2013-09-22-start-use-vagrant.html" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=%2Fposts%2F2019-09-25-fixed-gem-extension-build-on-arm-buildroot.html" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=%2Fposts%2F2013-09-22-start-use-vagrant.html" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=%2Fposts%2F2019-09-25-fixed-gem-extension-build-on-arm-buildroot.html" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="/posts/2013-05-22-recently-my-thought.html" class="pagination--pager" title="最近的境况
+      <a href="/posts/2016-08-15-get-started-with-autotools.html" class="pagination--pager" title="Get started with autotools
 ">Previous</a>
     
     
-      <a href="/posts/2014-01-24-my-2013.html" class="pagination--pager" title="我的2013年总结
-">Next</a>
+      <a href="#" class="pagination--pager disabled">Next</a>
     
   </nav>
 
@@ -269,35 +265,6 @@ vagrant status # 显示虚拟机状态
     <div class="page__related">
       <h4 class="page__related-title">You May Also Enjoy</h4>
       <div class="grid__wrapper">
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="/posts/2019-09-25-fixed-gem-extension-build-on-arm-buildroot.html" rel="permalink">解决Ruby Gem 扩展的交叉编译
-</a>
-      
-    </h2>
-    
-      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
-
-
-
-
-  less than 1 minute read
-</p>
-    
-    <p class="archive__item-excerpt" itemprop="description">Fixed ruby gem package cross compile on ARM / i.MX6 with Buildroot tool.
-
-</p>
-  </article>
-</div>
-
         
           
 
@@ -386,6 +353,35 @@ vagrant status # 显示虚拟机状态
 </div>
 
         
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/posts/2016-06-16-autostart-app-linux.html" rel="permalink">Linux里GUI程序自启动
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">将.desktop文件复制到 /home/${user}/.config/autostart/目录下即可。
+
+</p>
+  </article>
+</div>
+
+        
       </div>
     </div>
   
@@ -444,8 +440,8 @@ vagrant status # 显示虚拟机状态
     
   <script>
     var disqus_config = function () {
-      this.page.url = "/posts/2013-09-22-start-use-vagrant.html";  // Replace PAGE_URL with your page's canonical URL variable
-      this.page.identifier = "/posts/start-use-vagrant"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+      this.page.url = "/posts/2019-09-25-fixed-gem-extension-build-on-arm-buildroot.html";  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.identifier = "/posts/fixed-gem-extension-build-on-arm-buildroot"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
     (function() { // DON'T EDIT BELOW THIS LINE
       var d = document, s = d.createElement('script');

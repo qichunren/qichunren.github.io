@@ -185,9 +185,9 @@
         
         <p>最近在做一些网络编程方面的东西，之前大多数情况接触的都是文本协议，现在接触的是二进制协议。在此补一下相关知识，下面基本上是以Ruby语言来描述用法。</p>
 
-<p>在Ruby中字面常量二近制数据以0b开头。</p>
+<p>在Ruby中字面常量二近制数据以 0b 开头:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>qichunren@qichunren-work:~$ irb
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ irb
 1.9.3-p194 :001 &gt; 0b1010
  =&gt; 10 
 1.9.3-p194 :002 &gt; 0b10
@@ -204,7 +204,7 @@
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>### 二进制转换成十进制
 
-qichunren@qichunren-work:~$ irb
+$ irb
 1.9.3-p194 :001 &gt; 0b10.to_s(10)
  =&gt; "2" 
 1.9.3-p194 :002 &gt; 0b11.to_s(10)
@@ -215,7 +215,7 @@ qichunren@qichunren-work:~$ irb
  
 ### 十进制转换成二进制
 
-qichunren@qichunren-work:~$ irb
+$ irb
 1.9.3-p194 :001 &gt; 10.to_s(2)
  =&gt; "1010" 
 1.9.3-p194 :002 &gt; 4.to_s(2)
@@ -225,22 +225,20 @@ qichunren@qichunren-work:~$ irb
 
 ### 十六进制转换成十进制
 
-1.9.3-p194 :004 &gt; 0xFF.to_s(10)
- =&gt; "255" 
-1.9.3-p194 :005 &gt; 0xFF.to_s
- =&gt; "255" 
+0xFF.to_s(10) # "255" 
+0xFF.to_s # "255" 
+"FF".hex # 255 
 
 ### 十六进制转换成二进制
 
-1.9.3-p194 :006 &gt; 0xFF.to_s(2)
- =&gt; "11111111"
+0xFF.to_s(2) # "11111111"
 </code></pre></div></div>
 
 <h3 id="stringto_ibase--10">String#to_i(base = 10)</h3>
 
 <p>String#to_i(base = 10) 方法用于将各种进制的字符串转换成十进制数。</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>qichunren@qichunren-work:~$ irb
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ irb
 1.9.3-p194 :001 &gt; "0b100".to_i(2)
  =&gt; 4 
 1.9.3-p194 :002 &gt; "0100".to_i(10)
@@ -255,7 +253,7 @@ qichunren@qichunren-work:~$ irb
 
 <p>String#unpack 和 Array#pack在网络程序中处理二进制时用得比较多。</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> qichunren@qichunren-work:~$ irb
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $ irb
  1.9.3-p194 :045 &gt; "\xff\x00\x2a".unpack('C*')
   =&gt; [255, 0, 42]
  1.9.3-p194 :042 &gt; [192,168,1,1].pack('C*')
@@ -287,12 +285,26 @@ end
 &gt;&gt; right shift
 &lt;&lt; left shift         
 </code></pre></div></div>
+<p>一个字节是8位，每个位上是0或者1。判断字节中某一个是否是1，使用 &amp; 操作判断结果是否大于0：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a_byte = 0b10100001
+a_byte &amp; (1 &lt;&lt; 0) # 1
+a_byte &amp; (1 &lt;&lt; 1) # 0
+a_byte &amp; (1 &lt;&lt; 5) # 32
+</code></pre></div></div>
+
+<h3 id="整数数据类型">整数数据类型</h3>
+
+<p>在 Ruby 中 Integer 没有像 大多数语言有区别 整数的数据类型 uint8, uint16, uint32</p>
+
+<p>将一个 Integer 转换成 int8： a_int &amp; 0xff</p>
 
 <h4 id="resources">Resources</h4>
 
 <ul>
   <li><a href="http://blog.bigbinary.com/2011/07/20/ruby-pack-unpack.html">Ruby pack unpack</a></li>
   <li><a href="https://calleerlandsson.com/2014/02/06/rubys-bitwise-operators/">Ruby’s bitwise operators</a></li>
+  <li><a href="https://github.com/dmendel/bindata">Ruby bindata gem</a></li>
 </ul>
 
         
@@ -341,6 +353,35 @@ end
     <div class="page__related">
       <h4 class="page__related-title">You May Also Enjoy</h4>
       <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/posts/2019-09-25-fixed-gem-extension-build-on-arm-buildroot.html" rel="permalink">解决Ruby Gem 扩展的交叉编译
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Fixed ruby gem package cross compile on ARM / i.MX6 with Buildroot tool.
+
+</p>
+  </article>
+</div>
+
         
           
 
@@ -423,35 +464,6 @@ end
 </p>
     
     <p class="archive__item-excerpt" itemprop="description">将.desktop文件复制到 /home/${user}/.config/autostart/目录下即可。
-
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="/posts/2016-03-24-capture-all-request-webpage-send.html" rel="permalink">Capture all reqeust web page send
-</a>
-      
-    </h2>
-    
-      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
-
-
-
-
-  less than 1 minute read
-</p>
-    
-    <p class="archive__item-excerpt" itemprop="description">The main process is to set QNetworkAccessManager instance to a QWebPage object, then use finished signal to capture QNetworkReply reply.
 
 </p>
   </article>
