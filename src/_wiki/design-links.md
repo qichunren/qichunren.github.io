@@ -10,6 +10,7 @@ position: Developer
 * [Icon Finder](https://www.iconsdb.com/white-icons/mute-2-icon.html)
 * [FLATICON](https://www.flaticon.com/)
 * [reddit low poly](https://www.reddit.com/r/low_poly/)
+* [Tech Wallpapers](https://wallpaperaccess.com/tech)
 
 ## CG-Artist
 
