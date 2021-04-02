@@ -129,9 +129,12 @@ http://stackoverflow.com/questions/4850717/how-to-cancel-a-local-git-commit
 
 建立WEB文件服务器
 
-::
-
-  ruby -run -e httpd . -p 5000 -b 0.0.0.0 # python -m SimpleHTTPServer 5000
+* ruby -run -e httpd . -p 5000 -b 0.0.0.0 
+* ruby -r webrick/https -e '
+  WEBrick::HTTPServer.new(
+    Port: 8000, DocumentRoot: ".",
+    SSLEnable: true, SSLCertName: [%w[CN localhost]]).start'
+* python -m SimpleHTTPServer 5000
         
         
         /usr/bin/ntpis1 -d -platform eglfs \
