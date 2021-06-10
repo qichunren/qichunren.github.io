@@ -33,11 +33,11 @@ include:
   - _pages   
 
 # Build settings
-theme: minimal-mistakes-jekyll
 markdown: kramdown
 plugins:
-  - jekyll-feed
+  - jekyll-autoprefixer
   - jekyll-seo-tag
+  - jekyll-sitemap
 
 search: true  
 
