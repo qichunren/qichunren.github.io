@@ -1,9 +1,0 @@
-main:
-  - title: "About"
-    url: /about/
-  - title: "Posts"
-    url: /
-  - title: "Wiki"
-    url: /wiki/
-  - title: "Github"
-    url: https://github.com/qichunren
