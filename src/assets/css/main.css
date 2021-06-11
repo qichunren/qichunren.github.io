@@ -1,0 +1,15 @@
+/*
+ * Author: Qichunren
+ * URL: https://qichunren.github.io
+ * version: 1.0
+ */
+
+.post_item{display: flex; justify-content:space-between; align-items:flex-start}
+.post_item a {text-decoration: none;}
+.post_item a:hover {text-decoration: underline;}
+
+.post_head{display: flex;justify-content:space-between; align-items:flex-start}
+.post_content img{width:100%;}
+
+
+
