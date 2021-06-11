@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Qichunren website">
+    <meta name="author" content="Qichunren">
+    <title>Juqery中元素位置的几个方法笔记 - Qichunren blog</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="/assets/css/main.css?v1">
+  </head>
+
+  <body class="has-navbar-fixed-top page-index">
+
+    <main class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-2 col-sm-12">
+
+          <div class="card" >
+            <img class="card-img-top rounded-circle" src="https://avatars.githubusercontent.com/u/39784?v=4" />
+            <div class="card-body">
+              <p class="card-text">Qichunren</p>
+            </div>
+          </div>
+
+          <ul class="nav flex-column mt-5">
+            <li class="nav-item">
+              <a class="nav-link px-0" href="/index.html">Posts</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link px-0" href="/about.html">About</a>
+            </li>
+          </ul>
+        
+        </div>
+        <div class="col-9 offset-1">
+          <div class="post_head mb-5 border-bottom">
+            <h1>Juqery中元素位置的几个方法笔记</h1>
+            <div class="meta">2011-05-09</div>
+          </div>
+          
+          <div class="post_content"><p>Juqery中元素位置的几个方法笔记</p>
+
+<p>最近在研究页面滚动时，研究了Jquery中几个方法。记录一下。</p>
+
+<h3 id="offset-function">offset function</h3>
+
+<p>offset()方法返回一个元素在整个document中的位置，返回结果是一个对象, 类似 Object { top: 2593.199951171875, left: 452.5 }</p>
+
+<h3 id="屏幕和窗口尺寸">屏幕和窗口尺寸</h3>
+
+<p>$(window).width()和$(window).height()返回当前网页窗口的可视部分的宽度和高度，窗口放大和缩小后会相应变化。</p>
+
+<p>$(document).width()和$(document).height()是返回浏览器渲染的页面尺寸。</p>
+
+<h3 id="window的scrolltop-function">window的scrollTop function</h3>
+
+<p>$(window).scrollTop()返回滚动条相对于其顶部的偏移。</p>
+
+<p>通过下面一个操作示例可以理解以上说明的关系：</p>
+
+<p>打开一个网页，滚动条位于顶部：</p>
+
+<p>$(window).scrollTop(); # return 0
+$(window).height();    # return 1080
+$(document).height();  # return 3376</p>
+
+<p>然后将网页果冻到最底部：
+$(window).scrollTop(); # return 2296</p>
+
+<p>你会发现 3376-1080=2296</p>
+
+<h3 id="滚动窗口到某个元素的位置">滚动窗口到某个元素的位置</h3>
+
+<p>$(‘html, body’).animate({scrollTop: $(“#page”).offset().top}, 2000);</p>
+</div>
+        </div>
+      </div>
+    </div>
+    </main>
+  </body>
+</html>

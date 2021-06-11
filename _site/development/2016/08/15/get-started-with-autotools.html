@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Qichunren website">
+    <meta name="author" content="Qichunren">
+    <title>Get started with autotools - Qichunren blog</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="/assets/css/main.css?v1">
+  </head>
+
+  <body class="has-navbar-fixed-top page-index">
+
+    <main class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-2 col-sm-12">
+
+          <div class="card" >
+            <img class="card-img-top rounded-circle" src="https://avatars.githubusercontent.com/u/39784?v=4" />
+            <div class="card-body">
+              <p class="card-text">Qichunren</p>
+            </div>
+          </div>
+
+          <ul class="nav flex-column mt-5">
+            <li class="nav-item">
+              <a class="nav-link px-0" href="/index.html">Posts</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link px-0" href="/about.html">About</a>
+            </li>
+          </ul>
+        
+        </div>
+        <div class="col-9 offset-1">
+          <div class="post_head mb-5 border-bottom">
+            <h1>Get started with autotools</h1>
+            <div class="meta">2016-08-15</div>
+          </div>
+          
+          <div class="post_content"><p>Follow this <a href="https://www.gnu.org/software/automake/manual/html_node/Hello-World.html#Hello-World">tutorial</a> to get started with autotools.</p>
+
+<h3 id="configureac文件">configure.ac文件</h3>
+
+<p>使用 <em>autoscan</em> 工具生成 configure.scan 文件，将它重命名为 configure.ac ，默认的文件内容如下：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#                                               -*- Autoconf -*-
+# Process this file with autoconf to produce a configure script.
+
+AC_PREREQ([2.69])
+AC_INIT([FULL-PACKAGE-NAME], [VERSION], [BUG-REPORT-ADDRESS])
+
+# Checks for programs.
+
+# Checks for libraries.
+
+# Checks for header files.
+
+# Checks for typedefs, structures, and compiler characteristics.
+
+# Checks for library functions.
+
+AC_OUTPUT
+</code></pre></div></div>
+
+<p>然后创建如下的项目目录结构:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>src/main.c
+README
+configure.ac
+Makefile.am
+src/Makefile.am
+</code></pre></div></div>
+
+<p>Command <code class="language-plaintext highlighter-rouge">autoreconf --install</code> parse configure.ac into configure file.
+Command <code class="language-plaintext highlighter-rouge">automake</code> generate Makefile.in files.
+Command <code class="language-plaintext highlighter-rouge">./configure</code> generate Makefie and src/Makefile from Makefile.in files.</p>
+
+<p>我这里有一个基础的使用autotools工具的<a href="https://github.com/qichunren/glib-guide/tree/aa04d7151926ee197b7a16c57ddbff4db8673dc7">项目</a>，展示了其中最基本的用法。</p>
+
+<p><a href="https://www.gnu.org/software/automake/manual/html_node/Autotools-Introduction.html#Autotools-Introduction">An Introduction to the Autotools</a></p>
+
+<h2 id="resources">Resources</h2>
+
+<ul>
+  <li><a href="https://www.gnu.org/software/automake/">Automake homepage</a></li>
+  <li><a href="http://freesoftwaremagazine.com/books/autotools_a_guide_to_autoconf_automake_libtool/">Autotools: a practitioner’s guide to Autoconf, Automake and Libtool</a></li>
+  <li><a href="http://www.aireadfun.com/blog/2012/12/03/study-automake/">Step-By-Step Example Of Autotools For Beginner</a></li>
+  <li><a href="https://autotools.io/index.html">Autotools Mythbuster</a></li>
+  <li><a href="http://openbooks.sourceforge.net/books/wga/creating-configuration.html">Writing GNOME Applications</a></li>
+  <li><a href="https://autotools.io/index.html">Autotools Mythbuster</a></li>
+</ul>
+</div>
+        </div>
+      </div>
+    </div>
+    </main>
+  </body>
+</html>

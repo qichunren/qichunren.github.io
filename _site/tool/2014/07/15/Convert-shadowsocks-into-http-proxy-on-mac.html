@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Qichunren website">
+    <meta name="author" content="Qichunren">
+    <title>将Shadownsocks代理转换成http proxy类型 - Qichunren blog</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="/assets/css/main.css?v1">
+  </head>
+
+  <body class="has-navbar-fixed-top page-index">
+
+    <main class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-2 col-sm-12">
+
+          <div class="card" >
+            <img class="card-img-top rounded-circle" src="https://avatars.githubusercontent.com/u/39784?v=4" />
+            <div class="card-body">
+              <p class="card-text">Qichunren</p>
+            </div>
+          </div>
+
+          <ul class="nav flex-column mt-5">
+            <li class="nav-item">
+              <a class="nav-link px-0" href="/index.html">Posts</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link px-0" href="/about.html">About</a>
+            </li>
+          </ul>
+        
+        </div>
+        <div class="col-9 offset-1">
+          <div class="post_head mb-5 border-bottom">
+            <h1>将Shadownsocks代理转换成http proxy类型</h1>
+            <div class="meta">2014-07-15</div>
+          </div>
+          
+          <div class="post_content"><p>　
+将Shadownsocks代理转换成http proxy类型， 主要就是安装 <em>polipo</em> 工具</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew install polipo
+</code></pre></div></div>
+
+<p>然后就是启动polipo程序开机自动启动。</p>
+
+<p>首先要修改自动启动的配置文件 <em>/usr/local/opt/polipo/homebrew.mxcl.polipo.plist</em>，需要给 polipo 命令加上命令行参数 <strong>socksParentProxy=localhost:1080</strong></p>
+
+<pre>
+<?xml version="1.0" encoding="UTF-8"?>
+&lt;!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;
+<plist version="1.0">
+  <dict>
+    <key>Label</key>
+    <string>homebrew.mxcl.polipo</string>
+    <key>RunAtLoad</key>
+    <true />
+    <key>KeepAlive</key>
+    <true />
+    <key>ProgramArguments</key>
+    <array>
+      <string>/usr/local/opt/polipo/bin/polipo</string>
+      <string>socksParentProxy=localhost:1080</string>
+    </array>
+  </dict>
+</plist>
+</pre>
+
+<p>然后执行以下命令，搞定收工。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ln -sfv /usr/local/opt/polipo/*.plist ~/Library/LaunchAgents
+launchctl load ~/Library/LaunchAgents/homebrew.mxcl.polipo.plist
+</code></pre></div></div>
+
+<p>polipo 进程默认监听8123端口，在命令行使用 <code class="language-plaintext highlighter-rouge">export http_proxy=http://localhost:8123</code> 就可以使用代理了。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>export https_proxy=http://localhost:8123
+export ftp_proxy=http://localhost:8123
+</code></pre></div></div>
+</div>
+        </div>
+      </div>
+    </div>
+    </main>
+  </body>
+</html>

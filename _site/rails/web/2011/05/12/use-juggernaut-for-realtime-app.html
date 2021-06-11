@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Qichunren website">
+    <meta name="author" content="Qichunren">
+    <title>使用Juggernaut - Qichunren blog</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="/assets/css/main.css?v1">
+  </head>
+
+  <body class="has-navbar-fixed-top page-index">
+
+    <main class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-2 col-sm-12">
+
+          <div class="card" >
+            <img class="card-img-top rounded-circle" src="https://avatars.githubusercontent.com/u/39784?v=4" />
+            <div class="card-body">
+              <p class="card-text">Qichunren</p>
+            </div>
+          </div>
+
+          <ul class="nav flex-column mt-5">
+            <li class="nav-item">
+              <a class="nav-link px-0" href="/index.html">Posts</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link px-0" href="/about.html">About</a>
+            </li>
+          </ul>
+        
+        </div>
+        <div class="col-9 offset-1">
+          <div class="post_head mb-5 border-bottom">
+            <h1>使用Juggernaut</h1>
+            <div class="meta">2011-05-12</div>
+          </div>
+          
+          <div class="post_content"><p><a href="https://github.com/maccman/juggernaut">Juggernaut</a>是基于<a href="http://nodejs.org/">Node.js</a>的一个实时(Realtime)Web的解决方案。使用起来很方便。</p>
+
+<h3 id="安装方法">安装方法</h3>
+
+<ol>
+  <li>安装Node.js: brew install node</li>
+  <li>安装<a href="http://code.google.com/p/redis">Redis</a>: brew install redis</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>安装<a href="http://npmjs.org/">NPM</a>: curl http://npmjs.org/install.sh</td>
+          <td>sh</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>安装Juggernaut: 这个会把Juggernaut安装到当前目录，所以我应该先进行项目的/vendor/third目录，然后执行 npm install juggernaut</li>
+</ol>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    usermatoMacBook-Pro:third qichunren$ npm install juggernaut
+    redis@0.5.11 ./node_modules/juggernaut/node_modules/redis
+    node-static-maccman@0.5.3 ./node_modules/juggernaut/node_modules/node-static-maccman
+    socket.io@0.6.17 ./node_modules/juggernaut/node_modules/socket.io
+    juggernaut@2.0.4 ./node_modules/juggernaut
+    usermatoMacBook-Pro:third qichunren$
+</code></pre></div></div>
+
+<ol>
+  <li>安装Juggernaut gem:</li>
+</ol>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem install juggernaut
+</code></pre></div></div>
+
+<h3 id="使用方法">使用方法</h3>
+
+<p>我们在自己的项目中只需要引入http://localhost:8080/application.js 这个js文件即可。
+然后在页面中可以这样接收服务器端的消息：</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
+  <span class="kd">var</span> <span class="nx">jug</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Juggernaut</span><span class="p">;</span>
+  <span class="nx">jug</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="dl">"</span><span class="s2">channel1</span><span class="dl">"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">){</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Got data: </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">data</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="nt">&lt;/script&gt;</span></code></pre></figure>
+
+<p>服务器端直接发消息：</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">require</span> <span class="s2">"juggernaut"</span>
+<span class="no">Juggernaut</span><span class="p">.</span><span class="nf">publish</span><span class="p">(</span><span class="s2">"channel1"</span><span class="p">,</span> <span class="s2">"Some data"</span><span class="p">)</span></code></pre></figure>
+
+<p>另外在启动了Juggernaut后，它默认在8080端口上有一个Helloword的应用，可以了解一下。</p>
+
+</div>
+        </div>
+      </div>
+    </div>
+    </main>
+  </body>
+</html>

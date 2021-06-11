@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Qichunren website">
+    <meta name="author" content="Qichunren">
+    <title>使用Unicorn - Qichunren blog</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="/assets/css/main.css?v1">
+  </head>
+
+  <body class="has-navbar-fixed-top page-index">
+
+    <main class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-2 col-sm-12">
+
+          <div class="card" >
+            <img class="card-img-top rounded-circle" src="https://avatars.githubusercontent.com/u/39784?v=4" />
+            <div class="card-body">
+              <p class="card-text">Qichunren</p>
+            </div>
+          </div>
+
+          <ul class="nav flex-column mt-5">
+            <li class="nav-item">
+              <a class="nav-link px-0" href="/index.html">Posts</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link px-0" href="/about.html">About</a>
+            </li>
+          </ul>
+        
+        </div>
+        <div class="col-9 offset-1">
+          <div class="post_head mb-5 border-bottom">
+            <h1>使用Unicorn</h1>
+            <div class="meta">2011-05-13</div>
+          </div>
+          
+          <div class="post_content"><h3 id="install">Install</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem install unicorn
+</code></pre></div></div>
+
+<p>Then add gem ‘unicorn’ to Gemfile.
+bundle exec unicorn_rails to start rails app at 8080 port.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>caojinhua:qichunren.github.com caojinhua$ unicorn_rails --help
+Usage: unicorn_rails [ruby options] [unicorn_rails options] [rackup config file]
+Ruby options:
+  -e, --eval LINE          evaluate a LINE of code
+  -d, --debug              set debugging flags (set $DEBUG to true)
+  -w, --warn               turn warnings on for your script
+  -I, --include PATH       specify $LOAD_PATH (may be used more than once)
+  -r, --require LIBRARY    require the library, before executing your script
+unicorn_rails options:
+  -o, --host HOST          listen on HOST (default: 0.0.0.0)
+  -p, --port PORT          use PORT (default: 8080)
+  -E, --env RAILS_ENV      use RAILS_ENV for defaults (default: development)
+  -D, --daemonize          run daemonized in the background
+  -l {HOST:PORT|PATH},     listen on HOST:PORT or PATH
+      --listen             this may be specified multiple times
+                           (default: 0.0.0.0:8080)
+  -c, --config-file FILE   Unicorn-specific config file
+
+      --path PATH          Runs Rails app mounted at a specific path.
+                           (default: /)
+Common options:
+  -h, --help               Show this message
+  -v, --version            Show version
+</code></pre></div></div>
+
+<p>This is a smaple unicorn config file:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>worker_processes 2
+working_directory "/www/temp/ntmenu2/current"
+listen 3000, :tcp_nopush =&gt; true
+timeout 30
+pid "/www/temp/ntmenu2/current/tmp/pids/unicorn.pid"
+stderr_path "/www/temp/unicorn.stderr.log"
+stdout_path "/www/temp/unicorn.stdout.log"
+</code></pre></div></div>
+
+</div>
+        </div>
+      </div>
+    </div>
+    </main>
+  </body>
+</html>

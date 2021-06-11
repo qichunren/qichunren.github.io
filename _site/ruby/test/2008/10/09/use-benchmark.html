@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Qichunren website">
+    <meta name="author" content="Qichunren">
+    <title>Benchmark用法 - Qichunren blog</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="/assets/css/main.css?v1">
+  </head>
+
+  <body class="has-navbar-fixed-top page-index">
+
+    <main class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-2 col-sm-12">
+
+          <div class="card" >
+            <img class="card-img-top rounded-circle" src="https://avatars.githubusercontent.com/u/39784?v=4" />
+            <div class="card-body">
+              <p class="card-text">Qichunren</p>
+            </div>
+          </div>
+
+          <ul class="nav flex-column mt-5">
+            <li class="nav-item">
+              <a class="nav-link px-0" href="/index.html">Posts</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link px-0" href="/about.html">About</a>
+            </li>
+          </ul>
+        
+        </div>
+        <div class="col-9 offset-1">
+          <div class="post_head mb-5 border-bottom">
+            <h1>Benchmark用法</h1>
+            <div class="meta">2008-10-09</div>
+          </div>
+          
+          <div class="post_content"><p><a href="http://rubybenchmark.com/">Benchmark</a> 可以用来测试某个函数或者任何代码的执行时间。</p>
+
+<p>用法很简单:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">require</span> <span class="s1">'benchmark'</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">1500</span>
+<span class="no">Benchmark</span><span class="p">.</span><span class="nf">bmbm</span> <span class="k">do</span> <span class="o">|</span><span class="n">x</span><span class="o">|</span>
+  <span class="n">x</span><span class="p">.</span><span class="nf">report</span><span class="p">(</span><span class="s2">"+ method"</span><span class="p">)</span> <span class="p">{</span> <span class="n">n</span><span class="p">.</span><span class="nf">times</span> <span class="p">{</span><span class="n">string1</span> <span class="o">=</span> <span class="s2">"ddd"</span> <span class="o">+</span> <span class="s2">"11111"</span> <span class="o">+</span> <span class="s2">"Helodd"</span> <span class="p">}</span> <span class="p">}</span>
+  <span class="n">x</span><span class="p">.</span><span class="nf">report</span><span class="p">(</span><span class="s2">"&lt;&lt; method"</span><span class="p">)</span> <span class="p">{</span> <span class="n">n</span><span class="p">.</span><span class="nf">times</span> <span class="p">{</span><span class="n">string2</span> <span class="o">=</span> <span class="s2">"ddd"</span> <span class="o">&lt;&lt;</span> <span class="s2">"11111"</span> <span class="o">&lt;&lt;</span> <span class="s2">"Helodd"</span><span class="p">}</span> <span class="p">}</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>结果如下:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>usermatoMacBook-Pro:test qichunren$ ruby test.rb
+Rehearsal ---------------------------------------------
++ method    0.000000   0.000000   0.000000 (  0.001722)
+&lt;&lt; method   0.000000   0.000000   0.000000 (  0.001073)
+------------------------------------ total: 0.000000sec
+
+                user     system      total        real
++ method    0.000000   0.000000   0.000000 (  0.001040)
+&lt;&lt; method   0.000000   0.000000   0.000000 (  0.000719)
+</code></pre></div></div>
+
+<h3 id="参考资料">参考资料</h3>
+<ul>
+  <li><a href="http://ruby-doc.org/stdlib/libdoc/benchmark/rdoc/index.html">Benchmark Rdoc</a></li>
+  <li><a href="http://www.kuqin.com/rubycndocument/man/addlib/benchmark.html">Ruby参考手册</a></li>
+  <li><a href="https://github.com/acangiano/ruby-benchmark-suite">ruby-benchmark-suite</a></li>
+</ul>
+</div>
+        </div>
+      </div>
+    </div>
+    </main>
+  </body>
+</html>

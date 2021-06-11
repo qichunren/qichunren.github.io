@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Qichunren website">
+    <meta name="author" content="Qichunren">
+    <title>写Rails程序容易出现的几个不好的地方 - Qichunren blog</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="/assets/css/main.css?v1">
+  </head>
+
+  <body class="has-navbar-fixed-top page-index">
+
+    <main class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-2 col-sm-12">
+
+          <div class="card" >
+            <img class="card-img-top rounded-circle" src="https://avatars.githubusercontent.com/u/39784?v=4" />
+            <div class="card-body">
+              <p class="card-text">Qichunren</p>
+            </div>
+          </div>
+
+          <ul class="nav flex-column mt-5">
+            <li class="nav-item">
+              <a class="nav-link px-0" href="/index.html">Posts</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link px-0" href="/about.html">About</a>
+            </li>
+          </ul>
+        
+        </div>
+        <div class="col-9 offset-1">
+          <div class="post_head mb-5 border-bottom">
+            <h1>写Rails程序容易出现的几个不好的地方</h1>
+            <div class="meta">2010-10-30</div>
+          </div>
+          
+          <div class="post_content"><p>这几个地方不知道大家有注意到没有，我今天发现的一个地方就是</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">EcGood</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Bas</span>
+  <span class="c1">#商品分类</span>
+  <span class="no">GoodCategory</span> <span class="o">=</span> <span class="no">Category</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="ss">:all</span><span class="p">).</span><span class="nf">map</span><span class="p">{</span><span class="o">|</span><span class="n">category</span><span class="o">|</span><span class="p">[</span><span class="n">category</span><span class="p">.</span><span class="nf">cn_n</span><span class="p">,</span> <span class="n">category</span><span class="p">.</span><span class="nf">id</span><span class="p">]</span> <span class="p">}</span>
+  <span class="c1">#商品品牌</span>
+  <span class="no">GoodBrand</span> <span class="o">=</span> <span class="no">EcBrand</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="ss">:all</span><span class="p">).</span><span class="nf">map</span><span class="p">{</span><span class="o">|</span><span class="n">brand</span><span class="o">|</span><span class="p">[</span><span class="n">brand</span><span class="p">.</span><span class="nf">brand_name</span><span class="p">,</span> <span class="n">brand</span><span class="p">.</span><span class="nf">id</span><span class="p">]</span> <span class="p">}</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>在ActiveRecord中有这样的代码，实在不应该啊。</p>
+
+<p>初次一看没有什么问题，可是Ruby代码是自上而下来执行的，这样会给数据库带来无关的查询。解决办法就是将这个封装到方法中去，另外也说明全局变量要少用。</p>
+
+<p>有时间再更新一下这篇文章来反思一下自己。</p>
+</div>
+        </div>
+      </div>
+    </div>
+    </main>
+  </body>
+</html>

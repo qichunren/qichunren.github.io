@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Qichunren website">
+    <meta name="author" content="Qichunren">
+    <title>Shell学习小记录 - Qichunren blog</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="/assets/css/main.css?v1">
+  </head>
+
+  <body class="has-navbar-fixed-top page-index">
+
+    <main class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-2 col-sm-12">
+
+          <div class="card" >
+            <img class="card-img-top rounded-circle" src="https://avatars.githubusercontent.com/u/39784?v=4" />
+            <div class="card-body">
+              <p class="card-text">Qichunren</p>
+            </div>
+          </div>
+
+          <ul class="nav flex-column mt-5">
+            <li class="nav-item">
+              <a class="nav-link px-0" href="/index.html">Posts</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link px-0" href="/about.html">About</a>
+            </li>
+          </ul>
+        
+        </div>
+        <div class="col-9 offset-1">
+          <div class="post_head mb-5 border-bottom">
+            <h1>Shell学习小记录</h1>
+            <div class="meta">2011-10-18</div>
+          </div>
+          
+          <div class="post_content"><p>最近为了一些自动化的任务，要写一些脚本。可以使用Ruby脚本、Ruby的rake\thor等等，我为了简洁和性能，我了解了一下Shell，发现用Shell来做这个事情更合适。性能，命令行，管道，丰富的现有工具，基于Linux本身，Shell真是一个好东西。以前认为用Ruby来做这个事情是一个不错的选择，现在知道了，那是因为相比起Shell来，更熟悉Ruby，程序员总是喜欢自己熟悉的领域，而排斥自己不熟悉的领域。其实多了解一下其它方面的，更利用自己工作的开展，提高工作效率。</p>
+
+<p>我随便总结一下几个知识点</p>
+
+<h4 id="字符串">字符串</h4>
+
+<p>声明一个字符串变量后，使用的时候，在变量名前面加一个$符号才能将其值取出来</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>DATA_FILE=data.tar.gz
+echo $DATA_FILE
+</code></pre></div></div>
+
+<p>字符串拼接</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>DATA_DIR=/Users/caojinhua/code/
+DATA_FILE=data.tar.gz
+DATA_PATH=$DATA_DIR""$DATA_FILE
+</code></pre></div></div>
+
+<p>将命令执行的结果保存在变量中</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sha1=`ls -al`
+</code></pre></div></div>
+
+<h4 id="if语句结构">if语句结构</h4>
+
+<p>if语句条件测试命令：</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[ -d DIR ]	如果DIR存在并且是一个目录则为真
+[ -f FILE ]	如果FILE存在且是一个普通文件则为真
+[ -z STRING ]	如果STRING的长度为零则为真
+[ -n STRING ]	如果STRING的长度非零则为真
+[ STRING1 = STRING2 ]	如果两个字符串相同则为真
+[ STRING1 != STRING2 ]	如果字符串不相同则为真
+[ ARG1 OP ARG2 ]
+</code></pre></div></div>
+
+<p>ARG1和ARG2应该是整数或者取值为整数的变量，OP是-eq（等于）-ne（不等于）-lt（小于）-le（小于等于）-gt（大于）-ge（大于等于）之中的一个</p>
+
+<p>之前弄错好几次，中括号前后的空格不能少。</p>
+
+<p>if语句的结构</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>if [ xxx ]
+then
+fi
+
+if [ xxx ]; then
+
+else
+
+fi
+
+if [ xxx ]; then
+
+elif [ ! xxx ]; then
+
+fi
+</code></pre></div></div>
+
+<h4 id="时间格式化">时间格式化</h4>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>date  +%Y%m%d
+
+a=`date +%Y%m%d`
+echo $a
+</code></pre></div></div>
+
+<h4 id="参考资料">参考资料</h4>
+<p><a href="http://learn.akae.cn/media/ch31s05.html">Shell脚本语法</a></p>
+
+</div>
+        </div>
+      </div>
+    </div>
+    </main>
+  </body>
+</html>
