@@ -276,6 +276,7 @@ GEM
     unf_ext (0.0.8)
     unf_ext (0.0.8-x86-mingw32)
     unicode-display_width (1.8.0)
+    webrick (1.7.0)
     zeitwerk (2.4.2)
 
 PLATFORMS
@@ -288,6 +289,7 @@ DEPENDENCIES
   jekyll-autoprefixer (= 1.0.1)
   jekyll-seo-tag
   jekyll-sitemap
+  webrick (~> 1.7)
 
 BUNDLED WITH
    2.2.28
