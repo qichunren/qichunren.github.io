@@ -11,14 +11,12 @@
   </head>
 
   <body>
-
-    <nav class="flex items-center justify-between flex-wrap p-6 fixed w-full z-10 top-0 bg-white shadow-lg">
+    <nav class="flex items-center justify-between flex-wrap p-6 fixed w-full z-10 top-0 bg-white shadow-sm">
       
         <a class="flex items-center flex-shrink-0 mr-6 no-underline hover:text-blue-800 hover:no-underline" href="/index.html">
           <img class="card-img-top rounded-circle" src="https://avatars.githubusercontent.com/u/39784?s=40&v=4" />
           <span class="text-2xl pl-2">Qichunren's blog</span>
         </a>
-      
   
       <div class="block lg:hidden">
         <button id="nav-toggle" class="flex items-center px-3 py-2 border rounded text-gray-500 border-gray-600 hover:text-blue-600 hover:border-white">
@@ -29,42 +27,21 @@
       <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block pt-6 lg:pt-0" id="nav-content">
         <ul class="list-reset lg:flex justify-end flex-1 items-center">          
           <li class="mr-3">
-            <a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:text-blue-600 py-2 px-4" href="/index.html">Posts</a>
+            <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="/index.html">Posts</a>
           </li>
           <li class="mr-3">
-            <a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:text-blue-600 py-2 px-4" href="/about.html">About</a>
+            <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="/about.html">About</a>
           </li>
           <li class="mr-3">
-            <a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:text-blue-600 py-2 px-4" href="https://github.com/qichunren">Github</a>
+            <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="https://github.com/qichunren">Github</a>
           </li>
         </ul>
       </div>
     </nav>
 
     <main class="container mx-auto bg-white mt-24 md:mt-18">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-2">
-  
-            <div class="card" >
-              
-              <div class="card-body">
-                <p class="card-text">Qichunren</p>
-              </div>
-            </div>
-
-            <ul class="nav flex-column mt-5">
-              <li class="nav-item">
-                <a class="nav-link px-0" href="/index.html">Posts</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link px-0" href="/about.html">About</a>
-              </li>
-            </ul>
-          
-          </div>
-          <div class="col-lg-9 offset-lg-1">{{ content}}</div>
-        </div> 
+      <div class="container py-6">
+          <div class="">{{ content}}</div>
       </div>
     </main>
     

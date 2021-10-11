@@ -2,11 +2,11 @@
 layout: default
 ---
 
-<h1>Post</h1>
-
+<div class="max-w-md mx-auto ">
 {% for post in site.posts %}
-<div class="post_item my-4 py-2 border-bottom border-light">
-    <h4><a href="{{ post.url }}">{{ post.title }}</a></h4>
-    <div class="meta text-muted">{{post.date | date: "%Y-%m-%d" }}</div>
+<div class="py-2 border-b border-gray-200 ">
+    <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
+    <div class="text-gray-600">{{post.date | date: "%Y-%m-%d" }}</div>
 </div>
 {% endfor %}
+</div>
