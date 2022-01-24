@@ -1,9 +1,0 @@
-I"�<p>默认安装的mysql的Linux机器基于安全的原因，一般不支持mysql的远程连接访问。有几种方法可以修改配置来让mysql服务器支持远程连接。但是通过ssh的代理功能，可以不用修改服务器配置，来支持从远程连接mysql服务器。</p>
-
-<p>在本地通过ssh连接远程的mysql所在的服务器</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh -L 1036:localhost:3306 root@xxx.xx.xx.xxx
-</code></pre></div></div>
-
-<p>这样就将远程的mysql主机代理到本地了，端口是1036。 <a href="http://zh.wikipedia.org/zh/SSH">SSH</a>太强大了</p>
-:ET

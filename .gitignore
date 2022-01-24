@@ -1,6 +1,9 @@
 .sass-cache
 .jekyll-metadata
-src/.jekyll-cache/
+.jekyll-cache/
 _site/
 /node_modules/
 .DS_Store
+.bundle/config
+vendor/bundle/ruby/
+assets/css/main.css
