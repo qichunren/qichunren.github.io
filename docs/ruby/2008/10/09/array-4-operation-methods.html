@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Qichunren website">
+    <meta name="author" content="Qichunren">
+    <title>Ruby Array的头尾操作的4个方法 - Qichunren blog</title>    
+    <link rel="stylesheet" href="/assets/css/main.css?v2">
+  </head>
+
+  <body class="has-navbar-fixed-top page-index">
+
+    <nav class="flex items-center justify-between flex-wrap p-6 fixed w-full z-10 top-0 bg-white shadow-sm">
+      
+      <a class="flex items-center flex-shrink-0 mr-6 no-underline hover:text-blue-800 hover:no-underline" href="/index.html">
+        <img class="card-img-top rounded-circle" src="https://avatars.githubusercontent.com/u/39784?s=40&v=4" />
+        <span class="text-2xl pl-2">Qichunren's blog</span>
+      </a>
+    
+
+    <div class="block lg:hidden">
+      <button id="nav-toggle" class="flex items-center px-3 py-2 border rounded text-gray-500 border-gray-600 hover:text-blue-600 hover:border-white">
+        <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
+      </button>
+    </div>
+
+    <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block pt-6 lg:pt-0" id="nav-content">
+      <ul class="list-reset lg:flex justify-end flex-1 items-center">          
+        <li class="mr-3">
+          <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="/index.html">Posts</a>
+        </li>
+        <li class="mr-3">
+          <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="/about.html">About</a>
+        </li>
+        <li class="mr-3">
+          <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="https://github.com/qichunren">Github</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="container mx-auto bg-white mt-24 md:mt-18">
+    
+          <div class="max-w-screen-md mx-auto prose lg:prose-lg py-6">
+            <h1 class="mb-2 text-3xl font-bold text-gray-900 md:text-3xl lg:text-4xl xl:text-5xl md:leading-tight">Ruby Array的头尾操作的4个方法</h1>
+            <div class="text-gray-400 mt-6 md:text-base">2008-10-09</div>
+          </div>
+          
+          <div class="post-content max-w-screen-md mx-auto prose lg:prose-lg "><p>在 Ruby 中，Array 对于数组头部和尾部操作有四个方法可以方便的添加和删除元素，这四个方法是shift / unshift / push / pop。它们两两对应。</p>
+
+<p>shift 方法将数组头部第一个元素从数组中删除，并返回这个元素。</p>
+
+<p>unshift方法接受一个或者参数，将元素添加到数组头部。</p>
+
+<p>push方法接受一个或者多个参数，将元素添加到数组尾部。</p>
+
+<p>pop方法将数据尾部最后一个元素从数组中删除，并返回这个元素。</p>
+
+<hr />
+
+<p>下面直接通过在IRB中演示来了解数组的这4个方法：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.9.3-p194 :001 &gt; a = [1,2,3]
+ =&gt; [1, 2, 3]
+1.9.3-p194 :002 &gt; a.shift
+ =&gt; 1
+1.9.3-p194 :003 &gt; a
+ =&gt; [2, 3]
+1.9.3-p194 :004 &gt; a.unshift(-2,-1)
+ =&gt; [-2, -1, 2, 3]
+1.9.3-p194 :005 &gt; a
+ =&gt; [-2, -1, 2, 3]
+1.9.3-p194 :006 &gt; a.push(4)
+ =&gt; [-2, -1, 2, 3, 4]
+1.9.3-p194 :007 &gt; a.push(5)
+ =&gt; [-2, -1, 2, 3, 4, 5]
+1.9.3-p194 :008 &gt; a.push(6,7)
+ =&gt; [-2, -1, 2, 3, 4, 5, 6, 7]
+1.9.3-p194 :009 &gt; a
+ =&gt; [-2, -1, 2, 3, 4, 5, 6, 7]
+1.9.3-p194 :010 &gt; a.pop
+ =&gt; 7
+1.9.3-p194 :011 &gt; a.pop
+ =&gt; 6
+1.9.3-p194 :012 &gt; a
+ =&gt; [-2, -1, 2, 3, 4, 5]
+1.9.3-p194 :013 &gt;
+</code></pre></div></div>
+
+<h3 id="参考资料">参考资料</h3>
+
+<ul>
+  <li><a href="http://www.ruby-doc.org/core-1.9.3/Array.html">Array doc</a></li>
+</ul>
+</div>
+        
+    </main>
+  </body>
+</html>

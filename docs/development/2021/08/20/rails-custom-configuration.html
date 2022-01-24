@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Qichunren website">
+    <meta name="author" content="Qichunren">
+    <title>Custom application configuration in Rails - Qichunren blog</title>    
+    <link rel="stylesheet" href="/assets/css/main.css?v2">
+  </head>
+
+  <body class="has-navbar-fixed-top page-index">
+
+    <nav class="flex items-center justify-between flex-wrap p-6 fixed w-full z-10 top-0 bg-white shadow-sm">
+      
+      <a class="flex items-center flex-shrink-0 mr-6 no-underline hover:text-blue-800 hover:no-underline" href="/index.html">
+        <img class="card-img-top rounded-circle" src="https://avatars.githubusercontent.com/u/39784?s=40&v=4" />
+        <span class="text-2xl pl-2">Qichunren's blog</span>
+      </a>
+    
+
+    <div class="block lg:hidden">
+      <button id="nav-toggle" class="flex items-center px-3 py-2 border rounded text-gray-500 border-gray-600 hover:text-blue-600 hover:border-white">
+        <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
+      </button>
+    </div>
+
+    <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block pt-6 lg:pt-0" id="nav-content">
+      <ul class="list-reset lg:flex justify-end flex-1 items-center">          
+        <li class="mr-3">
+          <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="/index.html">Posts</a>
+        </li>
+        <li class="mr-3">
+          <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="/about.html">About</a>
+        </li>
+        <li class="mr-3">
+          <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="https://github.com/qichunren">Github</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="container mx-auto bg-white mt-24 md:mt-18">
+    
+          <div class="max-w-screen-md mx-auto prose lg:prose-lg py-6">
+            <h1 class="mb-2 text-3xl font-bold text-gray-900 md:text-3xl lg:text-4xl xl:text-5xl md:leading-tight">Custom application configuration in Rails</h1>
+            <div class="text-gray-400 mt-6 md:text-base">2021-08-20</div>
+          </div>
+          
+          <div class="post-content max-w-screen-md mx-auto prose lg:prose-lg "><p>在Rails应用中，实现参数配置的功能，如果不需要在提供修改接口的话，不需要用上rails-settings-cached这类Gem，使用Rails内置的API即可满足基本需求。</p>
+
+<p>在3个地方可以配置参数:</p>
+
+<ul>
+  <li>config/application.rb</li>
+  <li>config/environments/*.rb</li>
+  <li>
+    <p>config/initializers/*.rb</p>
+
+    <p># config/environments/development.rb</p>
+
+    <p>Rails.application.configure do
+    config.allow_user_register = true
+  end</p>
+
+    <p># config/application.rb
+  module ApplicationName
+      class Application &lt; Rails::Application
+          config.load_defaults 6.1
+          config.allow_user_register = true
+      end
+  end</p>
+  </li>
+</ul>
+
+<p>通过 Rails.application.config 或者 Rails.configuration 读取配置的参数。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Rails.configuration.allow_user_register  # =》 true
+</code></pre></div></div>
+
+<h2 id="嵌套配置参数">嵌套配置参数</h2>
+
+<p>使用 Rails中的 config.x 可以存储嵌套的参数。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>config.x.payment_processing.schedule = :daily
+config.x.payment_processing.retries  = 3
+config.super_debugger = true
+</code></pre></div></div>
+
+<p>读取这些参数：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Rails.configuration.x.payment_processing.schedule # =&gt; :daily
+Rails.configuration.x.payment_processing.retries  # =&gt; 3
+Rails.configuration.x.payment_processing.not_set  # =&gt; nil
+Rails.configuration.super_debugger                # =&gt; true	
+</code></pre></div></div>
+
+<p>使用 Rails::Application.config_for 方法从 yaml 文件中读取配置信息。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># config/payment.yml:
+production:
+  environment: production
+  merchant_id: production_merchant_id
+  public_key:  production_public_key
+  private_key: production_private_key
+
+development:
+  environment: sandbox
+  merchant_id: development_merchant_id
+  public_key:  development_public_key
+  private_key: development_private_key
+
+
+
+# config/application.rb
+module MyApp
+  class Application &lt; Rails::Application
+	config.payment = config_for(:payment)
+  end
+end
+</code></pre></div></div>
+
+<p>读取参数：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Rails.configuration.payment['merchant_id'] # =&gt; production_merchant_id or development_merchant_id	
+</code></pre></div></div>
+</div>
+        
+    </main>
+  </body>
+</html>

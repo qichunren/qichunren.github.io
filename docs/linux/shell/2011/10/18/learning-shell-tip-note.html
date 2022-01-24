@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Qichunren website">
+    <meta name="author" content="Qichunren">
+    <title>Shell学习小记录 - Qichunren blog</title>    
+    <link rel="stylesheet" href="/assets/css/main.css?v2">
+  </head>
+
+  <body class="has-navbar-fixed-top page-index">
+
+    <nav class="flex items-center justify-between flex-wrap p-6 fixed w-full z-10 top-0 bg-white shadow-sm">
+      
+      <a class="flex items-center flex-shrink-0 mr-6 no-underline hover:text-blue-800 hover:no-underline" href="/index.html">
+        <img class="card-img-top rounded-circle" src="https://avatars.githubusercontent.com/u/39784?s=40&v=4" />
+        <span class="text-2xl pl-2">Qichunren's blog</span>
+      </a>
+    
+
+    <div class="block lg:hidden">
+      <button id="nav-toggle" class="flex items-center px-3 py-2 border rounded text-gray-500 border-gray-600 hover:text-blue-600 hover:border-white">
+        <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
+      </button>
+    </div>
+
+    <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block pt-6 lg:pt-0" id="nav-content">
+      <ul class="list-reset lg:flex justify-end flex-1 items-center">          
+        <li class="mr-3">
+          <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="/index.html">Posts</a>
+        </li>
+        <li class="mr-3">
+          <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="/about.html">About</a>
+        </li>
+        <li class="mr-3">
+          <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="https://github.com/qichunren">Github</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="container mx-auto bg-white mt-24 md:mt-18">
+    
+          <div class="max-w-screen-md mx-auto prose lg:prose-lg py-6">
+            <h1 class="mb-2 text-3xl font-bold text-gray-900 md:text-3xl lg:text-4xl xl:text-5xl md:leading-tight">Shell学习小记录</h1>
+            <div class="text-gray-400 mt-6 md:text-base">2011-10-18</div>
+          </div>
+          
+          <div class="post-content max-w-screen-md mx-auto prose lg:prose-lg "><p>最近为了一些自动化的任务，要写一些脚本。可以使用Ruby脚本、Ruby的rake\thor等等，我为了简洁和性能，我了解了一下Shell，发现用Shell来做这个事情更合适。性能，命令行，管道，丰富的现有工具，基于Linux本身，Shell真是一个好东西。以前认为用Ruby来做这个事情是一个不错的选择，现在知道了，那是因为相比起Shell来，更熟悉Ruby，程序员总是喜欢自己熟悉的领域，而排斥自己不熟悉的领域。其实多了解一下其它方面的，更利用自己工作的开展，提高工作效率。</p>
+
+<p>我随便总结一下几个知识点</p>
+
+<h4 id="字符串">字符串</h4>
+
+<p>声明一个字符串变量后，使用的时候，在变量名前面加一个$符号才能将其值取出来</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>DATA_FILE=data.tar.gz
+echo $DATA_FILE
+</code></pre></div></div>
+
+<p>字符串拼接</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>DATA_DIR=/Users/caojinhua/code/
+DATA_FILE=data.tar.gz
+DATA_PATH=$DATA_DIR""$DATA_FILE
+</code></pre></div></div>
+
+<p>将命令执行的结果保存在变量中</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sha1=`ls -al`
+</code></pre></div></div>
+
+<h4 id="if语句结构">if语句结构</h4>
+
+<p>if语句条件测试命令：</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[ -d DIR ]	如果DIR存在并且是一个目录则为真
+[ -f FILE ]	如果FILE存在且是一个普通文件则为真
+[ -z STRING ]	如果STRING的长度为零则为真
+[ -n STRING ]	如果STRING的长度非零则为真
+[ STRING1 = STRING2 ]	如果两个字符串相同则为真
+[ STRING1 != STRING2 ]	如果字符串不相同则为真
+[ ARG1 OP ARG2 ]
+</code></pre></div></div>
+
+<p>ARG1和ARG2应该是整数或者取值为整数的变量，OP是-eq（等于）-ne（不等于）-lt（小于）-le（小于等于）-gt（大于）-ge（大于等于）之中的一个</p>
+
+<p>之前弄错好几次，中括号前后的空格不能少。</p>
+
+<p>if语句的结构</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>if [ xxx ]
+then
+fi
+
+if [ xxx ]; then
+
+else
+
+fi
+
+if [ xxx ]; then
+
+elif [ ! xxx ]; then
+
+fi
+</code></pre></div></div>
+
+<h4 id="时间格式化">时间格式化</h4>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>date  +%Y%m%d
+
+a=`date +%Y%m%d`
+echo $a
+</code></pre></div></div>
+
+<h4 id="参考资料">参考资料</h4>
+<p><a href="http://learn.akae.cn/media/ch31s05.html">Shell脚本语法</a></p>
+
+</div>
+        
+    </main>
+  </body>
+</html>

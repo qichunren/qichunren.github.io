@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Qichunren website">
+    <meta name="author" content="Qichunren">
+    <title>在QT5中使用国际化语言 - Qichunren blog</title>    
+    <link rel="stylesheet" href="/assets/css/main.css?v2">
+  </head>
+
+  <body class="has-navbar-fixed-top page-index">
+
+    <nav class="flex items-center justify-between flex-wrap p-6 fixed w-full z-10 top-0 bg-white shadow-sm">
+      
+      <a class="flex items-center flex-shrink-0 mr-6 no-underline hover:text-blue-800 hover:no-underline" href="/index.html">
+        <img class="card-img-top rounded-circle" src="https://avatars.githubusercontent.com/u/39784?s=40&v=4" />
+        <span class="text-2xl pl-2">Qichunren's blog</span>
+      </a>
+    
+
+    <div class="block lg:hidden">
+      <button id="nav-toggle" class="flex items-center px-3 py-2 border rounded text-gray-500 border-gray-600 hover:text-blue-600 hover:border-white">
+        <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
+      </button>
+    </div>
+
+    <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block pt-6 lg:pt-0" id="nav-content">
+      <ul class="list-reset lg:flex justify-end flex-1 items-center">          
+        <li class="mr-3">
+          <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="/index.html">Posts</a>
+        </li>
+        <li class="mr-3">
+          <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="/about.html">About</a>
+        </li>
+        <li class="mr-3">
+          <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="https://github.com/qichunren">Github</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="container mx-auto bg-white mt-24 md:mt-18">
+    
+          <div class="max-w-screen-md mx-auto prose lg:prose-lg py-6">
+            <h1 class="mb-2 text-3xl font-bold text-gray-900 md:text-3xl lg:text-4xl xl:text-5xl md:leading-tight">在QT5中使用国际化语言</h1>
+            <div class="text-gray-400 mt-6 md:text-base">2015-04-13</div>
+          </div>
+          
+          <div class="post-content max-w-screen-md mx-auto prose lg:prose-lg "><p>要在QT项目中使用国际化，以支持多种语言，需要如下步骤。</p>
+
+<ol>
+  <li>在pro文件中声明TRANSLATIONS文件，如下面的例子，声明了两个ts文件，一个是zh-CN，另一个en的。</li>
+</ol>
+
+<p>   TRANSLATIONS = translations/ntptu_zh-CN.ts translations/ntptu_en.ts</p>
+
+<ol>
+  <li>
+    <p>在项目的主目录中的命令行中运行 lupdate -verbose ntptu.pro</p>
+
+    <p>lupdate -verbose ntptu.pro
+ lupdate warning: no TS files specified. Only diagnostics will be produced for ‘D:/code/ntptu/ntptu.pro’.
+ Updating ‘src/translations/ntptu_zh-CN.ts’…
+     Found 104 source text(s) (104 new and 0 already existing)
+ Updating ‘src/translations/ntptu_en.ts’…
+     Found 104 source text(s) (104 new and 0 already existing)</p>
+  </li>
+  <li>
+    <p>使用linguist.exe工具打开上一步生成的ts文件，进行翻译工作。将两个语言的文件都翻译好。</p>
+  </li>
+  <li>
+    <p>lrelease -verbose project_zh_CN.ts生成.qm文件</p>
+  </li>
+  <li>
+    <p>将qm文件添加了资源中。</p>
+  </li>
+</ol>
+
+<p>5.</p>
+
+<p>QT程序启动时加载Translator</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>QTranslator translator;
+translator.load("ntptu_" + QLocale::system().name(),
+                      ":/translations");
+a.installTranslator(&amp;translator);
+
+
+QString message(tr("voices directory did not exist in data directory %1!"));
+message.arg(dir.absolutePath());
+
+
+lrelease -verbose project_zh_CN.ts
+</code></pre></div></div>
+
+<p>设置环境变量进行测试</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>qichunren@qichunren-desktop:~/code/new-pis$ locale
+LANG=zh_CN.UTF-8
+LANGUAGE=en_US
+LC_CTYPE="zh_CN.UTF-8"
+LC_NUMERIC="zh_CN.UTF-8"
+LC_TIME="zh_CN.UTF-8"
+LC_COLLATE="zh_CN.UTF-8"
+LC_MONETARY="zh_CN.UTF-8"
+LC_MESSAGES="zh_CN.UTF-8"
+LC_PAPER="zh_CN.UTF-8"
+LC_NAME="zh_CN.UTF-8"
+LC_ADDRESS="zh_CN.UTF-8"
+LC_TELEPHONE="zh_CN.UTF-8"
+LC_MEASUREMENT="zh_CN.UTF-8"
+LC_IDENTIFICATION="zh_CN.UTF-8"
+LC_ALL=zh_CN.UTF-8
+qichunren@qichunren-desktop:~/code/new-pis$ export LANGUAGE=zh_CN
+</code></pre></div></div>
+</div>
+        
+    </main>
+  </body>
+</html>

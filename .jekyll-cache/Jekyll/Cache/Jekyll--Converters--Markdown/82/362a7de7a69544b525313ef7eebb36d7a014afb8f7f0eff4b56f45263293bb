@@ -1,0 +1,80 @@
+I"�<p>Game replay video here: https://everyplay.com</p>
+
+<p><a href="http://www.pixelprospector.com/the-big-list-of-game-design/">The Big List Of Game Design</a></p>
+
+<h2 id="audio">Audio:</h2>
+
+<ul>
+  <li>
+    <p>http://www.bfxr.net/ generate small music sound, such as ‘power up’, ‘coin collect’, ‘Attack’, ‘Explosion’</p>
+  </li>
+  <li>
+    <p>http://www.flashkit.com/ sound resources.</p>
+  </li>
+  <li>
+    <p><a href="https://stuckeast.itch.io/sdap">Super Dialogue Audio Pack</a></p>
+  </li>
+</ul>
+
+<h2 id="images">Images</h2>
+
+<ul>
+  <li>VOXEL Builder http://voxelbuilder.com/</li>
+  <li>2.5D model tool: http://www.angryoctopus.co.nz/?p=177</li>
+  <li>http://opengameart.org/</li>
+  <li>https://itch.io/game-assets</li>
+  <li><a href="https://design.tutsplus.com/articles/the-must-have-game-assets-for-designers-and-digital-artists--cms-26641?_ga=2.172490467.1310106111.1511253630-76199773.1511253630">The Must-Have Game Assets for Designers and Digital Artists</a></li>
+  <li><a href="https://www.gameart2d.com/freebies.html">FREE ASSETS FOR EVERYONE</a></li>
+  <li><a href="https://itch.io/game-assets/free">Free Assets on itch.io</a></li>
+  <li><a href="http://pixelgameart.org/web/">Pixel Art for your GameDev</a></li>
+  <li><a href="http://www.kenney.nl/assets">Kenney assets</a></li>
+  <li><a href="http://bevouliin.com/category/free_game_asset/">bevouliin.com Free 2d Game Asset</a></li>
+</ul>
+
+<h3 id="tileset">Tileset</h3>
+<p>https://vxresource.wordpress.com/category/resources/tilesets/
+http://www.engine001.com/resources/tilesets.htm
+http://opengameart.org/content/isometric-tiles</p>
+
+<h2 id="threoy">Threoy</h2>
+<ul>
+  <li>http://www.lostgarden.com/</li>
+  <li><a href="http://gamemechanicexplorer.com/">http://gamemechanicexplorer.com/</a>里面基于Phaser引擎讲解了许多游戏中常用的设计算法，如角色行走，导弹路径，光，视野等。</li>
+  <li><a href="http://www.redblobgames.com/">http://www.redblobgames.com/</a> 其中有讲解一些游戏算法，如A星寻路。</li>
+  <li><a href="http://natureofcode.com/book/">natureofcode</a> 讲解运动理论</li>
+  <li>
+    <p><a href="https://gamedevelopment.tutsplus.com/series/understanding-steering-behaviors--gamedev-12732">Understanding Steering Behaviors</a> 讲解运动理论</p>
+  </li>
+  <li><a href="http://gpp.tkchu.me/">游戏编程模式</a> Book</li>
+</ul>
+
+<h2 id="games">Games</h2>
+
+<p>http://spryfox.com/our-games/</p>
+
+<h3 id="voxel-editors">Voxel editors</h3>
+
+<ul>
+  <li>https://bitbucket.org/volumesoffun/polyvox/wiki/Voxel%20editors</li>
+  <li><a href="https://ephtracy.github.io/">MagicaVoxel @ ephtracy</a></li>
+</ul>
+
+<h2 id="websites">WebSites</h2>
+
+<p>http://www.gamasutra.com/
+http://gamedevelopment.tutsplus.com/
+https://mytxt.xyz/games/</p>
+
+<p>Create tile game tutuoal: http://www.tonypa.pri.ee/tbw/start.html</p>
+
+<p>Isometric Tiles Introduction: http://flarerpg.org/tutorials/isometric_intro/</p>
+
+<p>Character Generator: http://gaurav.munjal.us/Universal-LPC-Spritesheet-Character-Generator/</p>
+
+<h2 id="community">Community</h2>
+
+<ul>
+  <li><a href="http://gaedev.stackexchange.com/">Game Development Stack Exchange</a></li>
+  <li>http://indienova.com/</li>
+</ul>
+:ET

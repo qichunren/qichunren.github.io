@@ -1,0 +1,55 @@
+I"Y<p>data_package.h文件</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  #ifndef DATA_PACKAGE_H
+  #define DATA_PACKAGE_H
+
+  #include &lt;QObject&gt;
+
+  class DataPackage : public QObject
+  {
+      Q_OBJECT
+  public:          
+      static DataPackage &amp;instance();
+
+  signals:
+
+  public slots:
+
+  private:
+      explicit DataPackage(QObject *parent = 0);
+
+  };
+
+  #endif // DATA_PACKAGE_H
+</code></pre></div></div>
+
+<p>data_package.cpp文件</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  #include "data_package.h"
+  #include &lt;QDebug&gt;
+
+  DataPackage::DataPackage(QObject *parent) :
+      QObject(parent)
+  {
+      qDebug() &lt;&lt; "init data package";
+  }
+
+  DataPackage&amp; DataPackage::instance()
+  {
+      static DataPackage _instance;
+      return _instance;
+  }
+</code></pre></div></div>
+
+<p>调用：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  DataPackage::instance();
+  DataPackage::instance();
+</code></pre></div></div>
+
+<p>连续调用两次instance方法，发现只会示例一次。搞定。</p>
+
+<h2 id="参考资料">参考资料</h2>
+
+<p><a href="http://stackoverflow.com/questions/1008019/c-singleton-design-pattern">C++ Singleton design pattern</a></p>
+:ET

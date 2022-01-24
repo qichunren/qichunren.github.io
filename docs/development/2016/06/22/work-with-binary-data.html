@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Qichunren website">
+    <meta name="author" content="Qichunren">
+    <title>Work with binary data - Qichunren blog</title>    
+    <link rel="stylesheet" href="/assets/css/main.css?v2">
+  </head>
+
+  <body class="has-navbar-fixed-top page-index">
+
+    <nav class="flex items-center justify-between flex-wrap p-6 fixed w-full z-10 top-0 bg-white shadow-sm">
+      
+      <a class="flex items-center flex-shrink-0 mr-6 no-underline hover:text-blue-800 hover:no-underline" href="/index.html">
+        <img class="card-img-top rounded-circle" src="https://avatars.githubusercontent.com/u/39784?s=40&v=4" />
+        <span class="text-2xl pl-2">Qichunren's blog</span>
+      </a>
+    
+
+    <div class="block lg:hidden">
+      <button id="nav-toggle" class="flex items-center px-3 py-2 border rounded text-gray-500 border-gray-600 hover:text-blue-600 hover:border-white">
+        <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
+      </button>
+    </div>
+
+    <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block pt-6 lg:pt-0" id="nav-content">
+      <ul class="list-reset lg:flex justify-end flex-1 items-center">          
+        <li class="mr-3">
+          <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="/index.html">Posts</a>
+        </li>
+        <li class="mr-3">
+          <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="/about.html">About</a>
+        </li>
+        <li class="mr-3">
+          <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="https://github.com/qichunren">Github</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="container mx-auto bg-white mt-24 md:mt-18">
+    
+          <div class="max-w-screen-md mx-auto prose lg:prose-lg py-6">
+            <h1 class="mb-2 text-3xl font-bold text-gray-900 md:text-3xl lg:text-4xl xl:text-5xl md:leading-tight">Work with binary data</h1>
+            <div class="text-gray-400 mt-6 md:text-base">2016-06-22</div>
+          </div>
+          
+          <div class="post-content max-w-screen-md mx-auto prose lg:prose-lg "><p>最近在做一些网络编程方面的东西，之前大多数情况接触的都是文本协议，现在接触的是二进制协议。在此补一下相关知识，下面基本上是以Ruby语言来描述用法。</p>
+
+<p>在Ruby中字面常量二近制数据以 0b 开头:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ irb
+1.9.3-p194 :001 &gt; 0b1010
+ =&gt; 10 
+1.9.3-p194 :002 &gt; 0b10
+ =&gt; 2 
+1.9.3-p194 :003 &gt; 0b11
+ =&gt; 3 
+1.9.3-p194 :004 &gt; 0b100
+ =&gt; 4
+</code></pre></div></div>
+
+<h3 id="fixnumto_sbase--10">Fixnum#to_s(base = 10)</h3>
+
+<p>Fixnum#to_s(base = 10) 方法用于各种进制之间的转换。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>### 二进制转换成十进制
+
+$ irb
+1.9.3-p194 :001 &gt; 0b10.to_s(10)
+ =&gt; "2" 
+1.9.3-p194 :002 &gt; 0b11.to_s(10)
+ =&gt; "3" 
+1.9.3-p194 :003 &gt; 0b100.to_s(10)
+ =&gt; "4"
+ 
+ 
+### 十进制转换成二进制
+
+$ irb
+1.9.3-p194 :001 &gt; 10.to_s(2)
+ =&gt; "1010" 
+1.9.3-p194 :002 &gt; 4.to_s(2)
+ =&gt; "100" 
+1.9.3-p194 :003 &gt; 2.to_s(2)
+ =&gt; "10"
+
+### 十六进制转换成十进制
+
+0xFF.to_s(10) # "255" 
+0xFF.to_s # "255" 
+"FF".hex # 255 
+
+### 十六进制转换成二进制
+
+0xFF.to_s(2) # "11111111"
+</code></pre></div></div>
+
+<h3 id="stringto_ibase--10">String#to_i(base = 10)</h3>
+
+<p>String#to_i(base = 10) 方法用于将各种进制的字符串转换成十进制数。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ irb
+1.9.3-p194 :001 &gt; "0b100".to_i(2)
+ =&gt; 4 
+1.9.3-p194 :002 &gt; "0100".to_i(10)
+ =&gt; 100 
+1.9.3-p194 :003 &gt; "0xFF".to_i(16)
+ =&gt; 255   
+</code></pre></div></div>
+
+<p>注意：String#to_i方法的参数一定要和字符串本身的进制一致，否则将得不到预期的结果。</p>
+
+<h3 id="packing-and-unpacking">Packing and unpacking</h3>
+
+<p>String#unpack 和 Array#pack在网络程序中处理二进制时用得比较多。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $ irb
+ 1.9.3-p194 :045 &gt; "\xff\x00\x2a".unpack('C*')
+  =&gt; [255, 0, 42]
+ 1.9.3-p194 :042 &gt; [192,168,1,1].pack('C*')
+  =&gt; "\xC0\xA8\x01\x01" 
+ 1.9.3-p194 :043 &gt; [255,255,255,255].pack('C*')
+  =&gt; "\xFF\xFF\xFF\xFF"
+</code></pre></div></div>
+
+<p>下面是一个UDP广播二进制数据的例子</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>require 'socket'
+
+udp_socket = UDPSocket.new 
+udp_socket.bind("0.0.0.0", 8086)
+udp_socket.setsockopt(Socket::SOL_SOCKET, Socket::SO_BROADCAST, true) 
+100.times do |i| 
+    puts "Broadcast message ..."
+    udp_socket.send([0x01, 0x10, 0x00, 0x03, 0x00, 0x04, 0x00, 0x00, 0x96, 0x96, 0xc1, 0x0c].pack('C*'), 0, "255.255.255.255", 1112) 
+    sleep 3
+end     
+</code></pre></div></div>
+
+<h3 id="位操作">位操作</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&amp; bitwise AND
+| bitwise OR
+^ bitwise XOR
+~ bitwise NOT
+&gt;&gt; right shift
+&lt;&lt; left shift         
+</code></pre></div></div>
+<p>一个字节是8位，每个位上是0或者1。判断字节中某一个是否是1，使用 &amp; 操作判断结果是否大于0：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a_byte = 0b10100001
+a_byte &amp; (1 &lt;&lt; 0) # 1
+a_byte &amp; (1 &lt;&lt; 1) # 0
+a_byte &amp; (1 &lt;&lt; 5) # 32
+</code></pre></div></div>
+
+<h3 id="整数数据类型">整数数据类型</h3>
+
+<p>在 Ruby 中 Integer 没有像 大多数语言有区别 整数的数据类型 uint8, uint16, uint32</p>
+
+<p>将一个 Integer 转换成 int8： a_int &amp; 0xff</p>
+
+<h4 id="resources">Resources</h4>
+
+<ul>
+  <li><a href="http://blog.bigbinary.com/2011/07/20/ruby-pack-unpack.html">Ruby pack unpack</a></li>
+  <li><a href="https://calleerlandsson.com/2014/02/06/rubys-bitwise-operators/">Ruby’s bitwise operators</a></li>
+  <li><a href="https://github.com/dmendel/bindata">Ruby bindata gem</a></li>
+</ul>
+</div>
+        
+    </main>
+  </body>
+</html>

@@ -1,0 +1,11 @@
+I"�<p>有这个需要，主要是因为不想在git提交后的diff中无看到不有意思的diff显示。使用textmate的同学可以用<a href="https://github.com/glennr/uber-glory-tmbundle">这个工具</a>来解决这个小问题。</p>
+
+<h3 id="安装方法">安装方法</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd ~/Library/Application\ Support/TextMate/Bundles/
+git clone git://github.com/glennr/uber-glory-tmbundle.git Uber\ Glory.tmbundle
+cd Uber\ Glory.tmbundle
+git submodule update --init
+osascript -e 'tell app "TextMate" to reload bundles'
+</code></pre></div></div>
+:ET

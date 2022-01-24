@@ -1,0 +1,12 @@
+I"<p><a href="https://github.com/mxcl/homebrew">homebrew</a>是为mac打造的一个软件包管理工具</p>
+
+<p>首先需要安装好Xcode,其它是需要它其中的gcc等编译器。</p>
+
+<p><a href="https://github.com/mxcl/homebrew/wiki/Installation">安装方法</a></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ruby -e "$(curl -fsSLk https://gist.github.com/raw/323731/install_homebrew.rb)"
+</code></pre></div></div>
+<p>Install Xcode.</p>
+
+<p>then brew install git first.</p>
+:ET

@@ -1,0 +1,76 @@
+I"�<p>在2009年的Railsconf大会上，Hongli Lai和Ninh Bui of Phusion（开发Passenger的家伙）为了展示Ruby语言的强大，能运行3D游戏，他们构建了一个Wolfenstein游戏的山寨版，用的是<a href="http://www.libgosu.org/">Gosu</a> 游戏开发库。</p>
+
+<p><img src="http://www.libgosu.org/website_header.png" alt="Gosu Logo" /></p>
+
+<p>Zed Shaw 在游戏中扮演BOSS</p>
+
+<p>体验方法： 
+项目地址：<a href="http://github.com/FooBarWidget/rubystein/tree/master">http://github.com/FooBarWidget/rubystein/tree/master</a>
+Git拖下来：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone git://github.com/FooBarWidget/rubystein.git （没有Git也可以直接在项目主页中下载） 
+</code></pre></div></div>
+
+<p>在运行游戏之前在安装gosu gem</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem install gosu 
+</code></pre></div></div>
+
+<p>我是在ubuntu下测试的，为了安装gosu,还要先安装依赖的库：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo apt-get install g++ libgl1-mesa-dev libpango1.0-dev libboost-dev libsdl-mixer1.2-dev 
+</code></pre></div></div>
+
+<p>在安装好了gosu gem后，直接运行游戏目录中的wolf3d.rb文件：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ruby wolf3d.rb 
+</code></pre></div></div>
+
+<p>如图： 
+<img src="http://qichunren.iteye.com/upload/picture/pic/36923/13a5698c-ac4e-3ab5-910a-db865d5648fb.jpg" alt="game preview" /></p>
+
+<p>空格键开枪</p>
+
+<p>很强大吧。</p>
+
+<p>游戏程序代码的大体结构如下，很简单，很明了：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>require 'rubygems'  
+require 'gosu'  
+  
+class GameWindow &lt; Gosu::Window  
+  def initialize  
+    super(640, 480, false)  
+    self.caption = "Gosu Tutorial Game"  
+  end  
+  
+  def update  
+   # 更新游戏画面的方法  
+  end  
+  
+  def draw  
+    # 游戏画面的绘画方法  
+  end  
+end  
+  
+window = GameWindow.new  
+window.show  
+</code></pre></div></div>
+
+<p>我在gosu的网站又找到了几个case,都很不错，用gosu开发游戏很不错，代码结构很清析和容易理解。</p>
+
+<p>1.Space Jumper(和雷电类似的游戏) ： 
+<a href="http://andre.semler-service.de/games/SpaceJumper.zip">下载地址</a></p>
+
+<p><img src="http://andre.semler-service.de/SJ.png" alt="Space Jumper preview" /></p>
+
+<p>2.Space shooter ，这个游戏和上面也差不多 
+<a href="http://github.com/belen-albeza/space-shooter">项目地址</a></p>
+
+<p><img src="http://farm4.static.flickr.com/3658/3503765473_95c1b36ea4_m.jpg" alt="Space shooter preview" /></p>
+
+<p>强烈推荐想要用Ruby玩玩游戏开发的同学们用这个<a href="https://github.com/jlnr/gosu">gosu</a>库。另外好像有一个叫rubygame的开发库，不知道怎么样，有时间也研究一下。</p>
+
+<p><em><a href="http://www.iteye.com/topic/389181">我在javaeye上的原文链接</a></em></p>
+
+:ET

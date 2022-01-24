@@ -1,0 +1,38 @@
+I"C<p>The main process is to set QNetworkAccessManager instance to a QWebPage object, then use finished signal to capture QNetworkReply reply.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>MainWindow::MainWindow(QWidget *parent) :
+    QMainWindow(parent),
+    ui(new Ui::MainWindow)
+{
+    ui-&gt;setupUi(this);
+    QWebSettings::globalSettings()-&gt;setAttribute(QWebSettings::PluginsEnabled, true);
+    QWebSettings::globalSettings()-&gt;setAttribute(QWebSettings::AutoLoadImages, true);
+    QWebSettings::globalSettings()-&gt;setAttribute(QWebSettings::JavascriptEnabled, true);
+    QWebSettings::globalSettings ()-&gt;setAttribute (QWebSettings::DeveloperExtrasEnabled, true);
+    static QWebView * view;
+    view = new QWebView(this);
+    ui-&gt;verticalLayout-&gt;addWidget(view);
+    nm = new QNetworkAccessManager(this);
+    QNetworkRequest *request = new QNetworkRequest(QUrl("http://music.baidu.com/song/s/6307e667db90856f3ab7c?fm=altg_new3"));
+    QWebPage *page = new QWebPage();
+    page-&gt;settings()-&gt;setAttribute(QWebSettings::PluginsEnabled, true);
+    page-&gt;setNetworkAccessManager(nm);
+    connect(nm, SIGNAL(finished(QNetworkReply*)), this, SLOT(when_reply_finished(QNetworkReply*)));
+  //  const QWebFrame *frame = page-&gt;mainFrame();
+    view-&gt;setPage(page);
+    view-&gt;load(*request);
+
+}
+
+MainWindow::~MainWindow()
+{
+    delete ui;
+}
+
+
+void MainWindow::when_reply_finished(QNetworkReply *reply) {
+    const QString &amp;url = reply-&gt;url().toString();
+    qDebug() &lt;&lt; url;
+}
+</code></pre></div></div>
+:ET

@@ -1,0 +1,35 @@
+I"<p>If you use github, you can follow this.</p>
+
+<p>I use <a href="https://github.com/huacnlee/ruby-china">huachlee/ruby-china</a> repository for example.</p>
+
+<p>At huacnlee/ruby-china repository homepage, clicked “Fork” button, then after serval minutes, you will have you own forked repository copy.Then you clone to local.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone git@github.com:qichunren/ruby-china.git
+</code></pre></div></div>
+
+<p>Then you commit your changes, and push to it.When you found the original repository has some updated feature,you can do as follow:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd ruby-china
+git remote add upstream git://github.com/huacnlee/ruby-china.git
+caojinhua:ruby-china caojinhua$ git fetch upstream
+remote: Counting objects: 345, done.
+remote: Compressing objects: 100% (164/164), done.
+remote: Total 266 (delta 196), reused 156 (delta 98)
+Receiving objects: 100% (266/266), 31.92 KiB | 25 KiB/s, done.
+Resolving deltas: 100% (196/196), completed with 67 local objects.
+From git://github.com/huacnlee/ruby-china
+ * [new branch]      github_autocomplete -&gt; upstream/github_autocomplete
+ * [new branch]      markdown   -&gt; upstream/markdown
+ * [new branch]      master     -&gt; upstream/master
+ * [new branch]      post       -&gt; upstream/post
+caojinhua:ruby-china caojinhua$ git merge upstream/master
+</code></pre></div></div>
+
+<p>That is it.</p>
+
+<h2 id="resources">Resources:</h2>
+<ul>
+  <li><a href="http://help.github.com/fork-a-repo/">Fork A Repo</a></li>
+  <li><a href="http://bradlyfeeley.com/2008/09/03/update-a-github-fork-from-the-original-repo/">Update a Github Fork from the Original Repo</a></li>
+</ul>
+:ET

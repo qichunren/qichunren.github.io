@@ -1,0 +1,31 @@
+I"�<p>用下载量来作为一个gem包的爱欢迎度的标准。</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># encoding: utf-8</span>
+<span class="nb">require</span> <span class="s1">'rubygems'</span>
+
+<span class="nb">require</span> <span class="s1">'nokogiri'</span>
+<span class="nb">require</span> <span class="s1">'open-uri'</span>
+
+<span class="no">GEM_LIST_URL</span> <span class="o">=</span> <span class="s2">"http://rubygems.org/gems"</span>
+<span class="no">MIN_DOWNLOAD_COUNT</span> <span class="o">=</span> <span class="mi">30_0000</span>
+
+<span class="p">(</span><span class="s1">'A'</span><span class="o">..</span><span class="s1">'Z'</span><span class="p">).</span><span class="nf">to_a</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">letter</span><span class="o">|</span>
+  <span class="n">document</span> <span class="o">=</span> <span class="no">Nokogiri</span><span class="o">::</span><span class="no">HTML</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="no">GEM_LIST_URL</span> <span class="o">+</span> <span class="s2">"?letter=</span><span class="si">#{</span><span class="n">letter</span><span class="si">}</span><span class="s2">"</span><span class="p">))</span>
+  <span class="n">last_page_number</span> <span class="o">=</span>  <span class="n">document</span><span class="p">.</span><span class="nf">css</span><span class="p">(</span><span class="s2">"div.pagination a"</span><span class="p">)[</span><span class="o">-</span><span class="mi">2</span><span class="p">].</span><span class="nf">inner_text</span><span class="p">.</span><span class="nf">to_i</span>
+  <span class="nb">puts</span> <span class="s2">"There are "</span> <span class="o">+</span> <span class="n">document</span><span class="p">.</span><span class="nf">css</span><span class="p">(</span><span class="s2">"p.entries b"</span><span class="p">)[</span><span class="mi">1</span><span class="p">].</span><span class="nf">inner_text</span> <span class="o">+</span> <span class="s2">" gems start with </span><span class="si">#{</span><span class="n">letter</span><span class="si">}</span><span class="s2">, </span><span class="si">#{</span><span class="n">last_page_number</span><span class="si">}</span><span class="s2"> pages."</span>
+
+
+  <span class="mi">1</span><span class="p">.</span><span class="nf">step</span><span class="p">(</span><span class="n">last_page_number</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">page</span><span class="o">|</span>
+    <span class="n">every_page</span> <span class="o">=</span> <span class="no">Nokogiri</span><span class="o">::</span><span class="no">HTML</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="no">GEM_LIST_URL</span> <span class="o">+</span> <span class="s2">"?letter=</span><span class="si">#{</span><span class="n">letter</span><span class="si">}</span><span class="s2">&amp;page=</span><span class="si">#{</span><span class="n">page</span><span class="si">}</span><span class="s2">"</span><span class="p">))</span>
+
+    <span class="n">every_page</span><span class="p">.</span><span class="nf">css</span><span class="p">(</span><span class="s2">"div.gems ol li"</span><span class="p">).</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">li</span><span class="o">|</span>
+      <span class="n">downloads_count</span> <span class="o">=</span> <span class="n">li</span><span class="p">.</span><span class="nf">css</span><span class="p">(</span><span class="s2">"div.downloads strong"</span><span class="p">).</span><span class="nf">inner_text</span><span class="p">.</span><span class="nf">to_i</span>
+      <span class="n">gem_info</span>        <span class="o">=</span> <span class="n">li</span><span class="p">.</span><span class="nf">css</span><span class="p">(</span><span class="s2">"a"</span><span class="p">).</span><span class="nf">inner_text</span>
+      <span class="k">if</span> <span class="n">downloads_count</span> <span class="o">&gt;=</span> <span class="no">MIN_DOWNLOAD_COUNT</span>
+        <span class="nb">puts</span> <span class="n">gem_info</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+
+<span class="k">end</span></code></pre></figure>
+:ET

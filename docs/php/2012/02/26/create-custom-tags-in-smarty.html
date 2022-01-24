@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Qichunren website">
+    <meta name="author" content="Qichunren">
+    <title>Create custom tags in Smarty 3 - Qichunren blog</title>    
+    <link rel="stylesheet" href="/assets/css/main.css?v2">
+  </head>
+
+  <body class="has-navbar-fixed-top page-index">
+
+    <nav class="flex items-center justify-between flex-wrap p-6 fixed w-full z-10 top-0 bg-white shadow-sm">
+      
+      <a class="flex items-center flex-shrink-0 mr-6 no-underline hover:text-blue-800 hover:no-underline" href="/index.html">
+        <img class="card-img-top rounded-circle" src="https://avatars.githubusercontent.com/u/39784?s=40&v=4" />
+        <span class="text-2xl pl-2">Qichunren's blog</span>
+      </a>
+    
+
+    <div class="block lg:hidden">
+      <button id="nav-toggle" class="flex items-center px-3 py-2 border rounded text-gray-500 border-gray-600 hover:text-blue-600 hover:border-white">
+        <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
+      </button>
+    </div>
+
+    <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block pt-6 lg:pt-0" id="nav-content">
+      <ul class="list-reset lg:flex justify-end flex-1 items-center">          
+        <li class="mr-3">
+          <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="/index.html">Posts</a>
+        </li>
+        <li class="mr-3">
+          <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="/about.html">About</a>
+        </li>
+        <li class="mr-3">
+          <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="https://github.com/qichunren">Github</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="container mx-auto bg-white mt-24 md:mt-18">
+    
+          <div class="max-w-screen-md mx-auto prose lg:prose-lg py-6">
+            <h1 class="mb-2 text-3xl font-bold text-gray-900 md:text-3xl lg:text-4xl xl:text-5xl md:leading-tight">Create custom tags in Smarty 3</h1>
+            <div class="text-gray-400 mt-6 md:text-base">2012-02-26</div>
+          </div>
+          
+          <div class="post-content max-w-screen-md mx-auto prose lg:prose-lg "><p>接着上一篇，还是来说说PHP模板引擎Smarty。PHP的众多CMS框架，如DEDE CMS，对于前端展示都是有一套自己开发的标签，用于显示管理后台维护的数据。在DEDECMS中，如下的代码</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;h2&gt;最近新闻&lt;/h2&gt;
+&lt;ul&gt;
+    {dede:arclist typeid='1' row='10'}
+    &lt;li&gt;[field:textlink/]&lt;/li&gt;
+    {/dede:arclist}
+&lt;/ul&gt;
+</code></pre></div></div>
+
+<p>就可以显示最近type id为1的10条新闻。在Smarty中创建属于自己的标签是很容易的，我之前在网络上搜索的关于创建smarty标签的内容大多数都是基于Smarty2的，我基于Smarty3中的plugins目录的代码了解到在Smarty3中创建自定义标签更为简单直观。</p>
+
+<p>在smarty程序包的plugins目录中，可以看到有block \ function \ modifier 等几种前缀的php文件。像block前缀的php文件可以创建闭合的标签，就如上文提到的那个dede cms新闻标签的例子。现在我正是要创建这样类型的标签。</p>
+
+<p>我结合CodeIgniter来说明，我现在创建一个用户列表的标签，可以显示最近注册的用户。
+在smarty的plugins目录中创建的文件会自动被smarty加载而识别的，文件名和其中的function 名称需要特定的约定好的格式。
+我现在想创建一个users标签,还有一个limit参数，用来显示取多少条数据</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>用户列表：
+&lt;ul&gt;
+    &lt;{users limit='3'}&gt;
+        &lt;li&gt;&lt;{$user-&gt;login}&gt;&lt;/li&gt;
+    &lt;{/users}&gt;
+&lt;/ul&gt;
+</code></pre></div></div>
+
+<p>那么文件名就应该指定为block.users.php，然后function应该命名为smarty_block_users：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;?php
+function smarty_block_users($params, $content, $smarty, &amp;$repeat){
+    if (empty($content)){
+        if (empty($params['limit'])) {
+            $limit = 10;
+        } else {
+            $limit = $params['limit'];
+        }
+        $CI =&amp; get_instance();
+        $GLOBALS['users'] = $CI-&gt;db-&gt;query("select * from users order by created_at desc limit $limit")-&gt;result();
+    }
+    if(isset($GLOBALS['users']) != NULL &amp;&amp; count($GLOBALS['users'])&gt;0){
+        $user = array_shift($GLOBALS['users']);
+        $smarty-&gt;assign('user', $user);
+        if (count($GLOBALS['users']) == 0){
+            unset($GLOBALS['users']);
+            $repeat = false;
+        }
+        $repeat = true;
+    }else {
+        $repeat = false;
+    }
+
+    return $content;
+}
+?&gt;
+</code></pre></div></div>
+
+<p>这个function中有四个参数，$params参数存储的是标签中的属性信息，如上面的limit。$content是标签中间的内容，$smarty是smarty的实例对象，$repeat用于指定block是否重复执行。
+解释完了function的参数，我想其中的执行原理应该很容易看明白了吧。</p>
+</div>
+        
+    </main>
+  </body>
+</html>

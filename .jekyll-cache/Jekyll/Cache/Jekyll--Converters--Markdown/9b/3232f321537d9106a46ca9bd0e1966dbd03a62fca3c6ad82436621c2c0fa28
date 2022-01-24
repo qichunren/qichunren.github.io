@@ -1,0 +1,19 @@
+I"T<p>Javascript代码</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function1(); // works fine
+function2(); // causes an error
+
+// This function is accessible before it's defined
+function function1() {
+    $("body").append("Test 1");
+}
+
+// This function is not accessible until after it's defined
+var function2 = function() {
+    $("body").append("Test 2");
+}
+
+</code></pre></div></div>
+
+<p>在以上的代码中，function1()会工作正常，而function2()调用会出错，因为JS解译器发现此时function2还没有定义。</p>
+:ET

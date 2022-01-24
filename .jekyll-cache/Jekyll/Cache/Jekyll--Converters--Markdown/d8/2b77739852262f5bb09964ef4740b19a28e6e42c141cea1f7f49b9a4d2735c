@@ -1,0 +1,34 @@
+I"V<p>从远程仓库克隆下来一个项目后，默认是在master分支。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>caojinhua:git_test caojinhua$ git branch
+*  master
+</code></pre></div></div>
+
+<p>查看仓库中的所有分支，使用git branch -a命令：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>caojinhua:git_test caojinhua$ git branch -a
+*  master
+  remotes/origin/HEAD -&gt; origin/master
+  remotes/origin/master
+  remotes/origin/remotebranch
+</code></pre></div></div>
+
+<p>可以看到远程仓库中有master和remotebranch两个分支。现在在本地项目中怎么样切换到remotebranch分支呢？很简单，使用git check命令，具体如下：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout --track -b &lt;local branch&gt; &lt;remote&gt;/&lt;tracked branch&gt;
+</code></pre></div></div>
+
+<p>在我这里就是</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout --track -b remotebranch origin/remotebranch
+</code></pre></div></div>
+
+<p>对于这个命令，有一个简化的选项：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout -t origin/remotebranch
+</code></pre></div></div>
+
+<h3 id="参考资料">参考资料</h3>
+
+<p><a href="http://gitready.com/intermediate/2009/01/09/checkout-remote-tracked-branch.html">checkout tracked remote branch</a></p>
+:ET

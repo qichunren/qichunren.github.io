@@ -1,0 +1,23 @@
+I"�	<p><a href="https://github.com/EmmanuelOga/ffaker">ffaker</a>是一个用来产生随机name\email之类的工具，可以用在开发时先产生一些有意义的随机数据，将数据写在db/seeds.rb中，这样你就不用每次急燥地添加一些asasddfdsf这样的数据。一个好的工作开发环境，可以让心情舒畅，效率加倍。</p>
+
+<p>在db/seeds.rb中，如果要产生100个用户名，直接这样做：</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">require</span> <span class="s1">'ffaker'</span>
+
+ <span class="mi">100</span><span class="p">.</span><span class="nf">times</span> <span class="k">do</span>
+   <span class="n">user</span> <span class="o">=</span> <span class="no">User</span><span class="p">.</span><span class="nf">new</span>
+   <span class="n">user</span><span class="p">.</span><span class="nf">name</span> <span class="o">=</span> <span class="no">Faker</span><span class="o">::</span><span class="no">Name</span><span class="p">.</span><span class="nf">name</span> <span class="o">=&gt;</span> <span class="s2">"David Cao"</span>
+   <span class="n">user</span><span class="p">.</span><span class="nf">email</span> <span class="o">=</span> <span class="no">Faker</span><span class="o">::</span><span class="no">Internet</span><span class="p">.</span><span class="nf">email</span> <span class="o">=&gt;</span> <span class="s2">"qichunren@cqror.com"</span>
+   <span class="n">user</span><span class="p">.</span><span class="nf">save</span>
+ <span class="k">end</span></code></pre></figure>
+
+<p>我前一段时间，提交了<a href="https://github.com/EmmanuelOga/ffaker/pull/9">一点代码</a> ，可以产生天朝的姓名：</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">require</span> <span class="s1">'ffaker'</span>
+
+<span class="no">Faker</span><span class="o">::</span><span class="no">NameCN</span><span class="p">.</span><span class="nf">first_name</span> <span class="c1"># =&gt; 鑫洋</span>
+<span class="no">Faker</span><span class="o">::</span><span class="no">NameCN</span><span class="p">.</span><span class="nf">last_name</span> <span class="c1"># =&gt; 禹</span>
+<span class="no">Faker</span><span class="o">::</span><span class="no">NameCN</span><span class="p">.</span><span class="nf">name</span> <span class="c1"># =&gt; 俊伶漫</span></code></pre></figure>
+
+<p>ffaker目前最新的版本是1.2，可以产生中文的姓名。</p>
+:ET

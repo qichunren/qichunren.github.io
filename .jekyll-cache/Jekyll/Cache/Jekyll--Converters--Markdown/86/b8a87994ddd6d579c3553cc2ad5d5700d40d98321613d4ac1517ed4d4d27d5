@@ -1,0 +1,19 @@
+I"#<p>插上移动硬盘后，在命令行终端里输入命令</p>
+
+<p>diskutil info /Volumes/${硬盘名}
+然后记下输出结果中的Device Node值，如/dev/disk1s2</p>
+
+<p>弹出移动硬盘</p>
+
+<p>在命令行执行命令　sudo mkdir /Volumes/MyHD</p>
+
+<p>然后mount：
+sudo mount_ntfs -o rw,nobrowse /dev/disk1s2 /Volumes/MyHD</p>
+
+<p>好了，现在就可以向移动硬盘/Volumes/MyHD中写入内容了。</p>
+
+<p>在Finder中不能看到移动硬盘目录，可以做一个链接
+sudo ln -s /Volumes/MyHD ~/MyHD</p>
+
+<p>搞定。</p>
+:ET
