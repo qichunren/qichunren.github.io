@@ -1,0 +1,27 @@
+name: BuildPages
+
+on: [push, pull_request]
+jobs:
+  test:
+    name: Build Pages
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.0.3 # Not needed with a .ruby-version file
+          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16.13.0'      
+      - run: yarn
+      - run: yarn build:css
+      - run: bundle exec jekyll build -d docs/
+      - run: |
+          git config --local user.email "whyruby@gmail.com"
+          git config --local user.name "qichunren"
+          git remote set-url origin https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+          git add .
+          git commit --allow-empty -m "Auto build pages in docs directory."
+          git push
