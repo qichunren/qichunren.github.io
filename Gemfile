@@ -18,8 +18,7 @@ gem "jekyll"
 group :jekyll_plugins do
   gem 'jekyll-sitemap'
   gem 'jekyll-seo-tag'
-  gem 'jekyll-autoprefixer', "1.0.1"
-  gem "github-pages"
+  gem 'jekyll-autoprefixer', "1.0.1"  
 end
 
 
