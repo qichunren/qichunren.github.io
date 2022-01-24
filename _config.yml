@@ -9,3 +9,12 @@ plugins:
   - jekyll-autoprefixer
   - jekyll-seo-tag
   - jekyll-sitemap
+
+exclude:
+  - LICENSE
+  - README.md
+  - package.json
+  - package-lock.json
+  - tailwind.config.js
+  - yarn.lock
+  - assets/css/application.tailwind.css  
