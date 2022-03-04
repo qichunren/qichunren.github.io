@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Qichunren website">
     <meta name="author" content="Qichunren">
-    <title>学习和了解Redis - Qichunren blog</title>
+    <title>学习和了解 Redis - Qichunren blog</title>
     <link rel="stylesheet" href="/assets/css/main.css?v2">
   </head>
 
@@ -43,13 +43,24 @@
 
   <main class="container mx-auto bg-white mt-24 md:mt-18 p-4">
           <div class="max-w-screen-md mx-auto prose lg:prose-lg mb-2">
-            <h1 class="mb-2 text-3xl font-bold text-gray-900 md:text-3xl lg:text-4xl xl:text-5xl md:leading-tight">学习和了解Redis</h1>
+            <h1 class="mb-2 text-3xl font-bold text-gray-900 md:text-3xl lg:text-4xl xl:text-5xl md:leading-tight">学习和了解 Redis</h1>
             <div class="text-gray-400 md:text-base">2011-05-13</div>
           </div>
 
-          <div class="post-content max-w-screen-md mx-auto prose lg:prose-lg "><p><a href="http://redis.io/">Redis</a>
-<a href="https://github.com/ezmobius/redis-rb">redis-rb</a> gem install redis <br />
-<a href="https://github.com/nateware/redis-objects">redis-objects</a>是基于redis-rb的一个ruby对象与redis对象映射的gem</p>
+          <div class="post-content max-w-screen-md mx-auto prose lg:prose-lg "><h2 id="try-redis-in-docker-updated-2022">Try redis in docker (Updated 2022)</h2>
+
+<p>安装了 docker 的话，可以直接体验 redis-server 的使用：</p>
+
+<p><code class="language-plaintext highlighter-rouge">docker run --rm -p 6379:6379 -it --name redis-test redis</code></p>
+
+<h3 id="related-links">Related links</h3>
+
+<ul>
+  <li><a href="http://redis.io/">Redis</a></li>
+  <li><a href="https://github.com/ezmobius/redis-rb">redis-rb</a> gem install redis</li>
+  <li><a href="https://github.com/nateware/redis-objects">redis-objects</a>是基于 redis-rb 的一个 ruby 对象与 redis 对象映射的 gem</li>
+  <li><a href="https://github.com/rails/kredis">rails/kredis</a> Higher-level data structures built on Redis</li>
+</ul>
 </div>
 
     </main>

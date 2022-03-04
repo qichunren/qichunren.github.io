@@ -47,40 +47,39 @@
             <div class="text-gray-400 md:text-base">2021-08-20</div>
           </div>
 
-          <div class="post-content max-w-screen-md mx-auto prose lg:prose-lg "><p>在Rails应用中，实现参数配置的功能，如果不需要在提供修改接口的话，不需要用上rails-settings-cached这类Gem，使用Rails内置的API即可满足基本需求。</p>
+          <div class="post-content max-w-screen-md mx-auto prose lg:prose-lg "><p>在 Rails 应用中，实现参数配置的功能，如果不需要在提供修改接口的话，不需要用上 <a href="https://github.com/huacnlee/rails-settings-cached">rails-settings-cached</a> 这类 Gem，使用 Rails 内置的 API 即可满足基本需求。</p>
 
-<p>在3个地方可以配置参数:</p>
+<p>在 3 个地方可以配置参数：</p>
 
 <ul>
   <li>config/application.rb</li>
-  <li>config/environments/*.rb</li>
-  <li>
-    <p>config/initializers/*.rb</p>
-
-    <p># config/environments/development.rb</p>
-
-    <p>Rails.application.configure do
-    config.allow_user_register = true
-  end</p>
-
-    <p># config/application.rb
-  module ApplicationName
-      class Application &lt; Rails::Application
-          config.load_defaults 6.1
-          config.allow_user_register = true
-      end
-  end</p>
-  </li>
+  <li>config/environments/</li>
+  <li>config/initializers/</li>
 </ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># config/environments/development.rb
+Rails.application.configure do
+  config.allow_user_register = true
+end
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># config/application.rb
+module ApplicationName
+  class Application &lt; Rails::Application
+    config.load_defaults 6.1
+    config.allow_user_register = true
+  end
+end
+</code></pre></div></div>
 
 <p>通过 Rails.application.config 或者 Rails.configuration 读取配置的参数。</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Rails.configuration.allow_user_register  # =》 true
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Rails.configuration.allow_user_register  # true
 </code></pre></div></div>
 
 <h2 id="嵌套配置参数">嵌套配置参数</h2>
 
-<p>使用 Rails中的 config.x 可以存储嵌套的参数。</p>
+<p>使用 Rails 中的 config.x 可以存储嵌套的参数。</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>config.x.payment_processing.schedule = :daily
 config.x.payment_processing.retries  = 3
