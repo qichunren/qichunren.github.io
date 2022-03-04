@@ -26,8 +26,16 @@
     @apply bg-gray-100 overflow-y-scroll;
 }
 
+.post-content > code {
+  @apply p-4;
+}
+
 .post-content .highlight {
-    @apply bg-gray-900 text-white p-2 overflow-y-auto;
+    @apply bg-gray-900 text-white p-4 overflow-y-auto;
+}
+
+.post-content .language-plaintext {
+  @apply p-4;
 }
 
 .post-content h2 {
