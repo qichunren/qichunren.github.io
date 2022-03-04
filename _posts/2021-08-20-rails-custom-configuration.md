@@ -6,35 +6,41 @@ comments: true
 categories: Development
 ---
 
-在Rails应用中，实现参数配置的功能，如果不需要在提供修改接口的话，不需要用上rails-settings-cached这类Gem，使用Rails内置的API即可满足基本需求。
+在 Rails 应用中，实现参数配置的功能，如果不需要在提供修改接口的话，不需要用上 [rails-settings-cached](https://github.com/huacnlee/rails-settings-cached) 这类 Gem，使用 Rails 内置的 API 即可满足基本需求。
 
-在3个地方可以配置参数:
+在 3 个地方可以配置参数：
 
-* config/application.rb
-* config/environments/*.rb
-* config/initializers/*.rb
 
-	# config/environments/development.rb
-	
-	Rails.application.configure do
-	  config.allow_user_register = true
-	end
-	
-	# config/application.rb
-	module ApplicationName
-		class Application < Rails::Application
-			config.load_defaults 6.1
-			config.allow_user_register = true
-		end
-	end
+- config/application.rb
+- config/environments/
+- config/initializers/
+
+```
+# config/environments/development.rb
+Rails.application.configure do
+  config.allow_user_register = true
+end
+```
+
+```
+# config/application.rb
+module ApplicationName
+  class Application < Rails::Application
+    config.load_defaults 6.1
+    config.allow_user_register = true
+  end
+end
+```    
 	
 通过 Rails.application.config 或者 Rails.configuration 读取配置的参数。
 
-	Rails.configuration.allow_user_register  # =》 true
+```
+Rails.configuration.allow_user_register  # true
+```
 	
 ## 嵌套配置参数
 
-使用 Rails中的 config.x 可以存储嵌套的参数。
+使用 Rails 中的 config.x 可以存储嵌套的参数。
 
 	config.x.payment_processing.schedule = :daily
 	config.x.payment_processing.retries  = 3
