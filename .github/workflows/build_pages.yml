@@ -17,6 +17,7 @@ jobs:
           node-version: '16.13.0'      
       - run: yarn
       - run: yarn build:css
+      - run: rm -rf .sass-cache
       - run: bundle exec jekyll build -d docs/
       - run: |
           git config --local user.email "whyruby@gmail.com"
