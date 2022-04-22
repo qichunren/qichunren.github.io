@@ -3,11 +3,11 @@
 @tailwind utilities;
 
 .post-content {
-    @apply text-lg mb-8;
+    @apply p-4 text-lg mb-8;
 }
 
 .post-content p {
-    @apply mb-6 leading-loose p-4;
+    @apply py-4 indent-10;
 }
 
 .post-content p code {
@@ -27,11 +27,11 @@
 }
 
 .post-content div.highlight {
-    @apply bg-gray-900 text-white p-2 overflow-y-auto text-sm m-0 md:m-4;
+    @apply bg-gray-900 text-gray-400 px-2 py-2 overflow-y-auto text-sm rounded;
 }
 
 .post-content code.language-plaintext {
-    @apply p-2;
+    @apply py-2;
 }
 
 .post-content h2 {
