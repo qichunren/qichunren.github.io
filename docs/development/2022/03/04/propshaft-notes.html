@@ -42,12 +42,16 @@
   </nav>
 
   <main class="container mx-auto bg-white mt-24 md:mt-18">
-          <div class="max-w-screen-md mx-auto prose lg:prose-lg mb-2 p-4">
+          <div class="max-w-screen-md mx-auto prose lg:prose-lg p-4">
             <h1 class="mb-2 text-3xl font-bold text-gray-900 md:text-2xl lg:text-4xl xl:text-5xl md:leading-tight">propshaft 源码研究</h1>
             <div class="text-gray-400 md:text-base">2022-03-04</div>
           </div>
 
-          <div class="post-content max-w-screen-md mx-auto prose lg:prose-lg"><p>首先页面中使用了 Rails 提供的方法</p>
+          <div class="post-content max-w-screen-md mx-auto prose lg:prose-lg"><p><a href="https://github.com/rails/propshaft">propshaft</a> 是在 Rails 7 发布后，用于取代之前的 <a href="https://github.com/rails/sprockets">sprockets</a> 而新创建的一个用于管理静态资源 (CSS / JS / Images)。相比 sprockets 的丰富功能，propshaft 显得十分轻量极，代码量也比 sprockets 少很多。这和 Rails 7 推荐的前端管理方案是一致的。</p>
+
+<p>在这篇文章里简要的分析一下 propshaft 库里的代码。</p>
+
+<p>首先页面中使用了 Rails 提供的方法</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;%= stylesheet_link_tag "application", "data-turbo-track": "reload" %&gt;
 &lt;%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %&gt;
