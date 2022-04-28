@@ -6,20 +6,20 @@ comments: true
 categories: ruby
 ---
 
-前些时候研究了一下ruby encoder的加密技术应用，在这里记录一下它的使用过程。
+前些时候研究了一下 ruby encoder 的加密技术应用，在这里记录一下它的使用过程。
 
-[Ruby Encoder](http://rubyencoder.com/)将ruby代码加密成不易阅读的格式，然后通过它提供的加载类型来载入ruby代码，从而达到加密的目的。它是一个付费软件，一个许可证要159美金，提供试用版，可以试用一个星期，支持Linux \ FreeBSD \ Mac OS X \ Windows系统。
+[Ruby Encoder](http://rubyencoder.com/)将 ruby 代码加密成不易阅读的格式，然后通过它提供的加载类型来载入 ruby 代码，从而达到加密的目的。它是一个付费软件，一个许可证要 159 美金，提供试用版，可以试用一个星期，支持 Linux \ FreeBSD \ Mac OS X \ Windows 系统。
 
-首先在Ruby Encoder上注册一个帐号，登录进去后，我这里选择下载Mac OS X版的，RubyEncoder Trial for Mac OS X （RubyEncoder_1.3_Trial.dmg），下载后，将dmg中的程序拖到applications目录，就算安装好了。
+首先在 Ruby Encoder 上注册一个帐号，登录进去后，我这里选择下载 Mac OS X 版的，RubyEncoder Trial for Mac OS X（RubyEncoder_1.3_Trial.dmg），下载后，将 dmg 中的程序拖到 applications 目录，就算安装好了。
 ```
 qichunren:~ qichunren$ cd /Applications/RubyEncoder/
 qichunren:RubyEncoder qichunren$ ls
 Icon?				RubyEncoder_User_Manual.pdf	bin/
 README				Start RubyEncoder.app*		rgloader/
 ```
-第一次使用的话，需要它的官方网站给你提供一个许可证文件(文件名为encode.lic),进行Ruby Encoder的bin目录,执行其中的rubyencoder文件, 它会输出一些它的软件声明信息，一直回车后几次后，阅读完许可声明，它还要求你输入'I AGREE'后，然后输出一个注册码（Reg Key）,要求你登录到它的网站中，在个人帐户里，在页面最下面的Available Licenses中填入注册码，然后下载它提供的encode.lic文件，放在Ruby Encoder的bin目录中，现在就可以使用Ruby Encoder了。
+第一次使用的话，需要它的官方网站给你提供一个许可证文件 (文件名为 encode.lic),进行 Ruby Encoder 的 bin 目录，执行其中的 rubyencoder 文件，它会输出一些它的软件声明信息，一直回车后几次后，阅读完许可声明，它还要求你输入'I AGREE'后，然后输出一个注册码（Reg Key）,要求你登录到它的网站中，在个人帐户里，在页面最下面的 Available Licenses 中填入注册码，然后下载它提供的 encode.lic 文件，放在 Ruby Encoder 的 bin 目录中，现在就可以使用 Ruby Encoder 了。
 
-直接执行一下rubyencoder命令，可以先了解一下它的用法。
+直接执行一下 rubyencoder 命令，可以先了解一下它的用法。
 ```
 qichunren:bin qichunren$ ./rubyencoder 
 RubyEncoder 1.3 Evaluation (built: Aug 31 2010 11:55:25)
@@ -63,18 +63,18 @@ Usage,    single file: rubyencoder [options] file.rb
   -h               Display this help
 ```
 
-像我给公司做的一个小项目，我只需要加密rails目录中的app目录就足够了，官方也建议只加密app目录就行了，可能是为了避免一些加密问题？
+像我给公司做的一个小项目，我只需要加密 rails 目录中的 app 目录就足够了，官方也建议只加密 app 目录就行了，可能是为了避免一些加密问题？
 ```
 qichunren:bin qichunren$ ./rubyencoder --ruby 1.9 /Users/qichunren/code/menu/app/**/*.rb
 ```
-这样就完成了app目录中的rb代码加密，同时它还备份了原来的rb文件，是同名的后缀为bak的文件，在部署中应该将.bak文件都删除掉。还有一件事情要做，需要把Ruby Encoder的相当于解密的加载器文件复制到app目录中，也就是加密代码的上一级目录里面来，这样项目可以正常执行了。
+这样就完成了 app 目录中的 rb 代码加密，同时它还备份了原来的 rb 文件，是同名的后缀为 bak 的文件，在部署中应该将.bak 文件都删除掉。还有一件事情要做，需要把 Ruby Encoder 的相当于解密的加载器文件复制到 app 目录中，也就是加密代码的上一级目录里面来，这样项目可以正常执行了。
 ```
 qichunren:RubyEncoder qichunren$ pwd
 /Applications/RubyEncoder
 qichunren:RubyEncoder qichunren$ cp -r rgloader/ /Users/qichunren/code/menu/app/
 ```
 
-下面是我咨询的关于Ruby Encoder的许可证相关的几个问题的官方回复邮件。
+下面是我咨询的关于 Ruby Encoder 的许可证相关的几个问题的官方回复邮件。
 ```
 Hi,
 

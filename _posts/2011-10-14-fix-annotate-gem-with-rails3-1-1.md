@@ -6,7 +6,7 @@ comments: true
 categories: rails
 ---
 
-今天在做一个小工具，使用最新的Rails版本3.1.1, 在使用annotate(2.4.0)这个gem的时候出错了：
+今天在做一个小工具，使用最新的 Rails 版本 3.1.1，在使用 annotate(2.4.0) 这个 gem 的时候出错了：
 
 
 ```
@@ -33,7 +33,7 @@ caojinhua:tts_cacher caojinhua$ annotate
 ```
 
 
-然后在stackoverflow上找到了解决方法，就是使用最新的annotate.
+然后在 stackoverflow 上找到了解决方法，就是使用最新的 annotate.
 
 
 ```

@@ -1,6 +1,6 @@
 ---
 layout: single
-title: 使用Unicorn
+title: 使用 Unicorn
 date: 2011-05-12 23:12:12
 comments: true
 categories: [rails, deploy]

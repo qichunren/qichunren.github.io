@@ -1,19 +1,19 @@
 ---
 layout: single
-title: 使用Juggernaut
+title: 使用 Juggernaut
 date: 2011-05-12 09:12:12
 comments: true
 categories: [rails, web]
 ---
 
-[Juggernaut](https://github.com/maccman/juggernaut)是基于[Node.js](http://nodejs.org/)的一个实时(Realtime)Web的解决方案。使用起来很方便。
+[Juggernaut](https://github.com/maccman/juggernaut)是基于[Node.js](http://nodejs.org/)的一个实时 (Realtime)Web 的解决方案。使用起来很方便。
 
 ### 安装方法
 
-1. 安装Node.js: brew install node
+1. 安装 Node.js: brew install node
 2. 安装[Redis](http://code.google.com/p/redis): brew install redis
 3. 安装[NPM](http://npmjs.org/): curl http://npmjs.org/install.sh | sh
-4. 安装Juggernaut: 这个会把Juggernaut安装到当前目录，所以我应该先进行项目的/vendor/third目录，然后执行 npm install juggernaut
+4. 安装 Juggernaut: 这个会把 Juggernaut 安装到当前目录，所以我应该先进行项目的/vendor/third 目录，然后执行 npm install juggernaut
 
 ```
     usermatoMacBook-Pro:third qichunren$ npm install juggernaut
@@ -24,7 +24,7 @@ categories: [rails, web]
     usermatoMacBook-Pro:third qichunren$
 ```
 
-5. 安装Juggernaut gem:
+5. 安装 Juggernaut gem:
 
 ```
 gem install juggernaut
@@ -32,7 +32,7 @@ gem install juggernaut
 
 ### 使用方法
 
-我们在自己的项目中只需要引入http://localhost:8080/application.js 这个js文件即可。
+我们在自己的项目中只需要引入 http://localhost:8080/application.js 这个 js 文件即可。
 然后在页面中可以这样接收服务器端的消息：
 
 {% highlight html %}
@@ -51,5 +51,5 @@ require "juggernaut"
 Juggernaut.publish("channel1", "Some data")
 {% endhighlight %}
 
-另外在启动了Juggernaut后，它默认在8080端口上有一个Helloword的应用，可以了解一下。
+另外在启动了 Juggernaut 后，它默认在 8080 端口上有一个 Helloword 的应用，可以了解一下。
 

@@ -1,11 +1,11 @@
 ---
 layout: single
-title: "通过update-rc.d来管理Ubuntu系统的自动启动程序"
+title: "通过 update-rc.d 来管理 Ubuntu 系统的自动启动程序"
 date: 2012-03-14 11:30
 comments: true
 categories: linux
 ---
-转载, 并记下我的使用心得。
+转载，并记下我的使用心得。
 
 
 Linux services can be started, stopped and reloaded with the use of scripts stocked in /etc/init.d/.
@@ -131,7 +131,7 @@ Adding system startup for /etc/init.d/apache2 ...
 
 ## 我的总结
 
-通过 update-rc.d 来管理Linux下开机自动运行，的确很方便，但是我在实际部署实践中，还是遇到了一些问题，导致开机后没有正常自动启动，但是手工通过service xxx start可以启动。我经过排查发现，原因是在Linux系统启动中，在执行/etc/init.d/中的脚本时，此时系统有可能没有加载好系统中的PATH变量，所以需要在init.d脚本中手工指定，对于使用Ruby脚本写的程序，需要GEM_HOME\GEM_PATH等环境变量，我这里是用RVM来管理Ruby的，这是我使用的：
+通过 update-rc.d 来管理 Linux 下开机自动运行，的确很方便，但是我在实际部署实践中，还是遇到了一些问题，导致开机后没有正常自动启动，但是手工通过 service xxx start 可以启动。我经过排查发现，原因是在 Linux 系统启动中，在执行/etc/init.d/中的脚本时，此时系统有可能没有加载好系统中的 PATH 变量，所以需要在 init.d 脚本中手工指定，对于使用 Ruby 脚本写的程序，需要 GEM_HOME\GEM_PATH 等环境变量，我这里是用 RVM 来管理 Ruby 的，这是我使用的：
 ```
 PATH="/usr/local/rvm/gems/ruby-1.9.2-p290/bin:/usr/local/rvm/rubies/ruby-1.9.2-p290/bin:/usr/local/rvm/bin:/opt/node/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games"
 RUBY_VERSION="ruby-1.9.2-p290"
@@ -143,12 +143,12 @@ export GEM_HOME=$GEM_HOME
 export GEM_PATH=$GEM_PATH
 ```
 
- 另外还有一些其它的变量（如果你的启动程序需要），也需要手工指定，如在Ruby 1.9中，就有可能需要指定，比如说unicorn启动脚本：
+ 另外还有一些其它的变量（如果你的启动程序需要），也需要手工指定，如在 Ruby 1.9 中，就有可能需要指定，比如说 unicorn 启动脚本：
 ```
 export LANG='en_US.UTF-8'
 ```
 
-最后附上一个常用的init.d启动脚本的样本：
+最后附上一个常用的 init.d 启动脚本的样本：
 ```
 #!/bin/sh
 ### BEGIN INIT INFO

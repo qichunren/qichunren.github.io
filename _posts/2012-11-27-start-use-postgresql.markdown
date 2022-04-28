@@ -6,7 +6,7 @@ comments: true
 categories: database
 ---
 
-## Mac平台
+## Mac 平台
 
 ### brew info postgresql
 
@@ -288,9 +288,9 @@ categories: database
       luna_production=> ALTER USER luna WITH PASSWORD ‘whateverpasswordyouwant’;
 
 
-## Ubuntu平台
+## Ubuntu 平台
 
-`sudo apt-get -y install  postgresql libpq-dev` 安装完成以后，我们需要更改postgres用户的密码，否则我们就没法使用这个数据库服务器。以postgres这个系统用户的身份运行psql命令，在终端中输入如下:
+`sudo apt-get -y install  postgresql libpq-dev` 安装完成以后，我们需要更改 postgres 用户的密码，否则我们就没法使用这个数据库服务器。以 postgres 这个系统用户的身份运行 psql 命令，在终端中输入如下：
 
 ```
 sudo su postgres -c psql template1

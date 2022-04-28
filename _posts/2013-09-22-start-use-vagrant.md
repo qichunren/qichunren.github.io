@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "开始使用vagrant"
+title: "开始使用 vagrant"
 date: 2013-09-22 20:43
 comments: true
 categories: Tool
@@ -14,25 +14,25 @@ categories: Tool
 
 ## Get started
 
-1. 下载vagrant, 从[http://downloads.vagrantup.com/](http://downloads.vagrantup.com/)页面中，根据自己的操作系统平台选择相应的版本下载，我在写这个文档的时候它的最新版本是*v1.3.1*
-2. 安装完成后，在命令行终端中会有一个vagrant命令。
+1. 下载 vagrant，从[http://downloads.vagrantup.com/](http://downloads.vagrantup.com/)页面中，根据自己的操作系统平台选择相应的版本下载，我在写这个文档的时候它的最新版本是*v1.3.1*
+2. 安装完成后，在命令行终端中会有一个 vagrant 命令。
 3. 进行自己平时的工作目录，执行
 
 ```
 git clone git@github.com:qichunren/luna-vagrant.git
 cd luna-vagrant
-vagrant box add precise64 http://files.vagrantup.com/precise64.box # 下载box，它是一个VirtualBox虚拟机导出的文件，版本是Ubuntu 12.04 LTS 64位
+vagrant box add precise64 http://files.vagrantup.com/precise64.box # 下载 box，它是一个 VirtualBox 虚拟机导出的文件，版本是 Ubuntu 12.04 LTS 64 位
 vagrant up
 ```
 
-自己的工作目录（就是luna-vagrant项目的上一层项目）是实时与虚拟机中的/code目录保持同步。
-luna-vagrant目录是实时与虚拟机中的/vagrant目录保持同步。
+自己的工作目录（就是 luna-vagrant 项目的上一层项目）是实时与虚拟机中的/code 目录保持同步。
+luna-vagrant 目录是实时与虚拟机中的/vagrant 目录保持同步。
 
 ## 常用命令
 
 ```
 vagrant up  # 启动虚拟机
-vagrant ssh # ssh登录机器
+vagrant ssh # ssh 登录机器
 vagrant halt # 关闭虚拟机
 vagrant destory # 删除虚拟机
 vagrant status # 显示虚拟机状态
@@ -40,7 +40,7 @@ vagrant status # 显示虚拟机状态
 
 ## FAQ
 
-1. 怎么样添加box?
+1. 怎么样添加 box?
   vagrant box add precise64 http://files.vagrantup.com/precise64.box
 
 

@@ -1,17 +1,17 @@
 ---
 layout: single
-title: 在Rails项目中导出Excel
+title: 在 Rails 项目中导出 Excel
 tags:
 - Excel
 - Rails
 ---
 
-[excel_rails](https://github.com/asanghi/excel_rails) 这个工具可以实现导出Excel数据的功能。它本身是基于[ruby-spreadsheet ](https://github.com/jacobat/ruby-spreadsheet)
+[excel_rails](https://github.com/asanghi/excel_rails) 这个工具可以实现导出 Excel 数据的功能。它本身是基于[ruby-spreadsheet ](https://github.com/jacobat/ruby-spreadsheet)
 
 ### 使用方法
 
 1. 安装
-在Gemfile中
+在 Gemfile 中
 
 {% highlight ruby %}
     # Excel

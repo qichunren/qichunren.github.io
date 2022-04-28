@@ -1,12 +1,12 @@
 ---
 layout: single
-title: 分析rubygems.org上受欢迎的gem包
+title: 分析 rubygems.org 上受欢迎的 gem 包
 date: 2011-01-09 12:12:12
 comments: true
 categories: [ruby, tool]
 ---
 
-用下载量来作为一个gem包的爱欢迎度的标准。
+用下载量来作为一个 gem 包的爱欢迎度的标准。
 
 {% highlight ruby %}
 # encoding: utf-8

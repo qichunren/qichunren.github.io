@@ -1,14 +1,14 @@
 ---
 layout: single
-title: Linux里GUI程序自启动
+title: Linux 里 GUI 程序自启动
 date: 2016-06-16 15:27
 comments: true
 categories: Development
 ---
 
-将.desktop文件复制到 /home/${user}/.config/autostart/目录下即可。
+将 .desktop 文件复制到 /home/${user}/.config/autostart/目录下即可。
 
-另外很多时候程序需要用root权限启动，需要修改.desktop文件, 在执行命令前加sudo
+另外很多时候程序需要用 root 权限启动，需要修改.desktop 文件，在执行命令前加 sudo
 
 
 	[Desktop Entry]
@@ -24,7 +24,7 @@ categories: Development
 	  Categories=Development;
 
 
-为了让自启动程序不用如入sudo的密码，还需要修改/etc/sudoers文件
+为了让自启动程序不用如入 sudo 的密码，还需要修改 /etc/sudoers 文件
 
 	sudo visudo
 

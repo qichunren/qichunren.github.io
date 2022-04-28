@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "怎么样从git提交历史里永久删除一个文件?"
+title: "怎么样从 git 提交历史里永久删除一个文件？"
 date: 2012-05-17 15:04
 comments: true
 categories: git

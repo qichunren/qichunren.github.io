@@ -1,14 +1,14 @@
 ---
 layout: single
-title: 在QT5中使用国际化语言
+title: 在 QT5 中使用国际化语言
 date: 2015-4-13 18:42
 comments: true
 categories: Development
 ---
 
-要在QT项目中使用国际化，以支持多种语言，需要如下步骤。
+要在 QT 项目中使用国际化，以支持多种语言，需要如下步骤。
 
-1. 在pro文件中声明TRANSLATIONS文件，如下面的例子，声明了两个ts文件，一个是zh-CN，另一个en的。
+1. 在 pro 文件中声明 TRANSLATIONS 文件，如下面的例子，声明了两个 ts 文件，一个是 zh-CN，另一个 en 的。
 
     TRANSLATIONS = translations/ntptu_zh-CN.ts translations/ntptu_en.ts
 
@@ -22,15 +22,15 @@ categories: Development
 	Updating 'src/translations/ntptu_en.ts'...
 	    Found 104 source text(s) (104 new and 0 already existing)
 	    
-3. 使用linguist.exe工具打开上一步生成的ts文件，进行翻译工作。将两个语言的文件都翻译好。
+3. 使用 linguist.exe 工具打开上一步生成的 ts 文件，进行翻译工作。将两个语言的文件都翻译好。
 
-4. lrelease -verbose project_zh_CN.ts生成.qm文件
+4. lrelease -verbose project_zh_CN.ts 生成.qm 文件
 
-4. 将qm文件添加了资源中。
+4. 将 qm 文件添加了资源中。
 
 5.
 
-QT程序启动时加载Translator
+QT 程序启动时加载 Translator
 
     QTranslator translator;
     translator.load("ntptu_" + QLocale::system().name(),

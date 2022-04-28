@@ -1,9 +1,9 @@
 ---
 layout: single
-title: 初试Rails 3.1 Beta
+title: 初试 Rails 3.1 Beta
 tags: Rails3
 ---
-看到[消息](http://weblog.rubyonrails.org/2011/5/5/rails-3-1-beta-1-released) 说Rails3.1 Beta出来了，我立刻就想试试，先从大体上了解一下看做了哪些改变。
+看到[消息](http://weblog.rubyonrails.org/2011/5/5/rails-3-1-beta-1-released) 说 Rails3.1 Beta 出来了，我立刻就想试试，先从大体上了解一下看做了哪些改变。
 ```
 usermatoMacBook-Pro:code qichunren$ rvm use 1.9.2
 Using /Users/qichunren/.rvm/gems/ruby-1.9.2-p0
@@ -97,7 +97,7 @@ usermatoMacBook-Pro:code qichunren$ rails -v
 Rails 3.1.0.beta1
 ```
 
-看看rails命令有没有一些改动：
+看看 rails 命令有没有一些改动：
 ```
 usermatoMacBook-Pro:code qichunren$ rails --help
 Usage:
@@ -219,10 +219,10 @@ usermatoMacBook-Pro:code qichunren$ rails new rails3
 usermatoMacBook-Pro:code qichunren$
 ```
 
-创建一个scaffold user后，发现在页面里/assets/application.js中包括了jQuery 1.6，还有rails.js for jquery这个。再也不需要之前的那个手工引入jQuery了，或者使用jquery-rails这个gem.
-另外还生成有一个/assets/user.js.coffee文件，得要花时间学一下这个[coffee-script](https://github.com/jashkenas/coffee-script)了。
+创建一个 scaffold user 后，发现在页面里/assets/application.js 中包括了 jQuery 1.6，还有 rails.js for jquery 这个。再也不需要之前的那个手工引入 jQuery 了，或者使用 jquery-rails 这个 gem.
+另外还生成有一个/assets/user.js.coffee 文件，得要花时间学一下这个[coffee-script](https://github.com/jashkenas/coffee-script)了。
 
-还发现一个有趣的现象，rails团队似乎偏爱json,在scaffold生成的代码中没有了以前的xml format
+还发现一个有趣的现象，rails 团队似乎偏爱 json，在 scaffold 生成的代码中没有了以前的 xml format
 {% highlight ruby %}
 def index
   @users = User.all
@@ -234,7 +234,7 @@ def index
 end
 {% endhighlight %}
 
-另外多了一个assets的generator:
+另外多了一个 assets 的 generator:
 ```
 Example:
     `rails generate assets posts`
@@ -244,5 +244,5 @@ Example:
         Stylesheet:     app/assets/stylesheets/posts.css
 ```
 
-总体上看，变化不大，将jQuery，coffee_script,scss加入默认了。一切都继续演进。
+总体上看，变化不大，将 jQuery，coffee_script,scss 加入默认了。一切都继续演进。
 

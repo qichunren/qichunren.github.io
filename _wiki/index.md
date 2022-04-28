@@ -8,7 +8,7 @@ title: Wiki
 * [NTP](ntp_in_multicast_mode)
 * [Tool Box](tool_box)
 * [Design](design-links)
-* [日常Linux（Ubuntu）下的开发工具链记录](c_cpp_dev_linux)
+* [日常 Linux（Ubuntu）下的开发工具链记录](c_cpp_dev_linux)
 
 ## Get Started series
 

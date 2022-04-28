@@ -1,6 +1,6 @@
 ---
 layout: single
-title: Benchmark用法
+title: Benchmark 用法
 date: 2008-10-09 12:01:11
 comments: true
 categories: [ruby, test]
@@ -8,7 +8,7 @@ categories: [ruby, test]
 
 [Benchmark](http://rubybenchmark.com/) 可以用来测试某个函数或者任何代码的执行时间。
 
-用法很简单:
+用法很简单：
 
 {% highlight ruby %}
 require 'benchmark'
@@ -20,7 +20,7 @@ end
 {% endhighlight %}    
 
 
-结果如下:
+结果如下：
 
 ```
 usermatoMacBook-Pro:test qichunren$ ruby test.rb
@@ -36,5 +36,5 @@ Rehearsal ---------------------------------------------
 
 ### 参考资料
 + [Benchmark Rdoc](http://ruby-doc.org/stdlib/libdoc/benchmark/rdoc/index.html)
-+ [Ruby参考手册](http://www.kuqin.com/rubycndocument/man/addlib/benchmark.html)
++ [Ruby 参考手册](http://www.kuqin.com/rubycndocument/man/addlib/benchmark.html)
 + [ruby-benchmark-suite](https://github.com/acangiano/ruby-benchmark-suite)

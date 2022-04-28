@@ -74,6 +74,31 @@ Rails 中生成的 HTML 代码如下，基本上没有什么用，一般都是�
 
 在 propshaft/railtie.rb 中看到 /assets/ 前缀的 URL 请求都由 propshaft/server.rb 处理，它是一个简单的 rack middleware
 
+```ruby
+# lib/propshaft/railtie.rb
+config.after_initialize do |app|
+	config.assets.server = Rails.env.development? || Rails.env.test?
+	app.assets = Propshaft::Assembly.new(app.config.assets)
+	if config.assets.server
+		app.routes.prepend do
+			mount app.assets.server => app.assets.config.prefix
+		end
+	end
+end
+```
+
+rack middleware 在 Propshaft::Assembly 中创建，它指向 Propshaft::Server
+
+```ruby
+# lib/propshaft/assembly.rb
+class Propshaft::Assembly
+	def server
+    Propshaft::Server.new(self)
+  end
+end
+```
+
+
 检查是否存在 public/assets/.manifest.json
 Yes: Propshaft::Resolver::Static
 No: Propshaft::Resolver::Dynamic

@@ -1,18 +1,18 @@
 ---
 layout: single
-title: 将Shadownsocks代理转换成http proxy类型
+title: 将 Shadownsocks 代理转换成 http proxy 类型
 date: 2014-07-15 17:04
 comments: true
 categories: Tool
 ---
 
-将Shadownsocks代理转换成http proxy类型， 主要就是安装 *polipo* 工具
+将 Shadownsocks 代理转换成 http proxy 类型， 主要就是安装 *polipo* 工具
 
 ```
 brew install polipo
 ```
 
-然后就是启动polipo程序开机自动启动。
+然后就是启动 polipo 程序开机自动启动。
 
 首先要修改自动启动的配置文件 _/usr/local/opt/polipo/homebrew.mxcl.polipo.plist_，需要给 polipo 命令加上命令行参数 **socksParentProxy=localhost:1080**
 
@@ -43,7 +43,7 @@ ln -sfv /usr/local/opt/polipo/*.plist ~/Library/LaunchAgents
 launchctl load ~/Library/LaunchAgents/homebrew.mxcl.polipo.plist
 ```
 
-polipo 进程默认监听8123端口，在命令行使用 `export http_proxy=http://localhost:8123` 就可以使用代理了。
+polipo 进程默认监听 8123 端口，在命令行使用 `export http_proxy=http://localhost:8123` 就可以使用代理了。
 
 ```
 export https_proxy=http://localhost:8123

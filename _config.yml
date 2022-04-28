@@ -2,9 +2,6 @@ url: "" # the base hostname & protocol for your site, e.g. http://example.com
 baseurl: "" # the subpath of your site, e.g. /blog
 title: "Qichunren blog" # the name of your site, e.g. ACME Corp.
 
-sass:
-    sass_dir: _sass
-
 plugins:
   - jekyll-autoprefixer
   - jekyll-seo-tag
@@ -17,4 +14,8 @@ exclude:
   - package-lock.json
   - tailwind.config.js
   - yarn.lock
-  - assets/css/application.tailwind.css  
+  - assets/css/application.tailwind.css
+
+collections:
+  dev_tips:
+    output: true

@@ -1,6 +1,6 @@
 ---
 layout: single
-title: 在Mac上安装RVM
+title: 在 Mac 上安装 RVM
 date: 2011-01-02 09:09:09
 comments: true
 categories: [ruby, tool]
@@ -8,7 +8,7 @@ categories: [ruby, tool]
 
 [安装方法](http://beginrescueend.com/rvm/install/)
 
-首先需要安装好git
+首先需要安装好 git
 然后，
 
 ```

@@ -3,7 +3,7 @@ layout: single
 position: Developer
 ---
 
-# 日常Linux（Ubuntu）下的开发工具链记录
+# 日常 Linux（Ubuntu）下的开发工具链记录
 
 ## 包管理工具
 
@@ -42,7 +42,7 @@ position: Developer
 ## 常用库
 
 * libcurl: libcurl4-openssl-dev
-* glib: apt-get install libglib2.0-0-dbg GLib调式符号
+* glib: apt-get install libglib2.0-0-dbg GLib 调式符号
 * gstreamer
 * gtk: gtk+-3.0 => deb: libgtk-3-dev
 * qt5

@@ -1,6 +1,6 @@
 ---
 layout: single
-title: 使用Jruby来部署Rails应用
+title: 使用 Jruby 来部署 Rails 应用
 date: 2011-08-26 22:36:22
 categories: [ruby, jruby, rails, deploy]
 comments: true
@@ -10,18 +10,18 @@ comments: true
 
 1. 使用代码混淆工具
 
-2. 使用JRuby将Ruby代码编译成java字节码文件（.class）
+2. 使用 JRuby 将 Ruby 代码编译成 java 字节码文件（.class）
 
 
 -----
-第一种方案，有一个名为[ruby encoder](http://rubyencoder.com)的产品，我试用了一下，发现太重量级了，我个人只是一个可以将代码混淆一下的小工具而已，而ruby encoder有自己的运行加载机制，源代码二次编码，基于域名可以设置产品过期失效时间等等一系列功能，我不需要这些功能，另外它不是免费的，所以我没有采用这个方案。
+第一种方案，有一个名为[ruby encoder](http://rubyencoder.com)的产品，我试用了一下，发现太重量级了，我个人只是一个可以将代码混淆一下的小工具而已，而 ruby encoder 有自己的运行加载机制，源代码二次编码，基于域名可以设置产品过期失效时间等等一系列功能，我不需要这些功能，另外它不是免费的，所以我没有采用这个方案。
 
-第二种方安装就是使用JRuby。整体思路就是将Ruby项目的代码编译成java字节码文件，然后运行于Java环境中。
+第二种方安装就是使用 JRuby。整体思路就是将 Ruby 项目的代码编译成 java 字节码文件，然后运行于 Java 环境中。
 
 -----
-将项目中的ruby文件编译成java的class文件不是一件容易的事情，所幸有一个名为warbler的gem可以帮助我们搞定这一切，它可以将项目打包(.war)，同时可以将ruby代码编译成class文件。然后你将生成好的.war文件放进JAVA应用服务器的应用目录中，如Tomcat的webapps中就可以了。
+将项目中的 ruby 文件编译成 java 的 class 文件不是一件容易的事情，所幸有一个名为 warbler 的 gem 可以帮助我们搞定这一切，它可以将项目打包 (.war)，同时可以将 ruby 代码编译成 class 文件。然后你将生成好的.war 文件放进 JAVA 应用服务器的应用目录中，如 Tomcat 的 webapps 中就可以了。
 
-warbler提供若干个任务可供使用：
+warbler 提供若干个任务可供使用：
 ```
 qichunren@qichunren-desktop:~/code/ntdeck$ warble -T
 warble compiled    # Feature: precompile all Ruby files
@@ -35,7 +35,7 @@ warble war:clean   # Remove the project war file
 warble war:debug   # Dump diagnostic information
 ```
 
-平时最常用的就是warble war命令了，需要关注的是warble的配置文件，它的配置文件是通过warble config来生成的，在这个文件中有一系列的配置项可以设置，以下是我的配置文件：
+平时最常用的就是 warble war 命令了，需要关注的是 warble 的配置文件，它的配置文件是通过 warble config 来生成的，在这个文件中有一系列的配置项可以设置，以下是我的配置文件：
 {% highlight ruby %}
 # Disable Rake-environment-task framework detection by uncommenting/setting to false
 # Warbler.framework_detection = false
@@ -184,4 +184,4 @@ end
 
 {% endhighlight %}
 
-需要注意的是config.features = %w(executable compiled)配置中，其中的compiled就是可以将ruby代码编译成class代码的。
+需要注意的是 config.features = %w(executable compiled) 配置中，其中的 compiled 就是可以将 ruby 代码编译成 class 代码的。

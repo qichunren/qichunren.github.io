@@ -1,11 +1,11 @@
 ---
 layout: single
-title: 建立rspec测试的环境
+title: 建立 rspec 测试的环境
 tags:
 - rspec
 ---
 
-我个人感觉rspec的风格比rails自带项目的test好用一些，更符合我的口味。在这里记录一下rspec的搭建方法，说是搭建，其实没有那么烦琐，就是一些工具的组合起来，这样测试更方便，效率更高。
+我个人感觉 rspec 的风格比 rails 自带项目的 test 好用一些，更符合我的口味。在这里记录一下 rspec 的搭建方法，说是搭建，其实没有那么烦琐，就是一些工具的组合起来，这样测试更方便，效率更高。
 
 {% highlight ruby %}
 # in Gemfile
@@ -16,13 +16,13 @@ group :test, :development do
 end
 {% endhighlight %}
 
-然后bundle install,
-然后rails g rspec:install
-然后你可以将默认的test目录删除掉。
+然后 bundle install,
+然后 rails g rspec:install
+然后你可以将默认的 test 目录删除掉。
 
-然后，rails g controller pages test来试试，现在生成的测试代码再也不是原来的unit test代码了，是用了新的rspec了。
+然后，rails g controller pages test 来试试，现在生成的测试代码再也不是原来的 unit test 代码了，是用了新的 rspec 了。
 
-rspec2将rails项目中的测试分为几块：
+rspec2 将 rails 项目中的测试分为几块：
 controllers
 models
 helpers

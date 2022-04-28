@@ -1,12 +1,12 @@
 ---
 layout: single
-title: "两种javascript定义function的区别"
+title: "两种 javascript 定义 function 的区别"
 date: 2008-10-29 18:26:46
 comments: true
 categories: [javascript]
 ---
 
-Javascript代码
+Javascript 代码
 
 ```
 function1(); // works fine
@@ -24,4 +24,4 @@ var function2 = function() {
 
 ```
 
- 在以上的代码中，function1()会工作正常，而function2()调用会出错，因为JS解译器发现此时function2还没有定义。
+ 在以上的代码中，function1() 会工作正常，而 function2() 调用会出错，因为 JS 解译器发现此时 function2 还没有定义。

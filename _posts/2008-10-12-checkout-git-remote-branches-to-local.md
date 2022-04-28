@@ -6,14 +6,14 @@ comments: true
 categories: [git]
 ---
 
-从远程仓库克隆下来一个项目后，默认是在master分支。
+从远程仓库克隆下来一个项目后，默认是在 master 分支。
 
 ```
 caojinhua:git_test caojinhua$ git branch
 *  master
 ```
 
-查看仓库中的所有分支，使用git branch -a命令：
+查看仓库中的所有分支，使用 git branch -a 命令：
 
 ```
 caojinhua:git_test caojinhua$ git branch -a
@@ -23,7 +23,7 @@ caojinhua:git_test caojinhua$ git branch -a
   remotes/origin/remotebranch
 ```
 
-可以看到远程仓库中有master和remotebranch两个分支。现在在本地项目中怎么样切换到remotebranch分支呢？很简单，使用git check命令，具体如下：
+可以看到远程仓库中有 master 和 remotebranch 两个分支。现在在本地项目中怎么样切换到 remotebranch 分支呢？很简单，使用 git check 命令，具体如下：
 
 ```
 git checkout --track -b <local branch> <remote>/<tracked branch>

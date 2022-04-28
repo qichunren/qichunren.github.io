@@ -1,22 +1,22 @@
 ---
 layout: single
-title: 在QT5中使用JSON库json-c
+title: 在 QT5 中使用 JSON 库 json-c
 date: 2015-7-13 12:30
 comments: true
 categories: Development
 ---
 
-首先需要安装json-c库:
+首先需要安装 json-c 库：
 
     sudo apt-get install libjson-c-dev
 
 
-在QT的项目中，修改.pro文件，加入：
+在 QT 的项目中，修改.pro 文件，加入：
     
     CONFIG += link_pkgconfig
     PKGCONFIG += json-c
 
-构建JSON的方法如下    
+构建 JSON 的方法如下    
 
 
             #include <json/json.h>
@@ -66,12 +66,12 @@ categories: Development
 
       The json object created: { "Site Name": "Joys of Programming", "Technical blog": true, "Average posts per day": 2.140000, "Number of posts": 10, "Categories": [ "c", "c++", "php" ] }
       
-解析JSON字符串的方法如下
+解析 JSON 字符串的方法如下
 
 例如有如下的字符串
 
 ```
-{"column":["symbol","name"],"data":[["SZ000001","平安银行"],["SZ000005","世纪星源"],["SZ000006","深振业A"],["SZ000008","神州高铁"],["SZ000009","中国宝安"]],"count":1544.0}      
+{"column":["symbol","name"],"data":[["SZ000001","平安银行"],["SZ000005","世纪星源"],["SZ000006","深振业 A"],["SZ000008","神州高铁"],["SZ000009","中国宝安"]],"count":1544.0}      
 ```
                 
                 
