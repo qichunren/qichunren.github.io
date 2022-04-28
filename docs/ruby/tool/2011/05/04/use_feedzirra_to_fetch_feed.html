@@ -6,19 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Qichunren website">
     <meta name="author" content="Qichunren">
-    <title>使用feedzirra分析提取Feed - Qichunren blog</title>
+    <title>使用 feedzirra 分析提取 Feed - Qichunren blog</title>
     <link rel="stylesheet" href="/assets/css/main.css?v2">
+    <script type="text/javascript" src="/assets/js/main.js?v1"></script>
   </head>
 
   <body class="has-navbar-fixed-top page-index">
 
-    <nav class="flex items-center justify-between flex-wrap p-6 fixed w-full z-10 top-0 bg-white shadow-sm">
+    <nav id="header" class="flex items-center justify-between flex-wrap px-6 py-6 fixed w-full z-10 top-0 bg-white shadow-sm">
 
       <a class="flex items-center flex-shrink-0 mr-6 no-underline hover:text-blue-800 hover:no-underline" href="/index.html">
         <img class="card-img-top rounded-circle" src="https://avatars.githubusercontent.com/u/39784?s=40&v=4" />
         <span class="text-2xl pl-2">Qichunren's blog</span>
       </a>
-
 
     <div class="block lg:hidden">
       <button id="nav-toggle" class="flex items-center px-3 py-2 border rounded text-gray-500 border-gray-600 hover:text-blue-600 hover:border-white">
@@ -32,6 +32,9 @@
           <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="/index.html">Posts</a>
         </li>
         <li class="mr-3">
+          <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="/dev_tips.html">Dev Tips</a>
+        </li>
+        <li class="mr-3">
           <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="/about.html">About</a>
         </li>
         <li class="mr-3">
@@ -41,13 +44,17 @@
     </div>
   </nav>
 
+  <div id="content_header" class="hidden flex items-center justify-center flex-wrap px-6 py-4 fixed w-full z-10 top-0 bg-gray-50 shadow-lg">
+    <h1 class="mb-2 font-bold text-center text-gray-800 md:text-xl lg:text-2xl xl:text-3xl md:leading-tight">使用 feedzirra 分析提取 Feed</h1>
+  </div>
+
   <main class="container mx-auto bg-white mt-24 md:mt-18">
           <div class="max-w-screen-md mx-auto prose lg:prose-lg p-4">
-            <h1 class="mb-2 text-3xl font-bold text-gray-900 md:text-2xl lg:text-4xl xl:text-5xl md:leading-tight">使用feedzirra分析提取Feed</h1>
+            <h1 class="mb-2 text-3xl font-bold text-gray-900 md:text-2xl lg:text-4xl xl:text-5xl md:leading-tight">使用 feedzirra 分析提取 Feed</h1>
             <div class="text-gray-400 md:text-base">2011-05-04</div>
           </div>
 
-          <div class="post-content max-w-screen-md mx-auto prose lg:prose-lg"><p><a href="https://github.com/pauldix/feedzirra">feedzirra</a> 是一个很好用的提取和分析feed的工具。用法如下：</p>
+          <div class="post-content max-w-screen-md mx-auto prose lg:prose-lg"><p><a href="https://github.com/pauldix/feedzirra">feedzirra</a> 是一个很好用的提取和分析 feed 的工具。用法如下：</p>
 
 <figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># encoding: utf-8</span>
 <span class="nb">require</span> <span class="s2">"feedzirra"</span>
@@ -66,12 +73,15 @@
 <p>结果：</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>usermatoMacBook-Pro:gitcard qichunren$ ruby lib/blog_fetcher.rb
-#&lt;Feedzirra::Parser::RSSEntry:0x00000102137858 @title="外媒分析称微软是黑莓和必应合作最大赢家", @url="http://tech.163.com/11/0504/16/737NSCOS000915BE.html", @summary="【赛迪网讯】5月4日消息，据国外媒体报道，在BlackBerry World上RIM请到一位令人意外的客座讲师——微软CEO史蒂夫-鲍尔默（Steve Ballmer）。鲍尔默在会上公开了与RIM的合作关系，称日后微软的Bing将代替谷歌成为黑莓移动设备上的默认搜索引擎。微软明显将从合作关系中获利，但RIM能够得到什么利益？鲍尔默表示，微软将对黑 ......", @published="2011-05-04 16:55:22"&gt;
-#&lt;Feedzirra::Parser::RSSEntry:0x0000010212e140 @title="工信部4月上半月发放241款电信设备进网许可证", @url="http://tech.163.com/11/0504/09/736SR7MQ000915BE.html", @summary="飞象网讯（崔玉贤/文）飞象网得知工信部4月份上半月发放了241款电信设备进网许可证，其中包含10款进网试用批文。 据悉，4月份上半月工信部共发放了TD终端22款，TD-SCDMA/GSM双模数字移动电话机15款，TD-SCDMA/GSM双模无线数据终端2款，TD-SCDMA固定无线终端5款。其中，TD-SCDMA/GSM双模数字移动电话机有5款进网试用批文，夏 ......", @published="2011-05-04 09:02:53"&gt;
+#&lt;Feedzirra::Parser::RSSEntry:0x00000102137858 @title="外媒分析称微软是黑莓和必应合作最大赢家", @url="http://tech.163.com/11/0504/16/737NSCOS000915BE.html", @summary="【赛迪网讯】5 月 4 日消息，据国外媒体报道，在 BlackBerry World 上 RIM 请到一位令人意外的客座讲师——微软 CEO 史蒂夫 - 鲍尔默（Steve Ballmer）。鲍尔默在会上公开了与 RIM 的合作关系，称日后微软的 Bing 将代替谷歌成为黑莓移动设备上的默认搜索引擎。微软明显将从合作关系中获利，但 RIM 能够得到什么利益？鲍尔默表示，微软将对黑 ......", @published="2011-05-04 16:55:22"&gt;
+#&lt;Feedzirra::Parser::RSSEntry:0x0000010212e140 @title="工信部 4 月上半月发放 241 款电信设备进网许可证", @url="http://tech.163.com/11/0504/09/736SR7MQ000915BE.html", @summary="飞象网讯（崔玉贤/文）飞象网得知工信部 4 月份上半月发放了 241 款电信设备进网许可证，其中包含 10 款进网试用批文。 据悉，4 月份上半月工信部共发放了 TD 终端 22 款，TD-SCDMA/GSM 双模数字移动电话机 15 款，TD-SCDMA/GSM 双模无线数据终端 2 款，TD-SCDMA 固定无线终端 5 款。其中，TD-SCDMA/GSM 双模数字移动电话机有 5 款进网试用批文，夏 ......", @published="2011-05-04 09:02:53"&gt;
 </code></pre></div></div>
 
 </div>
 
     </main>
+    <svg id="scrolltop" xmlns="http://www.w3.org/2000/svg" class="hidden fixed bottom-2 right-2 h-16 w-16 cursor-pointer text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
+    </svg>
   </body>
 </html>

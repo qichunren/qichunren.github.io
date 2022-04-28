@@ -6,19 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Qichunren website">
     <meta name="author" content="Qichunren">
-    <title>Shell学习小记录 - Qichunren blog</title>
+    <title>Shell 学习小记录 - Qichunren blog</title>
     <link rel="stylesheet" href="/assets/css/main.css?v2">
+    <script type="text/javascript" src="/assets/js/main.js?v1"></script>
   </head>
 
   <body class="has-navbar-fixed-top page-index">
 
-    <nav class="flex items-center justify-between flex-wrap p-6 fixed w-full z-10 top-0 bg-white shadow-sm">
+    <nav id="header" class="flex items-center justify-between flex-wrap px-6 py-6 fixed w-full z-10 top-0 bg-white shadow-sm">
 
       <a class="flex items-center flex-shrink-0 mr-6 no-underline hover:text-blue-800 hover:no-underline" href="/index.html">
         <img class="card-img-top rounded-circle" src="https://avatars.githubusercontent.com/u/39784?s=40&v=4" />
         <span class="text-2xl pl-2">Qichunren's blog</span>
       </a>
-
 
     <div class="block lg:hidden">
       <button id="nav-toggle" class="flex items-center px-3 py-2 border rounded text-gray-500 border-gray-600 hover:text-blue-600 hover:border-white">
@@ -32,6 +32,9 @@
           <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="/index.html">Posts</a>
         </li>
         <li class="mr-3">
+          <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="/dev_tips.html">Dev Tips</a>
+        </li>
+        <li class="mr-3">
           <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="/about.html">About</a>
         </li>
         <li class="mr-3">
@@ -41,13 +44,17 @@
     </div>
   </nav>
 
+  <div id="content_header" class="hidden flex items-center justify-center flex-wrap px-6 py-4 fixed w-full z-10 top-0 bg-gray-50 shadow-lg">
+    <h1 class="mb-2 font-bold text-center text-gray-800 md:text-xl lg:text-2xl xl:text-3xl md:leading-tight">Shell 学习小记录</h1>
+  </div>
+
   <main class="container mx-auto bg-white mt-24 md:mt-18">
           <div class="max-w-screen-md mx-auto prose lg:prose-lg p-4">
-            <h1 class="mb-2 text-3xl font-bold text-gray-900 md:text-2xl lg:text-4xl xl:text-5xl md:leading-tight">Shell学习小记录</h1>
+            <h1 class="mb-2 text-3xl font-bold text-gray-900 md:text-2xl lg:text-4xl xl:text-5xl md:leading-tight">Shell 学习小记录</h1>
             <div class="text-gray-400 md:text-base">2011-10-18</div>
           </div>
 
-          <div class="post-content max-w-screen-md mx-auto prose lg:prose-lg"><p>最近为了一些自动化的任务，要写一些脚本。可以使用Ruby脚本、Ruby的rake\thor等等，我为了简洁和性能，我了解了一下Shell，发现用Shell来做这个事情更合适。性能，命令行，管道，丰富的现有工具，基于Linux本身，Shell真是一个好东西。以前认为用Ruby来做这个事情是一个不错的选择，现在知道了，那是因为相比起Shell来，更熟悉Ruby，程序员总是喜欢自己熟悉的领域，而排斥自己不熟悉的领域。其实多了解一下其它方面的，更利用自己工作的开展，提高工作效率。</p>
+          <div class="post-content max-w-screen-md mx-auto prose lg:prose-lg"><p>最近为了一些自动化的任务，要写一些脚本。可以使用 Ruby 脚本、Ruby 的 rake\thor 等等，我为了简洁和性能，我了解了一下 Shell，发现用 Shell 来做这个事情更合适。性能，命令行，管道，丰富的现有工具，基于 Linux 本身，Shell 真是一个好东西。以前认为用 Ruby 来做这个事情是一个不错的选择，现在知道了，那是因为相比起 Shell 来，更熟悉 Ruby，程序员总是喜欢自己熟悉的领域，而排斥自己不熟悉的领域。其实多了解一下其它方面的，更利用自己工作的开展，提高工作效率。</p>
 
 <p>我随便总结一下几个知识点</p>
 
@@ -69,23 +76,23 @@ DATA_PATH=$DATA_DIR""$DATA_FILE
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sha1=`ls -al`
 </code></pre></div></div>
 
-<h4 id="if语句结构">if语句结构</h4>
+<h4 id="if-语句结构">if 语句结构</h4>
 
-<p>if语句条件测试命令：</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[ -d DIR ]	如果DIR存在并且是一个目录则为真
-[ -f FILE ]	如果FILE存在且是一个普通文件则为真
-[ -z STRING ]	如果STRING的长度为零则为真
-[ -n STRING ]	如果STRING的长度非零则为真
+<p>if 语句条件测试命令：</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[ -d DIR ]	如果 DIR 存在并且是一个目录则为真
+[ -f FILE ]	如果 FILE 存在且是一个普通文件则为真
+[ -z STRING ]	如果 STRING 的长度为零则为真
+[ -n STRING ]	如果 STRING 的长度非零则为真
 [ STRING1 = STRING2 ]	如果两个字符串相同则为真
 [ STRING1 != STRING2 ]	如果字符串不相同则为真
 [ ARG1 OP ARG2 ]
 </code></pre></div></div>
 
-<p>ARG1和ARG2应该是整数或者取值为整数的变量，OP是-eq（等于）-ne（不等于）-lt（小于）-le（小于等于）-gt（大于）-ge（大于等于）之中的一个</p>
+<p>ARG1 和 ARG2 应该是整数或者取值为整数的变量，OP 是-eq（等于）-ne（不等于）-lt（小于）-le（小于等于）-gt（大于）-ge（大于等于）之中的一个</p>
 
 <p>之前弄错好几次，中括号前后的空格不能少。</p>
 
-<p>if语句的结构</p>
+<p>if 语句的结构</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>if [ xxx ]
 then
@@ -113,10 +120,13 @@ echo $a
 </code></pre></div></div>
 
 <h4 id="参考资料">参考资料</h4>
-<p><a href="http://learn.akae.cn/media/ch31s05.html">Shell脚本语法</a></p>
+<p><a href="http://learn.akae.cn/media/ch31s05.html">Shell 脚本语法</a></p>
 
 </div>
 
     </main>
+    <svg id="scrolltop" xmlns="http://www.w3.org/2000/svg" class="hidden fixed bottom-2 right-2 h-16 w-16 cursor-pointer text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
+    </svg>
   </body>
 </html>

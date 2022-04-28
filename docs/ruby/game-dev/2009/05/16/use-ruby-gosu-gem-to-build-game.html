@@ -6,19 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Qichunren website">
     <meta name="author" content="Qichunren">
-    <title>Ruby游戏开发利器Gosu - Qichunren blog</title>
+    <title>Ruby 游戏开发利器 Gosu - Qichunren blog</title>
     <link rel="stylesheet" href="/assets/css/main.css?v2">
+    <script type="text/javascript" src="/assets/js/main.js?v1"></script>
   </head>
 
   <body class="has-navbar-fixed-top page-index">
 
-    <nav class="flex items-center justify-between flex-wrap p-6 fixed w-full z-10 top-0 bg-white shadow-sm">
+    <nav id="header" class="flex items-center justify-between flex-wrap px-6 py-6 fixed w-full z-10 top-0 bg-white shadow-sm">
 
       <a class="flex items-center flex-shrink-0 mr-6 no-underline hover:text-blue-800 hover:no-underline" href="/index.html">
         <img class="card-img-top rounded-circle" src="https://avatars.githubusercontent.com/u/39784?s=40&v=4" />
         <span class="text-2xl pl-2">Qichunren's blog</span>
       </a>
-
 
     <div class="block lg:hidden">
       <button id="nav-toggle" class="flex items-center px-3 py-2 border rounded text-gray-500 border-gray-600 hover:text-blue-600 hover:border-white">
@@ -32,6 +32,9 @@
           <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="/index.html">Posts</a>
         </li>
         <li class="mr-3">
+          <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="/dev_tips.html">Dev Tips</a>
+        </li>
+        <li class="mr-3">
           <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="/about.html">About</a>
         </li>
         <li class="mr-3">
@@ -41,36 +44,40 @@
     </div>
   </nav>
 
+  <div id="content_header" class="hidden flex items-center justify-center flex-wrap px-6 py-4 fixed w-full z-10 top-0 bg-gray-50 shadow-lg">
+    <h1 class="mb-2 font-bold text-center text-gray-800 md:text-xl lg:text-2xl xl:text-3xl md:leading-tight">Ruby 游戏开发利器 Gosu</h1>
+  </div>
+
   <main class="container mx-auto bg-white mt-24 md:mt-18">
           <div class="max-w-screen-md mx-auto prose lg:prose-lg p-4">
-            <h1 class="mb-2 text-3xl font-bold text-gray-900 md:text-2xl lg:text-4xl xl:text-5xl md:leading-tight">Ruby游戏开发利器Gosu</h1>
+            <h1 class="mb-2 text-3xl font-bold text-gray-900 md:text-2xl lg:text-4xl xl:text-5xl md:leading-tight">Ruby 游戏开发利器 Gosu</h1>
             <div class="text-gray-400 md:text-base">2009-05-16</div>
           </div>
 
-          <div class="post-content max-w-screen-md mx-auto prose lg:prose-lg"><p>在2009年的Railsconf大会上，Hongli Lai和Ninh Bui of Phusion（开发Passenger的家伙）为了展示Ruby语言的强大，能运行3D游戏，他们构建了一个Wolfenstein游戏的山寨版，用的是<a href="http://www.libgosu.org/">Gosu</a> 游戏开发库。</p>
+          <div class="post-content max-w-screen-md mx-auto prose lg:prose-lg"><p>在 2009 年的 Railsconf 大会上，Hongli Lai 和 Ninh Bui of Phusion（开发 Passenger 的家伙）为了展示 Ruby 语言的强大，能运行 3D 游戏，他们构建了一个 Wolfenstein 游戏的山寨版，用的是<a href="http://www.libgosu.org/">Gosu</a> 游戏开发库。</p>
 
 <p><img src="http://www.libgosu.org/website_header.png" alt="Gosu Logo" /></p>
 
-<p>Zed Shaw 在游戏中扮演BOSS</p>
+<p>Zed Shaw 在游戏中扮演 BOSS</p>
 
 <p>体验方法： 
 项目地址：<a href="http://github.com/FooBarWidget/rubystein/tree/master">http://github.com/FooBarWidget/rubystein/tree/master</a>
-Git拖下来：</p>
+Git 拖下来：</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone git://github.com/FooBarWidget/rubystein.git （没有Git也可以直接在项目主页中下载） 
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone git://github.com/FooBarWidget/rubystein.git（没有 Git 也可以直接在项目主页中下载）
 </code></pre></div></div>
 
-<p>在运行游戏之前在安装gosu gem</p>
+<p>在运行游戏之前在安装 gosu gem</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem install gosu 
 </code></pre></div></div>
 
-<p>我是在ubuntu下测试的，为了安装gosu,还要先安装依赖的库：</p>
+<p>我是在 ubuntu 下测试的，为了安装 gosu，还要先安装依赖的库：</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo apt-get install g++ libgl1-mesa-dev libpango1.0-dev libboost-dev libsdl-mixer1.2-dev 
 </code></pre></div></div>
 
-<p>在安装好了gosu gem后，直接运行游戏目录中的wolf3d.rb文件：</p>
+<p>在安装好了 gosu gem 后，直接运行游戏目录中的 wolf3d.rb 文件：</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ruby wolf3d.rb 
 </code></pre></div></div>
@@ -106,7 +113,7 @@ window = GameWindow.new
 window.show  
 </code></pre></div></div>
 
-<p>我在gosu的网站又找到了几个case,都很不错，用gosu开发游戏很不错，代码结构很清析和容易理解。</p>
+<p>我在 gosu 的网站又找到了几个 case，都很不错，用 gosu 开发游戏很不错，代码结构很清析和容易理解。</p>
 
 <p>1.Space Jumper(和雷电类似的游戏) ： 
 <a href="http://andre.semler-service.de/games/SpaceJumper.zip">下载地址</a></p>
@@ -118,12 +125,15 @@ window.show
 
 <p><img src="http://farm4.static.flickr.com/3658/3503765473_95c1b36ea4_m.jpg" alt="Space shooter preview" /></p>
 
-<p>强烈推荐想要用Ruby玩玩游戏开发的同学们用这个<a href="https://github.com/jlnr/gosu">gosu</a>库。另外好像有一个叫rubygame的开发库，不知道怎么样，有时间也研究一下。</p>
+<p>强烈推荐想要用 Ruby 玩玩游戏开发的同学们用这个<a href="https://github.com/jlnr/gosu">gosu</a>库。另外好像有一个叫 rubygame 的开发库，不知道怎么样，有时间也研究一下。</p>
 
-<p><em><a href="http://www.iteye.com/topic/389181">我在javaeye上的原文链接</a></em></p>
+<p><em><a href="http://www.iteye.com/topic/389181">我在 javaeye 上的原文链接</a></em></p>
 
 </div>
 
     </main>
+    <svg id="scrolltop" xmlns="http://www.w3.org/2000/svg" class="hidden fixed bottom-2 right-2 h-16 w-16 cursor-pointer text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
+    </svg>
   </body>
 </html>

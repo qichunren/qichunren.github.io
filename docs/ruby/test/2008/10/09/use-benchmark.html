@@ -6,19 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Qichunren website">
     <meta name="author" content="Qichunren">
-    <title>Benchmark用法 - Qichunren blog</title>
+    <title>Benchmark 用法 - Qichunren blog</title>
     <link rel="stylesheet" href="/assets/css/main.css?v2">
+    <script type="text/javascript" src="/assets/js/main.js?v1"></script>
   </head>
 
   <body class="has-navbar-fixed-top page-index">
 
-    <nav class="flex items-center justify-between flex-wrap p-6 fixed w-full z-10 top-0 bg-white shadow-sm">
+    <nav id="header" class="flex items-center justify-between flex-wrap px-6 py-6 fixed w-full z-10 top-0 bg-white shadow-sm">
 
       <a class="flex items-center flex-shrink-0 mr-6 no-underline hover:text-blue-800 hover:no-underline" href="/index.html">
         <img class="card-img-top rounded-circle" src="https://avatars.githubusercontent.com/u/39784?s=40&v=4" />
         <span class="text-2xl pl-2">Qichunren's blog</span>
       </a>
-
 
     <div class="block lg:hidden">
       <button id="nav-toggle" class="flex items-center px-3 py-2 border rounded text-gray-500 border-gray-600 hover:text-blue-600 hover:border-white">
@@ -32,6 +32,9 @@
           <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="/index.html">Posts</a>
         </li>
         <li class="mr-3">
+          <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="/dev_tips.html">Dev Tips</a>
+        </li>
+        <li class="mr-3">
           <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="/about.html">About</a>
         </li>
         <li class="mr-3">
@@ -41,15 +44,19 @@
     </div>
   </nav>
 
+  <div id="content_header" class="hidden flex items-center justify-center flex-wrap px-6 py-4 fixed w-full z-10 top-0 bg-gray-50 shadow-lg">
+    <h1 class="mb-2 font-bold text-center text-gray-800 md:text-xl lg:text-2xl xl:text-3xl md:leading-tight">Benchmark 用法</h1>
+  </div>
+
   <main class="container mx-auto bg-white mt-24 md:mt-18">
           <div class="max-w-screen-md mx-auto prose lg:prose-lg p-4">
-            <h1 class="mb-2 text-3xl font-bold text-gray-900 md:text-2xl lg:text-4xl xl:text-5xl md:leading-tight">Benchmark用法</h1>
+            <h1 class="mb-2 text-3xl font-bold text-gray-900 md:text-2xl lg:text-4xl xl:text-5xl md:leading-tight">Benchmark 用法</h1>
             <div class="text-gray-400 md:text-base">2008-10-09</div>
           </div>
 
           <div class="post-content max-w-screen-md mx-auto prose lg:prose-lg"><p><a href="http://rubybenchmark.com/">Benchmark</a> 可以用来测试某个函数或者任何代码的执行时间。</p>
 
-<p>用法很简单:</p>
+<p>用法很简单：</p>
 
 <figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">require</span> <span class="s1">'benchmark'</span>
 <span class="n">n</span> <span class="o">=</span> <span class="mi">1500</span>
@@ -58,7 +65,7 @@
   <span class="n">x</span><span class="p">.</span><span class="nf">report</span><span class="p">(</span><span class="s2">"&lt;&lt; method"</span><span class="p">)</span> <span class="p">{</span> <span class="n">n</span><span class="p">.</span><span class="nf">times</span> <span class="p">{</span><span class="n">string2</span> <span class="o">=</span> <span class="s2">"ddd"</span> <span class="o">&lt;&lt;</span> <span class="s2">"11111"</span> <span class="o">&lt;&lt;</span> <span class="s2">"Helodd"</span><span class="p">}</span> <span class="p">}</span>
 <span class="k">end</span></code></pre></figure>
 
-<p>结果如下:</p>
+<p>结果如下：</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>usermatoMacBook-Pro:test qichunren$ ruby test.rb
 Rehearsal ---------------------------------------------
@@ -74,11 +81,14 @@ Rehearsal ---------------------------------------------
 <h3 id="参考资料">参考资料</h3>
 <ul>
   <li><a href="http://ruby-doc.org/stdlib/libdoc/benchmark/rdoc/index.html">Benchmark Rdoc</a></li>
-  <li><a href="http://www.kuqin.com/rubycndocument/man/addlib/benchmark.html">Ruby参考手册</a></li>
+  <li><a href="http://www.kuqin.com/rubycndocument/man/addlib/benchmark.html">Ruby 参考手册</a></li>
   <li><a href="https://github.com/acangiano/ruby-benchmark-suite">ruby-benchmark-suite</a></li>
 </ul>
 </div>
 
     </main>
+    <svg id="scrolltop" xmlns="http://www.w3.org/2000/svg" class="hidden fixed bottom-2 right-2 h-16 w-16 cursor-pointer text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
+    </svg>
   </body>
 </html>

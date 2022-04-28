@@ -8,17 +8,17 @@
     <meta name="author" content="Qichunren">
     <title>Custom application configuration in Rails - Qichunren blog</title>
     <link rel="stylesheet" href="/assets/css/main.css?v2">
+    <script type="text/javascript" src="/assets/js/main.js?v1"></script>
   </head>
 
   <body class="has-navbar-fixed-top page-index">
 
-    <nav class="flex items-center justify-between flex-wrap p-6 fixed w-full z-10 top-0 bg-white shadow-sm">
+    <nav id="header" class="flex items-center justify-between flex-wrap px-6 py-6 fixed w-full z-10 top-0 bg-white shadow-sm">
 
       <a class="flex items-center flex-shrink-0 mr-6 no-underline hover:text-blue-800 hover:no-underline" href="/index.html">
         <img class="card-img-top rounded-circle" src="https://avatars.githubusercontent.com/u/39784?s=40&v=4" />
         <span class="text-2xl pl-2">Qichunren's blog</span>
       </a>
-
 
     <div class="block lg:hidden">
       <button id="nav-toggle" class="flex items-center px-3 py-2 border rounded text-gray-500 border-gray-600 hover:text-blue-600 hover:border-white">
@@ -32,6 +32,9 @@
           <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="/index.html">Posts</a>
         </li>
         <li class="mr-3">
+          <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="/dev_tips.html">Dev Tips</a>
+        </li>
+        <li class="mr-3">
           <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="/about.html">About</a>
         </li>
         <li class="mr-3">
@@ -40,6 +43,10 @@
       </ul>
     </div>
   </nav>
+
+  <div id="content_header" class="hidden flex items-center justify-center flex-wrap px-6 py-4 fixed w-full z-10 top-0 bg-gray-50 shadow-lg">
+    <h1 class="mb-2 font-bold text-center text-gray-800 md:text-xl lg:text-2xl xl:text-3xl md:leading-tight">Custom application configuration in Rails</h1>
+  </div>
 
   <main class="container mx-auto bg-white mt-24 md:mt-18">
           <div class="max-w-screen-md mx-auto prose lg:prose-lg p-4">
@@ -126,5 +133,8 @@ end
 </div>
 
     </main>
+    <svg id="scrolltop" xmlns="http://www.w3.org/2000/svg" class="hidden fixed bottom-2 right-2 h-16 w-16 cursor-pointer text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
+    </svg>
   </body>
 </html>

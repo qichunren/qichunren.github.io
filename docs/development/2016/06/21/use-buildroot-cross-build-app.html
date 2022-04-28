@@ -6,19 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Qichunren website">
     <meta name="author" content="Qichunren">
-    <title>Buildroot简单使用 - Qichunren blog</title>
+    <title>Buildroot 简单使用 - Qichunren blog</title>
     <link rel="stylesheet" href="/assets/css/main.css?v2">
+    <script type="text/javascript" src="/assets/js/main.js?v1"></script>
   </head>
 
   <body class="has-navbar-fixed-top page-index">
 
-    <nav class="flex items-center justify-between flex-wrap p-6 fixed w-full z-10 top-0 bg-white shadow-sm">
+    <nav id="header" class="flex items-center justify-between flex-wrap px-6 py-6 fixed w-full z-10 top-0 bg-white shadow-sm">
 
       <a class="flex items-center flex-shrink-0 mr-6 no-underline hover:text-blue-800 hover:no-underline" href="/index.html">
         <img class="card-img-top rounded-circle" src="https://avatars.githubusercontent.com/u/39784?s=40&v=4" />
         <span class="text-2xl pl-2">Qichunren's blog</span>
       </a>
-
 
     <div class="block lg:hidden">
       <button id="nav-toggle" class="flex items-center px-3 py-2 border rounded text-gray-500 border-gray-600 hover:text-blue-600 hover:border-white">
@@ -32,6 +32,9 @@
           <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="/index.html">Posts</a>
         </li>
         <li class="mr-3">
+          <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="/dev_tips.html">Dev Tips</a>
+        </li>
+        <li class="mr-3">
           <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="/about.html">About</a>
         </li>
         <li class="mr-3">
@@ -41,42 +44,46 @@
     </div>
   </nav>
 
+  <div id="content_header" class="hidden flex items-center justify-center flex-wrap px-6 py-4 fixed w-full z-10 top-0 bg-gray-50 shadow-lg">
+    <h1 class="mb-2 font-bold text-center text-gray-800 md:text-xl lg:text-2xl xl:text-3xl md:leading-tight">Buildroot 简单使用</h1>
+  </div>
+
   <main class="container mx-auto bg-white mt-24 md:mt-18">
           <div class="max-w-screen-md mx-auto prose lg:prose-lg p-4">
-            <h1 class="mb-2 text-3xl font-bold text-gray-900 md:text-2xl lg:text-4xl xl:text-5xl md:leading-tight">Buildroot简单使用</h1>
+            <h1 class="mb-2 text-3xl font-bold text-gray-900 md:text-2xl lg:text-4xl xl:text-5xl md:leading-tight">Buildroot 简单使用</h1>
             <div class="text-gray-400 md:text-base">2016-06-21</div>
           </div>
 
-          <div class="post-content max-w-screen-md mx-auto prose lg:prose-lg"><p>使用 <a href="https://buildroot.org/">Buildroot</a> 可以方便的灵活的构建一个定制的用于嵌入式平台的Linux系统。</p>
+          <div class="post-content max-w-screen-md mx-auto prose lg:prose-lg"><p>使用 <a href="https://buildroot.org/">Buildroot</a> 可以方便的灵活的构建一个定制的用于嵌入式平台的 Linux 系统。</p>
 
-<p>公司里有自己开发的类beaglebone的核心板。我之前调试QT程序都时需要在板子里编译程序，很花费时间，也不方便。</p>
+<p>公司里有自己开发的类 beaglebone 的核心板。我之前调试 QT 程序都时需要在板子里编译程序，很花费时间，也不方便。</p>
 
-<p>最近学会了使用Buildroot来跨平台编译程序，感觉我之前的做法太LOW了，现在在自己的开发机器中可以模拟出ARM平台的编译环境，编译好了的程序在目标机器中可以直接运行。</p>
+<p>最近学会了使用 Buildroot 来跨平台编译程序，感觉我之前的做法太 LOW 了，现在在自己的开发机器中可以模拟出 ARM 平台的编译环境，编译好了的程序在目标机器中可以直接运行。</p>
 
-<p>Buildroot的用法很简单，在这里简单记录一下。</p>
+<p>Buildroot 的用法很简单，在这里简单记录一下。</p>
 
 <ol>
   <li>
-    <p><a href="https://buildroot.org/download.html">下载Buildroot</a>压缩包到本地，解压。</p>
+    <p><a href="https://buildroot.org/download.html">下载 Buildroot</a>压缩包到本地，解压。</p>
   </li>
   <li>
-    <p>在主目录里创建Config.in文件。在configs目录中有许多不同类型的文件已经创建好了，我们公司的ARM板是和beaglebone差不多，所以Config.in来自beaglebone_defconfig文件。</p>
+    <p>在主目录里创建 Config.in 文件。在 configs 目录中有许多不同类型的文件已经创建好了，我们公司的 ARM 板是和 beaglebone 差不多，所以 Config.in 来自 beaglebone_defconfig 文件。</p>
   </li>
   <li>
-    <p>执行<code class="language-plaintext highlighter-rouge">make menuconfig</code>调出编译配置界面，在这里可以对目标系统进行各种定制化，包括Kernel, Bootloader, 各种常用的软件包，系统配置等。
-设置完成后退成。实际上UI的各种操作是对Config.in文件的操作。</p>
+    <p>执行<code class="language-plaintext highlighter-rouge">make menuconfig</code>调出编译配置界面，在这里可以对目标系统进行各种定制化，包括 Kernel, Bootloader，各种常用的软件包，系统配置等。
+设置完成后退成。实际上 UI 的各种操作是对 Config.in 文件的操作。</p>
   </li>
   <li>
-    <p>执行<code class="language-plaintext highlighter-rouge">make</code>，编译完成后，在output目录下有编译好的文件。</p>
+    <p>执行<code class="language-plaintext highlighter-rouge">make</code>，编译完成后，在 output 目录下有编译好的文件。</p>
   </li>
 </ol>
 
-<h3 id="怎么样将自己写的程序集成到buildroot的packages中">怎么样将自己写的程序集成到Buildroot的packages中？</h3>
+<h3 id="怎么样将自己写的程序集成到-buildroot-的-packages-中">怎么样将自己写的程序集成到 Buildroot 的 packages 中？</h3>
 
-<p>在这里我以我写的一个名为hardware_report程序作为例子，我这个程序是用qt5写的，buildroot需要通过git clone的方式下载代码编译。</p>
+<p>在这里我以我写的一个名为 hardware_report 程序作为例子，我这个程序是用 qt5 写的，buildroot 需要通过 git clone 的方式下载代码编译。</p>
 
 <ul>
-  <li>修改package目录中的Config.in文件，加入</li>
+  <li>修改 package 目录中的 Config.in 文件，加入</li>
 </ul>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>menu "Shanghai nt projects"
@@ -85,8 +92,8 @@ endmenu
 </code></pre></div></div>
 
 <ul>
-  <li>创将package/hardware_report目录，在其中创建Config.in和hardware_report.mk文件
-Config.in文件中的内容如下：</li>
+  <li>创将 package/hardware_report 目录，在其中创建 Config.in 和 hardware_report.mk 文件
+Config.in 文件中的内容如下：</li>
 </ul>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>config BR2_PACKAGE_HARDWARE_REPORT
@@ -96,7 +103,7 @@ Config.in文件中的内容如下：</li>
           https://git.xxxxxx.com
 </code></pre></div></div>
 
-<p>hardware_report.mk文件中的内容如下：</p>
+<p>hardware_report.mk 文件中的内容如下：</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>################################################################################
 #
@@ -138,11 +145,11 @@ $(eval $(generic-package))
 
 <ul>
   <li>
-    <p>单独编译hardware_report项目可以执行<code class="language-plaintext highlighter-rouge">make hardware_report</code>, 重新编译执行 <code class="language-plaintext highlighter-rouge">make hardware_report-dirclean</code>
-目前重新编译hardware_report需要删除hardware_report的下载包 <code class="language-plaintext highlighter-rouge">rm dl/hardware_report-master.tar.gz</code></p>
+    <p>单独编译 hardware_report 项目可以执行<code class="language-plaintext highlighter-rouge">make hardware_report</code>, 重新编译执行 <code class="language-plaintext highlighter-rouge">make hardware_report-dirclean</code>
+目前重新编译 hardware_report 需要删除 hardware_report 的下载包 <code class="language-plaintext highlighter-rouge">rm dl/hardware_report-master.tar.gz</code></p>
   </li>
   <li>
-    <p>设置程序的自动启动，Buildroot制作的Linux系统自动启动很简单，直接在/etc/init.d/目录中写好启动脚本即可。首先需要开启overlay功能，然后创建overlay目录，在其中创建etc/init.d目录，在其中的init.d目录中添加S92hardware_report文件, 文件名必须以S开始，后面的数字表示启动顺序。</p>
+    <p>设置程序的自动启动，Buildroot 制作的 Linux 系统自动启动很简单，直接在/etc/init.d/目录中写好启动脚本即可。首先需要开启 overlay 功能，然后创建 overlay 目录，在其中创建 etc/init.d 目录，在其中的 init.d 目录中添加 S92hardware_report 文件，文件名必须以 S 开始，后面的数字表示启动顺序。</p>
   </li>
 </ul>
 
@@ -177,9 +184,12 @@ esac
 exit 0
 </code></pre></div></div>
 
-<p><a href="https://buildroot.org/downloads/manual/manual.html">Buildroot文档</a></p>
+<p><a href="https://buildroot.org/downloads/manual/manual.html">Buildroot 文档</a></p>
 </div>
 
     </main>
+    <svg id="scrolltop" xmlns="http://www.w3.org/2000/svg" class="hidden fixed bottom-2 right-2 h-16 w-16 cursor-pointer text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
+    </svg>
   </body>
 </html>

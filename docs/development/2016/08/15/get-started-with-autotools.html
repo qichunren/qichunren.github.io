@@ -8,17 +8,17 @@
     <meta name="author" content="Qichunren">
     <title>Get started with autotools - Qichunren blog</title>
     <link rel="stylesheet" href="/assets/css/main.css?v2">
+    <script type="text/javascript" src="/assets/js/main.js?v1"></script>
   </head>
 
   <body class="has-navbar-fixed-top page-index">
 
-    <nav class="flex items-center justify-between flex-wrap p-6 fixed w-full z-10 top-0 bg-white shadow-sm">
+    <nav id="header" class="flex items-center justify-between flex-wrap px-6 py-6 fixed w-full z-10 top-0 bg-white shadow-sm">
 
       <a class="flex items-center flex-shrink-0 mr-6 no-underline hover:text-blue-800 hover:no-underline" href="/index.html">
         <img class="card-img-top rounded-circle" src="https://avatars.githubusercontent.com/u/39784?s=40&v=4" />
         <span class="text-2xl pl-2">Qichunren's blog</span>
       </a>
-
 
     <div class="block lg:hidden">
       <button id="nav-toggle" class="flex items-center px-3 py-2 border rounded text-gray-500 border-gray-600 hover:text-blue-600 hover:border-white">
@@ -32,6 +32,9 @@
           <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="/index.html">Posts</a>
         </li>
         <li class="mr-3">
+          <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="/dev_tips.html">Dev Tips</a>
+        </li>
+        <li class="mr-3">
           <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="/about.html">About</a>
         </li>
         <li class="mr-3">
@@ -41,6 +44,10 @@
     </div>
   </nav>
 
+  <div id="content_header" class="hidden flex items-center justify-center flex-wrap px-6 py-4 fixed w-full z-10 top-0 bg-gray-50 shadow-lg">
+    <h1 class="mb-2 font-bold text-center text-gray-800 md:text-xl lg:text-2xl xl:text-3xl md:leading-tight">Get started with autotools</h1>
+  </div>
+
   <main class="container mx-auto bg-white mt-24 md:mt-18">
           <div class="max-w-screen-md mx-auto prose lg:prose-lg p-4">
             <h1 class="mb-2 text-3xl font-bold text-gray-900 md:text-2xl lg:text-4xl xl:text-5xl md:leading-tight">Get started with autotools</h1>
@@ -49,7 +56,7 @@
 
           <div class="post-content max-w-screen-md mx-auto prose lg:prose-lg"><p>Follow this <a href="https://www.gnu.org/software/automake/manual/html_node/Hello-World.html#Hello-World">tutorial</a> to get started with autotools.</p>
 
-<h3 id="configureac文件">configure.ac文件</h3>
+<h3 id="configureac-文件">configure.ac 文件</h3>
 
 <p>使用 <em>autoscan</em> 工具生成 configure.scan 文件，将它重命名为 configure.ac ，默认的文件内容如下：</p>
 
@@ -72,7 +79,7 @@ AC_INIT([FULL-PACKAGE-NAME], [VERSION], [BUG-REPORT-ADDRESS])
 AC_OUTPUT
 </code></pre></div></div>
 
-<p>然后创建如下的项目目录结构:</p>
+<p>然后创建如下的项目目录结构：</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>src/main.c
 README
@@ -85,7 +92,7 @@ src/Makefile.am
 Command <code class="language-plaintext highlighter-rouge">automake</code> generate Makefile.in files.
 Command <code class="language-plaintext highlighter-rouge">./configure</code> generate Makefie and src/Makefile from Makefile.in files.</p>
 
-<p>我这里有一个基础的使用autotools工具的<a href="https://github.com/qichunren/glib-guide/tree/aa04d7151926ee197b7a16c57ddbff4db8673dc7">项目</a>，展示了其中最基本的用法。</p>
+<p>我这里有一个基础的使用 autotools 工具的<a href="https://github.com/qichunren/glib-guide/tree/aa04d7151926ee197b7a16c57ddbff4db8673dc7">项目</a>，展示了其中最基本的用法。</p>
 
 <p><a href="https://www.gnu.org/software/automake/manual/html_node/Autotools-Introduction.html#Autotools-Introduction">An Introduction to the Autotools</a></p>
 
@@ -102,5 +109,8 @@ Command <code class="language-plaintext highlighter-rouge">./configure</code> ge
 </div>
 
     </main>
+    <svg id="scrolltop" xmlns="http://www.w3.org/2000/svg" class="hidden fixed bottom-2 right-2 h-16 w-16 cursor-pointer text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
+    </svg>
   </body>
 </html>

@@ -8,17 +8,17 @@
     <meta name="author" content="Qichunren">
     <title>Use Smarty template in CodeIgniter - Qichunren blog</title>
     <link rel="stylesheet" href="/assets/css/main.css?v2">
+    <script type="text/javascript" src="/assets/js/main.js?v1"></script>
   </head>
 
   <body class="has-navbar-fixed-top page-index">
 
-    <nav class="flex items-center justify-between flex-wrap p-6 fixed w-full z-10 top-0 bg-white shadow-sm">
+    <nav id="header" class="flex items-center justify-between flex-wrap px-6 py-6 fixed w-full z-10 top-0 bg-white shadow-sm">
 
       <a class="flex items-center flex-shrink-0 mr-6 no-underline hover:text-blue-800 hover:no-underline" href="/index.html">
         <img class="card-img-top rounded-circle" src="https://avatars.githubusercontent.com/u/39784?s=40&v=4" />
         <span class="text-2xl pl-2">Qichunren's blog</span>
       </a>
-
 
     <div class="block lg:hidden">
       <button id="nav-toggle" class="flex items-center px-3 py-2 border rounded text-gray-500 border-gray-600 hover:text-blue-600 hover:border-white">
@@ -32,6 +32,9 @@
           <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="/index.html">Posts</a>
         </li>
         <li class="mr-3">
+          <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="/dev_tips.html">Dev Tips</a>
+        </li>
+        <li class="mr-3">
           <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="/about.html">About</a>
         </li>
         <li class="mr-3">
@@ -41,30 +44,34 @@
     </div>
   </nav>
 
+  <div id="content_header" class="hidden flex items-center justify-center flex-wrap px-6 py-4 fixed w-full z-10 top-0 bg-gray-50 shadow-lg">
+    <h1 class="mb-2 font-bold text-center text-gray-800 md:text-xl lg:text-2xl xl:text-3xl md:leading-tight">Use Smarty template in CodeIgniter</h1>
+  </div>
+
   <main class="container mx-auto bg-white mt-24 md:mt-18">
           <div class="max-w-screen-md mx-auto prose lg:prose-lg p-4">
             <h1 class="mb-2 text-3xl font-bold text-gray-900 md:text-2xl lg:text-4xl xl:text-5xl md:leading-tight">Use Smarty template in CodeIgniter</h1>
             <div class="text-gray-400 md:text-base">2012-02-11</div>
           </div>
 
-          <div class="post-content max-w-screen-md mx-auto prose lg:prose-lg"><p><a href="http://codeigniter.com/">CodeIgniter</a>是一个不错的PHP开发框架，很合我的口味，我做的一些PHP项目就是用的它。</p>
+          <div class="post-content max-w-screen-md mx-auto prose lg:prose-lg"><p><a href="http://codeigniter.com/">CodeIgniter</a>是一个不错的 PHP 开发框架，很合我的口味，我做的一些 PHP 项目就是用的它。</p>
 
-<p><a href="http://www.smarty.net/">Smarty</a>是目前业界最著名的PHP模板引擎之一。它分离了逻辑代码和外在的内容，提供了一种易于管理和使用的方法，用来将原本与HTML代码混杂在一起的PHP代码逻辑分离。</p>
+<p><a href="http://www.smarty.net/">Smarty</a>是目前业界最著名的 PHP 模板引擎之一。它分离了逻辑代码和外在的内容，提供了一种易于管理和使用的方法，用来将原本与 HTML 代码混杂在一起的 PHP 代码逻辑分离。</p>
 
-<p>一般来说使用原生PHP作为视图会比使用模板引擎高效，一些简单的项目或者个人开发者可以直接使用PHP，如果是大一点的项目，再加上要和美工配合，使用模板引擎会是分工明确，合作高效一些。</p>
+<p>一般来说使用原生 PHP 作为视图会比使用模板引擎高效，一些简单的项目或者个人开发者可以直接使用 PHP，如果是大一点的项目，再加上要和美工配合，使用模板引擎会是分工明确，合作高效一些。</p>
 
-<p>在CodeIgniter使用Smarty模板引擎一点也不复杂，这是因为CodeIgniter提供了<a href="http://codeigniter.org.cn/user_guide/general/creating_libraries.html">创建类库</a>的方便方法。</p>
+<p>在 CodeIgniter 使用 Smarty 模板引擎一点也不复杂，这是因为 CodeIgniter 提供了<a href="http://codeigniter.org.cn/user_guide/general/creating_libraries.html">创建类库</a>的方便方法。</p>
 
-<p>我这里使用的CodeIgniter和Smarty都是最新版本,2.1.0和3.1.7</p>
+<p>我这里使用的 CodeIgniter 和 Smarty 都是最新版本，2.1.0 和 3.1.7</p>
 
-<p>1: 将Smarty包下载后，解压后，放入CodeIgniter项目中的application/libraries目录.</p>
+<p>1: 将 Smarty 包下载后，解压后，放入 CodeIgniter 项目中的 application/libraries 目录。</p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>caojinhua:company caojinhua$ ls application/libraries/
 Smarty.php	index.html	smarty/
 caojinhua:company caojinhua$ ls application/libraries/smarty/
 Smarty.class.php	SmartyBC.class.php	debug.tpl		plugins/		sysplugins/
 </code></pre></div></div>
 
-<p>2: 在application/libraries目录中创建Smarty.php文件。</p>
+<p>2: 在 application/libraries 目录中创建 Smarty.php 文件。</p>
 
 <figure class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span> <span class="k">if</span> <span class="p">(</span> <span class="o">!</span> <span class="nb">defined</span><span class="p">(</span><span class="s1">'BASEPATH'</span><span class="p">))</span> <span class="k">exit</span><span class="p">(</span><span class="s1">'No direct script access allowed'</span><span class="p">);</span>
 
@@ -81,18 +88,18 @@ Smarty.class.php	SmartyBC.class.php	debug.tpl		plugins/		sysplugins/
                 <span class="nv">$this</span><span class="o">-&gt;</span><span class="n">debugging</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
                 <span class="nv">$this</span><span class="o">-&gt;</span><span class="n">compile_check</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span> <span class="c1">// 检查当前的模板是否自上次编译后被更改；如果被更改了，它将重新编译该模板。</span>
                 <span class="c1">//$this-&gt;force_compile = true; // 强制重新编译模板</span>
-                <span class="c1">//$this-&gt;allow_php_templates= true; // 开启PHP模板</span>
+                <span class="c1">//$this-&gt;allow_php_templates= true; // 开启 PHP 模板</span>
                 <span class="nv">$this</span><span class="o">-&gt;</span><span class="n">left_delimiter</span> <span class="o">=</span> <span class="s2">"{"</span><span class="p">;</span> <span class="c1">//左定界符</span>
                 <span class="nv">$this</span><span class="o">-&gt;</span><span class="n">right_delimiter</span> <span class="o">=</span> <span class="s2">"}"</span><span class="p">;</span> <span class="c1">//右定界符</span>
         <span class="p">}</span>
 <span class="p">}</span>
 <span class="cp">?&gt;</span></code></pre></figure>
 
-<p>根据代码中的smarty目录配置，需要在application/views中建立templates_c\templates\cache三个目录.
+<p>根据代码中的 smarty 目录配置，需要在 application/views 中建立 templates_c\templates\cache 三个目录。
 这就算创建好了。</p>
 
 <p>3: 使用方法。
-控制器中的代码:</p>
+控制器中的代码：</p>
 
 <figure class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span> <span class="k">if</span> <span class="p">(</span> <span class="o">!</span> <span class="nb">defined</span><span class="p">(</span><span class="s1">'BASEPATH'</span><span class="p">))</span> <span class="k">exit</span><span class="p">(</span><span class="s1">'No direct script access allowed'</span><span class="p">);</span>
 
@@ -107,7 +114,7 @@ Smarty.class.php	SmartyBC.class.php	debug.tpl		plugins/		sysplugins/
     <span class="k">function</span> <span class="n">index</span><span class="p">(){</span>
       <span class="nv">$this</span><span class="o">-&gt;</span><span class="n">load</span><span class="o">-&gt;</span><span class="nf">library</span><span class="p">(</span><span class="s1">'smarty'</span><span class="p">);</span>
       <span class="nv">$this</span><span class="o">-&gt;</span><span class="n">smarty</span><span class="o">-&gt;</span><span class="nf">assign</span><span class="p">(</span><span class="s2">"title"</span><span class="p">,</span><span class="s2">"smarty template"</span><span class="p">);</span>
-      <span class="nv">$this</span><span class="o">-&gt;</span><span class="n">smarty</span><span class="o">-&gt;</span><span class="nf">assign</span><span class="p">(</span><span class="s2">"body"</span><span class="p">,</span><span class="s2">"欢迎使用smarty模板引擎"</span><span class="p">);</span>
+      <span class="nv">$this</span><span class="o">-&gt;</span><span class="n">smarty</span><span class="o">-&gt;</span><span class="nf">assign</span><span class="p">(</span><span class="s2">"body"</span><span class="p">,</span><span class="s2">"欢迎使用 smarty 模板引擎"</span><span class="p">);</span>
       <span class="nv">$arr</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="mi">1</span> <span class="o">=&gt;</span> <span class="s1">'number 1'</span><span class="p">,</span> <span class="mi">2</span> <span class="o">=&gt;</span> <span class="s1">'number 2'</span><span class="p">,</span> <span class="mi">3</span> <span class="o">=&gt;</span> <span class="s1">'number 3'</span><span class="p">);</span>
       <span class="nv">$this</span><span class="o">-&gt;</span><span class="n">smarty</span><span class="o">-&gt;</span><span class="nf">assign</span><span class="p">(</span><span class="s2">"myarray"</span><span class="p">,</span> <span class="nv">$arr</span><span class="p">);</span>
       <span class="nv">$this</span><span class="o">-&gt;</span><span class="n">smarty</span><span class="o">-&gt;</span><span class="nf">display</span><span class="p">(</span><span class="s1">'index.html'</span><span class="p">);</span>
@@ -115,12 +122,12 @@ Smarty.class.php	SmartyBC.class.php	debug.tpl		plugins/		sysplugins/
 
 <span class="p">}</span></code></pre></figure>
 
-<p>模板代码:</p>
+<p>模板代码：</p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
 &lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
 &lt;head&gt;
 &lt;meta http-equiv="Content-Type" content="text/html; charset=utf-8" /&gt;
-&lt;title&gt;smarty模板使用示例&lt;/title&gt;
+&lt;title&gt;smarty 模板使用示例&lt;/title&gt;
 &lt;/head&gt;
 &lt;body&gt;
 &lt;h1&gt;{$title}&lt;/h1&gt;
@@ -137,5 +144,8 @@ Smarty.class.php	SmartyBC.class.php	debug.tpl		plugins/		sysplugins/
 </div>
 
     </main>
+    <svg id="scrolltop" xmlns="http://www.w3.org/2000/svg" class="hidden fixed bottom-2 right-2 h-16 w-16 cursor-pointer text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
+    </svg>
   </body>
 </html>

@@ -6,19 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Qichunren website">
     <meta name="author" content="Qichunren">
-    <title>在Rails3中使用ajax - Qichunren blog</title>
+    <title>在 Rails3 中使用 ajax - Qichunren blog</title>
     <link rel="stylesheet" href="/assets/css/main.css?v2">
+    <script type="text/javascript" src="/assets/js/main.js?v1"></script>
   </head>
 
   <body class="has-navbar-fixed-top page-index">
 
-    <nav class="flex items-center justify-between flex-wrap p-6 fixed w-full z-10 top-0 bg-white shadow-sm">
+    <nav id="header" class="flex items-center justify-between flex-wrap px-6 py-6 fixed w-full z-10 top-0 bg-white shadow-sm">
 
       <a class="flex items-center flex-shrink-0 mr-6 no-underline hover:text-blue-800 hover:no-underline" href="/index.html">
         <img class="card-img-top rounded-circle" src="https://avatars.githubusercontent.com/u/39784?s=40&v=4" />
         <span class="text-2xl pl-2">Qichunren's blog</span>
       </a>
-
 
     <div class="block lg:hidden">
       <button id="nav-toggle" class="flex items-center px-3 py-2 border rounded text-gray-500 border-gray-600 hover:text-blue-600 hover:border-white">
@@ -32,6 +32,9 @@
           <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="/index.html">Posts</a>
         </li>
         <li class="mr-3">
+          <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="/dev_tips.html">Dev Tips</a>
+        </li>
+        <li class="mr-3">
           <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="/about.html">About</a>
         </li>
         <li class="mr-3">
@@ -41,19 +44,23 @@
     </div>
   </nav>
 
+  <div id="content_header" class="hidden flex items-center justify-center flex-wrap px-6 py-4 fixed w-full z-10 top-0 bg-gray-50 shadow-lg">
+    <h1 class="mb-2 font-bold text-center text-gray-800 md:text-xl lg:text-2xl xl:text-3xl md:leading-tight">在 Rails3 中使用 ajax</h1>
+  </div>
+
   <main class="container mx-auto bg-white mt-24 md:mt-18">
           <div class="max-w-screen-md mx-auto prose lg:prose-lg p-4">
-            <h1 class="mb-2 text-3xl font-bold text-gray-900 md:text-2xl lg:text-4xl xl:text-5xl md:leading-tight">在Rails3中使用ajax</h1>
+            <h1 class="mb-2 text-3xl font-bold text-gray-900 md:text-2xl lg:text-4xl xl:text-5xl md:leading-tight">在 Rails3 中使用 ajax</h1>
             <div class="text-gray-400 md:text-base">2011-12-22</div>
           </div>
 
-          <div class="post-content max-w-screen-md mx-auto prose lg:prose-lg"><p>今天写代码的时候突然发现 我之前在Rails3中使用ajax的方式是不太正确的，我走了弯路。</p>
+          <div class="post-content max-w-screen-md mx-auto prose lg:prose-lg"><p>今天写代码的时候突然发现 我之前在 Rails3 中使用 ajax 的方式是不太正确的，我走了弯路。</p>
 
-<p>我之前在Rails3项目中使用ajax是这样的：</p>
+<p>我之前在 Rails3 项目中使用 ajax 是这样的：</p>
 
-<p>如果是直接发送一个ajax请求，我就给标签加上:remote =&gt; true。如果我在此基础上还要做其它的操作，如ajax表单提交前要对表单字段验证，我之前以为那样UJS就不能搞定了，需要我自己写代码来处理。然后我就使用jquery中的相关ajax操作来处理。</p>
+<p>如果是直接发送一个 ajax 请求，我就给标签加上:remote =&gt; true。如果我在此基础上还要做其它的操作，如 ajax 表单提交前要对表单字段验证，我之前以为那样 UJS 就不能搞定了，需要我自己写代码来处理。然后我就使用 jquery 中的相关 ajax 操作来处理。</p>
 
-<p>今天我才了解到UJS的AJAX操作已经为我们提供了6个自定义事件方法：</p>
+<p>今天我才了解到 UJS 的 AJAX 操作已经为我们提供了 6 个自定义事件方法：</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ajax:before – right before ajax call
 ajax:loading – before ajax call, but after XmlHttpRequest object is created)
@@ -63,7 +70,7 @@ ajax:complete – completion of ajax call (after ajax:success and ajax:failure)
 ajax:after – after ajax call is sent (note: not after it returns)
 </code></pre></div></div>
 
-<p>所以对于上面我说的那个事例，如果要对一个ajax表单在提交前作表单验证或者其它的一些检查，只需要写提交前的检查代码，然后通过事件绑定的方式，将余下的表单ajax提交让UJS来完成，这是多么地简单啊，我以前真是做了好多无用功。</p>
+<p>所以对于上面我说的那个事例，如果要对一个 ajax 表单在提交前作表单验证或者其它的一些检查，只需要写提交前的检查代码，然后通过事件绑定的方式，将余下的表单 ajax 提交让 UJS 来完成，这是多么地简单啊，我以前真是做了好多无用功。</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$(document).ready(function() {
   return $("#new_post_comment").bind("ajax:before", function() {
@@ -80,5 +87,8 @@ ajax:after – after ajax call is sent (note: not after it returns)
 </div>
 
     </main>
+    <svg id="scrolltop" xmlns="http://www.w3.org/2000/svg" class="hidden fixed bottom-2 right-2 h-16 w-16 cursor-pointer text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
+    </svg>
   </body>
 </html>

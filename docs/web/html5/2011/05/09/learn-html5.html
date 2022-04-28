@@ -6,19 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Qichunren website">
     <meta name="author" content="Qichunren">
-    <title>学习HTML5杂记 - Qichunren blog</title>
+    <title>学习 HTML5 杂记 - Qichunren blog</title>
     <link rel="stylesheet" href="/assets/css/main.css?v2">
+    <script type="text/javascript" src="/assets/js/main.js?v1"></script>
   </head>
 
   <body class="has-navbar-fixed-top page-index">
 
-    <nav class="flex items-center justify-between flex-wrap p-6 fixed w-full z-10 top-0 bg-white shadow-sm">
+    <nav id="header" class="flex items-center justify-between flex-wrap px-6 py-6 fixed w-full z-10 top-0 bg-white shadow-sm">
 
       <a class="flex items-center flex-shrink-0 mr-6 no-underline hover:text-blue-800 hover:no-underline" href="/index.html">
         <img class="card-img-top rounded-circle" src="https://avatars.githubusercontent.com/u/39784?s=40&v=4" />
         <span class="text-2xl pl-2">Qichunren's blog</span>
       </a>
-
 
     <div class="block lg:hidden">
       <button id="nav-toggle" class="flex items-center px-3 py-2 border rounded text-gray-500 border-gray-600 hover:text-blue-600 hover:border-white">
@@ -32,6 +32,9 @@
           <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="/index.html">Posts</a>
         </li>
         <li class="mr-3">
+          <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="/dev_tips.html">Dev Tips</a>
+        </li>
+        <li class="mr-3">
           <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="/about.html">About</a>
         </li>
         <li class="mr-3">
@@ -41,9 +44,13 @@
     </div>
   </nav>
 
+  <div id="content_header" class="hidden flex items-center justify-center flex-wrap px-6 py-4 fixed w-full z-10 top-0 bg-gray-50 shadow-lg">
+    <h1 class="mb-2 font-bold text-center text-gray-800 md:text-xl lg:text-2xl xl:text-3xl md:leading-tight">学习 HTML5 杂记</h1>
+  </div>
+
   <main class="container mx-auto bg-white mt-24 md:mt-18">
           <div class="max-w-screen-md mx-auto prose lg:prose-lg p-4">
-            <h1 class="mb-2 text-3xl font-bold text-gray-900 md:text-2xl lg:text-4xl xl:text-5xl md:leading-tight">学习HTML5杂记</h1>
+            <h1 class="mb-2 text-3xl font-bold text-gray-900 md:text-2xl lg:text-4xl xl:text-5xl md:leading-tight">学习 HTML5 杂记</h1>
             <div class="text-gray-400 md:text-base">2011-05-09</div>
           </div>
 
@@ -62,7 +69,7 @@ HTML5 仍处于完善之中。然而，大部分现代浏览器已经具备了�
   <li>新的表单控件，比如 calendar、date、time、email、url、search</li>
 </ul>
 
-<h4 id="video标签">Video标签</h4>
+<h4 id="video-标签">Video 标签</h4>
 <p><a href="http://www.w3school.com.cn/html5/html_5_video.asp">参考资料</a></p>
 
 <figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="cp">&lt;!DOCTYPE HTML&gt;</span>
@@ -78,7 +85,7 @@ Your browser does not support the video tag.
 <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span></code></pre></figure>
 
-<h4 id="audio标签">Audio标签</h4>
+<h4 id="audio-标签">Audio 标签</h4>
 <p><a href="http://www.w3school.com.cn/html5/html_5_audio.asp">参考资料</a></p>
 
 <figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="cp">&lt;!DOCTYPE HTML&gt;</span>
@@ -94,10 +101,10 @@ Your browser does not support the audio tag.
 <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span></code></pre></figure>
 
-<h4 id="canvas元素">Canvas元素</h4>
+<h4 id="canvas-元素">Canvas 元素</h4>
 <p><a href="http://www.w3school.com.cn/html5/html_5_canvas.asp">参考资料</a></p>
 
-<h4 id="html5-web存储">HTML5 Web存储</h4>
+<h4 id="html5-web-存储">HTML5 Web 存储</h4>
 <p><a href="http://www.w3school.com.cn/html5/html_5_webstorage.asp">参考资料</a></p>
 
 <h4 id="标签">标签</h4>
@@ -110,5 +117,8 @@ Your browser does not support the audio tag.
 </div>
 
     </main>
+    <svg id="scrolltop" xmlns="http://www.w3.org/2000/svg" class="hidden fixed bottom-2 right-2 h-16 w-16 cursor-pointer text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
+    </svg>
   </body>
 </html>

@@ -6,19 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Qichunren website">
     <meta name="author" content="Qichunren">
-    <title>写Rails程序容易出现的几个不好的地方 - Qichunren blog</title>
+    <title>写 Rails 程序容易出现的几个不好的地方 - Qichunren blog</title>
     <link rel="stylesheet" href="/assets/css/main.css?v2">
+    <script type="text/javascript" src="/assets/js/main.js?v1"></script>
   </head>
 
   <body class="has-navbar-fixed-top page-index">
 
-    <nav class="flex items-center justify-between flex-wrap p-6 fixed w-full z-10 top-0 bg-white shadow-sm">
+    <nav id="header" class="flex items-center justify-between flex-wrap px-6 py-6 fixed w-full z-10 top-0 bg-white shadow-sm">
 
       <a class="flex items-center flex-shrink-0 mr-6 no-underline hover:text-blue-800 hover:no-underline" href="/index.html">
         <img class="card-img-top rounded-circle" src="https://avatars.githubusercontent.com/u/39784?s=40&v=4" />
         <span class="text-2xl pl-2">Qichunren's blog</span>
       </a>
-
 
     <div class="block lg:hidden">
       <button id="nav-toggle" class="flex items-center px-3 py-2 border rounded text-gray-500 border-gray-600 hover:text-blue-600 hover:border-white">
@@ -32,6 +32,9 @@
           <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="/index.html">Posts</a>
         </li>
         <li class="mr-3">
+          <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="/dev_tips.html">Dev Tips</a>
+        </li>
+        <li class="mr-3">
           <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="/about.html">About</a>
         </li>
         <li class="mr-3">
@@ -41,9 +44,13 @@
     </div>
   </nav>
 
+  <div id="content_header" class="hidden flex items-center justify-center flex-wrap px-6 py-4 fixed w-full z-10 top-0 bg-gray-50 shadow-lg">
+    <h1 class="mb-2 font-bold text-center text-gray-800 md:text-xl lg:text-2xl xl:text-3xl md:leading-tight">写 Rails 程序容易出现的几个不好的地方</h1>
+  </div>
+
   <main class="container mx-auto bg-white mt-24 md:mt-18">
           <div class="max-w-screen-md mx-auto prose lg:prose-lg p-4">
-            <h1 class="mb-2 text-3xl font-bold text-gray-900 md:text-2xl lg:text-4xl xl:text-5xl md:leading-tight">写Rails程序容易出现的几个不好的地方</h1>
+            <h1 class="mb-2 text-3xl font-bold text-gray-900 md:text-2xl lg:text-4xl xl:text-5xl md:leading-tight">写 Rails 程序容易出现的几个不好的地方</h1>
             <div class="text-gray-400 md:text-base">2010-10-29</div>
           </div>
 
@@ -56,13 +63,16 @@
   <span class="no">GoodBrand</span> <span class="o">=</span> <span class="no">EcBrand</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="ss">:all</span><span class="p">).</span><span class="nf">map</span><span class="p">{</span><span class="o">|</span><span class="n">brand</span><span class="o">|</span><span class="p">[</span><span class="n">brand</span><span class="p">.</span><span class="nf">brand_name</span><span class="p">,</span> <span class="n">brand</span><span class="p">.</span><span class="nf">id</span><span class="p">]</span> <span class="p">}</span>
 <span class="k">end</span></code></pre></figure>
 
-<p>在ActiveRecord中有这样的代码，实在不应该啊。</p>
+<p>在 ActiveRecord 中有这样的代码，实在不应该啊。</p>
 
-<p>初次一看没有什么问题，可是Ruby代码是自上而下来执行的，这样会给数据库带来无关的查询。解决办法就是将这个封装到方法中去，另外也说明全局变量要少用。</p>
+<p>初次一看没有什么问题，可是 Ruby 代码是自上而下来执行的，这样会给数据库带来无关的查询。解决办法就是将这个封装到方法中去，另外也说明全局变量要少用。</p>
 
 <p>有时间再更新一下这篇文章来反思一下自己。</p>
 </div>
 
     </main>
+    <svg id="scrolltop" xmlns="http://www.w3.org/2000/svg" class="hidden fixed bottom-2 right-2 h-16 w-16 cursor-pointer text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
+    </svg>
   </body>
 </html>

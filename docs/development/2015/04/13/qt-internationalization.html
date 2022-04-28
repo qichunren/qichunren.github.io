@@ -6,19 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Qichunren website">
     <meta name="author" content="Qichunren">
-    <title>在QT5中使用国际化语言 - Qichunren blog</title>
+    <title>在 QT5 中使用国际化语言 - Qichunren blog</title>
     <link rel="stylesheet" href="/assets/css/main.css?v2">
+    <script type="text/javascript" src="/assets/js/main.js?v1"></script>
   </head>
 
   <body class="has-navbar-fixed-top page-index">
 
-    <nav class="flex items-center justify-between flex-wrap p-6 fixed w-full z-10 top-0 bg-white shadow-sm">
+    <nav id="header" class="flex items-center justify-between flex-wrap px-6 py-6 fixed w-full z-10 top-0 bg-white shadow-sm">
 
       <a class="flex items-center flex-shrink-0 mr-6 no-underline hover:text-blue-800 hover:no-underline" href="/index.html">
         <img class="card-img-top rounded-circle" src="https://avatars.githubusercontent.com/u/39784?s=40&v=4" />
         <span class="text-2xl pl-2">Qichunren's blog</span>
       </a>
-
 
     <div class="block lg:hidden">
       <button id="nav-toggle" class="flex items-center px-3 py-2 border rounded text-gray-500 border-gray-600 hover:text-blue-600 hover:border-white">
@@ -32,6 +32,9 @@
           <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="/index.html">Posts</a>
         </li>
         <li class="mr-3">
+          <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="/dev_tips.html">Dev Tips</a>
+        </li>
+        <li class="mr-3">
           <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="/about.html">About</a>
         </li>
         <li class="mr-3">
@@ -41,16 +44,20 @@
     </div>
   </nav>
 
+  <div id="content_header" class="hidden flex items-center justify-center flex-wrap px-6 py-4 fixed w-full z-10 top-0 bg-gray-50 shadow-lg">
+    <h1 class="mb-2 font-bold text-center text-gray-800 md:text-xl lg:text-2xl xl:text-3xl md:leading-tight">在 QT5 中使用国际化语言</h1>
+  </div>
+
   <main class="container mx-auto bg-white mt-24 md:mt-18">
           <div class="max-w-screen-md mx-auto prose lg:prose-lg p-4">
-            <h1 class="mb-2 text-3xl font-bold text-gray-900 md:text-2xl lg:text-4xl xl:text-5xl md:leading-tight">在QT5中使用国际化语言</h1>
+            <h1 class="mb-2 text-3xl font-bold text-gray-900 md:text-2xl lg:text-4xl xl:text-5xl md:leading-tight">在 QT5 中使用国际化语言</h1>
             <div class="text-gray-400 md:text-base">2015-04-13</div>
           </div>
 
-          <div class="post-content max-w-screen-md mx-auto prose lg:prose-lg"><p>要在QT项目中使用国际化，以支持多种语言，需要如下步骤。</p>
+          <div class="post-content max-w-screen-md mx-auto prose lg:prose-lg"><p>要在 QT 项目中使用国际化，以支持多种语言，需要如下步骤。</p>
 
 <ol>
-  <li>在pro文件中声明TRANSLATIONS文件，如下面的例子，声明了两个ts文件，一个是zh-CN，另一个en的。</li>
+  <li>在 pro 文件中声明 TRANSLATIONS 文件，如下面的例子，声明了两个 ts 文件，一个是 zh-CN，另一个 en 的。</li>
 </ol>
 
 <p>   TRANSLATIONS = translations/ntptu_zh-CN.ts translations/ntptu_en.ts</p>
@@ -67,19 +74,19 @@
      Found 104 source text(s) (104 new and 0 already existing)</p>
   </li>
   <li>
-    <p>使用linguist.exe工具打开上一步生成的ts文件，进行翻译工作。将两个语言的文件都翻译好。</p>
+    <p>使用 linguist.exe 工具打开上一步生成的 ts 文件，进行翻译工作。将两个语言的文件都翻译好。</p>
   </li>
   <li>
-    <p>lrelease -verbose project_zh_CN.ts生成.qm文件</p>
+    <p>lrelease -verbose project_zh_CN.ts 生成.qm 文件</p>
   </li>
   <li>
-    <p>将qm文件添加了资源中。</p>
+    <p>将 qm 文件添加了资源中。</p>
   </li>
 </ol>
 
 <p>5.</p>
 
-<p>QT程序启动时加载Translator</p>
+<p>QT 程序启动时加载 Translator</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>QTranslator translator;
 translator.load("ntptu_" + QLocale::system().name(),
@@ -117,5 +124,8 @@ qichunren@qichunren-desktop:~/code/new-pis$ export LANGUAGE=zh_CN
 </div>
 
     </main>
+    <svg id="scrolltop" xmlns="http://www.w3.org/2000/svg" class="hidden fixed bottom-2 right-2 h-16 w-16 cursor-pointer text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
+    </svg>
   </body>
 </html>

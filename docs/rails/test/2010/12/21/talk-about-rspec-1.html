@@ -6,19 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Qichunren website">
     <meta name="author" content="Qichunren">
-    <title>说说rspec的测试(1) - Qichunren blog</title>
+    <title>说说 rspec 的测试 (1) - Qichunren blog</title>
     <link rel="stylesheet" href="/assets/css/main.css?v2">
+    <script type="text/javascript" src="/assets/js/main.js?v1"></script>
   </head>
 
   <body class="has-navbar-fixed-top page-index">
 
-    <nav class="flex items-center justify-between flex-wrap p-6 fixed w-full z-10 top-0 bg-white shadow-sm">
+    <nav id="header" class="flex items-center justify-between flex-wrap px-6 py-6 fixed w-full z-10 top-0 bg-white shadow-sm">
 
       <a class="flex items-center flex-shrink-0 mr-6 no-underline hover:text-blue-800 hover:no-underline" href="/index.html">
         <img class="card-img-top rounded-circle" src="https://avatars.githubusercontent.com/u/39784?s=40&v=4" />
         <span class="text-2xl pl-2">Qichunren's blog</span>
       </a>
-
 
     <div class="block lg:hidden">
       <button id="nav-toggle" class="flex items-center px-3 py-2 border rounded text-gray-500 border-gray-600 hover:text-blue-600 hover:border-white">
@@ -32,6 +32,9 @@
           <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="/index.html">Posts</a>
         </li>
         <li class="mr-3">
+          <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="/dev_tips.html">Dev Tips</a>
+        </li>
+        <li class="mr-3">
           <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="/about.html">About</a>
         </li>
         <li class="mr-3">
@@ -41,28 +44,32 @@
     </div>
   </nav>
 
+  <div id="content_header" class="hidden flex items-center justify-center flex-wrap px-6 py-4 fixed w-full z-10 top-0 bg-gray-50 shadow-lg">
+    <h1 class="mb-2 font-bold text-center text-gray-800 md:text-xl lg:text-2xl xl:text-3xl md:leading-tight">说说 rspec 的测试 (1)</h1>
+  </div>
+
   <main class="container mx-auto bg-white mt-24 md:mt-18">
           <div class="max-w-screen-md mx-auto prose lg:prose-lg p-4">
-            <h1 class="mb-2 text-3xl font-bold text-gray-900 md:text-2xl lg:text-4xl xl:text-5xl md:leading-tight">说说rspec的测试(1)</h1>
+            <h1 class="mb-2 text-3xl font-bold text-gray-900 md:text-2xl lg:text-4xl xl:text-5xl md:leading-tight">说说 rspec 的测试 (1)</h1>
             <div class="text-gray-400 md:text-base">2010-12-21</div>
           </div>
 
-          <div class="post-content max-w-screen-md mx-auto prose lg:prose-lg"><p>虽然之前就用过rspec来测试系统的各种业务流程和业务逻辑，最近又在开始一个新的系统的测试，写起来又感觉很开心，很安心。所以就想说说用rspec来写rails项目测试的总结和体会。</p>
+          <div class="post-content max-w-screen-md mx-auto prose lg:prose-lg"><p>虽然之前就用过 rspec 来测试系统的各种业务流程和业务逻辑，最近又在开始一个新的系统的测试，写起来又感觉很开心，很安心。所以就想说说用 rspec 来写 rails 项目测试的总结和体会。</p>
 
-<p>rspec项目 在github上很活跃，rspec2较之 1.x的版本变得更模块化了，从<a href="https://github.com/rspec/">这里</a> 看以到rspec的各个子项目，rspec2依赖于<a href="https://github.com/rspec/rspec-core">rspec-core</a> <a href="https://github.com/rspec/rspec-expectations">rspec-expectations</a> <a href="https://github.com/rspec/rspec-mocks">rspec-mocks</a></p>
+<p>rspec 项目 在 github 上很活跃，rspec2 较之 1.x 的版本变得更模块化了，从<a href="https://github.com/rspec/">这里</a> 看以到 rspec 的各个子项目，rspec2 依赖于<a href="https://github.com/rspec/rspec-core">rspec-core</a> <a href="https://github.com/rspec/rspec-expectations">rspec-expectations</a> <a href="https://github.com/rspec/rspec-mocks">rspec-mocks</a></p>
 
-<p>在Rails 3项目中，只需要在指定rspec-rails这个gem即可，它会自动依赖rspec2。</p>
+<p>在 Rails 3 项目中，只需要在指定 rspec-rails 这个 gem 即可，它会自动依赖 rspec2。</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem "rspec-rails", "2.3.1"
 </code></pre></div></div>
 
-<p>在rspec2中，Rails3项的测试被分成控制器（controller）、模型（model）、请求（request）、路由（routing）、助手（helper）、视图（view）六大块的测试。从中可以看出rspec2力图让你的测试变得更为职责清楚和模块化，减少各种类型测试的影响，让测试变得更有效率和保证。我个人最喜欢的是模型（model）和请求的测试（request），这两个测试写得最为直接和有效，其它类型的测试如controller测试在复杂一点的业务中需要mock、stub等等，会将代码弄得有些复杂，当然这其中也有我对mock和stub没有用得理解的原因，不过我感觉测试controller还不如直接测试request来得直接。另外在factory-girl的帮助下能很快地写出有保证的测试。</p>
+<p>在 rspec2 中，Rails3 项的测试被分成控制器（controller）、模型（model）、请求（request）、路由（routing）、助手（helper）、视图（view）六大块的测试。从中可以看出 rspec2 力图让你的测试变得更为职责清楚和模块化，减少各种类型测试的影响，让测试变得更有效率和保证。我个人最喜欢的是模型（model）和请求的测试（request），这两个测试写得最为直接和有效，其它类型的测试如 controller 测试在复杂一点的业务中需要 mock、stub 等等，会将代码弄得有些复杂，当然这其中也有我对 mock 和 stub 没有用得理解的原因，不过我感觉测试 controller 还不如直接测试 request 来得直接。另外在 factory-girl 的帮助下能很快地写出有保证的测试。</p>
 
 <p>在这里我贴出我系统中登录测试这一块的例子，从中可以看出测试目的是很明显的，测试效率是很高的。</p>
 
-<p>这里的管理员(Admin)登录系统(AdminSession)是用到authlogic这个gem的。</p>
+<p>这里的管理员 (Admin) 登录系统 (AdminSession) 是用到 authlogic 这个 gem 的。</p>
 
-<p>这个是factory-girl的数据文件：</p>
+<p>这个是 factory-girl 的数据文件：</p>
 
 <figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># spec/factories/admins.rb</span>
 <span class="c1"># encoding: utf-8</span>
@@ -113,13 +120,13 @@
       <span class="n">response</span><span class="p">.</span><span class="nf">should</span> <span class="n">redirect_to</span><span class="p">(</span><span class="n">root_path</span><span class="p">)</span>
       <span class="n">get</span> <span class="s2">"/"</span>
       <span class="n">response</span><span class="p">.</span><span class="nf">should</span> <span class="n">be_success</span>
-      <span class="n">response</span><span class="p">.</span><span class="nf">should</span> <span class="n">contain</span><span class="p">(</span><span class="s2">"登录成功!"</span><span class="p">)</span>
+      <span class="n">response</span><span class="p">.</span><span class="nf">should</span> <span class="n">contain</span><span class="p">(</span><span class="s2">"登录成功！"</span><span class="p">)</span>
     <span class="k">end</span>
 
     <span class="n">it</span> <span class="s2">"should show error info with wrong loign id"</span> <span class="k">do</span>
       <span class="n">current_admin</span> <span class="o">=</span> <span class="no">Factory</span><span class="p">(</span><span class="s2">"actived_admin"</span><span class="p">)</span>
       <span class="n">login_with</span><span class="p">(</span><span class="s2">"actived_admin"</span><span class="p">,</span> <span class="s2">"adminpassword_error"</span><span class="p">)</span>
-      <span class="n">response</span><span class="p">.</span><span class="nf">should</span> <span class="n">contain</span><span class="p">(</span><span class="s2">"你输入的帐号或密码不正确!"</span><span class="p">)</span>
+      <span class="n">response</span><span class="p">.</span><span class="nf">should</span> <span class="n">contain</span><span class="p">(</span><span class="s2">"你输入的帐号或密码不正确！"</span><span class="p">)</span>
     <span class="k">end</span>
 
   <span class="k">end</span>
@@ -129,5 +136,8 @@
 </div>
 
     </main>
+    <svg id="scrolltop" xmlns="http://www.w3.org/2000/svg" class="hidden fixed bottom-2 right-2 h-16 w-16 cursor-pointer text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
+    </svg>
   </body>
 </html>

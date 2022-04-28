@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Qichunren website">
     <meta name="author" content="Qichunren">
-    <title>How to update a forked repository from original repository at github? - Qichunren blog</title>
+    <title>ActiveSupport 中 Module 里的 mattr_accessor 方法 - Qichunren blog</title>
     <link rel="stylesheet" href="/assets/css/main.css?v2">
     <script type="text/javascript" src="/assets/js/main.js?v1"></script>
   </head>
@@ -45,49 +45,37 @@
   </nav>
 
   <div id="content_header" class="hidden flex items-center justify-center flex-wrap px-6 py-4 fixed w-full z-10 top-0 bg-gray-50 shadow-lg">
-    <h1 class="mb-2 font-bold text-center text-gray-800 md:text-xl lg:text-2xl xl:text-3xl md:leading-tight">How to update a forked repository from original repository at github?</h1>
+    <h1 class="mb-2 font-bold text-center text-gray-800 md:text-xl lg:text-2xl xl:text-3xl md:leading-tight">ActiveSupport 中 Module 里的 mattr_accessor 方法</h1>
   </div>
 
   <main class="container mx-auto bg-white mt-24 md:mt-18">
           <div class="max-w-screen-md mx-auto prose lg:prose-lg p-4">
-            <h1 class="mb-2 text-3xl font-bold text-gray-900 md:text-2xl lg:text-4xl xl:text-5xl md:leading-tight">How to update a forked repository from original repository at github?</h1>
-            <div class="text-gray-400 md:text-base">2012-01-09</div>
+            <h1 class="mb-2 text-3xl font-bold text-gray-900 md:text-2xl lg:text-4xl xl:text-5xl md:leading-tight">ActiveSupport 中 Module 里的 mattr_accessor 方法</h1>
+            <div class="text-gray-400 md:text-base">2022-04-28</div>
           </div>
 
-          <div class="post-content max-w-screen-md mx-auto prose lg:prose-lg"><p>If you use github, you can follow this.</p>
+          <div class="post-content max-w-screen-md mx-auto prose lg:prose-lg"><div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="nn">HairColors</span>
+  <span class="n">mattr_accessor</span> <span class="ss">:hair_colors</span>
+<span class="k">end</span>
 
-<p>I use <a href="https://github.com/huacnlee/ruby-china">huachlee/ruby-china</a> repository for example.</p>
+<span class="k">class</span> <span class="nc">Person</span>
+  <span class="kp">include</span> <span class="no">HairColors</span>
+<span class="k">end</span>
 
-<p>At huacnlee/ruby-china repository homepage, clicked “Fork” button, then after serval minutes, you will have you own forked repository copy.Then you clone to local.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone git@github.com:qichunren/ruby-china.git
+<span class="no">HairColors</span><span class="p">.</span><span class="nf">hair_colors</span> <span class="o">=</span> <span class="p">[</span><span class="ss">:brown</span><span class="p">,</span> <span class="ss">:black</span><span class="p">,</span> <span class="ss">:blonde</span><span class="p">,</span> <span class="ss">:red</span><span class="p">]</span>
+<span class="no">HairColors</span><span class="p">.</span><span class="nf">hair_colors</span> <span class="c1"># =&gt; [:brown, :black, :blonde, :red]</span>
+<span class="no">Person</span><span class="p">.</span><span class="nf">new</span><span class="p">.</span><span class="nf">hair_colors</span> <span class="c1"># =&gt; [:brown, :black, :blonde, :red]</span>
+<span class="no">Person</span><span class="p">.</span><span class="nf">hair_colors</span> <span class="c1"># undefined method `hair_colors' for Person:Class (NoMethodError)</span>
 </code></pre></div></div>
 
-<p>Then you commit your changes, and push to it.When you found the original repository has some updated feature,you can do as follow:</p>
+<p>mattr_accessor 方法可以指定一个默认值，例如：</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd ruby-china
-git remote add upstream git://github.com/huacnlee/ruby-china.git
-caojinhua:ruby-china caojinhua$ git fetch upstream
-remote: Counting objects: 345, done.
-remote: Compressing objects: 100% (164/164), done.
-remote: Total 266 (delta 196), reused 156 (delta 98)
-Receiving objects: 100% (266/266), 31.92 KiB | 25 KiB/s, done.
-Resolving deltas: 100% (196/196), completed with 67 local objects.
-From git://github.com/huacnlee/ruby-china
- * [new branch]      github_autocomplete -&gt; upstream/github_autocomplete
- * [new branch]      markdown   -&gt; upstream/markdown
- * [new branch]      master     -&gt; upstream/master
- * [new branch]      post       -&gt; upstream/post
-caojinhua:ruby-china caojinhua$ git merge upstream/master
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="nn">Propshaft</span>
+  <span class="n">mattr_accessor</span> <span class="ss">:logger</span><span class="p">,</span> <span class="ss">default: </span><span class="no">Logger</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="no">STDOUT</span><span class="p">)</span>
+<span class="k">end</span>
 </code></pre></div></div>
 
-<p>That is it.</p>
-
-<h2 id="resources">Resources:</h2>
-<ul>
-  <li><a href="http://help.github.com/fork-a-repo/">Fork A Repo</a></li>
-  <li><a href="http://bradlyfeeley.com/2008/09/03/update-a-github-fork-from-the-original-repo/">Update a Github Fork from the Original Repo</a></li>
-</ul>
+<p><a href="https://api.rubyonrails.org/classes/Module.html#method-i-mattr_accessor">See doc</a></p>
 </div>
 
     </main>

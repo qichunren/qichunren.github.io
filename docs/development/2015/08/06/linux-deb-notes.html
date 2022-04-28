@@ -8,17 +8,17 @@
     <meta name="author" content="Qichunren">
     <title>Linux Deb package notes - Qichunren blog</title>
     <link rel="stylesheet" href="/assets/css/main.css?v2">
+    <script type="text/javascript" src="/assets/js/main.js?v1"></script>
   </head>
 
   <body class="has-navbar-fixed-top page-index">
 
-    <nav class="flex items-center justify-between flex-wrap p-6 fixed w-full z-10 top-0 bg-white shadow-sm">
+    <nav id="header" class="flex items-center justify-between flex-wrap px-6 py-6 fixed w-full z-10 top-0 bg-white shadow-sm">
 
       <a class="flex items-center flex-shrink-0 mr-6 no-underline hover:text-blue-800 hover:no-underline" href="/index.html">
         <img class="card-img-top rounded-circle" src="https://avatars.githubusercontent.com/u/39784?s=40&v=4" />
         <span class="text-2xl pl-2">Qichunren's blog</span>
       </a>
-
 
     <div class="block lg:hidden">
       <button id="nav-toggle" class="flex items-center px-3 py-2 border rounded text-gray-500 border-gray-600 hover:text-blue-600 hover:border-white">
@@ -32,6 +32,9 @@
           <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="/index.html">Posts</a>
         </li>
         <li class="mr-3">
+          <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="/dev_tips.html">Dev Tips</a>
+        </li>
+        <li class="mr-3">
           <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="/about.html">About</a>
         </li>
         <li class="mr-3">
@@ -41,27 +44,31 @@
     </div>
   </nav>
 
+  <div id="content_header" class="hidden flex items-center justify-center flex-wrap px-6 py-4 fixed w-full z-10 top-0 bg-gray-50 shadow-lg">
+    <h1 class="mb-2 font-bold text-center text-gray-800 md:text-xl lg:text-2xl xl:text-3xl md:leading-tight">Linux Deb package notes</h1>
+  </div>
+
   <main class="container mx-auto bg-white mt-24 md:mt-18">
           <div class="max-w-screen-md mx-auto prose lg:prose-lg p-4">
             <h1 class="mb-2 text-3xl font-bold text-gray-900 md:text-2xl lg:text-4xl xl:text-5xl md:leading-tight">Linux Deb package notes</h1>
             <div class="text-gray-400 md:text-base">2015-08-06</div>
           </div>
 
-          <div class="post-content max-w-screen-md mx-auto prose lg:prose-lg"><p>使用dh_make命令可以在项目中生成默认的debian目录，此debian目录中包含了默认的deb打包规范的一系列文件。</p>
+          <div class="post-content max-w-screen-md mx-auto prose lg:prose-lg"><p>使用 dh_make 命令可以在项目中生成默认的 debian 目录，此 debian 目录中包含了默认的 deb 打包规范的一系列文件。</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dh_make --createorig --single -e whyruby@gmail.com -c gpl
 </code></pre></div></div>
 
-<p>需要注意的是在项目目录中执行dh_make命令的时候，会提示项目目录必须要是project-name-1.0类似的形式。</p>
+<p>需要注意的是在项目目录中执行 dh_make 命令的时候，会提示项目目录必须要是 project-name-1.0 类似的形式。</p>
 
-<p>在dh_make命令执行后，继续运行</p>
+<p>在 dh_make 命令执行后，继续运行</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dpkg-buildpackage -uc -us
 </code></pre></div></div>
 
-<p>会在当前项目目录的上一层生成deb文件。</p>
+<p>会在当前项目目录的上一层生成 deb 文件。</p>
 
-<p>deb包的构建规范中规定了一系列的规则，最常用的有安装时的文件路经对应，此文件位于debian/install中，如将编译文件的可执行文件将安装的/usr/bin目录，将程序执行图标文件放在/usr/share/applications目录。install文件中类似这样：</p>
+<p>deb 包的构建规范中规定了一系列的规则，最常用的有安装时的文件路经对应，此文件位于 debian/install 中，如将编译文件的可执行文件将安装的/usr/bin 目录，将程序执行图标文件放在/usr/share/applications 目录。install 文件中类似这样：</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bin/new-pis usr/bin
 new-pis.desktop /usr/share/applications
@@ -69,7 +76,7 @@ new-pis-icon.png /usr/share/pixmaps
 db/data.db /var/lib/new-pis
 </code></pre></div></div>
 
-<p>debian目录中其它的文件如提供cron job的文件，日志文件分割等以后深究。</p>
+<p>debian 目录中其它的文件如提供 cron job 的文件，日志文件分割等以后深究。</p>
 
 <h3 id="references">References</h3>
 
@@ -81,5 +88,8 @@ db/data.db /var/lib/new-pis
 </div>
 
     </main>
+    <svg id="scrolltop" xmlns="http://www.w3.org/2000/svg" class="hidden fixed bottom-2 right-2 h-16 w-16 cursor-pointer text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
+    </svg>
   </body>
 </html>

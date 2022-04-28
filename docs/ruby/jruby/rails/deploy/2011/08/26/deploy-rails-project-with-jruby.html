@@ -6,19 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Qichunren website">
     <meta name="author" content="Qichunren">
-    <title>使用Jruby来部署Rails应用 - Qichunren blog</title>
+    <title>使用 Jruby 来部署 Rails 应用 - Qichunren blog</title>
     <link rel="stylesheet" href="/assets/css/main.css?v2">
+    <script type="text/javascript" src="/assets/js/main.js?v1"></script>
   </head>
 
   <body class="has-navbar-fixed-top page-index">
 
-    <nav class="flex items-center justify-between flex-wrap p-6 fixed w-full z-10 top-0 bg-white shadow-sm">
+    <nav id="header" class="flex items-center justify-between flex-wrap px-6 py-6 fixed w-full z-10 top-0 bg-white shadow-sm">
 
       <a class="flex items-center flex-shrink-0 mr-6 no-underline hover:text-blue-800 hover:no-underline" href="/index.html">
         <img class="card-img-top rounded-circle" src="https://avatars.githubusercontent.com/u/39784?s=40&v=4" />
         <span class="text-2xl pl-2">Qichunren's blog</span>
       </a>
-
 
     <div class="block lg:hidden">
       <button id="nav-toggle" class="flex items-center px-3 py-2 border rounded text-gray-500 border-gray-600 hover:text-blue-600 hover:border-white">
@@ -32,6 +32,9 @@
           <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="/index.html">Posts</a>
         </li>
         <li class="mr-3">
+          <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="/dev_tips.html">Dev Tips</a>
+        </li>
+        <li class="mr-3">
           <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="/about.html">About</a>
         </li>
         <li class="mr-3">
@@ -41,9 +44,13 @@
     </div>
   </nav>
 
+  <div id="content_header" class="hidden flex items-center justify-center flex-wrap px-6 py-4 fixed w-full z-10 top-0 bg-gray-50 shadow-lg">
+    <h1 class="mb-2 font-bold text-center text-gray-800 md:text-xl lg:text-2xl xl:text-3xl md:leading-tight">使用 Jruby 来部署 Rails 应用</h1>
+  </div>
+
   <main class="container mx-auto bg-white mt-24 md:mt-18">
           <div class="max-w-screen-md mx-auto prose lg:prose-lg p-4">
-            <h1 class="mb-2 text-3xl font-bold text-gray-900 md:text-2xl lg:text-4xl xl:text-5xl md:leading-tight">使用Jruby来部署Rails应用</h1>
+            <h1 class="mb-2 text-3xl font-bold text-gray-900 md:text-2xl lg:text-4xl xl:text-5xl md:leading-tight">使用 Jruby 来部署 Rails 应用</h1>
             <div class="text-gray-400 md:text-base">2011-08-26</div>
           </div>
 
@@ -54,19 +61,19 @@
     <p>使用代码混淆工具</p>
   </li>
   <li>
-    <p>使用JRuby将Ruby代码编译成java字节码文件（.class）</p>
+    <p>使用 JRuby 将 Ruby 代码编译成 java 字节码文件（.class）</p>
   </li>
 </ol>
 
 <hr />
-<p>第一种方案，有一个名为<a href="http://rubyencoder.com">ruby encoder</a>的产品，我试用了一下，发现太重量级了，我个人只是一个可以将代码混淆一下的小工具而已，而ruby encoder有自己的运行加载机制，源代码二次编码，基于域名可以设置产品过期失效时间等等一系列功能，我不需要这些功能，另外它不是免费的，所以我没有采用这个方案。</p>
+<p>第一种方案，有一个名为<a href="http://rubyencoder.com">ruby encoder</a>的产品，我试用了一下，发现太重量级了，我个人只是一个可以将代码混淆一下的小工具而已，而 ruby encoder 有自己的运行加载机制，源代码二次编码，基于域名可以设置产品过期失效时间等等一系列功能，我不需要这些功能，另外它不是免费的，所以我没有采用这个方案。</p>
 
-<p>第二种方安装就是使用JRuby。整体思路就是将Ruby项目的代码编译成java字节码文件，然后运行于Java环境中。</p>
+<p>第二种方安装就是使用 JRuby。整体思路就是将 Ruby 项目的代码编译成 java 字节码文件，然后运行于 Java 环境中。</p>
 
 <hr />
-<p>将项目中的ruby文件编译成java的class文件不是一件容易的事情，所幸有一个名为warbler的gem可以帮助我们搞定这一切，它可以将项目打包(.war)，同时可以将ruby代码编译成class文件。然后你将生成好的.war文件放进JAVA应用服务器的应用目录中，如Tomcat的webapps中就可以了。</p>
+<p>将项目中的 ruby 文件编译成 java 的 class 文件不是一件容易的事情，所幸有一个名为 warbler 的 gem 可以帮助我们搞定这一切，它可以将项目打包 (.war)，同时可以将 ruby 代码编译成 class 文件。然后你将生成好的.war 文件放进 JAVA 应用服务器的应用目录中，如 Tomcat 的 webapps 中就可以了。</p>
 
-<p>warbler提供若干个任务可供使用：</p>
+<p>warbler 提供若干个任务可供使用：</p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>qichunren@qichunren-desktop:~/code/ntdeck$ warble -T
 warble compiled    # Feature: precompile all Ruby files
 warble config      # Generate a configuration file to customize your archive
@@ -79,7 +86,7 @@ warble war:clean   # Remove the project war file
 warble war:debug   # Dump diagnostic information
 </code></pre></div></div>
 
-<p>平时最常用的就是warble war命令了，需要关注的是warble的配置文件，它的配置文件是通过warble config来生成的，在这个文件中有一系列的配置项可以设置，以下是我的配置文件：</p>
+<p>平时最常用的就是 warble war 命令了，需要关注的是 warble 的配置文件，它的配置文件是通过 warble config 来生成的，在这个文件中有一系列的配置项可以设置，以下是我的配置文件：</p>
 
 <figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># Disable Rake-environment-task framework detection by uncommenting/setting to false</span>
 <span class="c1"># Warbler.framework_detection = false</span>
@@ -226,9 +233,12 @@ warble war:debug   # Dump diagnostic information
   <span class="c1"># config.webxml.jndi = 'jdbc/rails'</span>
 <span class="k">end</span></code></pre></figure>
 
-<p>需要注意的是config.features = %w(executable compiled)配置中，其中的compiled就是可以将ruby代码编译成class代码的。</p>
+<p>需要注意的是 config.features = %w(executable compiled) 配置中，其中的 compiled 就是可以将 ruby 代码编译成 class 代码的。</p>
 </div>
 
     </main>
+    <svg id="scrolltop" xmlns="http://www.w3.org/2000/svg" class="hidden fixed bottom-2 right-2 h-16 w-16 cursor-pointer text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
+    </svg>
   </body>
 </html>

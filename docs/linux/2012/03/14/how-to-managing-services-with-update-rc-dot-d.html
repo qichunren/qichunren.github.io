@@ -6,19 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Qichunren website">
     <meta name="author" content="Qichunren">
-    <title>通过update-rc.d来管理Ubuntu系统的自动启动程序 - Qichunren blog</title>
+    <title>通过 update-rc.d 来管理 Ubuntu 系统的自动启动程序 - Qichunren blog</title>
     <link rel="stylesheet" href="/assets/css/main.css?v2">
+    <script type="text/javascript" src="/assets/js/main.js?v1"></script>
   </head>
 
   <body class="has-navbar-fixed-top page-index">
 
-    <nav class="flex items-center justify-between flex-wrap p-6 fixed w-full z-10 top-0 bg-white shadow-sm">
+    <nav id="header" class="flex items-center justify-between flex-wrap px-6 py-6 fixed w-full z-10 top-0 bg-white shadow-sm">
 
       <a class="flex items-center flex-shrink-0 mr-6 no-underline hover:text-blue-800 hover:no-underline" href="/index.html">
         <img class="card-img-top rounded-circle" src="https://avatars.githubusercontent.com/u/39784?s=40&v=4" />
         <span class="text-2xl pl-2">Qichunren's blog</span>
       </a>
-
 
     <div class="block lg:hidden">
       <button id="nav-toggle" class="flex items-center px-3 py-2 border rounded text-gray-500 border-gray-600 hover:text-blue-600 hover:border-white">
@@ -32,6 +32,9 @@
           <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="/index.html">Posts</a>
         </li>
         <li class="mr-3">
+          <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="/dev_tips.html">Dev Tips</a>
+        </li>
+        <li class="mr-3">
           <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="/about.html">About</a>
         </li>
         <li class="mr-3">
@@ -41,13 +44,17 @@
     </div>
   </nav>
 
+  <div id="content_header" class="hidden flex items-center justify-center flex-wrap px-6 py-4 fixed w-full z-10 top-0 bg-gray-50 shadow-lg">
+    <h1 class="mb-2 font-bold text-center text-gray-800 md:text-xl lg:text-2xl xl:text-3xl md:leading-tight">通过 update-rc.d 来管理 Ubuntu 系统的自动启动程序</h1>
+  </div>
+
   <main class="container mx-auto bg-white mt-24 md:mt-18">
           <div class="max-w-screen-md mx-auto prose lg:prose-lg p-4">
-            <h1 class="mb-2 text-3xl font-bold text-gray-900 md:text-2xl lg:text-4xl xl:text-5xl md:leading-tight">通过update-rc.d来管理Ubuntu系统的自动启动程序</h1>
+            <h1 class="mb-2 text-3xl font-bold text-gray-900 md:text-2xl lg:text-4xl xl:text-5xl md:leading-tight">通过 update-rc.d 来管理 Ubuntu 系统的自动启动程序</h1>
             <div class="text-gray-400 md:text-base">2012-03-14</div>
           </div>
 
-          <div class="post-content max-w-screen-md mx-auto prose lg:prose-lg"><p>转载, 并记下我的使用心得。</p>
+          <div class="post-content max-w-screen-md mx-auto prose lg:prose-lg"><p>转载，并记下我的使用心得。</p>
 
 <p>Linux services can be started, stopped and reloaded with the use of scripts stocked in /etc/init.d/.
 However, during start up or when changing runlevel, those scripts are searched in /etc/rcX.d/ where X is the runlevel number.
@@ -165,7 +172,7 @@ Adding system startup for /etc/init.d/apache2 ...
 
 <h2 id="我的总结">我的总结</h2>
 
-<p>通过 update-rc.d 来管理Linux下开机自动运行，的确很方便，但是我在实际部署实践中，还是遇到了一些问题，导致开机后没有正常自动启动，但是手工通过service xxx start可以启动。我经过排查发现，原因是在Linux系统启动中，在执行/etc/init.d/中的脚本时，此时系统有可能没有加载好系统中的PATH变量，所以需要在init.d脚本中手工指定，对于使用Ruby脚本写的程序，需要GEM_HOME\GEM_PATH等环境变量，我这里是用RVM来管理Ruby的，这是我使用的：</p>
+<p>通过 update-rc.d 来管理 Linux 下开机自动运行，的确很方便，但是我在实际部署实践中，还是遇到了一些问题，导致开机后没有正常自动启动，但是手工通过 service xxx start 可以启动。我经过排查发现，原因是在 Linux 系统启动中，在执行/etc/init.d/中的脚本时，此时系统有可能没有加载好系统中的 PATH 变量，所以需要在 init.d 脚本中手工指定，对于使用 Ruby 脚本写的程序，需要 GEM_HOME\GEM_PATH 等环境变量，我这里是用 RVM 来管理 Ruby 的，这是我使用的：</p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PATH="/usr/local/rvm/gems/ruby-1.9.2-p290/bin:/usr/local/rvm/rubies/ruby-1.9.2-p290/bin:/usr/local/rvm/bin:/opt/node/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games"
 RUBY_VERSION="ruby-1.9.2-p290"
 GEM_HOME="/usr/local/rvm/gems/ruby-1.9.2-p290"
@@ -176,11 +183,11 @@ export GEM_HOME=$GEM_HOME
 export GEM_PATH=$GEM_PATH
 </code></pre></div></div>
 
-<p>另外还有一些其它的变量（如果你的启动程序需要），也需要手工指定，如在Ruby 1.9中，就有可能需要指定，比如说unicorn启动脚本：</p>
+<p>另外还有一些其它的变量（如果你的启动程序需要），也需要手工指定，如在 Ruby 1.9 中，就有可能需要指定，比如说 unicorn 启动脚本：</p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>export LANG='en_US.UTF-8'
 </code></pre></div></div>
 
-<p>最后附上一个常用的init.d启动脚本的样本：</p>
+<p>最后附上一个常用的 init.d 启动脚本的样本：</p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#!/bin/sh
 ### BEGIN INIT INFO
 # Provides:          gps
@@ -252,5 +259,8 @@ exit 0
 </div>
 
     </main>
+    <svg id="scrolltop" xmlns="http://www.w3.org/2000/svg" class="hidden fixed bottom-2 right-2 h-16 w-16 cursor-pointer text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
+    </svg>
   </body>
 </html>
