@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Qichunren website">
+    <meta name="author" content="Qichunren">
+    <title>网页截屏的方法 - Qichunren blog</title>
+    <link rel="stylesheet" href="/assets/css/main.css?v2">
+  </head>
+
+  <body class="has-navbar-fixed-top page-index">
+
+    <nav class="flex items-center justify-between flex-wrap p-6 fixed w-full z-10 top-0 bg-white shadow-sm">
+
+      <a class="flex items-center flex-shrink-0 mr-6 no-underline hover:text-blue-800 hover:no-underline" href="/index.html">
+        <img class="card-img-top rounded-circle" src="https://avatars.githubusercontent.com/u/39784?s=40&v=4" />
+        <span class="text-2xl pl-2">Qichunren's blog</span>
+      </a>
+
+
+    <div class="block lg:hidden">
+      <button id="nav-toggle" class="flex items-center px-3 py-2 border rounded text-gray-500 border-gray-600 hover:text-blue-600 hover:border-white">
+        <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
+      </button>
+    </div>
+
+    <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block pt-6 lg:pt-0" id="nav-content">
+      <ul class="list-reset lg:flex justify-end flex-1 items-center">
+        <li class="mr-3">
+          <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="/index.html">Posts</a>
+        </li>
+        <li class="mr-3">
+          <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="/about.html">About</a>
+        </li>
+        <li class="mr-3">
+          <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="https://github.com/qichunren">Github</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="container mx-auto bg-white mt-24 md:mt-18">
+          <div class="max-w-screen-md mx-auto prose lg:prose-lg p-4">
+            <h1 class="mb-2 text-3xl font-bold text-gray-900 md:text-2xl lg:text-4xl xl:text-5xl md:leading-tight">网页截屏的方法</h1>
+            <div class="text-gray-400 md:text-base">2011-10-12</div>
+          </div>
+
+          <div class="post-content max-w-screen-md mx-auto prose lg:prose-lg"><p>曾经很想有这样一个app, 它可以将微博上用户的微博用图片的形式自动保存起来，留此存照。前几个月的那段时间，微博上很
+网页截屏的基本原理就是通过取得webkit渲染（render）的数据来生成图片的，我经过一段时间研究，找到了两个方法来解决这个问题。</p>
+
+<p>一个工具叫<a href="http://www.phantomjs.org/">phantomjs</a>，另一个工具叫<a href="http://cutycapt.sourceforge.net/">cutycapt</a></p>
+
+<p>两个工具都不错，个人比较喜欢使用cutycapt这个工具，它是直接提供一个命令行来生成网页截图的，而前者是通过javascript来调用底层webkit接品(page.render方法)来实现的，两者的侧重点不一样。
+并且cutycapt是将整个网截下来，phantomjs是将浏览器当前视区的一屏截下来。</p>
+
+<p>Cutycapt的用法如下</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>qichunren@qichunren-desktop:~/github/cutycapt/CutyCapt$ ./CutyCapt 
+ -----------------------------------------------------------------------------
+ Usage: CutyCapt --url=http://www.example.org/ --out=localfile.png            
+ -----------------------------------------------------------------------------
+  --help                         Print this help page and exit                
+  --url=&lt;url&gt;                    The URL to capture (http:...|file:...|...)   
+  --out=&lt;path&gt;                   The target file (.png|pdf|ps|svg|jpeg|...)   
+  --out-format=&lt;f&gt;               Like extension in --out, overrides heuristic 
+  --min-width=&lt;int&gt;              Minimal width for the image (default: 800)   
+  --min-height=&lt;int&gt;             Minimal height for the image (default: 600)  
+  --max-wait=&lt;ms&gt;                Don't wait more than (default: 90000, inf: 0)
+  --delay=&lt;ms&gt;                   After successful load, wait (default: 0)     
+  --user-style-path=&lt;path&gt;       Location of user style sheet file, if any    
+  --user-style-string=&lt;css&gt;      User style rules specified as text           
+  --header=&lt;name&gt;:&lt;value&gt;        request header; repeatable; some can't be set
+  --method=&lt;get|post|put&gt;        Specifies the request method (default: get)  
+  --body-string=&lt;string&gt;         Unencoded request body (default: none)       
+  --body-base64=&lt;base64&gt;         Base64-encoded request body (default: none)  
+  --app-name=&lt;name&gt;              appName used in User-Agent; default is none  
+  --app-version=&lt;version&gt;        appVers used in User-Agent; default is none  
+  --user-agent=&lt;string&gt;          Override the User-Agent header Qt would set  
+  --javascript=&lt;on|off&gt;          JavaScript execution (default: on)           
+  --java=&lt;on|off&gt;                Java execution (default: unknown)            
+  --plugins=&lt;on|off&gt;             Plugin execution (default: unknown)          
+  --private-browsing=&lt;on|off&gt;    Private browsing (default: unknown)          
+  --auto-load-images=&lt;on|off&gt;    Automatic image loading (default: on)        
+  --js-can-open-windows=&lt;on|off&gt; Script can open windows? (default: unknown)  
+  --js-can-access-clipboard=&lt;on|off&gt; Script clipboard privs (default: unknown)
+  --print-backgrounds=&lt;on|off&gt;   Backgrounds in PDF/PS output (default: off)  
+  --zoom-factor=&lt;float&gt;          Page zoom factor (default: no zooming)       
+  --zoom-text-only=&lt;on|off&gt;      Whether to zoom only the text (default: off) 
+  --http-proxy=&lt;url&gt;             Address for HTTP proxy server (default: none)
+ -----------------------------------------------------------------------------
+  &lt;f&gt; is svg,ps,pdf,itext,html,rtree,png,jpeg,mng,tiff,gif,bmp,ppm,xbm,xpm    
+ -----------------------------------------------------------------------------
+ http://cutycapt.sf.net - (c) 2003-2010 Bjoern Hoehrmann - bjoern@hoehrmann.de
+qichunren@qichunren-desktop:~/github/cutycapt/CutyCapt$
+</code></pre></div></div>
+
+<p>phantomjs截屏的用法如下：</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>qichunren@qichunren-desktop:~/github$ cd phantomjs/
+qichunren@qichunren-desktop:~/github/phantomjs$ ls
+bin         ChangeLog  ff.png     iteye.png    Makefile       python     src
+capture.js  examples   hello.png  LICENSE.BSD  phantomjs.pro  README.md           
+qichunren@qichunren-desktop:~/github/phantomjs$ ./bin/phantomjs examples/rasterize.js 
+Usage: rasterize.js URL filename [paperwidth*paperheight|paperformat]
+  paper (pdf output) examples: "5in*7.5in", "10cm*20cm", "A4", "Letter"
+qichunren@qichunren-desktop:~/github/phantomjs$ ./bin/phantomjs examples/rasterize.js http://www.iteye.com iteye.png
+qichunren@qichunren-desktop:~/github/phantomjs$
+</code></pre></div></div>
+</div>
+
+    </main>
+  </body>
+</html>
