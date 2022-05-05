@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Qichunren website">
     <meta name="author" content="Qichunren">
-    <title>ActiveSupport 中 Module 里的 mattr_accessor 方法 - Qichunren blog</title>
+    <title>各种 select 标签用法记录 - Qichunren blog</title>
     <link rel="stylesheet" href="/assets/css/main.css?v2">
     <script type="text/javascript" src="/assets/js/main.js?v1"></script>
   </head>
@@ -45,37 +45,46 @@
   </nav>
 
   <div id="content_header" class="hidden flex items-center justify-center flex-wrap px-6 py-4 fixed w-full z-10 top-0 bg-gray-50 shadow-lg">
-    <h1 class="mb-2 font-bold text-center text-gray-800 md:text-xl lg:text-2xl xl:text-3xl md:leading-tight">ActiveSupport 中 Module 里的 mattr_accessor 方法</h1>
+    <h1 class="mb-2 font-bold text-center text-gray-800 md:text-xl lg:text-2xl xl:text-3xl md:leading-tight">各种 select 标签用法记录</h1>
   </div>
 
   <main class="container mx-auto bg-white mt-24 md:mt-18">
           <div class="max-w-screen-md mx-auto prose lg:prose-lg p-4">
-            <h1 class="mb-2 text-3xl font-bold text-gray-900 md:text-2xl lg:text-4xl xl:text-5xl md:leading-tight">ActiveSupport 中 Module 里的 mattr_accessor 方法</h1>
+            <h1 class="mb-2 text-3xl font-bold text-gray-900 md:text-2xl lg:text-4xl xl:text-5xl md:leading-tight">各种 select 标签用法记录</h1>
             <div class="text-gray-400 md:text-base">2022-05-05</div>
           </div>
 
-          <div class="post-content max-w-screen-md mx-auto prose lg:prose-lg"><div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="nn">HairColors</span>
-  <span class="n">mattr_accessor</span> <span class="ss">:hair_colors</span>
-<span class="k">end</span>
+          <div class="post-content max-w-screen-md mx-auto prose lg:prose-lg"><h2 id="1-select_tag">1. select_tag</h2>
 
-<span class="k">class</span> <span class="nc">Person</span>
-  <span class="kp">include</span> <span class="no">HairColors</span>
-<span class="k">end</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>class Area &lt; ApplicationRecord
+  def self.options_data
+    self.order("id ASC").collect{|record| [record.name, record.id]}
+  end
+end
 
-<span class="no">HairColors</span><span class="p">.</span><span class="nf">hair_colors</span> <span class="o">=</span> <span class="p">[</span><span class="ss">:brown</span><span class="p">,</span> <span class="ss">:black</span><span class="p">,</span> <span class="ss">:blonde</span><span class="p">,</span> <span class="ss">:red</span><span class="p">]</span>
-<span class="no">HairColors</span><span class="p">.</span><span class="nf">hair_colors</span> <span class="c1"># =&gt; [:brown, :black, :blonde, :red]</span>
-<span class="no">Person</span><span class="p">.</span><span class="nf">new</span><span class="p">.</span><span class="nf">hair_colors</span> <span class="c1"># =&gt; [:brown, :black, :blonde, :red]</span>
-<span class="no">Person</span><span class="p">.</span><span class="nf">hair_colors</span> <span class="c1"># undefined method `hair_colors' for Person:Class (NoMethodError)</span>
+&lt;%= form_tag "", method: :GET, class: "mt-4" do %&gt;
+  &lt;%= select_tag "area_id", options_for_select(Area.options_data, params[:area_id]), include_blank: "-- 所有国家 --" %&gt;
+    --"} %&gt;        
+  &lt;%= submit_tag "查询", class: "btn" %&gt;
+&lt;% end %&gt;
 </code></pre></div></div>
 
-<p>mattr_accessor 方法可以指定一个默认值，例如：</p>
+<h2 id="2-fselect">2. f.select</h2>
 
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="nn">Propshaft</span>
-  <span class="n">mattr_accessor</span> <span class="ss">:logger</span><span class="p">,</span> <span class="ss">default: </span><span class="no">Logger</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="no">STDOUT</span><span class="p">)</span>
-<span class="k">end</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>class ProductCategory &lt; ApplicationRecord
+  # Used for f.select tag
+  def self.options_data
+    order("id ASC").collect { |record| [record.name, record.id] }
+  end
+end
+
+&lt;%= form.select :product_category_id, ProductCategory.options_data, {}, {class: ""} %&gt;
 </code></pre></div></div>
 
-<p><a href="https://api.rubyonrails.org/classes/Module.html#method-i-mattr_accessor">See doc</a></p>
+<h2 id="3-fcollection_select">3. f.collection_select</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;%= f.collection_select :product_category_id, PostCategory.all, :id, :name, class: "mt-1 block w-full" %&gt;
+</code></pre></div></div>
 </div>
 
     </main>

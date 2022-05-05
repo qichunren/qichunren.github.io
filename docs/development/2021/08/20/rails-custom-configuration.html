@@ -70,6 +70,8 @@ Rails.application.configure do
 end
 </code></pre></div></div>
 
+<p>这里的 config 是 Rails::Application::Configuration 的实例</p>
+
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># config/application.rb
 module ApplicationName
   class Application &lt; Rails::Application
@@ -101,7 +103,9 @@ Rails.configuration.x.payment_processing.not_set  # =&gt; nil
 Rails.configuration.super_debugger                # =&gt; true	
 </code></pre></div></div>
 
-<p>使用 Rails::Application.config_for 方法从 yaml 文件中读取配置信息。</p>
+<h2 id="config_for">config_for</h2>
+
+<p><a href="https://api.rubyonrails.org/classes/Rails/Application.html#method-i-config_for">config_for</a> 是一个很实用的从 yml 文件中读取信息的方法。 使用 Rails::Application.config_for 方法从 config 目录中的 yml 文件中读取配置信息。</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># config/payment.yml:
 production:
@@ -130,6 +134,8 @@ end
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Rails.configuration.payment['merchant_id'] # =&gt; production_merchant_id or development_merchant_id	
 </code></pre></div></div>
+
+<p>注：不管是在 development 还是 production 环境中，改变了 yml 配置文件的内容，	config_for 是不会缓存的。</p>
 </div>
 
     </main>
