@@ -6,10 +6,9 @@ comments: true
 categories: Development
 ---
 
-第一种方法，通过一个 SHELL 脚本守护进程检查目标进程是否存在。
+第一种方法，通过一个 Shell 脚本守护进程检查目标进程是否存在。
 
-第二中方法，通过一个守护进程与目标进程进行本地 SOCKET 通信。
-
+第二种方法，通过一个守护进程与目标进程进行本地 Socket 通信。
 
 ```
 #!/bin/sh

@@ -17,5 +17,3 @@ categories: [Linux]
 安装软件包使用 sudo apt-get install 加上包名即可。
 
 卸载软件包使用 sudo apt-get purege/remove
-
-    
