@@ -72,21 +72,21 @@
 <p>这个是 factory-girl 的数据文件：</p>
 
 <figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># spec/factories/admins.rb</span>
-<span class="c1"># encoding: utf-8</span>
-<span class="no">Factory</span><span class="p">.</span><span class="nf">define</span> <span class="ss">:admin</span> <span class="k">do</span> <span class="o">|</span><span class="n">a</span><span class="o">|</span>
-  <span class="n">a</span><span class="p">.</span><span class="nf">sequence</span><span class="p">(</span><span class="ss">:login</span><span class="p">)</span> <span class="p">{</span><span class="o">|</span><span class="n">i</span><span class="o">|</span> <span class="s2">"worker</span><span class="si">#{</span><span class="n">i</span><span class="si">}</span><span class="s2">"</span> <span class="p">}</span>
-  <span class="n">a</span><span class="p">.</span><span class="nf">name</span>             <span class="p">{</span><span class="o">|</span><span class="n">a</span><span class="o">|</span> <span class="n">a</span><span class="p">.</span><span class="nf">login</span>      <span class="p">}</span>
-  <span class="n">a</span><span class="p">.</span><span class="nf">email</span>            <span class="p">{</span><span class="o">|</span><span class="n">a</span><span class="o">|</span> <span class="s2">"</span><span class="si">#{</span><span class="n">a</span><span class="p">.</span><span class="nf">login</span><span class="si">}</span><span class="s2">@gmail.com"</span> <span class="p">}</span>
-  <span class="n">a</span><span class="p">.</span><span class="nf">password</span>         <span class="p">{</span><span class="o">|</span><span class="n">a</span><span class="o">|</span> <span class="n">a</span><span class="p">.</span><span class="nf">login</span> <span class="p">}</span>
-  <span class="n">a</span><span class="p">.</span><span class="nf">password_confirmation</span> <span class="p">{</span><span class="o">|</span><span class="n">a</span><span class="o">|</span> <span class="n">a</span><span class="p">.</span><span class="nf">login</span> <span class="p">}</span>
 
-  <span class="n">a</span><span class="p">.</span><span class="nf">active</span>           <span class="kp">false</span>
-  <span class="n">a</span><span class="p">.</span><span class="nf">dept</span>             <span class="mi">0</span>
+<span class="no">Factory</span><span class="p">.</span><span class="nf">define</span> <span class="ss">:admin</span> <span class="k">do</span> <span class="o">|</span><span class="n">a</span><span class="o">|</span>
+<span class="n">a</span><span class="p">.</span><span class="nf">sequence</span><span class="p">(</span><span class="ss">:login</span><span class="p">)</span> <span class="p">{</span><span class="o">|</span><span class="n">i</span><span class="o">|</span> <span class="s2">"worker</span><span class="si">#{</span><span class="n">i</span><span class="si">}</span><span class="s2">"</span> <span class="p">}</span>
+<span class="n">a</span><span class="p">.</span><span class="nf">name</span> <span class="p">{</span><span class="o">|</span><span class="n">a</span><span class="o">|</span> <span class="n">a</span><span class="p">.</span><span class="nf">login</span> <span class="p">}</span>
+<span class="n">a</span><span class="p">.</span><span class="nf">email</span> <span class="p">{</span><span class="o">|</span><span class="n">a</span><span class="o">|</span> <span class="s2">"</span><span class="si">#{</span><span class="n">a</span><span class="p">.</span><span class="nf">login</span><span class="si">}</span><span class="s2">@gmail.com"</span> <span class="p">}</span>
+<span class="n">a</span><span class="p">.</span><span class="nf">password</span> <span class="p">{</span><span class="o">|</span><span class="n">a</span><span class="o">|</span> <span class="n">a</span><span class="p">.</span><span class="nf">login</span> <span class="p">}</span>
+<span class="n">a</span><span class="p">.</span><span class="nf">password_confirmation</span> <span class="p">{</span><span class="o">|</span><span class="n">a</span><span class="o">|</span> <span class="n">a</span><span class="p">.</span><span class="nf">login</span> <span class="p">}</span>
+
+<span class="n">a</span><span class="p">.</span><span class="nf">active</span> <span class="kp">false</span>
+<span class="n">a</span><span class="p">.</span><span class="nf">dept</span> <span class="mi">0</span>
 <span class="k">end</span>
 
 <span class="no">Factory</span><span class="p">.</span><span class="nf">define</span> <span class="ss">:actived_admin</span><span class="p">,</span> <span class="ss">:parent</span> <span class="o">=&gt;</span> <span class="ss">:admin</span> <span class="k">do</span> <span class="o">|</span><span class="n">a</span><span class="o">|</span>
-  <span class="n">a</span><span class="p">.</span><span class="nf">login</span> <span class="s2">"actived_admin"</span>
-  <span class="n">a</span><span class="p">.</span><span class="nf">active</span>  <span class="kp">true</span>
+<span class="n">a</span><span class="p">.</span><span class="nf">login</span> <span class="s2">"actived_admin"</span>
+<span class="n">a</span><span class="p">.</span><span class="nf">active</span> <span class="kp">true</span>
 <span class="k">end</span>
 
 <span class="no">Factory</span><span class="p">.</span><span class="nf">define</span> <span class="ss">:unactived_admin</span><span class="p">,</span> <span class="ss">:class</span> <span class="o">=&gt;</span> <span class="no">Admin</span> <span class="k">do</span> <span class="o">|</span><span class="n">a</span><span class="o">|</span>
@@ -95,17 +95,17 @@
 <p>这里测试管理员登录系统的逻辑：</p>
 
 <figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># spec/requests/root_request_spec.rb</span>
-<span class="c1"># encoding: utf-8</span>
+
 <span class="nb">require</span> <span class="s1">'spec_helper'</span>
 
 <span class="n">describe</span> <span class="s2">"AdminSessions"</span> <span class="k">do</span>
 
-  <span class="k">def</span> <span class="nf">login_with</span><span class="p">(</span><span class="n">admin_login</span><span class="p">,</span> <span class="n">admin_password</span><span class="p">)</span>
-    <span class="n">post</span> <span class="s2">"/admin_session"</span><span class="p">,</span> <span class="ss">:admin_session</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="ss">:login</span> <span class="o">=&gt;</span> <span class="n">admin_login</span><span class="p">,</span>
-                                               <span class="ss">:password</span> <span class="o">=&gt;</span> <span class="n">admin_password</span> <span class="p">}</span>
-  <span class="k">end</span>
+<span class="k">def</span> <span class="nf">login_with</span><span class="p">(</span><span class="n">admin_login</span><span class="p">,</span> <span class="n">admin_password</span><span class="p">)</span>
+<span class="n">post</span> <span class="s2">"/admin_session"</span><span class="p">,</span> <span class="ss">:admin_session</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="ss">:login</span> <span class="o">=&gt;</span> <span class="n">admin_login</span><span class="p">,</span>
+<span class="ss">:password</span> <span class="o">=&gt;</span> <span class="n">admin_password</span> <span class="p">}</span>
+<span class="k">end</span>
 
-  <span class="n">describe</span> <span class="s2">"GET /"</span> <span class="k">do</span>
+<span class="n">describe</span> <span class="s2">"GET /"</span> <span class="k">do</span>
 
     <span class="n">it</span> <span class="s2">"should redirect to login page"</span> <span class="k">do</span>
       <span class="n">get</span> <span class="s2">"/"</span>
@@ -129,7 +129,7 @@
       <span class="n">response</span><span class="p">.</span><span class="nf">should</span> <span class="n">contain</span><span class="p">(</span><span class="s2">"你输入的帐号或密码不正确！"</span><span class="p">)</span>
     <span class="k">end</span>
 
-  <span class="k">end</span>
+<span class="k">end</span>
 
 <span class="k">end</span></code></pre></figure>
 
