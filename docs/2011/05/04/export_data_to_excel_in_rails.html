@@ -56,76 +56,78 @@
 
           <div class="post-content max-w-screen-md mx-auto prose lg:prose-lg"><p><a href="https://github.com/asanghi/excel_rails">excel_rails</a> 这个工具可以实现导出 Excel 数据的功能。它本身是基于<a href="https://github.com/jacobat/ruby-spreadsheet">ruby-spreadsheet </a></p>
 
-<h3 id="使用方法">使用方法</h3>
+<h2 id="使用方法">使用方法</h2>
 
-<ol>
-  <li>安装
-在 Gemfile 中</li>
-</ol>
+<p>在 Gemfile 中</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">    <span class="c1"># Excel</span>
-    <span class="n">gem</span> <span class="s1">'excel_rails'</span>
-    <span class="c1"># excel_rails need this</span>
-    <span class="n">gem</span> <span class="s1">'spreadsheet'</span></code></pre></figure>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle install
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem 'excel_rails' # excel_rails need this
+gem 'spreadsheet'
 </code></pre></div></div>
 
-<ol>
-  <li>使用
-在控制器中</li>
-</ol>
+<p>然后执行 <code class="language-plaintext highlighter-rouge">bundle install</code></p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># encoding: utf-8</span>
-<span class="k">class</span> <span class="nc">RemitNotificationsController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
-  <span class="k">def</span> <span class="nf">index</span>
-    <span class="vi">@search</span> <span class="o">=</span> <span class="no">RemitNotification</span><span class="p">.</span><span class="nf">valid</span><span class="p">.</span><span class="nf">order</span><span class="p">(</span><span class="s2">"id DESC"</span><span class="p">).</span><span class="nf">search</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="ss">:search</span><span class="p">])</span>
-    <span class="vi">@remit_notifications</span> <span class="o">=</span> <span class="vi">@search</span><span class="p">.</span><span class="nf">paginate</span> <span class="ss">:per_page</span> <span class="o">=&gt;</span> <span class="mi">20</span><span class="p">,</span> <span class="ss">:page</span> <span class="o">=&gt;</span> <span class="n">params</span><span class="p">[</span><span class="ss">:page</span><span class="p">]</span>
-    <span class="n">respond_to</span> <span class="k">do</span> <span class="o">|</span><span class="nb">format</span><span class="o">|</span>
-      <span class="nb">format</span><span class="p">.</span><span class="nf">html</span> <span class="c1"># index.html.erb</span>
-      <span class="nb">format</span><span class="p">.</span><span class="nf">xml</span>  <span class="p">{</span> <span class="n">render</span> <span class="ss">:xml</span> <span class="o">=&gt;</span> <span class="vi">@remit_notifications</span> <span class="p">}</span>
-      <span class="nb">format</span><span class="p">.</span><span class="nf">xls</span>
-    <span class="k">end</span>
-  <span class="k">end</span>
+<p>在控制器中</p>
 
-<span class="k">end</span></code></pre></figure>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>class RemitNotificationsController &lt; ApplicationController
+
+  def index
+    @search = RemitNotification.valid.order("id DESC").search(params[:search])
+    @remit_notifications = @search.paginate :per_page =&gt; 20, :page =&gt; params[:page]
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml { render :xml =&gt; @remit_notifications }
+      format.xls
+    end
+  end
+
+end
+</code></pre></div></div>
 
 <p>在视图中</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># encoding: utf-8</span>
-<span class="n">excel_document</span><span class="p">(</span><span class="ss">:filename</span> <span class="o">=&gt;</span> <span class="s2">"all_lines.xls"</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">workbook</span><span class="o">|</span>
-  <span class="n">sheet</span> <span class="o">=</span> <span class="n">workbook</span><span class="p">.</span><span class="nf">create_worksheet</span>
-  <span class="n">sheet</span><span class="p">.</span><span class="nf">name</span> <span class="o">=</span> <span class="s2">"What's in a name"</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>excel_document(:filename =&gt; "all_lines.xls") do |workbook|
+sheet = workbook.create_worksheet
+sheet.name = "What's in a name"
 
-  <span class="n">sheet</span><span class="p">.</span><span class="nf">row</span><span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="nf">concat</span> <span class="sx">%w{汇款告知}</span>
+sheet.row(0).concat %w{汇款告知}
 
-  <span class="c1"># sheet[1,0] = 'Japan'</span>
-  <span class="c1"># row = sheet.row(1)</span>
-  <span class="c1"># row.push 'Creator of Ruby'</span>
-  <span class="c1"># row.push 'Creator of rails'</span>
-  <span class="c1"># row.unshift 'Yukihiro Matsumoto'</span>
-  <span class="c1"># sheet.row(5).unshift 'HaHa'</span>
-  <span class="c1"># sheet.row(3).push 'Charles Lowe', 'Author of the ruby-ole Library'</span>
-  <span class="c1"># sheet.row(3).insert 1, 'Unknown'</span>
-  <span class="c1"># sheet.update_row 4, 'Hannes Wyss', 'Switzerland', 'Author'</span>
+# sheet[1,0] = 'Japan'
 
-  <span class="n">sheet</span><span class="p">.</span><span class="nf">row</span><span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="nf">replace</span> <span class="p">[</span> <span class="s1">'流水号'</span><span class="p">,</span> <span class="s1">'客户名称'</span><span class="p">,</span><span class="s1">'客户号'</span><span class="p">,</span><span class="s1">'金额'</span><span class="p">,</span><span class="s1">'通过认证时间'</span><span class="p">,</span><span class="s1">'不通过时间'</span><span class="p">,</span><span class="s1">'创建时间'</span> <span class="p">]</span>
+# row = sheet.row(1)
 
-  <span class="n">sheet</span><span class="p">.</span><span class="nf">row</span><span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="nf">height</span> <span class="o">=</span> <span class="mi">18</span>
-  <span class="n">sheet</span><span class="p">.</span><span class="nf">row</span><span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="nf">height</span> <span class="o">=</span> <span class="mi">18</span>
+# row.push 'Creator of Ruby'
 
-  <span class="nb">format</span> <span class="o">=</span> <span class="no">Spreadsheet</span><span class="o">::</span><span class="no">Format</span><span class="p">.</span><span class="nf">new</span> <span class="ss">:color</span> <span class="o">=&gt;</span> <span class="ss">:blue</span><span class="p">,</span><span class="ss">:weight</span> <span class="o">=&gt;</span> <span class="ss">:bold</span><span class="p">,</span><span class="ss">:size</span> <span class="o">=&gt;</span> <span class="mi">18</span>
+# row.push 'Creator of rails'
 
-  <span class="n">sheet</span><span class="p">.</span><span class="nf">row</span><span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="nf">default_format</span> <span class="o">=</span> <span class="nb">format</span>
+# row.unshift 'Yukihiro Matsumoto'
 
-  <span class="c1"># 设置表格的标题栏为粗体</span>
-  <span class="n">bold</span> <span class="o">=</span> <span class="no">Spreadsheet</span><span class="o">::</span><span class="no">Format</span><span class="p">.</span><span class="nf">new</span> <span class="ss">:weight</span> <span class="o">=&gt;</span> <span class="ss">:bold</span><span class="p">,</span><span class="ss">:horizontal_align</span> <span class="o">=&gt;</span> <span class="ss">:center</span>
-  <span class="mi">7</span><span class="p">.</span><span class="nf">times</span> <span class="k">do</span> <span class="o">|</span><span class="n">x</span><span class="o">|</span> <span class="n">sheet</span><span class="p">.</span><span class="nf">row</span><span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="nf">set_format</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">bold</span><span class="p">)</span> <span class="k">end</span>
+# sheet.row(5).unshift 'HaHa'
 
-  <span class="vi">@remit_notifications</span><span class="p">.</span><span class="nf">each_with_index</span> <span class="k">do</span> <span class="o">|</span><span class="n">remite</span><span class="p">,</span><span class="n">index</span><span class="o">|</span>
-    <span class="n">sheet</span><span class="p">.</span><span class="nf">row</span><span class="p">(</span><span class="n">index</span> <span class="o">+</span> <span class="mi">2</span><span class="p">).</span><span class="nf">push</span> <span class="n">remite</span><span class="p">.</span><span class="nf">id</span><span class="p">,</span><span class="n">remite</span><span class="p">.</span><span class="nf">user_name</span><span class="p">,</span><span class="n">remite</span><span class="p">.</span><span class="nf">user_id</span><span class="p">,</span><span class="n">remite</span><span class="p">.</span><span class="nf">money</span><span class="p">,</span><span class="n">date_format</span><span class="p">(</span><span class="n">remite</span><span class="p">.</span><span class="nf">verified_at</span><span class="p">),</span><span class="n">date_format</span><span class="p">(</span><span class="n">remite</span><span class="p">.</span><span class="nf">refused_at</span><span class="p">),</span><span class="n">date_format</span><span class="p">(</span><span class="n">remite</span><span class="p">.</span><span class="nf">created_at</span><span class="p">)</span>
-  <span class="k">end</span>
-<span class="k">end</span></code></pre></figure>
+# sheet.row(3).push 'Charles Lowe', 'Author of the ruby-ole Library'
+
+# sheet.row(3).insert 1, 'Unknown'
+
+# sheet.update_row 4, 'Hannes Wyss', 'Switzerland', 'Author'
+
+sheet.row(1).replace [ '流水号', '客户名称','客户号','金额','通过认证时间','不通过时间','创建时间' ]
+
+sheet.row(0).height = 18
+sheet.row(0).height = 18
+
+format = Spreadsheet::Format.new :color =&gt; :blue,:weight =&gt; :bold,:size =&gt; 18
+
+sheet.row(0).default_format = format
+
+# 设置表格的标题栏为粗体
+
+bold = Spreadsheet::Format.new :weight =&gt; :bold,:horizontal_align =&gt; :center
+7.times do |x| sheet.row(1).set_format(x, bold) end
+  @remit_notifications.each_with_index do |remite,index|
+    sheet.row(index + 2).push remite.id,remite.user_name,remite.user_id,remite.money,date_format(remite.verified_at),date_format(remite.refused_at),date_format(remite.created_at)
+  end
+end
+
+</code></pre></div></div>
 
 <h3 id="相关资源">相关资源</h3>
 
@@ -134,6 +136,9 @@
   <li><a href="http://blog.plataformatec.com.br/2009/09/exporting-data-to-csv-and-excel-in-your-rails-app/">Exporting data to CSV and Excel in your Rails apps</a></li>
   <li><a href="http://fastercsv.rubyforge.org/">FasterCSV</a></li>
 </ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+</code></pre></div></div>
 </div>
 
     </main>

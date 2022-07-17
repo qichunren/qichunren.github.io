@@ -68,7 +68,7 @@ PKGCONFIG += json-c
 <p>构建 JSON 的方法如下</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>        #include &lt;json/json.h&gt;
-        
+
         /*Creating a json object*/
         json_object * jobj = json_object_new_object();
 
@@ -107,7 +107,7 @@ PKGCONFIG += json-c
         json_object_object_add(jobj,"Categories", jarray);
 
         /*Now printing the json object*/
-        printf ("The json object created: %sn",json_object_to_json_string(jobj));    
+        printf ("The json object created: %sn",json_object_to_json_string(jobj));
 </code></pre></div></div>
 
 <p>程序结果是：</p>
@@ -119,7 +119,7 @@ PKGCONFIG += json-c
 
 <p>例如有如下的字符串</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{"column":["symbol","name"],"data":[["SZ000001","平安银行"],["SZ000005","世纪星源"],["SZ000006","深振业 A"],["SZ000008","神州高铁"],["SZ000009","中国宝安"]],"count":1544.0}      
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{"column":["symbol","name"],"data":[["SZ000001","平安银行"],["SZ000005","世纪星源"],["SZ000006","深振业 A"],["SZ000008","神州高铁"],["SZ000009","中国宝安"]],"count":1544.0}
 </code></pre></div></div>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>QByteArray json_content_arr = network_reply-&gt;readAll();
@@ -164,7 +164,6 @@ if(data_array_child != NULL) {
 //qDebug() &lt;&lt; json_content_arr;
 network_reply-&gt;deleteLater();
 </code></pre></div></div>
-
 </div>
 
     </main>

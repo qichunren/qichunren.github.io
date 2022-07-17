@@ -25,43 +25,44 @@ gem "rspec-rails", "2.3.1"
 这个是 factory-girl 的数据文件：
 
 {% highlight ruby %}
-# spec/factories/admins.rb
-# encoding: utf-8
-Factory.define :admin do |a|
-  a.sequence(:login) {|i| "worker#{i}" }
-  a.name             {|a| a.login      }
-  a.email            {|a| "#{a.login}@gmail.com" }
-  a.password         {|a| a.login }
-  a.password_confirmation {|a| a.login }
 
-  a.active           false
-  a.dept             0
+# spec/factories/admins.rb
+
+Factory.define :admin do |a|
+a.sequence(:login) {|i| "worker#{i}" }
+a.name {|a| a.login }
+a.email {|a| "#{a.login}@gmail.com" }
+a.password {|a| a.login }
+a.password_confirmation {|a| a.login }
+
+a.active false
+a.dept 0
 end
 
 Factory.define :actived_admin, :parent => :admin do |a|
-  a.login "actived_admin"
-  a.active  true
+a.login "actived_admin"
+a.active true
 end
 
 Factory.define :unactived_admin, :class => Admin do |a|
 end
 {% endhighlight %}
 
-
 这里测试管理员登录系统的逻辑：
 {% highlight ruby %}
+
 # spec/requests/root_request_spec.rb
-# encoding: utf-8
+
 require 'spec_helper'
 
 describe "AdminSessions" do
 
-  def login_with(admin_login, admin_password)
-    post "/admin_session", :admin_session => { :login => admin_login,
-                                               :password => admin_password }
-  end
+def login_with(admin_login, admin_password)
+post "/admin_session", :admin_session => { :login => admin_login,
+:password => admin_password }
+end
 
-  describe "GET /" do
+describe "GET /" do
 
     it "should redirect to login page" do
       get "/"
@@ -85,8 +86,7 @@ describe "AdminSessions" do
       response.should contain("你输入的帐号或密码不正确！")
     end
 
-  end
+end
 
 end
 {% endhighlight %}
-

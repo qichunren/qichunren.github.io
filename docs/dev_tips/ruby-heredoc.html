@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Qichunren website">
     <meta name="author" content="Qichunren">
-    <title>Show more detail info on will_paginate bar - Qichunren blog</title>
+    <title>Ruby heredoc - Qichunren blog</title>
     <link rel="stylesheet" href="/assets/css/main.css?v2">
     <script type="text/javascript" src="/assets/js/main.js?v1"></script>
   </head>
@@ -45,20 +45,49 @@
   </nav>
 
   <div id="content_header" class="hidden flex items-center justify-center flex-wrap px-6 py-4 fixed w-full z-10 top-0 bg-gray-50 shadow-lg">
-    <h1 class="mb-2 font-bold text-center text-gray-800 md:text-xl lg:text-2xl xl:text-3xl md:leading-tight">Show more detail info on will_paginate bar</h1>
+    <h1 class="mb-2 font-bold text-center text-gray-800 md:text-xl lg:text-2xl xl:text-3xl md:leading-tight">Ruby heredoc</h1>
   </div>
 
   <main class="container mx-auto bg-white mt-24 md:mt-18">
           <div class="max-w-screen-md mx-auto prose lg:prose-lg p-4">
-            <h1 class="mb-2 text-3xl font-bold text-gray-900 md:text-2xl lg:text-4xl xl:text-5xl md:leading-tight">Show more detail info on will_paginate bar</h1>
-            <div class="text-gray-400 md:text-base">2010-08-08</div>
+            <h1 class="mb-2 text-3xl font-bold text-gray-900 md:text-2xl lg:text-4xl xl:text-5xl md:leading-tight">Ruby heredoc</h1>
+            <div class="text-gray-400 md:text-base">2022-06-05</div>
           </div>
 
-          <div class="post-content max-w-screen-md mx-auto prose lg:prose-lg"><p>Just create an extension in lib directory:</p>
+          <div class="post-content max-w-screen-md mx-auto prose lg:prose-lg"><p>When you want to define multiline strings in Ruby, we can use ruby heredoc in the following way:</p>
 
-<p>And the result is like this:</p>
+<div class="language-rb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a_string</span> <span class="o">=</span> <span class="p">(</span><span class="o">&lt;&lt;~</span><span class="no">MSG</span><span class="p">)</span><span class="sh">
+This is a heredoc example.
+</span><span class="si">#{</span><span class="no">Time</span><span class="p">.</span><span class="nf">now</span><span class="si">}</span><span class="sh">
+</span><span class="no">MSG</span>
+</code></pre></div></div>
 
-<p><img src="/images/posts/2010-08-08-paginate-bar.jpg" alt="will_paginate bar" title="will_paginate bar" /></p>
+<p>Though there are serval ways to define heredoc, but I think the foregoing way should be the primary way.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">str</span> <span class="o">=</span> <span class="o">&lt;&lt;</span><span class="no">HEREDOC</span><span class="sh">
+This is
+a sample
+text.
+</span><span class="no">HEREDOC</span>
+</code></pre></div></div>
+
+<hr />
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">str</span> <span class="o">=</span> <span class="o">&lt;&lt;-</span><span class="no">HEREDOC</span><span class="sh">
+This is
+a sample
+text.
+</span><span class="no">HEREDOC</span>
+</code></pre></div></div>
+
+<hr />
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">str</span> <span class="o">=</span> <span class="sx">%Q(
+This is
+a sample
+text.
+)</span>
+</code></pre></div></div>
 </div>
 
     </main>

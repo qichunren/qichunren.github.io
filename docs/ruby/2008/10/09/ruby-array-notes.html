@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Qichunren website">
     <meta name="author" content="Qichunren">
-    <title>Ruby Array 的头尾操作的 4 个方法 - Qichunren blog</title>
+    <title>Ruby Array 使用笔记 - Qichunren blog</title>
     <link rel="stylesheet" href="/assets/css/main.css?v2">
     <script type="text/javascript" src="/assets/js/main.js?v1"></script>
   </head>
@@ -45,54 +45,65 @@
   </nav>
 
   <div id="content_header" class="hidden flex items-center justify-center flex-wrap px-6 py-4 fixed w-full z-10 top-0 bg-gray-50 shadow-lg">
-    <h1 class="mb-2 font-bold text-center text-gray-800 md:text-xl lg:text-2xl xl:text-3xl md:leading-tight">Ruby Array 的头尾操作的 4 个方法</h1>
+    <h1 class="mb-2 font-bold text-center text-gray-800 md:text-xl lg:text-2xl xl:text-3xl md:leading-tight">Ruby Array 使用笔记</h1>
   </div>
 
   <main class="container mx-auto bg-white mt-24 md:mt-18">
           <div class="max-w-screen-md mx-auto prose lg:prose-lg p-4">
-            <h1 class="mb-2 text-3xl font-bold text-gray-900 md:text-2xl lg:text-4xl xl:text-5xl md:leading-tight">Ruby Array 的头尾操作的 4 个方法</h1>
+            <h1 class="mb-2 text-3xl font-bold text-gray-900 md:text-2xl lg:text-4xl xl:text-5xl md:leading-tight">Ruby Array 使用笔记</h1>
             <div class="text-gray-400 md:text-base">2008-10-09</div>
           </div>
 
-          <div class="post-content max-w-screen-md mx-auto prose lg:prose-lg"><p>在 Ruby 中，Array 对于数组头部和尾部操作有四个方法可以方便的添加和删除元素，这四个方法是 shift / unshift / push / pop。它们两两对应。</p>
+          <div class="post-content max-w-screen-md mx-auto prose lg:prose-lg"><p>在 Ruby 中，Array 是一个有序的数据集合，它不像其它的大多数语言中那样只能存放相同类型的数据，你可以在其中存放任何类型的数据。</p>
 
-<p>shift 方法将数组头部第一个元素从数组中删除，并返回这个元素。</p>
+<h2 id="数组初始化">数组初始化</h2>
 
-<p>unshift 方法接受一个或者参数，将元素添加到数组头部。</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>irb&gt; a = [1, 2, 's']
+irb&gt; b = Array.new # Size is 0
+irb&gt; c = Array.new(3) # Size is 3
+=&gt; [nil, nil, nil]
+irb&gt; d = Array.new(3, "a") # Init an array with default element filled
+=&gt; ["a", "a", "a"]
+</code></pre></div></div>
 
-<p>push 方法接受一个或者多个参数，将元素添加到数组尾部。</p>
+<p>另外 Array.new 还可以接受 block 参数，block 中的参数是它的当前位置。</p>
 
-<p>pop 方法将数据尾部最后一个元素从数组中删除，并返回这个元素。</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>irb&gt; e = Array.new(4) {|x| x * 3}
+=&gt; [0, 3, 6, 9]
 
-<hr />
+irb&gt; f = Array.new(4) { 1 }
+=&gt; [1, 1, 1, 1]
 
-<p>下面直接通过在 IRB 中演示来了解数组的这 4 个方法：</p>
+</code></pre></div></div>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.9.3-p194 :001 &gt; a = [1,2,3]
- =&gt; [1, 2, 3]
-1.9.3-p194 :002 &gt; a.shift
- =&gt; 1
-1.9.3-p194 :003 &gt; a
- =&gt; [2, 3]
-1.9.3-p194 :004 &gt; a.unshift(-2,-1)
- =&gt; [-2, -1, 2, 3]
-1.9.3-p194 :005 &gt; a
- =&gt; [-2, -1, 2, 3]
-1.9.3-p194 :006 &gt; a.push(4)
- =&gt; [-2, -1, 2, 3, 4]
-1.9.3-p194 :007 &gt; a.push(5)
- =&gt; [-2, -1, 2, 3, 4, 5]
-1.9.3-p194 :008 &gt; a.push(6,7)
- =&gt; [-2, -1, 2, 3, 4, 5, 6, 7]
-1.9.3-p194 :009 &gt; a
- =&gt; [-2, -1, 2, 3, 4, 5, 6, 7]
-1.9.3-p194 :010 &gt; a.pop
- =&gt; 7
-1.9.3-p194 :011 &gt; a.pop
- =&gt; 6
-1.9.3-p194 :012 &gt; a
- =&gt; [-2, -1, 2, 3, 4, 5]
-1.9.3-p194 :013 &gt;
+<h2 id="访问数组元素">访问数组元素</h2>
+
+<p>Ruby 数组的元素位置是从 0 开始的，这和其它的大部分编程语言是一样的。也可以从数组末尾开始访问元素，-1 表示数组中最后一个元素。</p>
+
+<p>主要方法是 [] 和 at 方法，它们可以获取数组中的单个元素。下面是用法示例。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>irb&gt; g = [1, 2, 3, "a", "b", "c"]
+irb&gt; g[1]
+=&gt; 2
+irb&gt; g[10]
+=&gt; nil
+irb&gt; g.at(2)
+=&gt; 3
+irb&gt; g.at(-1)
+=&gt; "c"
+irb&gt; g.at(-2)
+=&gt; "b"
+</code></pre></div></div>
+
+<p>另外 [] 方法还可以获取数组中的连续的子集合。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>irb&gt; g = [1, 2, 3, "a", "b", "c"]
+irb&gt; g[0, 3] # Start from index 0, and get 3 elements
+=&gt; [1, 2, 3]
+irb&gt; g[0..2] # Start from index 0 to 2
+=&gt; [1, 2, 3]
+irb&gt; g[0...2] # Start from index 0 to 2, but not include index 2
+=&gt; [1, 2]
 </code></pre></div></div>
 
 <h3 id="参考资料">参考资料</h3>

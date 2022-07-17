@@ -6,7 +6,6 @@ comments: true
 categories: Tool
 ---
 
-
 插上移动硬盘后，在命令行终端里输入命令
 
 diskutil info /Volumes/${硬盘名}

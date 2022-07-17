@@ -10,17 +10,15 @@ categories: Development
 
     sudo apt-get install libjson-c-dev
 
-
 在 QT 的项目中，修改.pro 文件，加入：
-    
+
     CONFIG += link_pkgconfig
     PKGCONFIG += json-c
 
-构建 JSON 的方法如下    
-
+构建 JSON 的方法如下
 
             #include <json/json.h>
-            
+
             /*Creating a json object*/
             json_object * jobj = json_object_new_object();
 
@@ -59,22 +57,20 @@ categories: Development
             json_object_object_add(jobj,"Categories", jarray);
 
             /*Now printing the json object*/
-            printf ("The json object created: %sn",json_object_to_json_string(jobj));    
-            
-            
+            printf ("The json object created: %sn",json_object_to_json_string(jobj));
+
 程序结果是：
 
       The json object created: { "Site Name": "Joys of Programming", "Technical blog": true, "Average posts per day": 2.140000, "Number of posts": 10, "Categories": [ "c", "c++", "php" ] }
-      
+
 解析 JSON 字符串的方法如下
 
 例如有如下的字符串
 
 ```
-{"column":["symbol","name"],"data":[["SZ000001","平安银行"],["SZ000005","世纪星源"],["SZ000006","深振业 A"],["SZ000008","神州高铁"],["SZ000009","中国宝安"]],"count":1544.0}      
+{"column":["symbol","name"],"data":[["SZ000001","平安银行"],["SZ000005","世纪星源"],["SZ000006","深振业 A"],["SZ000008","神州高铁"],["SZ000009","中国宝安"]],"count":1544.0}
 ```
-                
-                
+
     QByteArray json_content_arr = network_reply->readAll();
     const char *json_content = json_content_arr.constData();
     puts("Sync from xueqiu");
@@ -116,7 +112,3 @@ categories: Development
     }
     //qDebug() << json_content_arr;
     network_reply->deleteLater();
-    
-    
-    
-    

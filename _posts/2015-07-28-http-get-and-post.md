@@ -1,6 +1,6 @@
 ---
 layout: single
-title: 对使用 http 请求的 GET 和 POST 的一点思考 
+title: 对使用 http 请求的 GET 和 POST 的一点思考
 date: 2015-7-28 20:30
 comments: true
 categories: Development
@@ -13,7 +13,7 @@ categories: Development
 先来讲一个我最近做的一个 Ruby on Rails 项目，在那个项目中，用户 (User) 可以选择某一个数据集合 (DataSet) 项目参与其中做任务 (Task)。模型关系如下
 
     class User < ActiveRecord::Base
-      has_many :tasks       
+      has_many :tasks
     end
 
     class DataSet < ActiveRecord::Base
@@ -30,7 +30,7 @@ categories: Development
     end
 
 在数据集合 (DataSet) 列表页面，列出多个集合 (DataSet)，用户可以选择其中一个参与任务 (Task)。如果用户还没有参与其中的某个项目，显示“开始工作”，否则显示“继续工作”，页面部分代码如下：
-       
+
             <% @data_sets.each do |data_set| %>
             <div class="col-sm-6 col-md-4">
               <div class="thumbnail">
@@ -49,7 +49,8 @@ categories: Development
               </div>
             </div>
             <% end %>
-      
+
+
 DataSetsController 中的部分代码如下：
 
     class DataSetsController < ApplicationController
@@ -72,11 +73,11 @@ DataSetsController 中的部分代码如下：
       end
 
       # GET /data_sets/1/workspace
-      def workspace   
+      def workspace
         # ...
       end
-    end 
-    
+    end
+
 当初在设计这个页面上逻辑的时候，一开始以为直接用一个方法请求就搞定了，页面点击“开始工作”或者“继续工作”按钮，直接 GET 请求跳转到用户工作台链接/data_sets/{id}/workspace，在 workspace action 中加入额外的逻辑判断是否要创建用户的任务 (Task)。我接着认真思考了一下，发现这样不妥。原因有是 GET /data_sets/{id}/workspace 中的逻辑不纯粹， 与它的 URL 本身语义不符合。也不利于测试。
 
 那也许有人会说我将 workspace 这个 action 改成 POST 显示可以吗？答案也是不可以的，因为你点击按钮进入这个页面后，你如果刷新当前的 workspace 页面，浏览器会提示是否重复提交请求的提示，给用户的体验也不好。实质是这个请求不可 cache。另外在其它页面地方也不能通过一般的 a link 的方式进入 workspace 页面，不可传播。

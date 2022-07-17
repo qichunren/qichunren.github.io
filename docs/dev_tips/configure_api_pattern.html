@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Qichunren website">
     <meta name="author" content="Qichunren">
-    <title>ActiveSupport 中 Module 里的 mattr_accessor 方法 - Qichunren blog</title>
+    <title>Configure 接口API的常用模式 - Qichunren blog</title>
     <link rel="stylesheet" href="/assets/css/main.css?v2">
     <script type="text/javascript" src="/assets/js/main.js?v1"></script>
   </head>
@@ -45,37 +45,56 @@
   </nav>
 
   <div id="content_header" class="hidden flex items-center justify-center flex-wrap px-6 py-4 fixed w-full z-10 top-0 bg-gray-50 shadow-lg">
-    <h1 class="mb-2 font-bold text-center text-gray-800 md:text-xl lg:text-2xl xl:text-3xl md:leading-tight">ActiveSupport 中 Module 里的 mattr_accessor 方法</h1>
+    <h1 class="mb-2 font-bold text-center text-gray-800 md:text-xl lg:text-2xl xl:text-3xl md:leading-tight">Configure 接口API的常用模式</h1>
   </div>
 
   <main class="container mx-auto bg-white mt-24 md:mt-18">
           <div class="max-w-screen-md mx-auto prose lg:prose-lg p-4">
-            <h1 class="mb-2 text-3xl font-bold text-gray-900 md:text-2xl lg:text-4xl xl:text-5xl md:leading-tight">ActiveSupport 中 Module 里的 mattr_accessor 方法</h1>
+            <h1 class="mb-2 text-3xl font-bold text-gray-900 md:text-2xl lg:text-4xl xl:text-5xl md:leading-tight">Configure 接口API的常用模式</h1>
             <div class="text-gray-400 md:text-base">2022-06-05</div>
           </div>
 
-          <div class="post-content max-w-screen-md mx-auto prose lg:prose-lg"><div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="nn">HairColors</span>
-  <span class="n">mattr_accessor</span> <span class="ss">:hair_colors</span>
-<span class="k">end</span>
+          <div class="post-content max-w-screen-md mx-auto prose lg:prose-lg"><p>一般一个软件包都会提供一个配置接口，以满足用户进行一个个性化的定制需求。我阅读了许多 Ruby 项目后，我发现下面的用法是一个常用的模式。</p>
 
-<span class="k">class</span> <span class="nc">Person</span>
-  <span class="kp">include</span> <span class="no">HairColors</span>
-<span class="k">end</span>
-
-<span class="no">HairColors</span><span class="p">.</span><span class="nf">hair_colors</span> <span class="o">=</span> <span class="p">[</span><span class="ss">:brown</span><span class="p">,</span> <span class="ss">:black</span><span class="p">,</span> <span class="ss">:blonde</span><span class="p">,</span> <span class="ss">:red</span><span class="p">]</span>
-<span class="no">HairColors</span><span class="p">.</span><span class="nf">hair_colors</span> <span class="c1"># =&gt; [:brown, :black, :blonde, :red]</span>
-<span class="no">Person</span><span class="p">.</span><span class="nf">new</span><span class="p">.</span><span class="nf">hair_colors</span> <span class="c1"># =&gt; [:brown, :black, :blonde, :red]</span>
-<span class="no">Person</span><span class="p">.</span><span class="nf">hair_colors</span> <span class="c1"># undefined method `hair_colors' for Person:Class (NoMethodError)</span>
-</code></pre></div></div>
-
-<p>mattr_accessor 方法可以指定一个默认值，例如：</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="nn">Propshaft</span>
-  <span class="n">mattr_accessor</span> <span class="ss">:logger</span><span class="p">,</span> <span class="ss">default: </span><span class="no">Logger</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="no">STDOUT</span><span class="p">)</span>
+<div class="language-rb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">YourModule</span><span class="p">.</span><span class="nf">configure</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
+  <span class="n">config</span><span class="p">.</span><span class="nf">site_title</span> <span class="o">=</span> <span class="s1">'Bala bala'</span>
+  <span class="n">config</span><span class="p">.</span><span class="nf">allow_register</span> <span class="o">=</span> <span class="kp">true</span>
 <span class="k">end</span>
 </code></pre></div></div>
 
-<p><a href="https://api.rubyonrails.org/classes/Module.html#method-i-mattr_accessor">See doc</a></p>
+<p>它的实现如下:</p>
+
+<div class="language-rb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="nn">YourModule</span>
+
+  <span class="k">class</span> <span class="o">&lt;&lt;</span> <span class="nb">self</span>
+
+    <span class="k">def</span> <span class="nf">configure</span>
+      <span class="k">yield</span> <span class="n">configuration</span>
+    <span class="k">end</span>
+
+    <span class="c1"># Accessor for YourModule::Configuration</span>
+    <span class="k">def</span> <span class="nf">configuration</span>
+      <span class="vi">@configuration</span> <span class="o">||=</span> <span class="no">Configuration</span><span class="p">.</span><span class="nf">new</span>
+    <span class="k">end</span>
+    <span class="k">alias</span> <span class="n">config</span> <span class="n">configuration</span>
+
+  <span class="k">end</span>
+
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>而 <code class="language-plaintext highlighter-rouge">Configuration</code> 类则是一个普通的类即可，如下面这样就可以了。</p>
+
+<div class="language-rb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="nn">YourModule</span>
+  <span class="k">class</span> <span class="nc">Configuration</span>
+    <span class="nb">attr_accessor</span> <span class="ss">:site_title</span>
+    <span class="nb">attr_accessor</span> <span class="ss">:allow_register</span>
+    <span class="c1"># ...</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>这样的写法可以作为一个通用的固定模式。</p>
 </div>
 
     </main>

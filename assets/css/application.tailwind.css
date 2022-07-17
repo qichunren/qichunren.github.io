@@ -18,7 +18,7 @@
     @apply text-indigo-400;
 }
 
-.post-content .highlighter-rouge {
+.post-content div.highlighter-rouge {
     @apply mb-4;
 }
 
@@ -31,7 +31,7 @@
 }
 
 .post-content code.language-plaintext {
-    @apply py-2;
+    @apply py-1 px-2 rounded;
 }
 
 .post-content h2 {

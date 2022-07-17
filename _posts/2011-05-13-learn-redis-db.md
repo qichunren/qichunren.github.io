@@ -14,7 +14,7 @@ categories: [database, nosql, redis]
 
 ### Related links
 
-* [Redis](http://redis.io/)
-* [redis-rb](https://github.com/ezmobius/redis-rb) gem install redis   
-* [redis-objects](https://github.com/nateware/redis-objects)是基于 redis-rb 的一个 ruby 对象与 redis 对象映射的 gem
-* [rails/kredis](https://github.com/rails/kredis) Higher-level data structures built on Redis
+- [Redis](http://redis.io/)
+- [redis-rb](https://github.com/ezmobius/redis-rb) gem install redis
+- [redis-objects](https://github.com/nateware/redis-objects)是基于 redis-rb 的一个 ruby 对象与 redis 对象映射的 gem
+- [rails/kredis](https://github.com/rails/kredis) Higher-level data structures built on Redis

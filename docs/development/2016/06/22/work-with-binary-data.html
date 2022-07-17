@@ -60,11 +60,11 @@
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ irb
 1.9.3-p194 :001 &gt; 0b1010
- =&gt; 10 
+ =&gt; 10
 1.9.3-p194 :002 &gt; 0b10
- =&gt; 2 
+ =&gt; 2
 1.9.3-p194 :003 &gt; 0b11
- =&gt; 3 
+ =&gt; 3
 1.9.3-p194 :004 &gt; 0b100
  =&gt; 4
 </code></pre></div></div>
@@ -77,28 +77,28 @@
 
 $ irb
 1.9.3-p194 :001 &gt; 0b10.to_s(10)
- =&gt; "2" 
+ =&gt; "2"
 1.9.3-p194 :002 &gt; 0b11.to_s(10)
- =&gt; "3" 
+ =&gt; "3"
 1.9.3-p194 :003 &gt; 0b100.to_s(10)
  =&gt; "4"
- 
- 
+
+
 ### 十进制转换成二进制
 
 $ irb
 1.9.3-p194 :001 &gt; 10.to_s(2)
- =&gt; "1010" 
+ =&gt; "1010"
 1.9.3-p194 :002 &gt; 4.to_s(2)
- =&gt; "100" 
+ =&gt; "100"
 1.9.3-p194 :003 &gt; 2.to_s(2)
  =&gt; "10"
 
 ### 十六进制转换成十进制
 
-0xFF.to_s(10) # "255" 
-0xFF.to_s # "255" 
-"FF".hex # 255 
+0xFF.to_s(10) # "255"
+0xFF.to_s # "255"
+"FF".hex # 255
 
 ### 十六进制转换成二进制
 
@@ -111,11 +111,11 @@ $ irb
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ irb
 1.9.3-p194 :001 &gt; "0b100".to_i(2)
- =&gt; 4 
+ =&gt; 4
 1.9.3-p194 :002 &gt; "0100".to_i(10)
- =&gt; 100 
+ =&gt; 100
 1.9.3-p194 :003 &gt; "0xFF".to_i(16)
- =&gt; 255   
+ =&gt; 255
 </code></pre></div></div>
 
 <p>注意：String#to_i 方法的参数一定要和字符串本身的进制一致，否则将得不到预期的结果。</p>
@@ -128,7 +128,7 @@ $ irb
  1.9.3-p194 :045 &gt; "\xff\x00\x2a".unpack('C*')
   =&gt; [255, 0, 42]
  1.9.3-p194 :042 &gt; [192,168,1,1].pack('C*')
-  =&gt; "\xC0\xA8\x01\x01" 
+  =&gt; "\xC0\xA8\x01\x01"
  1.9.3-p194 :043 &gt; [255,255,255,255].pack('C*')
   =&gt; "\xFF\xFF\xFF\xFF"
 </code></pre></div></div>
@@ -137,14 +137,14 @@ $ irb
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>require 'socket'
 
-udp_socket = UDPSocket.new 
+udp_socket = UDPSocket.new
 udp_socket.bind("0.0.0.0", 8086)
-udp_socket.setsockopt(Socket::SOL_SOCKET, Socket::SO_BROADCAST, true) 
-100.times do |i| 
+udp_socket.setsockopt(Socket::SOL_SOCKET, Socket::SO_BROADCAST, true)
+100.times do |i|
     puts "Broadcast message ..."
-    udp_socket.send([0x01, 0x10, 0x00, 0x03, 0x00, 0x04, 0x00, 0x00, 0x96, 0x96, 0xc1, 0x0c].pack('C*'), 0, "255.255.255.255", 1112) 
+    udp_socket.send([0x01, 0x10, 0x00, 0x03, 0x00, 0x04, 0x00, 0x00, 0x96, 0x96, 0xc1, 0x0c].pack('C*'), 0, "255.255.255.255", 1112)
     sleep 3
-end     
+end
 </code></pre></div></div>
 
 <h3 id="位操作">位操作</h3>
@@ -154,8 +154,9 @@ end
 ^ bitwise XOR
 ~ bitwise NOT
 &gt;&gt; right shift
-&lt;&lt; left shift         
+&lt;&lt; left shift
 </code></pre></div></div>
+
 <p>一个字节是 8 位，每个位上是 0 或者 1。判断字节中某一个是否是 1，使用 &amp; 操作判断结果是否大于 0：</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a_byte = 0b10100001
