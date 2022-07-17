@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Qichunren website">
+    <meta name="author" content="Qichunren">
+    <title> - Qichunren blog</title>
+    <link rel="stylesheet" href="/assets/css/main.css?v2" />
+    <script type="text/javascript" src="/assets/js/main.js?v1" ></script>
+  </head>
+
+  <body>
+    <nav id="header" class="flex items-center justify-between flex-wrap px-6 py-6 fixed w-full z-10 top-0 bg-white shadow-sm">
+
+        <a class="flex items-center flex-shrink-0 mr-6 no-underline hover:text-blue-800 hover:no-underline" href="/index.html">
+          <img class="card-img-top rounded-circle" src="https://avatars.githubusercontent.com/u/39784?s=40&v=4" />
+          <span class="text-2xl pl-2">Qichunren's blog</span>
+        </a>
+
+      <div class="block lg:hidden">
+        <button id="nav-toggle" class="flex items-center px-3 py-2 border rounded text-gray-500 border-gray-600 hover:text-blue-600 hover:border-white">
+          <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
+        </button>
+      </div>
+
+      <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block pt-6 lg:pt-0" id="nav-content">
+        <ul class="list-reset lg:flex justify-end flex-1 items-center">
+          <li class="mr-3">
+            <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="/index.html">Posts</a>
+          </li>
+          <li class="mr-3">
+            <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="/dev_tips.html">Dev Tips</a>
+          </li>
+          <li class="mr-3">
+            <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="/about.html">About</a>
+          </li>
+          <li class="mr-3">
+            <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="https://github.com/qichunren">Github</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main class="container mx-auto bg-white mt-24 md:mt-18">
+      <div class="p-4">
+          <div class=""><h1 class="font-bold text-2xl mb-4">Ascii Tree Generator</h1>
+<div class="flex justify-between" style="min-height: 75vh">
+  <textarea id="input" class="w-80 border p-4 bg-gray-100"></textarea>
+  <pre id="output" class="p-4 grow bg-gray-600 text-gray-300"></pre>
+</div>
+
+
+<script>
+  function normalize(node, idx, nodes) {
+  const from = idx ? nodes[idx - 1].level : -1;
+  const to = node.level;
+  const results = [];
+  for (let i = from + 1; i < to; i++) {
+    results.push({ level: i });
+  }
+  results.push(node);
+  return results;
+}
+
+function parse(text) {
+  const nodes = [].concat(
+    ...text
+      .split(/\r?\n/)
+      .filter(line => line.startsWith('#'))
+      .map(line => ({
+        level: line.replace(/^(#+).*/, '$1').length - 1,
+        text: line.replace(/^#+/, '').trim(),
+      }))
+      .map(normalize)
+  );
+  for (let i = 0; i < nodes.length; i++) {
+    nodes[i].children = nodes[i].children || [];
+    for (let j = i - 1; j >= 0; j--) {
+      if (nodes[j].level + 1 === nodes[i].level) {
+        nodes[j].children.push(nodes[i]);
+        break;
+      }
+    }
+  }
+  return nodes.filter(node => !node.level);
+}
+
+function gen(nodes = [], level = 0, prefix = '') {
+  return nodes.map((node, index) => {
+    const isLast = index === nodes.length - 1;
+    const line = level ? `${prefix}${isLast ? '└' : '├'}── ` : '';
+    const nextPrefix = level ? `${prefix}${isLast ? '    ' : '│   '}` : '';
+    return [
+      `${line}${node.text || ''}`,
+      ...gen(node.children, level + 1, nextPrefix),
+    ].join('\n');
+  });
+}
+
+function render() {
+  $output.textContent = gen(parse($input.value)).join('\n');
+}
+
+const $input = document.querySelector('#input');
+const $output = document.querySelector('#output');
+
+$input.addEventListener('input', render);
+
+$input.value = `
+# the
+## quick
+### brown
+## fox
+## jumps
+### over
+#### the
+### lazy
+## dog
+`.trim();
+
+render();
+</script></div>
+      </div>
+    </main>
+
+    <svg id="scrolltop" xmlns="http://www.w3.org/2000/svg" class="hidden fixed bottom-2 right-2 h-16 w-16 cursor-pointer text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
+    </svg>
+  </body>
+</html>
