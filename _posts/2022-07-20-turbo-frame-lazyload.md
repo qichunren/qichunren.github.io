@@ -8,7 +8,7 @@ categories: Development
 
 我最近做了一个产品的 Landing page，随着需求一步一步的沟通，页面中的元素越来越多，严重影响了页面的首次加载性能。
 
-在禁用了浏览器的缓存后，模拟新用户首次浏览页面 https://photonicat.com/pre，开发者工具显示的如下的总的加载时间和流量。耗费了10秒钟！
+在禁用了浏览器的缓存后，模拟新用户首次浏览页面 https://photonicat.com/pre，开发者工具显示如下的总的加载时间和流量。耗费了10秒钟！
 
 ![slow_page_load.png](/images/slow_page_load.png)
 
@@ -79,7 +79,7 @@ get "blocks/sections/:name", to: "welcome#lazyload_turbo_frame"
 </turbo-frame>
 ```
 
-现在改看一下页面加载性能，https://photonicat.com/pre_fast, 从10秒变动3秒了。
+现在看一下新的页面加载情况，https://photonicat.com/pre_fast, 从原来的 10 秒变成 3 秒了。
 
 ![lazyload_turbo_frame.png](/images/lazyload_turbo_frame.png)
 
