@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Qichunren website">
+    <meta name="author" content="Qichunren">
+    <title>利用 Turbo 的 Lazy-loaded frame 优化页面加载性能 - Qichunren blog</title>
+    <link rel="stylesheet" href="/assets/css/main.css?v2">
+    <script type="text/javascript" src="/assets/js/main.js?v1"></script>
+  </head>
+
+  <body class="has-navbar-fixed-top page-index">
+
+    <nav id="header" class="flex items-center justify-between flex-wrap px-6 py-6 fixed w-full z-10 top-0 bg-white shadow-sm">
+
+      <a class="flex items-center flex-shrink-0 mr-6 no-underline hover:text-blue-800 hover:no-underline" href="/index.html">
+        <img class="card-img-top rounded-circle" src="https://avatars.githubusercontent.com/u/39784?s=40&v=4" />
+        <span class="text-2xl pl-2">Qichunren's blog</span>
+      </a>
+
+    <div class="block lg:hidden">
+      <button id="nav-toggle" class="flex items-center px-3 py-2 border rounded text-gray-500 border-gray-600 hover:text-blue-600 hover:border-white">
+        <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
+      </button>
+    </div>
+
+    <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block pt-6 lg:pt-0" id="nav-content">
+      <ul class="list-reset lg:flex justify-end flex-1 items-center">
+        <li class="mr-3">
+          <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="/index.html">Posts</a>
+        </li>
+        <li class="mr-3">
+          <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="/dev_tips.html">Dev Tips</a>
+        </li>
+        <li class="mr-3">
+          <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="/about.html">About</a>
+        </li>
+        <li class="mr-3">
+          <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="https://github.com/qichunren">Github</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div id="content_header" class="hidden flex items-center justify-center flex-wrap px-6 py-4 fixed w-full z-10 top-0 bg-gray-50 shadow-lg">
+    <h1 class="mb-2 font-bold text-center text-gray-800 md:text-xl lg:text-2xl xl:text-3xl md:leading-tight">利用 Turbo 的 Lazy-loaded frame 优化页面加载性能</h1>
+  </div>
+
+  <main class="container mx-auto bg-white mt-24 md:mt-18">
+          <div class="max-w-screen-md mx-auto prose lg:prose-lg p-4">
+            <h1 class="mb-2 text-3xl font-bold text-gray-900 md:text-2xl lg:text-4xl xl:text-5xl md:leading-tight">利用 Turbo 的 Lazy-loaded frame 优化页面加载性能</h1>
+            <div class="text-gray-400 md:text-base">2022-07-20</div>
+          </div>
+
+          <div class="post-content max-w-screen-md mx-auto prose lg:prose-lg"><p>我最近做了一个产品的 Landing page，随着需求一步一步的沟通，页面中的元素越来越多，严重影响了页面的首次加载性能。</p>
+
+<p>在禁用了浏览器的缓存后，模拟新用户首次浏览页面 https://photonicat.com/pre，开发者工具显示的如下的总的加载时间和流量。耗费了10秒钟！</p>
+
+<p><img src="/images/slow_page_load.png" alt="slow_page_load.png" /></p>
+
+<p>看来必须优化了。因为 起步页 (Landing page) 都是多屏内容组合而成的。在初始载入页面时，除了页面上方的第一屏内容显示在浏览器视图中，第一屏以下的页面元素并没有展现给用户。所以我可以延迟加载相应的局部页面，以提高页面加载性能。</p>
+
+<p>在研究的过程中，发现现代的浏览器中有 <a href="https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API">Intersection Observer API</a> ，通过这个 API,可以实现当用户浏览网页时，滚动页面时，在合适的时机加载局部页面。</p>
+
+<p>但是我不想写 Javascript 啊，因为 Rails 的 Turbo 中已经有了  <a href="https://turbo.hotwired.dev/reference/frames#lazy-loaded-frame">Lazy-loaded frame</a> 功能了。当局部页面显示在视野中，异步加载局部页面，并更新到相应的 turbo-frame 中。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;turbo-frame id="messages" src="/messages" loading="lazy"&gt;
+  Content will be replaced when the frame becomes visible and /messages has been loaded.
+&lt;/turbo-frame&gt;
+</code></pre></div></div>
+
+<h2 id="改造过程">改造过程</h2>
+
+<p>原来的页面代码大概是这个样子，每一个 partial 都是一个块页面。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;%=render "/blocks/heros/hero" -%&gt;
+&lt;%=render "/blocks/sections/web_is_yours" -%&gt;
+&lt;%=render "/blocks/sections/structure" -%&gt;
+&lt;%=render "/blocks/sections/tinkering_ready" -%&gt;
+&lt;%=render "/blocks/sections/take_it_home" -%&gt;
+&lt;%=render "/blocks/sections/take_it_with_u" -%&gt;
+&lt;%=render "/blocks/sections/tech_spec" -%&gt;
+&lt;%=render "/blocks/sections/pre_order" -%&gt;
+</code></pre></div></div>
+
+<p>现在我把它改成这个样子：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;%=render "/blocks/heros/hero" -%&gt;
+&lt;%=render "/blocks/sections/web_is_yours" -%&gt;
+&lt;%=render "/blocks/sections/structure" -%&gt;
+&lt;turbo-frame id="tinkering_ready" src="/blocks/sections/tinkering_ready_lazyload" loading="lazy"&gt;Loading ...&lt;/turbo-frame&gt;
+&lt;turbo-frame id="take_it_home" src="/blocks/sections/take_it_home_lazyload" loading="lazy"&gt;Loading ...&lt;/turbo-frame&gt;
+&lt;turbo-frame id="take_it_with_u" src="/blocks/sections/take_it_with_u_lazyload" loading="lazy"&gt;Loading ...&lt;/turbo-frame&gt;
+&lt;turbo-frame id="tech_specs" src="/blocks/sections/tech_spec_lazyload" loading="lazy"&gt;Loading ...&lt;/turbo-frame&gt;
+&lt;turbo-frame id="pre_order" src="/blocks/sections/pre_order_lazyload" loading="lazy"&gt;Loading ...&lt;/turbo-frame&gt;
+</code></pre></div></div>
+
+<p>config/routes.rb 中加入一条新URL规则:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>get "blocks/sections/:name", to: "welcome#lazyload_turbo_frame"
+</code></pre></div></div>
+<p>控制器中的 action 方法：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  def lazyload_turbo_frame
+    name = params[:name].to_s
+    file = Rails.root.join("app/views/blocks/sections/_#{name}.html.erb")
+    if file.exist?
+      render partial: "/blocks/sections/#{name}", layout: false
+    else
+      render :file =&gt; "#{Rails.root}/public/404.html",  :status =&gt; 404, layout: false
+    end
+  end
+</code></pre></div></div>
+
+<p>最后就是将相应的  partial 页面用 turbo-frame 包含一下就可以了：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;turbo-frame id="pre_order"&gt;
+&lt;%=render "/blocks/sections/pre_order" -%&gt;
+&lt;/turbo-frame&gt;
+</code></pre></div></div>
+
+<p>现在改看一下页面加载性能，https://photonicat.com/pre_fast, 从10秒变动3秒了。</p>
+
+<p><img src="/images/lazyload_turbo_frame.png" alt="lazyload_turbo_frame.png" /></p>
+
+<p>改造过程中没有写一句 Javascript 代码。</p>
+</div>
+
+    </main>
+    <svg id="scrolltop" xmlns="http://www.w3.org/2000/svg" class="hidden fixed bottom-2 right-2 h-16 w-16 cursor-pointer text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
+    </svg>
+  </body>
+</html>
