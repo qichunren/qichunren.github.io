@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Qichunren website">
+    <meta name="author" content="Qichunren">
+    <title>Rails 前端解决方案简介 - Qichunren blog</title>
+    <link rel="stylesheet" href="/assets/css/main.css?v2">
+    <script type="text/javascript" src="/assets/js/main.js?v1"></script>
+  </head>
+
+  <body class="has-navbar-fixed-top page-index">
+
+    <nav id="header" class="flex items-center justify-between flex-wrap px-6 py-6 fixed w-full z-10 top-0 bg-white shadow-sm">
+
+      <a class="flex items-center flex-shrink-0 mr-6 no-underline hover:text-blue-800 hover:no-underline" href="/index.html">
+        <img class="card-img-top rounded-circle" src="https://avatars.githubusercontent.com/u/39784?s=40&v=4" />
+        <span class="text-2xl pl-2">Qichunren's blog</span>
+      </a>
+
+    <div class="block lg:hidden">
+      <button id="nav-toggle" class="flex items-center px-3 py-2 border rounded text-gray-500 border-gray-600 hover:text-blue-600 hover:border-white">
+        <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
+      </button>
+    </div>
+
+    <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block pt-6 lg:pt-0" id="nav-content">
+      <ul class="list-reset lg:flex justify-end flex-1 items-center">
+        <li class="mr-3">
+          <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="/index.html">Posts</a>
+        </li>
+        <li class="mr-3">
+          <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="/dev_tips.html">Dev Tips</a>
+        </li>
+        <li class="mr-3">
+          <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="/about.html">About</a>
+        </li>
+        <li class="mr-3">
+          <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="https://github.com/qichunren">Github</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div id="content_header" class="hidden flex items-center justify-center flex-wrap px-6 py-4 fixed w-full z-10 top-0 bg-gray-50 shadow-lg">
+    <h1 class="mb-2 font-bold text-center text-gray-800 md:text-xl lg:text-2xl xl:text-3xl md:leading-tight">Rails 前端解决方案简介</h1>
+  </div>
+
+  <main class="container mx-auto bg-white mt-24 md:mt-18">
+          <div class="max-w-screen-md mx-auto prose lg:prose-lg p-4">
+            <h1 class="mb-2 text-3xl font-bold text-gray-900 md:text-2xl lg:text-4xl xl:text-5xl md:leading-tight">Rails 前端解决方案简介</h1>
+            <div class="text-gray-400 md:text-base">2022-05-02</div>
+          </div>
+
+          <div class="post-content max-w-screen-md mx-auto prose lg:prose-lg"><p>前不久 Rails 7.0 版的发布带来了 Hotwire 这个框架作为 Rails 的前端解决方案，用来取代 Rails UJS，用来增强 Rails 后端与页面之间的交互能力； Rails 7.0 版还带来了 import_map、cssbundling-rails 和 jsbundling-rails，优化前端资源打包的流程，放弃 webpacker 项目，脱离 NodeJS 依賴，将选择权交出来，让用户自行选择打包方案。由于简化了 asset pipleline 打包流程，之前功能强大的 Sprockets 在新的集成环境中也显得有些繁重，所以 DHH 又推出了 Propshaft，它相当于是一个简化版的 Sprockets。</p>
+
+<h2 id="hotwred">Hotwred</h2>
+
+<p><a href="https://hotwired.dev/">Hotwire</a> 的核心是 Turbo，它是由四部分组成。</p>
+
+<ul>
+  <li>Turbo Driver，它是在以前的 <a href="https://github.com/turbolinks/turbolinks">turbolinks</a> 的基础上改进而来，利用 Ajax 请求和 History 实现了页面无抖动的快速加载，省去了静态资源文件的二次请求。</li>
+  <li>Turbo Frame，通过 turbo frame，将整个页面可以划分为多个局部的页面，从而可以实现局部更新。</li>
+  <li>Turbo Stream，通过 turbo stream，可以不用写 Javascript 代码，来实现页面的异步更新。</li>
+  <li>Turbo Native 是用于移动端 WebView 集成开发，我没有过多研究，这是不多做解释。</li>
+</ul>
+
+<h2 id="stimulus-js">Stimulus JS</h2>
+
+<p>Turbo 解决了平时需要 Javascript 解决的大部分问题，Stimulus JS 通过 MutationObserver 接口来增强了 HTML Dom 的能力，而不用我们关心 DOM 载入和卸載时机等细节问题。一些需要写额外 JS 的事情，都可以通过写 Stimulus Controller 来解决。</p>
+
+<h2 id="打包流程">打包流程</h2>
+
+<p>如果是使用 Rails 7 默认提供的 import_map，就不需要打包这个流程了，因为现代的浏览器中也支持 ES Module 的导入了。Rails 的 import_map 内部是使用了 https://wicg.github.io/import-maps/ 来提供支持的。</p>
+
+<p>如果实在需要打包，采用了 cssbundling-rails 和 jsbundling-rails 后，会将 <code class="language-plaintext highlighter-rouge">yarn build</code> 和 <code class="language-plaintext highlighter-rouge">yarn build:css</code> hook 到 <code class="language-plaintext highlighter-rouge">assets:precompile</code> 任务中，它们产生的文件会放到 app/assets/builds 目录下面， 我们自己在 package.json 中定义好相应的打包任务。 Rails 在生产环境会执行 <code class="language-plaintext highlighter-rouge">rake assets:precompile</code> 任务资源打包任务，将 app/assets/builds 目录中的文件复制到 public/assets 目录中。</p>
+
+<h2 id="我的看法">我的看法</h2>
+
+<p>从目前的反馈来看，hotwire 似乎反响不是很热烈，不少人对 Rails 提供的新的前端解决方案还持有一个观望的态度。而我在 Rails 7 还没有发布的时候就尝试了这个新方案，可以说在我目前的工作领域它是非常高效的一个方案，我主要负责的是公司的业务后台，还有公司的各种前端网站，我一个人能搞定这些，我没有必须用上表面看起来更好用的 React / Vue 这类方案。</p>
+
+<p>Rails 的方案是一个前后端紧密结合的方案，它需要用户即要熟悉前端，又要熟悉 Rails，在国内的目前的环境中，只有一些小型高效团队能体会到它的好处。</p>
+
+<p>React / Vue 这类的方案，我想我需要在浏览器中实现一套类似设计编辑器复杂度的工具时，我才会去考虑采用它。</p>
+</div>
+
+    </main>
+    <svg id="scrolltop" xmlns="http://www.w3.org/2000/svg" class="hidden fixed bottom-2 right-2 h-16 w-16 cursor-pointer text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
+    </svg>
+  </body>
+</html>

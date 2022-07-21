@@ -100,7 +100,7 @@ config.super_debugger = true
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Rails.configuration.x.payment_processing.schedule # =&gt; :daily
 Rails.configuration.x.payment_processing.retries  # =&gt; 3
 Rails.configuration.x.payment_processing.not_set  # =&gt; nil
-Rails.configuration.super_debugger                # =&gt; true	
+Rails.configuration.super_debugger                # =&gt; true
 </code></pre></div></div>
 
 <h2 id="config_for">config_for</h2>
@@ -130,12 +130,10 @@ module MyApp
 end
 </code></pre></div></div>
 
-<p>读取参数：</p>
+<p>读取参数：
+Rails.configuration.payment[‘merchant_id’] # =&gt; production_merchant_id or development_merchant_id</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Rails.configuration.payment['merchant_id'] # =&gt; production_merchant_id or development_merchant_id	
-</code></pre></div></div>
-
-<p>注：不管是在 development 还是 production 环境中，改变了 yml 配置文件的内容，	config_for 是不会缓存的。</p>
+<p>注：不管是在 development 还是 production 环境中，改变了 yml 配置文件的内容， config_for 是不会缓存的。</p>
 </div>
 
     </main>

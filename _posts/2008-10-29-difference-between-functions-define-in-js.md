@@ -24,4 +24,4 @@ var function2 = function() {
 
 ```
 
- 在以上的代码中，function1() 会工作正常，而 function2() 调用会出错，因为 JS 解译器发现此时 function2 还没有定义。
+在以上的代码中，function1() 会工作正常，而 function2() 调用会出错，因为 JS 解译器发现此时 function2 还没有定义。

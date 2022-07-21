@@ -61,7 +61,7 @@
 <p>先来讲一个我最近做的一个 Ruby on Rails 项目，在那个项目中，用户 (User) 可以选择某一个数据集合 (DataSet) 项目参与其中做任务 (Task)。模型关系如下</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>class User &lt; ActiveRecord::Base
-  has_many :tasks       
+  has_many :tasks
 end
 
 class DataSet &lt; ActiveRecord::Base
@@ -122,10 +122,10 @@ end
   end
 
   # GET /data_sets/1/workspace
-  def workspace   
+  def workspace
     # ...
   end
-end 
+end
 </code></pre></div></div>
 
 <p>当初在设计这个页面上逻辑的时候，一开始以为直接用一个方法请求就搞定了，页面点击“开始工作”或者“继续工作”按钮，直接 GET 请求跳转到用户工作台链接/data_sets/{id}/workspace，在 workspace action 中加入额外的逻辑判断是否要创建用户的任务 (Task)。我接着认真思考了一下，发现这样不妥。原因有是 GET /data_sets/{id}/workspace 中的逻辑不纯粹， 与它的 URL 本身语义不符合。也不利于测试。</p>

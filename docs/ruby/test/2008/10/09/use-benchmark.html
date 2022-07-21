@@ -58,12 +58,13 @@
 
 <p>用法很简单：</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">require</span> <span class="s1">'benchmark'</span>
-<span class="n">n</span> <span class="o">=</span> <span class="mi">1500</span>
-<span class="no">Benchmark</span><span class="p">.</span><span class="nf">bmbm</span> <span class="k">do</span> <span class="o">|</span><span class="n">x</span><span class="o">|</span>
-  <span class="n">x</span><span class="p">.</span><span class="nf">report</span><span class="p">(</span><span class="s2">"+ method"</span><span class="p">)</span> <span class="p">{</span> <span class="n">n</span><span class="p">.</span><span class="nf">times</span> <span class="p">{</span><span class="n">string1</span> <span class="o">=</span> <span class="s2">"ddd"</span> <span class="o">+</span> <span class="s2">"11111"</span> <span class="o">+</span> <span class="s2">"Helodd"</span> <span class="p">}</span> <span class="p">}</span>
-  <span class="n">x</span><span class="p">.</span><span class="nf">report</span><span class="p">(</span><span class="s2">"&lt;&lt; method"</span><span class="p">)</span> <span class="p">{</span> <span class="n">n</span><span class="p">.</span><span class="nf">times</span> <span class="p">{</span><span class="n">string2</span> <span class="o">=</span> <span class="s2">"ddd"</span> <span class="o">&lt;&lt;</span> <span class="s2">"11111"</span> <span class="o">&lt;&lt;</span> <span class="s2">"Helodd"</span><span class="p">}</span> <span class="p">}</span>
-<span class="k">end</span></code></pre></figure>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>require 'benchmark'
+n = 1500
+Benchmark.bmbm do |x|
+  x.report("+ method") { n.times {string1 = "ddd" + "11111" + "Helodd" } }
+  x.report("&lt;&lt; method") { n.times {string2 = "ddd" &lt;&lt; "11111" &lt;&lt; "Helodd"} }
+end
+</code></pre></div></div>
 
 <p>结果如下：</p>
 
@@ -79,6 +80,7 @@ Rehearsal ---------------------------------------------
 </code></pre></div></div>
 
 <h3 id="参考资料">参考资料</h3>
+
 <ul>
   <li><a href="http://ruby-doc.org/stdlib/libdoc/benchmark/rdoc/index.html">Benchmark Rdoc</a></li>
   <li><a href="http://www.kuqin.com/rubycndocument/man/addlib/benchmark.html">Ruby 参考手册</a></li>

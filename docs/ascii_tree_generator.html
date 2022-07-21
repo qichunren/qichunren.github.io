@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Qichunren website">
     <meta name="author" content="Qichunren">
-    <title>Development Tips - Qichunren blog</title>
+    <title> - Qichunren blog</title>
     <link rel="stylesheet" href="/assets/css/main.css?v2" />
     <script type="text/javascript" src="/assets/js/main.js?v1" ></script>
   </head>
@@ -45,58 +45,83 @@
 
     <main class="container mx-auto bg-white mt-24 md:mt-18">
       <div class="p-4">
-          <div class=""><div class="max-w-md mx-auto ">
-
-<div class="py-2 border-b border-gray-200 ">
-  <h3>
-    <a href="/dev_tips/activesupport_configurable.html">
-      ActiveSupport 中的 Configurable
-    </a>
-  </h3>
-</div>  
-
-<div class="py-2 border-b border-gray-200 ">
-  <h3>
-    <a href="/dev_tips/avoid-use-polymorphic_associations.html">
-      必免使用多态关联
-    </a>
-  </h3>
-</div>  
-
-<div class="py-2 border-b border-gray-200 ">
-  <h3>
-    <a href="/dev_tips/configure_api_pattern.html">
-      Configure 接口API的常用模式
-    </a>
-  </h3>
-</div>  
-
-<div class="py-2 border-b border-gray-200 ">
-  <h3>
-    <a href="/dev_tips/mattr_accessor.html">
-      ActiveSupport 中 Module 里的 mattr_accessor 方法
-    </a>
-  </h3>
-</div>  
-
-<div class="py-2 border-b border-gray-200 ">
-  <h3>
-    <a href="/dev_tips/rails_selct_tag.html">
-      各种 select 标签用法记录
-    </a>
-  </h3>
-</div>  
-
-<div class="py-2 border-b border-gray-200 ">
-  <h3>
-    <a href="/dev_tips/ruby-heredoc.html">
-      Ruby heredoc
-    </a>
-  </h3>
-</div>  
-
+          <div class=""><h1 class="font-bold text-2xl mb-4">Ascii Tree Generator</h1>
+<div class="flex justify-between" style="min-height: 75vh">
+  <textarea id="input" class="w-80 border p-4 bg-gray-100"></textarea>
+  <pre id="output" class="p-4 grow bg-gray-600 text-gray-300"></pre>
 </div>
-</div>
+
+
+<script>
+  function normalize(node, idx, nodes) {
+  const from = idx ? nodes[idx - 1].level : -1;
+  const to = node.level;
+  const results = [];
+  for (let i = from + 1; i < to; i++) {
+    results.push({ level: i });
+  }
+  results.push(node);
+  return results;
+}
+
+function parse(text) {
+  const nodes = [].concat(
+    ...text
+      .split(/\r?\n/)
+      .filter(line => line.startsWith('#'))
+      .map(line => ({
+        level: line.replace(/^(#+).*/, '$1').length - 1,
+        text: line.replace(/^#+/, '').trim(),
+      }))
+      .map(normalize)
+  );
+  for (let i = 0; i < nodes.length; i++) {
+    nodes[i].children = nodes[i].children || [];
+    for (let j = i - 1; j >= 0; j--) {
+      if (nodes[j].level + 1 === nodes[i].level) {
+        nodes[j].children.push(nodes[i]);
+        break;
+      }
+    }
+  }
+  return nodes.filter(node => !node.level);
+}
+
+function gen(nodes = [], level = 0, prefix = '') {
+  return nodes.map((node, index) => {
+    const isLast = index === nodes.length - 1;
+    const line = level ? `${prefix}${isLast ? '└' : '├'}── ` : '';
+    const nextPrefix = level ? `${prefix}${isLast ? '    ' : '│   '}` : '';
+    return [
+      `${line}${node.text || ''}`,
+      ...gen(node.children, level + 1, nextPrefix),
+    ].join('\n');
+  });
+}
+
+function render() {
+  $output.textContent = gen(parse($input.value)).join('\n');
+}
+
+const $input = document.querySelector('#input');
+const $output = document.querySelector('#output');
+
+$input.addEventListener('input', render);
+
+$input.value = `
+# the
+## quick
+### brown
+## fox
+## jumps
+### over
+#### the
+### lazy
+## dog
+`.trim();
+
+render();
+</script></div>
       </div>
     </main>
 

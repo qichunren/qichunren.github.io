@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Qichunren website">
     <meta name="author" content="Qichunren">
-    <title>我的常用工具 - Qichunren blog</title>
+    <title>必免使用多态关联 - Qichunren blog</title>
     <link rel="stylesheet" href="/assets/css/main.css?v2">
     <script type="text/javascript" src="/assets/js/main.js?v1"></script>
   </head>
@@ -45,25 +45,39 @@
   </nav>
 
   <div id="content_header" class="hidden flex items-center justify-center flex-wrap px-6 py-4 fixed w-full z-10 top-0 bg-gray-50 shadow-lg">
-    <h1 class="mb-2 font-bold text-center text-gray-800 md:text-xl lg:text-2xl xl:text-3xl md:leading-tight">我的常用工具</h1>
+    <h1 class="mb-2 font-bold text-center text-gray-800 md:text-xl lg:text-2xl xl:text-3xl md:leading-tight">必免使用多态关联</h1>
   </div>
 
   <main class="container mx-auto bg-white mt-24 md:mt-18">
           <div class="max-w-screen-md mx-auto prose lg:prose-lg p-4">
-            <h1 class="mb-2 text-3xl font-bold text-gray-900 md:text-2xl lg:text-4xl xl:text-5xl md:leading-tight">我的常用工具</h1>
-            <div class="text-gray-400 md:text-base">2011-01-01</div>
+            <h1 class="mb-2 text-3xl font-bold text-gray-900 md:text-2xl lg:text-4xl xl:text-5xl md:leading-tight">必免使用多态关联</h1>
+            <div class="text-gray-400 md:text-base">2022-07-18</div>
           </div>
 
-          <div class="post-content max-w-screen-md mx-auto prose lg:prose-lg"><p>Textmate
-OmniGraffle
-<a href="https://github.com/mxcl/homebrew">Homebrew</a>
-gitK
-Redmine <br />
-Firebug    <br />
-VMware Funsion
-Sequel Pro: MySQL database management for Mac OS X
-Air Mouse
-<a href="http://7zx.en.softonic.com/mac">7zX</a></p>
+          <div class="post-content max-w-screen-md mx-auto prose lg:prose-lg"><p>Rails 里总是有一些看起来很酷的功能，比如说 <a href="https://guides.rubyonrails.org/association_basics.html#polymorphic-associations">Polymorphic Associations</a>。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>class Picture &lt; ApplicationRecord
+  belongs_to :imageable, polymorphic: true
+end
+
+class Employee &lt; ApplicationRecord
+  has_many :pictures, as: :imageable
+end
+
+class Product &lt; ApplicationRecord
+  has_many :pictures, as: :imageable
+end
+</code></pre></div></div>
+
+<p>但是我在几个项目中用来下，我发现在处理业务领域的问题时应该尽量必免使用多态关联，在大多数时候这个特性不会带来好处。</p>
+
+<p>1.表面上看少创建了多个表 xxx_pictures，但是在 pictures 表多加了两个字段（imageable_id，imageable_type），如果数据量大的话，带来了不必须的空间浪费。另外在创建索引时，也要小心处理。</p>
+
+<p>2.如果后期的针对 Product 的 Picture 业务需求有变动的话，需要增加字段的话，就给带来字段冗余的问题。</p>
+
+<p>3.多种类型的数据混在一张表中，有可能为给数据聚合查询引入了复杂度。</p>
+
+<p>其实说到根本问题就是在面向业务的代码时，尽量少玩一点花样，让系统的业务更能从容的面对变化。</p>
 </div>
 
     </main>

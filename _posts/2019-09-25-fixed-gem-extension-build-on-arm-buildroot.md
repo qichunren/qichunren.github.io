@@ -6,7 +6,7 @@ comments: true
 categories: Development
 ---
 
-Fixed ruby gem package cross compile on ARM / i.MX6 with Buildroot tool. 
+Fixed ruby gem package cross compile on ARM / i.MX6 with Buildroot tool.
 
 ![Ariaboard core board](/images/ariaboard-coreboard.jpg)
 
@@ -18,13 +18,13 @@ Fixed ruby gem package cross compile on ARM / i.MX6 with Buildroot tool.
 
 后来我突发奇想，Ruby 源代码中的 ext 目录的 C 扩展的标准库都可以编译出来，如 socket 、readline 等，那我将 GEM 包的源代码放进 ext 目录中是不是也可以直接作为标准库的一部分给自动编译出来呢？答案是可以的，不过有一些问题需要注意。
 
-观察 [ext 目录](https://github.com/ruby/ruby/tree/master/ext) 中的 C 扩展接口，发现每个 C 扩展目录中带有一个 *extconf.rb* 文件，C 代码直接位于目录中，然后其中的 lib 目录中是 Ruby 的代码。所以我将 GEM 包的 ext 目录中的内容复制到扩展目录中，然后将 GEM 包的 lib 目录也复制到扩展目录，然后正常 configure / make / make install 的步骤就可以了。
+观察 [ext 目录](https://github.com/ruby/ruby/tree/master/ext) 中的 C 扩展接口，发现每个 C 扩展目录中带有一个 _extconf.rb_ 文件，C 代码直接位于目录中，然后其中的 lib 目录中是 Ruby 的代码。所以我将 GEM 包的 ext 目录中的内容复制到扩展目录中，然后将 GEM 包的 lib 目录也复制到扩展目录，然后正常 configure / make / make install 的步骤就可以了。
 
 下面先在 x86 平台上来验证我的想法：
 
     wget https://cache.ruby-lang.org/pub/ruby/2.6/ruby-2.6.4.tar.gz
     tar zxf ruby-2.6.4.tar.gz
-    wget https://github.com/hparra/ruby-serialport/archive/master.zip 
+    wget https://github.com/hparra/ruby-serialport/archive/master.zip
     unzip master.zip
     cd ruby-2.6.4
     mkdir ext/serialport

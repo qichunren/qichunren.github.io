@@ -58,24 +58,31 @@
 
 <p>在 db/seeds.rb 中，如果要产生 100 个用户名，直接这样做：</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">require</span> <span class="s1">'ffaker'</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>require 'ffaker'
 
- <span class="mi">100</span><span class="p">.</span><span class="nf">times</span> <span class="k">do</span>
-   <span class="n">user</span> <span class="o">=</span> <span class="no">User</span><span class="p">.</span><span class="nf">new</span>
-   <span class="n">user</span><span class="p">.</span><span class="nf">name</span> <span class="o">=</span> <span class="no">Faker</span><span class="o">::</span><span class="no">Name</span><span class="p">.</span><span class="nf">name</span> <span class="o">=&gt;</span> <span class="s2">"David Cao"</span>
-   <span class="n">user</span><span class="p">.</span><span class="nf">email</span> <span class="o">=</span> <span class="no">Faker</span><span class="o">::</span><span class="no">Internet</span><span class="p">.</span><span class="nf">email</span> <span class="o">=&gt;</span> <span class="s2">"qichunren@cqror.com"</span>
-   <span class="n">user</span><span class="p">.</span><span class="nf">save</span>
- <span class="k">end</span></code></pre></figure>
+100.times do
+user = User.new
+user.name = Faker::Name.name =&gt; "David Cao"
+user.email = Faker::Internet.email =&gt; "qichunren@cqror.com"
+user.save
+end
+</code></pre></div></div>
 
-<p>我前一段时间，提交了<a href="https://github.com/EmmanuelOga/ffaker/pull/9">一点代码</a> ，可以产生天朝的姓名：</p>
+<p>我前一段时间，提交了<a href="https://github.com/EmmanuelOga/ffaker/pull/9">一点代码</a> ，可以产生中文形式的姓名：</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">require</span> <span class="s1">'ffaker'</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+require 'ffaker'
 
-<span class="no">Faker</span><span class="o">::</span><span class="no">NameCN</span><span class="p">.</span><span class="nf">first_name</span> <span class="c1"># =&gt; 鑫洋</span>
-<span class="no">Faker</span><span class="o">::</span><span class="no">NameCN</span><span class="p">.</span><span class="nf">last_name</span> <span class="c1"># =&gt; 禹</span>
-<span class="no">Faker</span><span class="o">::</span><span class="no">NameCN</span><span class="p">.</span><span class="nf">name</span> <span class="c1"># =&gt; 俊伶漫</span></code></pre></figure>
+Faker::NameCN.first_name # =&gt; 鑫洋
+Faker::NameCN.last_name # =&gt; 禹
+Faker::NameCN.name # =&gt; 俊伶漫
+
+</code></pre></div></div>
 
 <p>ffaker 目前最新的版本是 1.2，可以产生中文的姓名。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+</code></pre></div></div>
 </div>
 
     </main>
