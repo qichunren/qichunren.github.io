@@ -7,7 +7,7 @@
 }
 
 .post-content p {
-    @apply py-4 leading-8;
+    @apply py-4;
 }
 
 .post-content p code {
@@ -43,7 +43,7 @@
 }
 
 .post-content ul {
-    @apply list-inside list-decimal;
+    @apply list-inside list-disc;
 }
 
 
