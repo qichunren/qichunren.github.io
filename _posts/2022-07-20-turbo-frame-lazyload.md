@@ -14,9 +14,9 @@ categories: Development
 
 看来必须优化了。因为 起步页 (Landing page) 都是多屏内容组合而成的。在初始载入页面时，除了页面上方的第一屏内容显示在浏览器视图中，第一屏以下的页面元素并没有展现给用户。所以我可以延迟加载相应的局部页面，以提高页面加载性能。
 
-在研究的过程中，发现现代的浏览器中有 [Intersection Observer API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API) ，通过这个 API,可以实现当用户浏览网页时，滚动页面时，在合适的时机加载局部页面。
+在研究的过程中，发现现代的浏览器中有 [Intersection Observer API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API) ，通过这个 API，可以实现当用户浏览网页时，滚动页面时，在合适的时机加载局部页面。
 
-但是我不想写 Javascript 啊，因为 Rails 的 Turbo 中已经有了  [Lazy-loaded frame](https://turbo.hotwired.dev/reference/frames#lazy-loaded-frame) 功能了。当局部页面显示在视野中，异步加载局部页面，并更新到相应的 turbo-frame 中。
+但是我不想写 Javascript 啊，因为 Rails 的 Turbo 中已经有了 [Lazy-loaded frame](https://turbo.hotwired.dev/reference/frames#lazy-loaded-frame) 功能了。当局部页面显示在视野中，异步加载局部页面，并更新到相应的 turbo-frame 中。
 
 ```
 <turbo-frame id="messages" src="/messages" loading="lazy">
@@ -52,11 +52,12 @@ categories: Development
 <turbo-frame id="pre_order" src="/blocks/sections/pre_order_lazyload" loading="lazy">Loading ...</turbo-frame>
 ```
 
-config/routes.rb 中加入一条新URL规则:
+config/routes.rb 中加入一条新 URL 规则：
 
 ```
 get "blocks/sections/:name", to: "welcome#lazyload_turbo_frame"
 ```
+
 控制器中的 action 方法：
 
 ```
@@ -71,7 +72,7 @@ get "blocks/sections/:name", to: "welcome#lazyload_turbo_frame"
   end
 ```
 
-最后就是将相应的  partial 页面用 turbo-frame 包含一下就可以了：
+最后就是将相应的 partial 页面用 turbo-frame 包含一下就可以了：
 
 ```
 <turbo-frame id="pre_order">
