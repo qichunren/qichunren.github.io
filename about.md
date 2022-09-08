@@ -12,7 +12,9 @@ title: 关于我
 - Ruby On Rails
 - Hotwire
 - AlpineJS
+- React
 - TailwindCSS
 - PostgreSQL
 - Redis
 - Docker
+- Figma

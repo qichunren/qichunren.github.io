@@ -1,6 +1,6 @@
 ---
 title: 必免使用多态关联
-layout: single
+layout: single_dev_tips
 ---
 
 Rails 里总是有一些看起来很酷的功能，比如说 [Polymorphic Associations](https://guides.rubyonrails.org/association_basics.html#polymorphic-associations)。

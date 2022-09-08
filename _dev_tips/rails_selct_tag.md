@@ -1,6 +1,6 @@
 ---
 title: 各种 select 标签用法记录
-layout: single
+layout: single_dev_tips
 ---
 
 ## 1. select_tag
@@ -13,7 +13,7 @@ layout: single
 
     <%= form_tag "", method: :GET, class: "mt-4" do %>
       <%= select_tag "area_id", options_for_select(Area.options_data, params[:area_id]), include_blank: "-- 所有国家 --" %>
-        --"} %>        
+        --"} %>
       <%= submit_tag "查询", class: "btn" %>
     <% end %>
 

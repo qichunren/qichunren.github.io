@@ -1,6 +1,6 @@
 ---
 title: Ruby heredoc
-layout: single
+layout: single_dev_tips
 ---
 
 When you want to define multiline strings in Ruby, we can use ruby heredoc in the following way:

@@ -27,7 +27,7 @@
 }
 
 .post-content div.highlight {
-    @apply bg-gray-900 text-gray-400 px-2 py-2 overflow-y-auto text-sm rounded;
+    @apply bg-gray-900 text-gray-400 px-2 py-2 overflow-y-auto text-xs rounded;
 }
 
 .post-content code.language-plaintext {

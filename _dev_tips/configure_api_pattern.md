@@ -1,10 +1,9 @@
 ---
-title: Configure 接口API的常用模式
-layout: single
+title: Configure 接口 API 的常用模式
+layout: single_dev_tips
 ---
 
 一般一个软件包都会提供一个配置接口，以满足用户进行一个个性化的定制需求。我阅读了许多 Ruby 项目后，我发现下面的用法是一个常用的模式。
-
 
 ```rb
 YourModule.configure do |config|
@@ -13,8 +12,7 @@ YourModule.configure do |config|
 end
 ```
 
-它的实现如下:
-
+它的实现如下：
 
 ```rb
 module YourModule

@@ -1,6 +1,6 @@
 ---
 title: ActiveSupport 中的 Configurable
-layout: single
+layout: single_dev_tips
 ---
 
 ActiveSupport::Configurable 为类提供一个 config 的方法，通过它可以进行各种配置。
@@ -31,7 +31,7 @@ YourClass.config.a_option
 => "value"
 ```
 
-它还提供了一个类方法 config_accessor ，它可以指定默认值。
+它还提供了一个类方法 config_accessor，它可以指定默认值。
 
 ```ruby
 class YourClass

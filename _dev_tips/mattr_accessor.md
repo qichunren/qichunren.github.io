@@ -1,6 +1,6 @@
 ---
 title: ActiveSupport 中 Module 里的 mattr_accessor 方法
-layout: single
+layout: single_dev_tips
 ---
 
 ```ruby
