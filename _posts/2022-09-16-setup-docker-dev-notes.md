@@ -6,7 +6,7 @@ comments: true
 categories: Development
 ---
 
-最近在维护一个多年前的 Ruby on Rails 项目，产品环境的操作系统是 Ubuntu 14.04，Ruby 是 2.7.4，部署工具是 Capistrano 3。为了在我现在的开发环境中搭建起来一个可用的稳定的开发环境费用了不少功夫，最终采用 Docker 来解决了这个问题。
+最近在维护一个多年前的 Ruby on Rails 项目，产品环境的操作系统是 Ubuntu 14.04，Ruby 是 2.7.4，部署工具是 Capistrano 3。为了在我现在的开发环境中搭建起来一个可用的稳定的开发环境花费了不少功夫，最终采用 Docker 来解决了这个问题。
 
 ## 问题
 
@@ -20,11 +20,11 @@ categories: Development
 
 这其实真的是一个比较复杂的问题。
 
-我现在就遇到这样的一个问题，这个 Ruby on Rails 项目是运行在 Ubuntu 14.04 的操作系统中，而我本地开发用的是 Ubuntu 21.04，项目跑不起来，项目依赖老版本的 MySQL 服务器，和老版本的 Node。
+我现在就遇到这样的一个问题，这个项目是运行在 Ubuntu 14.04 的操作系统中，而我本地开发用的是 Ubuntu 21.04，项目跑不起来，项目依赖老版本的 MySQL 服务器，和老版本的 Node。
 
 ## 解决方案
 
-我之前有使用 Docker 的经验，主要是用 Docker 作为项目的打包部署工具。这次尝试用 Docker 在本地构建是一个 Ubuntu 14.04 系统中的开发环境。
+我之前有使用 Docker 的经验，主要是用 Docker 作为项目的打包部署工具。这次尝试用 Docker 在本地构建一个 Ubuntu 14.04 系统中的开发环境。
 
 Dockerfile 文件如下：
 
@@ -82,7 +82,7 @@ bundle exec rails db:seed
 bundle exec rails s -b 0.0.0.0
 ```
 
-这里的 Dockerfile 文件中最主要操作的就是安装 Ruby、Node、MySQL。在编写 Dockerfile 中的步骤时，应该将最稳定不容易发生变更的步骤放在靠前面的位置。因为 Docker 在基于 Dockerfile 中的指令构建镜像时，是一个链式的层次结构，通过这样的文件系统方式，可以利用缓存，来节省构建的时间。如果在某一个步骤中插入了一条新指令，那么下次构建镜像时，会从新的指令处构建，而新的指令后面的步骤都会被重新执行，从而耗费时间。
+这里的 Dockerfile 文件中最主要操作的就是安装 Ruby、Node、MySQL。在编写 Dockerfile 中的步骤时，应该将最稳定不容易发生变更的步骤放在靠前面的位置。因为 Docker 在基于 Dockerfile 中的指令构建镜像时，是采用了一个链式的层次结构，通过这样的文件系统方式，可以有效利用缓存，来节省构建的时间。如果在某一个步骤中插入了一条新指令，那么下次构建镜像时，会从新的指令处构建，而新的指令后面的步骤都会被重新执行，从而耗费时间。
 
 ### 构建镜像
 
@@ -108,7 +108,7 @@ docker exec -it localapp_app bash
 
 ## 总结
 
-采用 Docker 来作为开发环境，软件包安装方便，与主机环境完全隔绝，并且容易清理。我后面调研 Node 中的各中技术时完全采用了 Docker 的方式，构建一个沙盒镜像：
+采用 Docker 来构建开发环境，软件包安装方便，与主机环境完全隔绝，并且容易清理。我后面调研 Node 中的各种技术时完全采用了 Docker 的方式，构建一个沙盒镜像：
 
 ```
 FROM node:16.17-buster as build
