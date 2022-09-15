@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Qichunren website">
     <meta name="author" content="Qichunren">
-    <title>[译] 创作团结政治分歧 - Qichunren blog</title>
+    <title>Rails 中的测试那些事 - Qichunren blog</title>
     <link rel="stylesheet" href="/assets/css/main.css?v2">
     <script type="text/javascript" src="/assets/js/main.js?v1"></script>
   </head>
@@ -45,28 +45,34 @@
   </nav>
 
   <div id="content_header" class="hidden flex items-center justify-center flex-wrap px-6 py-4 fixed w-full z-10 top-0 bg-gray-50 shadow-lg">
-    <h1 class="mb-2 font-bold text-center text-gray-800 md:text-xl lg:text-2xl xl:text-3xl md:leading-tight">[译] 创作团结政治分歧</h1>
+    <h1 class="mb-2 font-bold text-center text-gray-800 md:text-xl lg:text-2xl xl:text-3xl md:leading-tight">Rails 中的测试那些事</h1>
   </div>
 
   <main class="container mx-auto bg-white mt-24 md:mt-18">
           <div class="max-w-screen-md mx-auto prose lg:prose-lg p-4">
-            <h1 class="mb-2 text-3xl font-bold text-gray-900 md:text-2xl lg:text-4xl xl:text-5xl md:leading-tight">[译] 创作团结政治分歧</h1>
-            <div class="text-gray-400 md:text-base">2022-02-02</div>
+            <h1 class="mb-2 text-3xl font-bold text-gray-900 md:text-2xl lg:text-4xl xl:text-5xl md:leading-tight">Rails 中的测试那些事</h1>
+            <div class="text-gray-400 md:text-base">2010-12-11</div>
           </div>
 
-          <div class="post-content max-w-screen-md mx-auto prose lg:prose-lg"><p>PS: 看到 DHH 发布的一篇文章 <a href="https://world.hey.com/dhh/work-unites-what-politics-divide-a43f8688">《Work unites what politics divide》</a>，字面翻译过来是“工作团结政治分歧”，看完全文后，忍不住想分享出来。</p>
+          <div class="post-content max-w-screen-md mx-auto prose lg:prose-lg"><p>这个本早该记一下的。</p>
 
-<p>有没有比一起制作东西更强大更团结的力量？当人们合作创造比他们自己所能创造的更伟大的东西时，它将共享人性从人们身上拉出来。它通过结合人际关系、对掌握的追求和共同的目标，与所有主要的意义来源相交。从字面上看，它是一种创造力。</p>
+<p>现在 RUBY 社区发展得太快了，各种新技术层出不穷，测试方面同样如此。</p>
 
-<p>当你专注于制作时，你关注的是人们为这项任务带来了什么，而不是他们相信什么、他们如何祈祷或他们属于哪个政治派别。您可以避免所有这些差距，只需远离它们。这反过来意味着更多不同背景的人能够共同成长。</p>
+<p>我记下我在 Rails3 项目中所用的测试方面的技术点。</p>
 
-<p>这就是马克吐温礼仪中的智慧“从不 [to] 在礼貌的公司中讨论政治或宗教”。特别是关于“礼貌公司”的观点。礼貌是协作的齿轮油。</p>
+<p>首先是 rspec-rails，它是 rspec 2 的对 rails3 项目支持的一个 gem，只需要在 Gemfile 中指定 rspec-rails 就可以了，不用指定 rspec2 依赖。</p>
 
-<p>这一切过去都容易得多，因为我们从来不必知道。人们的宗教信仰或政治亲和力很容易成为与合作领域分开的事情。</p>
+<p>然后我还要用到 factorygirl-rails，它同样是 factorygirl 对于 rails3 项目支持的一个 gem，只需要在 Gemfile 中指定 factorygirl-rails 就可以了，不用指定 factorygirl 依赖。</p>
 
-<p>今天，社交媒体已经破坏了数百万人的生活。喜欢、关注、分享和转发的嘈杂声暴露了许多人在最棘手问题上的立场。如果您连接到这些邪恶的网络，通常很难不知道某人的倾向或亲和力。</p>
+<p>还有一个 rspec 的 match 封装 gem，remarkable/active_record，用它可以测试 validates,association(关联等)，说到这里，“测试”这个词我觉得不合适，我用到来感觉这个 gem 太强大了，它简直就是一个代码监管的工具。</p>
 
-<p>但值得付出努力不知道，如果你知道，忘记。为了避免这些分裂的陷阱，去咀嚼无知的幸福。那是创造力的选择。</p>
+<p>另外，<a href="https://github.com/EmmanuelOga/ffaker">ffaker</a> 这个是用来产生随机数据的 gem，它可以用来产生 email, name, company name 等，另外我提交了可以产生中文姓名的<a href="https://github.com/EmmanuelOga/ffaker/pull/9">代码</a> ，可是到现在作者还没有将其融合进去，真希望他快点啊。</p>
+
+<p>其它的如 cucumber 太过先进的东西我还没有在项目中常用。感觉上面介绍的组合就够我用了。</p>
+
+<p>最后持续集成测试方面我还没有在项目中用到，有时间的时候我打算研究一下 <a href="https://github.com/rails/rails/blob/master/ci/ci_setup_notes.txt">cinabox</a> ，为什么要研究这个呢，因为我看到 rails 项目中就是到的这个来作为它的持续测试的工具，它是基本 ubuntu 系统上的一个项目，看介绍，安装很方便的，到时候试试。</p>
+
+<p>我以下写下这些，一是作了大致的记录，另外也防止自己 out 了，如果大家有更好用的工具，也请分享一下。</p>
 </div>
 
     </main>

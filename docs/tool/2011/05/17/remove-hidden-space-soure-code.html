@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Qichunren website">
     <meta name="author" content="Qichunren">
-    <title>[译] 创作团结政治分歧 - Qichunren blog</title>
+    <title>去掉 textmate 源代码中的隐形空格 - Qichunren blog</title>
     <link rel="stylesheet" href="/assets/css/main.css?v2">
     <script type="text/javascript" src="/assets/js/main.js?v1"></script>
   </head>
@@ -45,28 +45,25 @@
   </nav>
 
   <div id="content_header" class="hidden flex items-center justify-center flex-wrap px-6 py-4 fixed w-full z-10 top-0 bg-gray-50 shadow-lg">
-    <h1 class="mb-2 font-bold text-center text-gray-800 md:text-xl lg:text-2xl xl:text-3xl md:leading-tight">[译] 创作团结政治分歧</h1>
+    <h1 class="mb-2 font-bold text-center text-gray-800 md:text-xl lg:text-2xl xl:text-3xl md:leading-tight">去掉 textmate 源代码中的隐形空格</h1>
   </div>
 
   <main class="container mx-auto bg-white mt-24 md:mt-18">
           <div class="max-w-screen-md mx-auto prose lg:prose-lg p-4">
-            <h1 class="mb-2 text-3xl font-bold text-gray-900 md:text-2xl lg:text-4xl xl:text-5xl md:leading-tight">[译] 创作团结政治分歧</h1>
-            <div class="text-gray-400 md:text-base">2022-02-02</div>
+            <h1 class="mb-2 text-3xl font-bold text-gray-900 md:text-2xl lg:text-4xl xl:text-5xl md:leading-tight">去掉 textmate 源代码中的隐形空格</h1>
+            <div class="text-gray-400 md:text-base">2011-05-17</div>
           </div>
 
-          <div class="post-content max-w-screen-md mx-auto prose lg:prose-lg"><p>PS: 看到 DHH 发布的一篇文章 <a href="https://world.hey.com/dhh/work-unites-what-politics-divide-a43f8688">《Work unites what politics divide》</a>，字面翻译过来是“工作团结政治分歧”，看完全文后，忍不住想分享出来。</p>
+          <div class="post-content max-w-screen-md mx-auto prose lg:prose-lg"><p>有这个需要，主要是因为不想在 git 提交后的 diff 中无看到不有意思的 diff 显示。使用 textmate 的同学可以用<a href="https://github.com/glennr/uber-glory-tmbundle">这个工具</a>来解决这个小问题。</p>
 
-<p>有没有比一起制作东西更强大更团结的力量？当人们合作创造比他们自己所能创造的更伟大的东西时，它将共享人性从人们身上拉出来。它通过结合人际关系、对掌握的追求和共同的目标，与所有主要的意义来源相交。从字面上看，它是一种创造力。</p>
+<h3 id="安装方法">安装方法</h3>
 
-<p>当你专注于制作时，你关注的是人们为这项任务带来了什么，而不是他们相信什么、他们如何祈祷或他们属于哪个政治派别。您可以避免所有这些差距，只需远离它们。这反过来意味着更多不同背景的人能够共同成长。</p>
-
-<p>这就是马克吐温礼仪中的智慧“从不 [to] 在礼貌的公司中讨论政治或宗教”。特别是关于“礼貌公司”的观点。礼貌是协作的齿轮油。</p>
-
-<p>这一切过去都容易得多，因为我们从来不必知道。人们的宗教信仰或政治亲和力很容易成为与合作领域分开的事情。</p>
-
-<p>今天，社交媒体已经破坏了数百万人的生活。喜欢、关注、分享和转发的嘈杂声暴露了许多人在最棘手问题上的立场。如果您连接到这些邪恶的网络，通常很难不知道某人的倾向或亲和力。</p>
-
-<p>但值得付出努力不知道，如果你知道，忘记。为了避免这些分裂的陷阱，去咀嚼无知的幸福。那是创造力的选择。</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd ~/Library/Application\ Support/TextMate/Bundles/
+git clone git://github.com/glennr/uber-glory-tmbundle.git Uber\ Glory.tmbundle
+cd Uber\ Glory.tmbundle
+git submodule update --init
+osascript -e 'tell app "TextMate" to reload bundles'
+</code></pre></div></div>
 </div>
 
     </main>

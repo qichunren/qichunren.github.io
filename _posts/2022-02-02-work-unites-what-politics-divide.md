@@ -6,7 +6,7 @@ comments: true
 categories: Development
 ---
 
-PS: 看到 DHH 发布的一篇文章 [《Work unites what politics divide》](https://world.hey.com/dhh/work-unites-what-politics-divide-a43f8688)，字面翻译过来是 “工作团结政治分歧”，看完全文后，忍不住想分享出来。
+PS: 看到 DHH 发布的一篇文章 [《Work unites what politics divide》](https://world.hey.com/dhh/work-unites-what-politics-divide-a43f8688)，字面翻译过来是“工作团结政治分歧”，看完全文后，忍不住想分享出来。
 
 有没有比一起制作东西更强大更团结的力量？当人们合作创造比他们自己所能创造的更伟大的东西时，它将共享人性从人们身上拉出来。它通过结合人际关系、对掌握的追求和共同的目标，与所有主要的意义来源相交。从字面上看，它是一种创造力。
 
