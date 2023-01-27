@@ -4,7 +4,7 @@
 
 # Qichunren Blog README
 
-[qichunren.github.io](https://qichunren.github.io/), record my thought and notes.
+[qichunren.me](https://qichunren.me/), record my thought and notes.
 
 ## Get started
 
