@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VXRR24ZF7P"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-VXRR24ZF7P');
+</script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Qichunren website">
+    <meta name="author" content="Qichunren">
+    <title>What can be done with a single line command - Qichunren blog</title>
+    <link rel="stylesheet" href="/assets/css/main.css?v2">
+    <script type="text/javascript" src="/assets/js/main.js?v1"></script>
+  </head>
+
+  <body class="has-navbar-fixed-top page-index">
+
+    <nav id="header" class="flex items-center justify-between flex-wrap px-6 py-6 fixed w-full z-10 top-0 bg-white shadow-sm">
+
+      <a class="flex items-center flex-shrink-0 mr-6 no-underline hover:text-blue-800 hover:no-underline" href="/index.html">
+        <img class="card-img-top rounded-circle" src="https://avatars.githubusercontent.com/u/39784?s=40&v=4" />
+        <span class="text-2xl pl-2">Qichunren's blog</span>
+      </a>
+
+    <div class="block lg:hidden">
+      <button id="nav-toggle" class="flex items-center px-3 py-2 border rounded text-gray-500 border-gray-600 hover:text-blue-600 hover:border-white">
+        <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
+      </button>
+    </div>
+
+    <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block pt-6 lg:pt-0" id="nav-content">
+      <ul class="list-reset lg:flex justify-end flex-1 items-center">
+        <li class="mr-3">
+          <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="/index.html">Posts</a>
+        </li>
+        <li class="mr-3">
+          <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="/dev_tips.html">Dev Tips</a>
+        </li>
+        <li class="mr-3">
+          <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="/about.html">About</a>
+        </li>
+        <li class="mr-3">
+          <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="https://github.com/qichunren">Github</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div id="content_header" class="hidden flex items-center justify-center flex-wrap px-6 py-4 fixed w-full z-10 top-0 bg-gray-50 shadow-lg">
+    <h1 class="mb-2 font-bold text-center text-gray-800 md:text-xl lg:text-2xl xl:text-3xl md:leading-tight">What can be done with a single line command</h1>
+  </div>
+
+  <main class="container mx-auto bg-white mt-24 md:mt-18">
+          <div class="max-w-screen-md mx-auto prose lg:prose-lg p-4">
+            <h1 class="mb-2 text-3xl font-bold text-gray-900 md:text-2xl lg:text-4xl xl:text-5xl md:leading-tight">What can be done with a single line command</h1>
+            <div class="text-gray-400 md:text-base">2023-11-04</div>
+          </div>
+
+          <div class="post-content max-w-screen-md mx-auto prose lg:prose-lg"><p>技术世界中存在许多可以在一行命令中完成的任务，这些命令既方便又实用。以下是一些值得记录的例子。</p>
+
+<h2 id="快速搭建-http-服务器">快速搭建 HTTP 服务器</h2>
+
+<p>在Python 3.x中，可以使用以下命令启动一个本地的HTTP服务器（端口号8000）：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python3 -m http.server 8000
+</code></pre></div></div>
+
+<p>而在Ruby中，下面的命令能够快速搭建HTTP服务器并指定端口号为8000：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ruby -run -e httpd . -p 8000  
+</code></pre></div></div>
+
+<h2 id="查杀进程">查杀进程</h2>
+
+<p>查找占用指定端口（8000）的进程，并强制终止该进程：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kill -9 $(lsof -t -i:8000)
+</code></pre></div></div>
+
+<p>根据进程名查找并终止进程：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ps aux | grep "process_name" | grep -v "grep" | awk '{print $2}' | xargs kill -9
+</code></pre></div></div>
+
+<h2 id="查找文件">查找文件</h2>
+
+<p>查找当前目录下（不包括子目录）所有大小为100M以上的日志文件，并删除</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>find . -maxdepth 1 -name "*.log" -size +100M -exec rm -rf {} \;
+</code></pre></div></div>
+
+<h2 id="docker-应用">Docker 应用</h2>
+
+<p>Docker是快速搭建应用、加速开发的绝佳工具，以下是一些命令示例：</p>
+
+<h3 id="启动-redis-服务">启动 Redis 服务</h3>
+
+<p>下面的命令能够快速启动一个即开即用的Redis服务（端口映射为6379:6379）：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run --rm --name redis -p 6379:6379 redis:4-alpine
+</code></pre></div></div>
+
+<h3 id="启动-postgresql-服务适用于开发环境">启动 PostgreSQL 服务（适用于开发环境）</h3>
+
+<p>下述命令可在后台运行一个开机自启的PostgreSQL服务，并适用于开发环境（端口映射为5432:5432）。这个实例的用户名被设置为”postgres”，并且采用了”trust”的认证方式。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run -d --restart=always -p 5432:5432 -e POSTGRES_USER=postgres -e POSTGRES_HOST_AUTH_METHOD=trust --name=postgres-dev postgres
+</code></pre></div></div>
+
+<p>这些命令能够快速完成常见任务，极大地简化了开发流程，提高了效率。无论是搭建HTTP服务器还是运行容器化应用，通过一行命令完成这些任务，为工程师们节省了宝贵的时间，使得开发过程更加高效、便捷。</p>
+</div>
+
+    </main>
+    <svg id="scrolltop" xmlns="http://www.w3.org/2000/svg" class="hidden fixed bottom-2 right-2 h-16 w-16 cursor-pointer text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
+    </svg>
+  </body>
+</html>
