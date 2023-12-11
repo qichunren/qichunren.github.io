@@ -15,7 +15,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Qichunren website">
     <meta name="author" content="Qichunren">
-    <title>Benchmark 用法 - Qichunren blog</title>
+    <title>深入了解 Ruby Benchmark 用法 - Qichunren blog</title>
     <link rel="stylesheet" href="/assets/css/main.css?v2">
     <script type="text/javascript" src="/assets/js/main.js?v1"></script>
   </head>
@@ -54,41 +54,76 @@
   </nav>
 
   <div id="content_header" class="hidden flex items-center justify-center flex-wrap px-6 py-4 fixed w-full z-10 top-0 bg-gray-50 shadow-lg">
-    <h1 class="mb-2 font-bold text-center text-gray-800 md:text-xl lg:text-2xl xl:text-3xl md:leading-tight">Benchmark 用法</h1>
+    <h1 class="mb-2 font-bold text-center text-gray-800 md:text-xl lg:text-2xl xl:text-3xl md:leading-tight">深入了解 Ruby Benchmark 用法</h1>
   </div>
 
   <main class="container mx-auto bg-white mt-24 md:mt-18">
           <div class="max-w-screen-md mx-auto prose lg:prose-lg p-4">
-            <h1 class="mb-2 text-3xl font-bold text-gray-900 md:text-2xl lg:text-4xl xl:text-5xl md:leading-tight">Benchmark 用法</h1>
+            <h1 class="mb-2 text-3xl font-bold text-gray-900 md:text-2xl lg:text-4xl xl:text-5xl md:leading-tight">深入了解 Ruby Benchmark 用法</h1>
             <div class="text-gray-400 md:text-base">2008-10-09</div>
           </div>
 
-          <div class="post-content max-w-screen-md mx-auto prose lg:prose-lg"><p><a href="http://rubybenchmark.com/">Benchmark</a> 可以用来测试某个函数或者任何代码的执行时间。</p>
+          <div class="post-content max-w-screen-md mx-auto prose lg:prose-lg"><h2 id="前言">前言</h2>
 
-<p>用法很简单：</p>
+<p>Ruby中的Benchmark模块是一个强大的工具，用于测量和比较代码的性能。通过Benchmark，你可以对代码块的执行时间进行精确测量，帮助你找出性能瓶颈并进行优化。本文将深入介绍Ruby Benchmark的用法，帮助你更好地利用这个工具。</p>
+
+<h2 id="什么是-benchmark">什么是 Benchmark？</h2>
+
+<p>Benchmark模块是Ruby标准库中的一部分，旨在提供代码执行时间的测量工具。它通过记录代码块的执行时间来帮助你评估程序的性能。</p>
+
+<h2 id="benchmark-的基本用法">Benchmark 的基本用法</h2>
+
+<p>首先，确保你已经在代码中引入Benchmark模块：</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>require 'benchmark'
-n = 1500
-Benchmark.bmbm do |x|
-  x.report("+ method") { n.times {string1 = "ddd" + "11111" + "Helodd" } }
-  x.report("&lt;&lt; method") { n.times {string2 = "ddd" &lt;&lt; "11111" &lt;&lt; "Helodd"} }
+</code></pre></div></div>
+
+<p>接下来，使用Benchmark.measure方法来测量代码块的执行时间。以下是一个基本示例：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>result = Benchmark.measure do
+  # 在这里放置你想要测量的代码
+  1000000.times { rand }
+end
+
+puts result
+</code></pre></div></div>
+
+<p>上述代码将输出包含执行时间等信息的Benchmark::Tms对象。你可以从中提取有关代码执行时间的信息。</p>
+
+<h2 id="benchmark-的更高级用法">Benchmark 的更高级用法</h2>
+
+<h3 id="1-benchmarkbm-方法">1. Benchmark.bm 方法</h3>
+
+<p><code class="language-plaintext highlighter-rouge">Benchmark.bm</code> 方法用于比较多个代码块的执行时间。以下是一个示例</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Benchmark.bm do |x|
+  x.report("Block 1") { 1000000.times { rand } }
+  x.report("Block 2") { 1000000.times { Math.sqrt(rand) } }
 end
 </code></pre></div></div>
 
-<p>结果如下：</p>
+<p>这将输出一个表格，显示每个代码块的执行时间。</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>usermatoMacBook-Pro:test qichunren$ ruby test.rb
-Rehearsal ---------------------------------------------
-+ method    0.000000   0.000000   0.000000 (  0.001722)
-&lt;&lt; method   0.000000   0.000000   0.000000 (  0.001073)
------------------------------------- total: 0.000000sec
+<h3 id="2-benchmarkrealtime-方法">2. Benchmark.realtime 方法</h3>
 
-                user     system      total        real
-+ method    0.000000   0.000000   0.000000 (  0.001040)
-&lt;&lt; method   0.000000   0.000000   0.000000 (  0.000719)
+<p>如果你只关心代码块的执行时间而不需要详细的报告，可以使用<code class="language-plaintext highlighter-rouge">Benchmark.realtime</code>方法：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>elapsed_time = Benchmark.realtime do
+  # 在这里放置你想要测量的代码
+  1000000.times { rand }
+end
+
+puts "Elapsed time: #{elapsed_time} seconds"
+
 </code></pre></div></div>
 
-<h3 id="参考资料">参考资料</h3>
+<h2 id="结语">结语</h2>
+
+<p>Ruby Benchmark是一个强大的性能测量工具，可以帮助你优化代码并改善程序的运行效率。通过本文的介绍，你现在应该对如何使用Benchmark模块有了更深入的了解。在进行性能优化时，Benchmark是一个不可或缺的工具，帮助你量化改进的效果。</p>
+
+<p>希望本文对你在Ruby项目中使用Benchmark提供了一些帮助。如果你有任何问题或想要深入了解其他方面，请随时提问。</p>
+
+<h2 id="参考资料">参考资料</h2>
 
 <ul>
   <li><a href="http://ruby-doc.org/stdlib/libdoc/benchmark/rdoc/index.html">Benchmark Rdoc</a></li>
