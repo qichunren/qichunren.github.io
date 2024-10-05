@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accessible Sidebar</title>
+    <title>Accessible Sidebar with Overlay</title>
     <style type="text/css">
       /* Basic reset */
 * {
@@ -32,6 +32,26 @@ body {
     z-index: 1000;
 }
 
+/* Overlay styling */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    visibility: hidden; /* Hidden by default */
+    opacity: 0;
+    transition: opacity 0.3s ease; /* Add transition for smooth appearance */
+    z-index: 900; /* Place it behind the sidebar */
+}
+
+/* When overlay is visible */
+.overlay.visible {
+    visibility: visible;
+    opacity: 1;
+}
+
 /* Main content */
 #main-content {
     padding: 20px;
@@ -42,7 +62,7 @@ body {
     transform: translateX(0); /* Slide in to its original position */
 }
 
-/* Accessibility: Hidden state (Use opacity and visibility instead of display to keep element in the flow) */
+/* Accessibility: Hidden state (Use visibility and opacity instead of display to keep element in the flow) */
 [aria-hidden="true"] {
     visibility: hidden;
     opacity: 0;
@@ -57,13 +77,16 @@ body {
 <body>
     <button id="open-sidebar" aria-expanded="false" aria-controls="sidebar" aria-label="Open sidebar">Open Sidebar</button>
 
-    <!-- Sidebar -->
-    <div id="sidebar" class="sidebar" role="dialog" aria-modal="true" aria-hidden="true">
+    <!-- Sidebar with data-overlay attribute -->
+    <div id="sidebar" class="sidebar" role="dialog" aria-modal="true" aria-hidden="true" data-overlay="true">
         <button id="close-sidebar" aria-label="Close sidebar">Close</button>
         <h2>Sidebar Content</h2>
         <p>This is a sidebar that provides additional information or form inputs.</p>
         <!-- Additional content can be added here -->
     </div>
+
+    <!-- Overlay -->
+    <div id="overlay" class="overlay" aria-hidden="true"></div>
 
     <div id="main-content">
         <h1>Main Content</h1>
@@ -74,38 +97,48 @@ body {
       const openButton = document.getElementById('open-sidebar');
 const closeButton = document.getElementById('close-sidebar');
 const sidebar = document.getElementById('sidebar');
+const overlay = document.getElementById('overlay');
 
 openButton.addEventListener('click', () => {
     sidebar.classList.add('open');
-    sidebar.setAttribute('aria-hidden', 'false'); // Make it accessible immediately
+    sidebar.setAttribute('aria-hidden', 'false');
     openButton.setAttribute('aria-expanded', 'true');
+
+    // Check if overlay is needed based on data-overlay attribute
+    if (sidebar.getAttribute('data-overlay') === 'true') {
+        overlay.classList.add('visible');
+        overlay.setAttribute('aria-hidden', 'false');
+    }
+
     sidebar.focus(); // Set focus to the sidebar for accessibility
 });
 
-closeButton.addEventListener('click', () => {
+closeButton.addEventListener('click', closeSidebar);
+
+// Close sidebar when pressing 'Escape' key
+document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && sidebar.classList.contains('open')) {
+        closeSidebar();
+    }
+});
+
+// Close sidebar when clicking on the overlay
+overlay.addEventListener('click', closeSidebar);
+
+function closeSidebar() {
     sidebar.classList.remove('open');
     openButton.setAttribute('aria-expanded', 'false');
-    
+
+    // Remove overlay visibility
+    overlay.classList.remove('visible');
+    overlay.setAttribute('aria-hidden', 'true');
+
     // Delay the aria-hidden attribute change to ensure animation completes
     setTimeout(() => {
         sidebar.setAttribute('aria-hidden', 'true');
         openButton.focus(); // Return focus to the button
     }, 300); // Match the duration of the CSS transition
-});
-
-// Close sidebar when pressing 'Escape' key
-document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && sidebar.classList.contains('open')) {
-        sidebar.classList.remove('open');
-        openButton.setAttribute('aria-expanded', 'false');
-        
-        // Delay the aria-hidden attribute change to ensure animation completes
-        setTimeout(() => {
-            sidebar.setAttribute('aria-hidden', 'true');
-            openButton.focus(); // Return focus to the button
-        }, 300); // Match the duration of the CSS transition
-    }
-});
+}
 
     </script>
 </body>
