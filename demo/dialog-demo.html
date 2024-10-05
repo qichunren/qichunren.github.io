@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accessible Dialog with ARIA</title>
+    <title>Accessible Dialog with Backdrop Control</title>
     <style>
         dialog {
             border: none;
@@ -22,7 +22,7 @@
 
 <button id="openDialogButton">Open Dialog</button>
 
-<dialog id="dialog" aria-labelledby="dialogTitle" aria-describedby="dialogDescription" aria-modal="true">
+<dialog id="dialog" aria-labelledby="dialogTitle" aria-describedby="dialogDescription" aria-modal="true" data-close-on-backdrop="true">
     <h2 id="dialogTitle">Dialog Title</h2>
     <p id="dialogDescription">This is a description of the dialog. Please fill in the form below.</p>
     
@@ -46,12 +46,8 @@
     openDialogButton.addEventListener('click', () => {
         dialog.showModal();
         trapFocus();
-        // 将焦点移动到弹出框内的第一个可聚焦元素
         const firstFocusableElement = dialog.querySelector('input, button, [href], select, textarea, [tabindex]:not([tabindex="-1"])');
-        if (firstFocusableElement) {
-          console.log("firstFocusableElement", firstFocusableElement);
-          firstFocusableElement.focus();
-        }
+        if (firstFocusableElement) firstFocusableElement.focus();
     });
 
     // 关闭弹出框
@@ -64,6 +60,27 @@
         openDialogButton.focus();
     });
 
+    // 监听点击事件，处理点击遮罩层关闭弹出框的行为
+    dialog.addEventListener('click', (event) => {
+        console.log("click", event.target);
+        const rect = dialog.getBoundingClientRect();
+        const buffer = 160; // 设置缓冲距离，例如 160 像素
+        const isInBufferZone = (
+            event.clientX >= rect.left - buffer &&
+            event.clientX <= rect.right + buffer &&
+            event.clientY >= rect.top - buffer &&
+            event.clientY <= rect.bottom + buffer
+        );
+
+        // 如果点击在缓冲区域外，且属性允许关闭
+        if (!isInBufferZone) {
+            const closeOnBackdrop = dialog.getAttribute('data-close-on-backdrop') === 'true';
+            if (closeOnBackdrop) {
+                dialog.close();
+            }
+        }
+    });
+
     // 焦点圈定函数
     function trapFocus() {
         const focusableElements = dialog.querySelectorAll(
@@ -74,15 +91,12 @@
 
         dialog.addEventListener('keydown', (event) => {
             if (event.key === 'Tab') {
-                // 按下Shift + Tab
-                if (event.shiftKey) {
+                if (event.shiftKey) { // Shift + Tab
                     if (document.activeElement === firstFocusableElement) {
                         event.preventDefault();
                         lastFocusableElement.focus();
                     }
-                } 
-                // 按下Tab
-                else {
+                } else { // Tab
                     if (document.activeElement === lastFocusableElement) {
                         event.preventDefault();
                         firstFocusableElement.focus();
