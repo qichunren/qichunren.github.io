@@ -7,14 +7,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.1.0 # Not needed with a .ruby-version file
+          ruby-version: 3.2.0 # Updated to newer version with compatible RubyGems
           bundler-cache: true # runs 'bundle install' and caches installed gems automatically
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v4
         with:
-          node-version: '16.13.0'      
+          node-version: '22'
       - run: yarn
       - run: yarn build:css
       - run: rm -rf .sass-cache
