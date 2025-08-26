@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VXRR24ZF7P"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-VXRR24ZF7P');
+</script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Qichunren website">
+    <meta name="author" content="Qichunren">
+    <title>Ruby on Rails 中 Solid Queue 的集成与踩坑记录 - Qichunren blog</title>
+    <link rel="stylesheet" href="/assets/css/main.css?v2">
+    <script type="text/javascript" src="/assets/js/main.js?v1"></script>
+  </head>
+
+  <body class="has-navbar-fixed-top page-index">
+
+    <nav id="header" class="flex items-center justify-between flex-wrap px-6 py-6 fixed w-full z-10 top-0 bg-white shadow-sm">
+
+      <a class="flex items-center flex-shrink-0 mr-6 no-underline hover:text-blue-800 hover:no-underline" href="/index.html">
+        <img class="card-img-top rounded-circle" src="https://avatars.githubusercontent.com/u/39784?s=40&v=4" />
+        <span class="text-2xl pl-2">Qichunren's blog</span>
+      </a>
+
+    <div class="block lg:hidden">
+      <button id="nav-toggle" class="flex items-center px-3 py-2 border rounded text-gray-500 border-gray-600 hover:text-blue-600 hover:border-white">
+        <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
+      </button>
+    </div>
+
+    <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block pt-6 lg:pt-0" id="nav-content">
+      <ul class="list-reset lg:flex justify-end flex-1 items-center">
+        <li class="mr-3">
+          <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="/index.html">Posts</a>
+        </li>
+        <li class="mr-3">
+          <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="/dev_tips.html">Dev Tips</a>
+        </li>
+        <li class="mr-3">
+          <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="/about.html">About</a>
+        </li>
+        <li class="mr-3">
+          <a class="inline-block text-gray-600 no-underline hover:text-blue-700 py-2 px-4" href="https://github.com/qichunren">Github</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div id="content_header" class="hidden flex items-center justify-center flex-wrap px-6 py-4 fixed w-full z-10 top-0 bg-gray-50 shadow-lg">
+    <h1 class="mb-2 font-bold text-center text-gray-800 md:text-xl lg:text-2xl xl:text-3xl md:leading-tight">Ruby on Rails 中 Solid Queue 的集成与踩坑记录</h1>
+  </div>
+
+  <main class="container mx-auto bg-white mt-24 md:mt-18">
+          <div class="max-w-screen-md mx-auto prose lg:prose-lg p-4">
+            <h1 class="mb-2 text-3xl font-bold text-gray-900 md:text-2xl lg:text-4xl xl:text-5xl md:leading-tight">Ruby on Rails 中 Solid Queue 的集成与踩坑记录</h1>
+            <div class="text-gray-400 md:text-base">2025-08-26</div>
+          </div>
+
+          <div class="post-content max-w-screen-md mx-auto prose lg:prose-lg"><h1 id="ruby-on-rails-中-solid-queue-的集成与踩坑记录">Ruby on Rails 中 Solid Queue 的集成与踩坑记录</h1>
+
+<p>在 Rails 8 中，<strong>Solid Queue</strong> 作为官方推荐的任务队列系统，替代了 Sidekiq/Resque 等第三方方案，和 Active Job 无缝集成。它直接依赖数据库存储和执行任务，适合不想额外引入 Redis 的团队。
+本文将结合实际踩坑案例，介绍 Solid Queue 的表结构、如何集成异步任务，以及开发过程中需要注意的一些细节。</p>
+
+<hr />
+
+<h2 id="1-solid-queue-的表用途简介">1. Solid Queue 的表用途简介</h2>
+
+<p>Solid Queue 在数据库中主要维护了几张表， 在这里有这些表的<a href="https://gist.github.com/qichunren/41ef3bb5138c192e8a699111ce0adbb3">详细结构定义</a>，每张表对应不同的职责：</p>
+
+<ul>
+  <li>
+    <p><strong><code class="language-plaintext highlighter-rouge">solid_queue_jobs</code></strong>
+核心表，存储任务的元信息。包括任务类名（<code class="language-plaintext highlighter-rouge">class_name</code>）、参数（<code class="language-plaintext highlighter-rouge">arguments</code>）、优先级（<code class="language-plaintext highlighter-rouge">priority</code>）、入队时间（<code class="language-plaintext highlighter-rouge">enqueued_at</code>）、计划执行时间（<code class="language-plaintext highlighter-rouge">scheduled_at</code>）等。</p>
+  </li>
+  <li>
+    <p><strong><code class="language-plaintext highlighter-rouge">solid_queue_ready_executions</code></strong>
+存放已经可以立刻执行的任务（即“就绪队列”）。Worker 会不断从这里取出任务执行。</p>
+  </li>
+  <li>
+    <p><strong><code class="language-plaintext highlighter-rouge">solid_queue_blocked_executions</code></strong>
+存放因并发限制（如 <code class="language-plaintext highlighter-rouge">concurrency_key</code>）而暂时被阻塞的任务。</p>
+  </li>
+  <li>
+    <p><strong><code class="language-plaintext highlighter-rouge">solid_queue_failed_executions</code></strong>
+存放执行失败的任务，方便后续排查和重试。</p>
+  </li>
+  <li>
+    <p><strong><code class="language-plaintext highlighter-rouge">solid_queue_recurring_executions</code></strong>
+用于周期任务（类似于 cron job），存储下次执行时间。</p>
+  </li>
+</ul>
+
+<p>可以简单理解为：</p>
+
+<blockquote>
+  <p><strong><code class="language-plaintext highlighter-rouge">jobs</code> 是任务主表 → <code class="language-plaintext highlighter-rouge">ready_executions</code> 负责立刻可执行的队列 → <code class="language-plaintext highlighter-rouge">blocked_executions</code> 负责限流/锁定 → <code class="language-plaintext highlighter-rouge">failed_executions</code> 负责失败追踪 → <code class="language-plaintext highlighter-rouge">recurring_executions</code> 负责周期调度。</strong></p>
+</blockquote>
+
+<hr />
+
+<h2 id="2-异步任务的集成">2. 异步任务的集成</h2>
+
+<p>在 Rails 内部，我们只需要写：</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">CleanJob</span><span class="p">.</span><span class="nf">perform_later</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Rails 会自动把任务序列化为 JSON 并写入 <code class="language-plaintext highlighter-rouge">solid_queue_jobs</code>，再根据是否定时任务，选择插入 <code class="language-plaintext highlighter-rouge">ready_executions</code> 或设置 <code class="language-plaintext highlighter-rouge">scheduled_at</code>。</p>
+
+<p>但在一些跨项目场景（比如 Node.js 需要调用 Rails 的异步任务），就需要<strong>手工插入任务记录</strong>。以下是一个 Node.js 示例：</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="cm">/**
+ * 获取当前 UTC 时间（格式化为 YYYY-MM-DD HH:mm:ss）
+ */</span>
+<span class="kd">function</span> <span class="nf">getUTCTimeFormatted</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">now</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Date</span><span class="p">();</span>
+  <span class="kd">const</span> <span class="nx">pad</span> <span class="o">=</span> <span class="p">(</span><span class="nx">n</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">n</span><span class="p">.</span><span class="nf">toString</span><span class="p">().</span><span class="nf">padStart</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="dl">'</span><span class="s1">0</span><span class="dl">'</span><span class="p">);</span>
+
+  <span class="kd">const</span> <span class="nx">year</span> <span class="o">=</span> <span class="nx">now</span><span class="p">.</span><span class="nf">getUTCFullYear</span><span class="p">();</span>
+  <span class="kd">const</span> <span class="nx">month</span> <span class="o">=</span> <span class="nf">pad</span><span class="p">(</span><span class="nx">now</span><span class="p">.</span><span class="nf">getUTCMonth</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">day</span> <span class="o">=</span> <span class="nf">pad</span><span class="p">(</span><span class="nx">now</span><span class="p">.</span><span class="nf">getUTCDate</span><span class="p">());</span>
+  <span class="kd">const</span> <span class="nx">hour</span> <span class="o">=</span> <span class="nf">pad</span><span class="p">(</span><span class="nx">now</span><span class="p">.</span><span class="nf">getUTCHours</span><span class="p">());</span>
+  <span class="kd">const</span> <span class="nx">minute</span> <span class="o">=</span> <span class="nf">pad</span><span class="p">(</span><span class="nx">now</span><span class="p">.</span><span class="nf">getUTCMinutes</span><span class="p">());</span>
+  <span class="kd">const</span> <span class="nx">second</span> <span class="o">=</span> <span class="nf">pad</span><span class="p">(</span><span class="nx">now</span><span class="p">.</span><span class="nf">getUTCSeconds</span><span class="p">());</span>
+
+  <span class="k">return</span> <span class="s2">`</span><span class="p">${</span><span class="nx">year</span><span class="p">}</span><span class="s2">-</span><span class="p">${</span><span class="nx">month</span><span class="p">}</span><span class="s2">-</span><span class="p">${</span><span class="nx">day</span><span class="p">}</span><span class="s2"> </span><span class="p">${</span><span class="nx">hour</span><span class="p">}</span><span class="s2">:</span><span class="p">${</span><span class="nx">minute</span><span class="p">}</span><span class="s2">:</span><span class="p">${</span><span class="nx">second</span><span class="p">}</span><span class="s2">`</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">async</span> <span class="kd">function</span> <span class="nf">perform_later_job</span><span class="p">(</span><span class="nx">conn</span><span class="p">,</span> <span class="nx">job_class</span><span class="p">,</span> <span class="nx">job_arguments</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">default_queue</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">default</span><span class="dl">"</span><span class="p">;</span>
+  <span class="kd">const</span> <span class="nx">job_id</span> <span class="o">=</span> <span class="nf">uuidv4</span><span class="p">();</span>
+  <span class="kd">const</span> <span class="nx">now</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Date</span><span class="p">().</span><span class="nf">toISOString</span><span class="p">();</span> <span class="c1">// ISO8601 时间</span>
+  <span class="kd">const</span> <span class="nx">now_ts</span> <span class="o">=</span> <span class="nf">getUTCTimeFormatted</span><span class="p">();</span>
+
+  <span class="kd">const</span> <span class="nx">payload</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">job_class</span><span class="p">,</span>
+    <span class="nx">job_id</span><span class="p">,</span>
+    <span class="na">provider_job_id</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+    <span class="na">queue_name</span><span class="p">:</span> <span class="nx">default_queue</span><span class="p">,</span>
+    <span class="na">priority</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+    <span class="na">arguments</span><span class="p">:</span> <span class="nx">job_arguments</span><span class="p">,</span>   <span class="c1">// 数组</span>
+    <span class="na">executions</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="na">exception_executions</span><span class="p">:</span> <span class="p">{},</span>
+    <span class="na">locale</span><span class="p">:</span> <span class="dl">"</span><span class="s2">zh-CN</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">timezone</span><span class="p">:</span> <span class="dl">"</span><span class="s2">America/Sao_Paulo</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">enqueued_at</span><span class="p">:</span> <span class="nx">now</span><span class="p">,</span>
+    <span class="na">scheduled_at</span><span class="p">:</span> <span class="kc">null</span>          <span class="c1">// 定时任务则写 ISO8601 时间</span>
+  <span class="p">};</span>
+
+  <span class="c1">// 插入到 jobs 主表</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">jobResult</span><span class="p">]</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">conn</span><span class="p">.</span><span class="nf">execute</span><span class="p">(</span>
+    <span class="s2">`INSERT INTO solid_queue_jobs
+       (queue_name, class_name, arguments, priority, active_job_id, scheduled_at, created_at, updated_at)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?)`</span><span class="p">,</span>
+    <span class="p">[</span><span class="nx">default_queue</span><span class="p">,</span> <span class="nx">job_class</span><span class="p">,</span> <span class="nx">JSON</span><span class="p">.</span><span class="nf">stringify</span><span class="p">(</span><span class="nx">payload</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">job_id</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">now_ts</span><span class="p">,</span> <span class="nx">now_ts</span><span class="p">]</span>
+  <span class="p">);</span>
+
+  <span class="kd">const</span> <span class="nx">job_db_id</span> <span class="o">=</span> <span class="nx">jobResult</span><span class="p">.</span><span class="nx">insertId</span><span class="p">;</span>
+
+  <span class="c1">// 插入到 ready_executions，使其立刻可执行</span>
+  <span class="k">await</span> <span class="nx">conn</span><span class="p">.</span><span class="nf">execute</span><span class="p">(</span>
+    <span class="s2">`INSERT INTO solid_queue_ready_executions (job_id, queue_name, priority, created_at)
+     VALUES (?, ?, ?, ?)`</span><span class="p">,</span>
+    <span class="p">[</span><span class="nx">job_db_id</span><span class="p">,</span> <span class="nx">default_queue</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">now_ts</span><span class="p">]</span>
+  <span class="p">);</span>
+
+  <span class="k">return</span> <span class="p">{</span> <span class="nx">job_id</span><span class="p">,</span> <span class="nx">job_db_id</span><span class="p">,</span> <span class="na">queue_name</span><span class="p">:</span> <span class="nx">default_queue</span> <span class="p">};</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>这样，Rails 的 worker 便能立即消费该任务。</p>
+
+<hr />
+
+<h2 id="3-注意事项踩坑点">3. 注意事项（踩坑点）</h2>
+
+<p>在实际对接时，我遇到过 <code class="language-plaintext highlighter-rouge">/jobs</code> 页面报错：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ArgumentError (invalid xmlschema format: "2025-08-25 16:49:42")
+</code></pre></div></div>
+
+<p>原因是 <strong>Rails 在反序列化 <code class="language-plaintext highlighter-rouge">arguments</code> JSON 时，会调用 <code class="language-plaintext highlighter-rouge">Time.xmlschema</code></strong>。如果传入的是 <code class="language-plaintext highlighter-rouge">YYYY-MM-DD HH:MM:SS</code> 这种格式，就会报错。Rails 期望的时间格式必须是 <strong>ISO8601</strong>，比如：</p>
+
+<p>✅ 正确写法：</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">"2025-08-25T16:49:42Z"</code></li>
+  <li><code class="language-plaintext highlighter-rouge">"2025-08-25T13:49:42-03:00"</code></li>
+</ul>
+
+<p>❌ 错误写法：</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">"2025-08-25 16:49:42"</code></li>
+</ul>
+
+<h3 id="关键注意点">关键注意点：</h3>
+
+<ol>
+  <li>
+    <p><strong>时间必须用 ISO8601 格式</strong>
+Node 端推荐直接用 <code class="language-plaintext highlighter-rouge">new Date().toISOString()</code>。</p>
+  </li>
+  <li>
+    <p><strong><code class="language-plaintext highlighter-rouge">scheduled_at</code> 的处理</strong></p>
+
+    <ul>
+      <li>立刻执行任务：<code class="language-plaintext highlighter-rouge">scheduled_at = null</code>，并写入 <code class="language-plaintext highlighter-rouge">ready_executions</code>。</li>
+      <li>定时任务：<code class="language-plaintext highlighter-rouge">scheduled_at = ISO8601</code>，<strong>不要</strong>写入 <code class="language-plaintext highlighter-rouge">ready_executions</code>，由调度器到点搬运。</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>时区字段</strong>
+<code class="language-plaintext highlighter-rouge">timezone</code> 建议用 IANA 标准名称，例如 <code class="language-plaintext highlighter-rouge">"America/Sao_Paulo"</code>，不要写 <code class="language-plaintext highlighter-rouge">"Brasilia"</code> 这种别名。</p>
+  </li>
+  <li>
+    <p><strong>最好先跑一次 Rails 原生 <code class="language-plaintext highlighter-rouge">perform_later</code></strong>
+在数据库中抓一条 <code class="language-plaintext highlighter-rouge">arguments</code> JSON，确保自己拼装的结构完全一致，避免未来升级时出现兼容性问题。</p>
+  </li>
+</ol>
+
+<hr />
+
+<h2 id="总结">总结</h2>
+
+<p>Solid Queue 作为 Rails 官方的任务队列，虽然省去了 Redis 依赖，但直接手工对接时也容易踩坑。
+<strong>关键是要对齐 Rails 的序列化逻辑，尤其是时间字段要符合 ISO8601。</strong></p>
+
+<p>如果你也在做跨语言集成，建议先观察 Rails 自己插入的任务 JSON，再按需模仿。这样不仅能避免序列化错误，还能兼容 future 版本的 ActiveJob。</p>
+
+</div>
+
+    </main>
+    <svg id="scrolltop" xmlns="http://www.w3.org/2000/svg" class="hidden fixed bottom-2 right-2 h-16 w-16 cursor-pointer text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
+    </svg>
+  </body>
+</html>
