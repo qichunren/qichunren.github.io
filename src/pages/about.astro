@@ -1,41 +1,60 @@
 ---
-import Post from "../layouts/Post.astro";
+import Base from "../layouts/Base.astro";
+
+const skills = [
+  "Ruby on Rails", "Hotwire", "AlpineJS", "React",
+  "TailwindCSS", "PostgreSQL", "Redis", "Docker", "Figma",
+];
 ---
 
-<Post title="About" date={new Date("2008-01-01")}>
-  <p>
-    I am an experienced and independent WEB developer with a focus on
-    developing high-performance, secure, and user-friendly WEB applications.
-    With years of development experience, I am proficient in using various
-    tools and frameworks to complete projects.
-  </p>
-  <h2>Proficient Tools and Frameworks</h2>
-  <ul>
-    <li>Ruby On Rails</li>
-    <li>Hotwire</li>
-    <li>AlpineJS</li>
-    <li>React</li>
-    <li>TailwindCSS</li>
-    <li>PostgreSQL</li>
-    <li>Redis</li>
-    <li>Docker</li>
-    <li>Figma</li>
-  </ul>
-  <h2>Project Experience</h2>
-  <p>
-    Throughout my years of development experience, I have participated in and
-    completed multiple successful WEB application projects. These projects
-    span different fields and scales, ranging from small business websites to
-    large e-commerce platforms. I bring high-quality development results to
-    these projects with my professional skills and attention to detail.
-  </p>
-  <h2>Why Choose Me?</h2>
-  <p>
-    Proficient in various development tools and frameworks, rich project
-    experience, excellent coding abilities and attention to detail, strong team
-    spirit, and high customer satisfaction. If you are looking for a professional
-    WEB developer to help you realize your project, don't hesitate to get in
-    touch with me. I am looking forward to working with you to achieve a
-    successful WEB application project.
-  </p>
-</Post>
+<Base title="About">
+  <div class="max-w-2xl mx-auto">
+    <div class="rounded-2xl p-6 md:p-8 border" style="background: var(--color-card); border-color: var(--color-border);">
+      <div class="flex items-center gap-4 mb-6 pb-6" style="border-bottom: 1px solid var(--color-border);">
+        <div
+          class="w-16 h-16 md:w-20 md:h-20 rounded-full flex items-center justify-center text-white font-extrabold text-2xl md:text-3xl select-none shrink-0"
+          style="background: linear-gradient(135deg, var(--color-accent), var(--color-accent-hover));"
+        >
+          Q
+        </div>
+        <div>
+          <h1 class="text-2xl md:text-3xl font-extrabold" style="color: var(--color-text);">Qichunren</h1>
+          <p style="color: var(--color-text-muted);">Independent WEB Developer</p>
+        </div>
+      </div>
+
+      <div class="prose-lg" style="color: var(--color-text);">
+        <p>
+          I am an experienced and independent WEB developer with a focus on
+          developing high-performance, secure, and user-friendly WEB applications.
+          With years of development experience, I am proficient in using various
+          tools and frameworks to complete projects.
+        </p>
+
+        <h2 style="border-left: 3px solid var(--color-accent); padding-left: 0.75rem; color: var(--color-accent);">Proficient Tools and Frameworks</h2>
+        <div class="flex flex-wrap gap-2">
+          {skills.map((skill) => (
+            <span class="text-sm font-medium px-3 py-1 rounded-full" style="background: var(--color-surface); color: var(--color-accent);">
+              {skill}
+            </span>
+          ))}
+        </div>
+
+        <h2 style="border-left: 3px solid var(--color-accent); padding-left: 0.75rem; color: var(--color-accent);">Project Experience</h2>
+        <p>
+          Throughout my years of development experience, I have participated in and
+          completed multiple successful WEB application projects. These projects
+          span different fields and scales, ranging from small business websites to
+          large e-commerce platforms.
+        </p>
+
+        <h2 style="border-left: 3px solid var(--color-accent); padding-left: 0.75rem; color: var(--color-accent);">Why Choose Me?</h2>
+        <p>
+          Proficient in various development tools and frameworks, rich project
+          experience, excellent coding abilities and attention to detail, strong team
+          spirit, and high customer satisfaction.
+        </p>
+      </div>
+    </div>
+  </div>
+</Base>
