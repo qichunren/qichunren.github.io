@@ -79,7 +79,7 @@ body {
 
 /* Post content styling */
 .post-content {
-  @apply p-4 text-lg mb-8;
+  @apply px-4 pb-4 text-lg mb-8;
 }
 .post-content p {
   @apply pb-4;
@@ -126,10 +126,10 @@ body {
   color: var(--color-text);
 }
 .post-content ul {
-  @apply list-inside list-disc;
+  @apply list-disc pl-6 my-4;
 }
 .post-content ul li {
-  @apply my-2;
+  @apply my-1;
   line-height: 1.85;
 }
 .post-content a {
@@ -158,10 +158,10 @@ body {
   border-color: var(--color-border);
 }
 .post-content ol {
-  @apply list-inside list-decimal my-2;
+  @apply list-decimal pl-6 my-4;
 }
 .post-content ol li {
-  @apply my-2;
+  @apply my-1;
   line-height: 1.85;
 }
 .post-content h4 {

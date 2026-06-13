@@ -4,8 +4,6 @@ date: 2008-11-28 08:22
 categories: [Linux]
 ---
 
-# 技术笔记：深入了解 apt 命令的使用
-
 在Linux系统中，`apt`（Advanced Package Tool）是一个强大的包管理工具，用于在Debian和Ubuntu等发行版上安装、升级和删除软件包。本文将深入探讨一些常用的`apt`命令，以便更有效地管理系统中的软件包。
 
 ## 1. 安装软件包

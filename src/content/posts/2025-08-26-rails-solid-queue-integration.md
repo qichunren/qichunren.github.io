@@ -4,9 +4,6 @@ date: 2025-08-26 00:53:00 +0800
 categories: Development
 ---
 
-
-# Ruby on Rails 中 Solid Queue 的集成与踩坑记录
-
 在 Rails 8 中，**Solid Queue** 作为官方推荐的任务队列系统，替代了 Sidekiq/Resque 等第三方方案，和 Active Job 无缝集成。它直接依赖数据库存储和执行任务，适合不想额外引入 Redis 的团队。
 本文将结合实际踩坑案例，介绍 Solid Queue 的表结构、如何集成异步任务，以及开发过程中需要注意的一些细节。
 
