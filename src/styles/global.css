@@ -59,12 +59,22 @@
   --color-border-strong: #fbbf24;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 /* Base body */
 body {
   background: linear-gradient(to bottom, var(--color-bg), var(--color-surface) 50%, var(--color-bg));
+  background-attachment: fixed;
   color: var(--color-text);
   font-family: var(--font-sans);
   min-height: 100vh;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
 }
 
 /* Post content styling */
@@ -81,7 +91,6 @@ body {
   font-size: 0.85em;
 }
 .post-content p em {
-  color: var(--color-accent);
   font-style: italic;
 }
 .post-content div.highlighter-rouge {
@@ -95,8 +104,8 @@ body {
   line-height: 1.6;
 }
 .post-content div.highlight {
-  background-color: #292524;
-  color: #d6d3d1;
+  background-color: var(--color-surface);
+  color: var(--color-text);
   @apply px-4 py-3 overflow-x-auto text-sm rounded-lg;
   font-family: var(--font-mono);
   line-height: 1.6;
@@ -130,6 +139,42 @@ body {
 }
 .post-content a:hover {
   color: var(--color-accent-hover);
+}
+.post-content img {
+  @apply rounded-lg my-4;
+  max-width: 100%;
+  height: auto;
+}
+.post-content table {
+  @apply w-full my-4 border-collapse text-sm;
+}
+.post-content table th {
+  background-color: var(--color-surface);
+  @apply px-4 py-2 text-left font-semibold border;
+  border-color: var(--color-border);
+}
+.post-content table td {
+  @apply px-4 py-2 border;
+  border-color: var(--color-border);
+}
+.post-content ol {
+  @apply list-inside list-decimal my-2;
+}
+.post-content ol li {
+  @apply my-2;
+  line-height: 1.85;
+}
+.post-content h4 {
+  @apply font-semibold text-lg mt-6 mb-3;
+  color: var(--color-text);
+}
+.post-content h5 {
+  @apply font-semibold text-base mt-4 mb-2;
+  color: var(--color-text-muted);
+}
+.post-content h6 {
+  @apply font-semibold text-sm mt-4 mb-2;
+  color: var(--color-text-muted);
 }
 .post-content blockquote {
   border-left: 3px solid var(--color-accent);
