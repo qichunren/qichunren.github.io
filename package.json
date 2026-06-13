@@ -1,14 +1,19 @@
 {
-  "name": "app",
-  "private": "true",
+  "name": "qichunren-blog",
+  "type": "module",
+  "private": true,
   "scripts": {
-    "build:css": "tailwindcss -m -i ./assets/css/application.tailwind.css -o ./assets/css/main.css"
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
   },
   "dependencies": {
-    "autoprefixer": "^10.4.16",
-    "postcss": "^8.4.31"
+    "@astrojs/sitemap": "^3.4.0",
+    "@tailwindcss/typography": "^0.5.0",
+    "@tailwindcss/vite": "^4.3.1"
   },
   "devDependencies": {
-    "tailwindcss": "^3.3.5"
+    "astro": "^6.0.0",
+    "tailwindcss": "^4.0.0"
   }
 }
