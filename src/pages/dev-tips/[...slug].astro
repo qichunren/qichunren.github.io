@@ -1,0 +1,19 @@
+---
+import { getCollection, render } from "astro:content";
+import DevTip from "../../layouts/DevTip.astro";
+
+export async function getStaticPaths() {
+  const tips = await getCollection("dev-tips");
+  return tips.map((tip) => ({
+    params: { slug: tip.id.replace(/\.md$/, "") },
+    props: { tip },
+  }));
+}
+
+const { tip } = Astro.props;
+const { Content } = await render(tip);
+---
+
+<DevTip title={tip.data.title}>
+  <Content />
+</DevTip>

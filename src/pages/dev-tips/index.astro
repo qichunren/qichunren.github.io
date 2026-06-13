@@ -1,0 +1,20 @@
+---
+import Base from "../../layouts/Base.astro";
+import { getCollection } from "astro:content";
+
+const tips = await getCollection("dev-tips");
+---
+
+<Base title="Development Tips">
+  <div class="max-w-md mx-auto">
+    {
+      tips.map((tip) => (
+        <div class="py-2 border-b border-gray-200">
+          <h3>
+            <a href={`/dev-tips/${tip.id.replace(/\.md$/, "")}`}>{tip.data.title}</a>
+          </h3>
+        </div>
+      ))
+    }
+  </div>
+</Base>

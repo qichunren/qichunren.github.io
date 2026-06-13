@@ -1,0 +1,32 @@
+---
+import Base from "../layouts/Base.astro";
+import { getCollection } from "astro:content";
+
+function getPostUrl(id: string): string {
+  const match = id.match(/^(\d{4})-(\d{2})-(\d{2})-(.+)\.md$/);
+  if (match) {
+    return `/${match[1]}/${match[2]}/${match[3]}/${match[4]}/`;
+  }
+  return `/${id}/`;
+}
+
+const posts = await getCollection("posts");
+posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+---
+
+<Base title="Posts">
+  <div class="max-w-md mx-auto">
+    {
+      posts.map((post) => (
+        <div class="py-2 border-b border-gray-200">
+          <h3>
+            <a href={getPostUrl(post.id)}>{post.data.title}</a>
+          </h3>
+          <div class="text-gray-600">
+            {post.data.date.toISOString().slice(0, 10)}
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</Base>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessible Popup Menu</title>
+    <style>
+        .menu {
+            display: none;
+            position: absolute;
+            background: white;
+            border: 1px solid #ccc;
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            z-index: 1000;
+        }
+        .menu[aria-hidden="false"] {
+            display: block;
+        }
+        .menu-item {
+            padding: 8px 16px;
+            cursor: pointer;
+        }
+        .menu-item:focus,
+        .menu-item:hover {
+            background-color: #e5e5e5;
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+
+<button id="menuButton" aria-haspopup="true" aria-expanded="false" style="position: absolute;left: 400px;top: 300px;">Open Menu</button>
+
+<ul id="menu" class="menu" role="menu" aria-hidden="true">
+    <li class="menu-item" role="menuitem" tabindex="-1">Item 1</li>
+    <li class="menu-item" role="menuitem" tabindex="-1">Item 2</li>
+    <li class="menu-item" role="menuitem" tabindex="-1">Item 3</li>
+</ul>
+
+<script>
+    const menuButton = document.getElementById('menuButton');
+    const menu = document.getElementById('menu');
+    const menuItems = Array.from(menu.querySelectorAll('.menu-item'));
+    let menuOpen = false;
+
+    // Function to toggle menu visibility
+    function toggleMenu() {
+        menuOpen = !menuOpen;
+        menu.setAttribute('aria-hidden', !menuOpen);
+        menuButton.setAttribute('aria-expanded', menuOpen);
+        
+        if (menuOpen) {
+            positionMenu();  // Position the menu next to the button
+            menuItems[0].focus();  // Focus on the first menu item
+        } else {
+            menuButton.focus();  // Return focus to the button
+        }
+    }
+
+    // Function to position the menu next to the button
+    function positionMenu() {
+        const buttonRect = menuButton.getBoundingClientRect();
+        const menuTop = buttonRect.bottom + window.scrollY;
+        const menuLeft = buttonRect.left + window.scrollX;
+
+        menu.style.top = `${menuTop}px`;
+        menu.style.left = `${menuLeft}px`;
+    }
+
+    // Event listener for button click
+    menuButton.addEventListener('click', () => {
+        toggleMenu();
+    });
+
+    // Keyboard navigation for menu button
+    menuButton.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            toggleMenu();
+        }
+    });
+
+    // Keyboard navigation within the menu
+    menu.addEventListener('keydown', (event) => {
+        let currentIndex = menuItems.indexOf(document.activeElement);
+
+        if (event.key === 'ArrowDown') {
+            event.preventDefault();
+            currentIndex = (currentIndex + 1) % menuItems.length;
+            menuItems[currentIndex].focus();
+        } else if (event.key === 'ArrowUp') {
+            event.preventDefault();
+            currentIndex = (currentIndex - 1 + menuItems.length) % menuItems.length;
+            menuItems[currentIndex].focus();
+        } else if (event.key === 'Escape') {
+            toggleMenu();
+        } else if (event.key === 'Tab') {
+            event.preventDefault();
+            currentIndex = (currentIndex + 1) % menuItems.length;
+            menuItems[currentIndex].focus();
+        }
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (event) => {
+        if (menuOpen && !menu.contains(event.target) && event.target !== menuButton) {
+            toggleMenu();
+        }
+    });
+
+    // Focus control for menu items
+    menuItems.forEach(item => {
+        item.addEventListener('click', () => {
+            alert(item.textContent + ' clicked');
+            toggleMenu();
+        });
+        item.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                item.click();
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
