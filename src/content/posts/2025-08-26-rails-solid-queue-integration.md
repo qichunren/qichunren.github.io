@@ -47,7 +47,6 @@ Rails 会自动把任务序列化为 JSON 并写入 `solid_queue_jobs`，再根�
 但在一些跨项目场景（比如 Node.js 需要调用 Rails 的异步任务），就需要**手工插入任务记录**。以下是一个 Node.js 示例：
 
 ```js
-
 /**
  * 获取当前 UTC 时间（格式化为 YYYY-MM-DD HH:mm:ss）
  */

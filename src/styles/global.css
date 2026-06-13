@@ -137,6 +137,10 @@ body {
   @apply my-0;
 }
 
+.post-content blockquote p {
+  @apply my-0;
+}
+
 .post-content a {
   color: var(--color-accent);
   @apply underline mr-1;
