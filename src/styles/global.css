@@ -79,7 +79,7 @@ body {
 
 /* Post content styling */
 .post-content {
-  @apply px-2 pb-4 text-lg mb-8;
+  @apply pb-4 text-lg mb-8;
 }
 .post-content p {
   @apply pb-4;
