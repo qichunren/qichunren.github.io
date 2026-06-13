@@ -1,10 +1,10 @@
 ---
-title: 将 Shadownsocks 代理转换成 http proxy 类型
+title: 将 Shadowsocks 代理转换成 http proxy 类型
 date: 2014-07-15 17:04
 categories: Tool
 ---
 
-将 Shadownsocks 代理转换成 http proxy 类型， 主要就是安装 *polipo* 工具
+将 Shadowsocks 代理转换成 http proxy 类型，主要就是安装 *polipo* 工具
 
 ```
 brew install polipo

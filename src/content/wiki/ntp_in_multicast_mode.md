@@ -35,8 +35,8 @@ Edit /etc/ntp.conf file, below is a real sample:
 
 	# Specify one or more NTP servers.
 
-	# Use servers from the NTP Pool Project. Approved by Ubuntu Techni                                                         cal Board
-	# on 2011-02-08 (LP: #104525). See http://www.pool.ntp.org/join.ht                                                         ml for
+# Use servers from the NTP Pool Project. Approved by Ubuntu Technical Board
+# on 2011-02-08 (LP: #104525). See http://www.pool.ntp.org/join.html for
 	# more information.
 	#server 0.ubuntu.pool.ntp.org
 	#server 1.ubuntu.pool.ntp.org
@@ -49,15 +49,15 @@ Edit /etc/ntp.conf file, below is a real sample:
 	#server ntp.ubuntu.com
 	server 127.127.1.1
 	fudge  127.127.1.1 stratum 10
-	# Access control configuration; see /usr/share/doc/ntp-doc/html/ac                                                         copt.html for
-	# details.  The web page <http://support.ntp.org/bin/view/Support/                                                         AccessRestrictions>
+# Access control configuration; see /usr/share/doc/ntp-doc/html/accept.html for
+# details.  The web page <http://support.ntp.org/bin/view/Support/AccessRestrictions>
 	# might also be helpful.
 	#
-	# Note that "restrict" applies to both servers and clients, so a c                                                         onfiguration
-	# that might be intended to block requests from certain clients co                                                         uld also end
+# Note that "restrict" applies to both servers and clients, so a configuration
+# that might be intended to block requests from certain clients could also end
 	# up blocking replies from your own upstream servers.
 
-	# By default, exchange time with everybody, but don't allow config                                                         uration.
+	# By default, exchange time with everybody, but don't allow configuration.
 	restrict -4 default kod notrap nomodify
 	restrict -6 default kod notrap nomodify
 
@@ -65,16 +65,16 @@ Edit /etc/ntp.conf file, below is a real sample:
 	restrict 127.0.0.1
 	restrict ::1
 
-	# Clients from this (example!) subnet have unlimited access, but o                                                         nly if
-	# cryptographically authenticated.
+# Clients from this (example!) subnet have unlimited access, but only if
+# cryptographically authenticated.
 	restrict 192.168.0.0 mask 255.255.0.0 trust
 
-	# If you want to provide time to your local subnet, change the nex                                                         t line.
+	# If you want to provide time to your local subnet, change the next line.
 	# (Again, the address is an example only.)
 	# broadcast 255.255.255.255
 
-	# If you want to listen to time broadcasts on your local subnet, d                                                         e-comment the
-	# next lines.  Please do this only if you trust everybody on the n                                                         etwork!
+# If you want to listen to time broadcasts on your local subnet, de-comment the
+# next lines.  Please do this only if you trust everybody on the network!
 	disable auth
 	#broadcastclient
 

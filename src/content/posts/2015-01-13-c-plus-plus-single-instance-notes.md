@@ -53,7 +53,7 @@ data_package.cpp 文件
       DataPackage::instance();
 
 
-连续调用两次 instance 方法，发现只会示例一次。搞定。
+连续调用两次 instance 方法，发现只会实例化一次。搞定。
 
 ## 参考资料
 

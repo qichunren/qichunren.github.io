@@ -1,5 +1,5 @@
 ---
-title: "[译] 创作团结政治分歧"
+title: "[译] 工作团结政治分歧"
 date: 2022-02-02 23:45
 categories: Development
 ---

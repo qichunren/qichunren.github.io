@@ -23,6 +23,6 @@ end
     get "/proxy" => "proxy#get_handle"
 ```
 
-    ```
+```
     $.get("/proxy?url=" + remote_url, function(data){
-    ```
+```

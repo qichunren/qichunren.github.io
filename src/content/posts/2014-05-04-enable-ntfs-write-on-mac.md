@@ -1,5 +1,5 @@
 ---
-title: "解决 NTFS 格式移动硬盘在 MAC 系统上不能读的问题"
+title: "解决 NTFS 格式移动硬盘在 MAC 系统上不能写的问题"
 date: 2014-05-04 16:44
 categories: Tool
 ---

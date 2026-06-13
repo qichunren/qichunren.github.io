@@ -55,7 +55,7 @@ categories: Development
             json_object_object_add(jobj,"Categories", jarray);
 
             /*Now printing the json object*/
-            printf ("The json object created: %sn",json_object_to_json_string(jobj));
+            printf ("The json object created: %s\n",json_object_to_json_string(jobj));
 
 程序结果是：
 

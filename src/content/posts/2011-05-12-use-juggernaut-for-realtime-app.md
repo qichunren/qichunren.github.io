@@ -49,5 +49,5 @@ require "juggernaut"
 Juggernaut.publish("channel1", "Some data")
 {% endhighlight %}
 
-另外在启动了 Juggernaut 后，它默认在 8080 端口上有一个 Helloword 的应用，可以了解一下。
+另外在启动了 Juggernaut 后，它默认在 8080 端口上有一个 Helloworld 的应用，可以了解一下。
 

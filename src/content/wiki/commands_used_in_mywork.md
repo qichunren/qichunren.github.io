@@ -74,7 +74,7 @@ title: Commands Used In Mywork
 		unxz -c paigo.sd-latest.img.xz | sudo dd of=/dev/sdb bs=16M
 
 
-### Change read only file system to read writeable
+### Change read only file system to read writable
 
 ::
 
@@ -88,7 +88,6 @@ title: Commands Used In Mywork
 	sudo ifconfig eth1:2 192.168.8.104 netmask 255.255.255.0 	
 	route add default gw 192.168.8.5
 
-/usr/sbin/gpsd -F /var/run/gpsd.sock -P /var/run/gpsd.pid /dev/ttymxc3		
 /usr/sbin/gpsd -F /var/run/gpsd.sock -P /var/run/gpsd.pid /dev/ttymxc3
 
 ubuntu:cpu 8.3 mem 2.8
@@ -108,8 +107,6 @@ ubuntu:cpu 8.3 mem 2.8
   159M	apt
   32M	dpkg
   17M	aptitude
-
-		
 
 ### LD_LIBRARY_PATH
 

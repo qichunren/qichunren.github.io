@@ -8,7 +8,7 @@ footer: false
 # QRCODE 
 
 	sudo apt-get install qrencode
-	qrencode '12345 -o code.png -s 10
+	qrencode '12345' -o code.png -s 10
 
 
 ```
@@ -21,4 +21,4 @@ def self.generate_sn
 	end
 	return s
 end
-```	
+```

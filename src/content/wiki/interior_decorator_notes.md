@@ -11,7 +11,6 @@ title: 装修笔记
 * 离子除臭抽湿机 - SHARP DW-CE15F-W
 * 加湿器 - 智米除菌加湿器
 * 扫地机器人 - 小米扫地机器人
-* 加湿器 - 智米除菌加湿器
 * dyson pure cool link
 * dyson V6 Absolute
 * 电动牙刷 - PHILIPS Sonicare HX9392

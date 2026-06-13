@@ -25,8 +25,6 @@ TRANSLATIONS = translations/ntptu_zh-CN.ts translations/ntptu_en.ts
 
 5. 将 qm 文件添加了资源中。
 
-6.
-
 QT 程序启动时加载 Translator
 
     QTranslator translator;
@@ -35,7 +33,6 @@ QT 程序启动时加载 Translator
     a.installTranslator(&translator);
     QString message(tr("voices directory did not exist in data directory %1!"));
     message.arg(dir.absolutePath());
-    lrelease -verbose project_zh_CN.ts
 
 设置环境变量进行测试
 

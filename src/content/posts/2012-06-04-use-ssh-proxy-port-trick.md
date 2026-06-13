@@ -1,5 +1,5 @@
 ---
-title: "使用 SSH 代理来访访问远程 mysql 机器"
+title: "使用 SSH 代理来访问远程 mysql 机器"
 date: 2012-06-04 17:31
 categories: [linux]
 ---

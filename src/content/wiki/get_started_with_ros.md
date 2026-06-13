@@ -6,7 +6,7 @@ title: Get Started With Ros
 
 I assume you are familiar with Ubuntu OS and C++/Python development.
 
-1. Browse [ROS Wiki](http://wiki.ros.org/) to [install](http://wiki.ros.org/ROS/Installation) ROS packages on you work pc.
+1. Browse [ROS Wiki](http://wiki.ros.org/) to [install](http://wiki.ros.org/ROS/Installation) ROS packages on your work pc.
 
 2. Follow [ROS Tutorials](http://wiki.ros.org/ROS/Tutorials) to see how ros apps work.
 

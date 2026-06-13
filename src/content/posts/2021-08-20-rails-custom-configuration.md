@@ -69,8 +69,6 @@ Rails.configuration.allow_user_register  # true
       public_key:  development_public_key
       private_key: development_private_key
 
-
-
     # config/application.rb
     module MyApp
       class Application < Rails::Application

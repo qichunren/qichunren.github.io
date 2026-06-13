@@ -11,7 +11,7 @@ This is a heredoc example.
 MSG
 ```
 
-Though there are serval ways to define heredoc, but I think the foregoing way should be the primary way.
+Though there are several ways to define heredoc, but I think the foregoing way should be the primary way.
 
 ```ruby
 str = <<HEREDOC

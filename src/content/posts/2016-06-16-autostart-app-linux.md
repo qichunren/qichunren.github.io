@@ -22,13 +22,12 @@ categories: Development
 	  Categories=Development;
 
 
-为了让自启动程序不用如入 sudo 的密码，还需要修改 /etc/sudoers 文件
+为了让自启动程序不用输入 sudo 的密码，还需要修改 /etc/sudoers 文件
 
 	sudo visudo
 
 	add line
 
 		%sudo   ALL=(ALL) NOPASSWD: /usr/bin/nt-web-app
-	
 	after
 		%sudo   ALL=(ALL:ALL) ALL

@@ -9,7 +9,7 @@ categories: [tool]
 
 一个工具叫[phantomjs](http://www.phantomjs.org/)，另一个工具叫[cutycapt](http://cutycapt.sourceforge.net/)
 
-两个工具都不错，个人比较喜欢使用 cutycapt 这个工具，它是直接提供一个命令行来生成网页截图的，而前者是通过 javascript 来调用底层 webkit 接品 (page.render 方法) 来实现的，两者的侧重点不一样。
+两个工具都不错，个人比较喜欢使用 cutycapt 这个工具，它是直接提供一个命令行来生成网页截图的，而前者是通过 javascript 来调用底层 webkit 接口 (page.render 方法) 来实现的，两者的侧重点不一样。
 并且 cutycapt 是将整个网截下来，phantomjs 是将浏览器当前视区的一屏截下来。
 
 Cutycapt 的用法如下

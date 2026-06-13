@@ -1,5 +1,5 @@
 ---
-title: Capture all reqeust web page send
+title: Capture all request web page send
 date: 2016-03-24 10:10
 categories: Development
 ---

@@ -1,10 +1,10 @@
 ---
-title: Juqery 中元素位置的几个方法笔记
+title: jQuery 中元素位置的几个方法笔记
 date: 2011-05-09 11:30
 categories: [web, html5]
---- 
+---
 
-Juqery 中元素位置的几个方法笔记
+jQuery 中元素位置的几个方法笔记
 
 最近在研究页面滚动时，研究了 Jquery 中几个方法。记录一下。
 

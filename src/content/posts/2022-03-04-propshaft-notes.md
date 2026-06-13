@@ -4,7 +4,7 @@ date: 2022-03-04 19:45
 categories: Development
 ---
 
-[propshaft](https://github.com/rails/propshaft) 是在 Rails 7 发布后，用于取代之前的 [sprockets](https://github.com/rails/sprockets) 而新创建的一个用于管理静态资源 (CSS / JS / Images)。相比 sprockets 的丰富功能，propshaft 显得十分轻量极，代码量也比 sprockets 少很多。这和 Rails 7 推荐的前端管理方案是一致的。
+[propshaft](https://github.com/rails/propshaft) 是在 Rails 7 发布后，用于取代之前的 [sprockets](https://github.com/rails/sprockets) 而新创建的一个用于管理静态资源 (CSS / JS / Images)。相比 sprockets 的丰富功能，propshaft 显得十分轻量级，代码量也比 sprockets 少很多。这和 Rails 7 推荐的前端管理方案是一致的。
 
 在这篇文章里简要的分析一下 propshaft 库里的代码。
 
@@ -31,7 +31,7 @@ def compute_asset_path(path, options = {})
 end
 ```
 
-此方法将对文件名进下如下的转换：
+此方法将对文件名进行如下的转换：
 
 ```
 application.css -> /assets/application-f00b069f5cd8e28f9b699ca70bb2b5cdb20b8698.css
@@ -95,7 +95,6 @@ class Propshaft::Assembly
   end
 end
 ```
-
 
 检查是否存在 public/assets/.manifest.json
 Yes: Propshaft::Resolver::Static

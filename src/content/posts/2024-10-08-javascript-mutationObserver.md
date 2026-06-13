@@ -1,5 +1,5 @@
 ---
-title: JavaScript 中的 `MutationObserver notes
+title: JavaScript 中的 `MutationObserver` notes
 date: 2024-10-08 22:53:00 +0800
 categories: Development
 ---

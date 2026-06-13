@@ -8,8 +8,6 @@ title: Ruby Install
 ## Install rbenv
 
 
-::
-
   apt-get install gcc make build-essential
   apt-get install nodejs # Rails need nodejs runtime.
 
@@ -24,8 +22,6 @@ Install ruby-build
 
 https://github.com/rbenv/ruby-build
 
-::
-
   # As an rbenv plugin
   $ mkdir -p "$(rbenv root)"/plugins
   $ git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-build
@@ -33,8 +29,6 @@ https://github.com/rbenv/ruby-build
 --------------------------------
 Install ruby
 --------------------------------
-
-::
 
   apt-get install -y libssl-dev libreadline-dev zlib1g-dev
   rbenv install 2.4.4

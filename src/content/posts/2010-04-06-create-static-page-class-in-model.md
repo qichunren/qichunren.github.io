@@ -6,7 +6,7 @@ categories: rails
 
 原文地址：[Static site using rails](http://railstech.com/?p=89).
 
-As we know rails is mainly used for dynamic website.we can also display static web pages or we can deploy full static website using rails.
+As we know rails is mainly used for dynamic website. We can also display static web pages or we can deploy full static website using rails.
 The following code can help us to display static pages.
 
 - Step 1:-Create Rails project

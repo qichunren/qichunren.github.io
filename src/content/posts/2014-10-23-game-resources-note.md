@@ -37,7 +37,7 @@ http://www.engine001.com/resources/tilesets.htm
 http://opengameart.org/content/isometric-tiles
 
 
-## Threoy
+## Theory
 * http://www.lostgarden.com/
 * [http://gamemechanicexplorer.com/](http://gamemechanicexplorer.com/)里面基于 Phaser 引擎讲解了许多游戏中常用的设计算法，如角色行走，导弹路径，光，视野等。
 * [http://www.redblobgames.com/](http://www.redblobgames.com/) 其中有讲解一些游戏算法，如 A 星寻路。
@@ -62,7 +62,7 @@ http://www.gamasutra.com/
 http://gamedevelopment.tutsplus.com/
 https://mytxt.xyz/games/
 
-Create tile game tutuoal: http://www.tonypa.pri.ee/tbw/start.html
+Create tile game tutorial: http://www.tonypa.pri.ee/tbw/start.html
 
 
 Isometric Tiles Introduction: http://flarerpg.org/tutorials/isometric_intro/
@@ -72,5 +72,5 @@ Character Generator: http://gaurav.munjal.us/Universal-LPC-Spritesheet-Character
 
 ## Community
 
-* [Game Development Stack Exchange](http://gaedev.stackexchange.com/)
+* [Game Development Stack Exchange](http://gamedev.stackexchange.com/)
 * http://indienova.com/

@@ -13,5 +13,3 @@ categories: web
 
 这个 Chrome 浏览器插件项目是开源的，代码在[https://github.com/qichunren/ruby-china-chrome](https://github.com/qichunren/ruby-china-chrome)
 
-
-

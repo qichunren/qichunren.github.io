@@ -4,9 +4,9 @@ date: 2022-05-02 00:05
 categories: Development
 ---
 
-前不久 Rails 7.0 版的发布带来了 Hotwire 这个框架作为 Rails 的前端解决方案，用来取代 Rails UJS，用来增强 Rails 后端与页面之间的交互能力；Rails 7.0 版还带来了 import_map、cssbundling-rails 和 jsbundling-rails，优化前端资源打包的流程，放弃 webpacker 项目，脱离 NodeJS 依賴，将选择权交出来，让用户自行选择打包方案。由于简化了 asset pipleline 打包流程，之前功能强大的 Sprockets 在新的集成环境中也显得有些繁重，所以 DHH 又推出了 Propshaft，它相当于是一个简化版的 Sprockets。
+前不久 Rails 7.0 版的发布带来了 Hotwire 这个框架作为 Rails 的前端解决方案，用来取代 Rails UJS，用来增强 Rails 后端与页面之间的交互能力；Rails 7.0 版还带来了 import_map、cssbundling-rails 和 jsbundling-rails，优化前端资源打包的流程，放弃 webpacker 项目，脱离 NodeJS 依赖，将选择权交出来，让用户自行选择打包方案。由于简化了 asset pipleline 打包流程，之前功能强大的 Sprockets 在新的集成环境中也显得有些繁重，所以 DHH 又推出了 Propshaft，它相当于是一个简化版的 Sprockets。
 
-## Hotwred
+## Hotwire
 
 [Hotwire](https://hotwired.dev/) 的核心是 Turbo，它是由四部分组成。
 

@@ -6,7 +6,7 @@ tags:
   - Rails
 ---
 
-[excel_rails](https://github.com/asanghi/excel_rails) 这个工具可以实现导出 Excel 数据的功能。它本身是基于[ruby-spreadsheet ](https://github.com/jacobat/ruby-spreadsheet)
+[excel_rails](https://github.com/asanghi/excel_rails) 这个工具可以实现导出 Excel 数据的功能。它本身是基于[ruby-spreadsheet](https://github.com/jacobat/ruby-spreadsheet)
 
 ## 使用方法
 
@@ -89,7 +89,3 @@ end
 - [10to1/spreadsheet_on_rails ](https://github.com/10to1/spreadsheet_on_rails)
 - [Exporting data to CSV and Excel in your Rails apps](http://blog.plataformatec.com.br/2009/09/exporting-data-to-csv-and-excel-in-your-rails-app/)
 - [FasterCSV](http://fastercsv.rubyforge.org/)
-
-```
-
-```

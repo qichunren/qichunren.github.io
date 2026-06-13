@@ -33,7 +33,7 @@ menu "Shanghai nt projects"
 endmenu
 ```
 
-* 创将 package/hardware_report 目录，在其中创建 Config.in 和 hardware_report.mk 文件
+* 创建 package/hardware_report 目录，在其中创建 Config.in 和 hardware_report.mk 文件
 Config.in 文件中的内容如下：
 
 ```
@@ -43,7 +43,6 @@ config BR2_PACKAGE_HARDWARE_REPORT
           this is comment that explains what hardware_report is.
           https://git.xxxxxx.com
 ```
-              
 
 hardware_report.mk 文件中的内容如下：
 
@@ -120,7 +119,4 @@ esac
 
 exit 0
 ```
-             
-              
-              
 [Buildroot 文档](https://buildroot.org/downloads/manual/manual.html)

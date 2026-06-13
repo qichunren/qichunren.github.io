@@ -16,7 +16,7 @@ categories: Development
     
 会在当前项目目录的上一层生成 deb 文件。
 
-deb 包的构建规范中规定了一系列的规则，最常用的有安装时的文件路经对应，此文件位于 debian/install 中，如将编译文件的可执行文件将安装的/usr/bin 目录，将程序执行图标文件放在/usr/share/applications 目录。install 文件中类似这样：
+deb 包的构建规范中规定了一系列的规则，最常用的有安装时的文件路径对应，此文件位于 debian/install 中，如将编译文件的可执行文件将安装到/usr/bin 目录，将程序执行图标文件放在/usr/share/applications 目录。install 文件中类似这样：
 
     bin/new-pis usr/bin
     new-pis.desktop /usr/share/applications

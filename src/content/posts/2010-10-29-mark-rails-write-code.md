@@ -7,7 +7,7 @@ categories: [ruby, rails]
 这几个地方不知道大家有注意到没有，我今天发现的一个地方就是
 
 {% highlight ruby %}
-class EcGood < ActiveRecord::Bas
+class EcGood < ActiveRecord::Base
   #商品分类
   GoodCategory = Category.find(:all).map{|category|[category.cn_n, category.id] }
   #商品品牌
