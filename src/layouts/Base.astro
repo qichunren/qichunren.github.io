@@ -24,15 +24,27 @@ const { title, description = "Qichunren website" } = Astro.props;
     <title>{title} - Qichunren blog</title>
   </head>
 
-  <body class="has-navbar-fixed-top page-index">
+  <body>
     <Nav />
-    <main class="container mx-auto bg-white mt-24 md:mt-18">
-      <div class="p-4">
-        <slot />
-      </div>
+    <main class="container mx-auto mt-20 md:mt-20 px-4 md:px-6 lg:px-8 pb-12">
+      <slot />
     </main>
+    <footer class="text-center py-8 text-sm" style="color: var(--color-text-muted);">
+      <p>&copy; {new Date().getFullYear()} Qichunren. Built with Astro.</p>
+    </footer>
     <ScrollToTop />
   </body>
 </html>
 
 <script is:inline src="/scripts/main.js"></script>
+<script is:inline>
+  // Dark mode: check localStorage override, fallback to system preference
+  (function() {
+    var stored = localStorage.getItem('theme');
+    if (stored === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else if (stored === 'light') {
+      document.documentElement.classList.add('light');
+    }
+  })();
+</script>
