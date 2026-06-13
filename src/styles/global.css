@@ -1,54 +1,176 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono&family=Noto+Sans+SC:wght@400;600;700;800&display=swap');
 @plugin "@tailwindcss/typography";
 
+@theme {
+  --font-sans: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Cascadia Code', 'Fira Code', monospace;
+}
+
+/* Light mode (default) */
+:root {
+  --color-bg: #fffbeb;
+  --color-surface: #fef3c7;
+  --color-card: #ffffff;
+  --color-text: #1c1917;
+  --color-text-muted: #78716c;
+  --color-accent: #f59e0b;
+  --color-accent-hover: #b45309;
+  --color-border: #fde68a;
+  --color-border-strong: #fbbf24;
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #1c1917;
+    --color-surface: #292524;
+    --color-card: #292524;
+    --color-text: #fafaf9;
+    --color-text-muted: #a8a29e;
+    --color-accent: #fbbf24;
+    --color-accent-hover: #fcd34d;
+    --color-border: #44403c;
+    --color-border-strong: #57534e;
+  }
+}
+
+/* Manual dark mode override (set by JS) */
+:root.dark {
+  --color-bg: #1c1917;
+  --color-surface: #292524;
+  --color-card: #292524;
+  --color-text: #fafaf9;
+  --color-text-muted: #a8a29e;
+  --color-accent: #fbbf24;
+  --color-accent-hover: #fcd34d;
+  --color-border: #44403c;
+  --color-border-strong: #57534e;
+}
+:root.light {
+  --color-bg: #fffbeb;
+  --color-surface: #fef3c7;
+  --color-card: #ffffff;
+  --color-text: #1c1917;
+  --color-text-muted: #78716c;
+  --color-accent: #f59e0b;
+  --color-accent-hover: #b45309;
+  --color-border: #fde68a;
+  --color-border-strong: #fbbf24;
+}
+
+/* Base body */
+body {
+  background: linear-gradient(to bottom, var(--color-bg), var(--color-surface) 50%, var(--color-bg));
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  min-height: 100vh;
+}
+
+/* Post content styling */
 .post-content {
   @apply p-4 text-lg mb-8;
 }
-
 .post-content p {
   @apply pb-4;
+  line-height: 1.85;
 }
-
 .post-content p code {
-  @apply bg-gray-200;
+  background-color: var(--color-surface);
+  @apply py-1 px-2 rounded;
+  font-size: 0.85em;
 }
-
 .post-content p em {
-  @apply text-indigo-400;
+  color: var(--color-accent);
+  font-style: italic;
 }
-
 .post-content div.highlighter-rouge {
   @apply mb-4;
 }
-
 .post-content > pre {
-  @apply bg-gray-100 overflow-y-scroll;
+  background-color: var(--color-surface);
+  @apply overflow-x-auto rounded-lg p-4;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  line-height: 1.6;
 }
-
 .post-content div.highlight {
-  @apply bg-gray-900 text-gray-400 px-2 py-2 overflow-y-auto text-xs rounded;
+  background-color: #292524;
+  color: #d6d3d1;
+  @apply px-4 py-3 overflow-x-auto text-sm rounded-lg;
+  font-family: var(--font-mono);
+  line-height: 1.6;
 }
-
 .post-content code.language-plaintext {
   @apply py-1 px-2 rounded;
+  background-color: var(--color-surface);
+  font-size: 0.85em;
 }
-
 .post-content h2 {
   @apply font-bold text-2xl mt-8 mb-4;
+  padding-left: 0.75rem;
+  border-left: 3px solid var(--color-accent);
+  color: var(--color-accent);
 }
-
 .post-content h3 {
-  @apply font-bold text-xl mt-4 mb-2;
+  @apply font-bold text-xl mt-6 mb-3;
+  color: var(--color-text);
 }
-
 .post-content ul {
   @apply list-inside list-disc;
 }
-
 .post-content ul li {
   @apply my-2;
+  line-height: 1.85;
+}
+.post-content a {
+  color: var(--color-accent);
+  @apply underline mr-1;
+  text-underline-offset: 2px;
+}
+.post-content a:hover {
+  color: var(--color-accent-hover);
+}
+.post-content blockquote {
+  border-left: 3px solid var(--color-accent);
+  background-color: var(--color-surface);
+  @apply pl-4 py-2 my-4 rounded-r-lg;
+  color: var(--color-text-muted);
 }
 
-.post-content a {
-  @apply underline mr-1;
+/* Print styles */
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+    font-size: 12pt;
+    line-height: 1.5;
+  }
+  nav, #header, #content_header, #scrolltop, #nav-toggle {
+    display: none !important;
+  }
+  .post-content a[href]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+    color: #666;
+  }
+  pre, code {
+    break-inside: avoid;
+    background: #f5f5f5 !important;
+    color: black !important;
+    border: 1px solid #ddd;
+  }
+  .post-content h2 {
+    border-left: none;
+    padding-left: 0;
+    color: black;
+  }
+  .post-content a {
+    color: black;
+    text-decoration: underline;
+  }
+  main {
+    max-width: 100% !important;
+    margin: 0 !important;
+  }
 }
