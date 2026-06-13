@@ -1,0 +1,15 @@
+---
+import Base from "./Base.astro";
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<Base title={title}>
+  <div class="post-content max-w-screen-md mx-auto prose lg:prose-lg">
+    <slot />
+  </div>
+</Base>
