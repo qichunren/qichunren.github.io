@@ -4,6 +4,40 @@ document.addEventListener("DOMContentLoaded", function () {
   var scrolltop = document.getElementById("scrolltop");
   var navToggle = document.getElementById("nav-toggle");
   var navContent = document.getElementById("nav-content");
+  var themeToggle = document.getElementById("theme-toggle");
+  var sunIcon = document.getElementById("theme-icon-sun");
+  var moonIcon = document.getElementById("theme-icon-moon");
+
+  function updateThemeIcon() {
+    if (!sunIcon || !moonIcon) return;
+    var isDark = document.documentElement.classList.contains("dark") ||
+      (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches &&
+       !document.documentElement.classList.contains("light"));
+    sunIcon.classList.toggle("hidden", !isDark);
+    moonIcon.classList.toggle("hidden", isDark);
+  }
+
+  function applyTheme(theme) {
+    document.documentElement.classList.remove("dark", "light");
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else if (theme === "light") {
+      document.documentElement.classList.add("light");
+    }
+    localStorage.setItem("theme", theme);
+    updateThemeIcon();
+  }
+
+  updateThemeIcon();
+
+  if (themeToggle) {
+    themeToggle.addEventListener("click", function () {
+      var currentIsDark = document.documentElement.classList.contains("dark") ||
+        (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches &&
+         !document.documentElement.classList.contains("light"));
+      applyTheme(currentIsDark ? "light" : "dark");
+    });
+  }
 
   if (navToggle && navContent) {
     navToggle.addEventListener("click", function () {
@@ -13,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (scrolltop) {
     scrolltop.addEventListener("click", function () {
-      window.scrollTo(0, 0);
+      window.scrollTo({ top: 0, behavior: "smooth" });
     });
   }
 
@@ -21,10 +55,10 @@ document.addEventListener("DOMContentLoaded", function () {
     if (header) {
       if (window.scrollY - checked_scroll_y > 30) {
         checked_scroll_y = window.scrollY;
-        header.classList.add("hidden");
+        header.style.transform = "translateY(-100%)";
       } else if (checked_scroll_y - window.scrollY > 30) {
         checked_scroll_y = window.scrollY;
-        header.classList.remove("hidden");
+        header.style.transform = "translateY(0)";
       }
     }
 
