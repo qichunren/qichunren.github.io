@@ -4,28 +4,51 @@ import Base from "./Base.astro";
 interface Props {
   title: string;
   date: Date;
+  categories?: string[];
 }
 
-const { title, date } = Astro.props;
+const { title, date, categories = [] } = Astro.props;
 ---
 
 <Base title={title}>
-  <div id="content_header" class="hidden flex items-center justify-center flex-wrap px-6 py-4 fixed w-full z-10 top-0 bg-gray-50 shadow-lg">
-    <h1 class="mb-2 font-bold text-center text-gray-800 md:text-xl lg:text-2xl xl:text-3xl md:leading-tight">
-      {title}
-    </h1>
+  <div id="content_header" class="hidden items-center justify-center px-4 py-2 fixed w-full z-10 top-0 shadow-lg"
+    style="background: rgba(255,251,235,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid var(--color-border);">
+    <div class="flex items-center gap-4 max-w-3xl w-full">
+      <div class="w-1.5 h-1.5 rounded-full" style="background: var(--color-accent);"></div>
+      <span class="font-semibold text-sm truncate" style="color: var(--color-text);">{title}</span>
+      <div class="ml-auto flex items-center gap-2">
+        <span class="text-xs" style="color: var(--color-text-muted);">
+          {date.toISOString().slice(0, 10)}
+        </span>
+      </div>
+    </div>
   </div>
 
-  <div class="max-w-screen-md mx-auto prose lg:prose-lg p-4">
-    <h1 class="mb-2 text-3xl font-bold text-gray-900 md:text-2xl lg:text-4xl xl:text-5xl md:leading-tight">
+  <div class="max-w-3xl mx-auto p-4">
+    {
+      categories.length > 0 && (
+        <div class="flex flex-wrap gap-2 mb-4">
+          {categories.map((cat) => (
+            <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full"
+              style="background: var(--color-surface); color: var(--color-accent);">
+              {cat.toUpperCase()}
+            </span>
+          ))}
+        </div>
+      )
+    }
+
+    <h1 class="mb-3 text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight tracking-tight"
+      style="color: var(--color-text);">
       {title}
     </h1>
-    <div class="text-gray-400 md:text-base">
+
+    <div class="mb-8 text-sm" style="color: var(--color-text-muted);">
       {date.toISOString().slice(0, 10)}
     </div>
   </div>
 
-  <div class="post-content max-w-screen-md mx-auto prose lg:prose-lg">
+  <div class="post-content max-w-3xl mx-auto prose-lg">
     <slot />
   </div>
 </Base>
