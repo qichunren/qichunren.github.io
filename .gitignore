@@ -3,6 +3,7 @@
 .jekyll-cache/
 _site/
 /node_modules/
+dist/
 .DS_Store
 .bundle/config
 vendor/bundle/ruby/
