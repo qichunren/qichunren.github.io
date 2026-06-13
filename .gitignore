@@ -9,3 +9,4 @@ dist/
 .bundle/config
 vendor/bundle/ruby/
 assets/css/main.css.superpowers/
+.superpowers/
