@@ -2,6 +2,14 @@ document.addEventListener("DOMContentLoaded", function () {
   var checked_scroll_y = 0;
   var header = document.getElementById("header");
   var scrolltop = document.getElementById("scrolltop");
+  var navToggle = document.getElementById("nav-toggle");
+  var navContent = document.getElementById("nav-content");
+
+  if (navToggle && navContent) {
+    navToggle.addEventListener("click", function () {
+      navContent.classList.toggle("hidden");
+    });
+  }
 
   if (scrolltop) {
     scrolltop.addEventListener("click", function () {
