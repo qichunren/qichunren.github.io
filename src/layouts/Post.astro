@@ -14,7 +14,7 @@ const { title, date, categories = [] } = Astro.props;
 <Base title={title}>
   <StickyHeader title={title} date={date} />
 
-  <div class="max-w-3xl mx-auto p-3">
+  <div class="max-w-3xl mx-auto">
     {
       categories.length > 0 && (
         <div class="flex flex-wrap gap-2 mb-4">
