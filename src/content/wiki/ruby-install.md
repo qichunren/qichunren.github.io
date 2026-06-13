@@ -1,4 +1,5 @@
-﻿---
+---
+title: Ruby Install
 ---
 
 # Ruby Install

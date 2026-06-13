@@ -1,5 +1,6 @@
 ---
 title: 在 Rails 项目中导出 Excel
+date: 2011-05-04
 tags:
   - Excel
   - Rails

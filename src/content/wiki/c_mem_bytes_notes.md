@@ -1,4 +1,5 @@
-﻿---
+---
+title: C Mem Bytes Notes
 ---
 
     memset(buffer, 0, len);

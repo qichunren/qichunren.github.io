@@ -1,5 +1,6 @@
 ---
 title: 建立 rspec 测试的环境
+date: 2010-12-12
 tags:
 - rspec
 ---

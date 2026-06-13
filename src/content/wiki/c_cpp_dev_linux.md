@@ -1,4 +1,5 @@
 ---
+title: 日常 Linux（Ubuntu）下的开发工具链记录
 ---
 
 # 日常 Linux（Ubuntu）下的开发工具链记录

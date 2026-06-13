@@ -1,4 +1,5 @@
 ---
+title: Dd Notes
 ---
 
 Before back up a device data, you should umount it.

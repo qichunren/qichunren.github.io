@@ -1,4 +1,5 @@
 ---
+title: Proxy Notes
 ---
 
 # Proxy Notes

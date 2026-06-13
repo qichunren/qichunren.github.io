@@ -1,4 +1,5 @@
-﻿---
+---
+title: Game Design Links
 ---
 
 [Red Blob Games](https://www.redblobgames.com/)

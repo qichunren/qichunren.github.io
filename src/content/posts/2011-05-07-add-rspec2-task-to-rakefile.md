@@ -1,5 +1,6 @@
 ---
 title: 将 Rspec 的测试任务添加到 Rakefile 中
+date: 2011-05-07
 tags: Rspec
 ---
 

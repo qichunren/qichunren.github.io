@@ -1,4 +1,5 @@
 ---
+title: GStreamer notes
 sidebar:
   - title: "GStreamer Framework"
     url: https://gstreamer.freedesktop.org/
