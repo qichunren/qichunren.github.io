@@ -81,16 +81,16 @@ body {
 .post-content {
   @apply pb-4 text-lg mb-8;
 }
-.post-content p {
+.post-content > p {
   @apply pb-4;
   line-height: 1.85;
 }
-.post-content p code {
+.post-content > p code {
   background-color: var(--color-surface);
   @apply py-1 px-2 rounded;
   font-size: 0.85em;
 }
-.post-content p em {
+.post-content > p em {
   font-style: italic;
 }
 .post-content div.highlighter-rouge {
@@ -132,6 +132,11 @@ body {
   @apply my-1;
   line-height: 1.85;
 }
+
+.post-content ul li p {
+  @apply my-0;
+}
+
 .post-content a {
   color: var(--color-accent);
   @apply underline mr-1;
