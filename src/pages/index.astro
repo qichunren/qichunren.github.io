@@ -15,18 +15,48 @@ posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 ---
 
 <Base title="Posts">
-  <div class="max-w-md mx-auto">
-    {
-      posts.map((post) => (
-        <div class="py-2 border-b border-gray-200">
-          <h3>
-            <a href={getPostUrl(post.id)}>{post.data.title}</a>
-          </h3>
-          <div class="text-gray-600">
-            {post.data.date.toISOString().slice(0, 10)}
-          </div>
-        </div>
-      ))
-    }
+  <div class="max-w-5xl mx-auto">
+    <div class="mb-8">
+      <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight mb-2" style="color: var(--color-text);">
+        Posts
+      </h1>
+      <p style="color: var(--color-text-muted);">
+        Thoughts on development, tools, and life
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      {
+        posts.map((post) => (
+          <a href={getPostUrl(post.id)} class="block no-underline">
+            <article
+              class="rounded-xl p-5 h-full transition-all duration-200 border hover:scale-[1.02]"
+              style="background: var(--color-card); border-color: var(--color-border);"
+            >
+              {
+                post.data.categories.length > 0 && (
+                  <div class="flex flex-wrap gap-1.5 mb-3">
+                    {post.data.categories.slice(0, 3).map((cat: string) => (
+                      <span
+                        class="text-xs font-semibold px-2 py-0.5 rounded-full"
+                        style="background: var(--color-surface); color: var(--color-accent);"
+                      >
+                        {cat.toUpperCase()}
+                      </span>
+                    ))}
+                  </div>
+                )
+              }
+              <h2 class="font-bold text-base md:text-lg leading-snug mb-2" style="color: var(--color-text);">
+                {post.data.title}
+              </h2>
+              <time class="text-sm" style="color: var(--color-text-muted);">
+                {post.data.date.toISOString().slice(0, 10)}
+              </time>
+            </article>
+          </a>
+        ))
+      }
+    </div>
   </div>
 </Base>
