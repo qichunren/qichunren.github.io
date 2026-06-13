@@ -6,15 +6,34 @@ const tips = await getCollection("dev-tips");
 ---
 
 <Base title="Development Tips">
-  <div class="max-w-md mx-auto">
-    {
-      tips.map((tip) => (
-        <div class="py-2 border-b border-gray-200">
-          <h3>
-            <a href={`/dev-tips/${tip.id.replace(/\.md$/, "")}`}>{tip.data.title}</a>
-          </h3>
-        </div>
-      ))
-    }
+  <div class="max-w-3xl mx-auto">
+    <div class="mb-8">
+      <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight mb-2" style="color: var(--color-text);">
+        Dev Tips
+      </h1>
+      <p style="color: var(--color-text-muted);">
+        Quick references and useful snippets
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+      {
+        tips.map((tip) => (
+          <a href={`/dev-tips/${tip.id.replace(/\.md$/, "")}`} class="block no-underline">
+            <div
+              class="rounded-lg p-4 transition-all duration-200 border hover:scale-[1.01]"
+              style="background: var(--color-card); border-color: var(--color-border); border-left: 3px solid var(--color-accent);"
+            >
+              <h3 class="font-semibold text-base" style="color: var(--color-text);">
+                {tip.data.title}
+              </h3>
+              <span class="text-xs mt-1 inline-block" style="color: var(--color-text-muted);">
+                Quick reference
+              </span>
+            </div>
+          </a>
+        ))
+      }
+    </div>
   </div>
 </Base>
