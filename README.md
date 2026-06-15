@@ -8,12 +8,15 @@
 
 ## Get started
 
-    bundle
-    yarn
-    yarn build:css
-    bundle exec jekyll serve -d docs/
+    npm install
+    npm run dev
+
+Build for production:
+
+    npm run build
 
 ## Technology stack
 
-* Jekyll
-* TailwindCSS
+* [Astro](https://astro.build/)
+* TailwindCSS v4
+* Deployed to GitHub Pages
