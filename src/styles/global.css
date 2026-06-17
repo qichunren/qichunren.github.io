@@ -88,7 +88,7 @@ body {
 .post-content > p code {
   background-color: var(--color-surface);
   @apply py-1 px-2 rounded;
-  font-size: 0.85em;
+  font-size: 0.82em;
 }
 .post-content > p em {
   font-style: italic;
@@ -100,20 +100,20 @@ body {
   background-color: var(--color-surface);
   @apply overflow-x-auto rounded-lg p-2;
   font-family: var(--font-mono);
-  font-size: 0.85rem;
-  line-height: 1.6;
+  font-size: 0.8rem;
+  line-height: 1.5;
 }
 .post-content div.highlight {
   background-color: var(--color-surface);
   color: var(--color-text);
-  @apply px-4 py-3 overflow-x-auto text-sm rounded-lg;
+  @apply px-4 py-3 overflow-x-auto text-xs rounded-lg;
   font-family: var(--font-mono);
-  line-height: 1.6;
+  line-height: 1.5;
 }
 .post-content code.language-plaintext {
   @apply py-1 px-2 rounded;
   background-color: var(--color-surface);
-  font-size: 0.85em;
+  font-size: 0.82em;
 }
 .post-content h2 {
   @apply font-bold text-2xl mt-8 mb-4;
@@ -184,6 +184,10 @@ body {
 .post-content h6 {
   @apply font-semibold text-sm mt-4 mb-2;
   color: var(--color-text-muted);
+}
+.post-content hr {
+  border-color: var(--color-border);
+  @apply my-8;
 }
 .post-content blockquote {
   border-left: 3px solid var(--color-accent);
