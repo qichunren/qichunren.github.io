@@ -165,3 +165,21 @@ Evals 是一套系统化的评估框架，用于测量和监控模型（或 Agen
 20 个概念，从最基础的 Chat Completions 一路聊到生产级的追踪和降级。如果你能把这 20 个点都理清楚，基本上 AI 应用开发的全景图就在你脑子里了。
 
 技术的变迁确实很快，但底层的思维方式是通的——理解"消息"怎么流动、"工具"怎么挂接、"状态"怎么维持，不管模型怎么换代，这些基础都能复用。
+
+---
+
+## 参考文档
+
+- [OpenAI - Chat Completions API 文档](https://platform.openai.com/docs/guides/text-generation)
+- [OpenAI - Structured Outputs 指南](https://platform.openai.com/docs/guides/structured-outputs)
+- [OpenAI - Function Calling / Tool Use 文档](https://platform.openai.com/docs/guides/function-calling)
+- [OpenAI - Prompt Caching 指南](https://platform.openai.com/docs/guides/prompt-caching)
+- [OpenAI - Reasoning / o 系列模型文档](https://platform.openai.com/docs/guides/reasoning)
+- [OpenAI - Agents SDK](https://platform.openai.com/docs/guides/agents)
+- [OpenAI - Realtime API 文档](https://platform.openai.com/docs/guides/realtime)
+- [Anthropic - Messages API 文档](https://docs.anthropic.com/en/docs/build-with-claude/messages)
+- [Anthropic - Tool Use 指南](https://docs.anthropic.com/en/docs/build-with-claude/tool-use)
+- [Anthropic - Prompt Caching 文档](https://docs.anthropic.com/en/docs/build-with-claude/prompt-caching)
+- [Anthropic - Extended Thinking 指南](https://docs.anthropic.com/en/docs/build-with-claude/extended-thinking)
+- [Anthropic - Agent 设计模式指南](https://docs.anthropic.com/en/docs/build-with-claude/agent-patterns)
+- [MCP（Model Context Protocol）官方规范](https://modelcontextprotocol.io/)
