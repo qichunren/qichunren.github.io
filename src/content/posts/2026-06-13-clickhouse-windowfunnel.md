@@ -592,7 +592,7 @@ ORDER BY channel, step;
 
 ## 参考文档
 
-- [ClickHouse - windowFunnel 函数官方文档](https://clickhouse.com/docs/en/sql-reference/aggregate-functions/reference/windowfunnel)
-- [ClickHouse - 漏斗分析指南](https://clickhouse.com/docs/en/guides/developer/funnels)
+- [ClickHouse - windowFunnel 函数官方文档](https://clickhouse.com/docs/sql-reference/aggregate-functions/parametric-functions#windowfunnel)
+- [ClickHouse - 漏斗分析指南](https://clickhouse.com/blog/building-product-analytics-with-clickhouse)
 - [ECharts - 漏斗图配置文档](https://echarts.apache.org/zh/option.html#series-funnel)
 - [ECharts - 数据集（dataset）多维度切换](https://echarts.apache.org/handbook/zh/concepts/dataset)

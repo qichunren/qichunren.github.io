@@ -388,4 +388,4 @@ GROUP BY country;
 - [ClickHouse - AggregatingMergeTree 表引擎](https://clickhouse.com/docs/en/engines/table-engines/mergetree-family/aggregatingmergetree)
 - [ClickHouse - Materialized View 指南](https://clickhouse.com/docs/en/sql-reference/statements/create/view#materialized-view)
 - [ClickHouse - Bitmap 函数文档](https://clickhouse.com/docs/en/sql-reference/functions/bitmap-functions)
-- [ClickHouse - 查询优化指南](https://clickhouse.com/docs/en/guides/improving-performance/sparse-primary-indexes/sparse-primary-indexes-design)
+- [ClickHouse - 查询优化指南](https://clickhouse.com/docs/optimize/query-optimization)
