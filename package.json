@@ -8,12 +8,12 @@
     "preview": "astro preview"
   },
   "dependencies": {
-    "@astrojs/sitemap": "^3.4.0",
+    "@astrojs/sitemap": "^3.7.3",
     "@tailwindcss/postcss": "^4.3.1",
-    "@tailwindcss/typography": "^0.5.0"
+    "@tailwindcss/typography": "^0.5.20"
   },
   "devDependencies": {
-    "astro": "^6.0.0",
-    "tailwindcss": "^4.0.0"
+    "astro": "^6.4.7",
+    "tailwindcss": "^4.3.1"
   }
 }
