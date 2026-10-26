@@ -14,4 +14,4 @@ But I often have to change default generted source code:
 
 Rails provides the mechanism to custom generator behavior.
 
-I have already got it, and source code is on [github](https://github.com/qichunren/rails_generator_override_templates), follow README for usage.
+I have already applied it to my own projects.

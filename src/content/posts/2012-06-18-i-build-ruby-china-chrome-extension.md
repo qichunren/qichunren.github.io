@@ -11,5 +11,5 @@ categories: web
 
 另外，我发现 Chrome 浏览器的插件开发非常简单，自由度很大，根据它的开发规范，可以非常容易实现扩展开发。在我了解了这一点之后，我更加喜欢 Chrome 浏览器了。
 
-这个 Chrome 浏览器插件项目是开源的，代码在[https://github.com/qichunren/ruby-china-chrome](https://github.com/qichunren/ruby-china-chrome)
+这个 Chrome 浏览器插件项目是开源的。
 

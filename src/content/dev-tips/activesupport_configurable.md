@@ -49,6 +49,6 @@ YourClass.a_option = "new_value"
 => "new_value"
 ```
 
-如果不想使用 ActiveSupport，自己写一个类似的接口也是很方便的 [https://qichunren.github.io/dev_tips/configure_api_pattern.html](https://qichunren.github.io/dev_tips/configure_api_pattern.html)
+如果不想使用 ActiveSupport，自己写一个类似的接口也是很方便的，参见 [configure API 模式](/dev-tips/configure_api_pattern)
 
 [See doc](https://api.rubyonrails.org/classes/ActiveSupport/Configurable.html)

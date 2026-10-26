@@ -11,7 +11,7 @@ categories: Development
 
 ## 1. Solid Queue 的表用途简介
 
-Solid Queue 在数据库中主要维护了几张表， 在这里有这些表的[详细结构定义](https://gist.github.com/qichunren/41ef3bb5138c192e8a699111ce0adbb3)，每张表对应不同的职责：
+Solid Queue 在数据库中主要维护了几张表，每张表对应不同的职责：
 
 * **`solid_queue_jobs`**
   核心表，存储任务的元信息。包括任务类名（`class_name`）、参数（`arguments`）、优先级（`priority`）、入队时间（`enqueued_at`）、计划执行时间（`scheduled_at`）等。
